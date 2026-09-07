@@ -11,7 +11,7 @@ Goal: build `data/metadata.csv` + `transcripts/<id>.<lang>.json3` linked by `id`
 
 ```
 data/metadata.csv            # derived table, 151 videos (rebuild collapses the g1PRMaTFYdk duplicate)
-metadata/<id>.json           # raw per-video dump, richest record (yt-dlp --dump-single-json)
+metadata/<id>.json           # raw per-video dump, richest record (--dump-single-json incl. comments)
 transcripts/<id>.<lang>.json3   # one auto-generated caption per video, richest timed format
 transcripts/manifest.tsv        # id | status | file | lang
 bin/fetch-metadata           # raw dumps + derive CSV

@@ -29,6 +29,27 @@ Derivable values from input 2:
   NOT the material date; do not guess). No-material runs use the video
   upload date.
 
+## VIDEO METADATA LOOKUP
+
+`data/dsincubator.csv` is the authoritative local lookup for video metadata
+(dates, titles, URLs, counts, etc.). Use it instead of re-fetching from
+YouTube. Key columns: `title`, `id`, `url`, `upload_date_iso`,
+`view_count`, `like_count`, `comment_count`, `duration`,
+`playlist_index`, `channel`, `uploader`.
+
+- `upload_date_iso` is the calendar date to use when a video date is
+  needed (matches the front-matter `date` policy).
+- `id` is the YouTube video ID used to join to transcripts
+  (`transcripts/<id>.{txt,tsv}`).
+
+Example (R):
+
+```r
+d <- readr::read_csv("data/dsincubator.csv", show_col_types = FALSE)
+dplyr::filter(d, id == "<video-id>") |>
+  dplyr::select(title, upload_date_iso, url, like_count)
+```
+
 ## LAYOUT CONTRACT
 
 ### Per-talk folder

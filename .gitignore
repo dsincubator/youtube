@@ -1,7 +1,8 @@
-# runtime-only — never committed (see AGENTS.md LAYOUT CONTRACT)
+# runtime-only — never committed (see AGENTS.md)
 .omo/
 **/.omo/
 .Rhistory
 .Rproj.user
 */blog_files
 **/*.html
+raw/

@@ -39,7 +39,7 @@ bin/fetch-transcripts           # fetch script
 
 Flags: `--count N`, `--force`, `--cookies-from-browser BROWSER`, `--csv PATH`, `--out-dir DIR`, `--sub-format FORMAT`, `--sleep SECONDS`, `--retries N`, `--help`.
 
-Per video: `yt-dlp --skip-download --write-auto-subs --sub-langs "en.*,es.*" --sub-format "json3/srv3/vtt/best" -o "transcripts/<id>.%(language)s.%(ext)s" -- "https://www.youtube.com/watch?v=<id>"` — retries 3× (2 s sleep), logs to `/tmp/fetch-transcripts-<id>.log`, records `id status file lang` in `manifest.tsv`. `--` protects ids starting with `-`/`_`.
+Per video: `yt-dlp --skip-download --write-auto-subs --sub-langs ".*-orig" --sub-format "json3/srv3/vtt/best" -o "transcripts/<id>.%(ext)s" -- "https://www.youtube.com/watch?v=<id>"` — retries 3× (2 s sleep), falls back once to `--sub-langs "en.*,es.*"` when no `*-orig` track exists, logs to `/tmp/fetch-transcripts-<id>.log`, records `id status file lang` in `manifest.tsv`. One file per video is kept (preferring `*-orig`; duplicates/translations pruned). `--` protects ids starting with `-`/`_`.
 
 ## QUALITY GATES
 

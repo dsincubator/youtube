@@ -41,21 +41,25 @@ Derivable values from input 2:
   transcripts/<id>.tsv   # start/duration/text columns (frame timestamps)
   images/                # all visual assets
   blog.md           # the finished output
-  blog.html         # Quarto output (optional)
   .omo/                  # runtime-only; NEVER read as input
 ```
 
-**No-material fallback**: when no material repo exists, create
-`<slug>/README.md` with the video title and the playlist link only:
+Never render or commit `blog.html` / `blog_files/` — rendered HTML is
+throwaway preview output, not a deliverable. `blog.md` is final.
+
+**Talk README rule**: every `<slug>/README.md` points to the video, whatever
+else it holds:
 
 ```
 # <Video title>
 
-[YouTube playlist](<playlist-url>)
+[YouTube video](<youtube-url>)
 ```
 
-No Objectives, no sections — the transcript becomes the sole source, and
-front-matter `date` is the video upload date instead of a material date.
+**No-material fallback**: when no material repo exists, the README is just
+that — title plus video link, nothing else. No Objectives, no sections —
+the transcript becomes the sole source, and front-matter `date` is the
+video upload date instead of a material date.
 
 ### Image naming
 

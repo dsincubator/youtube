@@ -1,0 +1,6 @@
+file	timestamp	width	height	bytes
+video_01_default-install-location.jpg	70s install default	1280	720	126074
+video_02_libpaths-default.jpg	170s libpaths output	1280	720	125381
+video_03_r-libs-user-unset.jpg	300s R_LIBS_USER unset	1280	720	132241
+video_04_custom-lib-front.jpg	440s custom lib front	1280	720	167508
+video_05_rprofile-permanent.jpg	560s Rprofile proof	1280	720	171338

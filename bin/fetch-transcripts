@@ -1,0 +1,223 @@
+#!/usr/bin/env bash
+set -u
+
+PROGRAM="${0##*/}"
+usage() {
+    cat <<EOF
+Usage: $PROGRAM [OPTIONS]
+Fetch auto-generated transcripts for all videos in data/dsincubator.csv.
+
+Outputs: transcripts/<id>.<lang>.json3 per video, transcripts/manifest.tsv linking back to data/dsincubator.csv.
+
+Options:
+  -h, --help            Show this help message and exit
+  --force               Re-fetch transcripts even if the output file already exists
+  --cookies-from-browser BROWSER
+                        Pass --cookies-from-browser to yt-dlp (e.g. chrome, firefox)
+  -n, --count N         Process only the first N videos (for testing)
+  --csv PATH            Path to the metadata CSV (default: data/dsincubator.csv)
+  --out-dir DIR         Output directory (default: transcripts)
+  --sub-format FORMAT   Subtitle format preference (default: json3/srv3/vtt/best)
+  --sleep SECONDS       Seconds to wait between videos (default: 2)
+  --retries N           Retries per video (default: 3)
+EOF
+}
+
+FORCE=0
+COOKIES=""
+COUNT=0
+CSV="data/dsincubator.csv"
+OUT_DIR="transcripts"
+SUB_FORMAT="json3/srv3/vtt/best"
+SLEEP=2
+RETRIES=3
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help) usage; exit 0 ;;
+        --force) FORCE=1 ;;
+        --cookies-from-browser) COOKIES="--cookies-from-browser $2"; shift 2 ;;
+        -n|--count) COUNT="$2"; shift 2 ;;
+        --csv) CSV="$2"; shift 2 ;;
+        --out-dir) OUT_DIR="$2"; shift 2 ;;
+        --sub-format) SUB_FORMAT="$2"; shift 2 ;;
+        --sleep) SLEEP="$2"; shift 2 ;;
+        --retries) RETRIES="$2"; shift 2 ;;
+        *) echo "[fetch-transcripts] unknown option: $1" >&2; usage >&2; exit 2 ;;
+    esac
+done
+
+mkdir -p "$OUT_DIR"
+
+IDS=()
+while IFS= read -r id; do
+    [[ -z "$id" ]] && continue
+    IDS+=("$id")
+done < <(python3 -c "import csv; [print(r['id'].strip()) for r in csv.DictReader(open('${CSV}'))]" | sort -u)
+
+UNIQ_IDS=("${IDS[@]}")
+
+TOTAL=${#UNIQ_IDS[@]}
+if [[ "$COUNT" -gt 0 ]]; then
+    TOTAL="$COUNT"
+fi
+
+OK=0
+MISSING=0
+ERRORS=0
+MANIFEST_TMP=$(mktemp)
+
+echo "[fetch-transcripts] total unique videos in CSV: ${#UNIQ_IDS[@]}"
+echo "[fetch-transcripts] processing: ${TOTAL}"
+
+# pick_transcript <id>: collapse doubled names (<id>.en.en-orig.json3 ->
+# <id>.en-orig.json3), keep one file per id preferring *-orig, delete the rest.
+# Sets SURVIVOR to the kept path, or empty when nothing is on disk.
+pick_transcript() {
+    local _id="$1" _f _base _rest _ext _noext _first _last
+    for _f in "$OUT_DIR"/${_id}.*.*; do
+        [[ -f "$_f" ]] || continue
+        _base=$(basename "$_f")
+        _rest=${_base#${_id}.}
+        _ext=${_rest##*.}
+        _noext=${_rest%.*}
+        _first=${_noext%%.*}
+        _last=${_noext##*.}
+        if [[ "$_first" != "$_last" ]]; then
+            mv -f "$_f" "$OUT_DIR/${_id}.${_last}.${_ext}"
+        fi
+    done
+    SURVIVOR=""
+    for _f in "$OUT_DIR"/${_id}.*-orig.*; do
+        [[ -f "$_f" ]] || continue
+        SURVIVOR="$_f"
+        break
+    done
+    if [[ -z "$SURVIVOR" ]]; then
+        for _f in "$OUT_DIR"/${_id}.*.*; do
+            [[ -f "$_f" ]] || continue
+            SURVIVOR="$_f"
+            break
+        done
+    fi
+    if [[ -n "$SURVIVOR" ]]; then
+        for _f in "$OUT_DIR"/${_id}.*.*; do
+            [[ -f "$_f" ]] || continue
+            [[ "$_f" != "$SURVIVOR" ]] || continue
+            rm -f "$_f"
+        done
+    fi
+}
+
+fetch_one() {
+    # $1 = id, $2 = sub-langs, $3 = ">" or ">>" (truncate or append log)
+    local _id="$1" _langs="$2" _redir="$3"
+    if [[ -z "$COOKIES" ]]; then
+        yt-dlp --skip-download --write-auto-subs \
+            --sub-langs "$_langs" \
+            --sub-format "$SUB_FORMAT" \
+            -o "${OUT_DIR}/${_id}.%(ext)s" \
+            --no-write-info-json \
+            --no-overwrites \
+            -- "https://www.youtube.com/watch?v=${_id}" ${_redir} "/tmp/fetch-transcripts-${_id}.log" 2>&1
+    else
+        yt-dlp --skip-download --write-auto-subs \
+            --sub-langs "$_langs" \
+            --sub-format "$SUB_FORMAT" \
+            -o "${OUT_DIR}/${_id}.%(ext)s" \
+            --no-write-info-json \
+            --no-overwrites \
+            $COOKIES \
+            -- "https://www.youtube.com/watch?v=${_id}" ${_redir} "/tmp/fetch-transcripts-${_id}.log" 2>&1
+    fi
+    return $?
+}
+
+for i in $(seq 0 $((TOTAL - 1))); do
+    ID="${UNIQ_IDS[$i]}"
+
+    pick_transcript "$ID"
+    if [[ -n "$SURVIVOR" && "$FORCE" -eq 0 ]]; then
+        echo "[fetch-transcripts] skip ${ID} (already exists -> $(basename "$SURVIVOR"))"
+        printf '%s\t%s\t%s\n' "$ID" "ok" "$SURVIVOR" >> "$MANIFEST_TMP"
+        OK=$((OK + 1))
+        continue
+    fi
+
+    if [[ "$FORCE" -eq 1 ]]; then
+        rm -f "$OUT_DIR"/${ID}.*.* 2>/dev/null || true
+        SURVIVOR=""
+    fi
+
+    attempt=0
+    while [[ $attempt -lt $RETRIES ]]; do
+        attempt=$((attempt + 1))
+        if fetch_one "$ID" ".*-orig" ">"; then
+            break
+        fi
+        echo "[fetch-transcripts] attempt ${attempt}/${RETRIES} failed for ${ID}, retrying in ${SLEEP}s"
+        sleep "$SLEEP"
+    done
+
+    pick_transcript "$ID"
+    if [[ -z "$SURVIVOR" ]]; then
+        # Fallback for videos without *-orig tracks: broader langs, then prune.
+        echo "[fetch-transcripts] fallback ${ID} (trying en.*,es.*)"
+        fetch_one "$ID" "en.*,es.*" ">>" || true
+        pick_transcript "$ID"
+    fi
+
+    if [[ -n "$SURVIVOR" ]]; then
+        echo "[fetch-transcripts] ok ${ID} -> $(basename "$SURVIVOR")"
+        printf '%s\t%s\t%s\n' "$ID" "ok" "$SURVIVOR" >> "$MANIFEST_TMP"
+        OK=$((OK + 1))
+    else
+        echo "[fetch-transcripts] error ${ID}"
+        printf '%s\t%s\t%s\n' "$ID" "error" "" >> "$MANIFEST_TMP"
+        ERRORS=$((ERRORS + 1))
+    fi
+
+    if [[ $(( (i + 1) % 10 )) -eq 0 ]]; then
+        echo "[fetch-transcripts] progress: $((i + 1))/${TOTAL}"
+    fi
+
+    if [[ $i -lt $((TOTAL - 1)) ]]; then
+        sleep "$SLEEP"
+    fi
+done
+
+# Build manifest: all expected IDs from CSV, joined against what we fetched
+python3 -c "
+import csv
+expected = {}
+with open('${CSV}') as f:
+    for row in csv.DictReader(f):
+        expected[row['id'].strip()] = True
+fetched = {}
+with open('${MANIFEST_TMP}') as f:
+    for line in f:
+        parts = line.strip().split('\t')
+        if len(parts) >= 2:
+            fetched[parts[0]] = parts[1]
+with open('${OUT_DIR}/manifest.tsv', 'w') as out:
+    out.write('id\tstatus\tfile\tlang\n')
+    for id in sorted(expected.keys()):
+        st = fetched.get(id, 'missing')
+        if st == 'ok':
+            # file path and lang from manifest_tmp
+            with open('${MANIFEST_TMP}') as f:
+                for line in f:
+                    p = line.strip().split('\t')
+                    if p[0] == id and p[1] == 'ok':
+                        file = p[2]
+                        lang = file.split('.')[-2] if '.' in file else ''
+                        out.write(f'{id}\tok\t{file}\t{lang}\n')
+                        break
+        else:
+            out.write(f'{id}\t{st}\t\t\n')
+"
+rm -f "$MANIFEST_TMP"
+
+MISSING=$((TOTAL - OK - ERRORS))
+echo "[fetch-transcripts] done: fetched ${OK}, missing ${MISSING}, errors ${ERRORS} (of ${TOTAL})"
+echo "[fetch-transcripts] manifest written to ${OUT_DIR}/manifest.tsv"

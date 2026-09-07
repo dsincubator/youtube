@@ -1,14 +1,11 @@
-# Project Management on GitHub
-
-> [!WARNING]
-> Produced on Aug 23, 2022.
-> <details><summary>What may look different today</summary>
->
-> - Milestone and Linked pull requests are now added as organization issue fields, not merely unhidden.
-> - Iteration is a built-in field that auto-creates iterations with configurable duration and breaks.
-> - Built-in workflows now auto-set status to Done when pull requests merge or close, so the merge-to-Done step is automatic by default.
-> - Projects can start from Table, Board, or Roadmap.
-> </details>
+---
+title: "Project Management on GitHub"
+description: "Manage projects with GitHub Projects: backlog tables, focused views, and automation that keeps everything linked."
+date: "2022-08-23"
+categories:
+  - github
+  - project-management
+---
 
 Welcome again to the DS Incubator. Today we are talking about project management on GitHub.
 

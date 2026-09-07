@@ -9,7 +9,9 @@ and produces a finished blog post with minimal token cost.
 Two required inputs, everything else derivable:
 
 1. **Material repo URL** — GitHub repo containing the talk's `README.md`.
-   Clone/fetch to read the source material.
+   Clone/fetch to read the source material. If no repo exists (video
+   description has no repo link), use the no-material fallback: create a
+   placeholder `<slug>/README.md` (see LAYOUT CONTRACT) instead of cloning.
 2. **YouTube video URL or ID** — e.g. `https://www.youtube.com/watch?v=qqKhQdejUOM`
    or bare `qqKhQdejUOM`.
 
@@ -20,9 +22,12 @@ Derivable values from input 2:
   (`start duration text` columns, for frame timestamps). Do NOT fetch `.json` —
   it duplicates the `.tsv` and wastes tokens.
 - **Talk slug** → folder name (e.g. `project_management_on_github`)
-- **Original-material date** → populates the top WARNING block (fetch from
-  the material README; video upload date is NOT the material date;
-  do not guess).
+- **Post date** → Quarto front-matter `date` (fixed `YYYY-MM-DD` — never
+  `today` or `last-modified`, which reshuffle listing order on every render;
+  see <https://quarto.org/docs/websites/website-blog.html>). Full runs use
+  the material date (fetch from the material README; video upload date is
+  NOT the material date; do not guess). No-material runs use the video
+  upload date.
 
 ## LAYOUT CONTRACT
 
@@ -30,14 +35,27 @@ Derivable values from input 2:
 
 ```
 <slug>/
-  README.md              # source material (fetched from input repo)
+  README.md              # source material (fetched from input repo), or no-material
+                         # fallback placeholder (see below) when no repo exists
   transcripts/<id>.txt   # single-line transcript (drafting)
   transcripts/<id>.tsv   # start/duration/text columns (frame timestamps)
   images/                # all visual assets
-  blog-post.md           # the finished output
-  blog-post.html         # Quarto output (optional)
+  blog.md           # the finished output
+  blog.html         # Quarto output (optional)
   .omo/                  # runtime-only; NEVER read as input
 ```
+
+**No-material fallback**: when no material repo exists, create
+`<slug>/README.md` with the video title and the playlist link only:
+
+```
+# <Video title>
+
+[YouTube playlist](<playlist-url>)
+```
+
+No Objectives, no sections — the transcript becomes the sole source, and
+front-matter `date` is the video upload date instead of a material date.
 
 ### Image naming
 
@@ -52,15 +70,38 @@ Derivable values from input 2:
   a talk folder are legacy; reuse one only if it beats every extracted
   frame, otherwise prune unreferenced files at the end.
 
-### blog-post.md structure
+### Quarto front matter
+
+Every `blog.md` opens with YAML front matter (per
+<https://quarto.org/docs/websites/website-blog.html>); the title lives
+there, so the body never repeats it as a `# Title` heading.
 
 ```
-# Title (matching README heading)
+---
+title: "<Title matching README heading>"
+description: "<One-line post summary>"
+date: "<YYYY-MM-DD>"
+categories:
+  - <topic>
+  - <topic>
+---
+```
 
-> [!WARNING]
-> Produced on <material-date MMM DD, YYYY>.
-> <details><summary>What may look different today</summary>
->
+Rules:
+- `date` is fixed (`YYYY-MM-DD`) — never `today` or `last-modified`,
+  which reshuffle the blog listing on every render.
+- `date` is the material date on full runs, the video upload date on
+  no-material runs (see INPUTS).
+- Keep `categories` to 1–3 lowercase topic tags.
+
+### blog.md structure
+
+```
+<YAML front matter above>
+
+> [!WARNING]                          # ONLY when stage 6 docs research finds
+> <details><summary>What may look different today</summary>  # real deltas; omit
+>                                       # entirely otherwise ("unchanged" is noise).
 > - <verified delta bullets, from stage 6 docs research>
 > </details>
 
@@ -98,9 +139,12 @@ Takeaway prose.
 **Placement rule**: images go AFTER the text they illustrate (traditional
 article convention). Each image closes its section, never opens it.
 
-**Header rule**: exactly ONE alert block at the top (the WARNING above).
-Never stack NOTE + WARNING — two boxes look broken and say the same thing
-twice. The canonical docs link lives in Resources, not in a second banner.
+**Header rule**: the date lives in front-matter `date`, never in a banner.
+The WARNING block appears ONLY when stage 6 docs research finds real deltas —
+if nothing changed, omit it entirely (a note saying "unchanged" is noise).
+At most ONE alert block at the top: never stack NOTE + WARNING — two boxes
+look broken and say the same thing twice. The canonical docs link lives in
+Resources, not in a second banner.
 
 ## 7 ORDERED STAGES
 
@@ -114,6 +158,10 @@ without downloading the video.
 # file or subfolder inside a larger repo, clone then copy just that path
 # (or use a sparse checkout) — the talk folder needs only its README.md.
 git clone <material-repo-url> <slug>
+
+# No-material fallback: if no repo exists, scaffold the folder and write
+# the placeholder README (title + playlist link) instead of cloning.
+# mkdir -p <slug>/transcripts <slug>/images
 
 # Fetch video metadata only — never download the full video yet.
 yt-dlp -F --skip-download "<youtube-url>" > <slug>/video-formats.txt 2>&1
@@ -149,6 +197,8 @@ open('/tmp/transcript-<id>-wrapped.txt','w').write('\n'.join(
 Rules:
 - Cohesive one-idea paragraphs.
 - Objectives list mirrors the README's **Objectives** (same count, same order).
+  On no-material runs, derive 1–3 objectives from the transcript instead
+  (stated as such in the post).
 - Cut filler: door, notes, refresh, music, oops, "um", "uh".
 - Rewrite visual-deictic lines ("click here", "as you can see") into plain
   action descriptions.
@@ -207,20 +257,24 @@ matches the section order in the blog.
 
 ### Stage 6 — Assemble blog
 
-**Purpose**: Combine prose and images into `blog-post.md`.
+**Purpose**: Combine prose and images into `blog.md`.
 
 Rules:
 - Images AFTER the text they illustrate (traditional article convention:
   each image closes its section, never opens it).
 - 1–2 sentence captions summarizing the adjacent text.
-- WARNING block at the top (header rule above): `> [!WARNING]` with
-  `Produced on <material-date>` plus the `<details>` delta list, built from
-  docs research done during assembly (verify every docs URL — never invent).
+- YAML front matter first (see Quarto front matter): `title`,
+  `description`, fixed `date`, `categories`. No `# Title` heading in the body.
+- WARNING block below the front matter ONLY when docs research finds real
+  deltas: `> [!WARNING]` plus the `<details>` delta list (verify every docs
+  URL — never invent). The date already lives in front matter — never repeat
+  it in the block. If nothing changed, omit the block entirely.
 - Resources section: original material, YouTube, current docs child pages
   (the canonical docs link lives here, not in a second banner).
+  On no-material runs omit the original-material line.
 - Every docs URL must be fetched and verified during assembly — never invent.
 
-**Expected outputs**: `<slug>/blog-post.md`
+**Expected outputs**: `<slug>/blog.md`
 
 ### Stage 7 — Verify
 
@@ -234,13 +288,13 @@ Checklist:
 - All docs URLs in Resources were fetched (not invented).
 
 ```sh
-# Verify every image in blog-post.md exists.
-grep -o 'images/[^)]*' <slug>/blog-post.md | while read img; do
+# Verify every image in blog.md exists.
+grep -o 'images/[^)]*' <slug>/blog.md | while read img; do
   [[ -f "<slug>/$img" ]] || echo "MISSING: $img"
 done
 ```
 
-**Expected outputs**: Clean verification output; `<slug>/blog-post.md` is final.
+**Expected outputs**: Clean verification output; `<slug>/blog.md` is final.
 
 ## TOKEN-SAVING RULES
 
@@ -258,13 +312,19 @@ done
 
 Before the blog is final, all must pass:
 
-- [ ] **Images exist** — every `images/` ref in `blog-post.md` resolves.
+- [ ] **Images exist** — every `images/` ref in `blog.md` resolves.
 - [ ] **Images evenly distributed** — roughly one featured image per section.
 - [ ] **Captions match text** — each image caption summarizes its adjacent prose.
-- [ ] **Objectives mirror README** — numbered list matches the source material.
-- [ ] **WARNING block present** — with `Produced on <material-date>` and the
-  `<details>` delta list (exactly one alert at the top — never NOTE+WARNING).
-- [ ] **Resources complete** — original material, YouTube, current docs pages.
+- [ ] **Objectives mirror README** — numbered list matches the source material
+  (or the transcript on no-material runs, stated as such).
+- [ ] **Front matter valid** — `title`, `description`, fixed `date`
+  (`YYYY-MM-DD`, never dynamic), 1–3 categories; no `# Title` in the body.
+- [ ] **WARNING conditional** — present with the `<details>` delta list ONLY
+  when real deltas were verified (at most one alert at the top — never
+  NOTE+WARNING; no date inside — it lives in front matter); omitted when
+  nothing changed.
+- [ ] **Resources complete** — original material, YouTube, current docs pages
+  (original-material line omitted on no-material runs).
 - [ ] **Voice preserved** — first-person speaker voice maintained throughout.
 - [ ] **No invented URLs** — every docs URL was fetched and verified.
 

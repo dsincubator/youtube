@@ -1,0 +1,967 @@
+start	duration	text
+5.180	0.010	recording oh great okay then thank you
+5.190	1.909	recording oh great okay then thank you everyone for joining us again to that
+7.099	0.010	everyone for joining us again to that
+7.109	2.270	everyone for joining us again to that sizing later we are going to be talking
+9.379	0.010	sizing later we are going to be talking
+9.389	2.511	sizing later we are going to be talking about access permissions for a github
+11.900	0.010	about access permissions for a github
+11.910	3.889	about access permissions for a github organization to motivate this store got
+15.799	0.010	organization to motivate this store got
+15.809	2.210	organization to motivate this store got to try kind of explain what I mean by
+18.019	0.010	to try kind of explain what I mean by
+18.029	2.031	to try kind of explain what I mean by ideas let me present you with the
+20.060	0.010	ideas let me present you with the
+20.070	1.940	ideas let me present you with the following situation so say that you want
+22.010	0.010	following situation so say that you want
+22.020	1.669	following situation so say that you want to propose changes to a source
+23.689	0.010	to propose changes to a source
+23.699	2.601	to propose changes to a source repository maybe to repository in our
+26.300	0.010	repository maybe to repository in our
+26.310	2.299	repository maybe to repository in our organization to the Greece University
+28.609	0.010	organization to the Greece University
+28.619	3.831	organization to the Greece University and so you know we start with the use of
+32.450	0.010	and so you know we start with the use of
+32.460	3.679	and so you know we start with the use of clam being we said you know the Forks
+36.139	0.010	clam being we said you know the Forks
+36.149	2.060	clam being we said you know the Forks and local clones and all of that which
+38.209	0.010	and local clones and all of that which
+38.219	1.400	and local clones and all of that which we could do if we wanted with the
+39.619	0.010	we could do if we wanted with the
+39.629	1.701	we could do if we wanted with the Huestis package with the function for
+41.330	0.010	Huestis package with the function for
+41.340	1.279	Huestis package with the function for example create from github
+42.619	0.010	example create from github
+42.629	2.961	example create from github then we initiate a pull request and
+45.590	0.010	then we initiate a pull request and
+45.600	2.000	then we initiate a pull request and start working on it and we could do that
+47.600	0.010	start working on it and we could do that
+47.610	1.640	start working on it and we could do that again with a useless package with a
+49.250	0.010	again with a useless package with a
+49.260	2.929	again with a useless package with a function and then you know what we want
+52.189	0.010	function and then you know what we want
+52.199	1.731	function and then you know what we want when we finish our work we know we
+53.930	0.010	when we finish our work we know we
+53.940	3.490	when we finish our work we know we synchronize our for our local Fork and
+57.430	0.010	synchronize our for our local Fork and
+57.440	2.870	synchronize our for our local Fork and with for example the function P our sink
+60.310	0.010	with for example the function P our sink
+60.320	2.279	with for example the function P our sink and then we push our committee with the
+62.599	0.010	and then we push our committee with the
+62.609	1.911	and then we push our committee with the function P R push so that should all
+64.520	0.010	function P R push so that should all
+64.530	3.140	function P R push so that should all work well here there is a description of
+67.670	0.010	work well here there is a description of
+67.680	2.330	work well here there is a description of you know what I mean by all of these
+70.010	0.010	you know what I mean by all of these
+70.020	2.420	you know what I mean by all of these steps but I'm going to skip that in the
+72.440	0.010	steps but I'm going to skip that in the
+72.450	1.850	steps but I'm going to skip that in the interest of time but I wanted to leave
+74.300	0.010	interest of time but I wanted to leave
+74.310	2.270	interest of time but I wanted to leave that in a record in this presentation so
+76.580	0.010	that in a record in this presentation so
+76.590	2.659	that in a record in this presentation so people can go back to it but then let's
+79.249	0.010	people can go back to it but then let's
+79.259	3.081	people can go back to it but then let's suppose that something goes wrong you
+82.340	0.010	suppose that something goes wrong you
+82.350	1.880	suppose that something goes wrong you shouldn't go wrong if we use a system
+84.230	0.010	shouldn't go wrong if we use a system
+84.240	2.990	shouldn't go wrong if we use a system like we use this package but but it
+87.230	0.010	like we use this package but but it
+87.240	3.140	like we use this package but but it can't go wrong if we don't and I do it
+90.380	0.010	can't go wrong if we don't and I do it
+90.390	2.840	can't go wrong if we don't and I do it all the time unfortunately so I usually
+93.230	0.010	all the time unfortunately so I usually
+93.240	2.060	all the time unfortunately so I usually forget to do two things for example I
+95.300	0.010	forget to do two things for example I
+95.310	3.170	forget to do two things for example I forget to copy the URL that points to my
+98.480	0.010	forget to copy the URL that points to my
+98.490	3.740	forget to copy the URL that points to my fork and instead I sometimes copy the
+102.230	0.010	fork and instead I sometimes copy the
+102.240	3.020	fork and instead I sometimes copy the URL that points to the source repo and
+105.260	0.010	URL that points to the source repo and
+105.270	1.760	URL that points to the source repo and another mistake that I make is sometimes
+107.030	0.010	another mistake that I make is sometimes
+107.040	2.690	another mistake that I make is sometimes creating basically to start committing
+109.730	0.010	creating basically to start committing
+109.740	2.780	creating basically to start committing off the master branch instead of
+112.520	0.010	off the master branch instead of
+112.530	2.240	off the master branch instead of creating a branch for the pull request
+114.770	0.010	creating a branch for the pull request
+114.780	1.789	creating a branch for the pull request so those are things that I kind of found
+116.569	0.010	so those are things that I kind of found
+116.579	2.801	so those are things that I kind of found my culture cut myself to it many times
+119.380	0.010	my culture cut myself to it many times
+119.390	2.370	my culture cut myself to it many times particularly before I started using the
+121.760	0.010	particularly before I started using the
+121.770	3.280	particularly before I started using the use dispatch so when those things happen
+125.050	0.010	use dispatch so when those things happen
+125.060	3.389	use dispatch so when those things happen then the question is what could happen
+128.449	0.010	then the question is what could happen
+128.459	3.861	then the question is what could happen if I then push well there are many
+132.320	0.010	if I then push well there are many
+132.330	1.670	if I then push well there are many things that could happen
+134.000	0.010	things that could happen
+134.010	3.470	things that could happen and maybe one of these will apply and
+137.480	0.010	and maybe one of these will apply and
+137.490	1.930	and maybe one of these will apply and that will depend on my almost
+139.420	0.010	that will depend on my almost
+139.430	1.860	that will depend on my almost configuration of basically on the
+141.290	0.010	configuration of basically on the
+141.300	2.260	configuration of basically on the configuration of the organization of the
+143.560	0.010	configuration of the organization of the
+143.570	3.870	configuration of the organization of the organization in terms of the role that I
+147.440	0.010	organization in terms of the role that I
+147.450	2.090	organization in terms of the role that I have if I'm an owner and member or a
+149.540	0.010	have if I'm an owner and member or a
+149.550	2.210	have if I'm an owner and member or a collaborator and also the permission
+151.760	0.010	collaborator and also the permission
+151.770	2.170	collaborator and also the permission levels that have been set by default for
+153.940	0.010	levels that have been set by default for
+153.950	5.010	levels that have been set by default for members and an collaborators so this
+158.960	0.010	members and an collaborators so this
+158.970	1.700	members and an collaborators so this procedure is going to be about these so
+160.670	0.010	procedure is going to be about these so
+160.680	2.000	procedure is going to be about these so the dissipation represented before is
+162.680	0.010	the dissipation represented before is
+162.690	1.640	the dissipation represented before is starting where I you know I want to make
+164.330	0.010	starting where I you know I want to make
+164.340	1.790	starting where I you know I want to make a contribution to a source repo
+166.130	0.010	a contribution to a source repo
+166.140	2.780	a contribution to a source repo I think I do things correctly but it's
+168.920	0.010	I think I do things correctly but it's
+168.930	1.130	I think I do things correctly but it's very likely that I kind of meet
+170.060	0.010	very likely that I kind of meet
+170.070	2.540	very likely that I kind of meet something and when I push what happens
+172.610	0.010	something and when I push what happens
+172.620	1.520	something and when I push what happens so one scenario would be that you might
+174.140	0.010	so one scenario would be that you might
+174.150	3.950	so one scenario would be that you might commit you know it goes to the PR the PR
+178.100	0.010	commit you know it goes to the PR the PR
+178.110	2.330	commit you know it goes to the PR the PR branch of my fork that would be what I
+180.440	0.010	branch of my fork that would be what I
+180.450	3.800	branch of my fork that would be what I would like I would like to happen but
+184.250	0.010	would like I would like to happen but
+184.260	1.460	would like I would like to happen but with the wrong configuration you want
+185.720	0.010	with the wrong configuration you want
+185.730	2.410	with the wrong configuration you want suction to wouldn't apply to my case
+188.140	0.010	suction to wouldn't apply to my case
+188.150	2.550	suction to wouldn't apply to my case option two could be that they commit you
+190.700	0.010	option two could be that they commit you
+190.710	1.910	option two could be that they commit you know goes to the master branch of my
+192.620	0.010	know goes to the master branch of my
+192.630	2.720	know goes to the master branch of my fork so again that that could be the
+195.350	0.010	fork so again that that could be the
+195.360	2.780	fork so again that that could be the case if I had said the correct URL but
+198.140	0.010	case if I had said the correct URL but
+198.150	2.300	case if I had said the correct URL but because I did the wrong URL that won't
+200.450	0.010	because I did the wrong URL that won't
+200.460	2.660	because I did the wrong URL that won't apply either so third option would be
+203.120	0.010	apply either so third option would be
+203.130	2.720	apply either so third option would be that the commits you know leaving that
+205.850	0.010	that the commits you know leaving that
+205.860	2.570	that the commits you know leaving that pull request go to the PR branch of a
+208.430	0.010	pull request go to the PR branch of a
+208.440	2.150	pull request go to the PR branch of a source ripple and that won't apply
+210.590	0.010	source ripple and that won't apply
+210.600	1.700	source ripple and that won't apply either because the pull request branch
+212.300	0.010	either because the pull request branch
+212.310	1.160	either because the pull request branch was never created
+213.470	0.010	was never created
+213.480	2.240	was never created although the URL does going to the
+215.720	0.010	although the URL does going to the
+215.730	2.080	although the URL does going to the source red boat because I had made that
+217.810	0.010	source red boat because I had made that
+217.820	2.670	source red boat because I had made that incorrectly II couldn't go to a pure
+220.490	0.010	incorrectly II couldn't go to a pure
+220.500	2.810	incorrectly II couldn't go to a pure branch so scenario 4 would be that my
+223.310	0.010	branch so scenario 4 would be that my
+223.320	1.940	branch so scenario 4 would be that my commit goes to the master branch of a
+225.260	0.010	commit goes to the master branch of a
+225.270	3.500	commit goes to the master branch of a sort of ripple and that could be so when
+228.770	0.010	sort of ripple and that could be so when
+228.780	2.110	sort of ripple and that could be so when that could be well for example if I have
+230.890	0.010	that could be well for example if I have
+230.900	4.950	that could be well for example if I have pushed privileges to that that ripple
+235.850	0.010	pushed privileges to that that ripple
+235.860	2.240	pushed privileges to that that ripple and sometimes I don't know if I have
+238.100	0.010	and sometimes I don't know if I have
+238.110	4.520	and sometimes I don't know if I have that privilege so that's what I'm gonna
+242.630	0.010	that privilege so that's what I'm gonna
+242.640	1.730	that privilege so that's what I'm gonna cover in this presentation basically
+244.370	0.010	cover in this presentation basically
+244.380	3.500	cover in this presentation basically what happens in that scenario depends on
+247.880	0.010	what happens in that scenario depends on
+247.890	2.360	what happens in that scenario depends on what's my role if I'm an owner an actor
+250.250	0.010	what's my role if I'm an owner an actor
+250.260	2.360	what's my role if I'm an owner an actor I am an owner of the organisation me and
+252.620	0.010	I am an owner of the organisation me and
+252.630	2.870	I am an owner of the organisation me and a few others then a mistake could mean
+255.500	0.010	a few others then a mistake could mean
+255.510	4.100	a few others then a mistake could mean that I will push a commit to the massive
+259.610	0.010	that I will push a commit to the massive
+259.620	2.840	that I will push a commit to the massive range of production can already proposed
+262.460	0.010	range of production can already proposed
+262.470	2.360	range of production can already proposed through even if I think I don't have
+264.830	0.010	through even if I think I don't have
+264.840	1.810	through even if I think I don't have access if I'm an owner I
+266.650	0.010	access if I'm an owner I
+266.660	3.890	access if I'm an owner I so we're ready to talk about you know
+270.550	0.010	so we're ready to talk about you know
+270.560	2.390	so we're ready to talk about you know these different roles that you have it
+272.950	0.010	these different roles that you have it
+272.960	2.030	these different roles that you have it provides for members of an organization
+274.990	0.010	provides for members of an organization
+275.000	3.020	provides for members of an organization and also an additional role that is for
+278.020	0.010	and also an additional role that is for
+278.030	5.420	and also an additional role that is for outside collaborate so as an owner you
+283.450	0.010	outside collaborate so as an owner you
+283.460	2.960	outside collaborate so as an owner you have complete administrative access to
+286.420	0.010	have complete administrative access to
+286.430	2.660	have complete administrative access to your your organization then which this
+289.090	0.010	your your organization then which this
+289.100	3.290	your your organization then which this second role is called building manager
+292.390	0.010	second role is called building manager
+292.400	1.430	second role is called building manager which I'm not going to talk about
+293.830	0.010	which I'm not going to talk about
+293.840	2.390	which I'm not going to talk about because it's not all that exciting or
+296.230	0.010	because it's not all that exciting or
+296.240	2.120	because it's not all that exciting or important for what we do and then the
+298.360	0.010	important for what we do and then the
+298.370	3.050	important for what we do and then the member role is just anything any
+301.420	0.010	member role is just anything any
+301.430	2.450	member role is just anything any everyone else except the owners and
+303.880	0.010	everyone else except the owners and
+303.890	2.900	everyone else except the owners and meeting Manchester and you can set a
+306.790	0.010	meeting Manchester and you can set a
+306.800	3.230	meeting Manchester and you can set a default for what is the access of any
+310.030	0.010	default for what is the access of any
+310.040	1.910	default for what is the access of any member of the organization so I'm going
+311.950	0.010	member of the organization so I'm going
+311.960	4.030	member of the organization so I'm going to show you later what it looks like so
+315.990	0.010	to show you later what it looks like so
+316.000	3.180	to show you later what it looks like so you can set the default of what members
+319.180	0.010	you can set the default of what members
+319.190	3.950	you can set the default of what members can do for all records so when you say
+323.140	0.010	can do for all records so when you say
+323.150	1.820	can do for all records so when you say well all members would have saved a
+324.970	0.010	well all members would have saved a
+324.980	2.810	well all members would have saved a privilege by default if you are a member
+327.790	0.010	privilege by default if you are a member
+327.800	1.700	privilege by default if you are a member of the organization you get great
+329.500	0.010	of the organization you get great
+329.510	2.480	of the organization you get great privilege to every rebel but if you say
+331.990	0.010	privilege to every rebel but if you say
+332.000	1.850	privilege to every rebel but if you say well you know you I'm gonna set the
+333.850	0.010	well you know you I'm gonna set the
+333.860	2.810	well you know you I'm gonna set the default member privilege to admin then
+336.670	0.010	default member privilege to admin then
+336.680	2.210	default member privilege to admin then even if you don't know you will have
+338.890	0.010	even if you don't know you will have
+338.900	1.910	even if you don't know you will have admin privilege meaning that you can
+340.810	0.010	admin privilege meaning that you can
+340.820	2.180	admin privilege meaning that you can even delete repository that you don't
+343.000	0.010	even delete repository that you don't
+343.010	4.460	even delete repository that you don't even know about so then you know you may
+347.470	0.010	even know about so then you know you may
+347.480	1.580	even know about so then you know you may want to kind of manage the access
+349.060	0.010	want to kind of manage the access
+349.070	2.630	want to kind of manage the access permission for multiple members in an
+351.700	0.010	permission for multiple members in an
+351.710	2.030	permission for multiple members in an organization and you can do that with
+353.740	0.010	organization and you can do that with
+353.750	2.510	organization and you can do that with what it had calls T so basically you
+356.260	0.010	what it had calls T so basically you
+356.270	4.310	what it had calls T so basically you group people in formal teams you say to
+360.580	0.010	group people in formal teams you say to
+360.590	1.880	group people in formal teams you say to it have hey this is a team and then you
+362.470	0.010	it have hey this is a team and then you
+362.480	2.750	it have hey this is a team and then you set the privilege for everyone in that
+365.230	0.010	set the privilege for everyone in that
+365.240	3.830	set the privilege for everyone in that team to wherever that team has access to
+369.070	0.010	team to wherever that team has access to
+369.080	3.980	team to wherever that team has access to and finally kind of a list the list or
+373.060	0.010	and finally kind of a list the list or
+373.070	2.480	and finally kind of a list the list or the more granular level of permission it
+375.550	0.010	the more granular level of permission it
+375.560	1.520	the more granular level of permission it could be that of outside collaborators
+377.080	0.010	could be that of outside collaborators
+377.090	3.200	could be that of outside collaborators so instead of saying well if you're on a
+380.290	0.010	so instead of saying well if you're on a
+380.300	2.150	so instead of saying well if you're on a side collaborator you by default have
+382.450	0.010	side collaborator you by default have
+382.460	2.030	side collaborator you by default have access to no repository so you have to
+384.490	0.010	access to no repository so you have to
+384.500	3.020	access to no repository so you have to give them specific access to and one
+387.520	0.010	give them specific access to and one
+387.530	2.240	give them specific access to and one purple at a time so that is kind of a
+389.770	0.010	purple at a time so that is kind of a
+389.780	3.770	purple at a time so that is kind of a more protective more protective approach
+393.550	0.010	more protective more protective approach
+393.560	2.300	more protective more protective approach that you can have to managing
+395.860	0.010	that you can have to managing
+395.870	3.870	that you can have to managing permissions and then
+399.740	0.010	permissions and then
+399.750	2.360	permissions and then once you know once we focus on one
+402.110	0.010	once you know once we focus on one
+402.120	2.330	once you know once we focus on one specific repo remember that before I
+404.450	0.010	specific repo remember that before I
+404.460	1.490	specific repo remember that before I mentioned that for simple organization
+405.950	0.010	mentioned that for simple organization
+405.960	3.200	mentioned that for simple organization owners whatever they access so they have
+409.160	0.010	owners whatever they access so they have
+409.170	1.610	owners whatever they access so they have admin privilege to everything
+410.780	0.010	admin privilege to everything
+410.790	2.200	admin privilege to everything so now let's focus on just one specific
+412.990	0.010	so now let's focus on just one specific
+413.000	1.980	so now let's focus on just one specific ripple what are the levels of
+414.980	0.010	ripple what are the levels of
+414.990	2.540	ripple what are the levels of permissions that people might have okay
+417.530	0.010	permissions that people might have okay
+417.540	2.560	permissions that people might have okay at the lowest level so that the least
+420.100	0.010	at the lowest level so that the least
+420.110	3.540	at the lowest level so that the least permissive permission could be to rate
+423.650	0.010	permissive permission could be to rate
+423.660	4.190	permissive permission could be to rate you just you know you can you know see
+427.850	0.010	you just you know you can you know see
+427.860	2.420	you just you know you can you know see what's in each repo and you can discuss
+430.280	0.010	what's in each repo and you can discuss
+430.290	3.050	what's in each repo and you can discuss the project but you can do nothing else
+433.340	0.010	the project but you can do nothing else
+433.350	2.510	the project but you can do nothing else than that and in some scenarios that is
+435.860	0.010	than that and in some scenarios that is
+435.870	1.880	than that and in some scenarios that is precisely what people might do like
+437.750	0.010	precisely what people might do like
+437.760	1.700	precisely what people might do like someone that is managing a brochure but
+439.460	0.010	someone that is managing a brochure but
+439.470	2.360	someone that is managing a brochure but it's not intending to commit anything
+441.830	0.010	it's not intending to commit anything
+441.840	2.480	it's not intending to commit anything that they might want you know every
+444.320	0.010	that they might want you know every
+444.330	2.420	that they might want you know every access to it or if you use very heavily
+446.750	0.010	access to it or if you use very heavily
+446.760	2.390	access to it or if you use very heavily what's called the github workflow which
+449.150	0.010	what's called the github workflow which
+449.160	1.999	what's called the github workflow which is what we use where you know that
+451.159	0.010	is what we use where you know that
+451.169	2.990	is what we use where you know that people can push but not directly to a
+454.159	0.010	people can push but not directly to a
+454.169	1.911	people can push but not directly to a ripple but through pull requests so
+456.080	0.010	ripple but through pull requests so
+456.090	1.370	ripple but through pull requests so basically you know you push for me to
+457.460	0.010	basically you know you push for me to
+457.470	2.840	basically you know you push for me to your branch in your own fork and then
+460.310	0.010	your branch in your own fork and then
+460.320	2.420	your branch in your own fork and then you submit that commit by I pull request
+462.740	0.010	you submit that commit by I pull request
+462.750	2.480	you submit that commit by I pull request and even if you have only read access to
+465.230	0.010	and even if you have only read access to
+465.240	2.900	and even if you have only read access to a red bow that it helped workflow allows
+468.140	0.010	a red bow that it helped workflow allows
+468.150	1.970	a red bow that it helped workflow allows you to contribute to that prayer home
+470.120	0.010	you to contribute to that prayer home
+470.130	4.190	you to contribute to that prayer home even though you can't fund so I'm going
+474.320	0.010	even though you can't fund so I'm going
+474.330	1.610	even though you can't fund so I'm going to skip the triage I'm just going to
+475.940	0.010	to skip the triage I'm just going to
+475.950	2.240	to skip the triage I'm just going to talk about this intermediate level where
+478.190	0.010	talk about this intermediate level where
+478.200	2.900	talk about this intermediate level where you you know you can push and right kind
+481.100	0.010	you you know you can push and right kind
+481.110	4.549	you you know you can push and right kind of right to to a repo and if you're
+485.659	0.010	of right to to a repo and if you're
+485.669	2.121	of right to to a repo and if you're actively no developing a project you
+487.790	0.010	actively no developing a project you
+487.800	3.050	actively no developing a project you might want that but but you also need to
+490.850	0.010	might want that but but you also need to
+490.860	2.600	might want that but but you also need to know a lot about it because if you can
+493.460	0.010	know a lot about it because if you can
+493.470	2.900	know a lot about it because if you can push directly to to the red power then
+496.370	0.010	push directly to to the red power then
+496.380	1.790	push directly to to the red power then you may get in trouble sometimes I do it
+498.170	0.010	you may get in trouble sometimes I do it
+498.180	1.729	you may get in trouble sometimes I do it all the time and then to get out of your
+499.909	0.010	all the time and then to get out of your
+499.919	2.511	all the time and then to get out of your own trouble generally you need to know
+502.430	0.010	own trouble generally you need to know
+502.440	3.170	own trouble generally you need to know more than just you know basically I'm
+505.610	0.010	more than just you know basically I'm
+505.620	1.670	more than just you know basically I'm going to skip Montaigne and I'm going to
+507.290	0.010	going to skip Montaigne and I'm going to
+507.300	2.090	going to skip Montaigne and I'm going to talk about you know dedicate is whole
+509.390	0.010	talk about you know dedicate is whole
+509.400	3.290	talk about you know dedicate is whole slide to this admin permission level
+512.690	0.010	slide to this admin permission level
+512.700	2.090	slide to this admin permission level because it's the most powerful but also
+514.790	0.010	because it's the most powerful but also
+514.800	1.570	because it's the most powerful but also the one that requires more
+516.370	0.010	the one that requires more
+516.380	4.019	the one that requires more responsibility on that Cohasset and the
+520.399	0.010	responsibility on that Cohasset and the
+520.409	1.250	responsibility on that Cohasset and the one that is of course more dangerous
+521.659	0.010	one that is of course more dangerous
+521.669	1.311	one that is of course more dangerous because I mean
+522.980	0.010	because I mean
+522.990	3.290	because I mean privilege allows you to do this tractive
+526.280	0.010	privilege allows you to do this tractive
+526.290	2.090	privilege allows you to do this tractive and sensitive action so you can delete
+528.380	0.010	and sensitive action so you can delete
+528.390	3.250	and sensitive action so you can delete the repo or you can change security
+531.640	0.010	the repo or you can change security
+531.650	1.530	the repo or you can change security issues
+533.180	0.010	issues
+533.190	4.329	issues Recker so basically a decisive quote
+537.519	0.010	Recker so basically a decisive quote
+537.529	3.751	Recker so basically a decisive quote from the github help files organization
+541.280	0.010	from the github help files organization
+541.290	2.779	from the github help files organization owners have admin permissions and this
+544.069	0.010	owners have admin permissions and this
+544.079	2.391	owners have admin permissions and this is by default for every repository owned
+546.470	0.010	is by default for every repository owned
+546.480	2.329	is by default for every repository owned by the organization so if you are an
+548.809	0.010	by the organization so if you are an
+548.819	2.841	by the organization so if you are an owner like me of the organization or or
+551.660	0.010	owner like me of the organization or or
+551.670	2.599	owner like me of the organization or or like Taylor for example if someone else
+554.269	0.010	like Taylor for example if someone else
+554.279	1.730	like Taylor for example if someone else in the organization creates a repo
+556.009	0.010	in the organization creates a repo
+556.019	1.370	in the organization creates a repo I may not even know that they are
+557.389	0.010	I may not even know that they are
+557.399	2.211	I may not even know that they are creating that but I still have you know
+559.610	0.010	creating that but I still have you know
+559.620	3.259	creating that but I still have you know privileges to say no deleted so it's
+562.879	0.010	privileges to say no deleted so it's
+562.889	1.761	privileges to say no deleted so it's something to take with a lot of
+564.650	0.010	something to take with a lot of
+564.660	4.010	something to take with a lot of responsibility so let me give you an
+568.670	0.010	responsibility so let me give you an
+568.680	2.629	responsibility so let me give you an example of you know what all these
+571.309	0.010	example of you know what all these
+571.319	2.961	example of you know what all these settings look like on the github
+574.280	0.010	settings look like on the github
+574.290	2.750	settings look like on the github organization to the Greeson investing so
+577.040	0.010	organization to the Greeson investing so
+577.050	2.089	organization to the Greeson investing so the organization has a tab that says
+579.139	0.010	the organization has a tab that says
+579.149	4.251	the organization has a tab that says people there are 30 members of the
+583.400	0.010	people there are 30 members of the
+583.410	1.729	people there are 30 members of the recession and you can see that in this
+585.139	0.010	recession and you can see that in this
+585.149	3.170	recession and you can see that in this number however if you filter for the
+588.319	0.010	number however if you filter for the
+588.329	3.920	number however if you filter for the role owner just the owners then you get
+592.249	0.010	role owner just the owners then you get
+592.259	2.451	role owner just the owners then you get one two three four five six owners so
+594.710	0.010	one two three four five six owners so
+594.720	4.849	one two three four five six owners so Claire clouds even me Mike and Tyler we
+599.569	0.010	Claire clouds even me Mike and Tyler we
+599.579	2.031	Claire clouds even me Mike and Tyler we are all owners of their own station I
+601.610	0.010	are all owners of their own station I
+601.620	2.120	are all owners of their own station I don't know if we all know that we are
+603.740	0.010	don't know if we all know that we are
+603.750	2.509	don't know if we all know that we are owners but we are I here this will we
+606.259	0.010	owners but we are I here this will we
+606.269	2.031	owners but we are I here this will we can change the roles if you want it from
+608.300	0.010	can change the roles if you want it from
+608.310	3.410	can change the roles if you want it from one to the other so these people have a
+611.720	0.010	one to the other so these people have a
+611.730	2.980	one to the other so these people have a lot of power and a lot of responsibility
+614.710	0.010	lot of power and a lot of responsibility
+614.720	3.870	lot of power and a lot of responsibility because if things go wrong then I don't
+618.590	0.010	because if things go wrong then I don't
+618.600	1.729	because if things go wrong then I don't know if something's up or either they
+620.329	0.010	know if something's up or either they
+620.339	2.331	know if something's up or either they cannot be undone or maybe you have to
+622.670	0.010	cannot be undone or maybe you have to
+622.680	2.300	cannot be undone or maybe you have to kind of really ask to get help please
+624.980	0.010	kind of really ask to get help please
+624.990	1.610	kind of really ask to get help please please please do something that I'm not
+626.600	0.010	please please do something that I'm not
+626.610	3.469	please please do something that I'm not supposed to that I can't record so if I
+630.079	0.010	supposed to that I can't record so if I
+630.089	1.850	supposed to that I can't record so if I if I for example if I click here on
+631.939	0.010	if I for example if I click here on
+631.949	2.480	if I for example if I click here on Klaus then I get this message so Klaus
+634.429	0.010	Klaus then I get this message so Klaus
+634.439	2.601	Klaus then I get this message so Klaus this is the page for Klaus as an owner
+637.040	0.010	this is the page for Klaus as an owner
+637.050	2.180	this is the page for Klaus as an owner of the organization and explicitly says
+639.230	0.010	of the organization and explicitly says
+639.240	2.630	of the organization and explicitly says as an owner Klaus has admin access to
+641.870	0.010	as an owner Klaus has admin access to
+641.880	2.299	as an owner Klaus has admin access to all the repositories that belong to the
+644.179	0.010	all the repositories that belong to the
+644.189	2.661	all the repositories that belong to the 2° investing organization and gives you
+646.850	0.010	2° investing organization and gives you
+646.860	2.959	2° investing organization and gives you a link to manage that if you want so now
+649.819	0.010	a link to manage that if you want so now
+649.829	4.550	a link to manage that if you want so now if I go to the Settings tab before I was
+654.379	0.010	if I go to the Settings tab before I was
+654.389	1.610	if I go to the Settings tab before I was hearing in people if I go to the
+655.999	0.010	hearing in people if I go to the
+656.009	2.930	hearing in people if I go to the Settings tab I can click on member
+658.939	0.010	Settings tab I can click on member
+658.949	2.300	Settings tab I can click on member privileges and I can set the base
+661.249	0.010	privileges and I can set the base
+661.259	2.420	privileges and I can set the base permission for every member so remember
+663.679	0.010	permission for every member so remember
+663.689	2.171	permission for every member so remember I told you that being a member
+665.860	0.010	I told you that being a member
+665.870	3.170	I told you that being a member allows the organization and their owners
+669.040	0.010	allows the organization and their owners
+669.050	3.110	allows the organization and their owners our or admins to set the default level
+672.160	0.010	our or admins to set the default level
+672.170	2.330	our or admins to set the default level of permission for anyone that is part of
+674.500	0.010	of permission for anyone that is part of
+674.510	3.380	of permission for anyone that is part of that organization so you can say rate
+677.890	0.010	that organization so you can say rate
+677.900	1.760	that organization so you can say rate which is the most conservative one and
+679.660	0.010	which is the most conservative one and
+679.670	3.440	which is the most conservative one and then if anyone needs more power more
+683.110	0.010	then if anyone needs more power more
+683.120	2.480	then if anyone needs more power more powers then you can give them those
+685.600	0.010	powers then you can give them those
+685.610	2.900	powers then you can give them those powers kind of one by one or if you kind
+688.510	0.010	powers kind of one by one or if you kind
+688.520	2.030	powers kind of one by one or if you kind of go to the other extreme if you say
+690.550	0.010	of go to the other extreme if you say
+690.560	2.450	of go to the other extreme if you say well everyone has admin privileges then
+693.010	0.010	well everyone has admin privileges then
+693.020	3.440	well everyone has admin privileges then everyone can do anything in any repo so
+696.460	0.010	everyone can do anything in any repo so
+696.470	1.700	everyone can do anything in any repo so basically it's kind of saying well
+698.170	0.010	basically it's kind of saying well
+698.180	2.240	basically it's kind of saying well everyone is almost an owner of their own
+700.420	0.010	everyone is almost an owner of their own
+700.430	3.110	everyone is almost an owner of their own section and then whether it's other
+703.540	0.010	section and then whether it's other
+703.550	3.590	section and then whether it's other privilege that you can give them now
+707.140	0.010	privilege that you can give them now
+707.150	3.380	privilege that you can give them now we're getting to a particular rebel here
+710.530	0.010	we're getting to a particular rebel here
+710.540	2.320	we're getting to a particular rebel here what I'm showing is what it looks like
+712.860	0.010	what I'm showing is what it looks like
+712.870	3.600	what I'm showing is what it looks like one specific repository called art - Dai
+716.470	0.010	one specific repository called art - Dai
+716.480	3.920	one specific repository called art - Dai not much in the settings section I click
+720.400	0.010	not much in the settings section I click
+720.410	2.690	not much in the settings section I click here on collaborators and team and I
+723.100	0.010	here on collaborators and team and I
+723.110	2.140	here on collaborators and team and I wanted to show you kind of these three
+725.250	0.010	wanted to show you kind of these three
+725.260	3.300	wanted to show you kind of these three windows at the top in the middle at the
+728.560	0.010	windows at the top in the middle at the
+728.570	3.110	windows at the top in the middle at the bottom where I am managing the
+731.680	0.010	bottom where I am managing the
+731.690	2.240	bottom where I am managing the privileges that for example the Jackson
+733.930	0.010	privileges that for example the Jackson
+733.940	3.470	privileges that for example the Jackson has and via three different channels so
+737.410	0.010	has and via three different channels so
+737.420	2.420	has and via three different channels so the first channel here at the top this
+739.840	0.010	the first channel here at the top this
+739.850	1.700	the first channel here at the top this window shows what's the privilege that
+741.550	0.010	window shows what's the privilege that
+741.560	3.800	window shows what's the privilege that everyone gets including Jackson of the
+745.360	0.010	everyone gets including Jackson of the
+745.370	3.170	everyone gets including Jackson of the organization sorry I hear some
+748.540	0.010	organization sorry I hear some
+748.550	4.810	organization sorry I hear some background noise let me see we can mute
+753.360	0.010	background noise let me see we can mute
+753.370	3.870	background noise let me see we can mute I'm gonna mute or Claire can you can you
+757.240	0.010	I'm gonna mute or Claire can you can you
+757.250	7.870	I'm gonna mute or Claire can you can you mute yourself please sure cool thanks
+768.220	0.010	so at this top window
+768.230	3.620	so at this top window what we have is what's the access that
+771.850	0.010	what we have is what's the access that
+771.860	3.530	what we have is what's the access that everyone gets by default just by being a
+775.390	0.010	everyone gets by default just by being a
+775.400	3.590	everyone gets by default just by being a member so it says that the two degrees
+778.990	0.010	member so it says that the two degrees
+779.000	2.030	member so it says that the two degrees invest in organization has their default
+781.030	0.010	invest in organization has their default
+781.040	2.060	invest in organization has their default repository permission said to me which
+783.100	0.010	repository permission said to me which
+783.110	1.820	repository permission said to me which is what we saw a couple of slides before
+784.930	0.010	is what we saw a couple of slides before
+784.940	2.720	is what we saw a couple of slides before so therefore Jackson will have by
+787.660	0.010	so therefore Jackson will have by
+787.670	2.300	so therefore Jackson will have by default just from being a member he
+789.970	0.010	default just from being a member he
+789.980	2.120	default just from being a member he would have great access to this
+792.100	0.010	would have great access to this
+792.110	4.040	would have great access to this particular rebel then Jackson is also a
+796.150	0.010	particular rebel then Jackson is also a
+796.160	3.050	particular rebel then Jackson is also a member of the team banks and
+799.210	0.010	member of the team banks and
+799.220	1.909	member of the team banks and I can say also here well what's the
+801.129	0.010	I can say also here well what's the
+801.139	4.790	I can say also here well what's the default privilege that the bank teams or
+805.929	0.010	default privilege that the bank teams or
+805.939	2.180	default privilege that the bank teams or everyone in that team gets to this
+808.119	0.010	everyone in that team gets to this
+808.129	2.240	everyone in that team gets to this record and again in this particular case
+810.369	0.010	record and again in this particular case
+810.379	3.260	record and again in this particular case I decided to say that you read so now
+813.639	0.010	I decided to say that you read so now
+813.649	3.860	I decided to say that you read so now everyone in the team only can read this
+817.509	0.010	everyone in the team only can read this
+817.519	2.240	everyone in the team only can read this record they can't push because we
+819.759	0.010	record they can't push because we
+819.769	2.271	record they can't push because we decided that the mechanism to which
+822.040	0.010	decided that the mechanism to which
+822.050	1.459	decided that the mechanism to which people would push for means could be
+823.509	0.010	people would push for means could be
+823.519	2.331	people would push for means could be viable requests so even with a great
+825.850	0.010	viable requests so even with a great
+825.860	1.790	viable requests so even with a great privilege they could still submit pull
+827.650	0.010	privilege they could still submit pull
+827.660	3.380	privilege they could still submit pull requests but finally because Jackson is
+831.040	0.010	requests but finally because Jackson is
+831.050	2.540	requests but finally because Jackson is creating and managing the project board
+833.590	0.010	creating and managing the project board
+833.600	2.659	creating and managing the project board which is a feature of github that is not
+836.259	0.010	which is a feature of github that is not
+836.269	2.631	which is a feature of github that is not the topic of today he needed higher
+838.900	0.010	the topic of today he needed higher
+838.910	1.669	the topic of today he needed higher permissions he needed admin permissions
+840.579	0.010	permissions he needed admin permissions
+840.589	3.350	permissions he needed admin permissions on this flavor so I added him as a
+843.939	0.010	on this flavor so I added him as a
+843.949	1.971	on this flavor so I added him as a collaborator I only there
+845.920	0.010	collaborator I only there
+845.930	2.720	collaborator I only there I gave him admit that way he has
+848.650	0.010	I gave him admit that way he has
+848.660	2.300	I gave him admit that way he has admitted jizz but not everyone else in
+850.960	0.010	admitted jizz but not everyone else in
+850.970	4.190	admitted jizz but not everyone else in the bank's if I had said admin here not
+855.160	0.010	the bank's if I had said admin here not
+855.170	2.180	the bank's if I had said admin here not only him but everyone else in the Bands
+857.350	0.010	only him but everyone else in the Bands
+857.360	3.769	only him but everyone else in the Bands team could have had admit to so
+861.129	0.010	team could have had admit to so
+861.139	2.810	team could have had admit to so that is we're getting close to the end
+863.949	0.010	that is we're getting close to the end
+863.959	1.761	that is we're getting close to the end that is you know how in one specific
+865.720	0.010	that is you know how in one specific
+865.730	3.050	that is you know how in one specific repo you could manage the access of
+868.780	0.010	repo you could manage the access of
+868.790	3.380	repo you could manage the access of different people depending on in these
+872.170	0.010	different people depending on in these
+872.180	2.869	different people depending on in these different channels and finally I wanted
+875.049	0.010	different channels and finally I wanted
+875.059	2.690	different channels and finally I wanted to discuss this additional kind of
+877.749	0.010	to discuss this additional kind of
+877.759	2.870	to discuss this additional kind of protection level and at the level of a
+880.629	0.010	protection level and at the level of a
+880.639	2.120	protection level and at the level of a branch so basically you can create a
+882.759	0.010	branch so basically you can create a
+882.769	2.600	branch so basically you can create a rule by which a branch which name
+885.369	0.010	rule by which a branch which name
+885.379	2.240	rule by which a branch which name matches for example this literal stream
+887.619	0.010	matches for example this literal stream
+887.629	0.771	matches for example this literal stream master
+888.400	0.010	master
+888.410	2.899	master so basically master branch has some
+891.309	0.010	so basically master branch has some
+891.319	2.450	so basically master branch has some restrictions so that people can not say
+893.769	0.010	restrictions so that people can not say
+893.779	3.621	restrictions so that people can not say push force which means that they can not
+897.400	0.010	push force which means that they can not
+897.410	4.820	push force which means that they can not change the history of the repository so
+902.230	0.010	change the history of the repository so
+902.240	2.389	change the history of the repository so they can they can add commits but camisa
+904.629	0.010	they can they can add commits but camisa
+904.639	1.910	they can they can add commits but camisa have been condoned in the past they
+906.549	0.010	have been condoned in the past they
+906.559	2.361	have been condoned in the past they cannot rewrite them with a new version
+908.920	0.010	cannot rewrite them with a new version
+908.930	3.649	cannot rewrite them with a new version of maybe it's a little subbu but you
+912.579	0.010	of maybe it's a little subbu but you
+912.589	1.340	of maybe it's a little subbu but you know that's something that gets people
+913.929	0.010	know that's something that gets people
+913.939	2.841	know that's something that gets people in trouble often so you could for
+916.780	0.010	in trouble often so you could for
+916.790	2.050	in trouble often so you could for example protect the master branch to
+918.840	0.010	example protect the master branch to
+918.850	2.459	example protect the master branch to disable for pushing and this is what we
+921.309	0.010	disable for pushing and this is what we
+921.319	1.940	disable for pushing and this is what we are doing here in the two degrees
+923.259	0.010	are doing here in the two degrees
+923.269	2.480	are doing here in the two degrees investing sorry yeah today is investing
+925.749	0.010	investing sorry yeah today is investing
+925.759	1.130	investing sorry yeah today is investing actually I match
+926.889	0.010	actually I match
+926.899	3.620	actually I match patch so with that I come to the end so
+930.519	0.010	patch so with that I come to the end so
+930.529	1.591	patch so with that I come to the end so if I have to go
+932.120	0.010	if I have to go
+932.130	3.020	if I have to go digest this presentation into advice
+935.150	0.010	digest this presentation into advice
+935.160	3.560	digest this presentation into advice what I would say is that people should
+938.720	0.010	what I would say is that people should
+938.730	2.030	what I would say is that people should have probably just the access that they
+940.760	0.010	have probably just the access that they
+940.770	2.870	have probably just the access that they need and know more and second be
+943.640	0.010	need and know more and second be
+943.650	1.790	need and know more and second be pragmatic and I say this in a very
+945.440	0.010	pragmatic and I say this in a very
+945.450	1.820	pragmatic and I say this in a very specific sense of the world in the
+947.270	0.010	specific sense of the world in the
+947.280	1.930	specific sense of the world in the defeat but kind of the definition that
+949.210	0.010	defeat but kind of the definition that
+949.220	2.700	defeat but kind of the definition that I'm following here of pragmatism instead
+951.920	0.010	I'm following here of pragmatism instead
+951.930	1.430	I'm following here of pragmatism instead of the book people act because they cook
+953.360	0.010	of the book people act because they cook
+953.370	2.420	of the book people act because they cook the pragmatic programmer which I'm very
+955.790	0.010	the pragmatic programmer which I'm very
+955.800	3.440	the pragmatic programmer which I'm very excited to to learn that has been
+959.240	0.010	excited to to learn that has been
+959.250	2.090	excited to to learn that has been addition to that is 20 years old and
+961.340	0.010	addition to that is 20 years old and
+961.350	2.930	addition to that is 20 years old and talks a lot about a general best
+964.280	0.010	talks a lot about a general best
+964.290	3.800	talks a lot about a general best practices for computing program computer
+968.090	0.010	practices for computing program computer
+968.100	3.790	practices for computing program computer programming and even more so simply I
+971.890	0.010	programming and even more so simply I
+971.900	3.450	programming and even more so simply I would say this quote from James clear in
+975.350	0.010	would say this quote from James clear in
+975.360	3.260	would say this quote from James clear in the book atomic habits that goes as
+978.620	0.010	the book atomic habits that goes as
+978.630	1.970	the book atomic habits that goes as follows so you do not rise to the level
+980.600	0.010	follows so you do not rise to the level
+980.610	1.040	follows so you do not rise to the level of your goals
+981.650	0.010	of your goals
+981.660	1.820	of your goals you'd fall to the level of your systems
+983.480	0.010	you'd fall to the level of your systems
+983.490	4.750	you'd fall to the level of your systems so with this we mean that no matter how
+988.240	0.010	so with this we mean that no matter how
+988.250	3.390	so with this we mean that no matter how strongly we want to do things right if
+991.640	0.010	strongly we want to do things right if
+991.650	1.790	strongly we want to do things right if we don't have a good system in place
+993.440	0.010	we don't have a good system in place
+993.450	1.850	we don't have a good system in place that can prevent us from doing the wrong
+995.300	0.010	that can prevent us from doing the wrong
+995.310	1.970	that can prevent us from doing the wrong thing sooner or later we are going to
+997.280	0.010	thing sooner or later we are going to
+997.290	3.260	thing sooner or later we are going to just kind of you know forget something
+1000.550	0.010	just kind of you know forget something
+1000.560	3.020	just kind of you know forget something and be trouble so that's why I you know
+1003.580	0.010	and be trouble so that's why I you know
+1003.590	1.820	and be trouble so that's why I you know I can eventually use everyone and
+1005.410	0.010	I can eventually use everyone and
+1005.420	3.110	I can eventually use everyone and include myself I learn they use this
+1008.530	0.010	include myself I learn they use this
+1008.540	2.210	include myself I learn they use this package because I believe that is one
+1010.750	0.010	package because I believe that is one
+1010.760	3.110	package because I believe that is one good system specific for our users that
+1013.870	0.010	good system specific for our users that
+1013.880	3.380	good system specific for our users that protects us from a lot of points where
+1017.260	0.010	protects us from a lot of points where
+1017.270	3.200	protects us from a lot of points where we can go wrong and then kind of find
+1020.470	0.010	we can go wrong and then kind of find
+1020.480	2.240	we can go wrong and then kind of find ourselves I was in a lot of time fixing
+1022.720	0.010	ourselves I was in a lot of time fixing
+1022.730	1.430	ourselves I was in a lot of time fixing problems that are kind of totally
+1024.160	0.010	problems that are kind of totally
+1024.170	5.060	problems that are kind of totally automated so with that I end and I I
+1029.230	0.010	automated so with that I end and I I
+1029.240	14.230	automated so with that I end and I I open the room for questions
+1048.120	0.010	I have a question I'm curious just out
+1048.130	1.640	I have a question I'm curious just out of curiosity are they all of these
+1049.770	0.010	of curiosity are they all of these
+1049.780	1.820	of curiosity are they all of these settings that you just went over are
+1051.600	0.010	settings that you just went over are
+1051.610	5.240	settings that you just went over are they very good how are they unique to
+1056.850	0.010	they very good how are they unique to
+1056.860	3.950	they very good how are they unique to github but very closely replicated or
+1060.810	0.010	github but very closely replicated or
+1060.820	3.920	github but very closely replicated or followed by other hosts even good lab or
+1064.740	0.010	followed by other hosts even good lab or
+1064.750	2.210	followed by other hosts even good lab or something like this or is it or are they
+1066.960	0.010	something like this or is it or are they
+1066.970	7.310	something like this or is it or are they somehow related to I don't know the
+1074.280	0.010	somehow related to I don't know the
+1074.290	2.810	somehow related to I don't know the answer because I almost always have been
+1077.100	0.010	answer because I almost always have been
+1077.110	2.860	answer because I almost always have been using github anyone else in this meeting
+1079.970	0.010	using github anyone else in this meeting
+1079.980	2.370	using github anyone else in this meeting knows I mean my guess could be that
+1082.350	0.010	knows I mean my guess could be that
+1082.360	2.540	knows I mean my guess could be that others could have somehow similar ways
+1084.900	0.010	others could have somehow similar ways
+1084.910	2.930	others could have somehow similar ways of managing permission but if someone
+1087.840	0.010	of managing permission but if someone
+1087.850	1.819	of managing permission but if someone else in the room has the answer please
+1089.669	0.010	else in the room has the answer please
+1089.679	8.331	else in the room has the answer please go ahead yeah so I was just asking out
+1098.010	0.010	go ahead yeah so I was just asking out
+1098.020	2.450	go ahead yeah so I was just asking out of curiosity about for instance if we
+1100.470	0.010	of curiosity about for instance if we
+1100.480	2.030	of curiosity about for instance if we saw some reason decided we have to move
+1102.510	0.010	saw some reason decided we have to move
+1102.520	3.560	saw some reason decided we have to move everything to get laughs would would
+1106.080	0.010	everything to get laughs would would
+1106.090	1.280	everything to get laughs would would this be something that we could easily
+1107.370	0.010	this be something that we could easily
+1107.380	2.690	this be something that we could easily take with us or we have to like their
+1110.070	0.010	take with us or we have to like their
+1110.080	3.670	take with us or we have to like their big process of trying to replicate this
+1113.750	0.010	big process of trying to replicate this
+1113.760	1.920	big process of trying to replicate this behavior I'm in a totally different
+1115.680	0.010	behavior I'm in a totally different
+1115.690	2.450	behavior I'm in a totally different system or I don't know it could be
+1118.140	0.010	system or I don't know it could be
+1118.150	5.740	system or I don't know it could be something don't tend to get exposed I
+1123.890	0.010	something don't tend to get exposed I
+1123.900	2.540	something don't tend to get exposed I don't know
+1126.440	0.010	don't know
+1126.450	3.300	don't know yeah that's great yeah I think that it
+1129.750	0.010	yeah that's great yeah I think that it
+1129.760	2.300	yeah that's great yeah I think that it the very first step is to reflect on
+1132.060	0.010	the very first step is to reflect on
+1132.070	3.500	the very first step is to reflect on these permissions and that's why I am
+1135.570	0.010	these permissions and that's why I am
+1135.580	2.810	these permissions and that's why I am very happy to to develop this
+1138.390	0.010	very happy to to develop this
+1138.400	1.160	very happy to to develop this presentation which was actually
+1139.560	0.010	presentation which was actually
+1139.570	1.430	presentation which was actually motivated I but what's proposed by
+1141.000	0.010	motivated I but what's proposed by
+1141.010	3.860	motivated I but what's proposed by clouds and clear I think that experience
+1144.870	0.010	clouds and clear I think that experience
+1144.880	1.789	clouds and clear I think that experience pretty not the most exciting you know we
+1146.669	0.010	pretty not the most exciting you know we
+1146.679	1.911	pretty not the most exciting you know we like this I like seeing however the
+1148.590	0.010	like this I like seeing however the
+1148.600	2.270	like this I like seeing however the places we are and we are talking about
+1150.870	0.010	places we are and we are talking about
+1150.880	2.510	places we are and we are talking about settings but it is a conversation that
+1153.390	0.010	settings but it is a conversation that
+1153.400	2.090	settings but it is a conversation that you know at least we need to know the
+1155.490	0.010	you know at least we need to know the
+1155.500	1.940	you know at least we need to know the kind of powers we have because with
+1157.440	0.010	kind of powers we have because with
+1157.450	2.420	kind of powers we have because with power comes responsibility we may find
+1159.870	0.010	power comes responsibility we may find
+1159.880	1.460	power comes responsibility we may find ourselves in troubles that we don't even
+1161.340	0.010	ourselves in troubles that we don't even
+1161.350	2.120	ourselves in troubles that we don't even want to get into so I think that the
+1163.470	0.010	want to get into so I think that the
+1163.480	1.550	want to get into so I think that the follow-up of this conversation would be
+1165.030	0.010	follow-up of this conversation would be
+1165.040	2.379	follow-up of this conversation would be my one at the kind of manager level
+1167.419	0.010	my one at the kind of manager level
+1167.429	2.841	my one at the kind of manager level where they decide you know which
+1170.270	0.010	where they decide you know which
+1170.280	1.820	where they decide you know which approach we have to give people
+1172.100	0.010	approach we have to give people
+1172.110	1.910	approach we have to give people permission so for example I think that
+1174.020	0.010	permission so for example I think that
+1174.030	3.020	permission so for example I think that given the expertise of CJ he's missing
+1177.050	0.010	given the expertise of CJ he's missing
+1177.060	3.140	given the expertise of CJ he's missing as an owner I believe that he should be
+1180.200	0.010	as an owner I believe that he should be
+1180.210	2.990	as an owner I believe that he should be an owner and then I don't know if
+1183.200	0.010	an owner and then I don't know if
+1183.210	1.820	an owner and then I don't know if everyone who is an owner wants to be I
+1185.030	0.010	everyone who is an owner wants to be I
+1185.040	2.600	everyone who is an owner wants to be I do want because I need sometimes to
+1187.640	0.010	do want because I need sometimes to
+1187.650	2.120	do want because I need sometimes to change to approve applications and
+1189.770	0.010	change to approve applications and
+1189.780	2.720	change to approve applications and things that I know really affect my
+1192.500	0.010	things that I know really affect my
+1192.510	2.060	things that I know really affect my workflow but I don't know if everyone
+1194.570	0.010	workflow but I don't know if everyone
+1194.580	3.680	workflow but I don't know if everyone else really needs that that's something
+1198.260	0.010	else really needs that that's something
+1198.270	1.880	else really needs that that's something I don't want an XML and just something
+1200.150	0.010	I don't want an XML and just something
+1200.160	2.720	I don't want an XML and just something showing up there to reflect on me I mean
+1202.880	0.010	showing up there to reflect on me I mean
+1202.890	3.590	showing up there to reflect on me I mean in response to that I honestly in most
+1206.480	0.010	in response to that I honestly in most
+1206.490	4.480	in response to that I honestly in most cases I prefer not to be in order
+1214.160	0.010	[Music]
+1214.170	2.390	[Music] there's a few packages that I'm one of
+1216.560	0.010	there's a few packages that I'm one of
+1216.570	6.260	there's a few packages that I'm one of the most significant contributors to and
+1222.830	0.010	the most significant contributors to and
+1222.840	1.310	the most significant contributors to and I still have not an owner of that
+1224.150	0.010	I still have not an owner of that
+1224.160	1.550	I still have not an owner of that repository and I preferred that way
+1225.710	0.010	repository and I preferred that way
+1225.720	2.150	repository and I preferred that way because I do the same thing I said a
+1227.870	0.010	because I do the same thing I said a
+1227.880	2.810	because I do the same thing I said a little request to him and he approves
+1230.690	0.010	little request to him and he approves
+1230.700	3.320	little request to him and he approves them and I am never worried that I'm
+1234.020	0.010	them and I am never worried that I'm
+1234.030	2.900	them and I am never worried that I'm gonna accidentally push something to the
+1236.930	0.010	gonna accidentally push something to the
+1236.940	3.520	gonna accidentally push something to the master branch it's simply not possible
+1240.460	0.010	master branch it's simply not possible
+1240.470	3.020	master branch it's simply not possible so I actually prefer that for myself
+1243.490	0.010	so I actually prefer that for myself
+1243.500	2.490	so I actually prefer that for myself unless there's like a really strong
+1245.990	0.010	unless there's like a really strong
+1246.000	3.920	unless there's like a really strong reason why and I can always ask someone
+1249.920	0.010	reason why and I can always ask someone
+1249.930	4.790	reason why and I can always ask someone oh I want me to make some really strong
+1254.720	0.010	oh I want me to make some really strong
+1254.730	2.150	oh I want me to make some really strong change to this repo because we don't
+1256.880	0.010	change to this repo because we don't
+1256.890	1.970	change to this repo because we don't know how to do it or for whatever reason
+1258.860	0.010	know how to do it or for whatever reason
+1258.870	1.460	know how to do it or for whatever reason then okay
+1260.330	0.010	then okay
+1260.340	8.900	then okay temporarily give me the thanks EJ I
+1269.240	0.010	temporarily give me the thanks EJ I
+1269.250	1.400	temporarily give me the thanks EJ I appreciate your comment mostly because
+1270.650	0.010	appreciate your comment mostly because
+1270.660	4.070	appreciate your comment mostly because it shows you know someone that year that
+1274.730	0.010	it shows you know someone that year that
+1274.740	1.640	it shows you know someone that year that really understand you know what it means
+1276.380	0.010	really understand you know what it means
+1276.390	3.890	really understand you know what it means if you prefer to kind of you know get
+1280.280	0.010	if you prefer to kind of you know get
+1280.290	1.940	if you prefer to kind of you know get only what you need when you need it you
+1282.230	0.010	only what you need when you need it you
+1282.240	2.240	only what you need when you need it you kind of couldn't make someone like me
+1284.480	0.010	kind of couldn't make someone like me
+1284.490	2.210	kind of couldn't make someone like me that has less expertise and you guys
+1286.700	0.010	that has less expertise and you guys
+1286.710	1.970	that has less expertise and you guys think very carefully about what you know
+1288.680	0.010	think very carefully about what you know
+1288.690	4.310	think very carefully about what you know what powers
+1294.110	0.010	[Music]
+1294.120	2.610	[Music] whoa
+1296.730	0.010	whoa
+1296.740	2.899	whoa so just be clear are we in Berlin I
+1299.639	0.010	so just be clear are we in Berlin I
+1299.649	7.520	so just be clear are we in Berlin I don't think have any questions good okay
+1307.169	0.010	don't think have any questions good okay
+1307.179	2.781	don't think have any questions good okay thank you very much then in the other
+1309.960	0.010	thank you very much then in the other
+1309.970	3.410	thank you very much then in the other I see Klaus and Emmanuelle in other
+1313.380	0.010	I see Klaus and Emmanuelle in other
+1313.390	0.590	I see Klaus and Emmanuelle in other offices
+1313.980	0.010	offices
+1313.990	1.700	offices I will give you know a few seconds for
+1315.690	0.010	I will give you know a few seconds for
+1315.700	2.449	I will give you know a few seconds for you to say if you if you do have a
+1318.149	0.010	you to say if you if you do have a
+1318.159	2.061	you to say if you if you do have a question and after those five seconds
+1320.220	0.010	question and after those five seconds
+1320.230	3.770	question and after those five seconds maybe I just pose no questions from my
+1324.000	0.010	maybe I just pose no questions from my
+1324.010	6.409	maybe I just pose no questions from my side thanks a lot and it's Mia Florence
+1330.419	0.010	side thanks a lot and it's Mia Florence
+1330.429	2.001	side thanks a lot and it's Mia Florence and I have no questions either thanks
+1332.430	0.010	and I have no questions either thanks
+1332.440	3.979	and I have no questions either thanks Mauro okay thank you very much then see
+1336.419	0.010	Mauro okay thank you very much then see
+1336.429	2.211	Mauro okay thank you very much then see you sir

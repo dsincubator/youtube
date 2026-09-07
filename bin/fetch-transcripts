@@ -5,9 +5,9 @@ PROGRAM="${0##*/}"
 usage() {
     cat <<EOF
 Usage: $PROGRAM [OPTIONS]
-Fetch auto-generated transcripts for all videos in data/dsincubator.csv.
+Fetch auto-generated transcripts for all videos in data/metadata.csv.
 
-Outputs: transcripts/<id>.<lang>.json3 per video, transcripts/manifest.tsv linking back to data/dsincubator.csv.
+Outputs: transcripts/<id>.<lang>.json3 per video, transcripts/manifest.tsv linking back to data/metadata.csv.
 
 Options:
   -h, --help            Show this help message and exit
@@ -15,37 +15,45 @@ Options:
   --cookies-from-browser BROWSER
                         Pass --cookies-from-browser to yt-dlp (e.g. chrome, firefox)
   -n, --count N         Process only the first N videos (for testing)
-  --csv PATH            Path to the metadata CSV (default: data/dsincubator.csv)
+  --csv PATH            Path to the metadata CSV (default: data/metadata.csv)
   --out-dir DIR         Output directory (default: transcripts)
   --sub-format FORMAT   Subtitle format preference (default: json3/srv3/vtt/best)
   --sleep SECONDS       Seconds to wait between videos (default: 2)
-  --retries N           Retries per video (default: 3)
+  --retries N           Total attempts per video (default: 3)
 EOF
 }
 
 FORCE=0
 COOKIES=""
 COUNT=0
-CSV="data/dsincubator.csv"
+CSV="data/metadata.csv"
 OUT_DIR="transcripts"
 SUB_FORMAT="json3/srv3/vtt/best"
 SLEEP=2
 RETRIES=3
 
+need_arg() {
+    [[ $# -ge 2 ]] || { echo "[fetch-transcripts] $1 needs a value" >&2; exit 2; }
+}
+
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -h|--help) usage; exit 0 ;;
-        --force) FORCE=1 ;;
-        --cookies-from-browser) COOKIES="--cookies-from-browser $2"; shift 2 ;;
-        -n|--count) COUNT="$2"; shift 2 ;;
-        --csv) CSV="$2"; shift 2 ;;
-        --out-dir) OUT_DIR="$2"; shift 2 ;;
-        --sub-format) SUB_FORMAT="$2"; shift 2 ;;
-        --sleep) SLEEP="$2"; shift 2 ;;
-        --retries) RETRIES="$2"; shift 2 ;;
+        --force) FORCE=1; shift ;;
+        --cookies-from-browser) need_arg "$@"; COOKIES="--cookies-from-browser $2"; shift 2 ;;
+        -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
+        --csv) need_arg "$@"; CSV="$2"; shift 2 ;;
+        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        --sub-format) need_arg "$@"; SUB_FORMAT="$2"; shift 2 ;;
+        --sleep) need_arg "$@"; SLEEP="$2"; shift 2 ;;
+        --retries) need_arg "$@"; RETRIES="$2"; shift 2 ;;
         *) echo "[fetch-transcripts] unknown option: $1" >&2; usage >&2; exit 2 ;;
     esac
 done
+
+[[ "$COUNT" =~ ^[0-9]+$ ]] || { echo "[fetch-transcripts] --count must be a non-negative integer" >&2; exit 2; }
+[[ "$SLEEP" =~ ^[0-9]+$ ]] || { echo "[fetch-transcripts] --sleep must be a non-negative integer" >&2; exit 2; }
+[[ "$RETRIES" =~ ^[0-9]+$ ]] || { echo "[fetch-transcripts] --retries must be a non-negative integer" >&2; exit 2; }
 
 mkdir -p "$OUT_DIR"
 
@@ -110,8 +118,14 @@ pick_transcript() {
 }
 
 fetch_one() {
-    # $1 = id, $2 = sub-langs, $3 = ">" or ">>" (truncate or append log)
-    local _id="$1" _langs="$2" _redir="$3"
+    # $1 = id, $2 = sub-langs, $3 = 1 to append to the log (default truncate).
+    # (Redirect operators cannot come from a variable, so route via fd 9.)
+    local _id="$1" _langs="$2" _log="/tmp/fetch-transcripts-$1.log" _rc
+    if [[ "${3:-0}" == 1 ]]; then
+        exec 9>>"$_log"
+    else
+        exec 9>"$_log"
+    fi
     if [[ -z "$COOKIES" ]]; then
         yt-dlp --skip-download --write-auto-subs \
             --sub-langs "$_langs" \
@@ -119,7 +133,7 @@ fetch_one() {
             -o "${OUT_DIR}/${_id}.%(ext)s" \
             --no-write-info-json \
             --no-overwrites \
-            -- "https://www.youtube.com/watch?v=${_id}" ${_redir} "/tmp/fetch-transcripts-${_id}.log" 2>&1
+            -- "https://www.youtube.com/watch?v=${_id}" >&9 2>&1
     else
         yt-dlp --skip-download --write-auto-subs \
             --sub-langs "$_langs" \
@@ -128,9 +142,11 @@ fetch_one() {
             --no-write-info-json \
             --no-overwrites \
             $COOKIES \
-            -- "https://www.youtube.com/watch?v=${_id}" ${_redir} "/tmp/fetch-transcripts-${_id}.log" 2>&1
+            -- "https://www.youtube.com/watch?v=${_id}" >&9 2>&1
     fi
-    return $?
+    _rc=$?
+    exec 9>&-
+    return $_rc
 }
 
 for i in $(seq 0 $((TOTAL - 1))); do
@@ -152,7 +168,7 @@ for i in $(seq 0 $((TOTAL - 1))); do
     attempt=0
     while [[ $attempt -lt $RETRIES ]]; do
         attempt=$((attempt + 1))
-        if fetch_one "$ID" ".*-orig" ">"; then
+        if fetch_one "$ID" ".*-orig" 0; then
             break
         fi
         echo "[fetch-transcripts] attempt ${attempt}/${RETRIES} failed for ${ID}, retrying in ${SLEEP}s"
@@ -163,7 +179,7 @@ for i in $(seq 0 $((TOTAL - 1))); do
     if [[ -z "$SURVIVOR" ]]; then
         # Fallback for videos without *-orig tracks: broader langs, then prune.
         echo "[fetch-transcripts] fallback ${ID} (trying en.*,es.*)"
-        fetch_one "$ID" "en.*,es.*" ">>" || true
+        fetch_one "$ID" "en.*,es.*" 1 || true
         pick_transcript "$ID"
     fi
 

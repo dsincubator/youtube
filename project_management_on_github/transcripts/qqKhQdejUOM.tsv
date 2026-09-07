@@ -1,0 +1,870 @@
+start	duration	text
+0.16	5.36	welcome again to the ds incubator today
+2.80	5.20	we are talking about project management
+5.52	4.72	on github the goal is
+8.00	4.64	let me close the door so the noise comes
+10.24	5.04	through a little better
+12.64	5.68	the goal is to basically show that we
+15.28	6.24	can manage projects with github
+18.32	6.40	with very little overhead and the the
+21.52	5.28	focus is mostly project managers and
+24.72	3.28	that manage projects that have some
+26.80	2.80	aspect
+28.00	4.08	involving github
+29.60	5.60	because most of the code
+32.08	5.36	lives on github around the globe and if
+35.20	4.80	the code is already there
+37.44	3.84	maybe it makes sense to use that
+40.00	2.96	platform
+41.28	5.04	as a tool to manage the projects
+42.96	5.76	themselves so we don't need to use any
+46.32	4.64	extra and maybe complicated
+48.72	3.76	piece of software to manage the projects
+50.96	3.28	basically the idea is to keep it as
+52.48	3.52	simple as possible to keep it super
+54.24	4.96	super simple
+56.00	5.92	so the objectives today um
+59.20	4.48	are the following idea is to you know
+61.92	3.84	learn the basics about project
+63.68	4.24	management on github but we're gonna be
+65.76	4.08	doing that from two perspectives the
+67.92	3.92	very first perspective is the one that's
+69.84	4.08	gonna take up most of the meet up and
+71.84	4.64	that is the perspective of a project
+73.92	5.04	manager who may or may not be the same
+76.48	4.96	person that actually develops the
+78.96	4.56	project or analyzes the data
+81.44	4.16	so the perspective of the analyst and
+83.52	3.36	developer is going to go last it's going
+85.60	2.40	we're going to take only very little
+86.88	3.76	time there
+88.00	3.68	because my goal here is to show that
+90.64	2.24	although
+91.68	3.04	this
+92.88	4.32	project management tool is not
+94.72	4.08	specifically designed for projects
+97.20	4.24	without
+98.80	4.24	code it could if you wanted be used in
+101.44	4.64	that way
+103.04	4.40	so one other objective is to basically
+106.08	3.92	watch the
+107.44	4.08	automation that leaves
+110.00	4.40	that you know that happens on this
+111.52	5.76	framework the idea that work happens and
+114.40	4.80	the status of that work is automatically
+117.28	2.80	shown on the
+119.20	1.76	tool
+120.08	2.80	and
+120.96	4.08	how you can also track
+122.88	5.28	what has been actually done in relation
+125.04	6.32	to different issues of the project by
+128.16	5.12	basically clicking on on links that are
+131.36	3.60	kind of left behind
+133.28	4.16	as people work
+134.96	4.16	so let's start then with the perspective
+137.44	3.68	of the project manager
+139.12	3.44	the very first thing you could do is to
+141.12	2.80	create a github account if you don't
+142.56	3.60	have one
+143.92	3.52	luckily it's free so no big deal there
+146.16	2.16	and all the features that i'm going to
+147.44	2.72	show
+148.32	2.64	they are available for
+150.16	3.52	free
+150.96	5.12	accounts including those that
+153.68	3.92	relate to keeping everything private and
+156.08	3.12	which is the default of creating
+157.60	3.36	projects so when you create a project in
+159.20	4.56	an organization so here for example i
+160.96	4.56	have a github organization which is a
+163.76	4.80	collection of you can think of it as a
+165.52	5.28	collection of folders that live on
+168.56	4.72	github on this website or you can
+170.80	4.80	imagine it as similar to a dropbox
+173.28	3.60	account where inside that dropbox
+175.60	3.12	account you have a bunch of little
+176.88	3.36	folders right so that is a github
+178.72	4.24	organization so here i have one that i
+180.24	5.36	use for demos it's called an org
+182.96	4.56	and you will see in the middle that
+185.60	3.36	there is a tab called project so if you
+187.52	2.96	click there
+188.96	4.24	you will see
+190.48	5.04	the the page that allows you to create a
+193.20	4.40	project the green button here that's
+195.52	5.28	what you want you click there
+197.60	5.76	and immediately you would get
+200.80	6.32	the interface for adding some details to
+203.36	6.96	the project and start adding some
+207.12	4.40	tasks or some work items to that project
+210.32	3.60	um
+211.52	4.40	the in the first interface actually it
+213.92	3.84	is not what i said it is an interface
+215.92	4.56	that allows you to choose between
+217.76	4.32	starting from scratch with a table or a
+220.48	2.72	board which you will see in a moment
+222.08	3.92	what that is
+223.20	5.12	or starting from some templates
+226.00	4.08	templates are basically developed
+228.32	3.04	versions of that
+230.08	2.64	of what we're going to be talking about
+231.36	3.60	today so i'm going to be starting from
+232.72	4.00	scratch but you know here is a little
+234.96	3.44	bit of an overview of what you could
+236.72	3.76	also get so you could start from
+238.40	3.68	something that is already semi-developed
+240.48	2.48	so i'm going to start simple from a
+242.08	3.52	table
+242.96	5.60	i click here create
+245.60	5.84	and that that is what we get now we get
+248.56	6.08	a project so here i'm already ready to
+251.44	4.80	start adding some work items but before
+254.64	3.92	i do that i noticed that the title
+256.24	4.24	behind is unsatisfying so i'm going to
+258.56	2.56	click on the title and i'm going to call
+260.48	2.48	it
+261.12	4.08	whatever name makes sense to this
+262.96	4.64	brochure in this case i'm i'm pretending
+265.20	3.92	that we have a project called lit
+267.60	2.96	which some of us
+269.12	3.68	might find similar to another real
+270.56	3.52	project that we work on and it is about
+272.80	3.28	getting data
+274.08	4.72	of companies from lithuania so that's
+276.08	5.20	why it's called lit um so
+278.80	4.80	the very er so before i kind of continue
+281.28	5.28	what i'm going to do is try to keep my
+283.60	4.96	notes on one side
+286.56	4.56	so i don't lose track of what i wanted
+288.56	4.48	to say so let's pack this here to the
+291.12	4.00	left
+293.04	4.64	there we go because it's very easy for
+295.12	4.72	me to get distracted
+297.68	4.24	so we have just created a project so
+299.84	4.56	cover this item here and what we are
+301.92	4.40	about to do is to create a backlog of
+304.40	4.24	all the work items that relate to this
+306.32	5.12	project so here i'm going to give you a
+308.64	4.08	little bit of background about this
+311.44	3.12	project so let's pretend that this
+312.72	4.64	project has already been running for
+314.56	6.32	some time and we want to adopt this tool
+317.36	5.28	only now so the analysts and developers
+320.88	4.08	have been already busy by the time we
+322.64	4.56	chose to start using this tool so there
+324.96	4.56	is already some work that happened in
+327.20	5.52	these special folders that github has
+329.52	4.16	that are called repositories so we can
+332.72	4.00	use
+333.68	6.08	this tool to get all the work that has
+336.72	4.96	already happened into this backpack so
+339.76	4.56	first let me again there you go
+341.68	4.16	refreshing and delete project name is
+344.32	3.28	already added there for some reason it
+345.84	2.72	didn't refresh before
+347.60	2.80	so
+348.56	3.84	if i click here on plus
+350.40	5.44	as you can see this looks a little bit
+352.40	5.28	of uh like a excel sheet if you will so
+355.84	3.28	the first thing is empty so the first
+357.68	4.72	thing i would do is click here on the
+359.12	4.88	plus to start adding work items and here
+362.40	2.56	you see that there is two options to
+364.00	2.56	create
+364.96	3.76	something that is called a draft
+366.56	4.96	basically a draft work item or in the
+368.72	5.28	jargon of github a draft issue
+371.52	4.80	but i know because say that pretend that
+374.00	4.16	i'm the project manager here and i have
+376.32	3.84	i'm here now in a meeting with my
+378.16	4.00	analysts and developers and i'm asking
+380.16	3.68	them hey what have you been up to and i
+382.16	3.28	said yeah you know we worked already
+383.84	4.16	quite a bit on this and there's a couple
+385.44	4.40	of repos repositories of these special
+388.00	2.96	folders that have a lot of the work that
+389.84	3.04	we did so
+390.96	3.84	go ahead look for those and and you'll
+392.88	3.28	see what we've been doing okay good you
+394.80	3.84	click there
+396.16	5.44	and then you add items from repositories
+398.64	4.72	delete project has two repositories one
+401.60	4.00	is called lead code which is the
+403.36	4.56	repository in charge of
+405.60	4.56	basically getting the data from a
+407.92	4.24	website like yellow pages something like
+410.16	4.56	that right so all the code that was
+412.16	5.52	written to get automatically all those
+414.72	4.08	um all that data downloaded and stored
+417.68	3.44	somewhere
+418.80	3.76	lives in this repository and the the
+421.12	4.24	analysts and developers have been
+422.56	5.20	working hard first to identify what were
+425.36	4.40	what you know websites were useful and
+427.76	4.72	then they decided it was yellow pages to
+429.76	5.44	identify then what variables that you
+432.48	4.32	know that website has were useful and so
+435.20	3.36	on and so forth then they wrote the code
+436.80	3.44	and did a bunch of things so
+438.56	3.84	never mind for now let's just add
+440.24	3.52	everything here to this project board we
+442.40	4.40	click there
+443.76	4.00	and uh in a moment you'll see that the
+446.80	3.20	table
+447.76	3.84	that actually i could probably enlarge
+450.00	3.92	this a little bit
+451.60	2.32	um
+454.24	2.72	like that
+457.36	3.76	so at the back you know we have here
+458.96	4.48	this this table that was empty before
+461.12	4.08	and now it has some data we just added
+463.44	3.52	but it's not only one repo there's more
+465.20	4.00	than one repo there is another repo
+466.96	4.32	called the data which is the repository
+469.20	4.32	in charge of actually hosting the data
+471.28	4.56	one that has ones that has been scraped
+473.52	4.72	from the web it has to be stored
+475.84	5.20	somewhere that the analysts can access
+478.24	3.84	to be to be used and maybe massaged a
+481.04	2.48	little bit
+482.08	3.12	so again you know we're going to choose
+483.52	3.52	every item there and then we'll figure
+485.20	4.72	out how we want to organize them view
+487.04	5.28	them and extract some insights about the
+489.92	5.12	processes and and the progress of the
+492.32	4.08	project through this tool that helps us
+495.04	2.80	manage the approach so let's add all
+496.40	2.80	those items there
+497.84	4.24	so i now
+499.20	5.12	we have like a long list of
+502.08	3.68	of different uh things that people have
+504.32	3.84	been working on
+505.76	3.84	like a little bit of of github jargon
+508.16	3.36	the things that are in green are things
+509.60	3.68	that are open and kind of ongoing or
+511.52	3.12	that need to be done and things that are
+513.28	3.12	in purple are things that have been
+514.64	3.44	worked already before
+516.40	4.24	so let's have a quick look exploring
+518.08	4.32	this table um you see that there is a
+520.64	3.84	title that refers to the different work
+522.40	4.16	items that people have been working on
+524.48	4.16	these assignees so the people as they
+526.56	5.04	were doing their work they seem to have
+528.64	5.36	assigned themselves to different tasks
+531.60	4.08	and the status is unpopulated yet uh we
+534.00	3.92	can we can you know we'll see a little
+535.68	5.84	bit of that later on
+537.92	5.28	also uh the the view here um you can
+541.52	4.00	change the name uh we're gonna change it
+543.20	4.56	soon to something uh to backlog
+545.52	3.92	basically so let's click there and call
+547.76	4.48	it backlog which is
+549.44	2.80	backlog
+552.64	4.24	right so just a long list of of things
+555.20	4.16	that have been done but this is not
+556.88	4.88	enough so this is only what we know has
+559.36	4.08	been done already we would like to also
+561.76	4.08	include here some things that need to be
+563.44	5.84	worked on in the future so let's click
+565.84	6.00	there and add a draft for a work item so
+569.28	3.84	let's create a draft there and and what
+571.84	3.60	we're going to be typing here is
+573.12	4.88	something like represents the work that
+575.44	3.76	needs to be done so for example polish
+578.00	3.36	um
+579.20	3.04	documentation
+581.36	3.60	uh
+582.24	5.84	about the data set right so that could
+584.96	5.68	be a decent title for the the work that
+588.08	4.96	needs to be done and also we could well
+590.64	4.08	we hit enter there and and that should
+593.04	4.24	appear there there you go and we could
+594.72	4.64	already assign someone to that uh let's
+597.28	4.40	say that um
+599.36	4.56	there's a couple of people in this team
+601.68	4.00	um so mauro has been assigned to a bunch
+603.92	2.96	of things so let's assign him one more
+605.68	2.88	time i don't think he's gonna get
+606.88	3.36	annoyed about that
+608.56	3.60	there you go you know we have assigned
+610.24	3.76	that and then in the status we already
+612.16	5.20	decided that that's something that needs
+614.00	4.80	to be done um obviously it's not done or
+617.36	3.68	it's not in progress something that has
+618.80	4.16	to be done at some point soon
+621.04	4.00	so that's that's that for now so that's
+622.96	4.64	how you enter data or at least one way
+625.04	5.28	of entering data and another way could
+627.60	4.64	be to um switch the views and i'm going
+630.32	4.00	to show you that in a moment so but
+632.24	4.80	before that let me go back to the notes
+634.32	4.00	here to make sure i'm not going
+637.04	3.92	too far
+638.32	2.64	off track
+644.80	4.40	right so yes what i wanted to show now
+647.04	4.08	actually i did get a little bit ahead of
+649.20	4.00	myself um
+651.12	4.32	i already renamed this to backlog which
+653.20	3.60	is something that i was uh intending to
+655.44	3.52	do and
+656.80	4.32	what i did a little too fast was to show
+658.96	4.88	you that you can edit for example the
+661.12	4.88	information in this table from here but
+663.84	5.36	also you could edit it graphically
+666.00	4.72	basically if you click here on the view
+669.20	3.60	drop down menu you will see that there
+670.72	4.40	is another view of the same data
+672.80	3.28	in the form of a board so let's click
+675.12	3.76	there
+676.08	4.64	and the format here is called usually a
+678.88	3.60	kanban i believe
+680.72	3.28	and you know by dragging things from one
+682.48	4.88	place to the other
+684.00	5.04	you also basically edit that table that
+687.36	4.16	we saw before so for example i had just
+689.04	5.20	moved it from to-do to in progress so if
+691.52	3.01	i if i go back to that table
+694.24	1.52	uh
+694.53	2.91	[Music]
+695.76	4.16	there it was
+697.44	4.40	we should expect the the status to be
+699.92	3.52	changed you have to have changed to
+701.84	3.92	improvise and there you go right i'm
+703.44	3.68	gonna now kind of modify it
+705.76	4.32	um
+707.12	4.88	to what it really is so to do right so
+710.08	4.00	the views are just what the name
+712.00	4.80	suggests just views of the data and the
+714.08	4.64	data that exists there is something that
+716.80	4.64	either comes from the work that happens
+718.72	4.32	behind or someone adds it as metadata
+721.44	4.56	you know someone has to assign someone
+723.04	4.48	to a job someone has to assign status
+726.00	3.76	but you will see later that the status
+727.52	3.84	does change automatically when you do
+729.76	3.68	specific things so we're going to talk
+731.36	4.72	about that in a bit
+733.44	5.44	so that's that for now let's go back to
+736.08	5.04	um we have you know we achieved
+738.88	3.92	something pretty cool which is to have
+741.12	3.76	the backlog like everything that
+742.80	4.80	happened and needs to happen
+744.88	6.00	uh but still that information is a bit
+747.60	4.32	too messy it's very hard to extract any
+750.88	2.56	uh
+751.92	3.20	you know useful
+753.44	3.76	meaning that we don't you know we can't
+755.12	4.00	really easily see
+757.20	3.12	what needs to be done by whom by when
+759.12	3.36	and things like that so we're going to
+760.32	4.08	improve that view
+762.48	4.96	and save it so we're going to create a
+764.40	4.08	new view that shows us what are the open
+767.44	2.72	issues
+768.48	3.52	by iteration we still don't even know
+770.16	3.84	what animation is but we're gonna get to
+772.00	4.08	that in a moment so the first thing
+774.00	4.32	we're gonna do is uh to notice that
+776.08	4.56	there are some fields that do not still
+778.32	4.24	exist in that table but we can't have
+780.64	4.48	them they are simply hidden in the same
+782.56	4.64	way that excel can hide some columns if
+785.12	4.08	you want there's two columns that we're
+787.20	3.68	going to be interested for this demo one
+789.20	3.52	is called milestone
+790.88	5.68	and the other one is called linked pull
+792.72	6.80	requests so let's let's do that so um in
+796.56	5.84	in designing our next view of the data
+799.52	5.52	we are going to add fields and so if i
+802.40	3.84	scroll here to the right you see that
+805.04	3.12	there is a point where i can't go
+806.24	4.96	farther and there is a plus so i'm going
+808.16	5.36	to click on that plus to add a new field
+811.20	4.88	but the fields some things are already
+813.52	4.56	available as i suggested before simply
+816.08	5.68	hidden right so i can choose for example
+818.08	3.68	the milestone um
+821.84	2.88	field
+822.88	3.84	and i can choose also the linked pull
+824.72	4.64	requests and a few others that you are
+826.72	6.56	welcome to play with yourself
+829.36	6.16	so i did that and and here they are um
+833.28	4.32	it looks like the um
+835.52	4.00	the team had already agreed on a couple
+837.60	4.40	of milestones and they you know they
+839.52	4.96	came up with like phrases to define what
+842.00	4.00	those milestones are and they have been
+844.48	2.96	tagging their work
+846.00	2.96	associating it to the different
+847.44	4.56	milestones so that's cool because it
+848.96	4.32	will allow allow us to organize the
+852.00	3.52	the work
+853.28	3.68	in a meaningful way also these link pull
+855.52	4.48	requests so the pull requests are simply
+856.96	5.44	the work the actual work that follows an
+860.00	4.48	issue an issue is simply a conversation
+862.40	4.00	about code or about some work that needs
+864.48	4.00	to be done so we have first the
+866.40	4.24	conversation and then the action right
+868.48	5.04	so the the as you can see
+870.64	5.36	this is great because you can link um
+873.52	4.40	the conversation about or about an idea
+876.00	3.12	to the actual implementation of that
+877.92	2.88	idea
+879.12	4.16	okay so that's that's that let's go back
+880.80	4.80	to the notes so again what we are doing
+883.28	4.88	now is trying to build this new view of
+885.60	4.16	open issues by iteration we already
+888.16	3.60	added a couple of fields and now we're
+889.76	4.24	going to start organizing the data in a
+891.76	4.72	couple of meaningful ways so first we're
+894.00	4.80	going to group the data by the different
+896.48	5.52	milestones that the the team has agreed
+898.80	5.36	on and then we're going to filter by the
+902.00	4.48	state or type
+904.16	4.48	ensuring that we are looking only at
+906.48	3.44	open issues then we're going to we're
+908.64	3.76	going to continue but let's go let's
+909.92	3.84	start at that so i'm going to move here
+912.40	4.64	to the right
+913.76	4.16	here in the in the title
+917.04	2.48	um
+917.92	2.80	i can choose
+919.52	3.04	um
+920.72	3.68	different filters you can filter by
+922.56	4.72	specific values but also you can filter
+924.40	5.04	by the the state of the items remember i
+927.28	4.72	told you the caller gave us an
+929.44	5.60	indication about whether the item the
+932.00	7.04	work item was open or not so if you if
+935.04	5.84	we click there um we we can as choose
+939.04	4.56	specifically open
+940.88	5.20	um items
+943.60	3.68	uh and that includes the issues
+946.08	2.72	basically the ideas and the
+947.28	3.76	conversations about what needs to be
+948.80	5.04	done which are these
+951.04	4.48	icons with a circle and then also the
+953.84	4.00	pull requests which are the actual work
+955.52	4.40	associated to those issues but
+957.84	4.00	now we also learn about the syntax to
+959.92	4.56	filter things so you can see that is
+961.84	5.76	column open filters for open things so
+964.48	4.96	if you do is column and wait you will
+967.60	4.00	see what options you have okay we can do
+969.44	4.40	for example issues only because pull
+971.60	4.80	requests can be redundant so if if a
+973.84	4.56	pull request always follows an issue
+976.40	4.00	then by knowing what's the state of the
+978.40	4.00	issue and what pull request that is
+980.40	4.32	linked to and you have enough
+982.40	4.80	information so this this is the filter
+984.72	5.20	that i want so the entire data set now
+987.20	5.68	filter to this couple of things
+989.92	5.44	uh where we have a better understanding
+992.88	4.32	of what needs to be done and what are
+995.36	4.16	the issues that we are talking about and
+997.20	4.88	if any of that is already being worked
+999.52	4.32	on and with that we are also empowered
+1002.08	3.76	to start kind of filling some gaps in
+1003.84	3.60	the data that the developers may not
+1005.84	3.52	have entered already so let's have a
+1007.44	3.84	look at that but before i do that let me
+1009.36	6.08	have a quick glimpse to the
+1011.28	6.32	to my my schedule for today um
+1015.44	5.20	okay so we have already grouped by
+1017.60	5.76	milestone we have already filtered um
+1020.64	6.31	open issues let's also complete the
+1023.36	5.36	table but by adding a new field um
+1026.95	4.17	[Music]
+1028.72	4.64	no sorry by adding some uh missing
+1031.12	4.64	information about milestones and then
+1033.36	5.28	create a new field uh and
+1035.76	4.88	about in iteration so let's do that so
+1038.64	5.20	first let's focus on adding milestones
+1040.64	4.88	that have not been uh added yet so we
+1043.84	3.68	see that from the two things that we
+1045.52	4.16	care about right now the first one
+1047.52	4.16	already is allocated to the myosin the
+1049.68	3.92	data is ready which should happen
+1051.68	4.64	sometime soon in the future
+1053.60	4.88	and the other um item also relates to
+1056.32	4.08	data it's about documenting the data so
+1058.48	3.44	i think it relates to the same uh
+1060.40	4.00	milestone so i'm going to add it here
+1061.92	4.32	i'm going to click that drop down and oh
+1064.40	3.60	actually if i if i do that i have to
+1066.24	3.92	first convert that to an issue and
+1068.00	3.76	that's going to be the job of the person
+1070.16	3.84	who has been assigned to that so i'm not
+1071.76	4.32	going to do that just now
+1074.00	3.12	and what i'm going to do is
+1076.08	2.88	um
+1077.12	5.04	maybe
+1078.96	5.44	assign here in status given that i know
+1082.16	5.44	that this this item has been already
+1084.40	5.52	been worked on i'm gonna put that set
+1087.60	4.00	that to in progress so i have at least i
+1089.92	3.76	completed that piece
+1091.60	4.16	of data and i think i'll leave it at
+1093.68	4.72	that for now let's see what else i
+1095.76	4.56	intended to do um
+1098.40	4.00	now we're going to add iteration so
+1100.32	3.84	iteration is going to be a new field in
+1102.40	3.28	this view i'm going to go all the way
+1104.16	3.04	back to the
+1105.68	4.80	to the far right
+1107.20	5.36	click on that new field thing and if you
+1110.48	4.56	look at it there is no iteration here
+1112.56	3.52	right so it's not hidden you have to
+1115.04	2.88	create it
+1116.08	4.40	so let's click on new field and now
+1117.92	3.76	notice that fields come in multiple
+1120.48	2.72	types
+1121.68	3.52	it's like in excel you know you can't
+1123.20	5.28	create a column that hosts for example
+1125.20	5.52	text or that hosts a date or that hosts
+1128.48	3.60	a number or in this case github was
+1130.72	4.32	clear enough
+1132.08	4.80	to come up with this iteration
+1135.04	4.72	type of column right so let's click
+1136.88	5.60	iteration and uh scroll down and save
+1139.76	5.04	that that change so now we are going to
+1142.48	5.60	have a moment an iteration
+1144.80	4.88	um column so let's see it was
+1148.08	3.76	maybe i was a bit too fast you may have
+1149.68	4.32	noticed that it is in in units of two
+1151.84	4.56	weeks uh you can change that to anything
+1154.00	4.64	but two weeks sounds good to me um so
+1156.40	4.32	because this first item is already been
+1158.64	4.00	worked on uh it makes sense that it
+1160.72	4.08	belongs to the current iteration so now
+1162.64	4.16	i'm starting to kind of develop this
+1164.80	4.88	project so i'm going to click there and
+1166.80	4.40	allocate it to to this iteration already
+1169.68	3.36	has the dates that's very convenient so
+1171.20	3.28	i don't have to think that much
+1173.04	3.04	and then the second one is something
+1174.48	3.12	that needs to be done so maybe it's a
+1176.08	3.12	bit too rushed to allocate it to the
+1177.60	3.44	iteration now so i'm going to leave it
+1179.20	3.44	to the next iteration
+1181.04	3.36	and and then
+1182.64	3.44	one thing would be nice to do is to
+1184.40	4.32	group this data
+1186.08	4.56	by iteration so um that i have a clear
+1188.72	4.16	view of you know what needs to be done
+1190.64	4.08	exactly now and what is
+1192.88	3.92	left for later oops i think i committed
+1194.72	3.68	a mistake there
+1196.80	4.00	i must have clicked something
+1198.40	4.08	unintentionally
+1200.80	3.52	let me see where we are at i have
+1202.48	5.28	already iterations and what i wanted to
+1204.32	5.44	do is to click here in backlog
+1207.76	6.24	and click here on group where it says
+1209.76	4.24	none i'm going to group by iteration
+1215.92	4.80	and there you go so now i have done a
+1218.80	5.60	lot of work to get
+1220.72	5.84	to this view so i could save this view
+1224.40	4.24	on top of this one and overwrite the
+1226.56	3.84	backlog but that would be not as great
+1228.64	3.84	what i would love it to have is the to
+1230.40	4.64	keep the backlog what it is the backlog
+1232.48	4.40	like a collection of items and then save
+1235.04	3.36	this view as a new
+1236.88	3.68	view right so i'm going to scroll down
+1238.40	3.20	here and go to save changes as a new
+1240.56	3.44	view
+1241.60	5.04	so this new view is going to pop up here
+1244.00	4.00	soon to the right it has a name view too
+1246.64	4.00	but you know i can't rename it something
+1248.00	4.96	more meaningful like for example
+1250.64	3.12	there you go open
+1252.96	1.84	uh
+1253.76	5.36	issues
+1254.80	6.32	by each direction and now these views
+1259.12	3.92	both the backlog of their or their open
+1261.12	3.60	issues by iteration they they all have
+1263.04	4.40	links right so it's great because you
+1264.72	5.52	can share those urls with stakeholders
+1267.44	4.40	you can share that with your developers
+1270.24	5.04	analysts with you know your product
+1271.84	5.68	owners or whoever you know needs to see
+1275.28	4.16	the data in specifically that way that
+1277.52	3.68	you design if you go to the backlog you
+1279.44	4.08	will see that it is it remains unchanged
+1281.20	3.52	now it is the same view it's still
+1283.52	2.88	taking a little bit to refresh it's
+1284.72	3.92	taking this the same view that your
+1286.40	5.04	original was and now it does have you
+1288.64	4.32	know that iteration column um
+1291.44	4.08	which i wasn't expecting not sure how
+1292.96	4.96	that works but there are two completely
+1295.52	4.32	different views of the exactly same data
+1297.92	3.84	right so let me go back to my notes
+1299.84	3.84	we're getting also close to
+1301.76	4.32	the end so i may need to rush a little
+1303.68	6.08	bit here
+1306.08	5.92	um we added iteration we
+1309.76	5.68	save the changes to a new view okay
+1312.00	6.00	we're done with the perspective of
+1315.44	4.24	the i am the project the manager for now
+1318.00	3.12	what we're going to do now is very
+1319.68	3.76	quickly
+1321.12	4.32	change our hat and wear the hat of a
+1323.44	4.40	developer or an analyst
+1325.44	4.40	um so the first thing that we're going
+1327.84	4.40	to do is okay there's someone who has
+1329.84	4.64	allocated to work on that track thing
+1332.24	5.20	and and actually get some work done so
+1334.48	5.12	that person you know maybe gets the url
+1337.44	5.04	uh for for that view
+1339.60	4.96	or you know participates in a in a you
+1342.48	4.00	know meeting with the project manager
+1344.56	3.52	where they discuss you know that that
+1346.48	4.40	needs to be done so that's this is the
+1348.08	4.48	piece of work it's easy to see now um
+1350.88	3.84	you know it could you could also filter
+1352.56	3.76	this data by assignee but in this case
+1354.72	4.08	this is the only person that has been
+1356.32	4.88	working here so this is the item that
+1358.80	4.64	needs to be done it has it has no work
+1361.20	4.56	associated to it uh so you know that
+1363.44	3.84	that's what comes next so that person
+1365.76	5.44	clicks on
+1367.28	6.40	the draft issue and converts it to an
+1371.20	5.52	actual issue basically is to make
+1373.68	4.24	official the idea that needs to be
+1376.72	2.08	worked on
+1377.92	3.60	so
+1378.80	4.80	you can see that there is a
+1381.52	3.20	link here to convert this to an actual
+1383.60	3.12	issue
+1384.72	3.68	it has been already allocated to an
+1386.72	4.48	iteration and now we need to allocate it
+1388.40	4.64	to one of the two repositories or that
+1391.20	4.08	yeah that you know relate to this
+1393.04	4.24	project in this case it is the project
+1395.28	5.92	data because we need to document the
+1397.28	6.08	data and and as we do that this has is
+1401.20	4.08	already you know becoming an issue it's
+1403.36	4.72	processing now but you'll see this draft
+1405.28	4.72	thing changes to actual issue it's gonna
+1408.08	4.56	take the color green and now we are in
+1410.00	4.88	an interface that allows us to edit the
+1412.64	4.24	issue itself uh here we could add you
+1414.88	4.48	know that milestone that we were due to
+1416.88	4.00	add and the data is ready that is the
+1419.36	2.88	milestone towards which we're going to
+1420.88	4.00	be working
+1422.24	4.88	uh there's no pull requests linked yet
+1424.88	4.16	so that's that's that and then in the
+1427.12	3.52	status to do uh if we're going to be
+1429.04	4.16	working on it right now we could just
+1430.64	3.52	change it to in progress right so let's
+1433.20	2.64	do that
+1434.16	3.44	so now um
+1435.84	3.44	let's reflect on what we have just done
+1437.60	4.48	so the
+1439.28	6.24	one analyst or one developer has
+1442.08	4.96	basically started work and that changed
+1445.52	3.12	the project right so the project no
+1447.04	4.24	longer is in the state in which it was
+1448.64	4.48	before a draft issue is now an issue and
+1451.28	4.64	some metadata has been added about that
+1453.12	5.84	piece of work and so that needs to be
+1455.92	5.36	reflected in in the project and the
+1458.96	4.24	beauty of it is that that update happens
+1461.28	4.72	automatically you can see that the what
+1463.20	4.24	was before a draft a gray circle now is
+1466.00	4.72	a green circle meaning that it's an
+1467.44	5.84	actual issue and that the metadata that
+1470.72	5.36	was changed by the developer or by the
+1473.28	5.28	analyst already was entered there
+1476.08	3.76	so the one last thing i'm gonna show is
+1478.56	3.28	uh
+1479.84	4.32	the similar thing with um you know
+1481.84	4.96	actually when some work actually happens
+1484.16	5.28	how that also gets reflected on
+1486.80	4.48	on the on the board so we know that
+1489.44	4.16	there is an open uh pull request here
+1491.28	4.40	that needs to be reviewed so let's go to
+1493.60	4.80	that one and by clicking here you see
+1495.68	5.04	how from the project from the high level
+1498.40	4.24	view of the project you have a direct
+1500.72	4.40	link to the piece of work that has been
+1502.64	4.24	done so you know i click there i go to
+1505.12	3.84	the to the
+1506.88	3.44	page where i can inspect
+1508.96	3.52	that work
+1510.32	4.32	and but still i'm kind of wearing where
+1512.48	3.76	in the head of the analyst or developer
+1514.64	2.80	so this is the person who's going to
+1516.24	2.96	actually
+1517.44	3.36	merge the
+1519.20	3.76	the pull request meaning that the piece
+1520.80	4.80	of work once it has been reviewed by a
+1522.96	4.88	colleague is ready to be put into
+1525.60	4.00	production so we're going to um click
+1527.84	4.24	here on the button that says merge pull
+1529.60	2.48	request
+1532.24	4.64	and and and that's that basically the
+1534.48	4.16	the change or the work that happened in
+1536.88	4.80	relation to the idea that was in
+1538.64	5.60	progress is now complete so if i go to
+1541.68	6.32	the project board
+1544.24	6.72	i would expect that refreshing that
+1548.00	2.96	that table
+1551.44	4.80	could show that that issue associated to
+1554.08	5.12	the work is closed as you see it
+1556.24	4.96	disappeared it didn't it iteration one
+1559.20	3.52	in progress
+1561.20	3.68	so
+1562.72	3.60	ah okay i think there was something
+1564.88	3.04	missing there
+1566.32	3.04	that
+1567.92	3.68	closes
+1569.36	4.56	for
+1571.60	3.20	confirmers ah there you go i forgot to
+1573.92	3.36	click
+1574.80	4.32	one last time to confirm that i didn't
+1577.28	4.24	want to merge that
+1579.12	4.16	change okay so with that my expectation
+1581.52	4.24	would be that refreshing the project
+1583.28	4.64	board could inform everyone the
+1585.76	4.24	developers the project managers everyone
+1587.92	4.64	in the interested in keeping track of
+1590.00	3.60	things that that piece of work has been
+1592.56	2.16	already
+1593.60	3.04	been done
+1594.72	5.36	so there you go actually you see how the
+1596.64	5.68	status automatically changed to done
+1600.08	4.16	the link pull request changed from color
+1602.32	2.72	green to color purple
+1604.24	2.80	and
+1605.04	4.72	and that's that right so
+1607.04	4.40	with that i go
+1609.76	2.12	back to the notes
+1611.44	1.76	and
+1611.88	3.40	[Music]
+1613.20	5.36	reflect on the takeaways
+1615.28	5.04	so the takeaway is that github projects
+1618.56	3.68	are very user friendly even if you don't
+1620.32	3.28	write code you may be tempted to try
+1622.24	3.68	them out
+1623.60	4.16	if someone is already on github anyway
+1625.92	4.00	because you know if you write some code
+1627.76	4.48	most likely some of it is on github then
+1629.92	3.84	it kind of makes sense to start managing
+1632.24	4.88	projects there too so you don't need to
+1633.76	5.84	add any layer of any tool that um yeah
+1637.12	3.76	may add complexity and not so much value
+1639.60	3.20	and finally
+1640.88	3.84	it's great that because everything
+1642.80	4.16	happens on the same platform everything
+1644.72	4.88	is linked and everything happens
+1646.96	5.76	automatically so with that i finished uh
+1649.60	6.48	thank miria iago and
+1652.72	5.28	matthias for conversations about
+1656.08	4.32	project management on github that led to
+1658.00	4.96	this meet up do we have any questions or
+1660.40	2.56	comments here
+1664.16	4.16	maybe just a few very quick ones so
+1666.08	5.04	first of all thanks a lot mauro above
+1668.32	4.64	all this functionality to save views i
+1671.12	3.04	was not aware of and it looks super
+1672.96	3.92	practical
+1674.16	4.72	i have a super small knit column
+1676.88	4.24	it might not be a good idea to call the
+1678.88	4.08	board backlog because the backlog
+1681.12	4.16	actually refers to your to-do list in
+1682.96	4.64	scrum where whereas the board gives you
+1685.28	4.96	the entire overview
+1687.60	4.96	and um something else that i found very
+1690.24	3.52	convenient about github boards is that
+1692.56	4.40	you can super
+1693.76	4.56	flexibly also adjust your board to
+1696.96	4.00	have new
+1698.32	5.76	statuses so for example stress testing
+1700.96	5.12	we have we added a column in review
+1704.08	4.16	um you might want to have other things
+1706.08	4.64	like on hold etc so you can get even
+1708.24	5.44	more fine-grained overview about maybe
+1710.72	5.84	your bottlenecks in your process etc
+1713.68	4.96	and i actually have two questions
+1716.56	5.60	first of all did you come across a
+1718.64	6.16	possibility to associate
+1722.16	4.56	issues with each other like for example
+1724.80	2.96	showing that one ticket is blocked by
+1726.72	2.96	the other
+1727.76	4.88	and my second question is i saw that
+1729.68	6.00	there was the hidden column reviewers
+1732.64	5.68	is it possible to automatically
+1735.68	6.16	infer the reviewers of an issue by the
+1738.32	5.20	pr reviewers because those should just
+1741.84	3.92	would also be super practical for the
+1743.52	4.64	product manager to see what people are
+1745.76	4.48	actually busy with at the moment great
+1748.16	3.84	yeah okay i'm gonna
+1750.24	4.64	as you know but you know i have to
+1752.00	5.92	disclose to the audience i'm very new to
+1754.88	4.40	to this so i'm learning um basically by
+1757.92	3.52	doing the meetup
+1759.28	3.60	so a lot of the things are more what i
+1761.44	3.36	think could happen i think that the
+1762.88	4.40	reviewers um
+1764.80	4.24	are indeed
+1767.28	3.84	if you add a reviewer on the pull
+1769.04	4.72	request that is what is expressed under
+1771.12	5.36	the reviewers uh column in the project
+1773.76	5.28	board so that would be i think yes
+1776.48	3.92	uh also like thank you for the comment
+1779.04	2.96	about the backlog yeah i was kind of
+1780.40	3.44	unsure about if that would be a good a
+1782.00	6.32	good name for it the
+1783.84	6.72	the weight link uh issues um
+1788.32	3.76	honestly i didn't try
+1790.56	4.16	for this meet up
+1792.08	6.24	if you can link more than one
+1794.72	4.88	uh item to any other item maybe yes
+1798.32	5.04	would be my guess it would be nice to
+1799.60	5.36	try and every time in on github what i
+1803.36	3.92	have done is many times you know from
+1804.96	4.56	one issue mentioned another issue using
+1807.28	3.12	the the syntax you know pound number of
+1809.52	2.64	issue
+1810.40	3.36	if it belongs to the same repo or if it
+1812.16	4.56	belongs to another repo you have to
+1813.76	6.08	actually mention the organization slash
+1816.72	5.20	repo pound number of issue so that
+1819.84	3.84	creates links that you can track from
+1821.92	3.44	one issue to the other so allows you to
+1823.68	3.76	kind of click on things and you know
+1825.36	4.24	basically jump to the other place so i
+1827.44	4.40	would expect that because the
+1829.60	4.72	i mean because github already has that
+1831.84	5.92	feature i would expect that the the
+1834.32	5.60	column um linked put requests could
+1837.76	3.36	probably allow more than one item but
+1839.92	3.76	that's something that you know i would
+1841.12	4.72	need to confirm um
+1843.68	4.88	i forget if you asked any other
+1845.84	5.28	question or maybe another comment
+1848.56	6.32	that was all thanks cool
+1851.12	3.76	francisca you have your hand up right
+1856.32	2.72	she had to
+1857.84	2.32	stick out
+1859.04	2.24	okay good
+1860.16	5.16	any other
+1861.28	4.04	comment or question before we leave
+1865.44	2.96	i'm good
+1866.40	4.72	but thank you very much mauro
+1868.40	4.72	okay thank you all and um
+1871.12	4.08	hopefully this will be
+1873.12	3.60	enough to get you started playing with
+1875.20	3.28	it and then if you have questions feel
+1876.72	2.88	free to reach out thank you see you next
+1878.48	5.48	time
+1879.60	4.36	thanks bye thank you bye-bye

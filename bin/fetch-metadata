@@ -10,6 +10,8 @@ Refresh video metadata from the YouTube playlist.
 Raw-first: saves the richest record per video to metadata/<id>.json
 (full yt-dlp dump, including comments), then derives data/metadata.csv
 from that store. Post-processing (the CSV) is separate from fetching (JSON).
+Terminal states (private/unavailable videos) are recorded with their reason
+in metadata/manifest.tsv and skipped on later runs -- no re-diagnosis needed.
 
 Default: fetch dumps only for videos missing from metadata/, then rebuild
 the CSV (old counts preserved via stored dumps). Use --refresh to re-fetch
@@ -26,7 +28,7 @@ Options:
   --cookies-from-browser BROWSER
                         Pass --cookies-from-browser to yt-dlp (e.g. chrome, firefox).
                         Needed if YouTube returns "Sign in to confirm you're not a bot".
-  --sleep SECONDS       Seconds to wait between videos (default: 2)
+  --sleep SECONDS       Seconds to wait between videos (default: 1)
   --retries N           Total attempts per video (default: 2)
 EOF
 }
@@ -37,7 +39,7 @@ CSV="data/metadata.csv"
 META_DIR="metadata"
 COOKIES=""
 COMMENTS="--write-comments"
-SLEEP=2
+SLEEP=1
 RETRIES=2
 LIMIT=0
 
@@ -61,7 +63,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-[[ "$SLEEP" =~ ^[0-9]+$ ]] || { echo "[fetch-metadata] --sleep must be a non-negative integer" >&2; exit 2; }
+[[ "$SLEEP" =~ ^[0-9]+(\.[0-9]+)?$ ]] || { echo "[fetch-metadata] --sleep must be a non-negative number" >&2; exit 2; }
 [[ "$RETRIES" =~ ^[0-9]+$ ]] || { echo "[fetch-metadata] --retries must be a non-negative integer" >&2; exit 2; }
 [[ "$LIMIT" =~ ^[0-9]+$ ]] || { echo "[fetch-metadata] --limit must be a non-negative integer" >&2; exit 2; }
 
@@ -69,6 +71,7 @@ mkdir -p "$META_DIR"
 TMPDIR=$(mktemp -d)
 trap 'rm -rf "$TMPDIR"' EXIT
 : > "$TMPDIR/fetched.txt"
+: > "$TMPDIR/status.tsv"
 
 echo "[fetch-metadata] dumping playlist index ..."
 # NOTE: $'...' lets bash turn \t into a real tab; yt-dlp --print passes
@@ -95,6 +98,22 @@ json_ok() {
     python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); sys.exit(0 if len(sys.argv) < 3 or d.get("id") == sys.argv[2] else 1)' "$1" ${2:+"$2"} 2>/dev/null
 }
 
+slim_dump() {
+    # Drop bulky reproducible listings (expiring track/format URLs, ~97% of
+    # bytes); content (comments, description, chapters, counts) is kept.
+    python3 - "$1" <<'EOF'
+import json, sys
+p = sys.argv[1]
+with open(p, encoding="utf-8") as f:
+    d = json.load(f)
+for k in ("automatic_captions", "subtitles", "formats",
+          "requested_formats", "requested_downloads"):
+    d.pop(k, None)
+with open(p, "w", encoding="utf-8") as f:
+    json.dump(d, f, ensure_ascii=False)
+EOF
+}
+
 i=0
 skipped=0
 : > "$TMPDIR/seen.txt"
@@ -107,6 +126,11 @@ while IFS=$'\t' read -r pindex vid; do
     printf '%s\n' "$vid" >> "$TMPDIR/seen.txt"
     [[ "$LIMIT" -gt 0 && "$i" -ge "$LIMIT" ]] && break
     i=$((i + 1))
+    prev_st=$(awk -F'\t' -v id="$vid" '$1==id{print $2; exit}' "$META_DIR/manifest.tsv" 2>/dev/null)
+    if [[ "$REFRESH" -eq 0 && ("$prev_st" == "private" || "$prev_st" == "unavailable") ]]; then
+        echo "[fetch-metadata] skip ${vid} (recorded as ${prev_st})"
+        continue
+    fi
     if [[ -f "$META_DIR/${vid}.json" && "$REFRESH" -eq 0 ]]; then
         if json_ok "$META_DIR/${vid}.json" "$vid"; then
             echo "[fetch-metadata] skip ${vid} (dump exists)"
@@ -142,13 +166,25 @@ while IFS=$'\t' read -r pindex vid; do
         cp "$TMPDIR/video-${vid}.log" "/tmp/fetch-metadata-${vid}.log"
         if [[ $rc -eq 0 ]] && json_ok "$TMPDIR/video-${vid}.json" "$vid"; then
             mv -f "$TMPDIR/video-${vid}.json" "$META_DIR/${vid}.json"
+            slim_dump "$META_DIR/${vid}.json"
             echo "$vid" >> "$TMPDIR/fetched.txt"
+            printf '%s\tok\t\n' "$vid" >> "$TMPDIR/status.tsv"
             echo "[fetch-metadata] ok ${vid}"
             break
         fi
         echo "[fetch-metadata] attempt ${attempt}/${RETRIES} failed for ${vid}, retrying in ${SLEEP}s"
         sleep "$SLEEP"
     done
+    if ! grep -qxF "$vid" "$TMPDIR/fetched.txt" 2>/dev/null; then
+        line=$(grep -m1 '^ERROR:' "$TMPDIR/video-${vid}.log" 2>/dev/null | sed 's/^ERROR: //' | cut -c1-120 || true)
+        [[ -z "$line" ]] && line="fetch failed"
+        case "$line" in
+            *Private\ video*) st=private ;;
+            *Video\ unavailable*|*no\ longer\ available*) st=unavailable ;;
+            *) st=error ;;
+        esac
+        printf '%s\t%s\t%s\n' "$vid" "$st" "$line" >> "$TMPDIR/status.tsv"
+    fi
     if [[ $((i % 10)) -eq 0 ]]; then
         echo "[fetch-metadata] progress: ${i}/${NPL}"
     fi
@@ -160,11 +196,13 @@ if [[ "$skipped" -gt 0 ]]; then
     echo "[fetch-metadata] warn: skipped ${skipped} unparseable index lines" >&2
 fi
 
-python3 - "$CSV" "$META_DIR" "$TMPDIR/index.tsv" "$TMPDIR/fetched.txt" "$REFRESH" <<'EOF' || exit 1
+python3 - "$CSV" "$META_DIR" "$TMPDIR/index.tsv" "$TMPDIR/fetched.txt" "$REFRESH" "$LIMIT" "$TMPDIR/status.tsv" <<'EOF' || exit 1
 import csv, json, os, sys
 
-csv_path, meta_dir, index_path, fetched_path, refresh = (
-    sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5] == "1")
+csv_path, meta_dir, index_path, fetched_path, refresh, limit, status_path = (
+    sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5] == "1",
+    int(sys.argv[6]), sys.argv[7])
+man_path = os.path.join(meta_dir, "manifest.tsv")
 header = ["playlist_index", "title", "id", "view_count", "like_count",
           "comment_count", "upload_date", "upload_date_iso", "duration",
           "duration_string", "channel", "uploader", "url"]
@@ -211,7 +249,9 @@ with open(index_path, encoding="utf-8") as f:
         parts = line.rstrip("\n").split("\t")
         if len(parts) == 2 and parts[1] and parts[1] not in playlist_ids:
             playlist_ids.append(parts[1])
-            pindex_of[parts[1]] = parts[0].strip()
+            # flat-playlist zero-pads (001); CSV convention is plain ints
+            _idx = parts[0].strip()
+            pindex_of[parts[1]] = str(int(_idx)) if _idx.isdigit() else _idx
 in_playlist = set(playlist_ids)
 
 store = {}  # id -> dump dict
@@ -229,6 +269,20 @@ fresh = set()
 with open(fetched_path, encoding="utf-8") as f:
     fresh = {line.strip() for line in f if line.strip()}
 
+prev = {}  # id -> (status, reason, file) from the previous manifest
+if os.path.isfile(man_path):
+    with open(man_path, encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter="\t"):
+            prev[row["id"]] = (row.get("status", ""), row.get("reason", ""),
+                               row.get("file", ""))
+
+att = {}  # id -> (status, reason) from this run, last wins
+with open(status_path, encoding="utf-8") as f:
+    for line in f:
+        parts = line.rstrip("\n").split("\t")
+        if len(parts) >= 2 and parts[0]:
+            att[parts[0]] = (parts[1], parts[2] if len(parts) > 2 else "")
+
 existing = []
 with open(csv_path, encoding="utf-8") as f:
     existing = list(csv.DictReader(f))
@@ -236,9 +290,12 @@ old = {}
 for r in existing:
     old.setdefault(r["id"], r)
 
-failed = [v for v in playlist_ids if v not in store]
-if refresh and len(failed) > 2 and len(failed) * 10 > len(playlist_ids):
-    print(f"[fetch-metadata] abort: {len(failed)}/{len(playlist_ids)} "
+# --limit scopes reporting to the attempted subset so smoke tests stay readable.
+# Row assembly below always uses the full index (a smoke run never drops rows).
+scope = playlist_ids[:limit] if limit > 0 else playlist_ids
+failed = [v for v in scope if v not in store]
+if refresh and len(failed) > 2 and len(failed) * 10 > len(scope):
+    print(f"[fetch-metadata] abort: {len(failed)}/{len(scope)} "
           f"videos have no usable dump; CSV left untouched")
     sys.exit(1)
 
@@ -246,7 +303,7 @@ fresh = [(v, row_from_dump(pindex_of[v], store[v])) for v in playlist_ids if v i
 covered = {v for v, _ in fresh}
 carry = [r for r in existing if r["id"] not in covered]
 if refresh:
-    stale = sorted({r["id"] for r in carry if r["id"] in in_playlist})
+    stale = sorted({r["id"] for r in carry if r["id"] in in_playlist} & set(scope))
     dropped = sorted({r["id"] for r in carry if r["id"] not in in_playlist})
     rows = [row for _, row in fresh] + [r for r in carry if r["id"] in in_playlist]
 else:
@@ -261,7 +318,38 @@ for r in rows:
     deduped_rows.append(r)
 rows = deduped_rows
 
-added = [v for v in playlist_ids if v in store and v not in old]
+added = [v for v in scope if v in store and v not in old]
+
+def dump_file(v):
+    return os.path.join(meta_dir, f"{v}.json") if v in store else ""
+
+man = {}
+for v in playlist_ids:
+    if v in att:
+        st, reason = att[v]
+        man[v] = (st, reason, dump_file(v))
+    elif v in prev and prev[v][0] in ("private", "unavailable"):
+        # terminal states survive even when an old dump exists
+        st, reason, f = prev[v]
+        man[v] = (st, reason, dump_file(v) or f)
+    elif v in store:
+        man[v] = ("ok", "", dump_file(v))
+    elif v in prev:
+        man[v] = prev[v]  # carry past error rows etc.
+    # else: never attempted -> no row (unknown, not failed)
+
+with open(man_path, "w", encoding="utf-8", newline="") as f:
+    w = csv.writer(f, delimiter="\t", lineterminator="\n")
+    w.writerow(["id", "status", "reason", "file"])
+    for v in playlist_ids:
+        if v in man:
+            w.writerow([v, man[v][0], man[v][1], man[v][2]])
+
+def reason_of(v):
+    for src in (att, {k: (p[0], p[1]) for k, p in prev.items()}):
+        if v in src and src[v][1]:
+            return src[v][1]
+    return "no usable dump"
 
 out_tmp = csv_path + ".tmp"
 with open(out_tmp, "w", encoding="utf-8", newline="") as f:
@@ -270,15 +358,18 @@ with open(out_tmp, "w", encoding="utf-8", newline="") as f:
     w.writerows(rows)
 os.replace(out_tmp, csv_path)
 
+npriv = sum(1 for s, _, _ in man.values() if s == "private")
+nunav = sum(1 for s, _, _ in man.values() if s == "unavailable")
 print(f"[fetch-metadata] rows: {len(existing)} -> {len(rows)} "
       f"(added {len(added)}, dropped {len(dropped)}, stale {len(stale)}, "
       f"failed {len(failed)} incl. {len(stale)} stale, deduped {deduped})")
+print(f"[fetch-metadata] recorded terminal: {npriv} private, {nunav} unavailable")
 for v in added:
     print(f"[fetch-metadata] added {v}")
 for v in stale:
     print(f"[fetch-metadata] stale {v} (kept old row: fetch failed)")
 for v in failed:
-    print(f"[fetch-metadata] failed {v} (no usable dump)")
+    print(f"[fetch-metadata] failed {v} ({reason_of(v)})")
 for v in dropped:
     print(f"[fetch-metadata] dropped {v}")
 EOF

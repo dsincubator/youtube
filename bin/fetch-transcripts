@@ -18,7 +18,7 @@ Options:
   --csv PATH            Path to the metadata CSV (default: data/metadata.csv)
   --out-dir DIR         Output directory (default: transcripts)
   --sub-format FORMAT   Subtitle format preference (default: json3/srv3/vtt/best)
-  --sleep SECONDS       Seconds to wait between videos (default: 2)
+  --sleep SECONDS       Seconds to wait between videos (default: 1)
   --retries N           Total attempts per video (default: 3)
 EOF
 }
@@ -29,7 +29,7 @@ COUNT=0
 CSV="data/metadata.csv"
 OUT_DIR="transcripts"
 SUB_FORMAT="json3/srv3/vtt/best"
-SLEEP=2
+SLEEP=1
 RETRIES=3
 
 need_arg() {
@@ -52,7 +52,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 [[ "$COUNT" =~ ^[0-9]+$ ]] || { echo "[fetch-transcripts] --count must be a non-negative integer" >&2; exit 2; }
-[[ "$SLEEP" =~ ^[0-9]+$ ]] || { echo "[fetch-transcripts] --sleep must be a non-negative integer" >&2; exit 2; }
+[[ "$SLEEP" =~ ^[0-9]+(\.[0-9]+)?$ ]] || { echo "[fetch-transcripts] --sleep must be a non-negative number" >&2; exit 2; }
 [[ "$RETRIES" =~ ^[0-9]+$ ]] || { echo "[fetch-transcripts] --retries must be a non-negative integer" >&2; exit 2; }
 
 mkdir -p "$OUT_DIR"

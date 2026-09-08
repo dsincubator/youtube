@@ -202,3 +202,22 @@ Distillation agents MUST follow these rules (pilot caught: invented `tar_load`, 
 - [ ] OKF bundle conformance: `verified` fields added after human review (§5.2) — TODO, all `status: draft` until human `verified`
 - [x] No reserved filenames used for concept documents (§3.1) — `topics/concepts-overview.md` not `topics/index.md`; indexes are `index.md` per §8
 - [x] `log.md` present at bundle root (§9) — `dsincubator/log.md` + `sources/log.md`
+
+## IDEAS / PLAN — TODOs to discuss next session
+
+Source: [awesome-llm-wiki](https://github.com/gavischneider/awesome-llm-wiki) — curated blueprints for compounding AI-compiled knowledge bases (raw → wiki → schema, Ingest → Compile → Query → Lint, Dream Cycles, MCP, OKF).
+
+- [ ] **Practice & document wiki maintenance workflows** — iterate on ingest (new video → distill → aggregate → topics → bundle → `qmd update`), review (`verified` flip), lint (broken links/orphans/contradictions), gap analysis; doc in `AGENTS.md:114` + `README.qmd:96` (done once, keep current).
+- [ ] **Generalize tools for other playlists** — parametrize `bin/fetch-metadata --playlist URL`, `planning_manifest.json:bundle_name`, `dsincubator/` path so same pipeline builds wikis for any YouTube playlist.
+- [ ] **Wiki for ds-handout + ds-lab** — new bundles from those repos’ content (handouts/labs as `transcripts/` analogues).
+- [ ] **Wiki for rOpenSci** — two sub-bundles:
+  - [ ] videos (YouTube/talks)
+  - [ ] devguide (book/docs) with `qmd` search — `qmd collection add devguide/ --name ropensci-devguide` + `qmd context add` + hybrid `qmd query`.
+- [ ] **From awesome-llm-wiki (prioritized)**:
+  - [ ] `Dream Cycles` / lint pass — scheduled `wiki-lint` (contradictions, stale `stale_after`, orphans, gaps) — see `agent-wiki-cli`/`Klore`.
+  - [ ] `Two-pass distillation` — extract → resolve cross-links to reduce hallucination.
+  - [ ] `Broken link linting` — CI check for `dsincubator/topics/` links.
+  - [ ] `MCP server` — expose `dsincubator/` via `pi-llm-wiki`/`Synto` for Claude Desktop / MCP clients (`qmd mcp` already does search).
+  - [ ] `Agent roles` — specialize `Ingestor`/`Librarian`/`Linter` for scale.
+  - [ ] `Type-safe frontmatter` — Pydantic schemas for `type/tags` validation (as in `synthadoc`/`OpenKB`).
+  - [ ] `Entity resolution` — `graphwiki` → Neo4j for cross-source entity linking (P3).

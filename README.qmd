@@ -140,7 +140,7 @@ Use `qmd query` for prose/questions, `qmd search`/`rg` for exact symbols (`tar_m
 
 The bundle is plain markdown — browse it locally with [Obsidian](https://obsidian.md) (open `dsincubator/` as vault, use graph view, backlinks, and [Dataview](https://github.com/blacksmithgu/obsidian-dataview) for frontmatter queries) or any markdown editor. `qmd` already indexes it for the LLM; humans get the same files in Obsidian.
 
-Dataview example (in Obsidian, `FROM` is vault-relative — on GitHub it stays as code, which is expected; in Obsidian it becomes a live table):
+You can write a Dataview query in your `.md` file:
 
 ```dataview
 TABLE title, usage_count, last_modified
@@ -150,7 +150,9 @@ SORT usage_count DESC
 LIMIT 5
 ```
 
-Rendered in Obsidian:
+and Dataview will render it when you open it in Obsidian:
+
+*On GitHub the `dataview` block stays as code (expected) — Dataview is Obsidian-only. The table below is a static snapshot I pasted for GitHub readers; in Obsidian the same query is a live, auto-updating table.*
 
 | title | usage_count | last_modified |
 |---|---|---|

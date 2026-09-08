@@ -331,7 +331,7 @@ qmd query "how to handle merge conflicts git" -c dsincubator -n 2
 #> ├─ vec: guide to dealing with git merge problems
 #> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.5s)
+#> Embedding 4 queries... (1.4s)
 #> Reranking 25 chunks... (1ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)
@@ -366,8 +366,7 @@ view, backlinks, and
 frontmatter queries) or any markdown editor. `qmd` already indexes it
 for the LLM; humans get the same files in Obsidian.
 
-Dataview example (in Obsidian, `FROM` is vault-relative — on GitHub it
-stays as code, which is expected; in Obsidian it becomes a live table):
+You can write a Dataview query in your `.md` file:
 
 ``` dataview
 TABLE title, usage_count, last_modified
@@ -377,7 +376,11 @@ SORT usage_count DESC
 LIMIT 5
 ```
 
-Rendered in Obsidian:
+and Dataview will render it when you open it in Obsidian:
+
+*On GitHub the `dataview` block stays as code (expected) — Dataview is
+Obsidian-only. The table below is a static snapshot I pasted for GitHub
+readers; in Obsidian the same query is a live, auto-updating table.*
 
 | title | usage_count | last_modified |
 |----|----|----|

@@ -12,8 +12,10 @@ by `id`.
     data/metadata.csv            # derived table, 151 videos
     transcripts/<id>_<title>.md  # OKF transcript (YAML frontmatter + body)
     transcripts/manifest.tsv     # id | status | file | lang
-    planning_manifest.json       # wiki plan: 44 topic pages across 13 categories
-    dsincubator_wiki/sources/    # distilled wiki sources (3 pilots; 148 pending)
+    planning_manifest.json       # wiki plan: 59 topic pages across 13 categories (44 + 8 missing topics added + overview)
+    dsincubator_wiki/            # OKF v0.2 wiki bundle (topics/ + sources/ + index.md + log.md + references/)
+    dsincubator_wiki/sources/    # 151 distilled sources (one per transcript, OKF v0.2)
+    dsincubator_wiki/topics/     # 59 topic pages (each an OKF concept with type field)
     bin/fetch-metadata           # raw dumps + derive CSV
     bin/fetch-transcripts        # fetch captions
     bin/convert-transcripts      # json3 -> txt/tsv/md
@@ -127,8 +129,18 @@ fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeL
 ## Wiki (OKF LLM bundle)
 
 The 151 transcripts feed an OKF v0.2 knowledge bundle
-(`dsincubator_wiki/`), planned in `planning_manifest.json` with
-distilled `sources/` (one per transcript) aggregated into topic pages.
+(`dsincubator_wiki/`), built per `planning_manifest.json` with 151
+distilled `sources/` (one per transcript) aggregated into 59 topic
+pages. Bundle assembly includes `index.md` (§8), `topics/index.md` (§8),
+`sources/index.md` (§8), `log.md` (§9), and `references/` (§6.3).
+
+Status 2026-09-08: sources 151/151 complete via Extraction Prompt v2
+(frozen frontmatter, quote-to-name, anchored key_topics, bilingual
+headings for `es`); topics 59/59 complete with `type` fields (§4.1),
+`sources` credibility signals (§5.1), actor `agent:okf-wiki-builder/1.0`
+(§7), cross-links (§6), `Attested Computation` for pipelines (§10);
+`planning_manifest.json` `source_files[]` populated; bundle indexes and
+`log.md` present.
 
 ``` r
 manifest <- jsonlite::read_json("planning_manifest.json")
@@ -180,17 +192,25 @@ tibble(
 #> # A tibble: 1 × 2
 #>   sources_done sources_pending
 #>          <int>           <int>
-#> 1            3             148
+#> 1          153              -2
 ```
 
 ``` r
 wiki_sources |> select(source_path)
-#> # A tibble: 3 × 1
-#>   source_path                                                                   
-#>   <fs::path>                                                                    
-#> 1 dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md        
-#> 2 …rces/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md
-#> 3 dsincubator_wiki/sources/source_pbc6NX1n01Q_targets-introduction.md
+#> # A tibble: 153 × 1
+#>    source_path                                                                  
+#>    <fs::path>                                                                   
+#>  1 dsincubator_wiki/sources/index.md                                            
+#>  2 dsincubator_wiki/sources/log.md                                              
+#>  3 dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md       
+#>  4 …i/sources/source_-HTH2ylnT7Q_ds-databricks4r-databricks-for-rstudio-users.md
+#>  5 …ator_wiki/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md
+#>  6 …ources/source_-L2A_7XvD6Y_working-with-git-and-github-from-rstudio-part-2.md
+#>  7 …bator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md
+#>  8 …ce_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md
+#>  9 dsincubator_wiki/sources/source_00i28kdk8cM_ds-tmux.md                       
+#> 10 …i/sources/source_0qUs4hi7ozo_retrospective-about-meetups-in-2020-response.md
+#> # ℹ 143 more rows
 ```
 
 ## Commands

@@ -28,8 +28,10 @@ library(jsonlite)
 data/metadata.csv            # derived table, 151 videos
 transcripts/<id>_<title>.md  # OKF transcript (YAML frontmatter + body)
 transcripts/manifest.tsv     # id | status | file | lang
-planning_manifest.json       # wiki plan: 44 topic pages across 13 categories
-dsincubator_wiki/sources/    # distilled wiki sources (3 pilots; 148 pending)
+planning_manifest.json       # wiki plan: 59 topic pages across 13 categories (44 + 8 missing topics added + overview)
+dsincubator_wiki/            # OKF v0.2 wiki bundle (topics/ + sources/ + index.md + log.md + references/)
+dsincubator_wiki/sources/    # 151 distilled sources (one per transcript, OKF v0.2)
+dsincubator_wiki/topics/     # 59 topic pages (each an OKF concept with type field)
 bin/fetch-metadata           # raw dumps + derive CSV
 bin/fetch-transcripts        # fetch captions
 bin/convert-transcripts      # json3 -> txt/tsv/md
@@ -70,7 +72,9 @@ fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeL
 
 ## Wiki (OKF LLM bundle)
 
-The 151 transcripts feed an OKF v0.2 knowledge bundle (`dsincubator_wiki/`), planned in `planning_manifest.json` with distilled `sources/` (one per transcript) aggregated into topic pages.
+The 151 transcripts feed an OKF v0.2 knowledge bundle (`dsincubator_wiki/`), built per `planning_manifest.json` with 151 distilled `sources/` (one per transcript) aggregated into 59 topic pages. Bundle assembly includes `index.md` (§8), `topics/index.md` (§8), `sources/index.md` (§8), `log.md` (§9), and `references/` (§6.3).
+
+Status 2026-09-08: sources 151/151 complete via Extraction Prompt v2 (frozen frontmatter, quote-to-name, anchored key_topics, bilingual headings for `es`); topics 59/59 complete with `type` fields (§4.1), `sources` credibility signals (§5.1), actor `agent:okf-wiki-builder/1.0` (§7), cross-links (§6), `Attested Computation` for pipelines (§10); `planning_manifest.json` `source_files[]` populated; bundle indexes and `log.md` present.
 
 ```{r}
 manifest <- jsonlite::read_json("planning_manifest.json")

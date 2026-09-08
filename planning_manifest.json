@@ -3,131 +3,598 @@
   "okf_version": "0.2",
   "total_transcripts_processed": 151,
   "total_planned_topics": 44,
-  "languages": ["en", "es"],
+  "languages": [
+    "en",
+    "es"
+  ],
   "actor_convention": {
     "generator": "agent:okf-wiki-builder/1.0",
     "process_converter": "process:yt-dlp",
     "verified_by": "human:reviewer",
-    "note": "All generated.by fields follow OKF §7 actor convention: <producer>/<version>"
+    "note": "All generated.by fields follow OKF \u00a77 actor convention: <producer>/<version>"
   },
   "verification_strategy": {
-    "tier_unverified": "No verified field; consumable but advisory only (§5.3)",
+    "tier_unverified": "No verified field; consumable but advisory only (\u00a75.3)",
     "tier_machine_confirmed": "verified by process:nightly-verify for machine-checkable claims",
     "tier_human_reviewed": "verified by human:reviewer after human review (TODO: add to all topic pages once ready)",
-    "note": "Trust tiers derived from verified field per §5.3"
+    "note": "Trust tiers derived from verified field per \u00a75.3"
   },
   "topics": [
     {
       "topic_filename": "topics/concepts-overview.md",
       "topic_title": "dsincubator Wiki Index",
       "type": "Playbook",
-      "description": "Bundle root concept listing all topics; serves as entry point. Actual directory index is topics/index.md (reserved filename per §3.1).",
-      "source_files": []
+      "description": "Bundle root concept listing all topics; serves as entry point. Actual directory index is topics/index.md (reserved filename per \u00a73.1).",
+      "source_files": [
+        "dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md",
+        "dsincubator_wiki/sources/source_-HTH2ylnT7Q_ds-databricks4r-databricks-for-rstudio-users.md",
+        "dsincubator_wiki/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_-L2A_7XvD6Y_working-with-git-and-github-from-rstudio-part-2.md",
+        "dsincubator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md",
+        "dsincubator_wiki/sources/source_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md",
+        "dsincubator_wiki/sources/source_00i28kdk8cM_ds-tmux.md",
+        "dsincubator_wiki/sources/source_0qUs4hi7ozo_retrospective-about-meetups-in-2020-response.md",
+        "dsincubator_wiki/sources/source_16Xn0ueeP-E_azure-rstudio-server-and-pins.md",
+        "dsincubator_wiki/sources/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md",
+        "dsincubator_wiki/sources/source_26hbyVb00xs_eda-with-the-tidyverse-exploring-variation.md",
+        "dsincubator_wiki/sources/source_2Lcba2K8j6M_terminal-setup-and-navigate.md",
+        "dsincubator_wiki/sources/source_2WBj5Oex_Fc_an-overview-our-our-resources-at-2dii.md",
+        "dsincubator_wiki/sources/source_3_0gUMqKikw_docker-managing-images.md",
+        "dsincubator_wiki/sources/source_3rf1W9ceKhU_failing-fast-in-dplyr-chains.md",
+        "dsincubator_wiki/sources/source_4AOKCiAh3NM_testing-test-driven-development-tdd.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_5gmTK8Cb-WE_merge-conflicts.md",
+        "dsincubator_wiki/sources/source_5wHl9N4fBBU_ds-production-from-an-mvp-to-production.md",
+        "dsincubator_wiki/sources/source_7igKU5JVmxM_inspecting-the-history.md",
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_9yrckf6Km-U_wtf-installing-r-packages-part-2.md",
+        "dsincubator_wiki/sources/source_AFuVF0oWFMY_creating-an-empty-r-package-up-to-the-best-standards.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_A_Q6nmUhcGA_reusing-your-usethis-setup-across-multiple-rstudio-cloud-projects.md",
+        "dsincubator_wiki/sources/source_AxpkFkfTF8o_git-status-add-rm-cached-commit-log.md",
+        "dsincubator_wiki/sources/source_BAS8yfLBnog_strong-style-pair-programming-submitting-an-r-package-to-cran.md",
+        "dsincubator_wiki/sources/source_BOcl8iuiDvU_reprex-do-s-and-don-ts.md",
+        "dsincubator_wiki/sources/source_BYtt2cXW4qg_ds-terminal-use-case-customize-and-reuse-your-home.md",
+        "dsincubator_wiki/sources/source_C0VuGkBZeKw_hazards-of-side-effects-and-ways-to-leave-the-world-as-you-found-it.md",
+        "dsincubator_wiki/sources/source_C27MVWqWSMs_r-packages-the-whole-game.md",
+        "dsincubator_wiki/sources/source_C29QThEYbYY_a-b-testing-r2dii-plot.md",
+        "dsincubator_wiki/sources/source_CLCn5ZkCbrg_main-usethis-helpers-for-github-pull-requests.md",
+        "dsincubator_wiki/sources/source_CRcK0SCxGBQ_a-demo-of-the-package-r2dii-plot-by-monika.md",
+        "dsincubator_wiki/sources/source_CvOVn2zwi3k_docker-using-volumes-and-managing-users.md",
+        "dsincubator_wiki/sources/source_DVmvsZk-9F4_terminal-modify-your-file-system.md",
+        "dsincubator_wiki/sources/source_DeLK1OKNQlw_ds-database-relational-data-with-the-dm-package.md",
+        "dsincubator_wiki/sources/source_DfVoYtCQlfU_the-flow-of-data-and-get-data-directly-form-the-database.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_EaJqUQkDo48_gh-pr-allows-you-to-work-with-github-pull-requests-from-your-terminal.md",
+        "dsincubator_wiki/sources/source_EmDubkF8DpQ_targets-introduccion.md",
+        "dsincubator_wiki/sources/source_F7JiD7oT4P8_rstudio-team-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_F92p3elUUSE_publish-a-site-on-github.md",
+        "dsincubator_wiki/sources/source_FPZfMUwV73o_r-packages-documenting.md",
+        "dsincubator_wiki/sources/source_GDgir1XXOkw_avoid-recomputing-if-you-can-instead-memoise.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source_H9lARi3re9I_ds-database-using-a-relational-database-management-system-rdbms.md",
+        "dsincubator_wiki/sources/source_HJCUlCgEnqM_eda-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_Hv6DzT6Z2yA_tidy-eda-patterns-and-models.md",
+        "dsincubator_wiki/sources/source_JXfEWLZXwXY_https-github-com-2degreesinvesting-ds-incubator-issues-50.md",
+        "dsincubator_wiki/sources/source_JdFA31-vJUE_cloud-use-case-host-shiny-apps.md",
+        "dsincubator_wiki/sources/source_JqqrPZdWXfQ_shiny-basic-ui-and-introduction-to-reactive.md",
+        "dsincubator_wiki/sources/source_KxybJ_zVJUA_eda-with-the-tidyverse-typical-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_MJZ7ZsfG5lM_wrapping-up-our-discussion-on-how-to-manage-and-use-data.md",
+        "dsincubator_wiki/sources/source_MU8E_gpylPE_git-branch-part-1.md",
+        "dsincubator_wiki/sources/source_NF7HPKt55Yk_cloud-use-cases.md",
+        "dsincubator_wiki/sources/source_NgEocgBUH_A_shiny-debugging.md",
+        "dsincubator_wiki/sources/source_NuXgJtl9QDw_terminal-running-commands-as-administrator.md",
+        "dsincubator_wiki/sources/source_OFjlPa7Uqeo_comparing-remote-setup-ours-versus-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_OieR0VDxSRk_docker-use-cases.md",
+        "dsincubator_wiki/sources/source_OofNbCXEVgU_gitflow-workflow.md",
+        "dsincubator_wiki/sources/source_PHFOEKXPaxI_avoid-hidden-arguments.md",
+        "dsincubator_wiki/sources/source_PRKOMCCOlI0_continuously-build-and-deploy-a-shiny-app-on-google-cloud-run.md",
+        "dsincubator_wiki/sources/source_Pi__2Hze4_0_setup-for-r-package-development.md",
+        "dsincubator_wiki/sources/source_Q9S7CvXu3KY_remote-setup-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_QxgEn2fwIOk_dbt-installation.md",
+        "dsincubator_wiki/sources/source_RO-OdWXfpBc_docker-managing-containers.md",
+        "dsincubator_wiki/sources/source_S4GyNTwj_sc_introduction-to-version-control-with-git-initialize-a-git-repository.md",
+        "dsincubator_wiki/sources/source_SXEXcXE6Ke0_moving-from-a-sequence-of-scripts-to-a-pipeline-of-functions.md",
+        "dsincubator_wiki/sources/source_TEUbVjhooIg_project-oriented-workflow.md",
+        "dsincubator_wiki/sources/source_UR4vwDkJMhc_pair-programming.md",
+        "dsincubator_wiki/sources/source_UeECMfOFIHk_testing-using-snapshot-tests-to-refactor-safely.md",
+        "dsincubator_wiki/sources/source_Ulz8Vfnr2P4_ds-database-validate-data-quality.md",
+        "dsincubator_wiki/sources/source_V2oSfukR4mw_terminal-start-a-terminal-and-navigate-your-files-system.md",
+        "dsincubator_wiki/sources/source_VA3qaeTKTYk_tidying-data.md",
+        "dsincubator_wiki/sources/source_VCHu0uhGo2g_pins-sharing-versions-of-a-dataset-with-pins-and-dropbox.md",
+        "dsincubator_wiki/sources/source_VRG95a4aBW4_cloud-more-ways-to-move-data.md",
+        "dsincubator_wiki/sources/source_WBmLuUV5BEE_tidy-eda-covariation-between-one-categorical-variable-and-one-continuous-variable.md",
+        "dsincubator_wiki/sources/source_WmzqpTZtFAw_dbt-overview.md",
+        "dsincubator_wiki/sources/source_XG8DetPZP4c_wtf-installing-r-packages-part-1.md",
+        "dsincubator_wiki/sources/source_XRF9tge--9I_git-diff-sha1-sha2-path-mv-rm-core-editor.md",
+        "dsincubator_wiki/sources/source_YDsoKUVsJls_setup-github-r-rstudio-and-git.md",
+        "dsincubator_wiki/sources/source_YlBnarQNRR8_tidy-eda-defensive-workflow.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md",
+        "dsincubator_wiki/sources/source__y_vnRM19lc_setting-expectations-for-open-source-participation-reprex.md",
+        "dsincubator_wiki/sources/source_bKRFCOkmpiw_testing-code-coverage.md",
+        "dsincubator_wiki/sources/source_bR0RYYwiDRM_the-simplest-way-to-run-multiple-r-sessions-in-the-same-ide.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_cKAXDJq5ZdA_wtf-holistic-workflow-part-1.md",
+        "dsincubator_wiki/sources/source_ciJpIWs3t3k_suggest-commit-changes-directly-on-a-github-pr.md",
+        "dsincubator_wiki/sources/source_co082qNN_Cs_r-packages-testing.md",
+        "dsincubator_wiki/sources/source_dV9C2eIo5QQ_targets-tar-cue-declare-the-rules-that-mark-a-target-as-outdated.md",
+        "dsincubator_wiki/sources/source_dZOfEF19yDk_undoing-things-with-git.md",
+        "dsincubator_wiki/sources/source_eQ-BFO3eZX8_https-github-com-2degreesinvesting-ds-incubator-issues-47.md",
+        "dsincubator_wiki/sources/source_eeUZ8dHsmG8_git-practices-by-example.md",
+        "dsincubator_wiki/sources/source_ek3b0m1iCdk_wtf-holistic-workflow-part-2.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_fnfeYPPG9gM_usethis-pr-sync-english.md",
+        "dsincubator_wiki/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md",
+        "dsincubator_wiki/sources/source_gGXwszGqZxM_dbt-structure.md",
+        "dsincubator_wiki/sources/source_h6koYxwQFuE_working-with-git-and-github-from-rstudio-part-1.md",
+        "dsincubator_wiki/sources/source_hRUvGna0uK0_r-packages-data.md",
+        "dsincubator_wiki/sources/source_hs_Pzxny7XE_evita-solicitudes-de-fusion-interdependientes.md",
+        "dsincubator_wiki/sources/source_iNWBG3x4QVc_how-to-download-a-file-from-google-drive-into-your-r-ide.md",
+        "dsincubator_wiki/sources/source_iYlKc0BTjBk_terminal-find-things.md",
+        "dsincubator_wiki/sources/source_jAkNwaGRku0_targets-eexternal-files-and-literate-programming.md",
+        "dsincubator_wiki/sources/source_jYvJO2lENbY_git-remotes.md",
+        "dsincubator_wiki/sources/source_jyBv5ITO718_terminal-create-a-custom-command-as-a-user-in-a-multi-user-system.md",
+        "dsincubator_wiki/sources/source_k8GykC4ZXW0_tidy-eda-covariation-between-two-categorical-variables-and-between-two-continuous-variables.md",
+        "dsincubator_wiki/sources/source_kNV8dDGF7Hw_conversaciones-productivas-sobre-codigo-demo.md",
+        "dsincubator_wiki/sources/source_kS_0s0eS1Xw_pins.md",
+        "dsincubator_wiki/sources/source_kgGCNGLyqdg_docker-docker-compose-and-env-files.md",
+        "dsincubator_wiki/sources/source_lfhuO71ikQE_targets-debugging.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_moAei68dxr0_ds-rpy-running-python-code-from-rstudio.md",
+        "dsincubator_wiki/sources/source_nL3Qr7bvlg4_dbt-usage.md",
+        "dsincubator_wiki/sources/source_nSJT8NGhSTs_ejemplo-de-mejores-practicas-de-git.md",
+        "dsincubator_wiki/sources/source_o9ZHNEl8UI8_watch-out-for-type-inconsistent-code.md",
+        "dsincubator_wiki/sources/source_ovbwghDjxV8_r2dii-data-and-r2dii-match-are-now-on-cran-demo-and-q-a.md",
+        "dsincubator_wiki/sources/source_p-p_4ZcDIGw_shiny-your-first-shiny-app.md",
+        "dsincubator_wiki/sources/source_pCo14eM-KkQ_webdata-using-apis.md",
+        "dsincubator_wiki/sources/source_pbc6NX1n01Q_targets-introduction.md",
+        "dsincubator_wiki/sources/source_pxxcuZH9_yA_testing-snapshot-tests.md",
+        "dsincubator_wiki/sources/source_q-hsaxVA1kc_gh-repo-create-and-gh-browse-to-create-and-browse-a-github-repo-from-the-terminal.md",
+        "dsincubator_wiki/sources/source_q17jsQrBPt0_reprex-package-philosophy.md",
+        "dsincubator_wiki/sources/source_qY5ForDjgGY_docker-getting-started-with-the-rocker-project.md",
+        "dsincubator_wiki/sources/source_qqKhQdejUOM_project-management-on-github.md",
+        "dsincubator_wiki/sources/source_qvQ_YmyjK0U_ds-database-relational-data-with-dplyr.md",
+        "dsincubator_wiki/sources/source_rirpOpTYVg4_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_sPE6MLGUPy4_webdata-scrapping.md",
+        "dsincubator_wiki/sources/source_sbp5Q8niTho_set-up-a-custom-user-library-to-install-r-packages.md",
+        "dsincubator_wiki/sources/source_tLvRWRWeQK4_wtf-debugging-r-code.md",
+        "dsincubator_wiki/sources/source_tbvsaXwtcPU_moving-commits-across-branches-rebasing-and-squashing.md",
+        "dsincubator_wiki/sources/source_tetgpXHal5s_daily-git-workflows-fork-and-clone-explained.md",
+        "dsincubator_wiki/sources/source_uDx9NkoBqv8_data-science-on-a-chromebook.md",
+        "dsincubator_wiki/sources/source_uk-I5WrZsAc_shiny-wrap-up-and-demo.md",
+        "dsincubator_wiki/sources/source_vpAW3j5zbX0_daily-stand-ups.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md",
+        "dsincubator_wiki/sources/source_xW05GsfhuiY_wtf-name-and-organize-files.md",
+        "dsincubator_wiki/sources/source_xx5WNZgQEdY_usethis-pr-synch-espanol.md",
+        "dsincubator_wiki/sources/source_xxtpMXvVM3s_refactoring-how-to-prepare-for-dplyr-1-0-0.md",
+        "dsincubator_wiki/sources/source_xyNydg5IUok_good-commit-messages-gitignore-guis.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md",
+        "dsincubator_wiki/sources/source_yOJZHRGF3Bk_terminal-overview.md",
+        "dsincubator_wiki/sources/source_yldd8trFbaQ_cloud-resize-data-storage-and-share-data-with-pins.md",
+        "dsincubator_wiki/sources/source_z4RAuGrAm8c_access-permissions-for-a-github-organization.md",
+        "dsincubator_wiki/sources/source_zC31jaKp1jQ_git-branch-part-2-merge-delete.md",
+        "dsincubator_wiki/sources/source_zv5_OSb6lRo_github-flow-the-case-of-publishing-an-new-blog-post.md"
+      ]
     },
     {
       "topic_filename": "topics/git/git-fundamentals.md",
       "topic_title": "Git Fundamentals",
       "type": "Playbook",
       "description": "Core git concepts: initializing repos, staging, committing, diffs, status, and log",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_5gmTK8Cb-WE_merge-conflicts.md",
+        "dsincubator_wiki/sources/source_7igKU5JVmxM_inspecting-the-history.md",
+        "dsincubator_wiki/sources/source_AxpkFkfTF8o_git-status-add-rm-cached-commit-log.md",
+        "dsincubator_wiki/sources/source_Q9S7CvXu3KY_remote-setup-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_S4GyNTwj_sc_introduction-to-version-control-with-git-initialize-a-git-repository.md",
+        "dsincubator_wiki/sources/source_XRF9tge--9I_git-diff-sha1-sha2-path-mv-rm-core-editor.md",
+        "dsincubator_wiki/sources/source_ciJpIWs3t3k_suggest-commit-changes-directly-on-a-github-pr.md",
+        "dsincubator_wiki/sources/source_dZOfEF19yDk_undoing-things-with-git.md",
+        "dsincubator_wiki/sources/source_eQ-BFO3eZX8_https-github-com-2degreesinvesting-ds-incubator-issues-47.md",
+        "dsincubator_wiki/sources/source_eeUZ8dHsmG8_git-practices-by-example.md",
+        "dsincubator_wiki/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md",
+        "dsincubator_wiki/sources/source_jYvJO2lENbY_git-remotes.md",
+        "dsincubator_wiki/sources/source_nSJT8NGhSTs_ejemplo-de-mejores-practicas-de-git.md",
+        "dsincubator_wiki/sources/source_pxxcuZH9_yA_testing-snapshot-tests.md",
+        "dsincubator_wiki/sources/source_q-hsaxVA1kc_gh-repo-create-and-gh-browse-to-create-and-browse-a-github-repo-from-the-terminal.md",
+        "dsincubator_wiki/sources/source_qqKhQdejUOM_project-management-on-github.md",
+        "dsincubator_wiki/sources/source_tbvsaXwtcPU_moving-commits-across-branches-rebasing-and-squashing.md",
+        "dsincubator_wiki/sources/source_xyNydg5IUok_good-commit-messages-gitignore-guis.md",
+        "dsincubator_wiki/sources/source_zC31jaKp1jQ_git-branch-part-2-merge-delete.md",
+        "dsincubator_wiki/sources/source_zv5_OSb6lRo_github-flow-the-case-of-publishing-an-new-blog-post.md"
+      ]
     },
     {
       "topic_filename": "topics/git/branching-merging.md",
       "topic_title": "Git Branching and Merging",
       "type": "Playbook",
       "description": "Branching workflows, merging strategies, fast-forward merges, and merge commit history",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_5gmTK8Cb-WE_merge-conflicts.md",
+        "dsincubator_wiki/sources/source_EaJqUQkDo48_gh-pr-allows-you-to-work-with-github-pull-requests-from-your-terminal.md",
+        "dsincubator_wiki/sources/source_MU8E_gpylPE_git-branch-part-1.md",
+        "dsincubator_wiki/sources/source_OFjlPa7Uqeo_comparing-remote-setup-ours-versus-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_OofNbCXEVgU_gitflow-workflow.md",
+        "dsincubator_wiki/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md",
+        "dsincubator_wiki/sources/source_hs_Pzxny7XE_evita-solicitudes-de-fusion-interdependientes.md",
+        "dsincubator_wiki/sources/source_jYvJO2lENbY_git-remotes.md",
+        "dsincubator_wiki/sources/source_nSJT8NGhSTs_ejemplo-de-mejores-practicas-de-git.md",
+        "dsincubator_wiki/sources/source_tbvsaXwtcPU_moving-commits-across-branches-rebasing-and-squashing.md",
+        "dsincubator_wiki/sources/source_z4RAuGrAm8c_access-permissions-for-a-github-organization.md",
+        "dsincubator_wiki/sources/source_zC31jaKp1jQ_git-branch-part-2-merge-delete.md",
+        "dsincubator_wiki/sources/source_zv5_OSb6lRo_github-flow-the-case-of-publishing-an-new-blog-post.md"
+      ]
     },
     {
       "topic_filename": "topics/git/merge-conflicts.md",
       "topic_title": "Merge Conflicts",
       "type": "Playbook",
       "description": "Understanding, avoiding, and resolving merge conflicts; manual and automated resolution strategies",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_5gmTK8Cb-WE_merge-conflicts.md",
+        "dsincubator_wiki/sources/source_eeUZ8dHsmG8_git-practices-by-example.md",
+        "dsincubator_wiki/sources/source_fnfeYPPG9gM_usethis-pr-sync-english.md",
+        "dsincubator_wiki/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md",
+        "dsincubator_wiki/sources/source_hs_Pzxny7XE_evita-solicitudes-de-fusion-interdependientes.md",
+        "dsincubator_wiki/sources/source_xx5WNZgQEdY_usethis-pr-synch-espanol.md"
+      ]
     },
     {
       "topic_filename": "topics/git/rebasing.md",
       "topic_title": "Git Rebasing",
       "type": "Playbook",
       "description": "Rebase vs merge, rewriting history, interactive rebase, and workflow implications",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_5gmTK8Cb-WE_merge-conflicts.md",
+        "dsincubator_wiki/sources/source_eeUZ8dHsmG8_git-practices-by-example.md",
+        "dsincubator_wiki/sources/source_hs_Pzxny7XE_evita-solicitudes-de-fusion-interdependientes.md",
+        "dsincubator_wiki/sources/source_tbvsaXwtcPU_moving-commits-across-branches-rebasing-and-squashing.md",
+        "dsincubator_wiki/sources/source_zC31jaKp1jQ_git-branch-part-2-merge-delete.md"
+      ]
     },
     {
       "topic_filename": "topics/git/github-workflow.md",
       "topic_title": "GitHub Workflow",
       "type": "Playbook",
       "description": "GitHub CLI usage, pull requests, remote setup, forking, cloning, and collaboration workflows",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-L2A_7XvD6Y_working-with-git-and-github-from-rstudio-part-2.md",
+        "dsincubator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md",
+        "dsincubator_wiki/sources/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md",
+        "dsincubator_wiki/sources/source_3_0gUMqKikw_docker-managing-images.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_5gmTK8Cb-WE_merge-conflicts.md",
+        "dsincubator_wiki/sources/source_5wHl9N4fBBU_ds-production-from-an-mvp-to-production.md",
+        "dsincubator_wiki/sources/source_AFuVF0oWFMY_creating-an-empty-r-package-up-to-the-best-standards.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_A_Q6nmUhcGA_reusing-your-usethis-setup-across-multiple-rstudio-cloud-projects.md",
+        "dsincubator_wiki/sources/source_BAS8yfLBnog_strong-style-pair-programming-submitting-an-r-package-to-cran.md",
+        "dsincubator_wiki/sources/source_BOcl8iuiDvU_reprex-do-s-and-don-ts.md",
+        "dsincubator_wiki/sources/source_C29QThEYbYY_a-b-testing-r2dii-plot.md",
+        "dsincubator_wiki/sources/source_CLCn5ZkCbrg_main-usethis-helpers-for-github-pull-requests.md",
+        "dsincubator_wiki/sources/source_DeLK1OKNQlw_ds-database-relational-data-with-the-dm-package.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_EaJqUQkDo48_gh-pr-allows-you-to-work-with-github-pull-requests-from-your-terminal.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source_MU8E_gpylPE_git-branch-part-1.md",
+        "dsincubator_wiki/sources/source_OFjlPa7Uqeo_comparing-remote-setup-ours-versus-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_OieR0VDxSRk_docker-use-cases.md",
+        "dsincubator_wiki/sources/source_OofNbCXEVgU_gitflow-workflow.md",
+        "dsincubator_wiki/sources/source_Q9S7CvXu3KY_remote-setup-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_TEUbVjhooIg_project-oriented-workflow.md",
+        "dsincubator_wiki/sources/source_UR4vwDkJMhc_pair-programming.md",
+        "dsincubator_wiki/sources/source_VA3qaeTKTYk_tidying-data.md",
+        "dsincubator_wiki/sources/source_XG8DetPZP4c_wtf-installing-r-packages-part-1.md",
+        "dsincubator_wiki/sources/source_YlBnarQNRR8_tidy-eda-defensive-workflow.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source__y_vnRM19lc_setting-expectations-for-open-source-participation-reprex.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_cKAXDJq5ZdA_wtf-holistic-workflow-part-1.md",
+        "dsincubator_wiki/sources/source_ciJpIWs3t3k_suggest-commit-changes-directly-on-a-github-pr.md",
+        "dsincubator_wiki/sources/source_co082qNN_Cs_r-packages-testing.md",
+        "dsincubator_wiki/sources/source_eeUZ8dHsmG8_git-practices-by-example.md",
+        "dsincubator_wiki/sources/source_ek3b0m1iCdk_wtf-holistic-workflow-part-2.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_fnfeYPPG9gM_usethis-pr-sync-english.md",
+        "dsincubator_wiki/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md",
+        "dsincubator_wiki/sources/source_gGXwszGqZxM_dbt-structure.md",
+        "dsincubator_wiki/sources/source_h6koYxwQFuE_working-with-git-and-github-from-rstudio-part-1.md",
+        "dsincubator_wiki/sources/source_hs_Pzxny7XE_evita-solicitudes-de-fusion-interdependientes.md",
+        "dsincubator_wiki/sources/source_jAkNwaGRku0_targets-eexternal-files-and-literate-programming.md",
+        "dsincubator_wiki/sources/source_jYvJO2lENbY_git-remotes.md",
+        "dsincubator_wiki/sources/source_kNV8dDGF7Hw_conversaciones-productivas-sobre-codigo-demo.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_nSJT8NGhSTs_ejemplo-de-mejores-practicas-de-git.md",
+        "dsincubator_wiki/sources/source_q-hsaxVA1kc_gh-repo-create-and-gh-browse-to-create-and-browse-a-github-repo-from-the-terminal.md",
+        "dsincubator_wiki/sources/source_q17jsQrBPt0_reprex-package-philosophy.md",
+        "dsincubator_wiki/sources/source_qY5ForDjgGY_docker-getting-started-with-the-rocker-project.md",
+        "dsincubator_wiki/sources/source_qqKhQdejUOM_project-management-on-github.md",
+        "dsincubator_wiki/sources/source_qvQ_YmyjK0U_ds-database-relational-data-with-dplyr.md",
+        "dsincubator_wiki/sources/source_sbp5Q8niTho_set-up-a-custom-user-library-to-install-r-packages.md",
+        "dsincubator_wiki/sources/source_tetgpXHal5s_daily-git-workflows-fork-and-clone-explained.md",
+        "dsincubator_wiki/sources/source_vpAW3j5zbX0_daily-stand-ups.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md",
+        "dsincubator_wiki/sources/source_xW05GsfhuiY_wtf-name-and-organize-files.md",
+        "dsincubator_wiki/sources/source_xx5WNZgQEdY_usethis-pr-synch-espanol.md",
+        "dsincubator_wiki/sources/source_xxtpMXvVM3s_refactoring-how-to-prepare-for-dplyr-1-0-0.md",
+        "dsincubator_wiki/sources/source_z4RAuGrAm8c_access-permissions-for-a-github-organization.md",
+        "dsincubator_wiki/sources/source_zC31jaKp1jQ_git-branch-part-2-merge-delete.md",
+        "dsincubator_wiki/sources/source_zv5_OSb6lRo_github-flow-the-case-of-publishing-an-new-blog-post.md"
+      ]
     },
     {
       "topic_filename": "topics/git/gitflow-workflow.md",
       "topic_title": "Gitflow Workflow",
       "type": "Reference",
       "description": "Gitflow branching model, release branches, and conventional commit patterns",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md",
+        "dsincubator_wiki/sources/source_4AOKCiAh3NM_testing-test-driven-development-tdd.md",
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_OofNbCXEVgU_gitflow-workflow.md",
+        "dsincubator_wiki/sources/source_Pi__2Hze4_0_setup-for-r-package-development.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_uDx9NkoBqv8_data-science-on-a-chromebook.md"
+      ]
     },
     {
       "topic_filename": "topics/testing/testing-fundamentals.md",
       "topic_title": "Testing Fundamentals",
       "type": "Playbook",
       "description": "Introduction to testing, test structure, and basic workflow in R",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md"
+      ]
     },
     {
       "topic_filename": "topics/testing/test-driven-development.md",
       "topic_title": "Test-Driven Development",
       "type": "Playbook",
       "description": "TDD methodology: write tests first, implement code, refactor; applying to R packages",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md",
+        "dsincubator_wiki/sources/source_4AOKCiAh3NM_testing-test-driven-development-tdd.md",
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_co082qNN_Cs_r-packages-testing.md"
+      ]
     },
     {
       "topic_filename": "topics/testing/snapshot-tests.md",
       "topic_title": "Snapshot Tests",
       "type": "Playbook",
       "description": "Using testthat snapshot tests to refactor safely and verify output stability",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_5wHl9N4fBBU_ds-production-from-an-mvp-to-production.md",
+        "dsincubator_wiki/sources/source_7igKU5JVmxM_inspecting-the-history.md",
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_AxpkFkfTF8o_git-status-add-rm-cached-commit-log.md",
+        "dsincubator_wiki/sources/source_MU8E_gpylPE_git-branch-part-1.md",
+        "dsincubator_wiki/sources/source_S4GyNTwj_sc_introduction-to-version-control-with-git-initialize-a-git-repository.md",
+        "dsincubator_wiki/sources/source_UeECMfOFIHk_testing-using-snapshot-tests-to-refactor-safely.md",
+        "dsincubator_wiki/sources/source_pxxcuZH9_yA_testing-snapshot-tests.md"
+      ]
     },
     {
       "topic_filename": "topics/testing/code-coverage.md",
       "topic_title": "Code Coverage",
       "type": "Metric",
       "description": "Measuring and improving code coverage, testthat coverage reporting",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_bKRFCOkmpiw_testing-code-coverage.md"
+      ]
     },
     {
       "topic_filename": "topics/r-packages/creating-packages.md",
       "topic_title": "Creating R Packages",
       "type": "Playbook",
       "description": "Package structure, DESCRIPTION files, NAMESPACE, using create_package and usethis",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md",
+        "dsincubator_wiki/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md",
+        "dsincubator_wiki/sources/source_16Xn0ueeP-E_azure-rstudio-server-and-pins.md",
+        "dsincubator_wiki/sources/source_26hbyVb00xs_eda-with-the-tidyverse-exploring-variation.md",
+        "dsincubator_wiki/sources/source_2WBj5Oex_Fc_an-overview-our-our-resources-at-2dii.md",
+        "dsincubator_wiki/sources/source_3rf1W9ceKhU_failing-fast-in-dplyr-chains.md",
+        "dsincubator_wiki/sources/source_4AOKCiAh3NM_testing-test-driven-development-tdd.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_5wHl9N4fBBU_ds-production-from-an-mvp-to-production.md",
+        "dsincubator_wiki/sources/source_7igKU5JVmxM_inspecting-the-history.md",
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_9yrckf6Km-U_wtf-installing-r-packages-part-2.md",
+        "dsincubator_wiki/sources/source_AFuVF0oWFMY_creating-an-empty-r-package-up-to-the-best-standards.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_BAS8yfLBnog_strong-style-pair-programming-submitting-an-r-package-to-cran.md",
+        "dsincubator_wiki/sources/source_BOcl8iuiDvU_reprex-do-s-and-don-ts.md",
+        "dsincubator_wiki/sources/source_C0VuGkBZeKw_hazards-of-side-effects-and-ways-to-leave-the-world-as-you-found-it.md",
+        "dsincubator_wiki/sources/source_C27MVWqWSMs_r-packages-the-whole-game.md",
+        "dsincubator_wiki/sources/source_CLCn5ZkCbrg_main-usethis-helpers-for-github-pull-requests.md",
+        "dsincubator_wiki/sources/source_CRcK0SCxGBQ_a-demo-of-the-package-r2dii-plot-by-monika.md",
+        "dsincubator_wiki/sources/source_DeLK1OKNQlw_ds-database-relational-data-with-the-dm-package.md",
+        "dsincubator_wiki/sources/source_DfVoYtCQlfU_the-flow-of-data-and-get-data-directly-form-the-database.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_F92p3elUUSE_publish-a-site-on-github.md",
+        "dsincubator_wiki/sources/source_FPZfMUwV73o_r-packages-documenting.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source_H9lARi3re9I_ds-database-using-a-relational-database-management-system-rdbms.md",
+        "dsincubator_wiki/sources/source_HJCUlCgEnqM_eda-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_Hv6DzT6Z2yA_tidy-eda-patterns-and-models.md",
+        "dsincubator_wiki/sources/source_JXfEWLZXwXY_https-github-com-2degreesinvesting-ds-incubator-issues-50.md",
+        "dsincubator_wiki/sources/source_KxybJ_zVJUA_eda-with-the-tidyverse-typical-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_NF7HPKt55Yk_cloud-use-cases.md",
+        "dsincubator_wiki/sources/source_NgEocgBUH_A_shiny-debugging.md",
+        "dsincubator_wiki/sources/source_NuXgJtl9QDw_terminal-running-commands-as-administrator.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_Pi__2Hze4_0_setup-for-r-package-development.md",
+        "dsincubator_wiki/sources/source_SXEXcXE6Ke0_moving-from-a-sequence-of-scripts-to-a-pipeline-of-functions.md",
+        "dsincubator_wiki/sources/source_TEUbVjhooIg_project-oriented-workflow.md",
+        "dsincubator_wiki/sources/source_UeECMfOFIHk_testing-using-snapshot-tests-to-refactor-safely.md",
+        "dsincubator_wiki/sources/source_Ulz8Vfnr2P4_ds-database-validate-data-quality.md",
+        "dsincubator_wiki/sources/source_VCHu0uhGo2g_pins-sharing-versions-of-a-dataset-with-pins-and-dropbox.md",
+        "dsincubator_wiki/sources/source_WBmLuUV5BEE_tidy-eda-covariation-between-one-categorical-variable-and-one-continuous-variable.md",
+        "dsincubator_wiki/sources/source_XG8DetPZP4c_wtf-installing-r-packages-part-1.md",
+        "dsincubator_wiki/sources/source_YlBnarQNRR8_tidy-eda-defensive-workflow.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source_bKRFCOkmpiw_testing-code-coverage.md",
+        "dsincubator_wiki/sources/source_bR0RYYwiDRM_the-simplest-way-to-run-multiple-r-sessions-in-the-same-ide.md",
+        "dsincubator_wiki/sources/source_cKAXDJq5ZdA_wtf-holistic-workflow-part-1.md",
+        "dsincubator_wiki/sources/source_co082qNN_Cs_r-packages-testing.md",
+        "dsincubator_wiki/sources/source_dV9C2eIo5QQ_targets-tar-cue-declare-the-rules-that-mark-a-target-as-outdated.md",
+        "dsincubator_wiki/sources/source_eQ-BFO3eZX8_https-github-com-2degreesinvesting-ds-incubator-issues-47.md",
+        "dsincubator_wiki/sources/source_eeUZ8dHsmG8_git-practices-by-example.md",
+        "dsincubator_wiki/sources/source_ek3b0m1iCdk_wtf-holistic-workflow-part-2.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_fnfeYPPG9gM_usethis-pr-sync-english.md",
+        "dsincubator_wiki/sources/source_hRUvGna0uK0_r-packages-data.md",
+        "dsincubator_wiki/sources/source_iNWBG3x4QVc_how-to-download-a-file-from-google-drive-into-your-r-ide.md",
+        "dsincubator_wiki/sources/source_jAkNwaGRku0_targets-eexternal-files-and-literate-programming.md",
+        "dsincubator_wiki/sources/source_k8GykC4ZXW0_tidy-eda-covariation-between-two-categorical-variables-and-between-two-continuous-variables.md",
+        "dsincubator_wiki/sources/source_kS_0s0eS1Xw_pins.md",
+        "dsincubator_wiki/sources/source_lfhuO71ikQE_targets-debugging.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_moAei68dxr0_ds-rpy-running-python-code-from-rstudio.md",
+        "dsincubator_wiki/sources/source_o9ZHNEl8UI8_watch-out-for-type-inconsistent-code.md",
+        "dsincubator_wiki/sources/source_ovbwghDjxV8_r2dii-data-and-r2dii-match-are-now-on-cran-demo-and-q-a.md",
+        "dsincubator_wiki/sources/source_p-p_4ZcDIGw_shiny-your-first-shiny-app.md",
+        "dsincubator_wiki/sources/source_pCo14eM-KkQ_webdata-using-apis.md",
+        "dsincubator_wiki/sources/source_pbc6NX1n01Q_targets-introduction.md",
+        "dsincubator_wiki/sources/source_pxxcuZH9_yA_testing-snapshot-tests.md",
+        "dsincubator_wiki/sources/source_q17jsQrBPt0_reprex-package-philosophy.md",
+        "dsincubator_wiki/sources/source_qvQ_YmyjK0U_ds-database-relational-data-with-dplyr.md",
+        "dsincubator_wiki/sources/source_sPE6MLGUPy4_webdata-scrapping.md",
+        "dsincubator_wiki/sources/source_sbp5Q8niTho_set-up-a-custom-user-library-to-install-r-packages.md",
+        "dsincubator_wiki/sources/source_tLvRWRWeQK4_wtf-debugging-r-code.md",
+        "dsincubator_wiki/sources/source_uk-I5WrZsAc_shiny-wrap-up-and-demo.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md",
+        "dsincubator_wiki/sources/source_xW05GsfhuiY_wtf-name-and-organize-files.md",
+        "dsincubator_wiki/sources/source_xxtpMXvVM3s_refactoring-how-to-prepare-for-dplyr-1-0-0.md",
+        "dsincubator_wiki/sources/source_xyNydg5IUok_good-commit-messages-gitignore-guis.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md",
+        "dsincubator_wiki/sources/source_yldd8trFbaQ_cloud-resize-data-storage-and-share-data-with-pins.md",
+        "dsincubator_wiki/sources/source_z4RAuGrAm8c_access-permissions-for-a-github-organization.md"
+      ]
     },
     {
       "topic_filename": "topics/r-packages/usethis-workflow.md",
       "topic_title": "usethis Workflow",
       "type": "Playbook",
       "description": "usethis package helpers: use_git, use_readme, use_test, use_pkgdown, use_ci, use_version",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md",
+        "dsincubator_wiki/sources/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md",
+        "dsincubator_wiki/sources/source_3_0gUMqKikw_docker-managing-images.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_5wHl9N4fBBU_ds-production-from-an-mvp-to-production.md",
+        "dsincubator_wiki/sources/source_AFuVF0oWFMY_creating-an-empty-r-package-up-to-the-best-standards.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_A_Q6nmUhcGA_reusing-your-usethis-setup-across-multiple-rstudio-cloud-projects.md",
+        "dsincubator_wiki/sources/source_BAS8yfLBnog_strong-style-pair-programming-submitting-an-r-package-to-cran.md",
+        "dsincubator_wiki/sources/source_BOcl8iuiDvU_reprex-do-s-and-don-ts.md",
+        "dsincubator_wiki/sources/source_C27MVWqWSMs_r-packages-the-whole-game.md",
+        "dsincubator_wiki/sources/source_C29QThEYbYY_a-b-testing-r2dii-plot.md",
+        "dsincubator_wiki/sources/source_CLCn5ZkCbrg_main-usethis-helpers-for-github-pull-requests.md",
+        "dsincubator_wiki/sources/source_DeLK1OKNQlw_ds-database-relational-data-with-the-dm-package.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_EaJqUQkDo48_gh-pr-allows-you-to-work-with-github-pull-requests-from-your-terminal.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source_OFjlPa7Uqeo_comparing-remote-setup-ours-versus-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_OieR0VDxSRk_docker-use-cases.md",
+        "dsincubator_wiki/sources/source_Pi__2Hze4_0_setup-for-r-package-development.md",
+        "dsincubator_wiki/sources/source_TEUbVjhooIg_project-oriented-workflow.md",
+        "dsincubator_wiki/sources/source_UR4vwDkJMhc_pair-programming.md",
+        "dsincubator_wiki/sources/source_VA3qaeTKTYk_tidying-data.md",
+        "dsincubator_wiki/sources/source_XG8DetPZP4c_wtf-installing-r-packages-part-1.md",
+        "dsincubator_wiki/sources/source_YlBnarQNRR8_tidy-eda-defensive-workflow.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source__y_vnRM19lc_setting-expectations-for-open-source-participation-reprex.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_cKAXDJq5ZdA_wtf-holistic-workflow-part-1.md",
+        "dsincubator_wiki/sources/source_ciJpIWs3t3k_suggest-commit-changes-directly-on-a-github-pr.md",
+        "dsincubator_wiki/sources/source_eeUZ8dHsmG8_git-practices-by-example.md",
+        "dsincubator_wiki/sources/source_ek3b0m1iCdk_wtf-holistic-workflow-part-2.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_fnfeYPPG9gM_usethis-pr-sync-english.md",
+        "dsincubator_wiki/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md",
+        "dsincubator_wiki/sources/source_gGXwszGqZxM_dbt-structure.md",
+        "dsincubator_wiki/sources/source_hRUvGna0uK0_r-packages-data.md",
+        "dsincubator_wiki/sources/source_hs_Pzxny7XE_evita-solicitudes-de-fusion-interdependientes.md",
+        "dsincubator_wiki/sources/source_jAkNwaGRku0_targets-eexternal-files-and-literate-programming.md",
+        "dsincubator_wiki/sources/source_jYvJO2lENbY_git-remotes.md",
+        "dsincubator_wiki/sources/source_kNV8dDGF7Hw_conversaciones-productivas-sobre-codigo-demo.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_nSJT8NGhSTs_ejemplo-de-mejores-practicas-de-git.md",
+        "dsincubator_wiki/sources/source_q-hsaxVA1kc_gh-repo-create-and-gh-browse-to-create-and-browse-a-github-repo-from-the-terminal.md",
+        "dsincubator_wiki/sources/source_q17jsQrBPt0_reprex-package-philosophy.md",
+        "dsincubator_wiki/sources/source_qY5ForDjgGY_docker-getting-started-with-the-rocker-project.md",
+        "dsincubator_wiki/sources/source_qqKhQdejUOM_project-management-on-github.md",
+        "dsincubator_wiki/sources/source_qvQ_YmyjK0U_ds-database-relational-data-with-dplyr.md",
+        "dsincubator_wiki/sources/source_sbp5Q8niTho_set-up-a-custom-user-library-to-install-r-packages.md",
+        "dsincubator_wiki/sources/source_tetgpXHal5s_daily-git-workflows-fork-and-clone-explained.md",
+        "dsincubator_wiki/sources/source_vpAW3j5zbX0_daily-stand-ups.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md",
+        "dsincubator_wiki/sources/source_xW05GsfhuiY_wtf-name-and-organize-files.md",
+        "dsincubator_wiki/sources/source_xx5WNZgQEdY_usethis-pr-synch-espanol.md",
+        "dsincubator_wiki/sources/source_xxtpMXvVM3s_refactoring-how-to-prepare-for-dplyr-1-0-0.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md",
+        "dsincubator_wiki/sources/source_z4RAuGrAm8c_access-permissions-for-a-github-organization.md"
+      ]
     },
     {
       "topic_filename": "topics/r-packages/package-documentation.md",
       "topic_title": "Package Documentation",
       "type": "Reference",
       "description": "Roxygen2 documentation, package-level docs, function documentation, and vignettes",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_C27MVWqWSMs_r-packages-the-whole-game.md",
+        "dsincubator_wiki/sources/source_FPZfMUwV73o_r-packages-documenting.md",
+        "dsincubator_wiki/sources/source_hRUvGna0uK0_r-packages-data.md"
+      ]
     },
     {
       "topic_filename": "topics/r-packages/package-testing.md",
       "topic_title": "Package Testing Infrastructure",
       "type": "Playbook",
       "description": "Setting up testthat in packages, test directories, automated testing with CI/CD",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md",
+        "dsincubator_wiki/sources/source_3rf1W9ceKhU_failing-fast-in-dplyr-chains.md",
+        "dsincubator_wiki/sources/source_4AOKCiAh3NM_testing-test-driven-development-tdd.md",
+        "dsincubator_wiki/sources/source_5wHl9N4fBBU_ds-production-from-an-mvp-to-production.md",
+        "dsincubator_wiki/sources/source_7igKU5JVmxM_inspecting-the-history.md",
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_C0VuGkBZeKw_hazards-of-side-effects-and-ways-to-leave-the-world-as-you-found-it.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_UeECMfOFIHk_testing-using-snapshot-tests-to-refactor-safely.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source_bKRFCOkmpiw_testing-code-coverage.md",
+        "dsincubator_wiki/sources/source_co082qNN_Cs_r-packages-testing.md",
+        "dsincubator_wiki/sources/source_pxxcuZH9_yA_testing-snapshot-tests.md",
+        "dsincubator_wiki/sources/source_xxtpMXvVM3s_refactoring-how-to-prepare-for-dplyr-1-0-0.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md"
+      ]
     },
     {
       "topic_filename": "topics/r-packages/cran-submission.md",
       "topic_title": "CRAN Submission",
       "type": "Playbook",
       "description": "Submitting R packages to CRAN, strong-style pair programming, R CMD check, and best practices",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_BAS8yfLBnog_strong-style-pair-programming-submitting-an-r-package-to-cran.md",
+        "dsincubator_wiki/sources/source_C27MVWqWSMs_r-packages-the-whole-game.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_OofNbCXEVgU_gitflow-workflow.md",
+        "dsincubator_wiki/sources/source_UR4vwDkJMhc_pair-programming.md",
+        "dsincubator_wiki/sources/source_XG8DetPZP4c_wtf-installing-r-packages-part-1.md",
+        "dsincubator_wiki/sources/source_moAei68dxr0_ds-rpy-running-python-code-from-rstudio.md",
+        "dsincubator_wiki/sources/source_nSJT8NGhSTs_ejemplo-de-mejores-practicas-de-git.md",
+        "dsincubator_wiki/sources/source_ovbwghDjxV8_r2dii-data-and-r2dii-match-are-now-on-cran-demo-and-q-a.md"
+      ]
     },
     {
       "topic_filename": "topics/pipelines/targets-introduction.md",
@@ -136,7 +603,21 @@
       "description": "Introduction to the targets R package: pipelines, tar_make, target objects, and caching",
       "runtime": "r",
       "computation_type": "pipeline",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_0qUs4hi7ozo_retrospective-about-meetups-in-2020-response.md",
+        "dsincubator_wiki/sources/source_EmDubkF8DpQ_targets-introduccion.md",
+        "dsincubator_wiki/sources/source_GDgir1XXOkw_avoid-recomputing-if-you-can-instead-memoise.md",
+        "dsincubator_wiki/sources/source_SXEXcXE6Ke0_moving-from-a-sequence-of-scripts-to-a-pipeline-of-functions.md",
+        "dsincubator_wiki/sources/source_Ulz8Vfnr2P4_ds-database-validate-data-quality.md",
+        "dsincubator_wiki/sources/source_WmzqpTZtFAw_dbt-overview.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source_dV9C2eIo5QQ_targets-tar-cue-declare-the-rules-that-mark-a-target-as-outdated.md",
+        "dsincubator_wiki/sources/source_jAkNwaGRku0_targets-eexternal-files-and-literate-programming.md",
+        "dsincubator_wiki/sources/source_lfhuO71ikQE_targets-debugging.md",
+        "dsincubator_wiki/sources/source_pbc6NX1n01Q_targets-introduction.md",
+        "dsincubator_wiki/sources/source_tLvRWRWeQK4_wtf-debugging-r-code.md"
+      ]
     },
     {
       "topic_filename": "topics/pipelines/targets-advanced.md",
@@ -145,7 +626,10 @@
       "description": "Outdated targets, target networks, external files, literate programming, and queues",
       "runtime": "r",
       "computation_type": "pipeline",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_dV9C2eIo5QQ_targets-tar-cue-declare-the-rules-that-mark-a-target-as-outdated.md",
+        "dsincubator_wiki/sources/source_jAkNwaGRku0_targets-eexternal-files-and-literate-programming.md"
+      ]
     },
     {
       "topic_filename": "topics/pipelines/drake-workflows.md",
@@ -154,295 +638,819 @@
       "description": "Using drake for reproducible data analysis workflows: plans, caching, dependency tracking, visualization",
       "runtime": "r",
       "computation_type": "pipeline",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_TEUbVjhooIg_project-oriented-workflow.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md"
+      ]
     },
     {
       "topic_filename": "topics/pipelines/reproducible-workflows.md",
       "topic_title": "Reproducible Workflows",
       "type": "Playbook",
       "description": "General principles of reproducible research: from scripts to pipelines, memoization, and workflow automation",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_0qUs4hi7ozo_retrospective-about-meetups-in-2020-response.md",
+        "dsincubator_wiki/sources/source_EmDubkF8DpQ_targets-introduccion.md",
+        "dsincubator_wiki/sources/source_GDgir1XXOkw_avoid-recomputing-if-you-can-instead-memoise.md",
+        "dsincubator_wiki/sources/source_OieR0VDxSRk_docker-use-cases.md",
+        "dsincubator_wiki/sources/source_SXEXcXE6Ke0_moving-from-a-sequence-of-scripts-to-a-pipeline-of-functions.md",
+        "dsincubator_wiki/sources/source_TEUbVjhooIg_project-oriented-workflow.md",
+        "dsincubator_wiki/sources/source_YlBnarQNRR8_tidy-eda-defensive-workflow.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source_cKAXDJq5ZdA_wtf-holistic-workflow-part-1.md",
+        "dsincubator_wiki/sources/source_dV9C2eIo5QQ_targets-tar-cue-declare-the-rules-that-mark-a-target-as-outdated.md",
+        "dsincubator_wiki/sources/source_ek3b0m1iCdk_wtf-holistic-workflow-part-2.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_jAkNwaGRku0_targets-eexternal-files-and-literate-programming.md",
+        "dsincubator_wiki/sources/source_lfhuO71ikQE_targets-debugging.md",
+        "dsincubator_wiki/sources/source_pbc6NX1n01Q_targets-introduction.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md"
+      ]
     },
     {
       "topic_filename": "topics/tidyverse/workflow-overview.md",
       "topic_title": "Tidyverse Data Science Workflow",
       "type": "Playbook",
       "description": "Overview of the data science workflow: import, tidy, transform, visualize, model, communicate",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md",
+        "dsincubator_wiki/sources/source_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md",
+        "dsincubator_wiki/sources/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md",
+        "dsincubator_wiki/sources/source_26hbyVb00xs_eda-with-the-tidyverse-exploring-variation.md",
+        "dsincubator_wiki/sources/source_3_0gUMqKikw_docker-managing-images.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_5gmTK8Cb-WE_merge-conflicts.md",
+        "dsincubator_wiki/sources/source_AFuVF0oWFMY_creating-an-empty-r-package-up-to-the-best-standards.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_C27MVWqWSMs_r-packages-the-whole-game.md",
+        "dsincubator_wiki/sources/source_DfVoYtCQlfU_the-flow-of-data-and-get-data-directly-form-the-database.md",
+        "dsincubator_wiki/sources/source_F92p3elUUSE_publish-a-site-on-github.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source_HJCUlCgEnqM_eda-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_Hv6DzT6Z2yA_tidy-eda-patterns-and-models.md",
+        "dsincubator_wiki/sources/source_KxybJ_zVJUA_eda-with-the-tidyverse-typical-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_MJZ7ZsfG5lM_wrapping-up-our-discussion-on-how-to-manage-and-use-data.md",
+        "dsincubator_wiki/sources/source_MU8E_gpylPE_git-branch-part-1.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_OofNbCXEVgU_gitflow-workflow.md",
+        "dsincubator_wiki/sources/source_Q9S7CvXu3KY_remote-setup-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_S4GyNTwj_sc_introduction-to-version-control-with-git-initialize-a-git-repository.md",
+        "dsincubator_wiki/sources/source_TEUbVjhooIg_project-oriented-workflow.md",
+        "dsincubator_wiki/sources/source_Ulz8Vfnr2P4_ds-database-validate-data-quality.md",
+        "dsincubator_wiki/sources/source_WBmLuUV5BEE_tidy-eda-covariation-between-one-categorical-variable-and-one-continuous-variable.md",
+        "dsincubator_wiki/sources/source_YlBnarQNRR8_tidy-eda-defensive-workflow.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source_cKAXDJq5ZdA_wtf-holistic-workflow-part-1.md",
+        "dsincubator_wiki/sources/source_ciJpIWs3t3k_suggest-commit-changes-directly-on-a-github-pr.md",
+        "dsincubator_wiki/sources/source_co082qNN_Cs_r-packages-testing.md",
+        "dsincubator_wiki/sources/source_eeUZ8dHsmG8_git-practices-by-example.md",
+        "dsincubator_wiki/sources/source_ek3b0m1iCdk_wtf-holistic-workflow-part-2.md",
+        "dsincubator_wiki/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md",
+        "dsincubator_wiki/sources/source_h6koYxwQFuE_working-with-git-and-github-from-rstudio-part-1.md",
+        "dsincubator_wiki/sources/source_hRUvGna0uK0_r-packages-data.md",
+        "dsincubator_wiki/sources/source_jAkNwaGRku0_targets-eexternal-files-and-literate-programming.md",
+        "dsincubator_wiki/sources/source_jYvJO2lENbY_git-remotes.md",
+        "dsincubator_wiki/sources/source_k8GykC4ZXW0_tidy-eda-covariation-between-two-categorical-variables-and-between-two-continuous-variables.md",
+        "dsincubator_wiki/sources/source_kNV8dDGF7Hw_conversaciones-productivas-sobre-codigo-demo.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_moAei68dxr0_ds-rpy-running-python-code-from-rstudio.md",
+        "dsincubator_wiki/sources/source_nSJT8NGhSTs_ejemplo-de-mejores-practicas-de-git.md",
+        "dsincubator_wiki/sources/source_pCo14eM-KkQ_webdata-using-apis.md",
+        "dsincubator_wiki/sources/source_pbc6NX1n01Q_targets-introduction.md",
+        "dsincubator_wiki/sources/source_q17jsQrBPt0_reprex-package-philosophy.md",
+        "dsincubator_wiki/sources/source_tetgpXHal5s_daily-git-workflows-fork-and-clone-explained.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md",
+        "dsincubator_wiki/sources/source_xW05GsfhuiY_wtf-name-and-organize-files.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md",
+        "dsincubator_wiki/sources/source_zC31jaKp1jQ_git-branch-part-2-merge-delete.md",
+        "dsincubator_wiki/sources/source_zv5_OSb6lRo_github-flow-the-case-of-publishing-an-new-blog-post.md"
+      ]
     },
     {
       "topic_filename": "topics/tidyverse/ggplot2-fundamentals.md",
       "topic_title": "ggplot2 Fundamentals",
       "type": "Reference",
       "description": "Grammar of graphics, ggplot2 layers, geoms, aesthetics, coordinate systems, and themes",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md",
+        "dsincubator_wiki/sources/source_26hbyVb00xs_eda-with-the-tidyverse-exploring-variation.md",
+        "dsincubator_wiki/sources/source_CRcK0SCxGBQ_a-demo-of-the-package-r2dii-plot-by-monika.md",
+        "dsincubator_wiki/sources/source_HJCUlCgEnqM_eda-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_Hv6DzT6Z2yA_tidy-eda-patterns-and-models.md",
+        "dsincubator_wiki/sources/source_JXfEWLZXwXY_https-github-com-2degreesinvesting-ds-incubator-issues-50.md",
+        "dsincubator_wiki/sources/source_KxybJ_zVJUA_eda-with-the-tidyverse-typical-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_UeECMfOFIHk_testing-using-snapshot-tests-to-refactor-safely.md",
+        "dsincubator_wiki/sources/source_WBmLuUV5BEE_tidy-eda-covariation-between-one-categorical-variable-and-one-continuous-variable.md",
+        "dsincubator_wiki/sources/source_k8GykC4ZXW0_tidy-eda-covariation-between-two-categorical-variables-and-between-two-continuous-variables.md",
+        "dsincubator_wiki/sources/source_pxxcuZH9_yA_testing-snapshot-tests.md"
+      ]
     },
     {
       "topic_filename": "topics/tidyverse/dplyr-verbs.md",
       "topic_title": "dplyr Verbs",
       "type": "Reference",
       "description": "Core dplyr verbs: select, filter, mutate, arrange, summarize, count, pipe operator, and data frame operations",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-L2A_7XvD6Y_working-with-git-and-github-from-rstudio-part-2.md",
+        "dsincubator_wiki/sources/source_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md",
+        "dsincubator_wiki/sources/source_3rf1W9ceKhU_failing-fast-in-dplyr-chains.md",
+        "dsincubator_wiki/sources/source_C29QThEYbYY_a-b-testing-r2dii-plot.md",
+        "dsincubator_wiki/sources/source_DfVoYtCQlfU_the-flow-of-data-and-get-data-directly-form-the-database.md",
+        "dsincubator_wiki/sources/source_H9lARi3re9I_ds-database-using-a-relational-database-management-system-rdbms.md",
+        "dsincubator_wiki/sources/source_VA3qaeTKTYk_tidying-data.md",
+        "dsincubator_wiki/sources/source_o9ZHNEl8UI8_watch-out-for-type-inconsistent-code.md",
+        "dsincubator_wiki/sources/source_p-p_4ZcDIGw_shiny-your-first-shiny-app.md",
+        "dsincubator_wiki/sources/source_qvQ_YmyjK0U_ds-database-relational-data-with-dplyr.md",
+        "dsincubator_wiki/sources/source_sPE6MLGUPy4_webdata-scrapping.md",
+        "dsincubator_wiki/sources/source_xxtpMXvVM3s_refactoring-how-to-prepare-for-dplyr-1-0-0.md"
+      ]
     },
     {
       "topic_filename": "topics/tidyverse/tidy-data.md",
       "topic_title": "Tidy Data",
       "type": "Reference",
       "description": "Tidy data principles, spreading, gathering, separating, and unifying data formats",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md",
+        "dsincubator_wiki/sources/source_26hbyVb00xs_eda-with-the-tidyverse-exploring-variation.md",
+        "dsincubator_wiki/sources/source_MJZ7ZsfG5lM_wrapping-up-our-discussion-on-how-to-manage-and-use-data.md",
+        "dsincubator_wiki/sources/source_VA3qaeTKTYk_tidying-data.md"
+      ]
     },
     {
       "topic_filename": "topics/tidyverse/eda-exploring-variation.md",
       "topic_title": "EDA: Exploring Variation",
       "type": "Playbook",
       "description": "Exploring covariation between variables, univariate and bivariate analysis with the tidyverse",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_26hbyVb00xs_eda-with-the-tidyverse-exploring-variation.md",
+        "dsincubator_wiki/sources/source_Hv6DzT6Z2yA_tidy-eda-patterns-and-models.md",
+        "dsincubator_wiki/sources/source_PRKOMCCOlI0_continuously-build-and-deploy-a-shiny-app-on-google-cloud-run.md",
+        "dsincubator_wiki/sources/source_WBmLuUV5BEE_tidy-eda-covariation-between-one-categorical-variable-and-one-continuous-variable.md",
+        "dsincubator_wiki/sources/source_k8GykC4ZXW0_tidy-eda-covariation-between-two-categorical-variables-and-between-two-continuous-variables.md"
+      ]
     },
     {
       "topic_filename": "topics/tidyverse/eda-covariation.md",
       "topic_title": "EDA: Covariation Analysis",
       "type": "Playbook",
       "description": "Covariation between categorical and continuous variables, correlation, and visualization",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_Hv6DzT6Z2yA_tidy-eda-patterns-and-models.md",
+        "dsincubator_wiki/sources/source_WBmLuUV5BEE_tidy-eda-covariation-between-one-categorical-variable-and-one-continuous-variable.md",
+        "dsincubator_wiki/sources/source_k8GykC4ZXW0_tidy-eda-covariation-between-two-categorical-variables-and-between-two-continuous-variables.md"
+      ]
     },
     {
       "topic_filename": "topics/tidyverse/eda-missing-values.md",
       "topic_title": "EDA: Missing Values",
       "type": "Playbook",
       "description": "Identifying and handling unusual and missing values in exploratory data analysis",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_HJCUlCgEnqM_eda-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_KxybJ_zVJUA_eda-with-the-tidyverse-typical-unusual-and-missing-values.md"
+      ]
     },
     {
       "topic_filename": "topics/tidyverse/rmarkdown-communication.md",
       "topic_title": "R Markdown Communication",
       "type": "Playbook",
       "description": "R Markdown documents, Quarto, GitHub-flavored markdown, mixing prose and code for reproducible communication",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-L2A_7XvD6Y_working-with-git-and-github-from-rstudio-part-2.md",
+        "dsincubator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md",
+        "dsincubator_wiki/sources/source_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md",
+        "dsincubator_wiki/sources/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_BOcl8iuiDvU_reprex-do-s-and-don-ts.md",
+        "dsincubator_wiki/sources/source_F92p3elUUSE_publish-a-site-on-github.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source__y_vnRM19lc_setting-expectations-for-open-source-participation-reprex.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_eQ-BFO3eZX8_https-github-com-2degreesinvesting-ds-incubator-issues-47.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_h6koYxwQFuE_working-with-git-and-github-from-rstudio-part-1.md",
+        "dsincubator_wiki/sources/source_kNV8dDGF7Hw_conversaciones-productivas-sobre-codigo-demo.md",
+        "dsincubator_wiki/sources/source_moAei68dxr0_ds-rpy-running-python-code-from-rstudio.md",
+        "dsincubator_wiki/sources/source_q17jsQrBPt0_reprex-package-philosophy.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md"
+      ]
     },
     {
       "topic_filename": "topics/docker/docker-fundamentals.md",
       "topic_title": "Docker Fundamentals",
       "type": "Playbook",
       "description": "Docker images, containers, managing images, volumes, users, and docker-compose",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_00i28kdk8cM_ds-tmux.md",
+        "dsincubator_wiki/sources/source_2Lcba2K8j6M_terminal-setup-and-navigate.md",
+        "dsincubator_wiki/sources/source_3_0gUMqKikw_docker-managing-images.md",
+        "dsincubator_wiki/sources/source_BYtt2cXW4qg_ds-terminal-use-case-customize-and-reuse-your-home.md",
+        "dsincubator_wiki/sources/source_CvOVn2zwi3k_docker-using-volumes-and-managing-users.md",
+        "dsincubator_wiki/sources/source_DVmvsZk-9F4_terminal-modify-your-file-system.md",
+        "dsincubator_wiki/sources/source_JdFA31-vJUE_cloud-use-case-host-shiny-apps.md",
+        "dsincubator_wiki/sources/source_NF7HPKt55Yk_cloud-use-cases.md",
+        "dsincubator_wiki/sources/source_NuXgJtl9QDw_terminal-running-commands-as-administrator.md",
+        "dsincubator_wiki/sources/source_OieR0VDxSRk_docker-use-cases.md",
+        "dsincubator_wiki/sources/source_PRKOMCCOlI0_continuously-build-and-deploy-a-shiny-app-on-google-cloud-run.md",
+        "dsincubator_wiki/sources/source_RO-OdWXfpBc_docker-managing-containers.md",
+        "dsincubator_wiki/sources/source_V2oSfukR4mw_terminal-start-a-terminal-and-navigate-your-files-system.md",
+        "dsincubator_wiki/sources/source_VRG95a4aBW4_cloud-more-ways-to-move-data.md",
+        "dsincubator_wiki/sources/source_XG8DetPZP4c_wtf-installing-r-packages-part-1.md",
+        "dsincubator_wiki/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_jyBv5ITO718_terminal-create-a-custom-command-as-a-user-in-a-multi-user-system.md",
+        "dsincubator_wiki/sources/source_kgGCNGLyqdg_docker-docker-compose-and-env-files.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_qY5ForDjgGY_docker-getting-started-with-the-rocker-project.md",
+        "dsincubator_wiki/sources/source_qvQ_YmyjK0U_ds-database-relational-data-with-dplyr.md",
+        "dsincubator_wiki/sources/source_uDx9NkoBqv8_data-science-on-a-chromebook.md",
+        "dsincubator_wiki/sources/source_uk-I5WrZsAc_shiny-wrap-up-and-demo.md",
+        "dsincubator_wiki/sources/source_yOJZHRGF3Bk_terminal-overview.md",
+        "dsincubator_wiki/sources/source_yldd8trFbaQ_cloud-resize-data-storage-and-share-data-with-pins.md"
+      ]
     },
     {
       "topic_filename": "topics/docker/rocker-project.md",
       "topic_title": "Rocker Project",
       "type": "Reference",
       "description": "Getting started with the Rocker project for R on Docker, Dockerfile best practices",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_16Xn0ueeP-E_azure-rstudio-server-and-pins.md",
+        "dsincubator_wiki/sources/source_3_0gUMqKikw_docker-managing-images.md",
+        "dsincubator_wiki/sources/source_CvOVn2zwi3k_docker-using-volumes-and-managing-users.md",
+        "dsincubator_wiki/sources/source_NF7HPKt55Yk_cloud-use-cases.md",
+        "dsincubator_wiki/sources/source_OieR0VDxSRk_docker-use-cases.md",
+        "dsincubator_wiki/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md",
+        "dsincubator_wiki/sources/source_kgGCNGLyqdg_docker-docker-compose-and-env-files.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_qY5ForDjgGY_docker-getting-started-with-the-rocker-project.md",
+        "dsincubator_wiki/sources/source_uDx9NkoBqv8_data-science-on-a-chromebook.md"
+      ]
     },
     {
       "topic_filename": "topics/docker/docker-use-cases.md",
       "topic_title": "Docker Use Cases",
       "type": "Playbook",
       "description": "Practical Docker use cases: managing environments, reproducibility, and deployment",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_00i28kdk8cM_ds-tmux.md",
+        "dsincubator_wiki/sources/source_2Lcba2K8j6M_terminal-setup-and-navigate.md",
+        "dsincubator_wiki/sources/source_3_0gUMqKikw_docker-managing-images.md",
+        "dsincubator_wiki/sources/source_BYtt2cXW4qg_ds-terminal-use-case-customize-and-reuse-your-home.md",
+        "dsincubator_wiki/sources/source_CvOVn2zwi3k_docker-using-volumes-and-managing-users.md",
+        "dsincubator_wiki/sources/source_DVmvsZk-9F4_terminal-modify-your-file-system.md",
+        "dsincubator_wiki/sources/source_JdFA31-vJUE_cloud-use-case-host-shiny-apps.md",
+        "dsincubator_wiki/sources/source_NF7HPKt55Yk_cloud-use-cases.md",
+        "dsincubator_wiki/sources/source_NuXgJtl9QDw_terminal-running-commands-as-administrator.md",
+        "dsincubator_wiki/sources/source_OieR0VDxSRk_docker-use-cases.md",
+        "dsincubator_wiki/sources/source_PRKOMCCOlI0_continuously-build-and-deploy-a-shiny-app-on-google-cloud-run.md",
+        "dsincubator_wiki/sources/source_RO-OdWXfpBc_docker-managing-containers.md",
+        "dsincubator_wiki/sources/source_V2oSfukR4mw_terminal-start-a-terminal-and-navigate-your-files-system.md",
+        "dsincubator_wiki/sources/source_VRG95a4aBW4_cloud-more-ways-to-move-data.md",
+        "dsincubator_wiki/sources/source_XG8DetPZP4c_wtf-installing-r-packages-part-1.md",
+        "dsincubator_wiki/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_jyBv5ITO718_terminal-create-a-custom-command-as-a-user-in-a-multi-user-system.md",
+        "dsincubator_wiki/sources/source_kgGCNGLyqdg_docker-docker-compose-and-env-files.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_moAei68dxr0_ds-rpy-running-python-code-from-rstudio.md",
+        "dsincubator_wiki/sources/source_qY5ForDjgGY_docker-getting-started-with-the-rocker-project.md",
+        "dsincubator_wiki/sources/source_qvQ_YmyjK0U_ds-database-relational-data-with-dplyr.md",
+        "dsincubator_wiki/sources/source_uDx9NkoBqv8_data-science-on-a-chromebook.md",
+        "dsincubator_wiki/sources/source_uk-I5WrZsAc_shiny-wrap-up-and-demo.md",
+        "dsincubator_wiki/sources/source_yOJZHRGF3Bk_terminal-overview.md",
+        "dsincubator_wiki/sources/source_yldd8trFbaQ_cloud-resize-data-storage-and-share-data-with-pins.md"
+      ]
     },
     {
       "topic_filename": "topics/cloud/cloud-fundamentals.md",
       "topic_title": "Cloud Computing Fundamentals",
       "type": "Playbook",
       "description": "Introduction to cloud computing, Google Cloud Platform, Azure, and remote computing concepts",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_16Xn0ueeP-E_azure-rstudio-server-and-pins.md",
+        "dsincubator_wiki/sources/source_2WBj5Oex_Fc_an-overview-our-our-resources-at-2dii.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_A_Q6nmUhcGA_reusing-your-usethis-setup-across-multiple-rstudio-cloud-projects.md",
+        "dsincubator_wiki/sources/source_BYtt2cXW4qg_ds-terminal-use-case-customize-and-reuse-your-home.md",
+        "dsincubator_wiki/sources/source_C27MVWqWSMs_r-packages-the-whole-game.md",
+        "dsincubator_wiki/sources/source_F7JiD7oT4P8_rstudio-team-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_F92p3elUUSE_publish-a-site-on-github.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source_JdFA31-vJUE_cloud-use-case-host-shiny-apps.md",
+        "dsincubator_wiki/sources/source_NF7HPKt55Yk_cloud-use-cases.md",
+        "dsincubator_wiki/sources/source_PRKOMCCOlI0_continuously-build-and-deploy-a-shiny-app-on-google-cloud-run.md",
+        "dsincubator_wiki/sources/source_Pi__2Hze4_0_setup-for-r-package-development.md",
+        "dsincubator_wiki/sources/source_S4GyNTwj_sc_introduction-to-version-control-with-git-initialize-a-git-repository.md",
+        "dsincubator_wiki/sources/source_VRG95a4aBW4_cloud-more-ways-to-move-data.md",
+        "dsincubator_wiki/sources/source_XRF9tge--9I_git-diff-sha1-sha2-path-mv-rm-core-editor.md",
+        "dsincubator_wiki/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md",
+        "dsincubator_wiki/sources/source__y_vnRM19lc_setting-expectations-for-open-source-participation-reprex.md",
+        "dsincubator_wiki/sources/source_dV9C2eIo5QQ_targets-tar-cue-declare-the-rules-that-mark-a-target-as-outdated.md",
+        "dsincubator_wiki/sources/source_eQ-BFO3eZX8_https-github-com-2degreesinvesting-ds-incubator-issues-47.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_yldd8trFbaQ_cloud-resize-data-storage-and-share-data-with-pins.md",
+        "dsincubator_wiki/sources/source_zC31jaKp1jQ_git-branch-part-2-merge-delete.md"
+      ]
     },
     {
       "topic_filename": "topics/cloud/google-cloud-run.md",
       "topic_title": "Google Cloud Run",
       "type": "Playbook",
       "description": "Continuously building and deploying Shiny apps on Google Cloud Run",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_00i28kdk8cM_ds-tmux.md",
+        "dsincubator_wiki/sources/source_2Lcba2K8j6M_terminal-setup-and-navigate.md",
+        "dsincubator_wiki/sources/source_3_0gUMqKikw_docker-managing-images.md",
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_BYtt2cXW4qg_ds-terminal-use-case-customize-and-reuse-your-home.md",
+        "dsincubator_wiki/sources/source_CvOVn2zwi3k_docker-using-volumes-and-managing-users.md",
+        "dsincubator_wiki/sources/source_DVmvsZk-9F4_terminal-modify-your-file-system.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_F7JiD7oT4P8_rstudio-team-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_JdFA31-vJUE_cloud-use-case-host-shiny-apps.md",
+        "dsincubator_wiki/sources/source_JqqrPZdWXfQ_shiny-basic-ui-and-introduction-to-reactive.md",
+        "dsincubator_wiki/sources/source_NF7HPKt55Yk_cloud-use-cases.md",
+        "dsincubator_wiki/sources/source_NgEocgBUH_A_shiny-debugging.md",
+        "dsincubator_wiki/sources/source_NuXgJtl9QDw_terminal-running-commands-as-administrator.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_OieR0VDxSRk_docker-use-cases.md",
+        "dsincubator_wiki/sources/source_PRKOMCCOlI0_continuously-build-and-deploy-a-shiny-app-on-google-cloud-run.md",
+        "dsincubator_wiki/sources/source_RO-OdWXfpBc_docker-managing-containers.md",
+        "dsincubator_wiki/sources/source_V2oSfukR4mw_terminal-start-a-terminal-and-navigate-your-files-system.md",
+        "dsincubator_wiki/sources/source_VRG95a4aBW4_cloud-more-ways-to-move-data.md",
+        "dsincubator_wiki/sources/source_XG8DetPZP4c_wtf-installing-r-packages-part-1.md",
+        "dsincubator_wiki/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_jyBv5ITO718_terminal-create-a-custom-command-as-a-user-in-a-multi-user-system.md",
+        "dsincubator_wiki/sources/source_kgGCNGLyqdg_docker-docker-compose-and-env-files.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_p-p_4ZcDIGw_shiny-your-first-shiny-app.md",
+        "dsincubator_wiki/sources/source_qY5ForDjgGY_docker-getting-started-with-the-rocker-project.md",
+        "dsincubator_wiki/sources/source_qvQ_YmyjK0U_ds-database-relational-data-with-dplyr.md",
+        "dsincubator_wiki/sources/source_rirpOpTYVg4_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_uDx9NkoBqv8_data-science-on-a-chromebook.md",
+        "dsincubator_wiki/sources/source_uk-I5WrZsAc_shiny-wrap-up-and-demo.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md",
+        "dsincubator_wiki/sources/source_yOJZHRGF3Bk_terminal-overview.md",
+        "dsincubator_wiki/sources/source_yldd8trFbaQ_cloud-resize-data-storage-and-share-data-with-pins.md"
+      ]
     },
     {
       "topic_filename": "topics/cloud/data-movement.md",
       "topic_title": "Data Movement and Storage",
       "type": "Playbook",
       "description": "Moving data between servers, GitHub CLI, resizing storage, pins for dataset sharing, Dropbox integration",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_0qUs4hi7ozo_retrospective-about-meetups-in-2020-response.md",
+        "dsincubator_wiki/sources/source_16Xn0ueeP-E_azure-rstudio-server-and-pins.md",
+        "dsincubator_wiki/sources/source_DfVoYtCQlfU_the-flow-of-data-and-get-data-directly-form-the-database.md",
+        "dsincubator_wiki/sources/source_EmDubkF8DpQ_targets-introduccion.md",
+        "dsincubator_wiki/sources/source_MJZ7ZsfG5lM_wrapping-up-our-discussion-on-how-to-manage-and-use-data.md",
+        "dsincubator_wiki/sources/source_SXEXcXE6Ke0_moving-from-a-sequence-of-scripts-to-a-pipeline-of-functions.md",
+        "dsincubator_wiki/sources/source_V2oSfukR4mw_terminal-start-a-terminal-and-navigate-your-files-system.md",
+        "dsincubator_wiki/sources/source_VCHu0uhGo2g_pins-sharing-versions-of-a-dataset-with-pins-and-dropbox.md",
+        "dsincubator_wiki/sources/source_VRG95a4aBW4_cloud-more-ways-to-move-data.md",
+        "dsincubator_wiki/sources/source__Cl4odbiG78_using-drake-to-develop-smart-reproducible-workflows.md",
+        "dsincubator_wiki/sources/source_cKAXDJq5ZdA_wtf-holistic-workflow-part-1.md",
+        "dsincubator_wiki/sources/source_dV9C2eIo5QQ_targets-tar-cue-declare-the-rules-that-mark-a-target-as-outdated.md",
+        "dsincubator_wiki/sources/source_ek3b0m1iCdk_wtf-holistic-workflow-part-2.md",
+        "dsincubator_wiki/sources/source_jAkNwaGRku0_targets-eexternal-files-and-literate-programming.md",
+        "dsincubator_wiki/sources/source_kS_0s0eS1Xw_pins.md",
+        "dsincubator_wiki/sources/source_lfhuO71ikQE_targets-debugging.md",
+        "dsincubator_wiki/sources/source_mamqEBZpbtw_cloud-move-data-between-a-server-and-github-with-the-gh-cli.md",
+        "dsincubator_wiki/sources/source_nL3Qr7bvlg4_dbt-usage.md",
+        "dsincubator_wiki/sources/source_pbc6NX1n01Q_targets-introduction.md",
+        "dsincubator_wiki/sources/source_qY5ForDjgGY_docker-getting-started-with-the-rocker-project.md",
+        "dsincubator_wiki/sources/source_yldd8trFbaQ_cloud-resize-data-storage-and-share-data-with-pins.md"
+      ]
     },
     {
       "topic_filename": "topics/cloud/azure-rstudio.md",
       "topic_title": "Azure and RStudio Server",
       "type": "Reference",
       "description": "Azure RStudio server, remote computing setups, and cloud IDE configurations",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_16Xn0ueeP-E_azure-rstudio-server-and-pins.md",
+        "dsincubator_wiki/sources/source_MJZ7ZsfG5lM_wrapping-up-our-discussion-on-how-to-manage-and-use-data.md",
+        "dsincubator_wiki/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md"
+      ]
     },
     {
       "topic_filename": "topics/shiny/shiny-basics.md",
       "topic_title": "Shiny Fundamentals",
       "type": "Playbook",
       "description": "Shiny reactivity, UI and server functions, basic input/output, and first shiny app",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_F7JiD7oT4P8_rstudio-team-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_JdFA31-vJUE_cloud-use-case-host-shiny-apps.md",
+        "dsincubator_wiki/sources/source_JqqrPZdWXfQ_shiny-basic-ui-and-introduction-to-reactive.md",
+        "dsincubator_wiki/sources/source_NgEocgBUH_A_shiny-debugging.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_OofNbCXEVgU_gitflow-workflow.md",
+        "dsincubator_wiki/sources/source_PRKOMCCOlI0_continuously-build-and-deploy-a-shiny-app-on-google-cloud-run.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_p-p_4ZcDIGw_shiny-your-first-shiny-app.md",
+        "dsincubator_wiki/sources/source_rirpOpTYVg4_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_uk-I5WrZsAc_shiny-wrap-up-and-demo.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md"
+      ]
     },
     {
       "topic_filename": "topics/shiny/shiny-publishing.md",
       "topic_title": "Shiny Publishing",
       "type": "Playbook",
       "description": "Publishing Shiny apps, deploying to web, hosting options, and Shiny Server",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_JdFA31-vJUE_cloud-use-case-host-shiny-apps.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_p-p_4ZcDIGw_shiny-your-first-shiny-app.md"
+      ]
     },
     {
       "topic_filename": "topics/shiny/shiny-debugging.md",
       "topic_title": "Shiny Debugging",
       "type": "Playbook",
       "description": "Debugging Shiny applications, error tracing, and reactive debugging tools",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_3rf1W9ceKhU_failing-fast-in-dplyr-chains.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_NgEocgBUH_A_shiny-debugging.md",
+        "dsincubator_wiki/sources/source_lfhuO71ikQE_targets-debugging.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_tLvRWRWeQK4_wtf-debugging-r-code.md"
+      ]
     },
     {
       "topic_filename": "topics/shiny/shiny-packages.md",
       "topic_title": "Shiny Packages",
       "type": "Reference",
       "description": "Creating and using Shiny packages, extending Shiny functionality",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_F7JiD7oT4P8_rstudio-team-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_NgEocgBUH_A_shiny-debugging.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_p-p_4ZcDIGw_shiny-your-first-shiny-app.md",
+        "dsincubator_wiki/sources/source_uk-I5WrZsAc_shiny-wrap-up-and-demo.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md"
+      ]
     },
     {
       "topic_filename": "topics/shiny/shiny-development-workflow.md",
       "topic_title": "Shiny Development Workflow",
       "type": "Playbook",
       "description": "Best practices for Shiny development, project structure, and iterative development",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_O_tkgjsUT6g_shiny-packages.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md"
+      ]
     },
     {
       "topic_filename": "topics/terminal/terminal-setup.md",
       "topic_title": "Terminal Setup and Navigation",
       "type": "Playbook",
       "description": "Terminal basics, file system navigation, custom commands, multi-user terminal, and admin commands",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-HTH2ylnT7Q_ds-databricks4r-databricks-for-rstudio-users.md",
+        "dsincubator_wiki/sources/source_00i28kdk8cM_ds-tmux.md",
+        "dsincubator_wiki/sources/source_2Lcba2K8j6M_terminal-setup-and-navigate.md",
+        "dsincubator_wiki/sources/source_7igKU5JVmxM_inspecting-the-history.md",
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_AxpkFkfTF8o_git-status-add-rm-cached-commit-log.md",
+        "dsincubator_wiki/sources/source_BYtt2cXW4qg_ds-terminal-use-case-customize-and-reuse-your-home.md",
+        "dsincubator_wiki/sources/source_C27MVWqWSMs_r-packages-the-whole-game.md",
+        "dsincubator_wiki/sources/source_CvOVn2zwi3k_docker-using-volumes-and-managing-users.md",
+        "dsincubator_wiki/sources/source_DVmvsZk-9F4_terminal-modify-your-file-system.md",
+        "dsincubator_wiki/sources/source_EaJqUQkDo48_gh-pr-allows-you-to-work-with-github-pull-requests-from-your-terminal.md",
+        "dsincubator_wiki/sources/source_HJCUlCgEnqM_eda-unusual-and-missing-values.md",
+        "dsincubator_wiki/sources/source_Hv6DzT6Z2yA_tidy-eda-patterns-and-models.md",
+        "dsincubator_wiki/sources/source_NF7HPKt55Yk_cloud-use-cases.md",
+        "dsincubator_wiki/sources/source_NuXgJtl9QDw_terminal-running-commands-as-administrator.md",
+        "dsincubator_wiki/sources/source_OieR0VDxSRk_docker-use-cases.md",
+        "dsincubator_wiki/sources/source_Q9S7CvXu3KY_remote-setup-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_RO-OdWXfpBc_docker-managing-containers.md",
+        "dsincubator_wiki/sources/source_S4GyNTwj_sc_introduction-to-version-control-with-git-initialize-a-git-repository.md",
+        "dsincubator_wiki/sources/source_Ulz8Vfnr2P4_ds-database-validate-data-quality.md",
+        "dsincubator_wiki/sources/source_V2oSfukR4mw_terminal-start-a-terminal-and-navigate-your-files-system.md",
+        "dsincubator_wiki/sources/source_VRG95a4aBW4_cloud-more-ways-to-move-data.md",
+        "dsincubator_wiki/sources/source_WmzqpTZtFAw_dbt-overview.md",
+        "dsincubator_wiki/sources/source_XRF9tge--9I_git-diff-sha1-sha2-path-mv-rm-core-editor.md",
+        "dsincubator_wiki/sources/source_YDsoKUVsJls_setup-github-r-rstudio-and-git.md",
+        "dsincubator_wiki/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md",
+        "dsincubator_wiki/sources/source_bR0RYYwiDRM_the-simplest-way-to-run-multiple-r-sessions-in-the-same-ide.md",
+        "dsincubator_wiki/sources/source_co082qNN_Cs_r-packages-testing.md",
+        "dsincubator_wiki/sources/source_eeUZ8dHsmG8_git-practices-by-example.md",
+        "dsincubator_wiki/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md",
+        "dsincubator_wiki/sources/source_gGXwszGqZxM_dbt-structure.md",
+        "dsincubator_wiki/sources/source_iYlKc0BTjBk_terminal-find-things.md",
+        "dsincubator_wiki/sources/source_jYvJO2lENbY_git-remotes.md",
+        "dsincubator_wiki/sources/source_jyBv5ITO718_terminal-create-a-custom-command-as-a-user-in-a-multi-user-system.md",
+        "dsincubator_wiki/sources/source_nSJT8NGhSTs_ejemplo-de-mejores-practicas-de-git.md",
+        "dsincubator_wiki/sources/source_p-p_4ZcDIGw_shiny-your-first-shiny-app.md",
+        "dsincubator_wiki/sources/source_q-hsaxVA1kc_gh-repo-create-and-gh-browse-to-create-and-browse-a-github-repo-from-the-terminal.md",
+        "dsincubator_wiki/sources/source_qY5ForDjgGY_docker-getting-started-with-the-rocker-project.md",
+        "dsincubator_wiki/sources/source_uDx9NkoBqv8_data-science-on-a-chromebook.md",
+        "dsincubator_wiki/sources/source_xx5WNZgQEdY_usethis-pr-synch-espanol.md",
+        "dsincubator_wiki/sources/source_xyNydg5IUok_good-commit-messages-gitignore-guis.md",
+        "dsincubator_wiki/sources/source_yMPV9TPH3GI_testing-basic-structure-and-basic-workflow.md",
+        "dsincubator_wiki/sources/source_yOJZHRGF3Bk_terminal-overview.md"
+      ]
     },
     {
       "topic_filename": "topics/terminal/tmux.md",
       "topic_title": "tmux Terminal Multiplexer",
       "type": "Reference",
       "description": "Using tmux for terminal multiplexing, session management, and productive terminal workflows",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_00i28kdk8cM_ds-tmux.md"
+      ]
     },
     {
       "topic_filename": "topics/communication/code-reviews.md",
       "topic_title": "Code Reviews",
       "type": "Playbook",
       "description": "Productive code conversations, code review best practices, reviewing pull requests, and feedback",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md",
+        "dsincubator_wiki/sources/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source_OofNbCXEVgU_gitflow-workflow.md",
+        "dsincubator_wiki/sources/source_ciJpIWs3t3k_suggest-commit-changes-directly-on-a-github-pr.md",
+        "dsincubator_wiki/sources/source_zv5_OSb6lRo_github-flow-the-case-of-publishing-an-new-blog-post.md"
+      ]
     },
     {
       "topic_filename": "topics/communication/productive-conversations.md",
       "topic_title": "Productive Code Conversations",
       "type": "Playbook",
       "description": "Principles for effective code discussions: reproducibility, speed, size, clarity, and tools (English and Spanish with lang: es tags)",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md",
+        "dsincubator_wiki/sources/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_BOcl8iuiDvU_reprex-do-s-and-don-ts.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source__y_vnRM19lc_setting-expectations-for-open-source-participation-reprex.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_kNV8dDGF7Hw_conversaciones-productivas-sobre-codigo-demo.md",
+        "dsincubator_wiki/sources/source_q17jsQrBPt0_reprex-package-philosophy.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md"
+      ]
     },
     {
       "topic_filename": "topics/communication/reprex.md",
       "topic_title": "Reproducible Examples",
       "type": "Playbook",
       "description": "Creating reprex: package philosophy, do's and don'ts, and how to share reproducible code snippets",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md",
+        "dsincubator_wiki/sources/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_BOcl8iuiDvU_reprex-do-s-and-don-ts.md",
+        "dsincubator_wiki/sources/source_H4ucsYPrC0g_productive-conversations-about-code-part-2-of-2-demo.md",
+        "dsincubator_wiki/sources/source__y_vnRM19lc_setting-expectations-for-open-source-participation-reprex.md",
+        "dsincubator_wiki/sources/source_c3jANTGkB1U_shiny-publishing.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_kNV8dDGF7Hw_conversaciones-productivas-sobre-codigo-demo.md",
+        "dsincubator_wiki/sources/source_q17jsQrBPt0_reprex-package-philosophy.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md"
+      ]
     },
     {
       "topic_filename": "topics/workflow/project-oriented-workflow.md",
       "topic_title": "Project-Oriented Workflow",
       "type": "Playbook",
       "description": "Setting up projects, project management on GitHub, daily standups, and organization strategies",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_5wHl9N4fBBU_ds-production-from-an-mvp-to-production.md",
+        "dsincubator_wiki/sources/source_TEUbVjhooIg_project-oriented-workflow.md",
+        "dsincubator_wiki/sources/source_YlBnarQNRR8_tidy-eda-defensive-workflow.md",
+        "dsincubator_wiki/sources/source_cKAXDJq5ZdA_wtf-holistic-workflow-part-1.md",
+        "dsincubator_wiki/sources/source_ek3b0m1iCdk_wtf-holistic-workflow-part-2.md",
+        "dsincubator_wiki/sources/source_wJnI0F_A-bU_creating-reproducible-examples.md"
+      ]
     },
     {
       "topic_filename": "topics/workflow/debugging-workflows.md",
       "topic_title": "Debugging Workflows",
       "type": "Playbook",
       "description": "Systematic debugging in R: wtf debugging, systematic debugging workflows, and common pitfalls",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_3rf1W9ceKhU_failing-fast-in-dplyr-chains.md",
+        "dsincubator_wiki/sources/source_AUIJif93OJA_a-systematic-debugging-workflow.md",
+        "dsincubator_wiki/sources/source_NgEocgBUH_A_shiny-debugging.md",
+        "dsincubator_wiki/sources/source_lfhuO71ikQE_targets-debugging.md",
+        "dsincubator_wiki/sources/source_lq6ZhPFVLTY_shiny-development-workflow.md",
+        "dsincubator_wiki/sources/source_tLvRWRWeQK4_wtf-debugging-r-code.md"
+      ]
     },
     {
       "topic_filename": "topics/workflow/web-apis.md",
       "topic_title": "Web APIs and Data",
       "type": "Playbook",
       "description": "Using APIs for data collection, web scraping, and working with web data in R",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_C29QThEYbYY_a-b-testing-r2dii-plot.md",
+        "dsincubator_wiki/sources/source_pCo14eM-KkQ_webdata-using-apis.md",
+        "dsincubator_wiki/sources/source_sPE6MLGUPy4_webdata-scrapping.md"
+      ]
     },
     {
       "topic_filename": "topics/data/databases-and-dm.md",
       "topic_title": "Relational Databases and dm",
       "type": "Reference",
       "description": "Working with relational databases in R, dm package, dbt structure, and data validation",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_DeLK1OKNQlw_ds-database-relational-data-with-the-dm-package.md",
+        "dsincubator_wiki/sources/source_DfVoYtCQlfU_the-flow-of-data-and-get-data-directly-form-the-database.md",
+        "dsincubator_wiki/sources/source_FPZfMUwV73o_r-packages-documenting.md",
+        "dsincubator_wiki/sources/source_H9lARi3re9I_ds-database-using-a-relational-database-management-system-rdbms.md",
+        "dsincubator_wiki/sources/source_MJZ7ZsfG5lM_wrapping-up-our-discussion-on-how-to-manage-and-use-data.md",
+        "dsincubator_wiki/sources/source_NuXgJtl9QDw_terminal-running-commands-as-administrator.md",
+        "dsincubator_wiki/sources/source_QxgEn2fwIOk_dbt-installation.md",
+        "dsincubator_wiki/sources/source_Ulz8Vfnr2P4_ds-database-validate-data-quality.md",
+        "dsincubator_wiki/sources/source_WmzqpTZtFAw_dbt-overview.md",
+        "dsincubator_wiki/sources/source_gGXwszGqZxM_dbt-structure.md",
+        "dsincubator_wiki/sources/source_pCo14eM-KkQ_webdata-using-apis.md",
+        "dsincubator_wiki/sources/source_qvQ_YmyjK0U_ds-database-relational-data-with-dplyr.md"
+      ]
     },
     {
       "topic_filename": "topics/data/tidying-data.md",
       "topic_title": "Tidying Data",
       "type": "Playbook",
       "description": "Data tidying techniques, data transformation, and preparing data for analysis",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md",
+        "dsincubator_wiki/sources/source_26hbyVb00xs_eda-with-the-tidyverse-exploring-variation.md",
+        "dsincubator_wiki/sources/source_MJZ7ZsfG5lM_wrapping-up-our-discussion-on-how-to-manage-and-use-data.md",
+        "dsincubator_wiki/sources/source_VA3qaeTKTYk_tidying-data.md"
+      ]
     },
     {
       "topic_filename": "topics/data/pairs-programming.md",
       "topic_title": "Pairs Programming and Strong Style",
       "type": "Playbook",
       "description": "Pair programming techniques, strong-style pair programming, and collaboration strategies",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_BAS8yfLBnog_strong-style-pair-programming-submitting-an-r-package-to-cran.md",
+        "dsincubator_wiki/sources/source_UR4vwDkJMhc_pair-programming.md"
+      ]
     },
     {
       "topic_filename": "topics/data/databricks-rstudio.md",
       "topic_title": "Databricks and RStudio",
       "type": "Reference",
       "description": "Using databricks4r for Databricks integration with RStudio",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-HTH2ylnT7Q_ds-databricks4r-databricks-for-rstudio-users.md"
+      ]
     },
     {
       "topic_filename": "topics/data/production-workflow.md",
       "topic_title": "Production Workflow",
       "type": "Playbook",
       "description": "From MVP to production, deployment patterns, and production data science workflows",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md",
+        "dsincubator_wiki/sources/source_4AOKCiAh3NM_testing-test-driven-development-tdd.md",
+        "dsincubator_wiki/sources/source_5wHl9N4fBBU_ds-production-from-an-mvp-to-production.md",
+        "dsincubator_wiki/sources/source_7igKU5JVmxM_inspecting-the-history.md",
+        "dsincubator_wiki/sources/source_9JcJFber21w_testing-introduction.md",
+        "dsincubator_wiki/sources/source_AxpkFkfTF8o_git-status-add-rm-cached-commit-log.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_MU8E_gpylPE_git-branch-part-1.md",
+        "dsincubator_wiki/sources/source_S4GyNTwj_sc_introduction-to-version-control-with-git-initialize-a-git-repository.md",
+        "dsincubator_wiki/sources/source_UeECMfOFIHk_testing-using-snapshot-tests-to-refactor-safely.md",
+        "dsincubator_wiki/sources/source_bKRFCOkmpiw_testing-code-coverage.md",
+        "dsincubator_wiki/sources/source_pxxcuZH9_yA_testing-snapshot-tests.md",
+        "dsincubator_wiki/sources/source_xxtpMXvVM3s_refactoring-how-to-prepare-for-dplyr-1-0-0.md"
+      ]
     },
     {
       "topic_filename": "topics/data/r2dii-packages.md",
       "topic_title": "r2dii Packages on CRAN",
       "type": "Reference",
       "description": "r2dii.data and r2dii.match on CRAN, r2dii.plot package, and A/B testing with r2dii.plot",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_9yrckf6Km-U_wtf-installing-r-packages-part-2.md",
+        "dsincubator_wiki/sources/source_C29QThEYbYY_a-b-testing-r2dii-plot.md",
+        "dsincubator_wiki/sources/source_CRcK0SCxGBQ_a-demo-of-the-package-r2dii-plot-by-monika.md",
+        "dsincubator_wiki/sources/source_ovbwghDjxV8_r2dii-data-and-r2dii-match-are-now-on-cran-demo-and-q-a.md"
+      ]
     },
     {
       "topic_filename": "topics/data/chromebook-data-science.md",
       "topic_title": "Data Science on a Chromebook",
       "type": "Playbook",
       "description": "Doing data science on a Chromebook, setup, and workflow considerations",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_uDx9NkoBqv8_data-science-on-a-chromebook.md"
+      ]
     },
     {
       "topic_filename": "topics/data/python-r-interop.md",
       "topic_title": "Python/R Interoperability",
       "type": "Playbook",
       "description": "Running Python code from RStudio, reticulate, and cross-language workflows",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-HTH2ylnT7Q_ds-databricks4r-databricks-for-rstudio-users.md",
+        "dsincubator_wiki/sources/source_moAei68dxr0_ds-rpy-running-python-code-from-rstudio.md"
+      ]
     },
     {
       "topic_filename": "topics/data/code-quality.md",
       "topic_title": "Code Quality and Style",
       "type": "Reference",
       "description": "Type-inconsistent code, avoiding hidden arguments, refactoring for dplyr, and code style guidelines",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md",
+        "dsincubator_wiki/sources/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md",
+        "dsincubator_wiki/sources/source_4AOKCiAh3NM_testing-test-driven-development-tdd.md",
+        "dsincubator_wiki/sources/source_4IXcu1g0zfk_productive-conversations-about-code-part-1-of-2.md",
+        "dsincubator_wiki/sources/source_5wHl9N4fBBU_ds-production-from-an-mvp-to-production.md",
+        "dsincubator_wiki/sources/source_BAS8yfLBnog_strong-style-pair-programming-submitting-an-r-package-to-cran.md",
+        "dsincubator_wiki/sources/source_EB6ODnkdG7A_shiny-basic-reactivity.md",
+        "dsincubator_wiki/sources/source_PHFOEKXPaxI_avoid-hidden-arguments.md",
+        "dsincubator_wiki/sources/source_UR4vwDkJMhc_pair-programming.md",
+        "dsincubator_wiki/sources/source_UeECMfOFIHk_testing-using-snapshot-tests-to-refactor-safely.md",
+        "dsincubator_wiki/sources/source_bKRFCOkmpiw_testing-code-coverage.md",
+        "dsincubator_wiki/sources/source_o9ZHNEl8UI8_watch-out-for-type-inconsistent-code.md",
+        "dsincubator_wiki/sources/source_xxtpMXvVM3s_refactoring-how-to-prepare-for-dplyr-1-0-0.md"
+      ]
     },
     {
       "topic_filename": "topics/data/github-issues-workflow.md",
       "topic_title": "GitHub Issues Workflow",
       "type": "Playbook",
       "description": "Using GitHub issues for project tracking, workflow management, and community engagement",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md",
+        "dsincubator_wiki/sources/source_0qUs4hi7ozo_retrospective-about-meetups-in-2020-response.md",
+        "dsincubator_wiki/sources/source_2WBj5Oex_Fc_an-overview-our-our-resources-at-2dii.md",
+        "dsincubator_wiki/sources/source_3_0gUMqKikw_docker-managing-images.md",
+        "dsincubator_wiki/sources/source_AFuVF0oWFMY_creating-an-empty-r-package-up-to-the-best-standards.md",
+        "dsincubator_wiki/sources/source_A_Q6nmUhcGA_reusing-your-usethis-setup-across-multiple-rstudio-cloud-projects.md",
+        "dsincubator_wiki/sources/source_BAS8yfLBnog_strong-style-pair-programming-submitting-an-r-package-to-cran.md",
+        "dsincubator_wiki/sources/source_CRcK0SCxGBQ_a-demo-of-the-package-r2dii-plot-by-monika.md",
+        "dsincubator_wiki/sources/source_DeLK1OKNQlw_ds-database-relational-data-with-the-dm-package.md",
+        "dsincubator_wiki/sources/source_JXfEWLZXwXY_https-github-com-2degreesinvesting-ds-incubator-issues-50.md",
+        "dsincubator_wiki/sources/source_UR4vwDkJMhc_pair-programming.md",
+        "dsincubator_wiki/sources/source_XRF9tge--9I_git-diff-sha1-sha2-path-mv-rm-core-editor.md",
+        "dsincubator_wiki/sources/source_YDsoKUVsJls_setup-github-r-rstudio-and-git.md",
+        "dsincubator_wiki/sources/source__y_vnRM19lc_setting-expectations-for-open-source-participation-reprex.md",
+        "dsincubator_wiki/sources/source_co082qNN_Cs_r-packages-testing.md",
+        "dsincubator_wiki/sources/source_eQ-BFO3eZX8_https-github-com-2degreesinvesting-ds-incubator-issues-47.md",
+        "dsincubator_wiki/sources/source_ek3b0m1iCdk_wtf-holistic-workflow-part-2.md",
+        "dsincubator_wiki/sources/source_erv1yJaNID8_reprex-overview.md",
+        "dsincubator_wiki/sources/source_qqKhQdejUOM_project-management-on-github.md",
+        "dsincubator_wiki/sources/source_tLvRWRWeQK4_wtf-debugging-r-code.md",
+        "dsincubator_wiki/sources/source_vpAW3j5zbX0_daily-stand-ups.md",
+        "dsincubator_wiki/sources/source_xxtpMXvVM3s_refactoring-how-to-prepare-for-dplyr-1-0-0.md"
+      ]
     },
     {
       "topic_filename": "topics/data/access-permissions.md",
       "topic_title": "GitHub Access Permissions",
       "type": "Reference",
       "description": "Managing organization access, permissions for GitHub organizations, and security best practices",
-      "source_files": []
+      "source_files": [
+        "dsincubator_wiki/sources/source_CvOVn2zwi3k_docker-using-volumes-and-managing-users.md",
+        "dsincubator_wiki/sources/source_MJZ7ZsfG5lM_wrapping-up-our-discussion-on-how-to-manage-and-use-data.md",
+        "dsincubator_wiki/sources/source_NF7HPKt55Yk_cloud-use-cases.md",
+        "dsincubator_wiki/sources/source_NuXgJtl9QDw_terminal-running-commands-as-administrator.md",
+        "dsincubator_wiki/sources/source_OFjlPa7Uqeo_comparing-remote-setup-ours-versus-fork-of-ours.md",
+        "dsincubator_wiki/sources/source_jyBv5ITO718_terminal-create-a-custom-command-as-a-user-in-a-multi-user-system.md",
+        "dsincubator_wiki/sources/source_xW05GsfhuiY_wtf-name-and-organize-files.md",
+        "dsincubator_wiki/sources/source_yldd8trFbaQ_cloud-resize-data-storage-and-share-data-with-pins.md",
+        "dsincubator_wiki/sources/source_z4RAuGrAm8c_access-permissions-for-a-github-organization.md"
+      ]
     }
   ],
   "bundle_files": {
-    "index_md": "topics/index.md (reserved filename per §3.1, serves as §8 index)",
-    "log_md": "log.md (§9 chronological history)",
-    "root_index": "index.md at bundle root (§8, optional, with okf_version key per §12)",
-    "references_dir": "references/ (§6.3 convention for executors/attesters)"
+    "index_md": "topics/index.md (reserved filename per \u00a73.1, serves as \u00a78 index)",
+    "log_md": "log.md (\u00a79 chronological history)",
+    "root_index": "index.md at bundle root (\u00a78, optional, with okf_version key per \u00a712)",
+    "references_dir": "references/ (\u00a76.3 convention for executors/attesters)"
   },
-  "todo_verification": "Add verified: { by: human:<reviewer>, at: <ISO8601> } to all topic pages once ready for human review (§5.2)",
-  "source_files_note": "source_files arrays to be populated by aggregation pipeline after Step 1 source generation. Each entry requires: id, resource, title, author (credibility signals per §5.1)"
+  "todo_verification": "Add verified: { by: human:<reviewer>, at: <ISO8601> } to all topic pages once ready for human review (\u00a75.2)",
+  "source_files_note": "source_files arrays to be populated by aggregation pipeline after Step 1 source generation. Each entry requires: id, resource, title, author (credibility signals per \u00a75.1)"
 }

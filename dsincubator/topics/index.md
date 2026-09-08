@@ -11,7 +11,7 @@ status: draft
 
 # Topics Index (§8)
 
-Directory index for `dsincubator_wiki/topics/` per OKF §8. Concept entry point is [concepts-overview.md](concepts-overview.md) to avoid reserved filename conflict (§3.1).
+Directory index for `dsincubator/topics/` per OKF §8. Concept entry point is [concepts-overview.md](concepts-overview.md) to avoid reserved filename conflict (§3.1).
 
 ## cloud
 

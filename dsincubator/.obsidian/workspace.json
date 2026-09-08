@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "5db933579bd0179e",
+    "type": "split",
+    "children": [
+      {
+        "id": "05679983257cbcf4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dd1937df54244909",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "references/index.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "index"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5f60796ffe2f42ef",
+    "type": "split",
+    "children": [
+      {
+        "id": "c1d19d6bcaf84c43",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4ace5db45d7a35f1",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "355737e673c0a82f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:docker",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "752586ee20a21c77",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "3c8c3be9ded81b4a",
+    "type": "split",
+    "children": [
+      {
+        "id": "899549dc0ba70238",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1f83add29233c407",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "references/index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "1f876f1e044fb038",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "references/index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "8b6ebc73e5d640cf",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "aa3050b3468668e8",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "591bf4524f0c0646",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "references/index.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "dd1937df54244909",
+  "lastOpenFiles": [
+    "sources/log.md",
+    "sources/index.md",
+    "topics/index.md",
+    "index.md",
+    "log.md",
+    "topics/concepts-overview.md",
+    "references/index.md",
+    "topics/data/access-permissions.md",
+    "topics/data/github-issues-workflow.md",
+    "topics/data/code-quality.md",
+    "topics/data/python-r-interop.md",
+    "topics/data/chromebook-data-science.md",
+    "topics/data/r2dii-packages.md",
+    "topics/data/production-workflow.md",
+    "topics/data/databricks-rstudio.md",
+    "topics/data/pairs-programming.md",
+    "topics/data/tidying-data.md",
+    "topics/data/databases-and-dm.md",
+    "topics/workflow/web-apis.md",
+    "topics/workflow/debugging-workflows.md",
+    "topics/workflow/project-oriented-workflow.md",
+    "topics/communication/reprex.md",
+    "topics/communication/productive-conversations.md",
+    "topics/communication/code-reviews.md",
+    "topics/terminal/tmux.md",
+    "topics/terminal/terminal-setup.md",
+    "Untitled.base",
+    "Untitled.canvas"
+  ]
+}

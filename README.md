@@ -6,8 +6,7 @@ Transcript database for the [ds-incubator YouTube
 playlist](https://youtube.com/playlist?list=PLvgdJdJDL-APbB315sB3Lv_2VP2g0ioFO&si=LOZAcXpa1L7JlVvc):
 `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF v0.2 format),
 linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
-**[`dsincubator_wiki/`](dsincubator_wiki/index.md)** per
-`planning_manifest.json`.
+**[`dsincubator/`](dsincubator/index.md)** per `planning_manifest.json`.
 
 ## Structure
 
@@ -16,11 +15,11 @@ linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
     transcripts/<id>_<title>.md  # OKF v0.2 transcript (YAML frontmatter + body)
     transcripts/manifest.tsv     # id | status | file | lang
     planning_manifest.json       # wiki plan: 59 topic pages across 13 categories
-    dsincubator_wiki/            # OKF v0.2 wiki bundle → see Wiki below
-    dsincubator_wiki/sources/    # 151 distilled sources (one per transcript)
-    dsincubator_wiki/topics/     # 59 topic pages (each an OKF concept with type)
-    dsincubator_wiki/index.md    # bundle root (okf_version 0.2 §12)
-    dsincubator_wiki/log.md      # bundle history (§9)
+    dsincubator/            # OKF v0.2 wiki bundle → see Wiki below
+    dsincubator/sources/    # 151 distilled sources (one per transcript)
+    dsincubator/topics/     # 59 topic pages (each an OKF concept with type)
+    dsincubator/index.md    # bundle root (okf_version 0.2 §12)
+    dsincubator/log.md      # bundle history (§9)
     bin/fetch-metadata           # raw dumps + derive CSV
     bin/fetch-transcripts        # fetch captions (json3)
     bin/convert-transcripts      # json3 -> txt/tsv/md (OKF v0.2)
@@ -153,16 +152,14 @@ fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeL
 
 ## Wiki
 
-👉 **Start here:
-[`dsincubator_wiki/index.md`](dsincubator_wiki/index.md)** — bundle root
-(OKF v0.2, 151 sources → 59 topics). Indexes:
-[`dsincubator_wiki/topics/index.md`](dsincubator_wiki/topics/index.md)
-(§8) with entry
-[`dsincubator_wiki/topics/concepts-overview.md`](dsincubator_wiki/topics/concepts-overview.md),
-[`dsincubator_wiki/sources/index.md`](dsincubator_wiki/sources/index.md).
-History: [`dsincubator_wiki/log.md`](dsincubator_wiki/log.md) (§9).
-References:
-[`dsincubator_wiki/references/`](dsincubator_wiki/references/).
+👉 **Start here: [`dsincubator/index.md`](dsincubator/index.md)** —
+bundle root (OKF v0.2, 151 sources → 59 topics). Indexes:
+[`dsincubator/topics/index.md`](dsincubator/topics/index.md) (§8) with
+entry
+[`dsincubator/topics/concepts-overview.md`](dsincubator/topics/concepts-overview.md),
+[`dsincubator/sources/index.md`](dsincubator/sources/index.md). History:
+[`dsincubator/log.md`](dsincubator/log.md) (§9). References:
+[`dsincubator/references/`](dsincubator/references/).
 
 Build: 151 `sources/` distilled per Extraction Prompt v2 (frozen
 frontmatter, quote-to-name, anchored `key_topics`) → aggregation
@@ -203,7 +200,7 @@ tibble(path = topic_paths) |>
 ### Example source
 
 ``` r
-fs::dir_ls("dsincubator_wiki/sources", regexp = "source_.*\\.md$")[[1]] |> readLines(n = 40) |> writeLines()
+fs::dir_ls("dsincubator/sources", regexp = "source_.*\\.md$")[[1]] |> readLines(n = 40) |> writeLines()
 #> ---
 #> type: source
 #> title: "Test driven development"
@@ -249,7 +246,7 @@ fs::dir_ls("dsincubator_wiki/sources", regexp = "source_.*\\.md$")[[1]] |> readL
 ### Example topic
 
 ``` r
-fs::dir_ls("dsincubator_wiki/topics", regexp = "\\.md$", recurse = TRUE)[[2]] |> readLines(n = 40) |> writeLines()
+fs::dir_ls("dsincubator/topics", regexp = "\\.md$", recurse = TRUE)[[2]] |> readLines(n = 40) |> writeLines()
 #> ---
 #> type: Playbook
 #> title: Cloud Computing Fundamentals

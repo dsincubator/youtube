@@ -43,8 +43,6 @@ dsi |> glimpse()
 dsi |> select(upload_date_iso, title, url)
 ```
 
-Lists `.md` transcripts from the filesystem, extracts the video `id`, and left-joins with `data/metadata.csv`.
-
 ```{r}
 transcript_files <- dir_ls("transcripts", regexp = "\\.md$") |>
   tibble(path = _) |>
@@ -67,7 +65,7 @@ joined |>
 fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeLines()
 ```
 
-## Fetch / Refresh Commands
+## Commands
 
 ```sh
 # Transcripts

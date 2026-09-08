@@ -331,8 +331,8 @@ qmd query "how to handle merge conflicts git" -c dsincubator -n 2 | head -n 20
 #> ├─ vec: guide to dealing with git merge problems
 #> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.4s)
-#> Reranking 25 chunks... (2ms)
+#> Embedding 4 queries... (1.2s)
+#> Reranking 25 chunks... (1ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)
 #> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
@@ -403,13 +403,28 @@ rg -n "key_topics" dsincubator/sources/*.md | head -n 5
 #> }
 #> 
 #> Node.js v26.5.0
-#> dsincubator/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md:9:key_topics: ["cloud-computing", "client-server-droplet", "digitalocean-droplet", "docker-rocker-rstudio", "ssh-authentication", "cloud-costs-and-security"]
-#> dsincubator/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md:9:key_topics: ["pins", "boards", "github", "caching", "versioning"]
-#> dsincubator/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md:9:key_topics: ["code-reviews", "reprex", "github", "pull-requests", "rmarkdown"]
+#> dsincubator/sources/source_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md:9:key_topics: ["workflow", "rmarkdown", "ggplot2", "dplyr", "eda"]
+#> dsincubator/sources/source_-L2A_7XvD6Y_working-with-git-and-github-from-rstudio-part-2.md:9:key_topics: ["git", "github", "rstudio", "github-document", "history-filtering"]
 #> dsincubator/sources/source_-HTH2ylnT7Q_ds-databricks4r-databricks-for-rstudio-users.md:9:key_topics: ["databricks", "rstudio", "workspace", "cluster", "sparkr"]
-#> dsincubator/sources/source_-9QCNwmpTOE_test-driven-development.md:9:key_topics: ["test-driven-development", "testthat", "refactoring"]
+#> dsincubator/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md:9:key_topics: ["pins", "boards", "github", "caching", "versioning"]
+#> dsincubator/sources/source_4AOKCiAh3NM_testing-test-driven-development-tdd.md:9:key_topics: ["test-driven-development", "expect-error", "expect-equal", "refactoring", "vroom"]
 ```
 
 Use `qmd query` for prose/questions, `qmd search`/`rg` for exact symbols
 (`tar_make`, `expect_snapshot`), then `qmd get` to pull context. See
 `qmd --help` and `rg --help`.
+
+The bundle is plain markdown — browse it locally with
+[Obsidian](https://obsidian.md) (open `dsincubator/` as vault, use graph
+view, backlinks, and
+[Dataview](https://github.com/blacksmithgu/obsidian-dataview) for
+frontmatter queries) or any markdown editor. `qmd` already indexes it
+for the LLM; humans get the same files in Obsidian. See [qmd + Obsidian
+tips](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks)
+(Web Clipper → `raw/assets/`, `qmd context add`, `Marp` decks).
+
+------------------------------------------------------------------------
+
+Thanks https://gist.github.com/karpathy/ for the
+[post](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
+that brought my attention to LLM wikis.

@@ -169,10 +169,10 @@ All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
 [`qmd`](https://github.com/tobi/qmd) complements brute-force LLM (`cat`/`rg`) — local hybrid search (BM25 + vector + LLM rerank). Install: `npm install -g @tobilu/qmd` / `npx @tobilu/qmd` — <https://github.com/tobi/qmd>. Collection `dsincubator` is indexed; after changes: `qmd update && qmd embed -c dsincubator`.
 
 ```sh
-qmd search "docker" -c dsincubator -n 2 | head -n 20          # fast BM25
-qmd query "how to handle merge conflicts git" -c dsincubator -n 2 | head -n 20  # hybrid
-qmd get qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md | head -n 20
-rg -n "key_topics" dsincubator/sources/*.md | head -n 5        # exact grep
+qmd search "docker" -c dsincubator -n 2          # fast BM25
+qmd query "how to handle merge conflicts git" -c dsincubator -n 2  # hybrid
+qmd get qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md
+rg -n "key_topics" dsincubator/sources/*.md | head -n 5
 ```
 
 Use `qmd query` for prose/questions, `qmd search`/`rg` for symbols (`tar_make`); then `qmd get` to pull context. See `qmd --help` and `rg --help`.

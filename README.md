@@ -323,16 +323,16 @@ qmd search "docker" -c dsincubator -n 2 | head -n 20
 ```
 
 ``` bash
-qmd query "how to handle merge conflicts git" -c dsincubator -n 2 | head -n 20
-#> Expanding query... (0ms)
+qmd query "how to handle merge conflicts git" -c dsincubator -n 2
+#> Expanding query... (1ms)
 #> ├─ how to handle merge conflicts git
 #> ├─ lex: guide to dealing
 #> ├─ vec: steps for resolving git merge conflicts
 #> ├─ vec: guide to dealing with git merge problems
 #> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.2s)
-#> Reranking 25 chunks... (1ms)
+#> Embedding 4 queries... (1.5s)
+#> Reranking 25 chunks... (2ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)
 #> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
@@ -353,61 +353,6 @@ qmd query "how to handle merge conflicts git" -c dsincubator -n 2 | head -n 20
 #> @@ -57,4 @@ (56 before, 28 after)
 #> 
 #> Resolution is shown both manually (opening the file, editing `<<<<<<<` / `=======` / `>>>>>>>` markers, `git add` the resolved file, `git commit`) and with tooling (`git mergetool`, `usethis::pr_sync()` / `pr_merge()` helpers). Prevention guidance recurs: keep branches synchronized with `main`/`master`, scope each PR to one thing, split monolithic ~200-line files into modules so collaborators touch different files, and recognize that frequent conflicts often signal a communication or semanti...
-```
-
-``` bash
-qmd get qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md | head -n 20
-rg -n "key_topics" dsincubator/sources/*.md | head -n 5
-#> qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md  #3139a8
-#> Folder Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
-#> ---
-#> 
-#> 1: ---
-#> 2: type: source
-#> 3: title: "targets: Introduction"
-#> 4: source_file: "pbc6NX1n01Q_targets-introduction.md"
-#> 5: video_id: "pbc6NX1n01Q"
-#> 6: url: "https://www.youtube.com/watch?v=pbc6NX1n01Q"
-#> 7: lang: en
-#> 8: tags: ["ds-incubator", "targets", "pipelines", "r-packages", "workflow"]
-#> 9: key_topics: ["targets", "pipelines", "caching"]
-#> 10: generated:
-#> 11:   by: "agent:okf-wiki-builder/1.0"
-#> 12:   at: "2026-09-08T04:00:00Z"
-#> 13: status: draft
-#> 14: sources:
-#> 15:   - id: youtube-original
-#> 16:     resource: "https://www.youtube.com/watch?v=pbc6NX1n01Q"
-#> node:events:487
-#>       throw er; // Unhandled 'error' event
-#>       ^
-#> 
-#> Error: write EPIPE
-#>     at afterWriteDispatched (node:internal/stream_base_commons:159:15)
-#>     at writeGeneric (node:internal/stream_base_commons:150:3)
-#>     at Socket._writeGeneric (node:net:1171:11)
-#>     at Socket._write (node:net:1183:8)
-#>     at writeOrBuffer (node:internal/streams/writable:572:12)
-#>     at _write (node:internal/streams/writable:501:10)
-#>     at Writable.write (node:internal/streams/writable:510:10)
-#>     at file:///opt/homebrew/lib/node_modules/@tobilu/qmd/dist/cli/qmd.js:130:16
-#>     at new Promise (<anonymous>)
-#>     at flushWritable (file:///opt/homebrew/lib/node_modules/@tobilu/qmd/dist/cli/qmd.js:129:11)
-#> Emitted 'error' event on Socket instance at:
-#>     at emitErrorNT (node:internal/streams/destroy:170:8)
-#>     at emitErrorCloseNT (node:internal/streams/destroy:129:3)
-#>     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
-#>   errno: -32,
-#>   code: 'EPIPE',
-#>   syscall: 'write'
-#> }
-#> 
-#> Node.js v26.5.0
-#> dsincubator/sources/source_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md:9:key_topics: ["workflow", "rmarkdown", "ggplot2", "dplyr", "eda"]
-#> dsincubator/sources/source_-L2A_7XvD6Y_working-with-git-and-github-from-rstudio-part-2.md:9:key_topics: ["git", "github", "rstudio", "github-document", "history-filtering"]
-#> dsincubator/sources/source_-HTH2ylnT7Q_ds-databricks4r-databricks-for-rstudio-users.md:9:key_topics: ["databricks", "rstudio", "workspace", "cluster", "sparkr"]
-#> dsincubator/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md:9:key_topics: ["pins", "boards", "github", "caching", "versioning"]
-#> dsincubator/sources/source_4AOKCiAh3NM_testing-test-driven-development-tdd.md:9:key_topics: ["test-driven-development", "expect-error", "expect-equal", "refactoring", "vroom"]
 ```
 
 Use `qmd query` for prose/questions, `qmd search`/`rg` for exact symbols

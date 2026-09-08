@@ -2,7 +2,26 @@
 
 Transcript database for the [ds-incubator YouTube playlist](https://youtube.com/playlist?list=PLvgdJdJDL-APbB315sB3Lv_2VP2g0ioFO&si=LOZAcXpa1L7JlVvc): `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF format), linked by `id`.
 
-## Repository Structure
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+```{r}
+#| include: false
+library(readr, warn.conflicts = FALSE)
+library(dplyr, warn.conflicts = FALSE)
+library(fs)
+library(stringr)
+library(purrr)
+library(tibble)
+```
+
+## Structure
 
 ```
 data/metadata.csv            # derived table, 151 videos
@@ -13,63 +32,39 @@ bin/fetch-transcripts        # fetch captions
 bin/convert-transcripts      # json3 -> txt/tsv/md
 ```
 
-## Metadata Overview
+## Overview
 
 ```{r}
-library(readr, warn.conflicts = FALSE)
-library(dplyr, warn.conflicts = FALSE)
-
 dsi <- readr::read_csv("data/metadata.csv", show_col_types = FALSE)
 dsi |> glimpse()
 ```
 
-## Sample Metadata
-
 ```{r}
-dsi |> select(upload_date_iso, title, url) |> head(10)
+dsi |> select(upload_date_iso, title, url)
 ```
-
-## Transcript Join
 
 Lists `.md` transcripts from the filesystem, extracts the video `id`, and left-joins with `data/metadata.csv`.
 
 ```{r}
-library(fs)
-library(dplyr)
-library(stringr)
-library(readr)
-
 transcript_files <- dir_ls("transcripts", regexp = "\\.md$") |>
   tibble(path = _) |>
   mutate(filename = path_file(path))
 
 transcript_ids <- transcript_files |>
-  mutate(id = sapply(filename, function(f) {
-    dsi$id[startsWith(f, paste0(dsi$id, "_"))][1]
-  })) |>
+  mutate(id = purrr::map_chr(filename, ~ dsi$id[startsWith(.x, paste0(dsi$id, "_"))][1])) |>
   select(id, transcript_path = path)
 
 joined <- dsi |>
   left_join(transcript_ids, by = "id")
 
 joined |>
-  select(id, title, transcript_path) |>
-  head(10)
+  select(id, title, transcript_path)
 ```
 
-## Join Summary
+## Example transcript
 
 ```{r}
-cat("Rows in metadata:", nrow(dsi), "\n")
-cat("Matched transcripts:", sum(!is.na(joined$transcript_path)), "\n")
-```
-
-## Sample Transcript
-
-```{r}
-first_path <- joined$transcript_path[1]
-cat("File:", first_path, "\n\n")
-readLines(first_path, n = 30) |> paste(collapse = "\n") |> cat()
+fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeLines()
 ```
 
 ## Fetch / Refresh Commands

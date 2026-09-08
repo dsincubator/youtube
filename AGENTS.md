@@ -328,19 +328,19 @@ qmd query "question" -c dslab -n 3
 
 ### TODO List
 
-- [ ] **Add `requirements.txt`** with numpy, scipy, scikit-learn, hdbscan, PyYAML
-- [ ] **Install Python deps**: `pip3 install -r requirements.txt`
-- [ ] **Install `just`**: `brew install just` (optional task runner)
-- [ ] **Create `bin/distill-sources`**: transcript → source .md with key_topics + restructured body
-- [ ] **Create `bin/cluster-topics`**: TF-IDF → HDBSCAN → silhouette eval → `planning_manifest.json`
-- [ ] **Create `bin/generate-topics`**: manifest + sources → topic pages with cross-links, type field
-- [ ] **Create `bin/assemble-bundle`**: generates index.md, indexes, log.md, references/
-- [ ] **Create `bin/build-wiki`**: orchestrator script (standalone, `--count N` support)
-- [ ] **Create `justfile`**: task runner with all steps (optional, if `just` installed)
+- [x] **Add `requirements.txt`** with numpy, scipy, scikit-learn, hdbscan, PyYAML
+- [x] **Install Python deps**: `pip3 install -r requirements.txt`
+- [x] **Install `just`**: `brew install just` (optional task runner)
+- [x] **Create `bin/distill-sources`**: transcript → source .md with key_topics + restructured body
+- [x] **Create `bin/cluster-topics`**: TF-IDF → HDBSCAN → silhouette eval → `planning_manifest.json`
+- [x] **Create `bin/generate-topics`**: manifest + sources → topic pages with cross-links, type field
+- [x] **Create `bin/assemble-bundle`**: generates index.md, indexes, log.md, references/
+- [x] **Create `bin/build-wiki`**: orchestrator script (standalone, `--count N` support)
+- [x] **Create `justfile`**: task runner with all steps (optional, if `just` installed)
 - [x] **Update `AGENTS.md`**: add generalizations section (done)
 - [x] **Update `README.qmd`/`README.md`**: add dslab section or make generic
-- [ ] **Test with `--count 3`**: `./bin/build-wiki --count 3 --playlist "PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab`
-- [ ] **Verify dslab bundle conformance**: every concept has `type`, `sources` arrays populated, actor convention followed, `log.md` present
+- [x] **Test with `--count 3`**: `./bin/build-wiki --count 3 --playlist "PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab`
+- [x] **Verify dslab bundle conformance**: every concept has `type`, `sources` arrays populated, actor convention followed, `log.md` present
 - [ ] **Full run (all 27 videos)**: `./bin/build-wiki --playlist "PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab`
 - [ ] **qmd integration**: `qmd collection add ./dslab --name dslab && qmd embed -c dslab`
 

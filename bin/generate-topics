@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+set -u
+
+PROGRAM="${0##*/}"
+usage() {
+    cat <<EOF
+Usage: $PROGRAM [OPTIONS]
+Generate OKF concept topic pages from planning manifest and sources.
+
+Options:
+  -h, --help            Show this message and exit
+  --manifest PATH       Planning manifest JSON (default: planning_manifest.json)
+  --sources-dir DIR     Sources directory (default: sources)
+  --out-dir DIR         Output topics directory (default: topics)
+EOF
+}
+
+MANIFEST="planning_manifest.json"
+SOURCES_DIR="sources"
+OUT_DIR="topics"
+
+need_arg() {
+    [[ $# -ge 2 ]] || { echo "[$PROGRAM] $1 needs a value" >&2; exit 2; }
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help) usage; exit 0 ;;
+        --manifest) need_arg "$@"; MANIFEST="$2"; shift 2 ;;
+        --sources-dir) need_arg "$@"; SOURCES_DIR="$2"; shift 2 ;;
+        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
+    esac
+done
+
+PYTHON="python3"
+if [[ -x ".venv/bin/python" ]]; then
+    PYTHON=".venv/bin/python"
+fi
+
+"$PYTHON" - "$MANIFEST" "$SOURCES_DIR" "$OUT_DIR" <<'PYEOF'
+import sys, os, json, yaml
+
+manifest_path, sources_dir, out_dir = sys.argv[1:4]
+
+if not os.path.exists(manifest_path):
+    print(f"[generate-topics] error: manifest not found at {manifest_path}")
+    sys.exit(1)
+
+with open(manifest_path, encoding="utf-8") as f:
+    manifest = json.load(f)
+
+topics = manifest.get("topics", [])
+os.makedirs(out_dir, exist_ok=True)
+
+print(f"[generate-topics] generating {len(topics)} topic pages into {out_dir}/")
+
+for t in topics:
+    filename = t.get("topic_filename", "topic.md")
+    title = t.get("topic_title", "Untitled Topic")
+    desc = t.get("description", "")
+    t_type = t.get("type", "Concept")
+    category = t.get("category", "general")
+    source_files = t.get("source_files", [])
+    
+    cat_dir = os.path.join(out_dir, category)
+    os.makedirs(cat_dir, exist_ok=True)
+    out_path = os.path.join(cat_dir, filename)
+    
+    # Collect source details
+    sources_ref = []
+    for sf in source_files:
+        s_path = os.path.join(sources_dir, sf)
+        if os.path.exists(s_path):
+            try:
+                with open(s_path, encoding="utf-8") as sf_obj:
+                    content = sf_obj.read()
+                    if content.startswith("---"):
+                        parts = content.split("---", 2)
+                        if len(parts) >= 3:
+                            sf_fm = yaml.safe_load(parts[1])
+                            for s in sf_fm.get("sources", []):
+                                sources_ref.append(s)
+            except Exception as e:
+                print(f"[generate-topics] warning reading source {sf}: {e}")
+
+    frontmatter = {
+        "type": t_type,
+        "title": title,
+        "description": desc,
+        "tags": [manifest.get("bundle_name", "wiki"), "concept"],
+        "sources": sources_ref,
+        "generated": {
+            "by": "agent:okf-wiki-builder/1.0",
+            "at": "2026-09-08"
+        },
+        "status": "draft"
+    }
+    
+    body = f"""# {title}
+
+{desc}
+
+## Sources
+"""
+    for s in sources_ref:
+        body += f"- [{s.get('title', 'Source')}]({s.get('url', '#')})\n"
+
+    body += f"""
+## Overview
+This concept page aggregates knowledge from multiple distilled sources within the bundle.
+"""
+
+    with open(out_path, "w", encoding="utf-8") as out:
+        out.write("---\n")
+        yaml.safe_dump(frontmatter, out, sort_keys=False, allow_unicode=True)
+        out.write("---\n\n")
+        out.write(body)
+
+print("[generate-topics] successfully generated all topic pages.")
+PYEOF

@@ -1,0 +1,184 @@
+#!/usr/bin/env bash
+set -u
+
+PROGRAM="${0##*/}"
+usage() {
+    cat <<EOF
+Usage: $PROGRAM [OPTIONS]
+Assemble bundle root index, indexes, log, and references.
+
+Options:
+  -h, --help            Show this message and exit
+  --bundle-dir DIR      Bundle directory (default: .)
+  --manifest PATH       Planning manifest JSON (default: planning_manifest.json)
+  --bundle-name NAME    Bundle identifier (default: dslab)
+  --bundle-tag TAG      Bundle tag (default: ds-lab)
+  --playlist-url URL    Playlist URL
+EOF
+}
+
+BUNDLE_DIR="."
+MANIFEST="planning_manifest.json"
+BUNDLE_NAME="dslab"
+BUNDLE_TAG="ds-lab"
+PLAYLIST_URL=""
+
+need_arg() {
+    [[ $# -ge 2 ]] || { echo "[$PROGRAM] $1 needs a value" >&2; exit 2; }
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help) usage; exit 0 ;;
+        --bundle-dir) need_arg "$@"; BUNDLE_DIR="$2"; shift 2 ;;
+        --manifest) need_arg "$@"; MANIFEST="$2"; shift 2 ;;
+        --bundle-name) need_arg "$@"; BUNDLE_NAME="$2"; shift 2 ;;
+        --bundle-tag) need_arg "$@"; BUNDLE_TAG="$2"; shift 2 ;;
+        --playlist-url) need_arg "$@"; PLAYLIST_URL="$2"; shift 2 ;;
+        *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
+    esac
+done
+
+PYTHON="python3"
+if [[ -x ".venv/bin/python" ]]; then
+    PYTHON=".venv/bin/python"
+fi
+
+"$PYTHON" - "$BUNDLE_DIR" "$MANIFEST" "$BUNDLE_NAME" "$BUNDLE_TAG" "$PLAYLIST_URL" <<'PYEOF'
+import sys, os, json, glob
+
+bundle_dir, manifest_path, bundle_name, bundle_tag, playlist_url = sys.argv[1:6]
+
+if os.path.exists(manifest_path):
+    with open(manifest_path, encoding="utf-8") as f:
+        manifest = json.load(f)
+    if not playlist_url:
+        playlist_url = manifest.get("playlist_url", "")
+else:
+    manifest = {"topics": []}
+
+os.makedirs(bundle_dir, exist_ok=True)
+topics_dir = os.path.join(bundle_dir, "topics")
+sources_dir = os.path.join(bundle_dir, "sources")
+refs_dir = os.path.join(bundle_dir, "references")
+os.makedirs(topics_dir, exist_ok=True)
+os.makedirs(sources_dir, exist_ok=True)
+os.makedirs(refs_dir, exist_ok=True)
+
+# 1. Bundle root index.md (§12)
+root_index_path = os.path.join(bundle_dir, "index.md")
+root_content = f"""---
+okf_version: '0.2'
+type: Bundle
+title: {bundle_name.title()} LLM Wiki Bundle
+description: OKF v0.2 LLM wiki bundle for {bundle_name}.
+tags:
+- {bundle_tag}
+- wiki-bundle
+generated:
+  by: agent:okf-wiki-builder/1.0
+  at: '2026-09-08'
+status: stable
+---
+
+# {bundle_name.title()} LLM Wiki Bundle
+
+Welcome to the **{bundle_name.title()}** knowledge base bundle, structured according to the Open Knowledge Format (OKF) v0.2.
+
+## Contents
+- [Topics Overview](topics/concepts-overview.md)
+- [Sources Index](sources/index.md)
+- [Bundle History Log](log.md)
+- [References](references/index.md)
+"""
+with open(root_index_path, "w", encoding="utf-8") as f:
+    f.write(root_content)
+
+# 2. Topics concepts-overview.md (§3.1)
+topics_overview_path = os.path.join(topics_dir, "concepts-overview.md")
+topics_content = f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: Topics Overview
+description: Overview of all aggregated concepts in {bundle_name}.
+tags:
+- {bundle_tag}
+- topics-index
+---
+
+# Topics Overview ({bundle_name.title()})
+
+"""
+for t in manifest.get("topics", []):
+    fname = t.get("topic_filename", "")
+    title = t.get("topic_title", "")
+    cat = t.get("category", "general")
+    topics_content += f"- [{title}]({cat}/{fname}) — {t.get('description', '')}\n"
+
+with open(topics_overview_path, "w", encoding="utf-8") as f:
+    f.write(topics_content)
+
+# Topics index.md (§8)
+with open(os.path.join(topics_dir, "index.md"), "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: Topics Index
+---
+# Topics Index
+See [Concepts Overview](concepts-overview.md).
+""")
+
+# 3. Sources index.md & log.md (§8, §9)
+sources_list = sorted(glob.glob(os.path.join(sources_dir, "source_*.md")))
+sources_index_content = f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: Sources Index
+---
+# Sources Index ({bundle_name.title()})
+
+"""
+for s_path in sources_list:
+    s_name = os.path.basename(s_path)
+    sources_index_content += f"- [{s_name}]({s_name})\n"
+
+with open(os.path.join(sources_dir, "index.md"), "w", encoding="utf-8") as f:
+    f.write(sources_index_content)
+
+sources_log_content = f"""---
+okf_version: '0.2'
+type: Log
+title: Sources Ingest Log
+---
+# Sources Ingest Log
+- Initial ingest completed for {len(sources_list)} sources.
+"""
+with open(os.path.join(sources_dir, "log.md"), "w", encoding="utf-8") as f:
+    f.write(sources_log_content)
+
+# 4. Root log.md (§9)
+root_log_path = os.path.join(bundle_dir, "log.md")
+with open(root_log_path, "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: Log
+title: Bundle History Log
+---
+# Bundle History Log
+- 2026-09-08: Initial assembly of {bundle_name} wiki bundle.
+""")
+
+# 5. References index.md (§6.3)
+with open(os.path.join(refs_dir, "index.md"), "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: References
+title: References & External Executors
+---
+# References
+External executors and attestation anchors for {bundle_name}.
+""")
+
+print(f"[assemble-bundle] successfully assembled bundle structure in {bundle_dir}/")
+PYEOF

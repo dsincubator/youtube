@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PROGRAM="${0##*/}"
+usage() {
+    cat <<EOF
+Usage: $PROGRAM [OPTIONS]
+Orchestrate the full OKF LLM wiki build pipeline.
+
+Options:
+  -h, --help            Show this message and exit
+  --playlist URL        YouTube playlist URL (required)
+  --name NAME           Bundle identifier (default: dslab)
+  --tag TAG             Bundle tag (default: ds-lab)
+  --out-dir DIR         Output bundle directory (default: dslab)
+  -n, --count N         Limit processing to the first N videos
+EOF
+}
+
+PLAYLIST=""
+BUNDLE_NAME="dslab"
+BUNDLE_TAG="ds-lab"
+OUT_DIR="dslab"
+COUNT=0
+
+need_arg() {
+    [[ $# -ge 2 ]] || { echo "[$PROGRAM] $1 needs a value" >&2; exit 2; }
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help) usage; exit 0 ;;
+        --playlist) need_arg "$@"; PLAYLIST="$2"; shift 2 ;;
+        --name) need_arg "$@"; BUNDLE_NAME="$2"; shift 2 ;;
+        --tag) need_arg "$@"; BUNDLE_TAG="$2"; shift 2 ;;
+        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
+        *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
+    esac
+done
+
+if [[ -z "$PLAYLIST" ]]; then
+    echo "[$PROGRAM] error: --playlist URL is required" >&2
+    usage >&2
+    exit 2
+fi
+
+mkdir -p "$OUT_DIR/metadata" "$OUT_DIR/transcripts" "$OUT_DIR/sources" "$OUT_DIR/topics"
+
+CSV_PATH="$OUT_DIR/metadata.csv"
+if [[ ! -f "$CSV_PATH" ]]; then
+    echo "playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url" > "$CSV_PATH"
+fi
+
+echo "=== Step 1: Fetching Metadata ==="
+CMD_META=(./bin/fetch-metadata --playlist "$PLAYLIST" --csv "$CSV_PATH" --meta-dir "$OUT_DIR/metadata")
+[[ "$COUNT" -gt 0 ]] && CMD_META+=(--limit "$COUNT")
+"${CMD_META[@]}"
+
+echo "=== Step 2: Fetching Transcripts ==="
+CMD_TRANS=(./bin/fetch-transcripts --csv "$CSV_PATH" --out-dir "$OUT_DIR/transcripts")
+[[ "$COUNT" -gt 0 ]] && CMD_TRANS+=(--count "$COUNT")
+"${CMD_TRANS[@]}"
+
+echo "=== Step 3: Converting Transcripts to OKF Markdown ==="
+CMD_CONV=(./bin/convert-transcripts --csv "$CSV_PATH" --out-dir "$OUT_DIR/transcripts" --format md)
+[[ "$COUNT" -gt 0 ]] && CMD_CONV+=(--count "$COUNT")
+"${CMD_CONV[@]}"
+
+echo "=== Step 4: Distilling Sources ==="
+CMD_DIST=(./bin/distill-sources --csv "$CSV_PATH" --transcripts-dir "$OUT_DIR/transcripts" --out-dir "$OUT_DIR/sources" --tag "$BUNDLE_TAG")
+[[ "$COUNT" -gt 0 ]] && CMD_DIST+=(--count "$COUNT")
+"${CMD_DIST[@]}"
+
+echo "=== Step 5: Clustering Topics ==="
+./bin/cluster-topics --sources-dir "$OUT_DIR/sources" --out-file "$OUT_DIR/planning_manifest.json" --bundle-name "$BUNDLE_NAME" --playlist-url "$PLAYLIST"
+
+echo "=== Step 6: Generating Topics ==="
+./bin/generate-topics --manifest "$OUT_DIR/planning_manifest.json" --sources-dir "$OUT_DIR/sources" --out-dir "$OUT_DIR/topics"
+
+echo "=== Step 7: Assembling Bundle ==="
+./bin/assemble-bundle --bundle-dir "$OUT_DIR" --manifest "$OUT_DIR/planning_manifest.json" --bundle-name "$BUNDLE_NAME" --bundle-tag "$BUNDLE_TAG" --playlist-url "$PLAYLIST"
+
+echo "=== Build Complete! Wiki bundle ready at $OUT_DIR/index.md ==="

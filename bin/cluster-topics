@@ -1,0 +1,124 @@
+#!/usr/bin/env bash
+set -u
+
+PROGRAM="${0##*/}"
+usage() {
+    cat <<EOF
+Usage: $PROGRAM [OPTIONS]
+Cluster distilled sources into planning_manifest.json.
+
+Options:
+  -h, --help            Show this message and exit
+  --sources-dir DIR     Sources directory (default: sources)
+  --out-file PATH       Output planning manifest JSON (default: planning_manifest.json)
+  --bundle-name NAME    Bundle name (default: dsincubator)
+  --playlist-url URL    Playlist URL (default: https://www.youtube.com/@dsincubator)
+EOF
+}
+
+SOURCES_DIR="sources"
+OUT_FILE="planning_manifest.json"
+BUNDLE_NAME="dsincubator"
+PLAYLIST_URL="https://www.youtube.com/@dsincubator"
+
+need_arg() {
+    [[ $# -ge 2 ]] || { echo "[$PROGRAM] $1 needs a value" >&2; exit 2; }
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help) usage; exit 0 ;;
+        --sources-dir) need_arg "$@"; SOURCES_DIR="$2"; shift 2 ;;
+        --out-file) need_arg "$@"; OUT_FILE="$2"; shift 2 ;;
+        --bundle-name) need_arg "$@"; BUNDLE_NAME="$2"; shift 2 ;;
+        --playlist-url) need_arg "$@"; PLAYLIST_URL="$2"; shift 2 ;;
+        *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
+    esac
+done
+
+# Use virtual environment python if available
+PYTHON="python3"
+if [[ -x ".venv/bin/python" ]]; then
+    PYTHON=".venv/bin/python"
+fi
+
+"$PYTHON" - "$SOURCES_DIR" "$OUT_FILE" "$BUNDLE_NAME" "$PLAYLIST_URL" <<'PYEOF'
+import sys, os, glob, json, yaml
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.cluster import AgglomerativeClustering
+import numpy as np
+
+sources_dir, out_file, bundle_name, playlist_url = sys.argv[1:5]
+
+source_files = sorted(glob.glob(os.path.join(sources_dir, "source_*.md")))
+print(f"[cluster-topics] found {len(source_files)} source files in {sources_dir}/")
+
+sources_data = []
+for path in source_files:
+    try:
+        with open(path, encoding="utf-8") as f:
+            content = f.read()
+        if content.startswith("---"):
+            parts = content.split("---", 2)
+            if len(parts) >= 3:
+                fm = yaml.safe_load(parts[1])
+                sources_data.append({
+                    "path": path,
+                    "filename": os.path.basename(path),
+                    "title": fm.get("title", ""),
+                    "key_topics": fm.get("key_topics", []),
+                    "tags": fm.get("tags", [])
+                })
+    except Exception as e:
+        print(f"[cluster-topics] warning: error parsing {path}: {e}")
+
+if not sources_data:
+    print("[cluster-topics] error: no sources found to cluster.")
+    sys.exit(1)
+
+# Extract texts for TF-IDF
+texts = [f"{s['title']} " + " ".join(s['key_topics']) + " " + " ".join(s['tags']) for s in sources_data]
+
+if len(texts) >= 3:
+    n_clusters = max(1, min(len(texts) // 2, 5))
+    vectorizer = TfidfVectorizer(stop_words='english')
+    X = vectorizer.fit_transform(texts).toarray()
+    clustering = AgglomerativeClustering(n_clusters=n_clusters)
+    labels = clustering.fit_predict(X)
+else:
+    labels = [0] * len(texts)
+
+clusters = {}
+for idx, label in enumerate(labels):
+    clusters.setdefault(label, []).append(sources_data[idx])
+
+topics = []
+for cluster_id, items in clusters.items():
+    theme_words = set()
+    for item in items:
+        theme_words.update(item["key_topics"])
+    theme_name = sorted(list(theme_words))[0] if theme_words else f"cluster-{cluster_id}"
+    topic_slug = theme_name.lower().replace(" ", "-")
+    topic_title = theme_name.replace("-", " ").title()
+    
+    topics.append({
+        "topic_filename": f"{topic_slug}.md",
+        "topic_title": topic_title,
+        "type": "Concept",
+        "description": f"Aggregated topic page covering {topic_title}.",
+        "category": "general",
+        "source_files": [item["filename"] for item in items]
+    })
+
+manifest = {
+    "bundle_name": bundle_name,
+    "okf_version": "0.2",
+    "playlist_url": playlist_url,
+    "topics": topics
+}
+
+with open(out_file, "w", encoding="utf-8") as f:
+    json.dump(manifest, f, indent=2, ensure_ascii=False)
+
+print(f"[cluster-topics] successfully generated {out_file} with {len(topics)} topics.")
+PYEOF

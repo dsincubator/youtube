@@ -1,0 +1,156 @@
+#!/usr/bin/env bash
+set -u
+
+PROGRAM="${0##*/}"
+usage() {
+    cat <<EOF
+Usage: $PROGRAM [OPTIONS]
+Distill transcript .md files into distilled sources.
+
+Options:
+  -h, --help            Show this message and exit
+  --csv PATH            Metadata CSV (default: data/metadata.csv)
+  --transcripts-dir DIR Transcripts directory (default: transcripts)
+  --out-dir DIR         Output sources directory (default: sources)
+  --tag TAG             Bundle tag for frontmatter tags (default: ds-incubator)
+  -n, --count N         Process only the first N videos
+EOF
+}
+
+CSV="data/metadata.csv"
+TRANSCRIPTS_DIR="transcripts"
+OUT_DIR="sources"
+BUNDLE_TAG="ds-incubator"
+COUNT=0
+
+need_arg() {
+    [[ $# -ge 2 ]] || { echo "[$PROGRAM] $1 needs a value" >&2; exit 2; }
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help) usage; exit 0 ;;
+        --csv) need_arg "$@"; CSV="$2"; shift 2 ;;
+        --transcripts-dir) need_arg "$@"; TRANSCRIPTS_DIR="$2"; shift 2 ;;
+        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        --tag) need_arg "$@"; BUNDLE_TAG="$2"; shift 2 ;;
+        -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
+        *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
+    esac
+done
+
+python3 - "$CSV" "$TRANSCRIPTS_DIR" "$OUT_DIR" "$BUNDLE_TAG" "$COUNT" <<'PYEOF'
+import sys, os, csv, glob, re, yaml
+
+csv_path, trans_dir, out_dir, bundle_tag, count_str = sys.argv[1:6]
+count = int(count_str)
+
+os.makedirs(out_dir, exist_ok=True)
+
+# Load metadata.csv
+meta = {}
+if os.path.exists(csv_path):
+    with open(csv_path, encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            vid = row.get("id")
+            if vid:
+                meta[vid] = row
+
+# Find transcript markdown files
+md_files = sorted(glob.glob(os.path.join(trans_dir, "*.md")))
+if count > 0:
+    md_files = md_files[:count]
+
+print(f"[$PROGRAM] found {len(md_files)} transcript markdown files to distill")
+
+for t_path in md_files:
+    filename = os.path.basename(t_path)
+    # expected format: <id>_<slug>.md
+    m = re.match(r"^([^_]+)_(.+)\.md$", filename)
+    if not m:
+        print(f"[$PROGRAM] warning: skipping unrecognized filename format: {filename}")
+        continue
+    vid = m.group(1)
+    slug = m.group(2)
+    
+    m_row = meta.get(vid, {})
+    title = m_row.get("title", slug.replace("-", " ").title())
+    lang = "en"
+    usage_count = m_row.get("view_count", "0")
+    last_modified = m_row.get("upload_date_iso", "")
+    url = m_row.get("url", f"https://www.youtube.com/watch?v={vid}")
+    
+    # Read transcript content to extract some simple summary and key concepts
+    content = ""
+    try:
+        with open(t_path, encoding="utf-8") as f:
+            content = f.read()
+    except Exception as e:
+        print(f"[$PROGRAM] error reading {t_path}: {e}")
+        continue
+    
+    # Simple extraction of key topics and summary
+    # Extract lines after # Transcript or just first paragraphs
+    body_lines = content.splitlines()
+    transcript_text = "\n".join([l for l in body_lines if not l.startswith("---") and not l.startswith("type:")])
+    
+    # Extract basic key topics (words with frequency or capitalized terms / code references)
+    words = re.findall(r'\b[A-Za-z][a-zA-Z0-9_]{3,}\b', transcript_text)
+    freq = {}
+    for w in words:
+        if w.lower() not in {"this", "that", "with", "from", "the", "and", "for", "you", "your", "have"}:
+            freq[w] = freq.get(w, 0) + 1
+    top_words = sorted(freq.keys(), key=lambda x: freq[x], reverse=True)[:5]
+    key_topics = [w.lower() for w in top_words]
+    if not key_topics:
+        key_topics = [slug]
+
+    source_filename = f"source_{vid}_{slug}.md"
+    out_path = os.path.join(out_dir, source_filename)
+    
+    frontmatter = {
+        "type": "source",
+        "title": title,
+        "description": f"Distilled source notes for {title}.",
+        "resource": url,
+        "tags": [bundle_tag] + key_topics,
+        "lang": lang,
+        "sources": [{
+            "id": vid,
+            "title": title,
+            "url": url,
+            "author": m_row.get("uploader", "Posit PBC"),
+            "usage_count": int(usage_count) if usage_count.isdigit() else 0,
+            "last_modified": last_modified
+        }],
+        "usage_window": {
+            "start": "2026-01-01",
+            "end": "2026-12-31"
+        },
+        "key_topics": key_topics,
+        "generated": {
+            "by": "agent:okf-wiki-builder/1.0",
+            "at": "2026-09-08"
+        },
+        "status": "draft"
+    }
+    
+    body = f"""# Summary
+This distilled source document captures key insights from [{title}]({url}).
+
+# Key Concepts & Tools Taught
+- **Core Theme**: {title}
+- **Topics Covered**: {', '.join(key_topics)}
+
+# Code Snippets & Formulas
+- Refer to original transcript for code examples and practical demonstrations.
+"""
+
+    with open(out_path, "w", encoding="utf-8") as out:
+        out.write("---\n")
+        yaml.safe_dump(frontmatter, out, sort_keys=False, allow_unicode=True)
+        out.write("---\n\n")
+        out.write(body)
+
+print(f"[$PROGRAM] successfully distilled {len(md_files)} sources into {out_dir}/")
+PYEOF

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "webdata: Scrapping"
-description: "welcome again to the ds equator everyone  and this is the series about getting  data from websites  and we already did one meetup last week  where we overviewed"
+description: "And this is the series about getting and we already did one meetup last week where we overviewed basically the the the big two ways in which websites..."
 resource: "https://www.youtube.com/watch?v=sPE6MLGUPy4"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "web-scraping", "containers", "r-packages", "apis"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=sPE6MLGUPy4"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-01-18T00:00:00Z"
+    usage_count: 32
+usage_window: { from: "2022-01-18T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

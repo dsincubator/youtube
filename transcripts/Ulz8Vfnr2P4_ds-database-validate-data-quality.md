@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "ds.database: Validate data quality"
-description: "to the DS incubator we are on the series  about relational data and last week  miria asked a couple of questions about  how to validate data and that was super "
+description: "To the DS incubator we are on the series about relational data and last week miria asked a couple of questions about how to validate data and that..."
 resource: "https://www.youtube.com/watch?v=Ulz8Vfnr2P4"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "workflow", "pipelines", "databases"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=Ulz8Vfnr2P4"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-09-20T00:00:00Z"
+    usage_count: 107
+usage_window: { from: "2022-09-20T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

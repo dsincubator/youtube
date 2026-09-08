@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "r2dii.data and r2dii.match are now on CRAN: Demo and Q&A"
-description: "wait yes I can I can record now so we  actually recording the Meetup go ahead  okay  so hello everybody  we have Mauro and Jax and I have talked  about her deci"
+description: "I can record now so we actually recording the Meetup go ahead we have Mauro and Jax and I have talked about her decided to beacon is coding..."
 resource: "https://www.youtube.com/watch?v=ovbwghDjxV8"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "cran", "r-packages", "r2dii", "github"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=ovbwghDjxV8"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-03-31T00:00:00Z"
+    usage_count: 91
+usage_window: { from: "2020-03-31T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

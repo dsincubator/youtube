@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Shiny: development workflow"
-description: "so today the ds equator continues with  the series  about building shiny apps and i'm very  excited to  maybe the first time talk about  something fun at least "
+description: "About building shiny apps and i'm very maybe the first time talk about something fun at least found to me which is the idea of workflow you know..."
 resource: "https://www.youtube.com/watch?v=lq6ZhPFVLTY"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "shiny", "workflow", "debugging", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=lq6ZhPFVLTY"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-07-20T00:00:00Z"
+    usage_count: 54
+usage_window: { from: "2021-07-20T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

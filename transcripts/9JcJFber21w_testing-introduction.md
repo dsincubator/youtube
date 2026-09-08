@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Testing: Introduction"
-description: "today is the first data science equator  about um well not the first about  testing but the first in a series about  testing  we have kind of touched on the top"
+description: "Lately i think we have kind of more renewed interest in testing um and also some more experience and more at two degrees are actually testing their code..."
 resource: "https://www.youtube.com/watch?v=9JcJFber21w"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "testing", "shiny", "r-packages", "snapshot-testing"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=9JcJFber21w"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-03-30T00:00:00Z"
+    usage_count: 59
+usage_window: { from: "2021-03-30T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

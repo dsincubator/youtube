@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Creating an empty R package up to the best standards"
-description: "[Music]  I am about to create a very small art  package and I would like to show how to  set it up uh you may have your own ways  but here I'm going to be um yo"
+description: "I am about to create a very small art package and I would like to show how to set it up uh you may have your own ways..."
 resource: "https://www.youtube.com/watch?v=AFuVF0oWFMY"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "r-packages", "workflow", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=AFuVF0oWFMY"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-07-16T00:00:00Z"
+    usage_count: 126
+usage_window: { from: "2024-07-16T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

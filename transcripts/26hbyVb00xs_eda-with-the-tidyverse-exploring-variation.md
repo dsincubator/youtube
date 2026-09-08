@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "EDA with the tidyverse: Exploring Variation"
-description: "so this is the vs equator and again we  are in the series about exploring data  with the tidy verse  and today we're going to be talking  about variation and ho"
+description: "Explore the variation contained in two kinds of variables categorical and continuous how can we do that with two tools the ggplot2 package and the deep player package..."
 resource: "https://www.youtube.com/watch?v=26hbyVb00xs"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "ggplot2", "eda", "tidyverse"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=26hbyVb00xs"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-11-09T00:00:00Z"
+    usage_count: 362
+usage_window: { from: "2021-11-09T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

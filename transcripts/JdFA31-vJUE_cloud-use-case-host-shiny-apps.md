@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "cloud: Use case -- host shiny apps"
-description: "welcome everyone again to the ds  incubator this is the series about cloud  computing  and today we're going to be talking  about how to use  uh cloud computing"
+description: "Shiny to find that quickly so this is the little bit of that document that relates to what we're going to be host a shiny app is of..."
 resource: "https://www.youtube.com/watch?v=JdFA31-vJUE"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "shiny", "containers", "docker", "cloud"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=JdFA31-vJUE"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-06-14T00:00:00Z"
+    usage_count: 115
+usage_window: { from: "2022-06-14T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

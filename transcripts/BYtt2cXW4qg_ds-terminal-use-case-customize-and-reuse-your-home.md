@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "ds.terminal: Use case - customize and reuse your home"
-description: "today the ds equator continues on the  series  about  uh working with the terminal  and today i thought of presenting a use  case  showing off the skills that w"
+description: "Quite useful for example we can what we learned to customize our computer environment our terminal and then reuse that environment for example in our studio cloud project..."
 resource: "https://www.youtube.com/watch?v=BYtt2cXW4qg"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "terminal", "git", "cloud", "docker"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=BYtt2cXW4qg"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-05-03T00:00:00Z"
+    usage_count: 25
+usage_window: { from: "2022-05-03T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

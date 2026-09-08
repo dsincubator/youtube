@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "How to download a file from google drive into your R IDE"
-description: "[Music]  in this video I would like to talk about  how to download a file that you have in  your drive say that you have a file in  drive and the file is pretty"
+description: "Would like to talk about how to download a file that you have in your drive say that you have a file in drive and the file is..."
 resource: "https://www.youtube.com/watch?v=iNWBG3x4QVc"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=iNWBG3x4QVc"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-07-19T00:00:00Z"
+    usage_count: 251
+usage_window: { from: "2024-07-19T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Daily stand-ups"
-description: "yeah go ahead and hit record here  um hey everyone so  this is sort of a follow-up to  that nice long ramble that i gave on  friday about pad guile stuff  um an"
+description: "That they think is a stand-up on any sort of regular basis maro and i are kind of doing daily if scrum stand ups maybe not daily we..."
 resource: "https://www.youtube.com/watch?v=vpAW3j5zbX0"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "standups", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=vpAW3j5zbX0"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-07-21T00:00:00Z"
+    usage_count: 23
+usage_window: { from: "2020-07-21T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

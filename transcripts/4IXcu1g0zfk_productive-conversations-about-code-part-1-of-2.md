@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Productive conversations about code (part 1 of 2)"
-description: "so today the data science incubator is  about how to maintain  productive conversations about code  anything from  a little piece of code like one line a  chunk"
+description: "Productive conversations about code a little piece of code like one line a chunk of code to you know through say a file containing a lot of code..."
 resource: "https://www.youtube.com/watch?v=4IXcu1g0zfk"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "code-reviews", "reproducibility", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=4IXcu1g0zfk"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-09-01T00:00:00Z"
+    usage_count: 13
+usage_window: { from: "2020-09-01T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Daily Git workflows: \"Fork and clone\" explained"
-description: "and today uh dds equator is  a follow-up of last meetup where we  covered  the simplified version of the github  flow and today we are going we are going  to ki"
+description: "Of a theoretical way what the workflow looks like and because what we did last time although it did cover every step of the github flow is you..."
 resource: "https://www.youtube.com/watch?v=tetgpXHal5s"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "git", "workflow", "pull-requests"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=tetgpXHal5s"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-08-04T00:00:00Z"
+    usage_count: 23
+usage_window: { from: "2020-08-04T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

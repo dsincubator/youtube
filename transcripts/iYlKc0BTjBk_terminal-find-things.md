@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "terminal: Find things"
-description: "welcome to the ds incubator this is the  series about working with a terminal  today we're going to be talking about  finding things with grep and with find  th"
+description: "A terminal today we're going to be talking about finding things with grep and with find the objectives are motivated by three use cases one is to find..."
 resource: "https://www.youtube.com/watch?v=iYlKc0BTjBk"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "terminal", "cli"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=iYlKc0BTjBk"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-05-10T00:00:00Z"
+    usage_count: 45
+usage_window: { from: "2022-05-10T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "targets: debugging"
-description: "so today the ds equator will be covering  debugging with targets uh  there are three sections or subsections  in the chapter debugging in the target  manual and"
+description: "Debugging with targets uh there are three sections or subsections in the chapter debugging in the target manual and and i think the most important one is the..."
 resource: "https://www.youtube.com/watch?v=lfhuO71ikQE"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "targets", "debugging", "pipelines", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=lfhuO71ikQE"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-03-09T00:00:00Z"
+    usage_count: 137
+usage_window: { from: "2021-03-09T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

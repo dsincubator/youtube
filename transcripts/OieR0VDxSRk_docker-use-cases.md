@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "docker: use cases"
-description: "so today the ds inquirer continues on  the series about using docker images and  i remind you all that this is  very focused on the usage of the images  and we'"
+description: "The series about using docker images and i remind you all that this is very focused on the usage of the images and we'll cover next the maintenance..."
 resource: "https://www.youtube.com/watch?v=OieR0VDxSRk"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "docker", "terminal", "containers", "docker-compose"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=OieR0VDxSRk"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-09-07T00:00:00Z"
+    usage_count: 312
+usage_window: { from: "2021-09-07T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "pins"
-description: "okay today I'm gonna show the beans  package these relates to the same  problem of trying to manage data better  so the beans package is one possible way  I wou"
+description: "Package these relates to the same problem of trying to manage data better I would like to consider I think it's ruined 2ne1 in our organization and I..."
 resource: "https://www.youtube.com/watch?v=kS_0s0eS1Xw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "pins", "github"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=kS_0s0eS1Xw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-04-21T00:00:00Z"
+    usage_count: 13
+usage_window: { from: "2020-04-21T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

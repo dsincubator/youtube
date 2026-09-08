@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Working with Git and GitHub from RStudio (part 1)"
-description: "starts okay so the idea today  is to refresh  the features from github that allow us  to work  with git and github and i  i know that everyone here already uses"
+description: "Idea today the features from github that allow us with git and github and i i know that everyone here already uses in the interest of being on..."
 resource: "https://www.youtube.com/watch?v=h6koYxwQFuE"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "github", "workflow", "pull-requests"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=h6koYxwQFuE"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-08-18T00:00:00Z"
+    usage_count: 55
+usage_window: { from: "2020-08-18T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

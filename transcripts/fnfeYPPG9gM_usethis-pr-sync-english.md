@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "`usethis::pr_sync( )` (English)"
-description: "hello today I'm going to talk about the  function BR sync from the use this  package in particular I would like to  use this function to solve the following  si"
+description: "Function BR sync from the use this package in particular I would like to use this function to solve the following situation imagine that you are a contributor..."
 resource: "https://www.youtube.com/watch?v=fnfeYPPG9gM"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "pull-requests", "github", "usethis", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=fnfeYPPG9gM"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2019-11-04T00:00:00Z"
+    usage_count: 8
+usage_window: { from: "2019-11-04T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

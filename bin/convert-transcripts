@@ -65,23 +65,157 @@ def yaml_escape(s):
     return f'"{s}"'
 
 with open(csv_path) as f:
-    reader = csv.DictReader(f)
-    ids = [row["id"].strip() for row in reader]
-    f.seek(0)
-    _ = reader
-    titles = {}
+    rows = {}
     for row in csv.DictReader(f):
-        titles[row["id"].strip()] = row.get("title", "").strip()
+        vid_key = row["id"].strip()
+        rows[vid_key] = {
+            "title": row.get("title", "").strip(),
+            "views": row.get("view_count", "").strip(),
+            "uploaded": row.get("upload_date_iso", "").strip(),
+        }
+    ids = list(rows.keys())
 
 if count > 0:
     ids = ids[:count]
 
 gen_ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
+# Keyword rules for topical tags, in priority order. Scanned against the
+# video title + transcript body (lowercased). First matches win, capped.
+TAG_RULES = [
+    ("test driven", "tdd"), ("tdd", "tdd"),
+    ("snapshot", "snapshot-testing"), ("code coverage", "code-coverage"),
+    ("testthat", "testthat"), ("testing", "testing"),
+    ("merge conflict", "merge-conflicts"), ("rebase", "rebasing"),
+    ("pull request", "pull-requests"), ("github", "github"),
+    ("gitflow", "gitflow"), ("git", "git"),
+    ("usethis", "usethis"), ("cran", "cran"),
+    ("roxygen", "documentation"), ("pkgdown", "pkgdown"),
+    ("r package", "r-packages"), ("package", "r-packages"),
+    ("targets", "targets"), ("drake", "drake"),
+    ("memois", "memoisation"), ("pipeline", "pipelines"),
+    ("reproducib", "reproducibility"),
+    ("ggplot2", "ggplot2"), ("dplyr", "dplyr"),
+    ("tidyverse", "tidyverse"),
+    ("exploratory data", "eda"), ("eda", "eda"),
+    ("tidy data", "tidy-data"),
+    ("docker", "docker"), ("rocker", "rocker"),
+    ("container", "containers"), ("compose", "docker-compose"),
+    ("cloud run", "cloud-run"), ("google cloud", "google-cloud"),
+    ("azure", "azure"), ("cloud", "cloud"),
+    ("shiny", "shiny"), ("reactiv", "reactivity"),
+    ("tmux", "tmux"), ("terminal", "terminal"),
+    ("shell", "shell"), ("command line", "cli"),
+    ("reprex", "reprex"), ("code review", "code-reviews"),
+    ("stand-up", "standups"), ("standup", "standups"),
+    ("pair programming", "pair-programming"),
+    ("debugging", "debugging"), ("debug", "debugging"),
+    ("scrap", "web-scraping"), ("api", "apis"),
+    ("dbt", "dbt"), ("databricks", "databricks"),
+    ("database", "databases"), ("rdbms", "databases"),
+    ("reticulate", "python"), ("python", "python"),
+    ("chromebook", "chromebook"), ("r2dii", "r2dii"),
+    ("pins", "pins"), ("dropbox", "dropbox"),
+    ("quarto", "quarto"), ("r markdown", "rmarkdown"),
+    ("refactor", "refactoring"),
+    ("hidden argument", "code-quality"),
+    ("type-inconsistent", "code-quality"),
+    ("permission", "permissions"),
+    ("a/b test", "ab-testing"),
+    ("workflow", "workflow"), ("issue", "github-issues"),
+]
+
+FILLER_OPENERS = (
+    "okay so", "okay", "okay then", "oh okay", "oh great",
+    "so today", "so ", "uh ", "um ",
+    "[music]", "thank", "thanks", "bye", "welcome",
+    "hello", "hi ", "good morning", "good afternoon",
+    "let me", "can you", "is everyone", "all right",
+    "recording", "i'll start", "sorry",
+)
+
+def summarize(title, body_text):
+    flat = re.sub(r"\s+", " ", body_text.replace("[Music]", "")).strip()
+    # Sentence split is only trustworthy in the opening half: closing
+    # chatter ("keep safe...", "see you next...") otherwise wins when
+    # the body has almost no sentence punctuation (auto-captions).
+    head = flat[:len(flat) // 2]
+    sents = re.split(r"(?<=[.!?])\s+", head)
+    if len(sents) >= 3:
+        for s in sents:
+            low = s.strip().lower()
+            words = low.split()
+            if len(words) < 8 or len(s) > 400:
+                continue
+            if low.startswith(FILLER_OPENERS):
+                continue
+            if len(set(words)) < 5:
+                continue
+            cut = s.strip()
+            if len(cut) > 220:
+                cut = cut[:217].rsplit(" ", 1)[0] + "..."
+            return cut[0].upper() + cut[1:]
+    # Fallback for auto-captions without sentence punctuation: slide a
+    # 28-word window over the opening lines and keep the window richest
+    # in title/tag vocabulary (opening logistics lines score ~0).
+    stop = {"how", "what", "with", "from", "into", "your", "our",
+            "about", "using", "part", "this", "that", "have", "will"}
+    title_words = {w for w in re.findall(r"[a-z]+", title.lower())
+                   if len(w) > 3 and w not in stop}
+    tag_words = {kw for kw, _ in TAG_RULES if len(kw) > 3} | title_words
+    words = []
+    for line in body_text.replace("[Music]", "").splitlines():
+        low = line.strip().lower()
+        if not low or low.startswith(FILLER_OPENERS) or len(low.split()) < 4:
+            continue
+        words.extend(line.strip().split())
+        if len(words) >= 150:
+            break
+    if len(words) >= 8:
+        size = min(28, len(words))
+        filler_tok = {"um", "uh", "okay", "so", "well", "right",
+                      "welcome", "thanks", "thank", "everyone", "joining",
+                      "joined", "recording", "hello", "hi", "bye", "oh",
+                      "yeah", "yes", "actually", "anyway", "please"}
+        best, best_score = 0, -1
+        for i in range(0, len(words) - size + 1, 4):
+            win = [w.strip(".,!?;:\"'()").lower() for w in words[i:i + size]]
+            score = sum(1 for w in win if w in tag_words)
+            if win[0] in filler_tok or win[1] in filler_tok:
+                score -= 3
+            if score > best_score:
+                best, best_score = i, score
+        cut = " ".join(words[best:best + size])
+        if best + size < len(words):
+            cut += "..."
+        return cut[0].upper() + cut[1:]
+    return f"Transcript of '{title}'."
+
+def topical_tags(title, body_text, limit=4):
+    title_low = title.lower()
+    body_low = body_text[:20000].lower()
+    scored = {}
+    for kw, tag in TAG_RULES:
+        if tag in scored:
+            continue
+        # Short keywords need word boundaries ("eda" matches "queda").
+        pat = r"\b" + re.escape(kw) + r"\b" if len(kw) <= 3 else re.escape(kw)
+        in_title = re.search(pat, title_low) is not None
+        score = len(re.findall(pat, body_low))
+        if in_title:
+            score += 3
+        # Single incidental mentions in the body are noise; a title
+        # match or repeated body mentions are signal.
+        if in_title or score >= 2:
+            scored[tag] = score
+    ranked = sorted(scored, key=lambda t: scored[t], reverse=True)
+    return ranked[:limit]
+
 def do_md(base, path, vid):
     with open(path) as f:
         data = json.load(f)
-    title = titles.get(vid, "")
+    meta = rows.get(vid, {})
+    title = meta.get("title", "")
     events = data.get("events", [])
     body_lines = []
     for ev in events:
@@ -92,30 +226,44 @@ def do_md(base, path, vid):
     body = "\n\n".join(body_lines)
     if not body:
         body = "No transcript content."
-    desc = body[:160].replace("\n", " ").replace("\r", "")
+    lang = "en"
+    m = re.search(r"\.([a-z]{2})(?:-orig)?\.json3$", os.path.basename(path))
+    if m:
+        lang = m.group(1)
+    desc = summarize(title, body)
+    tags = ["ds-incubator"] + topical_tags(title, body)
     slug = slugify(title) if title else vid
     md_path = out_dir + "/" + vid + "_" + slug + ".md"
-    frontmatter = f"""---
-type: Video Transcript
-title: {yaml_escape(title)}
-description: {yaml_escape(desc)}
-resource: "https://www.youtube.com/watch?v={vid}"
-tags: ["youtube", "ds-incubator"]
-generated:
-  by: "bin/convert-transcripts"
-  at: "{gen_ts}"
-status: stable
-sources:
-  - id: youtube-original
-    resource: "https://www.youtube.com/watch?v={vid}"
-    title: "YouTube auto-generated caption (json3)"
-    author: "process:yt-dlp"
----
-
-# Transcript
-
-{body}
-"""
+    fm_lines = [
+        "---",
+        "type: Video Transcript",
+        f"title: {yaml_escape(title)}",
+        f"description: {yaml_escape(desc)}",
+        f"resource: \"https://www.youtube.com/watch?v={vid}\"",
+        "tags: [" + ", ".join(f'"{t}"' for t in tags) + "]",
+        f"lang: {lang}",
+        "generated:",
+        "  by: \"process:convert-transcripts\"",
+        f"  at: \"{gen_ts}\"",
+        "status: stable",
+        "sources:",
+        "  - id: youtube-original",
+        f"    resource: \"https://www.youtube.com/watch?v={vid}\"",
+        "    title: \"YouTube auto-generated caption (json3)\"",
+        "    author: \"process:yt-dlp\"",
+    ]
+    views = meta.get("views", "")
+    uploaded = meta.get("uploaded", "")
+    last_mod = ""
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", uploaded or ""):
+        last_mod = f"{uploaded}T00:00:00Z"
+        fm_lines.append(f"    last_modified: \"{last_mod}\"")
+    if (views or "").isdigit():
+        fm_lines.append(f"    usage_count: {int(views)}")
+    fm = "\n".join(fm_lines)
+    if last_mod:
+        fm += f"\nusage_window: {{ from: \"{last_mod}\", to: \"{gen_ts}\" }}"
+    frontmatter = fm + "\n---\n\n# Transcript\n\n" + body + "\n"
     with open(md_path, "w") as f:
         f.write(frontmatter)
 

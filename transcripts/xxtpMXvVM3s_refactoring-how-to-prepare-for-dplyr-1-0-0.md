@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Refactoring: How to prepare for dplyr 1.0.0"
-description: "I think where we are going to be talking  about how to get ready for T player 1  the player 1 comes with a bunch of great  features but also comes with some  br"
+description: "Some break-in code meaning that your code with the player one might break so how to get ready okay we want to talk about this idea of refactoring..."
 resource: "https://www.youtube.com/watch?v=xxtpMXvVM3s"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "refactoring", "github-issues", "testing"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=xxtpMXvVM3s"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-03-24T00:00:00Z"
+    usage_count: 129
+usage_window: { from: "2020-03-24T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

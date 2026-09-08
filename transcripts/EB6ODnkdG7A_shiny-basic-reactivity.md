@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Shiny: Basic reactivity"
-description: "today the ds inquirer continues on the  series about  billy's shiny apps and we're going to be  covering today  a couple of topics that we didn't have  time to "
+description: "Shiny apps and we're going to be a couple of topics that we didn't have last time it's still within the big reactive expressions and reactivity but we..."
 resource: "https://www.youtube.com/watch?v=EB6ODnkdG7A"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "reactivity", "shiny", "r-packages", "refactoring"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=EB6ODnkdG7A"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-07-13T00:00:00Z"
+    usage_count: 64
+usage_window: { from: "2021-07-13T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

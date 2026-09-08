@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "2020 09 08 code reviews -- in practice"
-description: "today the data science incubator is a  continuation  of what we started last week so the  focus is discussing  code reviews and last week we talked  about  most"
+description: "Code that person submitting the code to you know getting to a standard where at least the code runs even if if running the code means producing an..."
 resource: "https://www.youtube.com/watch?v=-ho1CfoMHKQ"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "pull-requests", "r-packages", "code-reviews"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=-ho1CfoMHKQ"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-09-08T00:00:00Z"
+    usage_count: 18
+usage_window: { from: "2020-09-08T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "wtf: Name and organize files"
-description: "welcome again to the ds equator today uh  is  the last session on the topic a holistic  workflow we are still covering the book  what they forgot to teach you a"
+description: "You know kind of files browser and also so that they are readable for humans and also for and then secondly you know how to organize the analysis..."
 resource: "https://www.youtube.com/watch?v=xW05GsfhuiY"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "workflow", "git", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=xW05GsfhuiY"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-02-22T00:00:00Z"
+    usage_count: 36
+usage_window: { from: "2022-02-22T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

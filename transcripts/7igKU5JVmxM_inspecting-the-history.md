@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Inspecting the history"
-description: "today the DS incubator uh is the last  one of the series about uh working with  kit from the  terminal um I'm going to be talking  today about inspecting the hi"
+description: "Today the DS incubator uh is the last one of the series about uh working with terminal um I'm going to be talking today about inspecting the history..."
 resource: "https://www.youtube.com/watch?v=7igKU5JVmxM"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "terminal", "snapshot-testing", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=7igKU5JVmxM"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-12-15T00:00:00Z"
+    usage_count: 21
+usage_window: { from: "2020-12-15T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

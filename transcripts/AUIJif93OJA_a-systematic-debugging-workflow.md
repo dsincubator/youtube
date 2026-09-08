@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "A systematic debugging workflow"
-description: "in this video I'm going to show a  systematic approach to exploring a  potential P so I see a report someone  sends me a snapshot of a screenshot of  some code "
+description: "In this video I'm going to show a systematic approach to exploring a potential P so I see a report someone sends me a snapshot of a screenshot..."
 resource: "https://www.youtube.com/watch?v=AUIJif93OJA"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "debugging", "workflow", "cloud"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=AUIJif93OJA"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-06-04T00:00:00Z"
+    usage_count: 64
+usage_window: { from: "2024-06-04T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

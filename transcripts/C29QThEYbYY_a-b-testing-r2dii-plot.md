@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "A/B testing r2dii.plot"
-description: "recording so today the ds incubator is  not about shiny it is instead about  two versions of the package r2dii  plot which is approaching release and we  would "
+description: "Not about shiny it is instead about two versions of the package r2dii plot which is approaching release and we some feedback from from all of you time..."
 resource: "https://www.youtube.com/watch?v=C29QThEYbYY"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "apis", "r2dii", "testing", "ab-testing"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=C29QThEYbYY"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-06-08T00:00:00Z"
+    usage_count: 17
+usage_window: { from: "2021-06-08T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

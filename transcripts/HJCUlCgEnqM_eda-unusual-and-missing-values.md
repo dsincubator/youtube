@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "EDA: Unusual and missing values"
-description: "this is again the dsync waiter on the  series about exploring data with the  tidy verse  and this session is going to continue  what we started last  meet up no"
+description: "Typical values the most common values in the and we didn't have time to cover what i would like to cover today unusual values and missing values so..."
 resource: "https://www.youtube.com/watch?v=HJCUlCgEnqM"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "ggplot2", "r-packages", "eda"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=HJCUlCgEnqM"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-11-30T00:00:00Z"
+    usage_count: 13
+usage_window: { from: "2021-11-30T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

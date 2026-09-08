@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Shiny: Basic reactivity"
-description: "so today the ds incubator continues on  the series  about building shiny applications and  publishing them  which we haven't covered so much yet we  are seeing "
+description: "About building shiny applications and which we haven't covered so much yet we are seeing a bit of a theoretical introduction and then hopefully we'll spend more time..."
 resource: "https://www.youtube.com/watch?v=rirpOpTYVg4"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "reactivity", "shiny"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=rirpOpTYVg4"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-06-29T00:00:00Z"
+    usage_count: 258
+usage_window: { from: "2021-06-29T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Strong-style pair-programming: Submitting an R package to CRAN"
-description: "I didn't see I say the recording button  you see the red LED flashlight yeah  excellent so hi Jackson so in you know  we have this package Jackson and I have  b"
+description: "On the submission of this package to cram and also to give it a go is our first time in doing officially strong style fair programming which is..."
 resource: "https://www.youtube.com/watch?v=BAS8yfLBnog"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github-issues", "r-packages", "cran"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=BAS8yfLBnog"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-03-16T00:00:00Z"
+    usage_count: 638
+usage_window: { from: "2020-03-16T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

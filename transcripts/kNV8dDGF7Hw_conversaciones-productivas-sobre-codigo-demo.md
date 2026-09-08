@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Conversaciones productivas sobre codigo (demo)"
-description: "en un vídeo anterior estuve hablando  sobre la idea de mantener conversaciones  sobre códigos que sean productivos los  elementos que las instructivas y como  a"
+description: "En un vídeo anterior estuve hablando sobre la idea de mantener conversaciones sobre códigos que sean productivos los elementos que las instructivas y como asadas pero hablé sobre..."
 resource: "https://www.youtube.com/watch?v=kNV8dDGF7Hw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "reprex"]
+lang: es
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=kNV8dDGF7Hw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-09-01T00:00:00Z"
+    usage_count: 5
+usage_window: { from: "2020-09-01T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Tidy EDA: Covariation between one categorical variable and one continuous variable"
-description: "this is again the ds equator on the  series about exploring data with the  tidy verse  and today we're going to be talking  about covariation that is the idea o"
+description: "Related way or the values of two variables that change in a related way today we're going to focus on one categorical variable and one continuous depending on..."
 resource: "https://www.youtube.com/watch?v=WBmLuUV5BEE"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "ggplot2", "r-packages", "eda"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=WBmLuUV5BEE"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-12-07T00:00:00Z"
+    usage_count: 49
+usage_window: { from: "2021-12-07T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

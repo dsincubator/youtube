@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Hazards of side effects and ways to leave the world as you found it"
-description: "today dts inquiry continues on the  series about testing our code and it  might be the last  meetup of this series i wanted to talk  about  an idea that was cap"
+description: "Today dts inquiry continues on the series about testing our code and it might be the last meetup of this series i wanted to talk an idea that..."
 resource: "https://www.youtube.com/watch?v=C0VuGkBZeKw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "testing", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=C0VuGkBZeKw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-05-11T00:00:00Z"
+    usage_count: 19
+usage_window: { from: "2021-05-11T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

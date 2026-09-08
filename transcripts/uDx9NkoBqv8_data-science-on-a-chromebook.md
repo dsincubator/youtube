@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Data science on a chromebook"
-description: "i'm again to the dsin creator today  we're gonna be talking about data  science on a chromebook it is a meetup  that lasts only today it's a fun meetup  and it "
+description: "I'm again to the dsin creator today we're gonna be talking about data science on a chromebook it is a meetup that lasts only today it's a fun..."
 resource: "https://www.youtube.com/watch?v=uDx9NkoBqv8"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "docker", "git", "chromebook", "terminal"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=uDx9NkoBqv8"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-08-16T00:00:00Z"
+    usage_count: 875
+usage_window: { from: "2022-08-16T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

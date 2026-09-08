@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "git branch (part 1)"
-description: "okay so as i said on the background  before  recording today the ds incubator will  talk about  branching and merging we'll get as far  as we can  um in this se"
+description: "At the same time without interfering with each other and how to combine those changes of parallel tracks into this main line which by convention is a branch..."
 resource: "https://www.youtube.com/watch?v=MU8E_gpylPE"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "workflow", "github", "snapshot-testing"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=MU8E_gpylPE"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-10-27T00:00:00Z"
+    usage_count: 25
+usage_window: { from: "2020-10-27T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

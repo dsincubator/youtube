@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "reprex: Do's and don'ts"
-description: "the dsm curator continues on the series  about the our package replics for  reproducible examples in r  and today's meetup is a follow-up of  cj's comment last "
+description: "Or excellent if you want we're going to be talking about this article that exists in the package replicas on the website of the package replex uh it's..."
 resource: "https://www.youtube.com/watch?v=BOcl8iuiDvU"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "reproducibility", "github", "reprex", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=BOcl8iuiDvU"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-10-12T00:00:00Z"
+    usage_count: 20
+usage_window: { from: "2021-10-12T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Gitflow workflow"
-description: "okay hey everyone um  i am going to be talking about get flow  today which is just um  it's sort of a  accepted best practice for working with  git  amongst dev"
+description: "It in pretty much every use case that i put it in um let's talk about what is like a fairly common starting get workflow can we uh..."
 resource: "https://www.youtube.com/watch?v=OofNbCXEVgU"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "testing", "workflow", "cran"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=OofNbCXEVgU"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-05-25T00:00:00Z"
+    usage_count: 162
+usage_window: { from: "2021-05-25T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

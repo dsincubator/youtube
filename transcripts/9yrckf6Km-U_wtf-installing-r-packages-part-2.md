@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "wtf: Installing R packages (part 2)"
-description: "so this is the ds equator about  installing packages we already had one  meetup last week and today i'm gonna be  covering uh a second part of it  hopefully the"
+description: "Installing packages we already had one meetup last week and today i'm gonna be covering uh a second part of it hopefully the last about installing going to..."
 resource: "https://www.youtube.com/watch?v=9yrckf6Km-U"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "r-packages", "git", "r2dii"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=9yrckf6Km-U"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-03-22T00:00:00Z"
+    usage_count: 129
+usage_window: { from: "2022-03-22T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "An overview our our resources at 2dii"
-description: "xa yeah today I would like to talk about  some of the resources that we have that  you may not know about because some of  them are pretty new and others are  a"
+description: "Would like to talk about some of the resources that we have that you may not know about because some of them are pretty new and others are..."
 resource: "https://www.youtube.com/watch?v=2WBj5Oex_Fc"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "dropbox", "github-issues", "github", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=2WBj5Oex_Fc"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-01-28T00:00:00Z"
+    usage_count: 8
+usage_window: { from: "2020-01-28T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

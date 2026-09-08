@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "`gh pr` allows you to work with GitHub pull requests from your terminal"
-description: "[Music]  I am about to uh least and review and  then merge a p request so I I thought of  sharing with you how to do it with the  GH CLI it's very convenient be"
+description: "With you how to do it with the GH CLI it's very convenient because you can do it from any terminal I'm here on the terminal from our..."
 resource: "https://www.youtube.com/watch?v=EaJqUQkDo48"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "terminal", "pull-requests"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=EaJqUQkDo48"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-07-05T00:00:00Z"
+    usage_count: 549
+usage_window: { from: "2024-07-05T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "EDA with the tidyverse: Typical, unusual, and missing values"
-description: "the executor continues on the series  about exploring uh data with the thai  diverse  uh and today we are going to be talking  about  typical values unusual val"
+description: "The executor continues on the series about exploring uh data with the thai typical values unusual values and there is a section for each of those in the..."
 resource: "https://www.youtube.com/watch?v=KxybJ_zVJUA"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "ggplot2", "tidyverse", "r-packages", "eda"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=KxybJ_zVJUA"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-11-16T00:00:00Z"
+    usage_count: 168
+usage_window: { from: "2021-11-16T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

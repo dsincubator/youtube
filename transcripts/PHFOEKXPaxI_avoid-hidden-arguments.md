@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Avoid hidden arguments"
-description: "okay thank you again then for joining me  in this edition of the data science  innovator I change the title of this  session to make it even kind of higher  lev"
+description: "Better than the one that I thought you knew so if you saw some change in the title it's expected and now this session is called avoid hidden..."
 resource: "https://www.youtube.com/watch?v=PHFOEKXPaxI"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "code-quality"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=PHFOEKXPaxI"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2019-12-03T00:00:00Z"
+    usage_count: 29
+usage_window: { from: "2019-12-03T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Avoid recomputing if you can! Instead memoise"
-description: "[Music]  here is a tip to help you speed up your  computer programs by storing the result  of your expensive function calls and  returning the cash result when "
+description: "Here is a tip to help you speed up your computer programs by storing the result of your expensive function calls and returning the cash result when the..."
 resource: "https://www.youtube.com/watch?v=GDgir1XXOkw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "memoisation"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=GDgir1XXOkw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-06-06T00:00:00Z"
+    usage_count: 43
+usage_window: { from: "2024-06-06T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

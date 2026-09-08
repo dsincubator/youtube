@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "R packages: Testing"
-description: "Court so the meeting today continues to  be about our packages and in particular  about testing so the issue associated to  this Meetup  links to a book chapter"
+description: "About our packages and in particular about testing so the issue associated to links to a book chapter in the artists book a chapter dedicated to testing and..."
 resource: "https://www.youtube.com/watch?v=co082qNN_Cs"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "testing", "r-packages", "workflow", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=co082qNN_Cs"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-02-18T00:00:00Z"
+    usage_count: 15
+usage_window: { from: "2020-02-18T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

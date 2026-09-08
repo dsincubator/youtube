@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "terminal: Start a terminal and navigate your files system"
-description: "welcome to the ds incubator today we are  talking about what we are in the series  about the terminal and we are talking  today about starting the terminal and "
+description: "About the shell and also the unit shell lesson of the carpentries here you have the links to follow the original to start a shell to set up..."
 resource: "https://www.youtube.com/watch?v=V2oSfukR4mw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "terminal", "shell", "docker", "git"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=V2oSfukR4mw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-04-19T00:00:00Z"
+    usage_count: 19
+usage_window: { from: "2022-04-19T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

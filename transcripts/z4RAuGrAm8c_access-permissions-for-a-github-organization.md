@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Access permissions for a GitHub organization"
-description: "recording oh great okay then thank you  everyone for joining us again to that  sizing later we are going to be talking  about access permissions for a github  o"
+description: "Again to that sizing later we are going to be talking about access permissions for a github organization to motivate this store got to try kind of explain..."
 resource: "https://www.youtube.com/watch?v=z4RAuGrAm8c"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "permissions", "github", "pull-requests", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=z4RAuGrAm8c"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2019-11-26T00:00:00Z"
+    usage_count: 4440
+usage_window: { from: "2019-11-26T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

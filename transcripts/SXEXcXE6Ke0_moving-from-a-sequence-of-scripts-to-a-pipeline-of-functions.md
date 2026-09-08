@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Moving from a sequence of scripts to a pipeline of functions"
-description: "i'm recording now so this is the ds  incubator  um on the targets package  and today we're gonna be talking in  particular about  one chapter of the book that d"
+description: "This is the ds and today we're gonna be talking in one chapter of the book that dedicates how functions as opposed to a sequence of scripts can..."
 resource: "https://www.youtube.com/watch?v=SXEXcXE6Ke0"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "targets", "pipelines", "r-packages", "github"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=SXEXcXE6Ke0"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-02-09T00:00:00Z"
+    usage_count: 617
+usage_window: { from: "2021-02-09T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

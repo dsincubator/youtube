@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Tidy EDA: Patterns and models"
-description: "okay this is the ds incubator also again  in the series about exploring data with  the thai diverse and today is a special  day it's the last uh meetup of the  "
+description: "Second week will kick off with today we're gonna be covering patterns and models and the objectives are three first we want to explore the relationship between two..."
 resource: "https://www.youtube.com/watch?v=Hv6DzT6Z2yA"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "ggplot2", "eda"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=Hv6DzT6Z2yA"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-12-21T00:00:00Z"
+    usage_count: 42
+usage_window: { from: "2021-12-21T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

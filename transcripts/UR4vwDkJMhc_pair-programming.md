@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Pair programming"
-description: "there we go good okay yes today I would  like to discuss and present the idea of  pair programming and it occurred to me  that this could be a good topic to  di"
+description: "There we go good okay yes today I would like to discuss and present the idea of pair programming and it occurred to me that this could be..."
 resource: "https://www.youtube.com/watch?v=UR4vwDkJMhc"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "pair-programming", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=UR4vwDkJMhc"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-03-10T00:00:00Z"
+    usage_count: 8
+usage_window: { from: "2020-03-10T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Suggest/commit changes directly on a GitHub PR"
-description: "here is a tip to help you review pool  requests more quickly so here you can  see that there is a line right here that  I would like to add a suggestion for a  "
+description: "See this convenient menu that shows that you know the person who is receiving the review can now choose to either commit the suggestion directly or they can..."
 resource: "https://www.youtube.com/watch?v=ciJpIWs3t3k"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=ciJpIWs3t3k"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-06-04T00:00:00Z"
+    usage_count: 7007
+usage_window: { from: "2024-06-04T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

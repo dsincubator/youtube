@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Shiny: Packages"
-description: "so today the data science incubator is  one of the  last few chapters before the end of this  series today i wanted to talk about  our packages as an infrastruc"
+description: "Last few chapters before the end of this series today i wanted to talk about our packages as an infrastructure that can help you develop shiny apps it..."
 resource: "https://www.youtube.com/watch?v=O_tkgjsUT6g"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "shiny", "r-packages", "workflow", "testing"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=O_tkgjsUT6g"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-08-03T00:00:00Z"
+    usage_count: 59
+usage_window: { from: "2021-08-03T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

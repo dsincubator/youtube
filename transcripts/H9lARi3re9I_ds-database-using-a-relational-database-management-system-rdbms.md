@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "ds.database: Using a Relational Database Management System (RDBMS)"
-description: "welcome again into the DS incubator this  is the series about relational data and  today is the last chapter we're gonna be  talking about uh the case when the "
+description: "CSV files or in some other form but instead when they leave in what is called a relational database management system you may hear me say rdbms for..."
 resource: "https://www.youtube.com/watch?v=H9lARi3re9I"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "databases", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=H9lARi3re9I"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-09-27T00:00:00Z"
+    usage_count: 335
+usage_window: { from: "2022-09-27T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "RStudio Team: Demo and discussion"
-description: "all right i am now recording so be  careful what you all say here  all right give me just a second i'm  actually sharing the wrong screen  okay here we go can y"
+description: "Together they are called our studio team they each have individual names and kind of individual functions but the rstudio team stack which is here consists of rstudio..."
 resource: "https://www.youtube.com/watch?v=F7JiD7oT4P8"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "shiny", "git", "cloud"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=F7JiD7oT4P8"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-06-16T00:00:00Z"
+    usage_count: 709
+usage_window: { from: "2020-06-16T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Using drake to develop smart, reproducible workflows"
-description: "tomorrow is just starting the recording  now so I'm just gonna do a brief outline  that we just watched a video describing  how the very basics of Drake and I w"
+description: "We just watched a video describing how the very basics of Drake and I will might be used kind of Hope with reproducible data analysis workflow yeah and..."
 resource: "https://www.youtube.com/watch?v=_Cl4odbiG78"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "drake", "workflow", "r-packages", "reproducibility"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=_Cl4odbiG78"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-05-05T00:00:00Z"
+    usage_count: 13
+usage_window: { from: "2020-05-05T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Shiny: Publishing"
-description: "today the ds incubator is about  publishing shiny apps which i kind of  have been promising since the beginning  and we never got to that so it's now the  time "
+description: "Today the ds incubator is about publishing shiny apps which i kind of have been promising since the beginning and we never got to that so it's now..."
 resource: "https://www.youtube.com/watch?v=c3jANTGkB1U"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "shiny", "github", "docker", "containers"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=c3jANTGkB1U"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-08-10T00:00:00Z"
+    usage_count: 47
+usage_window: { from: "2021-08-10T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

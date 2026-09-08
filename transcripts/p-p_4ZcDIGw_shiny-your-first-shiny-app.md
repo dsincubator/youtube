@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Shiny: Your first shiny app"
-description: "so today we start a new series about  building and polishing shiny apps  um we are gonna go  broad uh maybe not super super deep  um into building shiny apps be"
+description: "Building and polishing shiny apps broad uh maybe not super super deep i want to cover also the aspect of polishing i think that in at 2 degrees..."
 resource: "https://www.youtube.com/watch?v=p-p_4ZcDIGw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "shiny", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=p-p_4ZcDIGw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-06-01T00:00:00Z"
+    usage_count: 275
+usage_window: { from: "2021-06-01T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

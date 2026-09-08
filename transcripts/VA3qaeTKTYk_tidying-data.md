@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Tidying data"
-description: "okay go ahead  hello and welcome yeah so this is gonna  be a session about using the IDR and  they gather and spread functions and  comparing them to the newer "
+description: "Be a session about using the IDR and they gather and spread functions and comparing them to the newer pivot longer if it wider functions and I did..."
 resource: "https://www.youtube.com/watch?v=VA3qaeTKTYk"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=VA3qaeTKTYk"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-04-07T00:00:00Z"
+    usage_count: 16
+usage_window: { from: "2020-04-07T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

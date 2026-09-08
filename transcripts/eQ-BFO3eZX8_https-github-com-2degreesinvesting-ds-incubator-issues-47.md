@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "https://github.com/2DegreesInvesting/ds-incubator/issues/47"
-description: "okay so today the data science in  greater meetup is to introduce you to a  new place where you can shape your  thoughts and share them across the  community an"
+description: "Place where I would like you to go is to our studio to the cloud and it could be any instance of our street or cloud but I..."
 resource: "https://www.youtube.com/watch?v=eQ-BFO3eZX8"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "cloud", "github", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=eQ-BFO3eZX8"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-06-02T00:00:00Z"
+    usage_count: 21
+usage_window: { from: "2020-06-02T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

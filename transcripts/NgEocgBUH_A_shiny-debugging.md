@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Shiny: Debugging"
-description: "today the ds incubator continues  on the series about building and  palleting shiny apps  and today i wanted to talk about  debugging  sometimes of many times u"
+description: "The they general to any r to you know debugging any art problem but the third kind of in bug are is kind of specific to shiny learn..."
 resource: "https://www.youtube.com/watch?v=NgEocgBUH_A"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "shiny", "reactivity", "debugging", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=NgEocgBUH_A"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-07-27T00:00:00Z"
+    usage_count: 2326
+usage_window: { from: "2021-07-27T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

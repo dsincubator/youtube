@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Retrospective about meetups in 2020: Response"
-description: "and today the da's equator is a response  to a retrospective that we did  internally here at 2 degrees  i realized that  a lot of the feedback that you gave  co"
+description: "And today the da's equator is a response to a retrospective that we did internally here at 2 degrees a lot of the feedback that you gave implemented..."
 resource: "https://www.youtube.com/watch?v=0qUs4hi7ozo"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "targets", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=0qUs4hi7ozo"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-01-19T00:00:00Z"
+    usage_count: 6
+usage_window: { from: "2021-01-19T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

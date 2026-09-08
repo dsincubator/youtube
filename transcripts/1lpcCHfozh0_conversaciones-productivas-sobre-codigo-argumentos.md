@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Conversaciones productivas sobre codigo (argumentos)"
-description: "hoy quería hablar sobre conversaciones  sobre el código que es lo que nos hace  productivas y cómo hacerlas productivas  porque tenemos conversaciones sobre  có"
+description: "Hoy quería hablar sobre conversaciones sobre el código que es lo que nos hace productivas y cómo hacerlas productivas porque tenemos conversaciones sobre códigos bueno una cosa especial..."
 resource: "https://www.youtube.com/watch?v=1lpcCHfozh0"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator"]
+lang: es
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=1lpcCHfozh0"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-09-01T00:00:00Z"
+    usage_count: 7
+usage_window: { from: "2020-09-01T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

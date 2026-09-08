@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Git remotes"
-description: "so today the DS incubator continues with  the series about uh working with Git  from the  terminal today is an exciting lesson  because we are going to be talki"
+description: "Working with Git terminal today is an exciting lesson because we are going to be talking about sharing repositories online and uh using this idea of remotes which..."
 resource: "https://www.youtube.com/watch?v=jYvJO2lENbY"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "github", "terminal", "workflow"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=jYvJO2lENbY"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-12-01T00:00:00Z"
+    usage_count: 6
+usage_window: { from: "2020-12-01T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

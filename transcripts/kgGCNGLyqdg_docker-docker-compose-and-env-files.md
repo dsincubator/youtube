@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Docker: docker-compose and env files"
-description: "hello well with this this is the ds  equator today with uh  uh alex leading the meetup so go ahead  alex  okay so i'm gonna jump right into it  uh starting from"
+description: "87 87 87 87 rock garage just to break that down real quick what run is the command that we're telling docker to run something rocker r studio..."
 resource: "https://www.youtube.com/watch?v=kgGCNGLyqdg"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "docker", "containers", "docker-compose", "rocker"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=kgGCNGLyqdg"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-08-31T00:00:00Z"
+    usage_count: 684
+usage_window: { from: "2021-08-31T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

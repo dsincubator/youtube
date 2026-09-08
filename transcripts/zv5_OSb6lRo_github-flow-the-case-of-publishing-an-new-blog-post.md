@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "GitHub flow: The case of publishing an new blog post"
-description: "so today uh i wanted to revisit the idea  of the git  github flow um and i have um  more than one reason for that one is  probably  the main one is that you kno"
+description: "Github flow um and i have um more than one reason for that one is the main one is that you know we are to a workshop about..."
 resource: "https://www.youtube.com/watch?v=zv5_OSb6lRo"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "pull-requests", "git", "workflow"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=zv5_OSb6lRo"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-07-28T00:00:00Z"
+    usage_count: 24
+usage_window: { from: "2020-07-28T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

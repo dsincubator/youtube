@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Evita solicitudes de fusion interdependientes"
-description: "ahora os voy a hablar sobre el problema  de la solicitud de defunción  interdependientes que quiero decir con  eso permítanme presentar la siguiente  situación "
+description: "Ahora os voy a hablar sobre el problema de la solicitud de defunción interdependientes que quiero decir con eso permítanme presentar la siguiente supongo que suena construido ahora..."
 resource: "https://www.youtube.com/watch?v=hs_Pzxny7XE"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git"]
+lang: es
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=hs_Pzxny7XE"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2019-11-12T00:00:00Z"
+    usage_count: 13
+usage_window: { from: "2019-11-12T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

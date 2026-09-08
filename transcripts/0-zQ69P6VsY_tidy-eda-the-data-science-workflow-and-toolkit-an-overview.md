@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Tidy EDA: The data-science workflow and toolkit: An overview"
-description: "the decent guitar continues on the  series about exploratory data analysis  uh with the tidy verse  and expanded family because we're also  talking about our ma"
+description: "Error prone and today actually i wanted to kick off with the exploration of the data but you in need to at least you know overview some of..."
 resource: "https://www.youtube.com/watch?v=0-zQ69P6VsY"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "ggplot2", "rmarkdown", "workflow", "eda"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=0-zQ69P6VsY"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-11-02T00:00:00Z"
+    usage_count: 48
+usage_window: { from: "2021-11-02T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

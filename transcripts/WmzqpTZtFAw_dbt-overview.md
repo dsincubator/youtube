@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "dbt overview"
-description: "[Music]  welcome to the DS incubator today we  start a new series about  DBT DBT stands for data build tool the  goal is to understand and use a minimal  DBT pr"
+description: "We're going to be covering in this series is first an overview which I'm going to be moving on to that in a moment an overview of DBT..."
 resource: "https://www.youtube.com/watch?v=WmzqpTZtFAw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "dbt", "terminal", "databases", "github"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=WmzqpTZtFAw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-06-21T00:00:00Z"
+    usage_count: 17
+usage_window: { from: "2024-06-21T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

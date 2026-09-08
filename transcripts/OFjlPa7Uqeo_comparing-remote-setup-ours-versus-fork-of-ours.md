@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Comparing remote setup “Ours” versus \"Fork (of ours)\""
-description: "excellent cool so  welcome then everyone to the ds equator  about working with remotes  uh and in particular we're going to be  talking about the  setup that is"
+description: "Be kind of this setup that is simpler to the setup that i have been kind of generally recommending which is the fork and it's called fork of..."
 resource: "https://www.youtube.com/watch?v=OFjlPa7Uqeo"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "permissions", "pull-requests", "github", "git"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=OFjlPa7Uqeo"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-08-25T00:00:00Z"
+    usage_count: 101
+usage_window: { from: "2020-08-25T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

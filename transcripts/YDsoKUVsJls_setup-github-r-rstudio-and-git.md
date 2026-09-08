@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Setup: GitHub, R, RStudio, and Git"
-description: "okay welcome to the first of the science  equator meter this is simply two things  one thing is a workshop that we plan for  the 9th and 10th of March next year"
+description: "Continue doing so the first ppm issue is then the meet-up of today and where we are going to be talking about how to set up github our..."
 resource: "https://www.youtube.com/watch?v=YDsoKUVsJls"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "git", "github-issues", "terminal"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=YDsoKUVsJls"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2019-10-15T00:00:00Z"
+    usage_count: 142
+usage_window: { from: "2019-10-15T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

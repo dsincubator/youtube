@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "gh  repo create and gh browse to create and browse a GitHub repo from the terminal"
-description: "[Music]  I am about to create a GitHub repository  so I wanted to show how to do that with  a GH CLI which I have been using a lot  um lately so here is the doc"
+description: "I am about to create a GitHub repository a GH CLI which I have been using a lot and I'm going to show you what I have here..."
 resource: "https://www.youtube.com/watch?v=q-hsaxVA1kc"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "terminal"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=q-hsaxVA1kc"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-07-03T00:00:00Z"
+    usage_count: 357
+usage_window: { from: "2024-07-03T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

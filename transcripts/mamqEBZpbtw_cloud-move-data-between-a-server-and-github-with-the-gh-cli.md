@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "cloud: move data between a server and GitHub with the gh CLI"
-description: "and thanks  jackson and alex for joining the ds  incubator uh today i wanted to talk a  bit more about the cloud that's going to  be the last no the previous la"
+description: "Of of moving big data depending what you call it but you know relatively large data um command line application between your servers and on github and because..."
 resource: "https://www.youtube.com/watch?v=mamqEBZpbtw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "containers", "git", "cloud"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=mamqEBZpbtw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-06-28T00:00:00Z"
+    usage_count: 41
+usage_window: { from: "2022-06-28T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

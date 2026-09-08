@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Moving commits across branches, rebasing, and squashing"
-description: "so today the DS incubator is again a  continuation of our series about working  with Git from the terminal we are at a  very important stage I think because we "
+description: "About working with Git from the terminal we are at a very important stage I think because we are learning the details of working with branches and uh..."
 resource: "https://www.youtube.com/watch?v=tbvsaXwtcPU"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "rebasing"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=tbvsaXwtcPU"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-11-17T00:00:00Z"
+    usage_count: 32
+usage_window: { from: "2020-11-17T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

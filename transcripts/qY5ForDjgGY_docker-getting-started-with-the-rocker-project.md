@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Docker: Getting started with the Rocker project"
-description: "today the ds incubator starts a new  series and it is about working with  docker mostly for reproducible research  and  basically to to develop  software and to"
+description: "Project called rocker provides which is a word smashed between docker and r so docker images for r and also i understand that i'm relatively new to docker..."
 resource: "https://www.youtube.com/watch?v=qY5ForDjgGY"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "docker", "rocker", "terminal", "reproducibility"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=qY5ForDjgGY"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-08-24T00:00:00Z"
+    usage_count: 2117
+usage_window: { from: "2021-08-24T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

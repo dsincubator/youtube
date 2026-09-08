@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "cloud: Introduction to cloud computing"
-description: "so welcome everyone again to the ds  incubator today we start a new series  about cloud computing  can you hear a motorbike in the  background  um so the goal o"
+description: "Video scholars to your server on the cloud to scale up and down your computing resources as you need them to access shared data on the cloud and..."
 resource: "https://www.youtube.com/watch?v=_pBqBfjTKI4"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "cloud", "docker", "terminal", "dropbox"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=_pBqBfjTKI4"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-05-31T00:00:00Z"
+    usage_count: 39
+usage_window: { from: "2022-05-31T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

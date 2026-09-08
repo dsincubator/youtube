@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "terminal: Setup and navigate"
-description: "welcome everyone again to the ds  incubator  we are on the series about working with  a terminal and today we start with part  one ready and last time we did a "
+description: "We are on the series about working with a terminal and today we start with part one ready and last time we did a little overview i was..."
 resource: "https://www.youtube.com/watch?v=2Lcba2K8j6M"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "terminal", "shell", "git", "docker"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=2Lcba2K8j6M"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-04-19T00:00:00Z"
+    usage_count: 16
+usage_window: { from: "2022-04-19T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

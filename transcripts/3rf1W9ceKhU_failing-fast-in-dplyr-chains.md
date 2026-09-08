@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Failing fast in dplyr chains"
-description: "okay so can everyone can hear me yeah  cool so yeah sorry for being late and  also sorry I'm also somewhat unprepared  for this because yeah I got mixed up in  "
+description: "Time doing a Deus incubator so I thought it'd be fun to do one last one and I wanted to share with you a package that I recently..."
 resource: "https://www.youtube.com/watch?v=3rf1W9ceKhU"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "dplyr", "testing"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=3rf1W9ceKhU"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-06-30T00:00:00Z"
+    usage_count: 5
+usage_window: { from: "2020-06-30T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

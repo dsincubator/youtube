@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "wtf: Holistic workflow (part 2)"
-description: "so this video is on the da's equator  about  a holistic workflow about the book uh  what they forgot to teach you about are  typically the section we are coveri"
+description: "But if i just call the function f that leaves in my global environment if i call it with the same number one i get 101."
 resource: "https://www.youtube.com/watch?v=ek3b0m1iCdk"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "workflow", "github-issues", "git", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=ek3b0m1iCdk"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-02-15T00:00:00Z"
+    usage_count: 14
+usage_window: { from: "2022-02-15T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

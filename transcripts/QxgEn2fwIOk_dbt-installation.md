@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "dbt installation"
-description: "[Music]  in this video we're going to be  installing DBT in a GitHub code space I  choose gith code space because it allows  us to very quickly access an enviro"
+description: "DBT in a GitHub code space I choose gith code space because it allows us to very quickly access an environment where this type of installations installation instructions..."
 resource: "https://www.youtube.com/watch?v=QxgEn2fwIOk"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "dbt", "databases", "github"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=QxgEn2fwIOk"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-06-22T00:00:00Z"
+    usage_count: 76
+usage_window: { from: "2024-06-22T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

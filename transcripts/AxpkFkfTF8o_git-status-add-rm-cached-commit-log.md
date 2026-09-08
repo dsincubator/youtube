@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "git status, add, rm --cached, commit, log"
-description: "today the data science equator  continues a series about working with  kit from the terminal  last time we created a new git  repository with the commands you s"
+description: "Time it was a little uncomfortable to work on the terminal from our studio cloud space in here and i started typing and like status and then it..."
 resource: "https://www.youtube.com/watch?v=AxpkFkfTF8o"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "terminal", "snapshot-testing"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=AxpkFkfTF8o"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-09-22T00:00:00Z"
+    usage_count: 247
+usage_window: { from: "2020-09-22T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

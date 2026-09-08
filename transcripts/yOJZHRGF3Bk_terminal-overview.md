@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "terminal overview"
-description: "so today the dsm creator starts a new  series it is about working with a  terminal  and it is based on this lesson from the  carpentries it's called the unis th"
+description: "You know the the least content and and uh with that intent today i'm gonna be walking uh the entire sea levels giving an overview of you know..."
 resource: "https://www.youtube.com/watch?v=yOJZHRGF3Bk"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "terminal", "shell", "docker-compose"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=yOJZHRGF3Bk"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-04-12T00:00:00Z"
+    usage_count: 41
+usage_window: { from: "2022-04-12T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

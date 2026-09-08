@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "The flow of data and Get data directly form the database"
-description: "we are recording now and this is a data  science encoder again on data and the  first part is aimed to give an overview  of what's the big picture and how to  t"
+description: "A data science workflow yes pretty cool so this image is kind of borrowed from the book our for data science and explains how a data scientist goes..."
 resource: "https://www.youtube.com/watch?v=DfVoYtCQlfU"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "databases", "dropbox", "r-packages", "pins"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=DfVoYtCQlfU"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-04-28T00:00:00Z"
+    usage_count: 24
+usage_window: { from: "2020-04-28T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

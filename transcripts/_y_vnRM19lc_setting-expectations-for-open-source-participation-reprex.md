@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Setting expectations for open source participation: reprex"
-description: "oh okay we are recording okay I might be  okay I'm I think that was pause there  for a second so we're gonna be talking  about open source contribution and  bas"
+description: "About open source contribution and basically in particular just we're going to be talking about how to write an issue on github that makes sense to any package..."
 resource: "https://www.youtube.com/watch?v=_y_vnRM19lc"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github-issues", "github", "cloud", "reprex"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=_y_vnRM19lc"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-06-23T00:00:00Z"
+    usage_count: 8
+usage_window: { from: "2020-06-23T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

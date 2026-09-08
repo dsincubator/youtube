@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "ds.database: Relational data with the dm package"
-description: "again to the ds incubator today we are  talking about relational data this is  chapter two on this topic  last time we talked  about how to work with relational"
+description: "Incubator today we are talking about relational data this is chapter two on this topic last time we talked about how to work with relational data dplyer in..."
 resource: "https://www.youtube.com/watch?v=DeLK1OKNQlw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "databases", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=DeLK1OKNQlw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-09-13T00:00:00Z"
+    usage_count: 251
+usage_window: { from: "2022-09-13T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

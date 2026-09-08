@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Creating reproducible examples"
-description: "here record to this computer so okay  thank you very much again for joining  this is the data sensing we're about  creating reproducible examples there is  at l"
+description: "Is the data sensing we're about creating reproducible examples there is at least two ways that I know of in which we can create reducible examples and one..."
 resource: "https://www.youtube.com/watch?v=wJnI0F_A-bU"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "reproducibility", "github", "r-packages", "workflow"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=wJnI0F_A-bU"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2019-12-10T00:00:00Z"
+    usage_count: 13
+usage_window: { from: "2019-12-10T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

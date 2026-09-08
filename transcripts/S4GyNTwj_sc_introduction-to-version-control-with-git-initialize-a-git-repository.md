@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Introduction to version control with Git: Initialize a Git repository"
-description: "today the data science equator is the  first actually of a series  of uh meet ups about git and git has  been a tool that you know we have been  using a lot  uh"
+description: "Today the data science equator is the first actually of a series of uh meet ups about git and git has been a tool that you know we..."
 resource: "https://www.youtube.com/watch?v=S4GyNTwj_sc"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "terminal", "snapshot-testing", "cloud"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=S4GyNTwj_sc"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-09-15T00:00:00Z"
+    usage_count: 73
+usage_window: { from: "2020-09-15T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

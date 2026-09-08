@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Docker: Managing images"
-description: "that is inquiry continues on the series  about working with docker and uh today  we're gonna be talking about managing  images and maybe a little bit of using  "
+description: "On the series about working with docker and uh today we're gonna be talking about managing images and maybe a little bit of using and managing volumes as..."
 resource: "https://www.youtube.com/watch?v=3_0gUMqKikw"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "docker", "containers", "workflow", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=3_0gUMqKikw"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-09-21T00:00:00Z"
+    usage_count: 38
+usage_window: { from: "2021-09-21T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "A demo of the package r2dii.plot (by Monika)"
-description: "welcome everyone to the ds incubator  today we have monica as our privileged  guest so  awesome guest so go ahead monika  hi thanks mauro  hi everyone  thanks f"
+description: "Today we have monica as our privileged awesome guest so go ahead monika today i'm going to present a demo of the r2di plot package we developed together..."
 resource: "https://www.youtube.com/watch?v=CRcK0SCxGBQ"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "r2dii", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=CRcK0SCxGBQ"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-03-01T00:00:00Z"
+    usage_count: 74
+usage_window: { from: "2022-03-01T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

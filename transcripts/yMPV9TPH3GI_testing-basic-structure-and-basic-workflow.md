@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Testing: Basic structure and  basic workflow"
-description: "so today the ds encoder is again about  testing our code the series so far has  had only one session  and um i expect it to have uh well two  days  and maybe th"
+description: "By the by the book that i'm following for for this series it might sound odd but you know i'm following a book about testing about shiny and..."
 resource: "https://www.youtube.com/watch?v=yMPV9TPH3GI"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "testing", "workflow", "r-packages", "shiny"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=yMPV9TPH3GI"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-04-06T00:00:00Z"
+    usage_count: 37
+usage_window: { from: "2021-04-06T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

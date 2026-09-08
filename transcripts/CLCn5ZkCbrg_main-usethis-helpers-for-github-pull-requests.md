@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Main usethis helpers for GitHub pull requests"
-description: "okay then thank you very much for coming  today  the science plan is to talk about the  pull request helpers very briefly I'm  only going to focus on the main p"
+description: "The science plan is to talk about the pull request helpers very briefly I'm only going to focus on the main pillars and the reason why we might..."
 resource: "https://www.youtube.com/watch?v=CLCn5ZkCbrg"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "pull-requests", "r-packages", "github", "usethis"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=CLCn5ZkCbrg"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2019-10-29T00:00:00Z"
+    usage_count: 18
+usage_window: { from: "2019-10-29T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

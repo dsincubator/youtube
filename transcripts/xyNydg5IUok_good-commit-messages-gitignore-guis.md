@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Good commit messages, .gitignore, GUIs"
-description: "okay today the ds incubator is the last  of the first lesson in this series about  using it from the terminal  uh there is a few this  is more kind of theoretic"
+description: "Before i do know my art studio thingy and hear the the first actually up here the first um subsection um is this about writing useful commit messages..."
 resource: "https://www.youtube.com/watch?v=xyNydg5IUok"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "terminal", "github", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=xyNydg5IUok"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-10-13T00:00:00Z"
+    usage_count: 19
+usage_window: { from: "2020-10-13T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

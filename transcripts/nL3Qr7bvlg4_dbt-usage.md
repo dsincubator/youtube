@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "dbt usage"
-description: "[Music]  welcome back to the DS incubator in this  video we're going to be talking about  the basic usage of DBT we're going to be  talking about DBT run to exe"
+description: "Generate and DBT docs serve to generate and access the documentation of database one way in which we can execute those commands is in GitHub code spaces which..."
 resource: "https://www.youtube.com/watch?v=nL3Qr7bvlg4"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "dbt"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=nL3Qr7bvlg4"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-06-23T00:00:00Z"
+    usage_count: 32
+usage_window: { from: "2024-06-23T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

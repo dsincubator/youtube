@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Project management on GitHub"
-description: "welcome again to the ds incubator today  we are talking about project management  on github the goal is  let me close the door so the noise comes  through a lit"
+description: "We are talking about project management on github the goal is through a little better the goal is to basically show that we can manage projects with github..."
 resource: "https://www.youtube.com/watch?v=qqKhQdejUOM"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github-issues", "github", "pull-requests", "dropbox"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=qqKhQdejUOM"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-08-23T00:00:00Z"
+    usage_count: 8727
+usage_window: { from: "2022-08-23T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

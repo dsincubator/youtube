@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Continuously build and deploy a shiny app on Google Cloud Run"
-description: "[Music]  was in casaria Aron the version 2024 and  one of the last presentations was by  Jacqueline noes uh she showed a really  cool service that I would like "
+description: "R which you know as we saw before is going to uh so remember the the P 880 is"
 resource: "https://www.youtube.com/watch?v=PRKOMCCOlI0"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "shiny", "cloud", "google-cloud", "cloud-run"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=PRKOMCCOlI0"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-07-05T00:00:00Z"
+    usage_count: 688
+usage_window: { from: "2024-07-05T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

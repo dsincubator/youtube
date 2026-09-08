@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "reprex: overview"
-description: "today the dsn greater starts a new  series and it is about the rebricks  package which is a word smash between  rep producible examples  so  the motivation for "
+description: "Today the dsn greater starts a new series and it is about the rebricks package which is a word smash between the motivation for using replex is that..."
 resource: "https://www.youtube.com/watch?v=erv1yJaNID8"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "github", "github-issues", "reprex"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=erv1yJaNID8"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-10-05T00:00:00Z"
+    usage_count: 78
+usage_window: { from: "2021-10-05T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

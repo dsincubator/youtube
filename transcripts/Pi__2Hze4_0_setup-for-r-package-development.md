@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Setup for R package development"
-description: "thanks a lot okay I see someone joining  they're gonna meet that person he says  Diana I think we are all Diana that's  why you know we are now using a  differe"
+description: "In in six sessions from today we will be kind of meeting online and working I understand on the are to the AI analysis package so we would..."
 resource: "https://www.youtube.com/watch?v=Pi__2Hze4_0"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "github", "cloud", "git"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=Pi__2Hze4_0"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-02-04T00:00:00Z"
+    usage_count: 28
+usage_window: { from: "2020-02-04T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

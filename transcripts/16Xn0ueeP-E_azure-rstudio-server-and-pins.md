@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Azure, RStudio server, and pins"
-description: "yeah yeah okay great so this is this  data science in this meeting I'll get  going just letting me know that this is  being recorded that a certain sink  waiter"
+description: "On how to use our asura board from a nursery server actually and in particular we are using us to your server on the cloud but I'm gonna..."
 resource: "https://www.youtube.com/watch?v=16Xn0ueeP-E"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "pins", "r-packages", "cloud", "azure"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=16Xn0ueeP-E"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-05-19T00:00:00Z"
+    usage_count: 559
+usage_window: { from: "2020-05-19T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

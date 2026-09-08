@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "https://github.com/2DegreesInvesting/ds-incubator/issues/50"
-description: "so today the DA's equator is the first  in a series of two the idea is to  discuss tools that we can use to create  plots and I'm a goal should be to give  an o"
+description: "In a series of two the idea is to discuss tools that we can use to create plots and I'm a goal should be to give an overview..."
 resource: "https://www.youtube.com/watch?v=JXfEWLZXwXY"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "ggplot2", "github", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=JXfEWLZXwXY"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-07-07T00:00:00Z"
+    usage_count: 4
+usage_window: { from: "2020-07-07T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

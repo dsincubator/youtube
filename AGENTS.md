@@ -28,7 +28,7 @@ README.md                    # Rendered output (git-flavored markdown)
 ```
 
 - `json3` = `events[].tStartMs/dDurationMs` + `segs[].utf8/tOffsetMs` (word-level timing for editing).
-- `.md` transcripts follow OKF v0.2: YAML frontmatter (`type`, `title`, `description`, `resource`, `tags`, `generated`, `status`, `sources`) + `# Transcript` body.
+- `.md` transcripts follow OKF v0.2: YAML frontmatter (`type`, `title`, `description`, `resource`, `tags`, `lang`, `generated`, `status`, `sources` + `usage_window`) + `# Transcript` body. Frontmatter is regenerated from spec by `bin/convert-transcripts` — never trust it, re-derive it (description = first substantive sentence, not caption filler; `tags` = topical keyword scan + `ds-incubator`; `generated.by` = `process:convert-transcripts` per §7; `lang` from caption track; `usage_count`/`last_modified`/`usage_window` from CSV).
 - `lang` = original spoken language (`en` most videos, `es` for 6 Spanish-titled ones: `1lpcCHfozh0`, `EmDubkF8DpQ`, `hs_Pzxny7XE`, `kNV8dDGF7Hw`, `nSJT8NGhSTs`, `xx5WNZgQEdY`).
 - The `g1PRMaTFYdk` duplicate rows are byte-identical, so either survives the collapse.
 - The 3 `private` videos have no CSV rows and are never attempted by `fetch-transcripts`; the transcript gate below applies to the 151 public IDs only.
@@ -61,7 +61,7 @@ Reads `data/metadata.csv` for the video ID list and title, converts each `transc
 - `<id>_<sanitized-title>.tsv` (tab-separated `<tStartMs>\t<text>`)
 - `<id>_<sanitized-title>.md` (OKF v0.2: YAML frontmatter + `# Transcript` body)
 
-Titles are ASCII-slugified (`unidecode` → replace non-alphanumerics with `-`, lowercase). The `.md` format includes OKF v0.2 frontmatter (`type`, `title`, `description`, `resource`, `tags`, `generated`, `status`, `sources`). Skips videos without a json3 file.
+Titles are ASCII-slugified (`unidecode` → replace non-alphanumerics with `-`, lowercase). The `.md` format includes spec-derived OKF v0.2 frontmatter: `title`/`resource` from CSV, `description` = first substantive sentence (filler-aware; caption fallback joins first content lines), `tags` = scored topical keyword scan (`TAG_RULES`, word-boundary for ≤3-char keys) + `ds-incubator`, `lang` from caption track (`en`/`es`), `generated.by` = `process:convert-transcripts` (§7), `sources` + `usage_count` (`view_count`) / `last_modified` (`upload_date_iso`) / `usage_window`. Skips videos without a json3 file.
 
 ## SCRIPT: `bin/fetch-transcripts`
 
@@ -99,6 +99,7 @@ Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<i
 - [x] Open question resolved: `sbp5Q8niTho` comment was deleted from YouTube (fetch succeeded, database stands).
 - [x] `fetch-transcripts` prune fix: `pick_transcript`/`--force` now touch subtitle extensions only (earlier `*.*` glob deleted converted `.txt`/`.tsv` on re-runs).
 - [x] Title sanitization: ASCII-only, lowercase, hyphen-separated words.
+- [x] Frontmatter regen from spec (2026-09-08): `bin/convert-transcripts` re-derived all 151 `.md` frontmatters — actor fix (`process:convert-transcripts`), substantive descriptions, topical tags, `lang`, credibility signals (`usage_count`/`last_modified`/`usage_window`). Old frontmatter treated as untrusted.
 
 ## NEXT
 
@@ -139,12 +140,20 @@ All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
 - `references/` directory planned for executors/attesters (§6.3)
 
 ### Pipeline Steps
-1. **Source generation**: LLM extracts concepts from each transcript → `sources/source_<id>_<slug>.md`
+1. **Source generation**: LLM extracts concepts from each transcript → `sources/source_<id>_<slug>.md` (script scaffolds frontmatter; agent writes body only)
 2. **Aggregation**: Read all source frontmatter + summaries → cluster into topics
 3. **Topic generation**: Create 44 topic pages with cross-links (§6)
 4. **Bundle assembly**: Create `index.md`, `log.md`, `references/`
 5. **Verification**: Human review adds `verified` fields (§5.2)
 6. **Conformance check**: Validate against §11
+
+### Extraction Prompt (v2 — hardened by 3-file pilot + adversarial review)
+Distillation agents MUST follow these rules (pilot caught: invented `tar_load`, rewritten `tags`, unanchored `reproducibility`, false `None mentioned`, target/function conflation):
+1. **Quote-to-name**: every package/function name must trace to an exact caption fragment (keep mangled quote + normalized form, e.g. `tar_read` ← `car read`, `covr` ← `cover package`). Cannot quote it → do not write it.
+2. **Frozen frontmatter**: copy `tags`, `lang`, `usage_count`, `last_modified` byte-identical from the transcript. Only fill `key_topics`. Never invent tags.
+3. **Anchored key_topics**: every slug must appear verbatim (case-insensitive) in a body heading or bolded concept. Non-English bodies use bilingual headings (`Velocidad del equipo / team velocity`). No generic fillers (`r`).
+4. **No false `None mentioned`**: before claiming it, search for call patterns (`tar_*`, `expect*`, `use_*`, `Sys.sleep`, file paths). Spoken-but-mangled code → snippet with quote + normalized form.
+5. **Disambiguate + don't over-normalize**: targets ≠ functions (`summary` target vs `sum()`); keep caption quote alongside any normalization; vague guard (`stop if not character`) stays vague.
 
 ### Missing Topics Added (from agent review)
 - `topics/data/databricks-rstudio.md`, `topics/data/production-workflow.md`, `topics/data/r2dii-packages.md`, `topics/data/chromebook-data-science.md`, `topics/data/python-r-interop.md`, `topics/data/code-quality.md`, `topics/data/github-issues-workflow.md`, `topics/data/access-permissions.md`

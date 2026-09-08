@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "ds databricks4r: Databricks for RStudio users"
-description: "today we're going to be talking about  data brakes for our studio users the  goal of today's uh tutorial is to help  our users understand if and how they  could"
+description: "Today we're going to be talking about data brakes for our studio users the goal of today's uh tutorial is to help our users understand if and how..."
 resource: "https://www.youtube.com/watch?v=-HTH2ylnT7Q"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "terminal", "shell", "python", "github"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=-HTH2ylnT7Q"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2023-10-22T00:00:00Z"
+    usage_count: 1166
+usage_window: { from: "2023-10-22T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

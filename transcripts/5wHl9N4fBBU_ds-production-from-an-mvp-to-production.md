@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "ds.production: From an MVP to production"
-description: "welcome to the DS incubator today it's a  special video about how to convert a  minimum viable product into production  so this is the idea of you know taking  "
+description: "And 509 is applied through this function but also again here I think that's about um and thus if you Google you know how to convert um what was the temperature the other reported 91."
 resource: "https://www.youtube.com/watch?v=5wHl9N4fBBU"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "refactoring", "r-packages", "snapshot-testing"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=5wHl9N4fBBU"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2023-06-17T00:00:00Z"
+    usage_count: 87
+usage_window: { from: "2023-06-17T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

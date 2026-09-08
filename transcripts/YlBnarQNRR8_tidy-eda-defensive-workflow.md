@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "tidy EDA: Defensive workflow"
-description: "so  today we start a new series of the ds  equator and it is going to be about how  to explore your data with the tidy verse  um  as usual there is now a reposi"
+description: "Today we start a new series of the ds equator and it is going to be about how to explore your data with the tidy verse as usual..."
 resource: "https://www.youtube.com/watch?v=YlBnarQNRR8"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "workflow", "r-packages", "git", "eda"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=YlBnarQNRR8"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-10-26T00:00:00Z"
+    usage_count: 43
+usage_window: { from: "2021-10-26T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

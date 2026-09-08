@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Merge conflicts"
-description: "so today it is the DS incubator again  covering uh kit from the terminal and in  particular a topic that is very close to  a lot of us heart which is the idea o"
+description: "The terminal and in particular a topic that is very close to a lot of us heart which is the idea of conflicts and specifically in the context..."
 resource: "https://www.youtube.com/watch?v=5gmTK8Cb-WE"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "merge-conflicts", "rebasing", "pull-requests", "workflow"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=5gmTK8Cb-WE"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-11-24T00:00:00Z"
+    usage_count: 16
+usage_window: { from: "2020-11-24T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

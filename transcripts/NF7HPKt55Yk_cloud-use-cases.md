@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "cloud: Use cases"
-description: "hello  [Music]  welcome everyone to the ds incubator  this is the second meetup of the series  about cloud computing i'm gonna move  fast here to the meetup of "
+description: "Meetup of the series about cloud computing i'm gonna move fast here to the meetup of the day which is starting with a number of use cases the..."
 resource: "https://www.youtube.com/watch?v=NF7HPKt55Yk"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "terminal", "cloud", "r-packages", "docker"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=NF7HPKt55Yk"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-06-07T00:00:00Z"
+    usage_count: 25
+usage_window: { from: "2022-06-07T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

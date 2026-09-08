@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "ds.database: Relational data with dplyr"
-description: "again to the ds incubator  today we start a new series about  relational data  the goal is basically to help myself i  say here to help you understand but in  t"
+description: "Player to the second chapter would be about the package dm which is an art package designed to define the data models and to work with relational data..."
 resource: "https://www.youtube.com/watch?v=qvQ_YmyjK0U"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "databases", "dplyr", "r-packages", "docker-compose"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=qvQ_YmyjK0U"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-08-30T00:00:00Z"
+    usage_count: 126
+usage_window: { from: "2022-08-30T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

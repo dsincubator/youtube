@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Undoing things with git"
-description: "today the DS incubator is going to cover  one lesson from uh this um website here  the introduction to Version Control with  Git one lesson that we forgot actua"
+description: "Is the lesson undoing things and that's a very important lesson um it's very uh G is very powerful in giving you options to undo things in many..."
 resource: "https://www.youtube.com/watch?v=dZOfEF19yDk"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=dZOfEF19yDk"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-01-05T00:00:00Z"
+    usage_count: 19
+usage_window: { from: "2021-01-05T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

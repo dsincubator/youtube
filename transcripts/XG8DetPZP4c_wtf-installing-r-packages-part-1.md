@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "wtf: Installing R packages (part 1)"
-description: "so this is the dsinquater so thanks for  joining and again we are talking about  uh the book  uh what they forgot to teach you about r  the first i think it was"
+description: "First i think it was two or three is probably the minimum that we should all know to work effectively together a meet up about studying our packages..."
 resource: "https://www.youtube.com/watch?v=XG8DetPZP4c"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages", "docker", "cran", "github"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=XG8DetPZP4c"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-03-15T00:00:00Z"
+    usage_count: 84
+usage_window: { from: "2022-03-15T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

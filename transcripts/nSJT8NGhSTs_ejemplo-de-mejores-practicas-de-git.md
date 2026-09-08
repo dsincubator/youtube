@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Ejemplo de \"mejores practicas\" de Git"
-description: "hoy el 10 incubator va a cubrir la idea  de ejemplos Mostrar ejemplos sobre un  conjunto de prácticas sobre git que  estamos tratando de acordar en la  organiza"
+description: "Hoy el 10 incubator va a cubrir la idea de ejemplos Mostrar ejemplos sobre un conjunto de prácticas sobre git que estamos tratando de acordar en la organización..."
 resource: "https://www.youtube.com/watch?v=nSJT8NGhSTs"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "workflow", "terminal", "cran"]
+lang: es
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=nSJT8NGhSTs"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-12-22T00:00:00Z"
+    usage_count: 110
+usage_window: { from: "2020-12-22T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

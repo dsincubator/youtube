@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "dbt structure"
-description: "[Music]  welcome back to the DS inator this is  the final video about the basic  structure of  DBT the three main files that you need  to have a DVT project are"
+description: "Three main files that you need to have a DVT project are this or files and directories profiles yaml defines the connections between your DBT project database then..."
 resource: "https://www.youtube.com/watch?v=gGXwszGqZxM"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "dbt", "databases"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=gGXwszGqZxM"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2024-06-24T00:00:00Z"
+    usage_count: 40
+usage_window: { from: "2024-06-24T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

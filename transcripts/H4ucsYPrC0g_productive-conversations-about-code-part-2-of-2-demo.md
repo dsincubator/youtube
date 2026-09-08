@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Productive conversations about code (part 2 of 2 -- demo)"
-description: "okay today i have discussed this idea  of what um it is that it makes  a conversation about code productive so  how  um what are the elements for productive  co"
+description: "Of what um it is that it makes a conversation about code productive so cover um conversation about code and also how you can you can get there..."
 resource: "https://www.youtube.com/watch?v=H4ucsYPrC0g"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "r-packages", "pull-requests", "cloud"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=H4ucsYPrC0g"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-09-01T00:00:00Z"
+    usage_count: 7
+usage_window: { from: "2020-09-01T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

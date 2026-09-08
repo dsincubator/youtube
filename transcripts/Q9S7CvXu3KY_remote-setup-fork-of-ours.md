@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Remote setup: Fork (of ours)"
-description: "today we continue and we are getting  close to the end  of uh this series about working with kit  from the terminal  and what i'm saying we're getting close  to"
+description: "That this umbrella of you know working with a particular pattern or a particular workflow and that is called the github workflow when we are familiar with it..."
 resource: "https://www.youtube.com/watch?v=Q9S7CvXu3KY"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "pull-requests", "terminal", "github"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=Q9S7CvXu3KY"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-12-08T00:00:00Z"
+    usage_count: 15
+usage_window: { from: "2020-12-08T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

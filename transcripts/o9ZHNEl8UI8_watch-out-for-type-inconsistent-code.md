@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Watch out for type inconsistent code"
-description: "here you go your we are recording  alright so hello everyone I had  suggested tomorrow that we do a  discussion about or I would do a  discussion about coercion"
+description: "Very typical how they has already done the same exact idea that I had and much better than I would have done so probably just watch the video..."
 resource: "https://www.youtube.com/watch?v=o9ZHNEl8UI8"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "r-packages"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=o9ZHNEl8UI8"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-03-03T00:00:00Z"
+    usage_count: 17
+usage_window: { from: "2020-03-03T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Wrapping up our discussion on how to manage and use data"
-description: "okay today this new chapter of the data  science in equator hopefully will be  wrapping up what we have been discussing  about ways to improve the way we manage"
+description: "Science in equator hopefully will be wrapping up what we have been discussing about ways to improve the way we manage data and use it and not to..."
 resource: "https://www.youtube.com/watch?v=MJZ7ZsfG5lM"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "dropbox", "databases", "pins", "workflow"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=MJZ7ZsfG5lM"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-05-26T00:00:00Z"
+    usage_count: 6
+usage_window: { from: "2020-05-26T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

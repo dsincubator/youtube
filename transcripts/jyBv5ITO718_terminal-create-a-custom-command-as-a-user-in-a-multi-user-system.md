@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "terminal: Create a custom command as a user in a multi-user system"
-description: "welcome again to the ds equator we are  still in the series about working with a  terminal and if this is the previous  last session today we're going to be  ta"
+description: "About working with a terminal and if this is the previous last session today we're going to be a multi-user system from the perspective of a regular user..."
 resource: "https://www.youtube.com/watch?v=jyBv5ITO718"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "permissions", "terminal", "docker"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=jyBv5ITO718"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-05-17T00:00:00Z"
+    usage_count: 16
+usage_window: { from: "2022-05-17T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

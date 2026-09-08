@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Git practices by example"
-description: "today the DS incubator is going to  demonstrate with examples some of or  hopefully all of the practices that we  are drafting in terms of working with  kit as "
+description: "Or hopefully all of the practices that we are drafting in terms of working with kit as you know we are developing this documentation about the practices that..."
 resource: "https://www.youtube.com/watch?v=eeUZ8dHsmG8"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "git", "r-packages", "workflow", "terminal"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=eeUZ8dHsmG8"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-12-22T00:00:00Z"
+    usage_count: 22
+usage_window: { from: "2020-12-22T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

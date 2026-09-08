@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Docker: Using volumes and managing users"
-description: "thank you okay the diaz in cueto  continues on the series about docker and  today is the last in the series the last  chapter in the series uh first i'm gonna  "
+description: "Using volumes which we touched when we covered docker compose i let session a few sessions ago and uh and also i'm gonna be talking about managing users..."
 resource: "https://www.youtube.com/watch?v=CvOVn2zwi3k"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "containers", "docker", "rocker", "terminal"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=CvOVn2zwi3k"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2021-09-28T00:00:00Z"
+    usage_count: 198
+usage_window: { from: "2021-09-28T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

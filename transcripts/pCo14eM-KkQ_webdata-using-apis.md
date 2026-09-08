@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "webdata: Using APIs"
-description: "so thank you again everyone for joining  this is the ds equator again on the  series about getting data from the web  and today we are going to be talking  abou"
+description: "That cj shared using a slightly different approach httr2 package is the start of the show which is a relatively new package new iteration over the httr package..."
 resource: "https://www.youtube.com/watch?v=pCo14eM-KkQ"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "apis", "r-packages", "web-scraping", "databases"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=pCo14eM-KkQ"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-01-25T00:00:00Z"
+    usage_count: 78
+usage_window: { from: "2022-01-25T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

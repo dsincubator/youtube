@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "pins: Sharing versions of a dataset with pins and Dropbox"
-description: "so thanks everyone here we are at the ds  incubator today  uh on a meetup about the package pins  which we covered some time ago but pins  has  um  changed the "
+description: "Which we covered some time ago but pins changed the interface or at least added a new interface since pins number one became a legacy interface um we..."
 resource: "https://www.youtube.com/watch?v=VCHu0uhGo2g"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "pins", "r-packages", "dropbox"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=VCHu0uhGo2g"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-04-05T00:00:00Z"
+    usage_count: 40
+usage_window: { from: "2022-04-05T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

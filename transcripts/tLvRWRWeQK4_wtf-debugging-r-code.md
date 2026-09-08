@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "WTF: Debugging R code"
-description: "so welcome everyone again to the ds  incubator this is the last meetup of the  series that is covering the book what  they forgot to teach you about r  this is "
+description: "Work that i'm doing right now with the passtax team when sometimes i need to debug some code and before i even get to that code there is..."
 resource: "https://www.youtube.com/watch?v=tLvRWRWeQK4"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "debugging", "r-packages", "github-issues"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=tLvRWRWeQK4"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2022-03-29T00:00:00Z"
+    usage_count: 56
+usage_window: { from: "2022-03-29T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

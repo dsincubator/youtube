@@ -1,18 +1,22 @@
 ---
 type: Video Transcript
 title: "Working with Git and GitHub from RStudio (part 2)"
-description: "this is a continuation of uh  another video that where we were talking  about working with kid  and github from our studio the reason  why i split is because um"
+description: "This is a continuation of uh another video that where we were talking about working with kid and github from our studio the reason why i split is..."
 resource: "https://www.youtube.com/watch?v=-L2A_7XvD6Y"
-tags: ["youtube", "ds-incubator"]
+tags: ["ds-incubator", "github", "git", "pull-requests"]
+lang: en
 generated:
-  by: "bin/convert-transcripts"
-  at: "2026-09-08T02:25:20Z"
+  by: "process:convert-transcripts"
+  at: "2026-09-08T04:02:00Z"
 status: stable
 sources:
   - id: youtube-original
     resource: "https://www.youtube.com/watch?v=-L2A_7XvD6Y"
     title: "YouTube auto-generated caption (json3)"
     author: "process:yt-dlp"
+    last_modified: "2020-08-18T00:00:00Z"
+    usage_count: 15
+usage_window: { from: "2020-08-18T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 ---
 
 # Transcript

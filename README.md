@@ -25,10 +25,7 @@ linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
     bin/fetch-transcripts        # fetch captions (json3)
     bin/convert-transcripts      # json3 -> txt/tsv/md (OKF v0.2)
 
-## 1. Fetch
-
-Raw-first pipeline: `yt-dlp` dumps to `metadata/` and `transcripts/`,
-then CSV derived.
+## Fetch
 
 ``` sh
 # Metadata: test then full (append new by default)
@@ -41,11 +38,14 @@ then CSV derived.
 ./bin/fetch-transcripts               # 151 videos (one *-orig json3 per video)
 # add --cookies-from-browser chrome whenever output contains "Sign in to confirm you're not a bot"
 # --force re-fetches existing
+
+# Convert json3 → readable formats
+./bin/convert-transcripts --format md --count 3   # test
+./bin/convert-transcripts --format md              # all 151 → transcripts/<id>_<slug>.md (OKF v0.2)
+./bin/convert-transcripts --format all             # txt + tsv + md
 ```
 
-## 2. Example: What was fetched
-
-### Metadata + transcripts (joined by `id`)
+### Example metadata
 
 ``` r
 dsi <- readr::read_csv("data/metadata.csv", show_col_types = FALSE)
@@ -115,7 +115,7 @@ joined |>
 #> # ℹ 141 more rows
 ```
 
-### Example transcript (5th file, first 30 lines)
+### Example transcript
 
 ``` r
 fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeLines()
@@ -151,60 +151,31 @@ fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeL
 #> focus is discussing
 ```
 
-## 3. Process
-
-Convert captions to readable OKF v0.2 and distill into the wiki bundle.
-
-``` sh
-# Convert json3 → readable formats (txt + tsv + md)
-./bin/convert-transcripts --format md --count 3   # test
-./bin/convert-transcripts --format md              # all 151 → transcripts/<id>_<slug>.md (OKF v0.2)
-./bin/convert-transcripts --format all             # txt + tsv + md
-
-# Wiki build (done 2026-09-08: 151 sources → 59 topics → bundle)
-# 1. sources/ : distill each transcript → dsincubator_wiki/sources/source_<id>_<slug>.md
-#    per Extraction Prompt v2 (frozen frontmatter, quote-to-name, anchored key_topics)
-# 2. aggregation : read all sources → populate planning_manifest.json source_files[]
-# 3. topics/  : 59 pages with cross-links (§6), Attested Computation for pipelines (§10)
-# 4. bundle assembly : index.md (§8), topics/index.md (§8), sources/index.md (§8), log.md (§9), references/ (§6.3)
-```
-
-## 4. Example: What was processed — the wiki
+## Wiki
 
 👉 **Start here:
 [`dsincubator_wiki/index.md`](dsincubator_wiki/index.md)** — bundle root
-(OKF v0.2, 151 sources → 59 topics). Directory indexes:
+(OKF v0.2, 151 sources → 59 topics). Indexes:
 [`dsincubator_wiki/topics/index.md`](dsincubator_wiki/topics/index.md)
-(§8) with entry point
+(§8) with entry
 [`dsincubator_wiki/topics/concepts-overview.md`](dsincubator_wiki/topics/concepts-overview.md),
-and
 [`dsincubator_wiki/sources/index.md`](dsincubator_wiki/sources/index.md).
 History: [`dsincubator_wiki/log.md`](dsincubator_wiki/log.md) (§9).
-External attesters:
+References:
 [`dsincubator_wiki/references/`](dsincubator_wiki/references/).
 
-Status 2026-09-08: **151/151 sources** and **59/59 topics** complete
-(type §4.1, sources credibility §5.1, actor `agent:okf-wiki-builder/1.0`
-§7, cross-links §6, `Attested Computation` for `targets`/`drake` §10);
-`planning_manifest.json` `source_files[]` populated; bundle indexes and
-`log.md` present; `status: draft` until human `verified` (§5.2).
+Build: 151 `sources/` distilled per Extraction Prompt v2 (frozen
+frontmatter, quote-to-name, anchored `key_topics`) → aggregation
+populates `planning_manifest.json` `source_files[]` → 59 `topics/` with
+cross-links (§6) and `Attested Computation` for pipelines (§10) → bundle
+assembly (`index.md` §8, `topics/index.md` §8, `sources/index.md` §8,
+`log.md` §9, `references/` §6.3). Status 2026-09-08: `status: draft`
+until human `verified` (§5.2).
+
+### Example topics
 
 ``` r
 manifest <- jsonlite::read_json("planning_manifest.json")
-
-tibble(
-  bundle = manifest$bundle_name,
-  okf_version = manifest$okf_version,
-  transcripts = manifest$total_transcripts_processed,
-  topics = length(manifest$topics)
-)
-#> # A tibble: 1 × 4
-#>   bundle           okf_version transcripts topics
-#>   <chr>            <chr>             <int>  <int>
-#> 1 dsincubator_wiki 0.2                 151     59
-```
-
-``` r
 topic_paths <- purrr::map_chr(manifest$topics, "topic_filename")
 
 tibble(path = topic_paths) |>
@@ -229,40 +200,7 @@ tibble(path = topic_paths) |>
 #> 12 terminal           2
 ```
 
-### Distilled sources (live)
-
-``` r
-wiki_sources <- dir_ls("dsincubator_wiki/sources", regexp = "source_.*\\.md$") |>
-  tibble(source_path = _)
-
-tibble(
-  sources_done = nrow(wiki_sources),
-  sources_pending = manifest$total_transcripts_processed - nrow(wiki_sources)
-)
-#> # A tibble: 1 × 2
-#>   sources_done sources_pending
-#>          <int>           <int>
-#> 1          151               0
-```
-
-``` r
-wiki_sources |> head(10) |> select(source_path)
-#> # A tibble: 10 × 1
-#>    source_path                                                                  
-#>    <fs::path>                                                                   
-#>  1 dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md       
-#>  2 …i/sources/source_-HTH2ylnT7Q_ds-databricks4r-databricks-for-rstudio-users.md
-#>  3 …ator_wiki/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md
-#>  4 …ources/source_-L2A_7XvD6Y_working-with-git-and-github-from-rstudio-part-2.md
-#>  5 …bator_wiki/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md
-#>  6 …ce_0-zQ69P6VsY_tidy-eda-the-data-science-workflow-and-toolkit-an-overview.md
-#>  7 dsincubator_wiki/sources/source_00i28kdk8cM_ds-tmux.md                       
-#>  8 …i/sources/source_0qUs4hi7ozo_retrospective-about-meetups-in-2020-response.md
-#>  9 dsincubator_wiki/sources/source_16Xn0ueeP-E_azure-rstudio-server-and-pins.md 
-#> 10 …ces/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md
-```
-
-### Example distilled source (first pilot, first 40 lines)
+### Example source
 
 ``` r
 fs::dir_ls("dsincubator_wiki/sources", regexp = "source_.*\\.md$")[[1]] |> readLines(n = 40) |> writeLines()
@@ -308,7 +246,7 @@ fs::dir_ls("dsincubator_wiki/sources", regexp = "source_.*\\.md$")[[1]] |> readL
 #> - **[usethis package workflow]:** Using helpers to create a package, add an R file with `use_r`, and scaffold the matching test file with `use_test` plus the testthat infrastructure.
 ```
 
-### Example topic (first 40 lines)
+### Example topic
 
 ``` r
 fs::dir_ls("dsincubator_wiki/topics", regexp = "\\.md$", recurse = TRUE)[[2]] |> readLines(n = 40) |> writeLines()

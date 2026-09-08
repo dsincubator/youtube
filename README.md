@@ -291,38 +291,125 @@ fs::dir_ls("dsincubator/topics", regexp = "\\.md$", recurse = TRUE)[[2]] |> read
 
 ### Search the wiki with qmd (complements LLM)
 
-Raw LLM can `grep`/`cat` all 216 files, but
-[`qmd`](https://github.com/tobi/qmd) gives local hybrid search (BM25 +
-vector + LLM rerank) without loading the bundle — useful for agents and
-humans.
+[`qmd`](https://github.com/tobi/qmd) complements brute-force LLM
+(`cat`/`rg`) — local hybrid search (BM25 + vector + LLM rerank) without
+loading the bundle. Install: `npm install -g @tobilu/qmd` or
+`bun install -g @tobilu/qmd` / `npx @tobilu/qmd` —
+<https://github.com/tobi/qmd>. Collection `dsincubator` is indexed;
+after changes: `qmd update && qmd embed -c dsincubator`.
 
-Install: `npm install -g @tobilu/qmd` or `bun install -g @tobilu/qmd` /
-`npx @tobilu/qmd` — models auto-download to `~/.cache/qmd`. Repo:
-<https://github.com/tobi/qmd>.
-
-This repo’s collection is `dsincubator` (216 `**/*.md`, 1155 vectors):
-
-``` sh
-qmd ls dsincubator                          # 216 indexed
-qmd status                                  # 1155 vectors, updated 44s ago
-qmd search "docker" -c dsincubator -n 3     # fast BM25
-qmd query "targets pipeline caching" -c dsincubator  # hybrid + rerank (best)
-qmd get qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md
-qmd multi-get "dsincubator/topics/pipelines/*"       # batch fetch
-rg -n "key_topics" dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md  # exact grep complement
+``` bash
+qmd search "docker" -c dsincubator -n 2 | head -n 20
+#> qmd://dsincubator/sources/source_RO-OdWXfpBc_docker-managing-containers.md:3 #66fb87
+#> Title: Docker: managing containers
+#> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
+#> Score:  67%
+#> 
+#> @@ -2,4 @@ (1 before, 79 after)
+#> type: source
+#> title: "Docker: managing containers"
+#> source_file: "RO-OdWXfpBc_docker-managing-containers.md"
+#> video_id: "RO-OdWXfpBc"
+#> 
+#> 
+#> qmd://dsincubator/sources/source_3_0gUMqKikw_docker-managing-images.md:3 #163c4e
+#> Title: Docker: Managing images
+#> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
+#> Score:  67%
+#> 
+#> @@ -2,4 @@ (1 before, 58 after)
+#> type: source
+#> title: "Docker: Managing images"
 ```
 
-Example — hybrid query finds the right concept even when keywords don’t
-match verbatim:
-
-``` sh
-qmd query "how to handle merge conflicts git" -c dsincubator
-# → source_g1PRMaTFYdk (pr_sync, 85%) + topics/git/merge-conflicts.md (62%)
-qmd query "Shiny debugging browser" -c dsincubator
-# → topics/workflow/debugging-workflows.md (100%) + topics/shiny/shiny-debugging.md
+``` bash
+qmd query "how to handle merge conflicts git" -c dsincubator -n 2 | head -n 20
+#> Expanding query... (0ms)
+#> ├─ how to handle merge conflicts git
+#> ├─ lex: guide to dealing
+#> ├─ vec: steps for resolving git merge conflicts
+#> ├─ vec: guide to dealing with git merge problems
+#> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
+#> Searching 5 queries...
+#> Embedding 4 queries... (1.4s)
+#> Reranking 25 chunks... (2ms)
+#> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
+#> Title: `usethis::pr_sync()` (live ds-incubator meetup)
+#> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
+#> Score:  85%
+#> 
+#> @@ -8,4 @@ (7 before, 63 after)
+#> tags: ["ds-incubator", "terminal", "pull-requests", "github", "git"]
+#> key_topics: ["pr-sync", "usethis-helpers", "git-fork-workflow", "merge-conflicts", "pr-push", "pr-finish"]
+#> generated:
+#>   by: "agent:okf-wiki-builder/1.0"
+#> 
+#> 
+#> qmd://dsincubator/topics/git/merge-conflicts.md:58 #eceefc
+#> Title: Merge Conflicts
+#> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
+#> Score:  62%
+#> 
+#> @@ -57,4 @@ (56 before, 28 after)
+#> 
+#> Resolution is shown both manually (opening the file, editing `<<<<<<<` / `=======` / `>>>>>>>` markers, `git add` the resolved file, `git commit`) and with tooling (`git mergetool`, `usethis::pr_sync()` / `pr_merge()` helpers). Prevention guidance recurs: keep branches synchronized with `main`/`master`, scope each PR to one thing, split monolithic ~200-line files into modules so collaborators touch different files, and recognize that frequent conflicts often signal a communication or semanti...
 ```
 
-For agents: prefer `qmd query` for discovery (prose/semantic),
-`qmd search`/`rg` for exact symbols (`tar_make`, `expect_snapshot`),
-then `qmd get`/`rg -A` to pull context. Run
-`qmd update && qmd embed -c dsincubator` after `dsincubator/` changes.
+``` bash
+qmd get qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md | head -n 20
+rg -n "key_topics" dsincubator/sources/*.md | head -n 5
+#> qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md  #3139a8
+#> Folder Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
+#> ---
+#> 
+#> 1: ---
+#> 2: type: source
+#> 3: title: "targets: Introduction"
+#> 4: source_file: "pbc6NX1n01Q_targets-introduction.md"
+#> 5: video_id: "pbc6NX1n01Q"
+#> 6: url: "https://www.youtube.com/watch?v=pbc6NX1n01Q"
+#> 7: lang: en
+#> 8: tags: ["ds-incubator", "targets", "pipelines", "r-packages", "workflow"]
+#> 9: key_topics: ["targets", "pipelines", "caching"]
+#> 10: generated:
+#> 11:   by: "agent:okf-wiki-builder/1.0"
+#> 12:   at: "2026-09-08T04:00:00Z"
+#> 13: status: draft
+#> 14: sources:
+#> 15:   - id: youtube-original
+#> 16:     resource: "https://www.youtube.com/watch?v=pbc6NX1n01Q"
+#> node:events:487
+#>       throw er; // Unhandled 'error' event
+#>       ^
+#> 
+#> Error: write EPIPE
+#>     at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+#>     at writeGeneric (node:internal/stream_base_commons:150:3)
+#>     at Socket._writeGeneric (node:net:1171:11)
+#>     at Socket._write (node:net:1183:8)
+#>     at writeOrBuffer (node:internal/streams/writable:572:12)
+#>     at _write (node:internal/streams/writable:501:10)
+#>     at Writable.write (node:internal/streams/writable:510:10)
+#>     at file:///opt/homebrew/lib/node_modules/@tobilu/qmd/dist/cli/qmd.js:130:16
+#>     at new Promise (<anonymous>)
+#>     at flushWritable (file:///opt/homebrew/lib/node_modules/@tobilu/qmd/dist/cli/qmd.js:129:11)
+#> Emitted 'error' event on Socket instance at:
+#>     at emitErrorNT (node:internal/streams/destroy:170:8)
+#>     at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+#>     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+#>   errno: -32,
+#>   code: 'EPIPE',
+#>   syscall: 'write'
+#> }
+#> 
+#> Node.js v26.5.0
+#> dsincubator/sources/source__pBqBfjTKI4_cloud-introduction-to-cloud-computing.md:9:key_topics: ["cloud-computing", "client-server-droplet", "digitalocean-droplet", "docker-rocker-rstudio", "ssh-authentication", "cloud-costs-and-security"]
+#> dsincubator/sources/source_-HtB6duQnD8_the-pins-package-demo-and-discussion.md:9:key_topics: ["pins", "boards", "github", "caching", "versioning"]
+#> dsincubator/sources/source_-ho1CfoMHKQ_2020-09-08-code-reviews-in-practice.md:9:key_topics: ["code-reviews", "reprex", "github", "pull-requests", "rmarkdown"]
+#> dsincubator/sources/source_-HTH2ylnT7Q_ds-databricks4r-databricks-for-rstudio-users.md:9:key_topics: ["databricks", "rstudio", "workspace", "cluster", "sparkr"]
+#> dsincubator/sources/source_-9QCNwmpTOE_test-driven-development.md:9:key_topics: ["test-driven-development", "testthat", "refactoring"]
+```
+
+Use `qmd query` for prose/questions, `qmd search`/`rg` for exact symbols
+(`tar_make`, `expect_snapshot`), then `qmd get` to pull context. See
+`qmd --help` and `rg --help`.

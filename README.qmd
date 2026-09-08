@@ -137,6 +137,17 @@ Build pipeline:
 1. `./bin/build-wiki` — one-command orchestrator (fetch → transcripts → convert → distill → cluster → topics → bundle)
 2. Or step-by-step: `bin/distill-sources` → `bin/cluster-topics` → `bin/generate-topics` → `bin/assemble-bundle`
 
+### Generalized bundle — `dslab` example
+
+Any public playlist can produce a bundle. Tested with **dslab** (`PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT`, 27 videos) → [`dslab/index.md`](dslab/index.md) (§12) + [`dslab/README.md`](dslab/README.md).
+
+```sh
+./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab --count 3  # quick test
+./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab          # full (27)
+```
+
+Outputs: `dslab/metadata.csv`, `dslab/transcripts/<id>_<slug>.md` (body `00:08: text` per `tStartMs`, deterministic — no LLM; `lang` prefers `en-orig`/`es-orig`), `dslab/sources/`, `dslab/topics/`, `dslab/index.md` (§12), `dslab/log.md` (§9).
+
 Full pipeline: 151 `sources/` distilled per Extraction Prompt v2 (frozen frontmatter, quote-to-name, anchored `key_topics`) → `bin/cluster-topics` uses TF-IDF + HDBSCAN auto-clustering with silhouette evaluation → aggregation populates `planning_manifest.json` `source_files[]` → 59 `topics/` with cross-links (§6) and `Attested Computation` for pipelines (§10) → bundle assembly (`index.md` §8, `topics/index.md` §8, `sources/index.md` §8, `log.md` §9, `references/` §6.3). Status 2026-09-08: `status: draft` until human `verified` (§5.2).
 
 ### Example topics

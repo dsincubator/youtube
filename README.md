@@ -10,40 +10,39 @@ linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
 
 ## Structure
 
-data/metadata.csv            # derived table, 151 videos
-metadata/<id>.json           # raw per-video dump (yt-dlp)
-transcripts/<id>_<title>.md  # OKF v0.2 transcript (YAML frontmatter + body)
-transcripts/manifest.tsv     # id | status | file | lang
-planning_manifest.json       # wiki plan: 59 topic pages across 13 categories
-dsincubator/            # OKF v0.2 wiki bundle → see Wiki below
-dsincubator/sources/    # 151 distilled sources (one per transcript)
-dsincubator/topics/     # 59 topic pages (each an OKF concept with type)
-dsincubator/index.md    # bundle root (okf_version 0.2 §12)
-dsincubator/log.md      # bundle history (§9)
-bin/fetch-metadata           # raw dumps + derive CSV
-bin/fetch-transcripts        # fetch captions (json3)
-bin/convert-transcripts      # json3 -> txt/tsv/md (OKF v0.2)
-bin/distill-sources          # transcript .md + CSV → sources/source_<id>_<slug>.md
-bin/cluster-topics           # auto-cluster sources → planning_manifest.json
-bin/generate-topics          # manifest + sources → topics/{category}/{topic}.md
-bin/assemble-bundle          # generate index.md, indexes, log.md, references/
-bin/build-wiki               # orchestrator: runs full pipeline
-justfile                     # task runner (optional; brew install just)
-requirements.txt             # Python deps for clustering (numpy, scipy, sklearn, hdbscan)
-```
+    data/metadata.csv            # derived table, 151 videos
+    metadata/<id>.json           # raw per-video dump (yt-dlp)
+    transcripts/<id>_<title>.md  # OKF v0.2 transcript (YAML frontmatter + body)
+    transcripts/manifest.tsv     # id | status | file | lang
+    planning_manifest.json       # wiki plan: 59 topic pages across 13 categories
+    dsincubator/            # OKF v0.2 wiki bundle → see Wiki below
+    dsincubator/sources/    # 151 distilled sources (one per transcript)
+    dsincubator/topics/     # 59 topic pages (each an OKF concept with type)
+    dsincubator/index.md    # bundle root (okf_version 0.2 §12)
+    dsincubator/log.md      # bundle history (§9)
+    bin/fetch-metadata           # raw dumps + derive CSV
+    bin/fetch-transcripts        # fetch captions (json3)
+    bin/convert-transcripts      # json3 -> txt/tsv/md (OKF v0.2)
+    bin/distill-sources          # transcript .md + CSV → sources/source_<id>_<slug>.md
+    bin/cluster-topics           # auto-cluster sources → planning_manifest.json
+    bin/generate-topics          # manifest + sources → topics/{category}/{topic}.md
+    bin/assemble-bundle          # generate index.md, indexes, log.md, references/
+    bin/build-wiki               # orchestrator: runs full pipeline
+    justfile                     # task runner (optional; brew install just)
+    requirements.txt             # Python deps for clustering (numpy, scipy, sklearn, hdbscan)
 
 ## Fetch
 
 ### Quick start (any playlist)
 
-```sh
+``` sh
 # Build a wiki for any public playlist in one command
 ./bin/build-wiki --playlist "https://youtube.com/playlist?list=..." --name dslab --tag ds-lab --out-dir ./dslab --count 3
 ```
 
 ### Individual steps
 
-```sh
+``` sh
 # Metadata: test then full (append new by default)
 ./bin/fetch-metadata --limit 2        # smoke test (first 2 playlist entries)
 ./bin/fetch-metadata                  # fetch missing dumps, derive data/metadata.csv
@@ -75,7 +74,7 @@ requirements.txt             # Python deps for clustering (numpy, scipy, sklearn
 
 ### Task runner (optional)
 
-```sh
+``` sh
 # If just is installed (brew install just):
 just wiki                  # full pipeline
 just test                  # full pipeline with --count 3
@@ -198,18 +197,37 @@ entry
 [`dsincubator/log.md`](dsincubator/log.md) (§9). References:
 [`dsincubator/references/`](dsincubator/references/).
 
-Build pipeline:
-1. `./bin/build-wiki` — one-command orchestrator (fetch → transcripts → convert → distill → cluster → topics → bundle)
-2. Or step-by-step: `bin/distill-sources` → `bin/cluster-topics` → `bin/generate-topics` → `bin/assemble-bundle`
+Build pipeline: 1. `./bin/build-wiki` — one-command orchestrator (fetch
+→ transcripts → convert → distill → cluster → topics → bundle) 2. Or
+step-by-step: `bin/distill-sources` → `bin/cluster-topics` →
+`bin/generate-topics` → `bin/assemble-bundle`
+
+### Generalized bundle — `dslab` example
+
+Any public playlist can produce a bundle. Tested with **dslab**
+(`PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT`, 27 videos) →
+[`dslab/index.md`](dslab/index.md) (§12) +
+[`dslab/README.md`](dslab/README.md).
+
+``` sh
+./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab --count 3  # quick test
+./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab          # full (27)
+```
+
+Outputs: `dslab/metadata.csv`, `dslab/transcripts/<id>_<slug>.md` (body
+`00:08: text` per `tStartMs`, deterministic — no LLM; `lang` prefers
+`en-orig`/`es-orig`), `dslab/sources/`, `dslab/topics/`,
+`dslab/index.md` (§12), `dslab/log.md` (§9).
 
 Full pipeline: 151 `sources/` distilled per Extraction Prompt v2 (frozen
-frontmatter, quote-to-name, anchored `key_topics`) → `bin/cluster-topics`
-uses TF-IDF + HDBSCAN auto-clustering with silhouette evaluation →
-aggregation populates `planning_manifest.json` `source_files[]` → 59 `topics/` with
-cross-links (§6) and `Attested Computation` for pipelines (§10) → bundle
-assembly (`index.md` §8, `topics/index.md` §8, `sources/index.md` §8,
-`log.md` §9, `references/` §6.3). Status 2026-09-08: `status: draft`
-until human `verified` (§5.2).
+frontmatter, quote-to-name, anchored `key_topics`) →
+`bin/cluster-topics` uses TF-IDF + HDBSCAN auto-clustering with
+silhouette evaluation → aggregation populates `planning_manifest.json`
+`source_files[]` → 59 `topics/` with cross-links (§6) and
+`Attested Computation` for pipelines (§10) → bundle assembly (`index.md`
+§8, `topics/index.md` §8, `sources/index.md` §8, `log.md` §9,
+`references/` §6.3). Status 2026-09-08: `status: draft` until human
+`verified` (§5.2).
 
 ### Example topics
 
@@ -366,14 +384,14 @@ qmd search "docker" -c dsincubator -n 2 | head -n 20
 
 ``` bash
 qmd query "how to handle merge conflicts git" -c dsincubator -n 2
-#> Expanding query... (0ms)
+#> Expanding query... (1ms)
 #> ├─ how to handle merge conflicts git
 #> ├─ lex: guide to dealing
 #> ├─ vec: steps for resolving git merge conflicts
 #> ├─ vec: guide to dealing with git merge problems
 #> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.5s)
+#> Embedding 4 queries... (1.6s)
 #> Reranking 25 chunks... (1ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)

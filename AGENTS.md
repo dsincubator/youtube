@@ -51,17 +51,18 @@ README.md                    # Rendered output (git-flavored markdown)
 ./bin/convert-transcripts --count 3                # first 3 (test)
 ./bin/convert-transcripts --format txt             # .txt only
 ./bin/convert-transcripts --format tsv             # .tsv only
-./bin/convert-transcripts --format md              # OKF .md only
+./bin/convert-transcripts --format md              # OKF .md only (body 00:08: text, deterministic)
 ./bin/convert-transcripts --format both            # txt + tsv
 ./bin/convert-transcripts --format all             # txt + tsv + md
+./bin/convert-transcripts --format md --tag ds-lab --count 3  # tag override
 ```
 
 Reads `data/metadata.csv` for the video ID list and title, converts each `transcripts/<id>.*.json3` to:
 - `<id>_<sanitized-title>.txt` (plain text)
 - `<id>_<sanitized-title>.tsv` (tab-separated `<tStartMs>\t<text>`)
-- `<id>_<sanitized-title>.md` (OKF v0.2: YAML frontmatter + `# Transcript` body)
+- `<id>_<sanitized-title>.md` (OKF v0.2: YAML frontmatter + `# Transcript` body with deterministic timestamps `00:08: text` per event derived from `tStartMs`, no LLM)
 
-Titles are ASCII-slugified (`unidecode` → replace non-alphanumerics with `-`, lowercase). The `.md` format includes spec-derived OKF v0.2 frontmatter: `title`/`resource` from CSV, `description` = first substantive sentence (filler-aware; caption fallback joins first content lines), `tags` = scored topical keyword scan (`TAG_RULES`, word-boundary for ≤3-char keys) + `ds-incubator`, `lang` from caption track (`en`/`es`), `generated.by` = `process:convert-transcripts` (§7), `sources` + `usage_count` (`view_count`) / `last_modified` (`upload_date_iso`) / `usage_window`. Skips videos without a json3 file.
+Titles are ASCII-slugified (`unidecode` → replace non-alphanumerics with `-`, lowercase). The `.md` format includes spec-derived OKF v0.2 frontmatter: `title`/`resource` from CSV, `description` = first substantive sentence (filler-aware; caption fallback joins first content lines), `tags` = scored topical keyword scan (`TAG_RULES`, word-boundary for ≤3-char keys) + bundle tag (`ds-incubator` default, `--tag` override), `lang` from caption track (`en`/`es` via `.*-orig` priority `en-orig`/`es-orig`), `generated.by` = `process:convert-transcripts` (§7), `sources` + `usage_count` (`view_count`) / `last_modified` (`upload_date_iso`) / `usage_window`. Skips videos without a json3 file.
 
 ## SCRIPT: `bin/fetch-transcripts`
 
@@ -74,7 +75,7 @@ Titles are ASCII-slugified (`unidecode` → replace non-alphanumerics with `-`, 
 
 Flags: `--count N`, `--force`, `--cookies-from-browser BROWSER`, `--csv PATH`, `--out-dir DIR`, `--sub-format FORMAT`, `--sleep SECONDS`, `--retries N`, `--help`.
 
-Per video: `yt-dlp --skip-download --write-auto-subs --sub-langs ".*-orig" --sub-format "json3/srv3/vtt/best" -o "transcripts/<id>.%(ext)s" -- "https://www.youtube.com/watch?v=<id>"` — 3 attempts (1 s sleep), falls back once to `--sub-langs "en.*,es.*"` when no `*-orig` track exists, logs to `/tmp/fetch-transcripts-<id>.log`, records `id status file lang` in `manifest.tsv`. One file per video is kept (preferring `*-orig`; duplicates/translations pruned). `--` protects ids starting with `-`/`_`.
+Per video: `yt-dlp --skip-download --write-auto-subs --sub-langs "en-orig,es-orig,en.*,es.*" --sub-format "json3/srv3/vtt/best" -o "transcripts/<id>.%(ext)s" -- "https://www.youtube.com/watch?v=<id>"` — 3 attempts (1 s sleep), falls back once to `--sub-langs ".*-orig"` when no `en`/`es` track exists, logs to `/tmp/fetch-transcripts-<id>.log`, records `id status file lang` in `manifest.tsv`. One file per video is kept (preferring `en-orig` > `es-orig` > `*-orig` > `en` > `es`; duplicates/translations pruned). `--` protects ids starting with `-`/`_`.
 
 ## SCRIPT: `bin/fetch-metadata`
 

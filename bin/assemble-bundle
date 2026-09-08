@@ -65,13 +65,14 @@ os.makedirs(topics_dir, exist_ok=True)
 os.makedirs(sources_dir, exist_ok=True)
 os.makedirs(refs_dir, exist_ok=True)
 
-# 1. Bundle root index.md (§12)
+# 1. Bundle root index.md (§12) + README.md
 root_index_path = os.path.join(bundle_dir, "index.md")
+playlist_line = f"Playlist: {playlist_url}" if playlist_url else f"Bundle: {bundle_name} ({bundle_tag})"
 root_content = f"""---
 okf_version: '0.2'
 type: Bundle
 title: {bundle_name.title()} LLM Wiki Bundle
-description: OKF v0.2 LLM wiki bundle for {bundle_name}.
+description: OKF v0.2 LLM wiki bundle for {bundle_name} — {len(manifest.get("topics", []))} topics from {len(glob.glob(os.path.join(sources_dir, "source_*.md")))} sources.
 tags:
 - {bundle_tag}
 - wiki-bundle
@@ -83,16 +84,37 @@ status: stable
 
 # {bundle_name.title()} LLM Wiki Bundle
 
-Welcome to the **{bundle_name.title()}** knowledge base bundle, structured according to the Open Knowledge Format (OKF) v0.2.
+{playlist_line}
 
-## Contents
-- [Topics Overview](topics/concepts-overview.md)
-- [Sources Index](sources/index.md)
-- [Bundle History Log](log.md)
-- [References](references/index.md)
+Welcome to the **{bundle_name.title()}** knowledge base bundle, structured according to the Open Knowledge Format (OKF) v0.2.
+Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: text` per event from `tStartMs` (no LLM), language prefers `en-orig`/`es-orig`.
+
+## Contents — START HERE
+- **Bundle root:** [`index.md`](index.md) (§12)
+- [Topics Overview](topics/concepts-overview.md) — all concepts (§3.1)
+- [Topics Index](topics/index.md) (§8)
+- [Sources Index](sources/index.md) (§8) + [Sources Log](sources/log.md) (§9)
+- [Bundle History Log](log.md) (§9)
+- [References](references/index.md) (§6.3)
+
+## Build
+```sh
+./bin/build-wiki --playlist "{playlist_url}" --name {bundle_name} --tag {bundle_tag} --out-dir ./{bundle_name} --count 3  # quick test
+./bin/build-wiki --playlist "{playlist_url}" --name {bundle_name} --tag {bundle_tag} --out-dir ./{bundle_name}          # full
+just wiki  # if just installed
+```
+
+## Search
+```sh
+qmd search "topic" -c {bundle_name} -n 3
+qmd query "question" -c {bundle_name} -n 3
+```
 """
 with open(root_index_path, "w", encoding="utf-8") as f:
     f.write(root_content)
+# README.md — brief sentence + links (§12)
+with open(os.path.join(bundle_dir, "README.md"), "w", encoding="utf-8") as f:
+    f.write(f"# {bundle_name.title()} bundle\n\nOKF v0.2 wiki for `{bundle_name}` — start at [`index.md`](index.md) (§12). {playlist_line}.\n\n- Topics: [`topics/concepts-overview.md`](topics/concepts-overview.md)\n- Sources: [`sources/index.md`](sources/index.md)\n- Log: [`log.md`](log.md)\n")
 
 # 2. Topics concepts-overview.md (§3.1)
 topics_overview_path = os.path.join(topics_dir, "concepts-overview.md")

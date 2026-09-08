@@ -1,0 +1,448 @@
+{
+  "bundle_name": "dsincubator_wiki",
+  "okf_version": "0.2",
+  "total_transcripts_processed": 151,
+  "total_planned_topics": 44,
+  "languages": ["en", "es"],
+  "actor_convention": {
+    "generator": "agent:okf-wiki-builder/1.0",
+    "process_converter": "process:yt-dlp",
+    "verified_by": "human:reviewer",
+    "note": "All generated.by fields follow OKF §7 actor convention: <producer>/<version>"
+  },
+  "verification_strategy": {
+    "tier_unverified": "No verified field; consumable but advisory only (§5.3)",
+    "tier_machine_confirmed": "verified by process:nightly-verify for machine-checkable claims",
+    "tier_human_reviewed": "verified by human:reviewer after human review (TODO: add to all topic pages once ready)",
+    "note": "Trust tiers derived from verified field per §5.3"
+  },
+  "topics": [
+    {
+      "topic_filename": "topics/concepts-overview.md",
+      "topic_title": "dsincubator Wiki Index",
+      "type": "Playbook",
+      "description": "Bundle root concept listing all topics; serves as entry point. Actual directory index is topics/index.md (reserved filename per §3.1).",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/git/git-fundamentals.md",
+      "topic_title": "Git Fundamentals",
+      "type": "Playbook",
+      "description": "Core git concepts: initializing repos, staging, committing, diffs, status, and log",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/git/branching-merging.md",
+      "topic_title": "Git Branching and Merging",
+      "type": "Playbook",
+      "description": "Branching workflows, merging strategies, fast-forward merges, and merge commit history",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/git/merge-conflicts.md",
+      "topic_title": "Merge Conflicts",
+      "type": "Playbook",
+      "description": "Understanding, avoiding, and resolving merge conflicts; manual and automated resolution strategies",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/git/rebasing.md",
+      "topic_title": "Git Rebasing",
+      "type": "Playbook",
+      "description": "Rebase vs merge, rewriting history, interactive rebase, and workflow implications",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/git/github-workflow.md",
+      "topic_title": "GitHub Workflow",
+      "type": "Playbook",
+      "description": "GitHub CLI usage, pull requests, remote setup, forking, cloning, and collaboration workflows",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/git/gitflow-workflow.md",
+      "topic_title": "Gitflow Workflow",
+      "type": "Reference",
+      "description": "Gitflow branching model, release branches, and conventional commit patterns",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/testing/testing-fundamentals.md",
+      "topic_title": "Testing Fundamentals",
+      "type": "Playbook",
+      "description": "Introduction to testing, test structure, and basic workflow in R",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/testing/test-driven-development.md",
+      "topic_title": "Test-Driven Development",
+      "type": "Playbook",
+      "description": "TDD methodology: write tests first, implement code, refactor; applying to R packages",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/testing/snapshot-tests.md",
+      "topic_title": "Snapshot Tests",
+      "type": "Playbook",
+      "description": "Using testthat snapshot tests to refactor safely and verify output stability",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/testing/code-coverage.md",
+      "topic_title": "Code Coverage",
+      "type": "Metric",
+      "description": "Measuring and improving code coverage, testthat coverage reporting",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/r-packages/creating-packages.md",
+      "topic_title": "Creating R Packages",
+      "type": "Playbook",
+      "description": "Package structure, DESCRIPTION files, NAMESPACE, using create_package and usethis",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/r-packages/usethis-workflow.md",
+      "topic_title": "usethis Workflow",
+      "type": "Playbook",
+      "description": "usethis package helpers: use_git, use_readme, use_test, use_pkgdown, use_ci, use_version",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/r-packages/package-documentation.md",
+      "topic_title": "Package Documentation",
+      "type": "Reference",
+      "description": "Roxygen2 documentation, package-level docs, function documentation, and vignettes",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/r-packages/package-testing.md",
+      "topic_title": "Package Testing Infrastructure",
+      "type": "Playbook",
+      "description": "Setting up testthat in packages, test directories, automated testing with CI/CD",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/r-packages/cran-submission.md",
+      "topic_title": "CRAN Submission",
+      "type": "Playbook",
+      "description": "Submitting R packages to CRAN, strong-style pair programming, R CMD check, and best practices",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/pipelines/targets-introduction.md",
+      "topic_title": "targets Introduction",
+      "type": "Attested Computation",
+      "description": "Introduction to the targets R package: pipelines, tar_make, target objects, and caching",
+      "runtime": "r",
+      "computation_type": "pipeline",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/pipelines/targets-advanced.md",
+      "topic_title": "targets Advanced Topics",
+      "type": "Attested Computation",
+      "description": "Outdated targets, target networks, external files, literate programming, and queues",
+      "runtime": "r",
+      "computation_type": "pipeline",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/pipelines/drake-workflows.md",
+      "topic_title": "Drake Workflows",
+      "type": "Attested Computation",
+      "description": "Using drake for reproducible data analysis workflows: plans, caching, dependency tracking, visualization",
+      "runtime": "r",
+      "computation_type": "pipeline",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/pipelines/reproducible-workflows.md",
+      "topic_title": "Reproducible Workflows",
+      "type": "Playbook",
+      "description": "General principles of reproducible research: from scripts to pipelines, memoization, and workflow automation",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/tidyverse/workflow-overview.md",
+      "topic_title": "Tidyverse Data Science Workflow",
+      "type": "Playbook",
+      "description": "Overview of the data science workflow: import, tidy, transform, visualize, model, communicate",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/tidyverse/ggplot2-fundamentals.md",
+      "topic_title": "ggplot2 Fundamentals",
+      "type": "Reference",
+      "description": "Grammar of graphics, ggplot2 layers, geoms, aesthetics, coordinate systems, and themes",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/tidyverse/dplyr-verbs.md",
+      "topic_title": "dplyr Verbs",
+      "type": "Reference",
+      "description": "Core dplyr verbs: select, filter, mutate, arrange, summarize, count, pipe operator, and data frame operations",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/tidyverse/tidy-data.md",
+      "topic_title": "Tidy Data",
+      "type": "Reference",
+      "description": "Tidy data principles, spreading, gathering, separating, and unifying data formats",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/tidyverse/eda-exploring-variation.md",
+      "topic_title": "EDA: Exploring Variation",
+      "type": "Playbook",
+      "description": "Exploring covariation between variables, univariate and bivariate analysis with the tidyverse",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/tidyverse/eda-covariation.md",
+      "topic_title": "EDA: Covariation Analysis",
+      "type": "Playbook",
+      "description": "Covariation between categorical and continuous variables, correlation, and visualization",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/tidyverse/eda-missing-values.md",
+      "topic_title": "EDA: Missing Values",
+      "type": "Playbook",
+      "description": "Identifying and handling unusual and missing values in exploratory data analysis",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/tidyverse/rmarkdown-communication.md",
+      "topic_title": "R Markdown Communication",
+      "type": "Playbook",
+      "description": "R Markdown documents, Quarto, GitHub-flavored markdown, mixing prose and code for reproducible communication",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/docker/docker-fundamentals.md",
+      "topic_title": "Docker Fundamentals",
+      "type": "Playbook",
+      "description": "Docker images, containers, managing images, volumes, users, and docker-compose",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/docker/rocker-project.md",
+      "topic_title": "Rocker Project",
+      "type": "Reference",
+      "description": "Getting started with the Rocker project for R on Docker, Dockerfile best practices",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/docker/docker-use-cases.md",
+      "topic_title": "Docker Use Cases",
+      "type": "Playbook",
+      "description": "Practical Docker use cases: managing environments, reproducibility, and deployment",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/cloud/cloud-fundamentals.md",
+      "topic_title": "Cloud Computing Fundamentals",
+      "type": "Playbook",
+      "description": "Introduction to cloud computing, Google Cloud Platform, Azure, and remote computing concepts",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/cloud/google-cloud-run.md",
+      "topic_title": "Google Cloud Run",
+      "type": "Playbook",
+      "description": "Continuously building and deploying Shiny apps on Google Cloud Run",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/cloud/data-movement.md",
+      "topic_title": "Data Movement and Storage",
+      "type": "Playbook",
+      "description": "Moving data between servers, GitHub CLI, resizing storage, pins for dataset sharing, Dropbox integration",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/cloud/azure-rstudio.md",
+      "topic_title": "Azure and RStudio Server",
+      "type": "Reference",
+      "description": "Azure RStudio server, remote computing setups, and cloud IDE configurations",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/shiny/shiny-basics.md",
+      "topic_title": "Shiny Fundamentals",
+      "type": "Playbook",
+      "description": "Shiny reactivity, UI and server functions, basic input/output, and first shiny app",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/shiny/shiny-publishing.md",
+      "topic_title": "Shiny Publishing",
+      "type": "Playbook",
+      "description": "Publishing Shiny apps, deploying to web, hosting options, and Shiny Server",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/shiny/shiny-debugging.md",
+      "topic_title": "Shiny Debugging",
+      "type": "Playbook",
+      "description": "Debugging Shiny applications, error tracing, and reactive debugging tools",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/shiny/shiny-packages.md",
+      "topic_title": "Shiny Packages",
+      "type": "Reference",
+      "description": "Creating and using Shiny packages, extending Shiny functionality",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/shiny/shiny-development-workflow.md",
+      "topic_title": "Shiny Development Workflow",
+      "type": "Playbook",
+      "description": "Best practices for Shiny development, project structure, and iterative development",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/terminal/terminal-setup.md",
+      "topic_title": "Terminal Setup and Navigation",
+      "type": "Playbook",
+      "description": "Terminal basics, file system navigation, custom commands, multi-user terminal, and admin commands",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/terminal/tmux.md",
+      "topic_title": "tmux Terminal Multiplexer",
+      "type": "Reference",
+      "description": "Using tmux for terminal multiplexing, session management, and productive terminal workflows",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/communication/code-reviews.md",
+      "topic_title": "Code Reviews",
+      "type": "Playbook",
+      "description": "Productive code conversations, code review best practices, reviewing pull requests, and feedback",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/communication/productive-conversations.md",
+      "topic_title": "Productive Code Conversations",
+      "type": "Playbook",
+      "description": "Principles for effective code discussions: reproducibility, speed, size, clarity, and tools (English and Spanish with lang: es tags)",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/communication/reprex.md",
+      "topic_title": "Reproducible Examples",
+      "type": "Playbook",
+      "description": "Creating reprex: package philosophy, do's and don'ts, and how to share reproducible code snippets",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/workflow/project-oriented-workflow.md",
+      "topic_title": "Project-Oriented Workflow",
+      "type": "Playbook",
+      "description": "Setting up projects, project management on GitHub, daily standups, and organization strategies",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/workflow/debugging-workflows.md",
+      "topic_title": "Debugging Workflows",
+      "type": "Playbook",
+      "description": "Systematic debugging in R: wtf debugging, systematic debugging workflows, and common pitfalls",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/workflow/web-apis.md",
+      "topic_title": "Web APIs and Data",
+      "type": "Playbook",
+      "description": "Using APIs for data collection, web scraping, and working with web data in R",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/databases-and-dm.md",
+      "topic_title": "Relational Databases and dm",
+      "type": "Reference",
+      "description": "Working with relational databases in R, dm package, dbt structure, and data validation",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/tidying-data.md",
+      "topic_title": "Tidying Data",
+      "type": "Playbook",
+      "description": "Data tidying techniques, data transformation, and preparing data for analysis",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/pairs-programming.md",
+      "topic_title": "Pairs Programming and Strong Style",
+      "type": "Playbook",
+      "description": "Pair programming techniques, strong-style pair programming, and collaboration strategies",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/databricks-rstudio.md",
+      "topic_title": "Databricks and RStudio",
+      "type": "Reference",
+      "description": "Using databricks4r for Databricks integration with RStudio",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/production-workflow.md",
+      "topic_title": "Production Workflow",
+      "type": "Playbook",
+      "description": "From MVP to production, deployment patterns, and production data science workflows",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/r2dii-packages.md",
+      "topic_title": "r2dii Packages on CRAN",
+      "type": "Reference",
+      "description": "r2dii.data and r2dii.match on CRAN, r2dii.plot package, and A/B testing with r2dii.plot",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/chromebook-data-science.md",
+      "topic_title": "Data Science on a Chromebook",
+      "type": "Playbook",
+      "description": "Doing data science on a Chromebook, setup, and workflow considerations",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/python-r-interop.md",
+      "topic_title": "Python/R Interoperability",
+      "type": "Playbook",
+      "description": "Running Python code from RStudio, reticulate, and cross-language workflows",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/code-quality.md",
+      "topic_title": "Code Quality and Style",
+      "type": "Reference",
+      "description": "Type-inconsistent code, avoiding hidden arguments, refactoring for dplyr, and code style guidelines",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/github-issues-workflow.md",
+      "topic_title": "GitHub Issues Workflow",
+      "type": "Playbook",
+      "description": "Using GitHub issues for project tracking, workflow management, and community engagement",
+      "source_files": []
+    },
+    {
+      "topic_filename": "topics/data/access-permissions.md",
+      "topic_title": "GitHub Access Permissions",
+      "type": "Reference",
+      "description": "Managing organization access, permissions for GitHub organizations, and security best practices",
+      "source_files": []
+    }
+  ],
+  "bundle_files": {
+    "index_md": "topics/index.md (reserved filename per §3.1, serves as §8 index)",
+    "log_md": "log.md (§9 chronological history)",
+    "root_index": "index.md at bundle root (§8, optional, with okf_version key per §12)",
+    "references_dir": "references/ (§6.3 convention for executors/attesters)"
+  },
+  "todo_verification": "Add verified: { by: human:<reviewer>, at: <ISO8601> } to all topic pages once ready for human review (§5.2)",
+  "source_files_note": "source_files arrays to be populated by aggregation pipeline after Step 1 source generation. Each entry requires: id, resource, title, author (credibility signals per §5.1)"
+}

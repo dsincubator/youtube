@@ -1,8 +1,8 @@
-# AGENTS.md — dsincubator transcript database
+# AGENTS.md — dsincubator transcript database + LLM wiki
 
-Goal: build `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF v0.2 format) linked by `id`.
+Goal: build `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF v0.2 format) linked by `id`, then transform the 151 transcripts into an OKF v0.2 LLM wiki bundle (`dsincubator_wiki/`) per `planning_manifest.json`.
 
-When repo state changes (new videos, updated transcripts, schema changes), update `README.qmd` and re-render with `quarto render README.qmd --to gfm --quiet`.
+When repo state changes (new videos, updated transcripts, schema changes, wiki plan/bundle changes), update `README.qmd` and re-render with `quarto render README.qmd --to gfm --quiet`.
 
 ## INPUTS
 
@@ -18,6 +18,8 @@ metadata/<id>.json           # raw per-video dump (--dump-single-json incl. comm
 metadata/manifest.tsv        # id | status | reason | file (ok/private/unavailable/error)
 transcripts/<id>_<title>.md  # OKF v0.2 transcript (YAML frontmatter + markdown body)
 transcripts/manifest.tsv        # id | status | file | lang
+planning_manifest.json       # wiki plan: 44 topic pages across 13 categories
+dsincubator_wiki/            # OKF v0.2 LLM wiki bundle (planned: topics/ + sources/ + index.md + log.md + references/)
 bin/fetch-metadata           # raw dumps + derive CSV
 bin/fetch-transcripts        # fetch captions
 bin/convert-transcripts      # json3 -> txt/tsv/md
@@ -104,9 +106,58 @@ Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<i
 2. Re-run `./bin/convert-transcripts --format md` if new transcripts are fetched.
 3. Optional: probe other open questions.
 
+## OKF LLM WIKI BUNDLE
+
+Goal: Transform 151 transcript `.md` files into a structured OKF v0.2 knowledge bundle (`dsincubator_wiki/`).
+
+### Key Documents
+- `planning_manifest.json` — Plan defining 44 topic pages across 13 categories
+- `topics/` — Aggregated topic/concept pages (each an OKF concept with `type` field)
+- `sources/source_<id>_<slug>.md` — Processed source files (1 per transcript)
+- `sources/index.md` (§8 index) + `sources/log.md` (§9 history)
+- `references/` — External resources for executors/attesters (§6.3)
+
+### Actor Convention (§7)
+All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
+- `agent:okf-wiki-builder/1.0` — for LLM-generated concept pages
+- `process:yt-dlp` — for raw transcript sources
+- `process:convert-transcripts` — for converted transcripts (note: current `bin/convert-transcripts` outputs `bin/convert-transcripts` which should be `process:convert-transcripts`)
+- `human:<reviewer>` — for verified fields after human review
+
+### Verification Tiers (§5.3)
+- **Unverified**: No `verified` field; consumable but advisory
+- **Machine-confirmed**: `verified: { by: process:nightly-verify, at: <date> }`
+- **Human-reviewed**: `verified: { by: human:<reviewer>, at: <date> }` — **TODO**: add to all topic pages once ready for review
+
+### OKF Corrections Applied (from agent review)
+- `topics/index.md` renamed to `topics/concepts-overview.md` to avoid reserved filename conflict (§3.1)
+- All topic concepts have `type` field assigned (§4.1)
+- `sources` arrays to be populated with credibility signals (`author`, `usage_count`, `last_modified`) per §5.1
+- Spanish transcripts tagged with `lang: es` in frontmatter
+- `type: Attested Computation` assigned to targets/drake pipeline transcripts (§10)
+- `log.md` planned at bundle root (§9)
+- `references/` directory planned for executors/attesters (§6.3)
+
+### Pipeline Steps
+1. **Source generation**: LLM extracts concepts from each transcript → `sources/source_<id>_<slug>.md`
+2. **Aggregation**: Read all source frontmatter + summaries → cluster into topics
+3. **Topic generation**: Create 44 topic pages with cross-links (§6)
+4. **Bundle assembly**: Create `index.md`, `log.md`, `references/`
+5. **Verification**: Human review adds `verified` fields (§5.2)
+6. **Conformance check**: Validate against §11
+
+### Missing Topics Added (from agent review)
+- `topics/data/databricks-rstudio.md`, `topics/data/production-workflow.md`, `topics/data/r2dii-packages.md`, `topics/data/chromebook-data-science.md`, `topics/data/python-r-interop.md`, `topics/data/code-quality.md`, `topics/data/github-issues-workflow.md`, `topics/data/access-permissions.md`
+
 ## QUALITY GATES
 
 - [x] Every `id` in CSV (151 public videos; private ones have no rows) has `transcripts/<id>.<lang>.json3` (`status ok`).
 - [x] No unexplained `missing`/`error` rows.
 - [x] `manifest.tsv file` resolves to a real file; `lang` matches spoken language.
 - [x] Join integrity: each manifest `id` appears exactly once in CSV.
+- [ ] OKF bundle conformance: every concept has `type` field (§4.1)
+- [ ] OKF bundle conformance: `sources` arrays populated with credibility signals (§5.1)
+- [ ] OKF bundle conformance: actor convention followed in all `generated.by` fields (§7)
+- [ ] OKF bundle conformance: `verified` fields added after human review (§5.2)
+- [ ] No reserved filenames used for concept documents (§3.1)
+- [ ] `log.md` present at bundle root (§9)

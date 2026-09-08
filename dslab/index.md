@@ -12,9 +12,9 @@ generated:
 status: stable
 ---
 
-# Dslab LLM Wiki Bundle
+# Posit Data Science Lab Wiki
 
-Playlist: https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT
+Generated from the YouTube [Playlist](https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT).
 
 Welcome to the **Dslab** knowledge base bundle, structured according to the Open Knowledge Format (OKF) v0.2.
 Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: text` per event from `tStartMs` (no LLM), language prefers `en-orig`/`es-orig`.

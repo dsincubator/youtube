@@ -177,8 +177,6 @@ rg -n "key_topics" dsincubator/sources/*.md | head -n 5
 
 Use `qmd query` for prose/questions, `qmd search`/`rg` for symbols (`tar_make`); then `qmd get` to pull context. See `qmd --help` and `rg --help`.
 
-Human browsing: open `dsincubator/` in [Obsidian](https://obsidian.md) — graph view, backlinks, [Dataview](https://github.com/blacksmithgu/obsidian-dataview) on frontmatter, [Marp](https://marp.app) decks from markdown. The LLM uses `qmd`; humans use the same files.
-
 See other [tips and tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks).
 
 ### Extraction Prompt (v2 — hardened by 3-file pilot + adversarial review)

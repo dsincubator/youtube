@@ -331,7 +331,7 @@ qmd query "how to handle merge conflicts git" -c dsincubator -n 2
 #> ├─ vec: guide to dealing with git merge problems
 #> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.4s)
+#> Embedding 4 queries... (1.6s)
 #> Reranking 25 chunks... (1ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)
@@ -358,37 +358,6 @@ qmd query "how to handle merge conflicts git" -c dsincubator -n 2
 Use `qmd query` for prose/questions, `qmd search`/`rg` for exact symbols
 (`tar_make`, `expect_snapshot`), then `qmd get` to pull context. See
 `qmd --help` and `rg --help`.
-
-The bundle is plain markdown — browse it locally with
-[Obsidian](https://obsidian.md) (open `dsincubator/` as vault, use graph
-view, backlinks, and
-[Dataview](https://github.com/blacksmithgu/obsidian-dataview) for
-frontmatter queries) or any markdown editor. `qmd` already indexes it
-for the LLM; humans get the same files in Obsidian.
-
-You can write a Dataview query in your `.md` file:
-
-``` dataview
-TABLE title, usage_count, last_modified
-FROM "dsincubator/sources"
-WHERE contains(tags, "targets")
-SORT usage_count DESC
-LIMIT 5
-```
-
-and Dataview will render it when you open it in Obsidian:
-
-*On GitHub the `dataview` block stays as code (expected) — Dataview is
-Obsidian-only. The table below is a static snapshot I pasted for GitHub
-readers; in Obsidian the same query is a live, auto-updating table.*
-
-| title | usage_count | last_modified |
-|----|----|----|
-| targets: Introduction | 2373 | 2021-02-02 |
-| Moving from a sequence of scripts to a pipeline of functions | 617 | 2021-02-09 |
-| targets: tar_cue(): Declare the rules that mark a target as outdated. | 185 | 2021-02-16 |
-| targets: Eexternal files and literate programming | 178 | 2021-03-02 |
-| targets: Introducción | 73 | 2021-02-02 |
 
 See other [tips and
 tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks).

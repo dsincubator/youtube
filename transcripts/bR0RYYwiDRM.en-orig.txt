@@ -1,0 +1,59 @@
+[Music]
+here is a tip to help you do more things
+at the same time sometimes we have our
+our console and we want to use that
+session to do something I don't know
+write a script and start passing some
+you know output to the console but at
+the same time we would like to probably
+run some some jobs in the background to
+do some other things while we are
+working but we still want to have access
+to that session so our studio does
+provide the idea of a background job and
+an interface for that so you can read
+more on the website and learn about that
+but even easier than that you can go to
+a terminal Type R and you already access
+another session that is separate from
+the one that you have in the console and
+not only you can have one you can have
+multiple ones so you can create another
+terminal and continue using the terminal
+itself or pop another art session so I
+use this quite a lot when I need to
+update packages so here is my R session
+different from the one that I want to be
+using to say you know explore some code
+H and I'm going to do uh an
+update
+packages I'm going to say ask equals
+false because that way I can
+uh I don't have to reply to R every time
+it wants to install an package and
+that's going to do its job right the
+same so maybe it's not a good idea to do
+something um with the packages that you
+are updating but uh you can still have
+you know access to your R in any case
+the point is not so much about the
+specific task that I'm doing here which
+is installing jobs but installing
+packages but it's more about you know
+that you can run things in the
+background multiple things multiple
+processes this is this is something that
+I also do a lot when I'm about to submit
+a package to cran and there are multiple
+checks that you need to do and some of
+them take quite some time so just in the
+same visual um environment it's
+convenient to have multiple things
+running at the same time and also having
+an art CLE available to you our studio
+by the way also provides this integrated
+idea of updating packages as as a tab H
+but again I prefer to do that on the
+terminal because I find it uh a bit more
+isolated from everything else that I'm
+doing

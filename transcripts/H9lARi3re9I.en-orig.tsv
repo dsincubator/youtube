@@ -1,0 +1,3764 @@
+1079	welcome
+1620	 again
+1979	 into
+2340	 the
+2520	 DS
+2820	 incubator
+3300	 this
+1079	__EVENT__
+3949	
+
+3959	is
+4080	 the
+4259	 series
+4380	 about
+4680	 relational
+5100	 data
+5700	 and
+3959	__EVENT__
+5870	
+
+5880	today
+6120	 is
+6420	 the
+6660	 last
+6899	 chapter
+7440	 we're
+8340	 gonna
+8519	 be
+5880	__EVENT__
+8750	
+
+8760	talking
+9059	 about
+9800	 uh
+10800	 the
+11280	 case
+11400	 when
+11760	 the
+12059	 data
+8760	__EVENT__
+12410	
+
+12420	does
+12719	 not
+12900	 necessarily
+13620	 live
+13799	 in
+13980	 your
+12420	__EVENT__
+14150	
+
+14160	computer
+14400	 as
+15059	 data
+15540	 sets
+15900	 say
+16500	 saved
+17160	 in
+17279	 CSV
+14160	__EVENT__
+17689	
+
+17699	files
+18060	 or
+18300	 in
+18420	 some
+18660	 other
+18840	 form
+19080	 but
+19680	 instead
+17699	__EVENT__
+19970	
+
+19980	when
+20340	 they
+20520	 leave
+20760	 in
+21180	 what
+21420	 is
+21600	 called
+22020	 a
+19980	__EVENT__
+22550	
+
+22560	relational
+22920	 database
+23580	 management
+24000	 system
+22560	__EVENT__
+24769	
+
+24779	you
+25439	 may
+25760	 hear
+26760	 me
+27000	 say
+27240	 rdbms
+28199	 for
+28619	 short
+24779	__EVENT__
+29390	
+
+29400	so
+30060	 that
+30960	 is
+31199	 the
+31439	 case
+31560	 for
+31859	 example
+32040	 of
+32460	 the
+29400	__EVENT__
+33250	
+
+33260	MySQL
+34260	 databases
+34800	 or
+35100	 Pro
+35340	 postgres
+33260	__EVENT__
+35990	
+
+36000	databases
+36840	 something
+37440	 that
+37920	 generally
+38340	 is
+36000	__EVENT__
+38810	
+
+38820	hosted
+39239	 in
+39420	 someone
+39540	 else's
+39960	 computer
+40200	 in
+40680	 a
+38820	__EVENT__
+40790	
+
+40800	remote
+40920	 server
+41399	 and
+41820	 you
+42000	 access
+42180	 that
+42660	 server
+40800	__EVENT__
+43670	
+
+43680	uh
+44520	 in
+44700	 some
+44820	 way
+45000	 and
+45420	 then
+45540	 you
+45660	 get
+45840	 data
+43680	__EVENT__
+46310	
+
+46320	sometimes
+47160	 the
+47399	 computations
+48180	 also
+48780	 happen
+46320	__EVENT__
+49430	
+
+49440	on
+49980	 the
+50219	 on
+50579	 the
+50760	 server
+51120	 so
+51360	 that
+51660	 means
+51960	 that
+49440	__EVENT__
+52250	
+
+52260	you
+52620	 can
+52739	 work
+53039	 with
+53399	 data
+53760	 that
+54059	 wouldn't
+52260	__EVENT__
+54229	
+
+54239	otherwise
+54899	 fit
+55320	 necessarily
+55860	 in
+56100	 your
+56280	 memory
+54239	__EVENT__
+56569	
+
+56579	in
+56820	 the
+56879	 memory
+57120	 of
+57300	 your
+57539	 computer
+56579	__EVENT__
+58910	
+
+58920	um
+58980	 so
+59219	 that's
+59460	 a
+59640	 pretty
+59820	 common
+60000	 case
+60300	 so
+60660	 I
+58920	__EVENT__
+60950	
+
+60960	didn't
+61079	 want
+61800	 to
+61920	 finish
+62100	 the
+62340	 series
+62520	 Without
+60960	__EVENT__
+62810	
+
+62820	acknowledging
+63719	 that
+64080	 what
+64260	 we
+64440	 have
+64619	 seen
+64799	 so
+62820	__EVENT__
+65090	
+
+65100	far
+65280	 is
+65519	 a
+65700	 relatively
+66180	 simple
+66420	 version
+66960	 of
+65100	__EVENT__
+67370	
+
+67380	what
+67560	 happens
+67740	 in
+68100	 the
+68220	 wild
+68400	 and
+69180	 more
+67380	__EVENT__
+69469	
+
+69479	commonly
+69840	 when
+70500	 we
+70680	 talk
+70860	 about
+71040	 databases
+71760	 we
+69479	__EVENT__
+71990	
+
+72000	talk
+72119	 about
+72299	 this
+72780	 thing
+73020	 when
+73740	 the
+73920	 the
+72000	__EVENT__
+74390	
+
+74400	relational
+74760	 data
+75299	 lives
+75720	 in
+75900	 a
+76080	 management
+74400	__EVENT__
+76190	
+
+76200	system
+77000	 uh
+78000	 I'm
+78420	 gonna
+78540	 be
+78720	 cheating
+79020	 a
+79260	 little
+76200	__EVENT__
+79310	
+
+79320	bit
+79439	 today
+79619	 I'm
+79860	 going
+80040	 to
+80100	 be
+80280	 working
+80400	 with
+80820	 a
+79320	__EVENT__
+81109	
+
+81119	flavor
+81720	 of
+82080	 an
+82320	 SQL
+82740	 database
+83220	 that
+83700	 fits
+81119	__EVENT__
+84170	
+
+84180	actually
+84420	 in
+85259	 a
+85680	 file
+86159	 and
+86700	 fits
+87180	 in
+87299	 my
+87420	 in
+87720	 the
+84180	__EVENT__
+87890	
+
+87900	computer
+88020	 in
+88439	 my
+88860	 computer
+88979	 in
+89520	 the
+89880	 memory
+90119	 of
+87900	__EVENT__
+90230	
+
+90240	my
+90360	 computer
+90540	 so
+91020	 I'm
+91140	 going
+91320	 to
+91380	 be
+91500	 storing
+90240	__EVENT__
+92030	
+
+92040	this
+92640	 database
+93240	 management
+93540	 system
+94080	 in
+94680	 a
+92040	__EVENT__
+94850	
+
+94860	file
+95100	 an
+95579	 SQL
+96119	 Lite
+96659	 file
+97500	 so
+98040	 the
+98220	 objectives
+94860	__EVENT__
+98569	
+
+98579	of
+98759	 today
+98880	 are
+99119	 going
+99299	 to
+99420	 be
+99479	 to
+99659	 connect
+99780	 to
+98579	__EVENT__
+100069	
+
+100079	such
+100320	 a
+100500	 file
+100740	 to
+100979	 such
+101220	 a
+101460	 you
+101759	 know
+100079	__EVENT__
+101870	
+
+101880	relational
+102659	 database
+103079	 management
+103259	 system
+101880	__EVENT__
+103609	
+
+103619	and
+104280	 also
+105060	 to
+105540	 copy
+105900	 data
+106380	 that
+106860	 we
+107040	 have
+107340	 in
+108180	 a
+103619	__EVENT__
+108289	
+
+108299	database
+108659	 in
+108840	 a
+108960	 data
+109320	 model
+109500	 that
+109860	 we
+109979	 create
+108299	__EVENT__
+110149	
+
+110159	with
+110340	 DM
+110759	 package
+111119	 how
+111720	 to
+111840	 reuse
+112500	 the
+112740	 note
+110159	__EVENT__
+112850	
+
+112860	the
+113159	 knowledge
+113640	 that
+113820	 we
+114000	 capture
+114360	 in
+114659	 that
+112860	__EVENT__
+114830	
+
+114840	data
+115200	 model
+115380	 and
+116159	 and
+116340	 kind
+116579	 of
+116700	 how
+116880	 to
+117060	 pass
+114840	__EVENT__
+117289	
+
+117299	it
+117479	 how
+117720	 to
+117840	 copy
+118140	 it
+118320	 to
+118860	 that
+119040	 relational
+117299	__EVENT__
+119389	
+
+119399	database
+119939	 management
+120180	 system
+120720	 then
+121560	 we're
+119399	__EVENT__
+121730	
+
+121740	going
+121920	 to
+122040	 be
+122159	 using
+122759	 that
+123560	 rdbms
+124560	 with
+125100	 in
+125340	 two
+121740	__EVENT__
+125510	
+
+125520	ways
+125820	 in
+126060	 a
+126180	 simpler
+126540	 way
+126719	 with
+127079	 d
+127259	 player
+127619	 and
+125520	__EVENT__
+127789	
+
+127799	in
+127920	 a
+128039	 more
+128160	 complex
+128399	 way
+128700	 with
+129060	 dm
+129420	 with
+129660	 the
+127799	__EVENT__
+129830	
+
+129840	DM
+130080	 package
+130440	 basically
+131220	 doing
+131580	 just
+132480	 a
+132660	 tiny
+129840	__EVENT__
+132890	
+
+132900	bit
+133020	 of
+133200	 what
+133319	 we
+133440	 have
+133620	 already
+133860	 done
+134220	 in
+132900	__EVENT__
+134510	
+
+134520	Meetup
+134879	 number
+135060	 one
+135300	 and
+135540	 two
+135780	 of
+135959	 this
+136140	 series
+134520	__EVENT__
+137030	
+
+137040	just
+137700	 to
+137940	 show
+138239	 you
+138420	 that
+139260	 these
+139560	 two
+139680	 packages
+137040	__EVENT__
+139970	
+
+139980	work
+140480	 as
+141480	 well
+141860	 with
+142860	 data
+143520	 that
+143819	 lives
+144060	 in
+139980	__EVENT__
+144229	
+
+144239	your
+144420	 computer
+144599	 as
+145140	 opposed
+145620	 as
+146220	 well
+146340	 as
+144239	__EVENT__
+147410	
+
+147420	um
+147420	 with
+147959	 data
+148260	 that
+148500	 lives
+148920	 in
+149340	 in
+149580	 such
+149879	 a
+147420	__EVENT__
+149990	
+
+150000	relational
+150300	 database
+150780	 management
+151020	 system
+150000	__EVENT__
+152150	
+
+152160	so
+152520	 let's
+152760	 jump
+153180	 to
+153780	 that
+154080	 I'm
+154319	 going
+154440	 to
+154500	 be
+152160	__EVENT__
+154670	
+
+154680	working
+154920	 with
+155340	 so
+155580	 the
+155940	 series
+156120	 he's
+156900	 hosted
+154680	__EVENT__
+157550	
+
+157560	here
+157980	 the
+158280	 chapters
+158640	 what's
+158940	 this
+159120	 here
+159360	 in
+159660	 in
+157560	__EVENT__
+159949	
+
+159959	the
+160260	 folder
+160860	 number
+161040	 four
+161340	 so
+161640	 that
+161819	 would
+159959	__EVENT__
+161990	
+
+162000	take
+162180	 you
+162360	 to
+162540	 today's
+162900	 notes
+163860	 that
+164099	 look
+164640	 like
+162000	__EVENT__
+164869	
+
+164879	this
+165560	 although
+166560	 I'm
+166860	 gonna
+166980	 be
+167220	 working
+167459	 here
+164879	__EVENT__
+167869	
+
+167879	in
+168300	 our
+168660	 studio
+168959	 directly
+169680	 to
+170280	 show
+170400	 you
+170580	 the
+167879	__EVENT__
+170869	
+
+170879	the
+171060	 source
+171540	 code
+171800	 that
+172800	 leaves
+173040	 behind
+173400	 so
+170879	__EVENT__
+174110	
+
+174120	we're
+174599	 going
+174780	 to
+174900	 be
+175019	 using
+175260	 with
+175620	 these
+176099	 two
+174120	__EVENT__
+176270	
+
+176280	packages
+176760	 that
+177360	 are
+177660	 the
+177959	 ones
+178260	 that
+178440	 allow
+178920	 us
+176280	__EVENT__
+179270	
+
+179280	to
+180060	 connect
+181160	 to
+182160	 a
+182700	 relational
+183000	 database
+179280	__EVENT__
+183470	
+
+183480	management
+183660	 system
+184080	 the
+184560	 DVI
+185099	 package
+185519	 is
+183480	__EVENT__
+185809	
+
+185819	always
+186060	 necessary
+186660	 to
+186959	 connect
+187340	 to
+188340	 you
+188940	 know
+185819	__EVENT__
+188990	
+
+189000	these
+189360	 kinds
+189660	 of
+189780	 databases
+190640	 and
+191640	 and
+192300	 the
+189000	__EVENT__
+192649	
+
+192659	rsql
+193440	 light
+193680	 package
+194040	 in
+194220	 particular
+194640	 I'm
+192659	__EVENT__
+194869	
+
+194879	using
+195239	 because
+195480	 the
+196080	 flavor
+196379	 of
+196680	 a
+196800	 database
+194879	__EVENT__
+197149	
+
+197159	management
+197400	 system
+197760	 that
+198000	 I'm
+198120	 using
+198360	 is
+198780	 that
+197159	__EVENT__
+199250	
+
+199260	is
+199640	 SQL
+200640	 light
+200879	 and
+201720	 that
+202019	 is
+202140	 called
+202319	 a
+202620	 driver
+199260	__EVENT__
+202790	
+
+202800	so
+203159	 depending
+203580	 on
+203700	 the
+203940	 kind
+204239	 of
+204360	 database
+202800	__EVENT__
+204770	
+
+204780	that
+205080	 you
+205260	 use
+205379	 you
+205680	 will
+205800	 need
+206040	 a
+206459	 different
+204780	__EVENT__
+206570	
+
+206580	type
+207060	 of
+207360	 driver
+207540	 so
+207959	 today
+208200	 is
+208680	 just
+209040	 our
+209459	 SQL
+206580	__EVENT__
+210050	
+
+210060	light
+210060	__EVENT__
+210970	
+
+210980	then
+211980	 I'm
+212400	 also
+212700	 be
+212879	 I'm
+213480	 gonna
+213599	 be
+213780	 showing
+210980	__EVENT__
+214070	
+
+214080	how
+214440	 to
+214080	__EVENT__
+215270	
+
+215280	um copy
+215819	 data
+216300	 that
+217140	 we
+217200	 create
+217379	 a
+217739	 data
+217980	 model
+215280	__EVENT__
+218089	
+
+218099	that
+218340	 we
+218459	 created
+218700	 with
+218879	 a
+219000	 DM
+219300	 package
+219659	 to
+220620	 an
+218099	__EVENT__
+221030	
+
+221040	rdbms
+222000	 so
+222239	 we
+222599	 need
+222720	 the
+222900	 DM
+223200	 package
+223500	 of
+221040	__EVENT__
+223729	
+
+223739	course
+223860	 and
+224580	 then
+224700	 I'm
+225000	 going
+225180	 to
+225360	 be
+225420	 showing
+223739	__EVENT__
+225830	
+
+225840	how
+226319	 to
+226500	 uh
+227040	 use
+227519	 it
+227700	 also
+228000	 with
+228180	 DM
+228540	 and
+228900	 with
+225840	__EVENT__
+229130	
+
+229140	the
+229379	 player
+229739	 so
+229860	 we
+229980	 need
+230099	 D
+230340	 player
+230700	 as
+230819	 well
+229140	__EVENT__
+231190	
+
+231200	and
+232200	 finally
+232440	 I'm
+232620	 going
+232680	 to
+232799	 be
+232860	 using
+233099	 the
+231200	__EVENT__
+233210	
+
+233220	here
+233400	 package
+233940	 simply
+234659	 because
+234780	 it's
+233220	__EVENT__
+235070	
+
+235080	convenient
+235500	 to
+235680	 me
+235080	__EVENT__
+236330	
+
+236340	all
+236819	 right
+236340	__EVENT__
+238130	
+
+238140	um
+238200	 so
+239159	 let's
+239819	 let's
+240000	 get
+240299	 to
+240480	 the
+240599	 point
+240840	 of
+238140	__EVENT__
+241130	
+
+241140	you
+241379	 know
+241500	 once
+241980	 we
+242220	 have
+242400	 uh
+243000	 our
+243180	 an
+244080	 rdbms
+241140	__EVENT__
+245030	
+
+245040	how
+246000	 can
+246180	 we
+246360	 copy
+246720	 to
+246959	 it
+247260	 some
+248040	 data
+248940	 that
+249239	 we
+245040	__EVENT__
+249410	
+
+249420	have
+249599	 a
+249959	 structured
+250379	 locally
+250680	 so
+251459	 the
+249420	__EVENT__
+251690	
+
+251700	connection
+251939	 is
+252599	 goes
+253140	 something
+253319	 like
+253560	 this
+251700	__EVENT__
+253729	
+
+253739	in
+254159	 particular
+254459	 for
+254640	 the
+254760	 driver
+254879	 that
+255239	 I'm
+253739	__EVENT__
+255350	
+
+255360	using
+255720	 actually
+256380	 sorry
+256680	 I
+256919	 didn't
+257100	 I
+257340	 didn't
+255360	__EVENT__
+257569	
+
+257579	run
+257820	 this
+258000	 chunk
+258299	 where
+258600	 I
+258780	 attached
+259079	 all
+259199	 the
+257579	__EVENT__
+259310	
+
+259320	packages
+259560	 that
+259799	 I
+259919	 need
+260040	 so
+260220	 I'm
+260340	 going
+260459	 to
+260519	 go
+259320	__EVENT__
+260689	
+
+260699	back
+260820	 to
+261000	 that
+260699	__EVENT__
+262310	
+
+262320	um and
+262620	 now
+262740	 here
+263100	 so
+263880	 the
+264540	 database
+265139	 I'm
+262320	__EVENT__
+265310	
+
+265320	going
+265440	 to
+265500	 be
+265620	 storing
+265919	 in
+266220	 this
+266400	 file
+266699	 with
+267479	 an
+265320	__EVENT__
+267590	
+
+267600	extension
+268080	 SQL
+268680	 Lite
+269100	 that
+269759	 is
+270000	 the
+270479	 driver
+267600	__EVENT__
+270650	
+
+270660	that
+271500	 where
+271740	 we're
+271919	 going
+272040	 to
+272160	 be
+272220	 storing
+272699	 the
+270660	__EVENT__
+273409	
+
+273419	the
+273900	 database
+274440	 is
+275280	 that
+275699	 is
+275880	 going
+276120	 to
+276300	 be
+276419	 our
+273419	__EVENT__
+277070	
+
+277080	relational
+277919	 database
+278400	 management
+278639	 system
+277080	__EVENT__
+279170	
+
+279180	now
+280020	 I
+280259	 want
+280380	 to
+280560	 connect
+280919	 to
+281280	 it
+281460	 I
+281820	 still
+282000	 have
+279180	__EVENT__
+282170	
+
+282180	no
+282419	 data
+282840	 but
+283080	 I
+283380	 still
+283680	 want
+283919	 to
+284100	 create
+284280	 a
+282180	__EVENT__
+284570	
+
+284580	connection
+284699	 to
+285120	 it
+285300	 so
+286080	 what
+286500	 I
+286680	 do
+286860	 is
+287180	 this
+284580	__EVENT__
+288170	
+
+288180	call
+288300	 is
+288600	 pretty
+288900	 complex
+289380	 at
+289800	 least
+288180	__EVENT__
+290510	
+
+290520	um
+290520	__EVENT__
+291170	
+
+291180	to
+291660	 my
+291780	 eyes
+291960	 and
+292560	 the
+292680	 reason
+292800	 is
+293160	 because
+293460	 if
+291180	__EVENT__
+294050	
+
+294060	you
+294300	 do
+294060	__EVENT__
+295550	
+
+295560	um
+295620	 DBI
+295560	__EVENT__
+298310	
+
+298320	connect
+298320	__EVENT__
+300290	
+
+300300	if
+300720	 you
+300840	 ask
+301020	 for
+301199	 help
+301500	 for
+302060	 the
+303060	 DB
+300300	__EVENT__
+305390	
+
+305400	something
+306000	 went
+306300	 wrong
+306540	 here
+305400	__EVENT__
+307550	
+
+307560	the
+307560	__EVENT__
+309490	
+
+309500	DVI
+310500	 DB
+311400	 connect
+309500	__EVENT__
+312969	
+
+312979	connect
+313979	 oh
+314639	 there
+314820	 you
+314940	 go
+315060	 so
+315540	 the
+315660	 hip
+315900	 file
+312979	__EVENT__
+316310	
+
+316320	I
+316740	 find
+316860	 it
+317240	 instrumentation
+318240	 function
+318600	 is
+316320	__EVENT__
+318770	
+
+318780	amazing
+319699	 let's
+320699	 see
+320880	 if
+321000	 I
+321180	 have
+321300	 it
+321540	 here
+318780	__EVENT__
+321770	
+
+321780	already
+321780	__EVENT__
+323390	
+
+323400	um
+323400	__EVENT__
+324469	
+
+324479	all
+324840	 right
+325020	 well
+325199	 the
+325560	 point
+325680	 I
+325800	 wanted
+325919	 to
+324479	__EVENT__
+326150	
+
+326160	make
+326340	 is
+326699	 that
+327000	 the
+327300	 arguments
+327840	 that
+328020	 you
+328139	 need
+326160	__EVENT__
+328249	
+
+328259	to
+328440	 pass
+328800	 to
+329220	 the
+329400	 function
+329639	 DB
+330060	 connect
+328259	__EVENT__
+331730	
+
+331740	at
+332340	 not
+332580	 necessarily
+333000	 documented
+333720	 in
+333960	 that
+331740	__EVENT__
+334129	
+
+334139	function
+334440	 itself
+334860	 they
+335820	 depend
+336240	 on
+336660	 the
+334139	__EVENT__
+336830	
+
+336840	driver
+337080	 which
+337680	 in
+337860	 this
+338039	 case
+338160	 is
+338400	 rql
+339060	 Lite
+339360	 so
+336840	__EVENT__
+339830	
+
+339840	you
+340080	 have
+340139	 to
+340320	 read
+340560	 the
+340740	 documentation
+341220	 of
+339840	__EVENT__
+341450	
+
+341460	rsql
+342199	 light
+343220	 and
+344220	 sorry
+344460	 of
+344699	 SQL
+345180	 light
+341460	__EVENT__
+345350	
+
+345360	function
+345840	 to
+346199	 learn
+346380	 which
+346800	 argument
+347580	 you
+345360	__EVENT__
+347930	
+
+347940	pass
+348120	 here
+348419	 so
+349139	 the
+349560	 rsql
+350280	 light
+350940	 package
+351360	 has
+347940	__EVENT__
+351590	
+
+351600	these
+351840	 function
+352080	 as
+352259	 SQL
+352919	 light
+353160	 function
+353639	 and
+351600	__EVENT__
+354529	
+
+354539	it
+355020	 needs
+355380	 this
+355740	 database
+356400	 name
+356759	 DB
+357240	 name
+354539	__EVENT__
+357550	
+
+357560	argument
+358560	 so
+358860	 that
+359100	 is
+359280	 simply
+359580	 the
+359820	 path
+360060	 to
+357560	__EVENT__
+360290	
+
+360300	the
+360479	 file
+360780	 that
+361080	 is
+361199	 going
+361320	 to
+361500	 store
+362000	 the
+360300	__EVENT__
+363010	
+
+363020	rdbms
+364020	 okay
+364560	 so
+365100	 with
+365340	 that
+365520	 we
+365880	 have
+366060	 a
+363020	__EVENT__
+366469	
+
+366479	connection
+366840	 and
+367800	 a
+368220	 connection
+368400	 looks
+366479	__EVENT__
+369110	
+
+369120	something
+369539	 like
+369840	 this
+370139	 is
+371039	 simply
+371460	 a
+371759	 little
+369120	__EVENT__
+371810	
+
+371820	bit
+372000	 of
+372180	 metadata
+372900	 and
+373380	 in
+373620	 for
+373919	 this
+371820	__EVENT__
+374090	
+
+374100	particular
+374400	 driver
+374639	 for
+375000	 the
+375120	 SQL
+375479	 light
+374100	__EVENT__
+375710	
+
+375720	version
+376020	 it
+376680	 points
+376979	 you
+377100	 know
+377220	 it
+377340	 shows
+377580	 you
+375720	__EVENT__
+377629	
+
+377639	the
+377880	 path
+378060	 and
+378900	 and
+379259	 that's
+379500	 about
+379740	 all
+380160	 that
+377639	__EVENT__
+380330	
+
+380340	we
+380520	 need
+380639	 to
+380759	 know
+381360	 so
+381840	 say
+382020	 that
+382199	 we
+382440	 already
+380340	__EVENT__
+382550	
+
+382560	have
+382560	__EVENT__
+383870	
+
+383880	um
+383940	 an
+384300	 rdbms
+385020	 and
+385740	 say
+386220	 that
+386460	 we
+386699	 already
+386819	 have
+383880	__EVENT__
+387290	
+
+387300	a
+387960	 database
+388560	 model
+388919	 that
+389400	 we
+389580	 created
+389819	 with
+387300	__EVENT__
+390050	
+
+390060	the
+390180	 DM
+390479	 package
+390900	 so
+391440	 these
+391800	 the
+391979	 tables
+392400	 that
+390060	__EVENT__
+392450	
+
+392460	I'm
+392639	 creating
+392880	 here
+393240	 are
+393720	 the
+393900	 ones
+394080	 that
+394319	 you
+392460	__EVENT__
+394370	
+
+394380	already
+394560	 know
+394800	 from
+395160	 earlier
+395819	 in
+396180	 this
+396300	 series
+394380	__EVENT__
+396469	
+
+396479	the
+397259	 companies
+396479	__EVENT__
+399110	
+
+399120	table
+399860	 which
+400860	 has
+401039	 a
+401220	 little
+401340	 bit
+401460	 of
+399120	__EVENT__
+401570	
+
+401580	information
+401819	 for
+402720	 two
+403139	 companies
+403620	 you
+403979	 know
+401580	__EVENT__
+404090	
+
+404100	the
+404460	 idea
+404759	 of
+404880	 the
+405000	 companies
+405419	 and
+405780	 some
+404100	__EVENT__
+406010	
+
+406020	information
+406199	 about
+406620	 them
+406919	 and
+407400	 then
+407520	 the
+406020	__EVENT__
+407749	
+
+407759	categories
+407759	__EVENT__
+409790	
+
+409800	table
+410400	 just
+410819	 two
+411000	 tables
+411479	 which
+411840	 have
+409800	__EVENT__
+413150	
+
+413160	um
+413220	 basically
+413880	 for
+414180	 each
+414479	 ID
+414780	 for
+415319	 each
+413160	__EVENT__
+415490	
+
+415500	company
+415800	 has
+416400	 information
+417120	 on
+417479	 which
+415500	__EVENT__
+417770	
+
+417780	business
+418080	 sector
+418560	 they
+418979	 they
+419160	 work
+419460	 on
+419699	 right
+417780	__EVENT__
+420050	
+
+420060	so
+420240	 those
+420419	 are
+420600	 the
+420720	 tables
+421080	 that
+421199	 we
+421380	 have
+421560	 and
+420060	__EVENT__
+422450	
+
+422460	we
+423419	 learned
+424199	 last
+424440	 time
+424800	 or
+425340	 you
+425580	 know
+425699	 a
+425880	 few
+422460	__EVENT__
+425990	
+
+426000	meetups
+426479	 ago
+426660	 how
+427199	 to
+427319	 create
+427500	 what's
+427860	 called
+426000	__EVENT__
+428029	
+
+428039	a
+428280	 database
+428639	 model
+429120	 or
+429780	 data
+430199	 model
+430319	 so
+430860	 a
+431039	 DM
+428039	__EVENT__
+431510	
+
+431520	with
+432120	 a
+432240	 DM
+432479	 package
+431520	__EVENT__
+433430	
+
+433440	these
+434160	 object
+434460	 stores
+434900	 the
+435900	 tables
+436500	 and
+436800	 it
+433440	__EVENT__
+437029	
+
+437039	can
+437160	 store
+437520	 more
+437940	 more
+438240	 information
+438479	 for
+437039	__EVENT__
+438890	
+
+438900	example
+439139	 which
+439500	 are
+439680	 the
+439860	 primary
+440220	 keys
+440699	 of
+438900	__EVENT__
+441230	
+
+441240	those
+441479	 tables
+441900	 which
+442259	 are
+442380	 the
+442500	 foreign
+442800	 keys
+441240	__EVENT__
+443089	
+
+443099	of
+443220	 those
+443400	 tables
+443880	 so
+444419	 the
+444720	 DM
+445020	 package
+445440	 it
+445740	 was
+443099	__EVENT__
+445969	
+
+445979	it
+446220	 was
+446400	 you
+446580	 know
+446699	 pretty
+446880	 cool
+447120	 to
+447360	 learn
+447599	 you
+445979	__EVENT__
+447890	
+
+447900	know
+447960	 how
+448199	 we
+448380	 could
+448699	 structure
+449699	 our
+450060	 data
+447900	__EVENT__
+450529	
+
+450539	model
+450720	 uh
+451680	 very
+451860	 formally
+452220	 and
+453060	 it
+453479	 would
+453599	 be
+450539	__EVENT__
+453770	
+
+453780	nice
+453900	 to
+454139	 reuse
+454500	 that
+454740	 knowledge
+455099	 and
+455280	 to
+455460	 be
+453780	__EVENT__
+455570	
+
+455580	able
+455759	 to
+455880	 you
+456120	 know
+456240	 if
+456360	 we
+456539	 want
+456720	 to
+456840	 start
+455580	__EVENT__
+457129	
+
+457139	using
+457740	 later
+458160	 down
+458520	 the
+458759	 path
+458940	 we
+459240	 wanted
+459539	 to
+457139	__EVENT__
+459770	
+
+459780	start
+459960	 using
+459780	__EVENT__
+461210	
+
+461220	um
+461280	 a
+461580	 remote
+461699	 database
+462240	 okay
+462660	 how
+463020	 can
+463199	 we
+461220	__EVENT__
+463430	
+
+463440	copy
+464280	 the
+464520	 data
+464819	 model
+465000	 that
+465180	 we
+465360	 have
+465479	 locally
+463440	__EVENT__
+465770	
+
+465780	in
+465900	 our
+466080	 computer
+466380	 to
+465780	__EVENT__
+467629	
+
+467639	there
+468539	 and
+469139	 to
+469440	 the
+469560	 remote
+469680	 database
+470280	 and
+470759	 the
+467639	__EVENT__
+471110	
+
+471120	DM
+471419	 package
+471720	 makes
+471900	 it
+472080	 very
+472199	 easy
+472380	 with
+472740	 the
+471120	__EVENT__
+472909	
+
+472919	function
+473220	 called
+473819	 ptm2
+474800	 and
+475800	 so
+476099	 it
+476280	 default
+472919	__EVENT__
+476570	
+
+476580	to
+476759	 create
+476940	 it
+477120	 to
+477360	 creating
+477660	 temporary
+476580	__EVENT__
+478490	
+
+478500	tables
+479039	 which
+479520	 means
+479819	 that
+480000	 you
+480240	 have
+480419	 to
+480660	 use
+478500	__EVENT__
+480950	
+
+480960	temporary
+481740	 equals
+482099	 false
+482580	 if
+482880	 you
+483000	 want
+483180	 to
+480960	__EVENT__
+483290	
+
+483300	create
+483479	 a
+483780	 permanent
+484259	 table
+483300	__EVENT__
+485270	
+
+485280	a
+485639	 permanent
+485280	__EVENT__
+486730	
+
+486740	data
+487740	 model
+488000	 and
+489000	 it
+489720	 takes
+489840	 two
+490139	 arguments
+486740	__EVENT__
+490550	
+
+490560	the
+490800	 connection
+490979	 that
+491340	 we
+491460	 already
+491580	 created
+490560	__EVENT__
+491990	
+
+492000	above
+492419	 you
+492840	 know
+492960	 we
+493139	 already
+493319	 tell
+493979	 DM
+494699	 where
+492000	__EVENT__
+495589	
+
+495599	and
+495900	 which
+496139	 kind
+496259	 of
+496380	 remote
+497060	 rdbms
+498060	 we
+498479	 want
+495599	__EVENT__
+498650	
+
+498660	to
+498780	 store
+499080	 the
+499680	 data
+500039	 model
+500160	 and
+501000	 then
+501539	 of
+498660	__EVENT__
+502189	
+
+502199	course
+502500	 it
+502740	 takes
+502919	 data
+503400	 model
+503460	 itself
+504000	 right
+502199	__EVENT__
+504469	
+
+504479	so
+504960	 that's
+505139	 how
+505560	 you
+506220	 simply
+506520	 copy
+507000	 in
+507240	 one
+504479	__EVENT__
+507469	
+
+507479	call
+507720	 and
+508680	 the
+508979	 data
+509280	 model
+509400	 from
+509879	 you
+510120	 know
+507479	__EVENT__
+510230	
+
+510240	your
+510419	 computer
+510599	 to
+510960	 the
+511139	 database
+511500	 management
+510240	__EVENT__
+511790	
+
+511800	system
+511800	__EVENT__
+513409	
+
+513419	and
+514080	 if
+514560	 that's
+514740	 all
+514919	 you
+515039	 need
+515159	 to
+515339	 do
+515520	 uh
+516300	 at
+513419	__EVENT__
+516469	
+
+516479	some
+516779	 point
+516899	 you
+517200	 know
+517260	 you
+517500	 want
+517620	 to
+517800	 populate
+516479	__EVENT__
+518209	
+
+518219	the
+518520	 remote
+518640	 database
+519180	 with
+519659	 the
+519959	 data
+520200	 that
+518219	__EVENT__
+520250	
+
+520260	you
+520380	 have
+520500	 locally
+520800	 so
+521039	 that's
+521279	 say
+521700	 that
+520260	__EVENT__
+521870	
+
+521880	that's
+522060	 all
+522300	 I
+522419	 needed
+522659	 to
+522779	 do
+522839	 then
+523140	 I
+523380	 just
+521880	__EVENT__
+523550	
+
+523560	closed
+524039	 the
+524099	 connection
+524339	 it
+525120	 is
+525420	 best
+523560	__EVENT__
+525650	
+
+525660	practice
+525899	 to
+526320	 to
+526440	 do
+526680	 that
+526860	 every
+527100	 time
+527279	 you
+525660	__EVENT__
+527449	
+
+527459	work
+527640	 with
+527760	 a
+527940	 connection
+528060	 then
+528660	 and
+529440	 when
+527459	__EVENT__
+529790	
+
+529800	you're
+529980	 done
+530160	 you
+530459	 call
+530580	 the
+530820	 function
+531180	 DBI
+529800	__EVENT__
+531829	
+
+531839	disconnect
+532220	 and
+533220	 and
+533580	 that
+534120	 connection
+534420	 will
+531839	__EVENT__
+534889	
+
+534899	no
+535140	 longer
+535320	 be
+535500	 available
+535800	 so
+536220	 that's
+536339	 that's
+534899	__EVENT__
+536509	
+
+536519	how
+536760	 you
+536880	 do
+537060	 it
+537240	 so
+537899	 now
+538019	 we
+538260	 already
+538440	 have
+538740	 an
+536519	__EVENT__
+539150	
+
+539160	RD
+539279	 VMS
+540080	 and
+541080	 say
+541260	 that
+541440	 you
+541620	 know
+541740	 someone
+539160	__EVENT__
+542030	
+
+542040	else
+542339	 or
+542640	 you
+542820	 at
+543000	 some
+543300	 other
+543480	 time
+543720	 want
+544260	 to
+542040	__EVENT__
+544490	
+
+544500	use
+544920	 the
+545279	 data
+545580	 that
+545820	 lives
+546120	 inside
+546360	 that
+544500	__EVENT__
+547509	
+
+547519	rdbms
+548519	 okay
+549240	 in
+549779	 this
+549899	 case
+550080	 uh
+550860	 I'm
+551580	 gonna
+551760	 be
+547519	__EVENT__
+552050	
+
+552060	using
+552480	 as
+552720	 I
+552899	 said
+553019	 before
+553200	 at
+553560	 the
+553740	 SQL
+554160	 Lite
+552060	__EVENT__
+554930	
+
+554940	version
+555180	 so
+555600	 I
+555779	 I
+555959	 need
+556200	 a
+556380	 file
+556680	 and
+557040	 to
+557339	 point
+554940	__EVENT__
+557449	
+
+557459	to
+557640	 the
+557760	 file
+557940	 that
+558120	 stores
+558360	 it
+558600	 so
+559260	 the
+557459	__EVENT__
+559490	
+
+559500	database
+559980	 is
+560399	 is
+559500	 living
+560760	 here
+561060	 in
+561240	 that
+561360	 this
+559500	__EVENT__
+561650	
+
+561660	database
+562140	 file
+562560	 and
+563519	 now
+563940	 we
+564180	 connect
+564360	 to
+564600	 it
+561660	__EVENT__
+564769	
+
+564779	so
+564959	 in
+565320	 the
+565440	 same
+565560	 way
+565740	 that
+565920	 we
+566100	 did
+566279	 before
+564779	__EVENT__
+566509	
+
+566519	you
+566940	 know
+567000	 we
+567180	 create
+567360	 this
+567600	 connection
+566519	__EVENT__
+567769	
+
+567779	object
+568440	 that's
+568920	 that
+569339	 points
+570240	 to
+570360	 that
+567779	__EVENT__
+570530	
+
+570540	database
+570959	 file
+571320	 so
+571500	 that's
+571680	 how
+571920	 we're
+572399	 doing
+570540	__EVENT__
+572630	
+
+572640	here
+572640	__EVENT__
+573769	
+
+573779	and
+574440	 now
+574680	 let's
+575160	 use
+575700	 that
+576120	 connection
+576360	 in
+577260	 in
+573779	__EVENT__
+577490	
+
+577500	two
+578100	 ways
+578399	 with
+578580	 deep
+578760	 layer
+579120	 and
+579480	 with
+579660	 the
+579839	 DM
+577500	__EVENT__
+580130	
+
+580140	package
+580560	 so
+580920	 with
+581100	 deep
+581279	 layer
+581700	 of
+582300	 first
+582480	 the
+580140	__EVENT__
+582769	
+
+582779	one
+583260	 thing
+583380	 you
+583620	 might
+583740	 want
+583920	 to
+584040	 do
+584220	 is
+584580	 to
+584760	 see
+582779	__EVENT__
+584870	
+
+584880	which
+585180	 tables
+585720	 exist
+586200	 in
+586380	 that
+586560	 connection
+586800	 so
+584880	__EVENT__
+587509	
+
+587519	this
+587760	 is
+588000	 a
+588240	 function
+588540	 that
+588720	 comes
+588959	 from
+589200	 the
+587519	__EVENT__
+590210	
+
+590220	um
+590279	 most
+591240	 um
+591300	 you
+591779	 know
+591899	 lower
+592260	 level
+592560	 package
+590220	__EVENT__
+593449	
+
+593459	that
+594000	 deals
+594360	 with
+594540	 connections
+595019	 the
+595140	 DVI
+593459	__EVENT__
+595610	
+
+595620	package
+596040	 so
+596580	 this
+596820	 function
+597120	 DB
+597660	 list
+598320	 tables
+595620	__EVENT__
+598910	
+
+598920	tells
+599459	 you
+599519	 that
+599640	 okay
+599820	 we
+600120	 have
+600300	 the
+600540	 table
+598920	__EVENT__
+600710	
+
+600720	categories
+601320	 and
+601560	 the
+601680	 table
+601800	 companies
+602399	 right
+600720	__EVENT__
+602750	
+
+602760	which
+603420	 makes
+603600	 sense
+602760	__EVENT__
+604670	
+
+604680	so
+605220	 now
+605519	 usually
+606060	 if
+606300	 you
+606420	 work
+606540	 with
+606660	 deep
+604680	__EVENT__
+606829	
+
+606839	player
+606839	__EVENT__
+607970	
+
+607980	um you
+608519	 you
+608760	 can
+609000	 get
+609959	 a
+610620	 table
+610800	 say
+611220	 companies
+607980	__EVENT__
+612009	
+
+612019	from
+613019	 this
+613500	 connection
+613920	 with
+614760	 the
+615000	 TBL
+612019	__EVENT__
+615590	
+
+615600	function
+616320	 so
+616860	 typically
+617279	 you
+617580	 would
+617760	 copy
+615600	__EVENT__
+618230	
+
+618240	that
+618720	 table
+618959	 to
+619380	 an
+619560	 object
+619860	 if
+620220	 that
+620399	 fits
+620760	 in
+618240	__EVENT__
+620870	
+
+620880	memory
+621180	 and
+621959	 and
+622200	 there
+622680	 it
+622860	 is
+623060	 and
+624060	 the
+624600	 same
+620880	__EVENT__
+624710	
+
+624720	we're
+624899	 going
+625080	 to
+625200	 be
+625320	 doing
+625440	 with
+625860	 the
+624720	__EVENT__
+626090	
+
+626100	categories
+626580	 table
+627180	 and
+628019	 so
+628260	 now
+628380	 what
+628680	 we
+628860	 have
+626100	__EVENT__
+628970	
+
+628980	simply
+629399	 is
+629519	 you
+629820	 know
+629880	 two
+630060	 data
+630480	 frames
+630839	 uh
+628980	__EVENT__
+631430	
+
+631440	one
+631680	 is
+631860	 called
+632040	 companies
+632459	 the
+632640	 other
+632760	 one
+632940	 is
+631440	__EVENT__
+633050	
+
+633060	called
+633240	 categories
+633839	 and
+634260	 then
+634320	 you
+634500	 could
+634620	 use
+633060	__EVENT__
+634790	
+
+634800	the
+635040	 player
+635459	 as
+635640	 you
+635820	 would
+635940	 normally
+636240	 do
+636480	 so
+634800	__EVENT__
+636769	
+
+636779	for
+637019	 example
+637380	 I
+637980	 could
+638279	 be
+638399	 using
+638820	 the
+639000	 player
+636779	__EVENT__
+639530	
+
+639540	package
+639779	 here
+640019	 to
+640440	 join
+640980	 companies
+641820	 with
+639540	__EVENT__
+642050	
+
+642060	categories
+642600	 by
+643019	 the
+643260	 column
+643740	 companies
+644399	 ID
+642060	__EVENT__
+644630	
+
+644640	which
+645360	 is
+645480	 a
+645660	 shared
+646019	 column
+646320	 between
+646500	 the
+646800	 two
+644640	__EVENT__
+646910	
+
+646920	databases
+647519	 the
+648000	 two
+648360	 data
+648660	 sets
+648959	 and
+649380	 that
+646920	__EVENT__
+649490	
+
+649500	works
+649800	 fine
+650040	 and
+650399	 and
+650579	 we
+650820	 have
+650940	 the
+651120	 data
+651420	 that
+649500	__EVENT__
+651650	
+
+651660	we
+651779	 expected
+652200	 is
+652560	 simply
+652920	 a
+653040	 spreadsheet
+653640	 with
+651660	__EVENT__
+654650	
+
+654660	um you
+655320	 know
+655380	 which
+655620	 which
+656279	 has
+656579	 all
+656760	 the
+656940	 data
+654660	__EVENT__
+657230	
+
+657240	that
+657480	 say
+657779	 that
+658019	 we
+658140	 need
+658260	 for
+658440	 an
+658560	 analysis
+657240	__EVENT__
+659030	
+
+659040	the
+659820	 one
+660000	 thing
+660240	 that
+660660	 deep
+660839	 layer
+661200	 doesn't
+659040	__EVENT__
+661430	
+
+661440	tell
+661980	 you
+662160	 is
+662700	 what
+663420	 is
+663720	 that
+664260	 column
+661440	__EVENT__
+665509	
+
+665519	uh
+666420	 that
+666959	 you
+667079	 know
+667260	 joins
+667620	 the
+667800	 two
+668579	 um
+668640	 the
+665519	__EVENT__
+668930	
+
+668940	two
+669000	 tables
+669420	 together
+669540	 in
+670140	 this
+670260	 case
+670380	 it's
+668940	__EVENT__
+670550	
+
+670560	very
+670800	 simple
+670980	 we
+671279	 have
+671399	 only
+671579	 two
+671820	 tables
+672360	 and
+670560	__EVENT__
+672650	
+
+672660	the
+672839	 name
+673019	 of
+673440	 the
+673740	 the
+673860	 column
+674279	 is
+674519	 the
+674700	 same
+672660	__EVENT__
+674810	
+
+674820	in
+675000	 the
+675120	 two
+675240	 tables
+675660	 so
+676019	 you
+676200	 can
+676440	 quickly
+674820	__EVENT__
+677210	
+
+677220	realize
+677700	 that
+678000	 that
+678120	 is
+678420	 the
+678600	 relationship
+677220	__EVENT__
+678949	
+
+678959	between
+679260	 the
+679560	 two
+679680	 tables
+680100	 but
+680700	 in
+680940	 in
+681180	 the
+678959	__EVENT__
+681410	
+
+681420	while
+681600	 usually
+682200	 it's
+682380	 not
+682680	 so
+682980	 easy
+683160	 and
+683640	 that
+681420	__EVENT__
+683870	
+
+683880	is
+684120	 why
+684540	 having
+685200	 a
+685680	 data
+686100	 model
+686399	 like
+686940	 the
+687180	 one
+683880	__EVENT__
+687410	
+
+687420	that
+688079	 we
+688560	 create
+688740	 with
+689100	 the
+689279	 DM
+689640	 package
+690000	 is
+687420	__EVENT__
+690350	
+
+690360	useful
+690779	 so
+691560	 you
+691800	 don't
+691980	 need
+692220	 to
+692399	 know
+692579	 this
+690360	__EVENT__
+692990	
+
+693000	relatively
+693600	 low
+693959	 level
+694200	 detail
+694800	 of
+695700	 which
+695940	 is
+693000	__EVENT__
+696290	
+
+696300	the
+696839	 columns
+697440	 that
+697740	 relate
+698160	 different
+698399	 tables
+696300	__EVENT__
+698930	
+
+698940	together
+699120	 so
+699720	 that's
+699899	 why
+700079	 I
+700200	 want
+700320	 to
+700500	 show
+698940	__EVENT__
+700670	
+
+700680	how
+701160	 you
+701339	 would
+701519	 use
+700680	__EVENT__
+702829	
+
+702839	um the
+704000	 remote
+705000	 database
+705660	 or
+706560	 the
+706680	 rdbms
+707459	 with
+702839	__EVENT__
+708230	
+
+708240	the
+708420	 DM
+708720	 package
+709019	 as
+709200	 well
+709380	 so
+710339	 typically
+710760	 I'm
+708240	__EVENT__
+711350	
+
+711360	gonna
+711660	 you
+712260	 know
+712380	 get
+713100	 inside
+713279	 the
+713640	 body
+713820	 of
+711360	__EVENT__
+714050	
+
+714060	this
+714180	 function
+714480	 this
+714660	 function
+714959	 is
+715079	 a
+715260	 helper
+714060	__EVENT__
+715610	
+
+715620	that
+715860	 you
+716040	 know
+716160	 I'm
+716519	 gonna
+716880	 argue
+717480	 that
+718440	 um
+715620	__EVENT__
+718850	
+
+718860	for
+719640	 if
+720180	 you're
+720300	 gonna
+720480	 be
+720720	 using
+721260	 data
+721740	 in
+721920	 a
+718860	__EVENT__
+722090	
+
+722100	data
+722339	 model
+722579	 many
+723420	 times
+723720	 yourself
+724380	 or
+722100	__EVENT__
+724790	
+
+724800	because
+724980	 you're
+725160	 developing
+725640	 software
+725940	 for
+724800	__EVENT__
+726050	
+
+726060	someone
+726240	 else
+726540	 is
+726779	 going
+726899	 to
+726959	 be
+727079	 using
+727380	 that
+726060	__EVENT__
+727610	
+
+727620	particular
+727980	 database
+728399	 it's
+728940	 kind
+729120	 of
+729240	 nice
+729420	 to
+727620	__EVENT__
+729769	
+
+729779	create
+730079	 a
+730560	 helper
+730920	 that
+731279	 allows
+731640	 you
+731940	 so
+732300	 that
+729779	__EVENT__
+732470	
+
+732480	knows
+732839	 about
+732959	 the
+733260	 connection
+733380	 that
+733740	 you're
+732480	__EVENT__
+733790	
+
+733800	gonna
+733980	 give
+734279	 it
+734459	 in
+734760	 this
+734880	 case
+735060	 is
+735240	 you
+735600	 know
+733800	__EVENT__
+735650	
+
+735660	the
+736140	 database
+736620	 for
+737220	 companies
+737760	 so
+738360	 I
+738420	 created
+735660	__EVENT__
+738769	
+
+738779	the
+738959	 helper
+739560	 companies
+739980	 DM
+740399	 which
+741120	 already
+738779	__EVENT__
+741290	
+
+741300	knows
+741300	__EVENT__
+742610	
+
+742620	um
+742680	 which
+743040	 tables
+743519	 that
+743700	 connection
+743880	 has
+744420	 the
+742620	__EVENT__
+745250	
+
+745260	companies
+745680	 and
+745800	 categories
+746279	 tables
+746820	 and
+747360	 also
+745260	__EVENT__
+747590	
+
+747600	you
+748079	 know
+748260	 here
+748500	 is
+748680	 where
+748980	 I
+749100	 I
+749459	 add
+749820	 the
+750240	 more
+747600	__EVENT__
+750410	
+
+750420	formal
+751399	 definitions
+752399	 of
+752820	 of
+753060	 the
+750420	__EVENT__
+753290	
+
+753300	relationships
+753899	 between
+754200	 tables
+754740	 so
+754860	 I
+755040	 add
+753300	__EVENT__
+755269	
+
+755279	the
+755579	 primary
+755940	 key
+756180	 for
+756899	 the
+757200	 table
+757320	 companies
+755279	__EVENT__
+757970	
+
+757980	which
+758220	 is
+758399	 companies
+758880	 ID
+759120	 and
+759959	 I
+760200	 add
+760500	 also
+760980	 the
+757980	__EVENT__
+761329	
+
+761339	foreign
+761760	 key
+762000	 for
+762720	 the
+763200	 categories
+763740	 table
+761339	__EVENT__
+763970	
+
+763980	which
+764399	 is
+764459	 also
+764760	 Company
+764940	 ID
+765240	 pointing
+765899	 to
+763980	__EVENT__
+766069	
+
+766079	companies
+766560	 right
+766860	 so
+767579	 this
+768000	 is
+768120	 kind
+768360	 of
+768480	 my
+768720	 my
+766079	__EVENT__
+768949	
+
+768959	you
+769200	 know
+769320	 the
+769500	 smallest
+769800	 version
+770040	 I
+770279	 could
+768959	__EVENT__
+770389	
+
+770399	come
+770579	 up
+770700	 with
+770820	 26
+771300	 simple
+771540	 I
+771720	 could
+771839	 come
+772079	 up
+770399	__EVENT__
+772190	
+
+772200	with
+772380	 to
+773040	 kind
+773220	 of
+773339	 show
+773519	 you
+773880	 know
+774000	 how
+774360	 in
+774720	 if
+772200	__EVENT__
+775129	
+
+775139	if
+775380	 you
+775740	 maintain
+775139	__EVENT__
+777170	
+
+777180	um
+777180	__EVENT__
+777829	
+
+777839	a
+778320	 database
+778740	 that
+779040	 people
+779160	 is
+779339	 going
+779519	 to
+777839	__EVENT__
+779629	
+
+779639	access
+780320	 multiple
+781320	 times
+781560	 it
+782160	 would
+782279	 be
+782459	 nice
+779639	__EVENT__
+782569	
+
+782579	to
+782700	 create
+782880	 just
+783120	 a
+783300	 tiny
+783660	 helper
+784079	 that
+784440	 has
+782579	__EVENT__
+784670	
+
+784680	all
+784920	 that
+785160	 schema
+785760	 that
+786660	 defines
+787079	 the
+784680	__EVENT__
+787490	
+
+787500	relationship
+787920	 between
+788220	 between
+788579	 the
+788940	 tables
+787500	__EVENT__
+789350	
+
+789360	so
+790260	 that
+790800	 helper
+791220	 could
+791399	 live
+791639	 in
+791760	 an
+792180	 internal
+789360	__EVENT__
+792590	
+
+792600	package
+792959	 or
+793260	 you
+793380	 could
+793500	 live
+793740	 in
+793920	 some
+794040	 R5
+792600	__EVENT__
+794569	
+
+794579	somewhere
+795060	 in
+795420	 this
+795540	 case
+795660	 and
+795899	 I
+796139	 just
+794579	__EVENT__
+796310	
+
+796320	created
+796620	 it
+796860	 here
+797160	 on
+797339	 top
+797519	 and
+798480	 now
+796320	__EVENT__
+799970	
+
+799980	um creating
+800760	 that
+801240	 DM
+801779	 object
+802560	 so
+802920	 the
+803100	 data
+799980	__EVENT__
+803449	
+
+803459	model
+803639	 for
+804300	 the
+804839	 company's
+805680	 database
+806519	 is
+803459	__EVENT__
+806990	
+
+807000	simply
+807360	 is
+808079	 simply
+808380	 this
+808560	 right
+808800	 so
+809040	 we
+809279	 just
+807000	__EVENT__
+809509	
+
+809519	you
+809820	 know
+809940	 take
+810300	 that
+810600	 connection
+810779	 that
+811380	 we
+809519	__EVENT__
+811610	
+
+811620	opened
+812220	 before
+812540	 and
+813540	 you
+813839	 know
+813899	 that's
+814079	 the
+811620	__EVENT__
+814250	
+
+814260	metadata
+814920	 pointing
+815519	 to
+815700	 the
+815880	 file
+816120	 that
+816720	 has
+814260	__EVENT__
+816889	
+
+816899	that
+817079	 sqlite
+817820	 database
+818820	 and
+819660	 then
+819779	 you
+820079	 know
+816899	__EVENT__
+820129	
+
+820139	we
+820380	 pass
+820620	 that
+820920	 connection
+821220	 to
+821700	 the
+821820	 companies
+820139	__EVENT__
+822350	
+
+822360	DM
+822360	__EVENT__
+824389	
+
+824399	a
+825000	 function
+825360	 which
+825600	 is
+825720	 our
+825899	 helper
+826380	 so
+826800	 with
+824399	__EVENT__
+827090	
+
+827100	that
+827220	 you
+827399	 know
+827519	 if
+827700	 I
+827820	 print
+828060	 the
+828300	 the
+828660	 DM
+827100	__EVENT__
+829370	
+
+829380	object
+829740	 what
+829980	 I
+830100	 get
+830220	 is
+830339	 the
+830459	 metadata
+831180	 for
+831360	 it
+829380	__EVENT__
+831470	
+
+831480	as
+832079	 you
+832200	 can
+832320	 see
+832500	 it's
+833279	 already
+833899	 relatively
+831480	__EVENT__
+834889	
+
+834899	nicely
+835860	 structured
+836399	 it
+836519	 already
+836700	 has
+834899	__EVENT__
+836930	
+
+836940	information
+837120	 about
+837480	 the
+837660	 primary
+837959	 key
+838139	 has
+836940	__EVENT__
+838610	
+
+838620	information
+838980	 about
+839279	 the
+839519	 foreign
+839880	 keys
+840240	 and
+838620	__EVENT__
+840710	
+
+840720	with
+840899	 DDM
+841380	 package
+841680	 you
+841920	 know
+842040	 you
+842160	 may
+842279	 go
+840720	__EVENT__
+842509	
+
+842519	back
+842760	 to
+842519	__EVENT__
+843650	
+
+843660	um to
+844260	 meet
+844560	 up
+844860	 number
+845040	 two
+845279	 I
+845459	 believe
+845639	 but
+843660	__EVENT__
+846470	
+
+846480	one
+847019	 nice
+847260	 thing
+847440	 is
+847620	 that
+847860	 you
+847980	 know
+848100	 once
+848459	 you
+846480	__EVENT__
+848569	
+
+848579	have
+848820	 to
+849000	 find
+849300	 data
+849779	 model
+849899	 in
+850139	 such
+850320	 a
+850500	 formal
+848579	__EVENT__
+850850	
+
+850860	way
+851100	 then
+851639	 you
+852420	 can
+852540	 use
+852779	 some
+853139	 convenient
+850860	__EVENT__
+853610	
+
+853620	functions
+854160	 of
+854459	 the
+854579	 DM
+854820	 package
+855180	 itself
+855540	 to
+856260	 do
+853620	__EVENT__
+856430	
+
+856440	things
+856680	 that
+856920	 would
+857160	 otherwise
+857519	 require
+856440	__EVENT__
+858129	
+
+858139	knowledge
+859139	 of
+859440	 the
+859740	 internals
+860279	 of
+860399	 details
+860880	 of
+858139	__EVENT__
+861050	
+
+861060	here
+861300	 for
+861480	 example
+861720	 I
+861899	 can
+862019	 just
+862260	 use
+862620	 the
+863040	 the
+861060	__EVENT__
+863389	
+
+863399	function
+863760	 flattened
+864660	 table
+864959	 to
+865620	 create
+865800	 the
+863399	__EVENT__
+866030	
+
+866040	same
+866220	 spreadsheet
+866820	 that
+867000	 before
+867240	 I
+867779	 created
+866040	__EVENT__
+868069	
+
+868079	with
+868440	 with
+868740	 deep
+868980	 layer
+869399	 but
+870060	 before
+870360	 I
+870720	 had
+870899	 to
+868079	__EVENT__
+871069	
+
+871079	know
+871320	 that
+871680	 relationship
+872220	 between
+871079	__EVENT__
+873530	
+
+873540	um
+873660	 between
+874139	 the
+874500	 tables
+874980	 was
+875399	 by
+875940	 the
+876120	 column
+873540	__EVENT__
+876410	
+
+876420	company's
+876899	 ID
+877160	 in
+878160	 this
+878339	 particular
+878579	 case
+878820	 I
+876420	__EVENT__
+879110	
+
+879120	don't
+879240	 need
+879480	 that
+879779	 because
+880139	 that
+879120	__EVENT__
+880790	
+
+880800	relationship
+881220	 is
+881519	 already
+881699	 defined
+882300	 in
+882600	 the
+880800	__EVENT__
+882710	
+
+882720	data
+883079	 model
+883139	 so
+883440	 the
+883620	 data
+883860	 model
+884339	 calls
+885120	 that
+882720	__EVENT__
+885230	
+
+885240	metadata
+885240	__EVENT__
+886730	
+
+886740	and
+887339	 then
+887399	 well
+887579	 if
+887820	 that's
+888000	 all
+888180	 we
+888360	 need
+888480	 to
+886740	__EVENT__
+888590	
+
+888600	do
+888720	 we
+889079	 just
+889260	 disconnect
+889500	 from
+890459	 the
+888600	__EVENT__
+891889	
+
+891899	um
+891899	__EVENT__
+892550	
+
+892560	from
+893160	 The
+893519	 Collection
+894120	 with
+894660	 DBI
+895339	 DB
+892560	__EVENT__
+896329	
+
+896339	disconnect
+896579	 and
+897120	 that's
+897300	 it
+896339	__EVENT__
+898030	
+
+898040	so
+899040	 here
+899820	 is
+899940	 this
+900180	 is
+900300	 an
+900480	 internal
+900839	 chunk
+901199	 of
+898040	__EVENT__
+901310	
+
+901320	code
+901500	 for
+901800	 for
+901860	 myself
+902279	 but
+902820	 I
+903060	 wanted
+903180	 to
+903420	 show
+901320	__EVENT__
+903650	
+
+903660	you
+903920	 uh
+904920	 that
+905279	 the
+905639	 the
+905760	 files
+906600	 actually
+907139	 leave
+903660	__EVENT__
+907490	
+
+907500	here
+907740	 so
+908100	 this
+908399	 this
+908699	 file
+909060	 that
+909240	 I'm
+907500	__EVENT__
+909350	
+
+909360	highlighting
+909779	 here
+909959	 the
+910139	 database
+910500	 dot
+909360	__EVENT__
+910910	
+
+910920	sqlite
+911519	 is
+912240	 the
+912420	 database
+912839	 itself
+913260	 is
+910920	__EVENT__
+913550	
+
+913560	database
+914040	 file
+914459	 right
+915019	 and
+916019	 that's
+916199	 bring
+916560	 us
+913560	__EVENT__
+916790	
+
+916800	to
+917040	 the
+917160	 end
+917339	 of
+917639	 what
+918000	 I
+918060	 wanted
+918180	 to
+918420	 show
+918600	 with
+916800	__EVENT__
+919250	
+
+919260	plenty
+919740	 of
+919800	 time
+920040	 for
+920519	 for
+920820	 comments
+921360	 or
+919260	__EVENT__
+921530	
+
+921540	questions
+921779	 if
+922199	 if
+922579	 we
+923579	 want
+923760	 so
+923940	 I'm
+924060	 going
+924180	 to
+921540	__EVENT__
+924290	
+
+924300	go
+924480	 back
+924720	 to
+925380	 the
+926160	 meeting
+926399	 here
+924300	__EVENT__
+928670	
+
+928680	um
+928680	 and
+929459	 we
+929699	 have
+928680	__EVENT__
+930530	
+
+930540	miria
+931320	 here
+931560	 how
+931800	 amiria
+932339	 any
+932940	 any
+933120	 comment
+933480	 or
+930540	__EVENT__
+933590	
+
+933600	question
+933839	 about
+934139	 this
+933600	__EVENT__
+939470	
+
+939480	great
+939839	 thanks
+940079	 very
+940320	 much
+940440	 Mia
+940800	 for
+941100	 joining
+939480	__EVENT__
+941449	
+
+941459	me
+941579	 in
+942180	 this
+942360	 series
+942620	 uh
+943620	 today
+943860	 is
+944100	 the
+944279	 last
+941459	__EVENT__
+944449	
+
+944459	one
+944820	 and
+945120	 next
+945360	 time
+945540	 we're
+945660	 gonna
+945779	 come
+945959	 up
+944459	__EVENT__
+946069	
+
+946079	with
+946260	 something
+946500	 else
+946800	 see
+947399	 you
+947579	 next
+947699	 time
+946079	__EVENT__

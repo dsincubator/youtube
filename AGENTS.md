@@ -33,7 +33,19 @@ bin/fetch-transcripts        # fetch captions
 2. Full run: `./bin/fetch-transcripts`.
 3. Verify: `awk -F'\t' 'NR>1&&$2=="ok"{print $1}' transcripts/manifest.tsv | sort > /tmp/got.txt && python3 -c "import csv; print('\n'.join(sorted({r['id'].strip() for r in csv.DictReader(open('data/metadata.csv'))})))" > /tmp/expected.txt && comm -23 /tmp/expected.txt /tmp/got.txt` — empty output = complete.
 4. Gaps: `missing`/`error` rows in `manifest.tsv` are the accepted record of unavailable transcripts; re-run with `--force` or cookies before accepting.
-5. Post-process later: convert `json3` to readable formats — out of scope for this step.
+5. Post-process: convert `json3` to readable formats — `bin/convert-transcripts` written and tested
+
+## SCRIPT: `bin/convert-transcripts`
+
+```
+./bin/convert-transcripts                          # all videos
+./bin/convert-transcripts --count 3                # first 3 (test)
+./bin/convert-transcripts --format txt             # .txt only
+./bin/convert-transcripts --format tsv             # .tsv only
+./bin/convert-transcripts --format both            # both formats
+```
+
+Reads `data/metadata.csv` for the video ID list, converts each `transcripts/<id>.*.json3` to `<id>.*.txt` (plain text) and `<id>.*.tsv` (tab-separated `<tStartMs>\t<text>`). Skips videos without a json3 file.
 
 ## SCRIPT: `bin/fetch-transcripts`
 
@@ -64,18 +76,16 @@ Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<i
 
 - [x] `metadata/`: 151 dumps + `manifest.tsv` (154 rows: 151 `ok`, 3 `private` with reasons).
 - [x] `data/metadata.csv`: 151 rows derived, join integrity holds.
-- [ ] `transcripts/`: 3 of 151 fetched — full run pending (see NEXT).
-- [ ] Open question: `sbp5Q8niTho` dump reports 0 comments despite a known comment — degraded fetch or deleted comment (see NEXT).
+- [x] `transcripts/`: full run in progress, 115/151 converted so far
+- [x] `bin/convert-transcripts`: written and tested (json3 → .txt/.tsv)
+- [x] Open question resolved: `sbp5Q8niTho` comment was deleted from YouTube (fetch succeeded, database stands)
 
 ## NEXT
 
-1. `./bin/fetch-transcripts` (VPN off) — fetches the remaining 148 captions; 3 existing skip.
-2. Re-run the step-3 verify one-liner — empty output = complete.
-3. Probe the comments question (writes only to `/tmp`):
-   `yt-dlp --skip-download --dump-single-json --write-comments --no-write-info-json -- "https://www.youtube.com/watch?v=sbp5Q8niTho" > /tmp/sbp.json 2>/tmp/sbp.err || { echo "FETCH FAILED — inconclusive, see /tmp/sbp.err"; }`
-   then `python3 -c "import json; d=json.load(open('/tmp/sbp.json')); print('comments:', len(d.get('comments') or []), '| comment_count:', d.get('comment_count'))"`
-   (A failed fetch must never be read as "zero comments" — check `/tmp/sbp.err` first.)
-   Nonzero = stored dump is stale → `rm metadata/sbp5Q8niTho.json && ./bin/fetch-metadata` (re-fetches just it; `--refresh` is full-rebuild only, there is no per-video flag); zero with a successful fetch = comment gone from YouTube, database stands.
+1. Wait for `./bin/fetch-transcripts` to complete (151 transcripts)
+2. Re-run the step-3 verify one-liner — empty output = complete
+3. Run `python3 bin/convert-transcripts data/metadata.csv transcripts both` to generate readable .txt/.tsv from all .json3 files
+4. Optional: probe other open questions
 
 ## QUALITY GATES
 

@@ -1,0 +1,565 @@
+okay go ahead
+hello and welcome yeah so this is gonna
+be a session about using the IDR and
+they gather and spread functions and
+comparing them to the newer pivot longer
+if it wider functions and I did want to
+say quickly that I'm gonna kind of rush
+through this because Mauro and I are
+trying to stick to this idea of having
+the presentation being about 15 minutes
+and then leaving about 10 minutes to
+like ask questions and have discussion
+because we think that's important part
+of this format and then hopefully still
+having five minutes to take a break or
+go to the bathroom or do whatever you
+need to do before the the next meeting
+starts so I'm gonna try to stick to that
+which means I'm going I might kind of
+race through this and also it means like
+the content might be not super
+mind-blowing but we'll see if I can get
+through something interesting so so the
+background to this is todd ER has been
+changing all the tiny versions been
+changing a lot recently and specifically
+Toddie are these functions that are kind
+of like the core of Tidy are they gather
+and spread functions have now been
+replaced with these newer functions
+called pivot longer pivot wire
+and although I say replaced at least as
+I understand it gather and spread are
+going to stick around for a long time
+like they're not even soft deprecated
+yes they are advising that you use or
+they're strongly you know supporting
+using the newer pivot longer through the
+wider functions but as far as I
+understand they gather and spread
+functions are gonna continue to be in
+the package for the foreseeable future
+and with that in mind like I actually
+like gather and spread I think they're
+pretty easy to use I know that not
+everyone feels that way so I'm kind of
+interested to hear what other people
+think about that in the discussion
+whether they thought
+you me the desk that's the general thing
+I wanted to go over today so I'm
+basically gonna use one built-in data
+set this billboard data set and then I'm
+gonna do some things and gather that how
+I would do it and gather impossible ways
+and then kind of do the same thing in
+pivot longer and then show you kind of
+the some new things you can do with a
+bit longer that you can't do with gather
+and then like lives is spread I'll do
+some spread and then do the pivot wider
+and show some of the new things you can
+do with that so I'm using this billboard
+as an example data set which is
+basically it has an artist to track the
+date that entered the billboards and
+then all these columns we won through
+week 76 with what the rank of that line
+was during that week and this is a
+typical kind of form of data set that
+you might find and one thing that you
+might want to do is you might rather
+have one column with the value of the
+rank and then another column saying
+which week it is in and this would be
+that like a long version of what it now
+is is a wide version so the way it
+gather works is you the first argument
+is the data which normally comes in
+through the deep layer chain that you're
+in and then the first argument is the
+key and this is the name of the column
+that you want to put the key into once
+you've got are the columns and then the
+volume now you argument it's the name of
+the column you want the values speak to
+end up in and then the dot dot after
+that allows it to capture any of the
+column names that you specify and then
+there are some additional options so if
+we wanted to gather all of these weeks
+into two columns just which week it is
+and what the value was in that week sort
+of by default you would have to list all
+of those weeks which is really tedious
+especially in this case when you have 76
+but essentially it would look like this
+week 1 week 2 week 3 and then he would
+continue naming them
+and we can do that but we don't actually
+get what we want because all these weeks
+we still have to specify them but for
+instance it should look like this this
+I'm output here so this is very possible
+if you only have a few columns that you
+want to gather it's very feasible to
+input them separately like this but in a
+lot of cases that's not super feasible
+so you have to find another way so the
+first thing I kind of wanted to
+demonstrate is how you can select these
+columns and gather along with like many
+of the Thai diverse functions have
+numerous ways that you're allowed to
+select the columns one of them for
+gather at least is to explicitly state
+each one separately another way is you
+can put the number of the column so this
+for through and kyle's should give us
+all these numbers which are the index of
+the column names so this should actually
+collect all of those weeks into key and
+you can also like negatively selects
+columns so if we look at the billboard
+thing we have all these week columns but
+then there's only these three in the
+beginning that we do not want to gather
+so you can sort of select all of the
+week columns by D selecting all the
+columns we don't want so I find myself
+doing this frequently because it's
+sometimes easier to specify the columns
+that you want to not gather then once
+you do so this also works you can also
+negatively specify that column indexes
+so I said cons one through three but
+don't use them so that kind of has the
+same kind of effect and then you can
+also have this syntax where you specify
+the start column and then end column and
+then it automatically selects all the
+columns in between so that's a pretty
+convenient one if you know what the
+first and last column are so this is one
+way of doing it and then there's also
+these tidy selection functions which you
+can use starts with for instance will
+select any column that starts with wk
+that's a convenient way in this category
+and then you can also use matches which
+is a regex so in this case I can be like
+even more specific I can say any column
+that starts with wk then has numerals
+after that and then nothing after that
+so this is a really explicit way of
+matching it with reg reg X so one other
+thing I wanted to mention about gather
+is that you can also so I'm using key
+and value but these are arbitrary this
+can be anything technically gather has
+these set as like default values but
+it's kind of weird because the way this
+function is structured with the dots
+here it actually doesn't matter what the
+default is because you always have to
+specify this otherwise they would be
+picked up as something in the dots so
+I'm you always have to specify the key
+and now you would gather but we could
+set it to something more helpful than
+key and value like in this case we could
+do week and rank and in that case then
+in our output we have these two last few
+columns the week is the week that is in
+and the rank this right so that's
+probably more useful than just key and
+value and in some cases I like to I do
+this with a lot of functions I'm just to
+be more explicit so when you're reading
+it later on like here you if you're
+reading this quickly you might have to
+remind yourself what is week is that the
+key or the value column so I often know
+I'm putting this to be really really
+clear about what I'm doing so that's the
+basic functionality and gather so now to
+kind of see how you would do this and
+pivot longer which is the new version of
+this inside yaar so the first main
+difference of what I point out is in
+gather you can set you can separately
+specify each of these columns that you
+want so you would think maybe that you
+can use something like this but it
+doesn't actually work the way that pivot
+longer works is the first well
+technically the second argument is a
+columns argument and it's only one
+argument so you can't put in multiple
+things like this you have to use one of
+these ways of specifying all the columns
+at once so this syntax where you specify
+at first and the last column works with
+pivot longer and also using the column
+numbers or negative ID numbers and also
+these same tiny select things like
+matches works to select them so the next
+interesting thing about pivot longer is
+that here I didn't specify the key and
+value names this name and value so the
+way pivot longer is structured this
+actually works without having a default
+value so you don't actually have to
+specify name or value the default will
+be name for the key column well what
+gather calls the key Cal pivot longer
+now it's called name and the values will
+default the value but if you want to
+change it to something else you can do
+as you did with gather you can specify
+their names to column should be weak and
+the values to column equals rank so now
+we end up with something very similar to
+what we had before we gather now one
+thing I forgot to mention about gather
+and these key and value columns as well
+seen a lot of people do this like this
+object and I think this is rather
+confusing but this will actually work or
+it used to okay well maybe not anyway
+was to say it used to work that you
+could put in like an object name here
+and gather would automatically determine
+like well this value this variable
+doesn't actually exist so I'll use that
+as the name it's still work there they
+are the ya-ya
+yeah okay so I think that's rather
+confusing because this is not how you
+know if you look at this if you're
+looking at someone else's code
+specifically and you see this you might
+think like oh it's gonna try and gather
+like all of these columns key and value
+but it's actually setting the mains here
+so I've trained myself to always be very
+explicit about this and always put this
+in in quotation marks so you know that
+that's a string literal to me that's a
+more of an indication that this is not a
+variable name or of column name but this
+is actual string literal that I want to
+name and then this part here is being
+even more extremely specific about that
+so this is why I suggest doing this so
+it's really exclusive what you're doing
+so going back to this we can do a very
+similar thing by setting than the names
+column in a valiant column and give it
+longer to achieve a very similar result
+now some additional features that you
+can do in pivot longer that you couldn't
+do in gather you could do by further
+processing in the chain but but not
+specifically in the gather function is
+one thing you can set this names prefix
+and what this will do is it will tell
+pivot longer once it makes this names
+column the prefix is going to be what
+you see and then in the columns before
+it's pivoted longer and if they all have
+a Colin common prefix like they do in
+this case wk if you set that here then
+it will automatically remove that from
+the names column so now instead of
+having week 1 week 2 week 3 we just have
+the number which is probably closer to
+what we want because the wk is really
+redundant in this case when you may but
+you also might notice that this is a
+character and that's probably not the
+most ideal thing because we have a
+numeric identify or the week and you
+might want to do some sort of logic with
+that so character is not ideal in this
+case so another feature of pivot longer
+is we can remove the prefixed with the
+doing and also say
+for the names we want the week column to
+be an integer
+and then this will automatically switch
+you into this integer value for week
+which is pretty nice
+so that's pivoting longer and gather I'm
+going to save that as billboard long and
+then just use that billboard long as the
+example we'll use for spread and pivot
+wider and basically try to get back to
+where we were before so so we have this
+pivot long data frame now and if we want
+to spread its you're telling spread
+which columns you want to take which is
+the key column or the names column and
+the value column and you want to spread
+them out into like further comments
+so the I think it's pretty simplistic
+you just tell it those two column names
+and you spread and here I don't use
+string literal because these are actual
+columns that exist in billboard long so
+I prefer then it's you actually use
+normal like tidy verse nomenclature
+right to putting the object name of this
+in there rather than putting it as a
+string literal so if we do unspread then
+we get close to what we had before
+except that now we have these numbers as
+the name column names which is not what
+we had before so one way you can deal
+with that with spread is using a
+separator and if you put in a separator
+here it will take the name of that
+column that you're spreading this week
+adding and then fixing this separator
+and men value so what you get then is
+week underscore long become score two
+and this is I'm pretty convenient and it
+gets us closer to where we were before I
+did want to point out that this might
+not be obvious but separators normally
+know and if it's no then it doesn't do
+this at all but if you put a a string
+but with nothing in it then it just it
+will still combine them but it won't
+separator so this is kind of closer to
+what we started with
+except this week instead of WK if we
+really wanted to get exactly the same
+thing we could change the name of week
+to wk first and then spread with its
+nulls or with this blank separator and
+now we're kind of back to where we were
+with WK 1 WK 2 etc so pivot wider is
+pretty similar to spread I think more
+similar than pivot longer is together
+yeah so just like we're spreading week
+and rank up here we can do pivot wider
+with the names from where the names come
+from week and the values come from rank
+so this same thing but with the numbers
+and if we wanted to fix a prefix to that
+we can use this names prefix and we end
+up with the same thing that we started
+with now one thing that I didn't mention
+at all and I'm not going to because I
+want to stop now ish is that pivot wider
+and pivot longer one really cool thing
+is they can do is they can spread and
+gather multiple columns at the same time
+which means rather than ending up with
+something like this where you have week
+and rank you might have two sets of
+these so you could have like week rank
+and week number or something and this is
+something that's pretty fancy that
+gather and spread could not do but
+that's for another session so I've
+already passed my 15 minutes I want to
+stop here and give some people some time
+me ask questions or we just have a
+discussion I'm gonna just see if you've
+used these before or have trouble with
+these before yeah anything you want to
+say please go ahead and do it now thanks
+to Jeff Steve ten minutes so a lot of
+time thanks EJ for keeping the timer
+questions
+I have a question if you're trying to
+pivot longer on 2 or 3 columns with with
+different types will it try to coerce
+them to the same type and will it give
+you a warning that you're trying to do
+so so for instance for in this billboard
+data so tragic if you tried to hit it
+longer on week 1 than the date and the
+artist name wouldn't tell you like oh
+you're trying to combine the name of
+date an integer yeah so I can't tell you
+that as for that all the top of my head
+and to be honest I'm it's I think it's
+complicated enough that like I have I
+have to think about these things for a
+few minutes but I know one advantage is
+in the past if you were using gather and
+say in these columns that you're
+specifying that you want it to gather if
+those are not the same type what yeah
+and whether it's one value column with
+all of those in it and then those values
+would all have to be coerced to like the
+lowest common denominator positives are
+you have a character and you have
+numbers it would end up into you know
+one column of characters and yeah this
+is a one of the big the biggest like
+downfalls of gather that can't be
+resolved can be resolved a bit longer so
+the way this happens with pivot longer
+this is exactly what I wasn't gonna go
+into because it's kind of a large topic
+but like really briefly you ask what
+happens these names to and values to
+arguments are very similar to like the
+well they're very similar to the key and
+value arguments of gather however they
+can these can actually be a vector of
+more than one thing so what would happen
+is you would have either multiple values
+and names to our multi values and values
+too so that if you had two two values in
+this value
+to argument and you would end up with to
+value columns and then well I used the
+names Pete ice but there's also like a
+values P types and you would list them
+in here so it would look something like
+so maybe like one value would be a rank
+and that would be an integer and the
+next thing would be like I don't know
+maybe like the name of the prize that
+they want for that that would be
+character so in this case you would end
+well I mean this is very pseudocode it
+wouldn't exactly work but is essentially
+you would have up here you would have to
+have like rank and was and what that
+would do is it would it would achieve
+exactly what you know what you were
+dressing like when you have these
+multiple values that you want to spread
+so you would you would arrange it so
+that the character ones and imprison
+them you also have to change how you
+unspecified this so that the right ones
+go into the rich with the proper values
+yeah you have to tell it which ones go
+in rank and which one go surprised but
+essentially what you're asking is is
+possible as feasible
+yeah anyone else have a question or just
+general comment about spreading and
+gathering I know it's a interesting
+topic I thought that I used the names
+prefix thing once I found it by chance
+and I thought that was really useful
+yeah that's cool
+just just a comment maybe less on spread
+and gather but inhibit longer pivot
+wider but more on that just the concepts
+of wide and long data in general and I
+know that like Mauro and I and when I
+was kind of first working in our and
+before I was more confident in some of
+the kind of standards I didn't realize
+that that it seems like all of Tidy
+verse is kind of accustomed or most
+well tuned to be handling long-form data
+just in general and I don't know I found
+that uh full column because I would be
+kind of constantly spreading and
+pivoting and sweating in pairs
+pivoting longer and wider and longer and
+wider to do different things and I
+didn't realize that you know there's an
+entire algebra of functions that just
+kind of work well with long data and you
+don't have to worry about I'm swapping
+it so much so that's just more of a
+comment to other people find that
+helpful
+yeah thanks that's interesting I think
+in some ways I totally agree with you
+and then some ways I had totally feel
+the opposite and then let me explain a
+lot of deep liar is based on SQL
+language and I think it's very natural
+in SQL to be in the long format that's
+kind of how SQL this actually is working
+so for that reason I think a lot of
+things in deep liar habit is sort of
+like heritage based in this kind of
+working with long-form data but then
+over time a lot of the functions now
+that deflower work with are very natural
+to working with this like column based
+data so like if you say mutate is weeks
+divided by some value or something this
+is very natural to do by doing the just
+doing a mutate and then the actual
+equation with with the variable names in
+it that's very natural also very evil in
+some ways so I feel like it kind of
+started with this heritage of everything
+should be long because that's how SQL
+works and then over time I think it's
+kind of converged more to like okay
+SQL is kind of like the underlying thing
+that's going on here but a lot of the
+functions really deal with well with
+these data sets that are where the value
+to spread out across multiple columns so
+I think it's a little bit I thought I in
+some part ways I totally agree with you
+in other ways the thing allsorts has
+kind of moved in the other direction as
+well
+yeah I also would like to suggest to
+everyone there's a there's a PDF an
+article that hadley wrote when he first
+worked IDR that talks about IDR and what
+did it about tidy data and what it is
+and I think this is the new so there's
+one older PDF that he made which is a
+little bit out of date in terms of like
+the in terms of the names of the
+functions and stuff that he's talking
+about but I think conceptually talking
+about tidy data it's really really
+awesome so and I'll put the links in
+this at the top of this thing and this
+link that's here at the top now this is
+kind of a newer version where it talks
+more about like pivot lighter pivot
+longer so both of those are not very
+long but really worth it I think worth
+reading and understanding because they
+really kind of explain these concepts
+will so I'll put the original link at
+the top here and then I'll also leave
+this link in here if you want to read
+those I think it's totally worth taking
+a look at I already included the PDF as
+a link in the resources section of the
+issue associated to this Meetup and I
+will absolutely add that link there as
+well to make it more visible and for
+those who don't get you know into the
+file I think it's a good idea because
+you know sometimes decisions feel a
+little arbitrary and when you understand
+the other underlying vision about you
+know why things you know I I feel more
+comfortable doing things not just
+because you know someone called that's
+it but because you know I understand I
+also you know if you understand how the
+brain is born you can also somehow
+anticipate what later decision we have
+just one minute to wrap up
+if anyone else I have nothing to say so
+I'll leave it to CJ or anyone in the
+audience here to your clothes thank you
+thank you very much all right thanks
+thanks thank you
+[Music]

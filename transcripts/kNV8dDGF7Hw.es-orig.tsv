@@ -1,0 +1,6803 @@
+650	en
+1160	 un
+1250	 vídeo
+1460	 anterior
+1670	 estuve
+2420	 hablando
+650	__EVENT__
+2590	
+
+2600	sobre
+3440	 la
+4339	 idea
+4580	 de
+4970	 mantener
+5450	 conversaciones
+2600	__EVENT__
+5800	
+
+5810	sobre
+6529	 códigos
+7070	 que
+7160	 sean
+7400	 productivos
+7850	 los
+5810	__EVENT__
+8169	
+
+8179	elementos
+8690	 que
+8809	 las
+8929	 instructivas
+9440	 y
+9919	 como
+8179	__EVENT__
+10329	
+
+10339	asadas
+11179	 pero
+11450	 hablé
+11839	 sobre
+11869	 cómo
+12289	 hacerlas
+12530	 a
+10339	__EVENT__
+12640	
+
+12650	un
+12709	 nivel
+12879	 más
+13879	 bien
+14059	 teórico
+14449	 no
+14690	 hice
+14990	 esto
+12650	__EVENT__
+15220	
+
+15230	había
+15409	 una
+15530	 demostración
+15919	 entonces
+16280	 en
+16430	 este
+15230	__EVENT__
+16600	
+
+16610	vídeo
+16880	 quería
+17509	 hacer
+16610	__EVENT__
+18630	
+
+18640	la
+19640	 parte
+19849	 final
+20060	 de
+20240	 aquella
+20689	 charla
+18640	__EVENT__
+21530	
+
+21540	[Música]
+21540	__EVENT__
+23820	
+
+23830	donde
+24690	 mostrará
+25690	 una
+25810	 tablita
+26110	 en
+26680	 la
+26830	 que
+28350	 se
+23830	__EVENT__
+29340	
+
+29350	describe
+29860	 según
+30430	 la
+30490	 cantidad
+30760	 de
+30939	 código
+31270	 que
+29350	__EVENT__
+31650	
+
+31660	tenés
+31960	 pues
+32470	 sería
+32800	 la
+33309	 herramienta
+33630	 más
+31660	__EVENT__
+34620	
+
+34630	quizás
+35140	 apropiada
+35890	 para
+36250	 esa
+36489	 cantidad
+36850	 de
+34630	__EVENT__
+36930	
+
+36940	código
+37330	 para
+37840	 correr
+38320	 el
+39040	 código
+39460	 y
+39790	 también
+36940	__EVENT__
+40320	
+
+40330	para
+41790	 publicarlo
+42790	 y
+42820	 mantener
+43210	 la
+40330	__EVENT__
+43350	
+
+43360	conversación
+44190	 entonces
+45190	 lo
+45340	 primero
+45690	 que
+43360	__EVENT__
+46680	
+
+46690	quería
+46930	 discutir
+47260	 es
+47470	 entonces
+47769	 el
+47949	 escenario
+46690	__EVENT__
+48360	
+
+48370	en
+48580	 el
+48670	 que
+48850	 tenemos
+49150	 solamente
+49449	 un
+50050	 poquito
+48370	__EVENT__
+50369	
+
+50379	de
+50440	 código
+50800	 solamente
+51280	 un
+51340	 pedazo
+52180	 digamos
+52960	 un
+50379	__EVENT__
+53100	
+
+53110	par
+53230	 de
+53350	 líneas
+53110	__EVENT__
+53910	
+
+53920	y
+54930	 entonces
+56670	 hacer
+57900	 vamos
+58900	 crear
+59260	 una
+53920	__EVENT__
+59460	
+
+59470	infraestructura
+59710	 alrededor
+60339	 de
+60699	 eso
+59470	__EVENT__
+63010	
+
+63020	no
+63440	 tiene
+63650	 mucho
+64300	 en
+65300	 este
+65570	 caso
+65840	 a
+65870	 trabajar
+63020	__EVENT__
+66310	
+
+66320	en
+66380	 el
+66500	 caso
+66590	 de
+66800	 r
+67040	 por
+67430	 ejemplo
+67730	 con
+66320	__EVENT__
+67870	
+
+67880	properties
+67880	__EVENT__
+69050	
+
+69060	para
+69810	 que
+69930	 te
+70189	 que
+71189	 nos
+71310	 permite
+72140	 cumplir
+73140	 con
+69060	__EVENT__
+73219	
+
+73229	todas
+73560	 las
+73590	 expectativas
+73860	 que
+74700	 hacen
+74909	 que
+75060	 una
+73229	__EVENT__
+75170	
+
+75180	conversación
+75420	 sobre
+75869	 código
+76170	 sea
+76320	 productiva
+75180	__EVENT__
+76819	
+
+76829	y
+77729	 de
+77850	 hecho
+78030	 para
+78360	 recordar
+78720	 eso
+79079	 es
+79140	 súper
+76829	__EVENT__
+79279	
+
+79289	importante
+79470	 vamos
+80340	 bien
+80549	 para
+80909	 arriba
+81240	 son
+79289	__EVENT__
+81679	
+
+81689	básicamente
+82079	 tres
+82259	 elementos
+83060	 primero
+84060	 que
+81689	__EVENT__
+84200	
+
+84210	el
+84299	 código
+84539	 tiene
+84780	 que
+84840	 correr
+85080	 segundo
+85860	 que
+84210	__EVENT__
+86029	
+
+86039	una
+86340	 persona
+86640	 que
+86729	 lo
+86789	 recibe
+87210	 tiene
+87390	 que
+87600	 no
+86039	__EVENT__
+87770	
+
+87780	les
+87929	 tiene
+88649	 que
+88770	 no
+88920	 necesitará
+89520	 correrlo
+87780	__EVENT__
+89960	
+
+89970	porque
+90240	 el
+90780	 código
+90960	 no
+91259	 solamente
+91649	 está
+92070	 ahí
+89970	__EVENT__
+92179	
+
+92189	sino
+92490	 además
+92640	 que
+92850	 está
+93030	 el
+93450	 agua
+93780	 del
+94200	 código
+92189	__EVENT__
+95540	
+
+95550	y
+96000	 tercero
+96450	 que
+96870	 si
+96990	 la
+97080	 persona
+97200	 que
+97830	 lo
+95550	__EVENT__
+98030	
+
+98040	recibe
+98370	 decide
+99120	 cortar
+99540	 lo
+99870	 que
+100110	 sea
+100350	 fácil
+100680	 es
+98040	__EVENT__
+100790	
+
+100800	o
+101100	 sea
+101310	 el
+102030	 código
+102360	 corre
+102690	 no
+103020	 lo
+103110	 tengo
+103290	 que
+100800	__EVENT__
+103370	
+
+103380	correr
+103650	 pero
+104040	 si
+104250	 quisiera
+104670	 lo
+105000	 puedo
+105210	 correr
+103380	__EVENT__
+105440	
+
+105450	de
+105600	 una
+105690	 forma
+105960	 fácil
+106530	 entonces
+107490	 bajando
+108330	 de
+105450	__EVENT__
+108410	
+
+108420	vuelta
+108690	 a
+108720	 la
+108960	 tablita
+109230	 a
+110040	 que
+110130	 nos
+108420	__EVENT__
+110240	
+
+110250	encontramos
+110610	 reprex
+111300	 implementa
+112220	 esas
+113660	 tres
+110250	__EVENT__
+114650	
+
+114660	propiedades
+115110	 de
+115770	 una
+116160	 composición
+116460	 sobre
+114660	__EVENT__
+117050	
+
+117060	código
+117390	 productiva
+117870	 y
+118740	 luego
+119280	 lo
+119550	 puedes
+117060	__EVENT__
+119810	
+
+119820	compartir
+119820	__EVENT__
+121360	
+
+121370	quizás
+122060	 quizás
+122960	 quizás
+123170	 si
+124100	 corresponden
+124700	 o
+121370	__EVENT__
+124780	
+
+124790	en
+125210	 algún
+125570	 chiste
+126260	 vamos
+126890	 a
+126980	 ver
+127100	 eso
+127460	 veamos
+124790	__EVENT__
+127930	
+
+127940	creo
+128540	 que
+128600	 es
+129110	 evidente
+129170	 yo
+129500	 creo
+129710	 que
+129800	 quiero
+127940	__EVENT__
+129940	
+
+129950	mostrar
+130130	 cómo
+130820	 funciona
+129950	__EVENT__
+132180	
+
+132190	digamos
+133190	 que
+133250	 quiero
+133400	 trabajar
+133520	 con
+134620	 el
+132190	__EVENT__
+135610	
+
+135620	repositorio
+135620	__EVENT__
+143530	
+
+143540	no
+144439	 lo
+145340	 voy
+145489	 a
+145519	 guardar
+145640	 en
+146150	 mi
+146469	 director
+147469	 y
+148040	 voy
+143540	__EVENT__
+148209	
+
+148219	a
+148250	 hacer
+148219	__EVENT__
+150210	
+
+150220	lo
+150730	 voy
+150910	 a
+150970	 disfrutar
+151830	 en
+152830	 mi
+152950	 cuenta
+153160	 de
+150220	__EVENT__
+153330	
+
+153340	usuario
+153340	__EVENT__
+154580	
+
+154590	acá
+155220	 estoy
+155430	 simplemente
+156060	 creando
+157050	 un
+158030	 clon
+154590	__EVENT__
+159020	
+
+159030	local
+159450	 de
+159840	 una
+160379	 bifurcación
+160560	 que
+161220	 hice
+161550	 de
+161970	 un
+159030	__EVENT__
+162290	
+
+162300	repositorio
+163580	 sobre
+164580	 el
+164640	 cual
+164819	 esta
+165180	 cuenta
+162300	__EVENT__
+165559	
+
+165569	particular
+166019	 de
+166050	 usuarios
+166379	 no
+166470	 quiere
+165569	__EVENT__
+166729	
+
+166739	privilegios
+167280	 para
+167580	 mojar
+166739	__EVENT__
+168940	
+
+168950	entonces
+169840	 en
+170840	 su
+170959	 repositorio
+171290	 de
+168950	__EVENT__
+171520	
+
+171530	demostración
+171920	 está
+172099	 muy
+172280	 vacío
+172580	 hagamos
+173480	 de
+171530	__EVENT__
+173530	
+
+173540	cuenta
+173569	 que
+173900	 queremos
+174200	 generar
+174519	 una
+173540	__EVENT__
+176640	
+
+176650	compartir
+177650	 tener
+178340	 una
+178459	 conversación
+178970	 sobre
+176650	__EVENT__
+179350	
+
+179360	algo
+179660	 así
+179840	 como
+179360	__EVENT__
+180970	
+
+180980	[Música]
+180980	__EVENT__
+182090	
+
+182100	adjuntamos
+182700	 en
+182910	 talleres
+182100	__EVENT__
+185830	
+
+185840	y
+186379	 luego
+187390	 debemos
+188390	 buscar
+185840	__EVENT__
+190280	
+
+190290	y
+190799	 hacemos
+191129	 un
+191400	 quintero
+192019	 sobre
+193019	 cilindro
+190290	__EVENT__
+195550	
+
+195560	por
+196560	 qué
+195560	__EVENT__
+197540	
+
+197550	este
+198240	 código
+198510	 lo
+199440	 puedo
+199680	 correr
+199890	 en
+199950	 mi
+197550	__EVENT__
+200000	
+
+200010	consola
+200430	 pero
+200610	 quiero
+200820	 tener
+201120	 una
+201570	 discusión
+200010	__EVENT__
+202040	
+
+202050	sobre
+202200	 él
+202440	 entonces
+203090	 voy
+204090	 a
+204120	 hacer
+204270	 es
+204450	 un
+204780	 re
+202050	__EVENT__
+204890	
+
+204900	producto
+204900	__EVENT__
+208070	
+
+208080	como
+208620	 si
+208740	 nadie
+209360	 y
+210360	 los
+210720	 aliens
+211140	 simplemente
+208080	__EVENT__
+211640	
+
+211650	pidiendo
+212040	 el
+212340	 reflex
+212730	 puedes
+213450	 encontrar
+213870	 por
+211650	__EVENT__
+213980	
+
+213990	ejemplo
+214050	 opción
+214470	 de
+214620	 hacer
+215250	 una
+215370	 réflex
+213990	__EVENT__
+215750	
+
+215760	basada
+216150	 en
+216210	 la
+216270	 selección
+215760	__EVENT__
+219330	
+
+219340	que
+220340	 tenemos
+220519	 acá
+219340	__EVENT__
+223070	
+
+223080	seleccionamos
+223800	 este
+224100	 código
+223080	__EVENT__
+226810	
+
+226820	pemex
+227820	 elección
+226820	__EVENT__
+229440	
+
+229450	ahí
+229930	 está
+230170	 pensando
+230730	 exactamente
+232950	 bueno
+233950	 acá
+229450	__EVENT__
+234089	
+
+234099	yo
+234220	 lo
+234310	 emocional
+234099	__EVENT__
+236070	
+
+236080	y
+236650	 en
+236860	 este
+237040	 caso
+237160	 me
+237340	 está
+237460	 preguntando
+238120	 si
+236080	__EVENT__
+238950	
+
+238960	quiero
+239460	 abrir
+240460	 un
+240550	 archivo
+240760	 para
+241750	 poder
+238960	__EVENT__
+242070	
+
+242080	copiar
+242080	__EVENT__
+243950	
+
+243960	esto
+244350	 es
+245160	 que
+245310	 se
+245430	 previsualizar
+246090	 acá
+246240	 en
+246750	 el
+243960	__EVENT__
+246830	
+
+246840	visualizador
+247320	 de
+247530	 esta
+247770	 textura
+246840	__EVENT__
+248660	
+
+248670	puede
+249300	 ser
+249420	 que
+249510	 no
+249540	 porque
+250310	 podemos
+251310	 hacer
+248670	__EVENT__
+251390	
+
+251400	mucho
+251790	 mejor
+251970	 que
+252480	 lo
+252569	 que
+252690	 vamos
+252900	 a
+253050	 hacer
+251400	__EVENT__
+255100	
+
+255110	en
+255620	 este
+255860	 caso
+256250	 estamos
+256730	 mostrando
+257470	 el
+258470	 output
+255110	__EVENT__
+259390	
+
+259400	pero
+259609	 por
+259760	 ejemplo
+259820	 estamos
+260180	 incluyendo
+259400	__EVENT__
+260470	
+
+260480	información
+260900	 que
+261109	 es
+261200	 bastante
+261440	 importante
+260480	__EVENT__
+261729	
+
+261739	en
+262570	 mantener
+263570	 una
+263990	 acción
+264290	 productiva
+264710	 que
+265400	 es
+261739	__EVENT__
+265710	
+
+265720	la
+266720	 idea
+266960	 de
+267470	 por
+267680	 ejemplo
+267740	 incluir
+268420	 la
+265720	__EVENT__
+269410	
+
+269420	información
+269720	 entonces
+270710	 cómo
+271040	 hacemos
+271160	 eso
+269420	__EVENT__
+271450	
+
+271460	bueno
+271690	 puedo
+272690	 resaltar
+273320	 el
+273560	 texto
+273920	 en
+274070	 este
+271460	__EVENT__
+274240	
+
+274250	caso
+274520	 voy
+274670	 a
+274700	 hacer
+274910	 el
+275240	 render
+275690	 reprex
+277000	 esto
+274250	__EVENT__
+277990	
+
+278000	me
+278120	 abre
+278420	 una
+279050	 interfase
+279650	 que
+279740	 me
+279830	 permite
+278000	__EVENT__
+280210	
+
+280220	elegir
+280670	 por
+281060	 ejemplo
+281330	 la
+281600	 selección
+282170	 actual
+280220	__EVENT__
+283350	
+
+283360	lo
+284360	 voy
+284480	 a
+284540	 publicar
+284870	 en
+283360	__EVENT__
+286190	
+
+286200	por
+286410	 ejemplo
+287420	 y
+288420	 quiero
+288930	 que
+289050	 me
+289140	 incluya
+289740	 la
+286200	__EVENT__
+290480	
+
+290490	información
+290790	 de
+291150	 la
+291210	 sesión
+291600	 vamos
+291930	 a
+290490	__EVENT__
+291980	
+
+291990	correrlo
+292410	 de
+292500	 esa
+292620	 forma
+291990	__EVENT__
+293860	
+
+293870	ya
+294500	 esto
+294740	 nos
+295370	 pone
+295550	 más
+295760	 cerca
+295910	 de
+296390	 mantener
+293870	__EVENT__
+296770	
+
+296780	una
+297080	 conversación
+297230	 productiva
+297910	 si
+298910	 yo
+299030	 ahora
+296780	__EVENT__
+299280	
+
+299290	voy
+300290	 hacia
+300530	 abajo
+300800	 vas
+300950	 a
+301040	 ver
+301250	 qué
+301370	 dice
+299290	__EVENT__
+301780	
+
+301790	información
+302720	 sobre
+303290	 las
+303410	 sesiones
+303620	 de
+304190	 este
+301790	__EVENT__
+304570	
+
+304580	stroke
+304910	 down
+305270	 medio
+305810	 te
+306440	 muestra
+306920	 información
+304580	__EVENT__
+307600	
+
+307610	sobre
+307880	 la
+308000	 plataforma
+308270	 en
+308660	 este
+308780	 caso
+309020	 esto
+309260	 es
+307610	__EVENT__
+309310	
+
+309320	tuyo
+309620	 claves
+310040	 del
+310130	 corriente
+310460	 sobre
+310700	 ubuntu
+309320	__EVENT__
+310870	
+
+310880	11.04
+312280	 en
+313280	 la
+313370	 versión
+313700	 de
+313790	 recorriendo
+314570	 es
+310880	__EVENT__
+315720	
+
+315730	4.02
+316730	 la
+317690	 lista
+318640	 y
+319640	 también
+319940	 la
+320030	 versión
+320300	 de
+315730	__EVENT__
+320350	
+
+320360	todos
+320420	 los
+320600	 paquetes
+320780	 que
+321140	 tengo
+320360	__EVENT__
+322750	
+
+322760	y
+323180	 eso
+323450	 es
+323510	 muy
+323600	 importante
+323630	 en
+324290	 muchos
+324530	 casos
+322760	__EVENT__
+324910	
+
+324920	sobre
+325670	 todo
+325910	 cuando
+326120	 estamos
+326330	 hablando
+326630	 de
+324920	__EVENT__
+326710	
+
+326720	errores
+326720	__EVENT__
+328269	
+
+328279	recomendaciones
+328279	__EVENT__
+330620	
+
+330630	en
+331200	 este
+331350	 caso
+331620	 ya
+331800	 si
+332010	 le
+332100	 interesaría
+330630	__EVENT__
+332650	
+
+332660	compartir
+333660	 este
+334200	 código
+334500	 el
+335100	 cinema
+335430	 no
+335520	 voy
+335670	 a
+332660	__EVENT__
+335690	
+
+335700	hacer
+335850	 un
+336540	 paso
+336840	 más
+336990	 voy
+337950	 a
+337980	 decir
+338160	 que
+338280	 no
+338400	 por
+335700	__EVENT__
+338690	
+
+338700	ahora
+339000	 dos
+339530	 para
+340530	 mostrar
+341270	 otras
+342270	 situaciones
+338700	__EVENT__
+342650	
+
+342660	en
+342810	 las
+342930	 que
+343020	 por
+343170	 ejemplo
+343380	 existe
+343860	 archivo
+342660	__EVENT__
+346020	
+
+346030	en
+347030	 pícaros
+346030	__EVENT__
+348460	
+
+348470	no
+349220	 tengo
+349580	 porque
+350150	 viene
+350510	 por
+350660	 defecto
+350780	 en
+351350	 r
+348470	__EVENT__
+351640	
+
+351650	pero
+352190	 qué
+352310	 tal
+352520	 si
+352730	 fuera
+353030	 un
+353120	 archivo
+353600	 que
+353960	 no
+351650	__EVENT__
+354670	
+
+354680	es
+354800	 tan
+354950	 fácil
+355370	 compartir
+355850	 un
+356240	 archivo
+356570	 que
+356720	 se
+354680	__EVENT__
+357310	
+
+357320	lo
+358100	 leí
+358280	 de
+358520	 un
+358690	 archivo
+359690	 csv
+361060	 bueno
+362060	 como
+357320	__EVENT__
+362380	
+
+362390	generar
+362870	 una
+363850	 reflex
+364930	 auto
+365930	 alguna
+366920	 opción
+362390	__EVENT__
+367090	
+
+367100	esconder
+367100	__EVENT__
+369959	
+
+369969	podemos
+370569	 pegar
+371529	 y
+371819	 poner
+372819	 dentro
+373089	 del
+373329	 tipo
+373989	 el
+369969	__EVENT__
+375589	
+
+375599	archivo
+376599	 de
+377139	 datos
+377369	 data
+378369	 frame
+378789	 por
+378939	 ejemplo
+375599	__EVENT__
+379259	
+
+379269	de
+379629	 datos
+380409	 que
+380559	 quieras
+380939	 generar
+381939	 una
+383699	 tenemos
+379269	__EVENT__
+385850	
+
+385860	compartir
+386819	 ese
+387270	 set
+388080	 de
+388199	 datos
+388289	 pero
+388979	 en
+389189	 forma
+385860	__EVENT__
+389450	
+
+389460	de
+389550	 código
+389729	 entonces
+390979	 informe
+391979	 textos
+392340	 con
+389460	__EVENT__
+392719	
+
+392729	exceso
+393210	 teneis
+393719	 sacar
+393960	 la
+394050	 consulta
+395150	 texto
+392729	__EVENT__
+396140	
+
+396150	que
+396449	 puedes
+396719	 cortar
+397129	 exactamente
+396150	__EVENT__
+399159	
+
+399169	y
+399680	 pegar
+399169	__EVENT__
+401370	
+
+401380	en
+401560	 el
+401680	 archivo
+402070	 de
+402190	 texto
+402450	 esto
+403450	 es
+401380	__EVENT__
+403560	
+
+403570	equivalente
+403570	__EVENT__
+404999	
+
+405009	a
+405159	 esto
+405719	 y
+406719	 ahora
+405009	__EVENT__
+409640	
+
+409650	vamos
+410130	 a
+410250	 hacer
+409650	__EVENT__
+413239	
+
+413249	en
+413759	 picar
+414089	 y
+414689	 a
+414719	 esto
+415169	 se
+415469	 lo
+415559	 vamos
+415679	 a
+415799	 asignar
+413249	__EVENT__
+419810	
+
+419820	entonces
+420420	 ahora
+420780	 en
+421500	 pícaros
+421890	 viene
+422190	 de
+422490	 todo
+419820	__EVENT__
+423170	
+
+423180	este
+423300	 texto
+423570	 que
+423720	 acá
+423840	 se
+427430	 tiene
+428430	 el
+429060	 efecto
+423180	__EVENT__
+429320	
+
+429330	deseado
+429660	 que
+429840	 es
+429960	 el
+430080	 de
+430230	 generar
+431010	 este
+431460	 hacer
+429330	__EVENT__
+432280	
+
+432290	llamado
+433290	 en
+433440	 picar
+433740	 y
+434040	 de
+434280	 eso
+434550	 podemos
+434760	 sobre
+432290	__EVENT__
+435500	
+
+435510	eso
+435630	 podemos
+435840	 construir
+436290	 entonces
+436560	 ahora
+435510	__EVENT__
+436910	
+
+436920	podrían
+437730	 seleccionar
+438030	 todo
+438630	 esto
+438990	 otra
+439260	 vez
+436920	__EVENT__
+439490	
+
+439500	volver
+439980	 a
+440040	 la
+440130	 reflexión
+439500	__EVENT__
+440960	
+
+440970	y
+441900	 generar
+442350	 el
+442470	 autor
+442800	 aunque
+443070	 habíamos
+440970	__EVENT__
+443930	
+
+443940	discutido
+444150	 antes
+444630	 que
+444720	 hacer
+445080	 una
+443940	__EVENT__
+445220	
+
+445230	preselección
+445590	 con
+446190	 el
+446940	 argumento
+447570	 de
+448730	 incluir
+445230	__EVENT__
+449720	
+
+449730	la
+449820	 sesión
+450150	 de
+450510	 la
+450900	 información
+451290	 de
+451350	 la
+451410	 sesión
+449730	__EVENT__
+451730	
+
+451740	es
+454370	 réflex
+455960	 dejando
+456960	 porque
+458960	 vamos
+459960	 a
+460140	 abordar
+451740	__EVENT__
+460730	
+
+460740	lo
+460890	 que
+460920	 estaba
+461190	 haciendo
+461280	 antes
+462140	 vamos
+463140	 a
+460740	__EVENT__
+463280	
+
+463290	repetir
+463970	 y
+464970	 ahora
+465210	 sí
+465420	 entonces
+465810	 es
+466200	 decir
+466650	 que
+463290	__EVENT__
+466880	
+
+466890	la
+467250	 selección
+467400	 corriente
+468270	 y
+468300	 acordate
+466890	__EVENT__
+468830	
+
+468840	siempre
+469410	 de
+469890	 poner
+470490	 la
+470870	 sesión
+471870	 de
+471960	 la
+468840	__EVENT__
+472370	
+
+472380	información
+472380	__EVENT__
+474410	
+
+474420	él
+474420	__EVENT__
+475760	
+
+475770	en
+476310	 este
+476550	 caso
+476910	 ahora
+477150	 si
+477300	 va
+477389	 a
+477419	 decir
+477629	 que
+477720	 sí
+475770	__EVENT__
+477740	
+
+477750	que
+478050	 me
+478139	 lo
+478169	 haré
+477750	__EVENT__
+481439	
+
+481449	y
+481960	 hasta
+482199	 acá
+482319	 para
+482650	 que
+482770	 me
+482889	 dé
+483039	 un
+483249	 archivo
+481449	__EVENT__
+483629	
+
+483639	que
+483729	 yo
+483819	 pueda
+484120	 copiar
+484509	 y
+485229	 esto
+485499	 podría
+483639	__EVENT__
+485670	
+
+485680	pegarlo
+485680	__EVENT__
+487860	
+
+487870	por
+488650	 ejemplo
+488980	 si
+489190	 yo
+489490	 me
+489640	 voy
+489730	 aquí
+489940	 a
+490090	 punto
+487870	__EVENT__
+490380	
+
+490390	com
+490570	 podría
+490990	 agregar
+491440	 un
+492040	 nuevo
+492100	 chiste
+490390	__EVENT__
+495159	
+
+495169	voy
+495800	 a
+495830	 llamar
+495949	 porque
+497050	 genera
+498050	 un
+498319	 archivo
+495169	__EVENT__
+498700	
+
+498710	que
+498830	 es
+498710	__EVENT__
+501179	
+
+501189	reconocible
+502189	 como
+502370	 markdown
+502849	 entonces
+503680	 me
+501189	__EVENT__
+504670	
+
+504680	place
+505449	 md
+504680	__EVENT__
+507550	
+
+507560	si
+507680	 yo
+507800	 veo
+508009	 acá
+508279	 eso
+509620	 como
+510620	 también
+510860	 puedes
+507560	__EVENT__
+511089	
+
+511099	crear
+511340	 un
+511580	 chip
+511969	 secreto
+512659	 lo
+512899	 cual
+513079	 en
+513440	 el
+513529	 caso
+511099	__EVENT__
+513579	
+
+513589	que
+513800	 tenga
+514010	 que
+514099	 mantener
+514250	 una
+514459	 conversación
+513589	__EVENT__
+514600	
+
+514610	privada
+514969	 sería
+515630	 ideal
+515899	 pero
+514610	__EVENT__
+519120	
+
+519130	al
+519370	 público
+519820	 y
+520390	 no
+520510	 tan
+520660	 genial
+521020	 porque
+521289	 veo
+521500	 el
+519130	__EVENT__
+521700	
+
+521710	código
+522240	 incluso
+523240	 con
+523890	 la
+521710	__EVENT__
+525150	
+
+525160	y
+525639	 sintax
+526240	 highlighting
+526810	 y
+527680	 también
+527980	 veo
+528160	 el
+525160	__EVENT__
+528629	
+
+528639	código
+529000	 y
+529029	 el
+529149	 agua
+529480	 y
+529930	 esto
+530170	 cumple
+530769	 con
+530889	 los
+528639	__EVENT__
+530970	
+
+530980	requisitos
+531129	 de
+533490	 conversaciones
+534490	 productivas
+530980	__EVENT__
+535519	
+
+535529	porque
+536529	 esto
+537160	 es
+537310	 fácil
+537670	 de
+537730	 correr
+538029	 para
+535529	__EVENT__
+538319	
+
+538329	lanzar
+538629	 primero
+538829	 correr
+539829	 porque
+540009	 sabemos
+540339	 en
+538329	__EVENT__
+540569	
+
+540579	el
+540699	 código
+540940	 correo
+541240	 segundo
+542139	 no
+542829	 lo
+542949	 tengo
+543129	 que
+540579	__EVENT__
+543179	
+
+543189	correr
+543399	 porque
+543639	 veo
+543759	 el
+543879	 output
+544149	 pero
+544420	 si
+543189	__EVENT__
+544530	
+
+544540	quisiera
+544870	 correr
+545079	 no
+545170	 sería
+545379	 fácil
+545560	 correr
+545920	 o
+544540	__EVENT__
+545970	
+
+545980	porque
+546220	 lo
+546279	 puedo
+546519	 simplemente
+546699	 copiar
+547240	 y
+545980	__EVENT__
+547470	
+
+547480	pegar
+547509	 en
+547839	 la
+547899	 consola
+548379	 y
+549189	 eso
+549399	 va
+549490	 a
+549519	 correr
+547480	__EVENT__
+549780	
+
+549790	porque
+550060	 porque
+550360	 el
+550509	 output
+550810	 está
+551740	 no
+552160	 es
+549790	__EVENT__
+552300	
+
+552310	comentado
+553060	 o
+553089	 sea
+553240	 que
+553329	 no
+553449	 va
+553600	 a
+553629	 interferir
+552310	__EVENT__
+554069	
+
+554079	con
+554680	 la
+554800	 corrida
+555129	 de
+555279	 escoria
+554079	__EVENT__
+558930	
+
+558940	hay
+559510	 un
+559630	 paso
+559870	 más
+559990	 que
+560410	 puedes
+560770	 hacer
+561010	 que
+561280	 es
+558940	__EVENT__
+561360	
+
+561370	el
+561490	 caso
+561850	 de
+562150	 si
+563080	 en
+563170	 vez
+563290	 de
+563440	 compartir
+563770	 de
+561370	__EVENT__
+564000	
+
+564010	esta
+564160	 forma
+564580	 quisiera
+565060	 compartirlo
+566220	 vamos
+567220	 a
+564010	__EVENT__
+567240	
+
+567250	borrar
+567540	 vamos
+568540	 a
+568600	 que
+569070	 fuera
+570070	 que
+570160	 quisiera
+567250	__EVENT__
+570480	
+
+570490	compartir
+570910	 este
+571060	 archivo
+571390	 con
+571780	 un
+571900	 archivo
+570490	__EVENT__
+572250	
+
+572260	csv
+573210	 y
+574210	 walter
+574540	 es
+574630	 un
+574720	 par
+574840	 de
+574930	 opciones
+575170	 de
+572260	__EVENT__
+575730	
+
+575740	publicar
+576100	 que
+576160	 vamos
+576310	 a
+576340	 hacer
+576580	 es
+576900	 que
+577900	 hemos
+575740	__EVENT__
+578040	
+
+578050	hecho
+578230	 no
+578590	 tengo
+579000	 hacer
+580000	 idealmente
+580600	 los
+578050	__EVENT__
+580970	
+
+580980	contenidos
+581980	 pondrías
+582340	 en
+582490	 algún
+582850	 archivo
+580980	__EVENT__
+583410	
+
+583420	online
+583690	 de
+584140	 manera
+584290	 que
+584500	 podrías
+584890	 leerlo
+583420	__EVENT__
+585510	
+
+585520	directamente
+586240	 con
+586660	 un
+588330	 'sí'
+585520	__EVENT__
+592210	
+
+592220	fíjate
+592850	 que
+592970	 existe
+593900	 un
+594020	 argumento
+592220	__EVENT__
+598530	
+
+598540	frisby
+599540	 tiene
+599990	 el
+600290	 argumento
+600770	 file
+602080	 hellfire
+598540	__EVENT__
+604050	
+
+604060	puede
+605060	 ser
+605590	 un
+606590	 variado
+607190	 también
+607520	 si
+607880	 vos
+604060	__EVENT__
+607990	
+
+608000	tenés
+608000	__EVENT__
+614519	
+
+614529	si
+615579	 los
+616579	 archivos
+617149	 también
+617509	 pueden
+617990	 ser
+614529	__EVENT__
+620889	
+
+620899	esto
+621769	 quiere
+622100	 decir
+622129	 que
+622339	 fire
+622939	 puede
+623209	 ser
+620899	__EVENT__
+624999	
+
+625009	una
+625550	 dirección
+625879	 de
+626029	 internet
+626120	 si
+626540	 vos
+626629	 tenés
+625009	__EVENT__
+626860	
+
+626870	tu
+627019	 archivo
+627170	 guardado
+627920	 en
+628160	 el
+628610	 kit
+628850	 japonés
+626870	__EVENT__
+629259	
+
+629269	por
+629449	 ejemplo
+629779	 le
+630470	 pasa
+631069	 a
+631100	 ser
+631220	 el
+631759	 dakar
+632660	 dice
+629269	__EVENT__
+632829	
+
+632839	víctor
+633500	 valera
+633829	 genial
+634399	 otra
+634879	 opción
+634970	 es
+632839	__EVENT__
+635110	
+
+635120	cuando
+635360	 tienes
+635629	 guardado
+636730	 localmente
+637730	 en
+635120	__EVENT__
+638530	
+
+638540	este
+638720	 caso
+639050	 tenemos
+639860	 un
+640100	 sitio
+640250	 llamado
+640399	 data
+638540	__EVENT__
+640960	
+
+640970	y
+641629	 que
+642009	 digamos
+643009	 que
+643160	 en
+643220	 ese
+643459	 directorio
+640970	__EVENT__
+645720	
+
+645730	tenemos
+646730	 que
+646879	 vamos
+647060	 a
+647120	 abordar
+645730	__EVENT__
+647980	
+
+647990	[Música]
+647990	__EVENT__
+649139	
+
+649149	y
+650149	 vamos
+650810	 a
+650959	 abordar
+651259	 en
+651439	 picar
+651829	 dentro
+652759	 del
+649149	__EVENT__
+652869	
+
+652879	archivo
+652879	__EVENT__
+655290	
+
+655300	pero
+656300	 dentro
+656689	 del
+656899	 campo
+655300	__EVENT__
+658410	
+
+658420	entonces
+659110	 ahora
+659290	 la
+659500	 catarata
+660190	 tiene
+660579	 este
+658420	__EVENT__
+660960	
+
+660970	archivo
+661209	 indicar
+662200	 si
+662440	 es
+662529	 beat
+660970	__EVENT__
+663180	
+
+663190	entonces
+663790	 lo
+664029	 que
+664180	 haría
+664329	 es
+664570	 algo
+664750	 así
+664930	 como
+663190	__EVENT__
+668170	
+
+668180	2
+668180	__EVENT__
+672600	
+
+672610	o
+673610	 mejor
+674060	 aún
+672610	__EVENT__
+674410	
+
+674420	harías
+674810	 algo
+675050	 así
+675230	 como
+675550	 quiere
+674420	__EVENT__
+677510	
+
+677520	nada
+677520	__EVENT__
+679330	
+
+679340	y
+679880	 ya
+680150	 no
+680300	 usarías
+680720	 la
+681020	 barrita
+681320	 sino
+681770	 que
+679340	__EVENT__
+681910	
+
+681920	usarías
+683950	 que
+684950	 con
+685870	 conversión
+681920	__EVENT__
+692630	
+
+692640	entonces
+693360	 este
+693930	 archivo
+694230	 esto
+694560	 se
+694740	 iba
+694860	 a
+692640	__EVENT__
+694880	
+
+694890	correr
+695040	 acá
+695790	 en
+696060	 mi
+696290	 sesión
+697290	 de
+697470	 estudio
+697890	 pero
+694890	__EVENT__
+698120	
+
+698130	qué
+698250	 pasaría
+698610	 cuando
+698910	 quiero
+699270	 hacer
+699480	 un
+698130	__EVENT__
+699620	
+
+699630	réflex
+699630	__EVENT__
+701120	
+
+701130	selection
+702320	 muestra
+703320	 que
+703410	 debería
+703650	 darme
+704250	 un
+701130	__EVENT__
+704330	
+
+704340	error
+704550	 porque
+705060	 porque
+705420	 el
+705480	 reflex
+705870	 corre
+706530	 en
+704340	__EVENT__
+706730	
+
+706740	una
+706890	 sesión
+708110	 paralela
+709110	 y
+710040	 en
+710160	 un
+710250	 directorio
+706740	__EVENT__
+710900	
+
+710910	temporario
+711690	 donde
+712080	 no
+712200	 tiene
+712500	 acceso
+712920	 a
+712950	 la
+710910	__EVENT__
+713120	
+
+713130	carpeta
+713840	 sin
+714840	 embargo
+715230	 tienes
+715500	 ahí
+715820	 opciones
+713130	__EVENT__
+716940	
+
+716950	[Música]
+716950	__EVENT__
+722320	
+
+722330	es
+723500	 simplemente
+722330	__EVENT__
+726870	
+
+726880	y
+727390	 a
+727450	 cáritas
+727870	 dando
+728080	 las
+728200	 expresiones
+728890	 que
+726880	__EVENT__
+729180	
+
+729190	vos
+729970	 querés
+730180	 correr
+730740	 en
+731740	 córdoba
+732420	 esto
+733420	 sea
+733930	 si
+729190	__EVENT__
+734070	
+
+734080	yo
+734230	 quisiera
+734440	 correr
+734950	 esto
+735580	 que
+735670	 tenemos
+736000	 acá
+734080	__EVENT__
+738180	
+
+738190	te
+738670	 voy
+738760	 a
+738880	 fallar
+739210	 porque
+739480	 lo
+739630	 mismo
+739780	 que
+738190	__EVENT__
+740010	
+
+740020	hacer
+740290	 lo
+740500	 que
+740650	 acabo
+740950	 de
+740980	 hacer
+740020	__EVENT__
+742520	
+
+742530	efectivamente
+743530	 pero
+744310	 hay
+744490	 un
+744640	 argumento
+744760	 a
+742530	__EVENT__
+745140	
+
+745150	represas
+745690	 que
+745930	 le
+746110	 puedes
+746380	 agregar
+745150	__EVENT__
+748100	
+
+748110	que
+748980	 te
+749100	 basura
+749430	 que
+749670	 se
+749880	 leía
+750149	 de
+750240	 out
+750600	 fire
+751050	 en
+748110	__EVENT__
+751579	
+
+751589	él
+751589	__EVENT__
+752870	
+
+752880	eso
+753570	 te
+753690	 va
+753780	 a
+753810	 permitir
+753960	 que
+754530	 en
+755340	 vez
+755520	 de
+752880	__EVENT__
+755600	
+
+755610	correr
+757010	 0
+755610	__EVENT__
+759340	
+
+759350	en
+759710	 paz
+759920	 entonces
+761170	 ahora
+762170	 con
+762440	 el
+762910	 argumento
+759350	__EVENT__
+763900	
+
+763910	de
+764570	 poder
+763910	__EVENT__
+767250	
+
+767260	esto
+768260	 va
+768380	 a
+768410	 correr
+768740	 ex
+769130	 va
+769190	 a
+769220	 cobrar
+769400	 no
+769820	 en
+770240	 el
+767260	__EVENT__
+770590	
+
+770600	archivo
+770990	 temporal
+770600	__EVENT__
+774210	
+
+774220	donde
+775220	 está
+775340	 trabajando
+775850	 en
+775910	 este
+776060	 genial
+774220	__EVENT__
+776590	
+
+776600	entonces
+776930	 ahora
+777110	 sí
+777140	 funciona
+777740	 para
+778610	 que
+778700	 esto
+776600	__EVENT__
+778810	
+
+778820	sea
+779000	 en
+778820	__EVENT__
+781750	
+
+781760	andrés
+782760	 que
+782970	 estamos
+783210	 planteando
+783780	 para
+784020	 una
+781760	__EVENT__
+785670	
+
+785680	[Música]
+785680	__EVENT__
+790970	
+
+790980	d
+790980	__EVENT__
+793430	
+
+793440	este
+794070	 track
+794250	 de
+794370	 un
+794460	 medio
+794760	 que
+794910	 habíamos
+793440	__EVENT__
+795110	
+
+795120	visto
+795330	 antes
+795710	 otra
+796710	 vez
+796830	 acá
+795120	__EVENT__
+801330	
+
+801340	un
+802340	 poco
+802870	 sí
+803870	 entonces
+804380	 ahora
+805040	 el
+801340	__EVENT__
+805720	
+
+805730	visualizador
+806420	 vez
+806690	 que
+806900	 corrió
+807860	 corrió
+805730	__EVENT__
+808240	
+
+808250	dentro
+808730	 de
+808820	 éste
+809470	 volveré
+810470	 crazy
+810890	 abajo
+808250	__EVENT__
+811180	
+
+811190	tenemos
+811430	 la
+811670	 sesión
+811190	__EVENT__
+813380	
+
+813390	entonces
+813900	 ahora
+814650	 si
+814860	 quiero
+815310	 nuevamente
+813390	__EVENT__
+816140	
+
+816150	decir
+817020	 sí
+817650	 por
+818370	 favor
+818520	 dame
+818730	 un
+819060	 archivo
+819450	 que
+816150	__EVENT__
+819590	
+
+819600	pueda
+819810	 copiar
+820200	 y
+820650	 pegar
+820680	 lo
+821130	 como
+821700	 un
+821820	 archivo
+819600	__EVENT__
+822080	
+
+822090	de
+822270	 marta
+822090	__EVENT__
+825510	
+
+825520	y
+825520	__EVENT__
+826970	
+
+826980	vemos
+827670	 los
+827760	 mismo
+828120	 objetivos
+828180	 esto
+828810	 debería
+826980	__EVENT__
+829040	
+
+829050	ser
+829230	 lo
+829500	 mismo
+829889	 empezar
+830430	 por
+830760	 un
+830850	 archivo
+829050	__EVENT__
+831370	
+
+831380	vacío
+832380	 le
+832680	 da
+832769	 su
+832920	 nombre
+833459	 le
+833670	 asegura
+833940	 de
+834029	 que
+831380	__EVENT__
+834110	
+
+834120	tenga
+834300	 la
+834389	 extensión
+834779	 md
+835079	 para
+835620	 que
+835709	 sea
+834120	__EVENT__
+835879	
+
+835889	interpretado
+836430	 como
+836639	 tal
+835889	__EVENT__
+837290	
+
+837300	guardado
+837899	 which
+838410	 is
+839089	 y
+840089	 ya
+840209	 puede
+840449	 compartir
+837300	__EVENT__
+840800	
+
+840810	este
+841019	 link
+841790	 con
+842790	 la
+842910	 persona
+843240	 que
+843360	 es
+840810	__EVENT__
+851079	
+
+851089	entonces
+851930	 ahora
+852110	 volvamos
+852290	 a
+852559	 donde
+851089	__EVENT__
+852970	
+
+852980	estábamos
+853579	 hagamos
+854480	 descubrir
+854839	 esta
+855230	 línea
+852980	__EVENT__
+855549	
+
+855559	si
+856519	 eran
+857300	 unos
+857480	 casos
+857779	 las
+858050	 discusiones
+858559	 en
+855559	__EVENT__
+858790	
+
+858800	particular
+859279	 sobre
+859639	 algo
+859879	 que
+859910	 está
+860120	 en
+860209	 un
+858800	__EVENT__
+860259	
+
+860269	repositorio
+860870	 y
+860930	 en
+861139	 ese
+861319	 caso
+862809	 también
+863809	 es
+860269	__EVENT__
+867840	
+
+867850	una
+868149	 hija
+868509	 y
+868720	 yo
+868930	 vamos
+869920	 a
+870130	 ir
+870279	 por
+870399	 ejemplo
+870490	 a
+867850	__EVENT__
+870720	
+
+870730	este
+870880	 repositorio
+871290	 y
+872290	 yo
+872410	 quisiera
+872709	 hacer
+872769	 un
+870730	__EVENT__
+873030	
+
+873040	issue
+873839	 acá
+874839	 eso
+875800	 es
+876490	 genial
+876759	 porque
+877199	 aunque
+873040	__EVENT__
+878189	
+
+878199	quiero
+878740	 reportaron
+879160	 un
+879279	 back
+879759	 o
+880000	 algo
+880180	 así
+878199	__EVENT__
+881340	
+
+881350	en
+881440	 general
+881769	 porque
+881949	 el
+882430	 mismo
+882759	 primera
+881350	__EVENT__
+883259	
+
+883269	represa
+883750	 lo
+884610	 que
+885610	 quería
+885880	 hacer
+886089	 era
+883269	__EVENT__
+888230	
+
+888240	esto
+890149	 representa
+891149	 este
+891480	 archivo
+891830	 me
+892830	 pregunto
+888240	__EVENT__
+893090	
+
+893100	si
+893130	 quiero
+893459	 copiarlo
+894450	 en
+894540	 general
+894839	 seguro
+893100	__EVENT__
+895130	
+
+895140	estás
+895320	 corriendo
+895410	 el
+895770	 negro
+895980	 estudio
+895140	__EVENT__
+896300	
+
+896310	localmente
+896310	__EVENT__
+900390	
+
+900400	pero
+901000	 en
+901060	 el
+901150	 caso
+901300	 como
+902290	 estoy
+902470	 en
+902590	 el
+902680	 estudio
+900400	__EVENT__
+902880	
+
+902890	cloud
+903370	 no
+904240	 tiene
+904450	 acceso
+904720	 al
+904780	 portapapeles
+902890	__EVENT__
+909070	
+
+909080	a
+909940	 pesar
+910940	 de
+911510	 que
+911630	 vivía
+911870	 y
+912140	 yo
+912320	 también
+912680	 es
+909080	__EVENT__
+912760	
+
+912770	inteligente
+913370	 y
+913430	 muestra
+913970	 los
+914330	 archivos
+914860	 con
+912770	__EVENT__
+915850	
+
+915860	formato
+916250	 con
+916790	 sintaxis
+917650	 md
+918730	 de
+919730	 marcaron
+920210	 nos
+915860	__EVENT__
+920680	
+
+920690	muestran
+921050	 también
+921200	 tal
+921710	 como
+921950	 esperas
+920690	__EVENT__
+924860	
+
+924870	sinde
+925560	 highlighting
+926279	 y
+926550	 demás
+926790	 y
+927450	 sigue
+924870	__EVENT__
+927860	
+
+927870	siendo
+928200	 colapsable
+927870	__EVENT__
+932230	
+
+932240	así
+933240	 que
+933360	 fantásticos
+934290	 les
+934500	 cumplimos
+934920	 con
+932240	__EVENT__
+935199	
+
+935209	esta
+936209	 niña
+936450	 de
+936720	 por
+936899	 acá
+937080	 ahora
+937620	 vamos
+937830	 a
+937890	 ver
+935209	__EVENT__
+937970	
+
+937980	qué
+938100	 tal
+938279	 si
+938580	 bueno
+939390	 en
+939990	 la
+940170	 réflex
+940860	 es
+937980	__EVENT__
+942170	
+
+942180	quizás
+942810	 un
+942960	 poco
+943200	 grande
+943649	 entonces
+943950	 conviene
+942180	__EVENT__
+944510	
+
+944520	más
+944640	 hacerlo
+945240	 y
+945630	 compartirla
+946260	 en
+946470	 un
+946620	 archivo
+944520	__EVENT__
+947180	
+
+947190	completo
+947190	__EVENT__
+948060	
+
+948070	bueno
+948730	 que
+949650	 así
+950650	 comentábamos
+951360	 en
+952360	 este
+948070	__EVENT__
+952770	
+
+952780	repositorio
+954840	 territorio
+952780	__EVENT__
+957369	
+
+957379	sí
+957919	 por
+958639	 qué
+958759	 no
+957379	__EVENT__
+959920	
+
+959930	digamos
+960710	 que
+960860	 estoy
+959930	__EVENT__
+963610	
+
+963620	podría
+964220	 destruirlo
+964790	 pero
+965150	 bueno
+965330	 sólo
+966200	 para
+963620	__EVENT__
+966340	
+
+966350	demostrar
+966440	 que
+966920	 por
+967670	 eso
+967850	 no
+967970	 es
+968060	 el
+968180	 enfoque
+966350	__EVENT__
+968590	
+
+968600	de
+968900	 ésta
+968600	__EVENT__
+970370	
+
+970380	de
+970860	 esta
+971010	 charla
+971190	 simplemente
+971760	 si
+971970	 quieres
+970380	__EVENT__
+972880	
+
+972890	someterlos
+973890	 a
+974580	 un
+975240	 archivo
+975600	 entero
+975900	 para
+972890	__EVENT__
+976100	
+
+976110	tener
+976770	 una
+976860	 discusión
+976980	 sobre
+977790	 un
+977970	 archivo
+976110	__EVENT__
+978380	
+
+978390	entero
+978690	 si
+979320	 está
+979470	 sucia
+979800	 un
+979950	 repositorio
+978390	__EVENT__
+980480	
+
+980490	puedes
+980880	 disfrutarlo
+981570	 sí
+982140	 y
+982470	 empezar
+983100	 la
+980490	__EVENT__
+983210	
+
+983220	conversación
+983370	 y
+983970	 sino
+984210	 simplemente
+984690	 creas
+985140	 un
+983220	__EVENT__
+985370	
+
+985380	repositorio
+985860	 a
+985920	 vos
+986040	 mismo
+986100	 que
+986400	 no
+986490	 es
+985380	__EVENT__
+987720	
+
+987730	no
+988269	 disiparon
+988720	 nada
+989050	 simplemente
+989350	 bien
+989649	 sacar
+987730	__EVENT__
+989910	
+
+989920	este
+990310	 repositorio
+989920	__EVENT__
+993369	
+
+993379	lo
+993739	 que
+993829	 quieras
+993379	__EVENT__
+995120	
+
+995130	y
+995700	 ahí
+995870	 pones
+996870	 tu
+996990	 archivo
+995130	__EVENT__
+1006430	
+
+1006440	con
+1006800	 éxitos
+1007220	 perdidos
+1007850	 y
+1007970	 sin
+1008150	 nada
+1008770	 bien
+1009770	 acá
+1006440	__EVENT__
+1010980	
+
+1010990	estás
+1010990	__EVENT__
+1014110	
+
+1014120	de
+1014660	 hecho
+1014839	 vamos
+1015350	 a
+1015410	 agregar
+1015650	 un
+1015800	 ritmo
+1016190	 para
+1014120	__EVENT__
+1017110	
+
+1017120	que
+1017240	 muestre
+1017900	 una
+1018470	 interfase
+1018950	 con
+1019160	 unas
+1019310	 que
+1017120	__EVENT__
+1019420	
+
+1019430	agregas
+1019640	 el
+1019730	 ritmo
+1020150	 eso
+1020810	 se
+1021290	 ve
+1021440	 un
+1021710	 poco
+1021890	 más
+1019430	__EVENT__
+1022000	
+
+1022010	bonito
+1022010	__EVENT__
+1023710	
+
+1023720	la
+1023990	 frontal
+1024500	 la
+1024890	 página
+1025370	 frontal
+1025520	 del
+1023720	__EVENT__
+1025960	
+
+1025970	repositorio
+1026419	 tienes
+1027380	 de
+1027470	 interfaces
+1027980	 que
+1025970	__EVENT__
+1028270	
+
+1028280	incluye
+1028760	 esto
+1029089	 que
+1029209	 tenía
+1029630	 yo
+1029780	 que
+1030049	 es
+1031089	 un
+1028280	__EVENT__
+1032079	
+
+1032089	archivo
+1032449	 incluso
+1033319	 sí
+1034209	 si
+1035209	 quieres
+1035449	 compartir
+1032089	__EVENT__
+1035860	
+
+1035870	marchara
+1036319	 3
+1036530	 ningún
+1037280	 repositorio
+1037789	 asociado
+1038360	 a
+1035870	__EVENT__
+1038620	
+
+1038630	ese
+1038839	 archivo
+1039280	 simplemente
+1040280	 genera
+1040579	 uno
+1038630	__EVENT__
+1041380	
+
+1041390	ahí
+1041780	 mismo
+1042020	 desde
+1042380	 github
+1042679	 si
+1042860	 quieres
+1043100	 no
+1041390	__EVENT__
+1043390	
+
+1043400	hace
+1043520	 falta
+1043730	 ni
+1043789	 siquiera
+1044089	 que
+1044150	 lo
+1044240	 que
+1044360	 no
+1044449	 me
+1043400	__EVENT__
+1044559	
+
+1044569	estás
+1044689	 en
+1045380	 tu
+1045650	 ver
+1045949	 estudio
+1046490	 que
+1046730	 los
+1046819	 clones
+1044569	__EVENT__
+1047110	
+
+1047120	puedes
+1047809	 simplemente
+1047959	 poner
+1048530	 agregar
+1047120	__EVENT__
+1048940	
+
+1048950	archivos
+1049460	 cual
+1049669	 crear
+1049940	 un
+1050030	 archivo
+1050179	 nuevo
+1048950	__EVENT__
+1050620	
+
+1050630	subirlos
+1051169	 y
+1051440	 lo
+1051559	 tenéis
+1051919	 subir
+1052309	 si
+1052520	 no
+1052730	 puedes
+1050630	__EVENT__
+1053080	
+
+1053090	crear
+1053450	 un
+1053600	 archivo
+1054610	 y
+1055610	 sí
+1053090	__EVENT__
+1057460	
+
+1057470	que
+1058340	 nos
+1058490	 hiciera
+1057470	__EVENT__
+1060730	
+
+1060740	crear
+1061309	 una
+1061400	 carpeta
+1061850	 simplemente
+1060740	__EVENT__
+1062290	
+
+1062300	construyendo
+1062840	 una
+1062929	 carpeta
+1063500	 y
+1063890	 luego
+1064309	 un
+1062300	__EVENT__
+1064450	
+
+1064460	paréntesis
+1065000	 y
+1065150	 crear
+1066080	 el
+1066679	 archivo
+1064460	__EVENT__
+1069660	
+
+1069670	y
+1070670	 acá
+1070940	 le
+1071690	 pegas
+1071960	 el
+1072410	 texto
+1072770	 que
+1072890	 vos
+1073010	 quieras
+1069670	__EVENT__
+1073470	
+
+1073480	si
+1074480	 es
+1074570	 fácil
+1074690	 puedes
+1075140	 crear
+1075380	 un
+1075440	 archivo
+1073480	__EVENT__
+1075640	
+
+1075650	nuevo
+1076250	 en
+1076820	 un
+1076970	 repositorio
+1077240	 nuevo
+1077780	 un
+1077900	 archivo
+1075650	__EVENT__
+1078280	
+
+1078290	propósito
+1078980	 entonces
+1079309	 habiendo
+1080090	 dicho
+1080300	 eso
+1080660	 te
+1078290	__EVENT__
+1081040	
+
+1081050	dice
+1081590	 si
+1081740	 quieres
+1082070	 por
+1082460	 ejemplo
+1082760	 hacer
+1083090	 un
+1081050	__EVENT__
+1083200	
+
+1083210	cómic
+1083690	 dentro
+1084110	 de
+1084440	 la
+1084559	 rama
+1085040	 principal
+1085250	 o
+1085790	 en
+1083210	__EVENT__
+1085990	
+
+1086000	una
+1086090	 rama
+1086390	 accesoria
+1086929	 hemos
+1087440	 vivido
+1087710	 acción
+1086000	__EVENT__
+1087880	
+
+1087890	ahora
+1087950	 más
+1088160	 historia
+1087890	__EVENT__
+1091350	
+
+1091360	réflex
+1091360	__EVENT__
+1095540	
+
+1095550	y
+1096550	 represa
+1096970	 ahora
+1097120	 estoy
+1097390	 usando
+1097510	 con
+1097750	 el
+1095550	__EVENT__
+1097830	
+
+1097840	sentido
+1098140	 más
+1098320	 amplio
+1098380	 la
+1098650	 palabra
+1099040	 donde
+1099930	 es
+1097840	__EVENT__
+1100920	
+
+1100930	un
+1101220	 ejemplo
+1102220	 reproducible
+1102910	 no
+1100930	__EVENT__
+1103020	
+
+1103030	necesariamente
+1103680	 tiene
+1104680	 que
+1104710	 ser
+1104830	 algo
+1105370	 hecho
+1103030	__EVENT__
+1105570	
+
+1105580	con
+1105760	 con
+1106120	 el
+1106240	 paquete
+1106600	 reflex
+1107020	 podría
+1107320	 hacer
+1105580	__EVENT__
+1107460	
+
+1107470	cualquier
+1107590	 cosa
+1108010	 que
+1108610	 incluya
+1108910	 texto
+1109420	 código
+1107470	__EVENT__
+1111510	
+
+1111520	y
+1112510	 ahí
+1112630	 está
+1112900	 mi
+1112930	 archivo
+1113320	 y
+1113350	 puedo
+1113920	 generar
+1114280	 la
+1111520	__EVENT__
+1114630	
+
+1114640	solicitud
+1115030	 de
+1115120	 fusión
+1115210	 ahora
+1115720	 mismo
+1116080	 e
+1114640	__EVENT__
+1116340	
+
+1116350	incluso
+1116650	 puedo
+1117070	 generar
+1117400	 como
+1117670	 una
+1116350	__EVENT__
+1120050	
+
+1120060	un
+1120660	 borrador
+1121080	 de
+1121410	 manera
+1121710	 que
+1121920	 estoy
+1120060	__EVENT__
+1122090	
+
+1122100	comunicando
+1122490	 la
+1122700	 persona
+1123060	 con
+1123210	 el
+1123300	 que
+1123360	 quiero
+1122100	__EVENT__
+1123590	
+
+1123600	mantener
+1123960	 esta
+1124290	 conversación
+1124730	 que
+1125730	 este
+1123600	__EVENT__
+1126140	
+
+1126150	archivo
+1126390	 no
+1126480	 está
+1126660	 listo
+1127790	 entonces
+1130070	 digamos
+1126150	__EVENT__
+1131060	
+
+1131070	efecto
+1131370	 pasado
+1131760	 incluido
+1132150	 en
+1132210	 la
+1132300	 rama
+1131070	__EVENT__
+1132470	
+
+1132480	principal
+1132660	 y
+1133320	 acá
+1133530	 tendrías
+1133950	 todas
+1134250	 las
+1132480	__EVENT__
+1134360	
+
+1134370	herramientas
+1134520	 que
+1134850	 normalmente
+1135390	 tienes
+1135930	 a
+1136050	 tu
+1134370	__EVENT__
+1136160	
+
+1136170	disposición
+1136250	 para
+1137250	 hacer
+1137520	 la
+1137670	 revisión
+1138000	 y
+1136170	__EVENT__
+1138110	
+
+1138120	mantener
+1138540	 la
+1138750	 discusión
+1139580	 sin
+1140580	 embargo
+1141350	 me
+1138120	__EVENT__
+1142340	
+
+1142350	estoy
+1142620	 saltando
+1142830	 es
+1143670	 la
+1144030	 idea
+1144240	 de
+1144510	 que
+1144720	 en
+1145280	 ese
+1142350	__EVENT__
+1146270	
+
+1146280	archivo
+1146280	__EVENT__
+1148720	
+
+1148730	localmente
+1149540	 también
+1150110	 volvamos
+1150470	 a
+1150590	 cerrar
+1148730	__EVENT__
+1150909	
+
+1150919	esta
+1151130	 idea
+1151280	 primero
+1151580	 acá
+1150919	__EVENT__
+1153330	
+
+1153340	acá
+1154030	 vemos
+1154210	 tenemos
+1154870	 en
+1155260	 este
+1155440	 caso
+1155620	 este
+1153340	__EVENT__
+1155730	
+
+1155740	comparte
+1156040	 un
+1156130	 archivo
+1156460	 un
+1156520	 nuevo
+1156790	 generador
+1155740	__EVENT__
+1157350	
+
+1157360	de
+1157930	 este
+1158290	 ente
+1159220	 reprex
+1157360	__EVENT__
+1160590	
+
+1160600	genera
+1160990	 el
+1161050	 texto
+1161470	 del
+1161890	 pp
+1162010	 lo
+1162340	 estoy
+1162520	 pegando
+1160600	__EVENT__
+1162870	
+
+1162880	dentro
+1163180	 un
+1163270	 nuevo
+1163420	 archivo
+1163600	 vd
+1164440	 que
+1164890	 lo
+1164980	 cree
+1162880	__EVENT__
+1165180	
+
+1165190	el
+1165370	 repositorio
+1165880	 nuevo
+1166180	 para
+1166540	 mostrar
+1165190	__EVENT__
+1166620	
+
+1166630	simplemente
+1167320	 que
+1167560	 es
+1167650	 fácil
+1167950	 que
+1168070	 es
+1168270	 crear
+1166630	__EVENT__
+1169520	
+
+1169530	compartir
+1170530	 un
+1170680	 archivo
+1171960	 con
+1172960	 estas
+1169530	__EVENT__
+1173220	
+
+1173230	herramientas
+1173350	 con
+1174300	 reflex
+1175300	 para
+1175510	 generar
+1175870	 el
+1173230	__EVENT__
+1176130	
+
+1176140	código
+1176680	 del
+1176830	 hampa
+1176890	 y
+1177880	 con
+1178360	 el
+1179280	 yihab
+1180280	 como
+1180760	 una
+1176140	__EVENT__
+1180840	
+
+1180850	interfaz
+1181240	 para
+1181630	 debemos
+1182200	 poder
+1182950	 publicar
+1183400	 ese
+1180850	__EVENT__
+1183630	
+
+1183640	archivo
+1183850	 en
+1183970	 algún
+1184120	 lado
+1184270	 y
+1184840	 para
+1185050	 tener
+1185260	 una
+1183640	__EVENT__
+1185340	
+
+1185350	interfase
+1185800	 sobre
+1186520	 la
+1186640	 que
+1186790	 tengas
+1187090	 a
+1187210	 la
+1185350	__EVENT__
+1187290	
+
+1187300	discusión
+1187540	 por
+1187930	 ejemplo
+1188170	 en
+1188230	 este
+1188350	 caso
+1188730	 las
+1187300	__EVENT__
+1189720	
+
+1189730	personas
+1190090	 compartir
+1190600	 el
+1191050	 vínculo
+1191470	 a
+1191500	 estas
+1191920	 en
+1189730	__EVENT__
+1192030	
+
+1192040	situ
+1192250	 de
+1192340	 fusión
+1192700	 a
+1192850	 estudiar
+1193270	 por
+1193720	 respuesta
+1192040	__EVENT__
+1194160	
+
+1194170	y
+1194590	 de
+1194680	 esa
+1194770	 persona
+1195130	 puede
+1195490	 empezar
+1196150	 la
+1194170	__EVENT__
+1197300	
+
+1197310	revisión
+1198310	 como
+1198640	 lo
+1198730	 haría
+1198880	 por
+1199120	 ejemplo
+1199390	 si
+1197310	__EVENT__
+1199530	
+
+1199540	quiere
+1199900	 hacer
+1200080	 algo
+1200320	 acá
+1199540	__EVENT__
+1201850	
+
+1201860	genial
+1202860	 podría
+1203520	 por
+1203640	 qué
+1203730	 darle
+1201860	__EVENT__
+1206159	
+
+1206169	y
+1206169	__EVENT__
+1212659	
+
+1212669	se
+1213149	 puede
+1213419	 empezar
+1213480	 su
+1213989	 revisión
+1214409	 y
+1215070	 esos
+1212669	__EVENT__
+1215509	
+
+1215519	comentarios
+1215970	 que
+1216090	 te
+1216179	 escriben
+1216570	 aparecen
+1217230	 con
+1215519	__EVENT__
+1217820	
+
+1217830	esta
+1218539	 interfase
+1219539	 que
+1219629	 parecida
+1220169	 a
+1220200	 los
+1220470	 track
+1217830	__EVENT__
+1220639	
+
+1220649	times
+1220980	 y
+1221039	 es
+1221129	 que
+1221249	 tienes
+1220649	__EVENT__
+1223299	
+
+1223309	por
+1223909	 ejemplo
+1224210	 en
+1224720	 world
+1225289	 y
+1225919	 la
+1226249	 otra
+1226399	 persona
+1223309	__EVENT__
+1226629	
+
+1226639	luego
+1226879	 puede
+1227179	 responder
+1227629	 y
+1227809	 positivo
+1228320	 y
+1228350	 luego
+1226639	__EVENT__
+1228399	
+
+1228409	se
+1228620	 puede
+1228740	 resolver
+1229039	 a
+1229490	 los
+1230389	 geniales
+1230659	 que
+1231019	 esa
+1228409	__EVENT__
+1231190	
+
+1231200	conversación
+1231970	 se
+1232970	 aparece
+1233899	 también
+1234110	 en
+1234590	 la
+1231200	__EVENT__
+1235119	
+
+1235129	solapa
+1235399	 so
+1235820	 estaba
+1236120	 durante
+1236629	 esta
+1236809	 la
+1237019	 solapa
+1235129	__EVENT__
+1237369	
+
+1237379	de
+1237409	 files
+1237950	 en
+1238159	 east
+1238490	 pero
+1238700	 también
+1238970	 aparecen
+1237379	__EVENT__
+1239379	
+
+1239389	como
+1240019	 un
+1240110	 resumen
+1240470	 en
+1240860	 la
+1240950	 solapa
+1241249	 de
+1239389	__EVENT__
+1241409	
+
+1241419	conversación
+1242419	 donde
+1242840	 aparece
+1243529	 digamos
+1244159	 cada
+1241419	__EVENT__
+1244330	
+
+1244340	uno
+1244460	 de
+1244519	 los
+1244610	 comentarios
+1244940	 que
+1245029	 se
+1245090	 agregan
+1244340	__EVENT__
+1245409	
+
+1245419	aparecen
+1245809	 acá
+1245990	 y
+1246590	 una
+1246889	 vez
+1247039	 que
+1247340	 se
+1247690	 adquiere
+1245419	__EVENT__
+1248680	
+
+1248690	un
+1248899	 comentario
+1249230	 general
+1251049	 gracias
+1248690	__EVENT__
+1255750	
+
+1255760	[Música]
+1255760	__EVENT__
+1262580	
+
+1262590	dios
+1262590	__EVENT__
+1264480	
+
+1264490	si
+1264850	 puedo
+1265150	 empezar
+1265330	 mi
+1266110	 revisión
+1266740	 y
+1267730	 los
+1264490	__EVENT__
+1267870	
+
+1267880	comentarios
+1268270	 que
+1268360	 se
+1268660	 dice
+1269080	 que
+1269260	 se
+1269410	 que
+1269590	 se
+1267880	__EVENT__
+1269610	
+
+1269620	hicieron
+1270190	 sobre
+1270820	 líneas
+1271330	 en
+1271420	 particular
+1269620	__EVENT__
+1271860	
+
+1271870	aparecen
+1272440	 muy
+1272830	 bien
+1273010	 especificados
+1274830	 debajo
+1271870	__EVENT__
+1275820	
+
+1275830	del
+1275950	 comentario
+1276280	 general
+1276670	 y
+1277090	 acá
+1277630	 está
+1278050	 listo
+1275830	__EVENT__
+1278370	
+
+1278380	digamos
+1278710	 el
+1279190	 espacio
+1279580	 para
+1279820	 empezar
+1280330	 para
+1281200	 que
+1278380	__EVENT__
+1281310	
+
+1281320	la
+1281410	 persona
+1281740	 responde
+1281320	__EVENT__
+1282630	
+
+1282640	parece
+1283330	 que
+1283420	 la
+1283510	 conversión
+1284230	 hacia
+1284410	 los
+1282640	__EVENT__
+1284730	
+
+1284740	cuentos
+1285010	 simplemente
+1285490	 se
+1285640	 crece
+1286059	 hacer
+1286390	 clic
+1284740	__EVENT__
+1286560	
+
+1286570	en
+1286800	 resolver
+1287800	 la
+1287860	 conversación
+1288400	 lo
+1289090	 que
+1289179	 es
+1286570	__EVENT__
+1289290	
+
+1289300	genial
+1289420	 porque
+1289750	 tiene
+1290020	 un
+1290080	 registro
+1290500	 dentro
+1289300	__EVENT__
+1290970	
+
+1290980	de
+1291190	 la
+1291910	 conversación
+1292480	 de
+1292780	 tu
+1293140	 respuesta
+1290980	__EVENT__
+1294299	
+
+1294309	y
+1294340	 está
+1294580	 colapsada
+1295120	 conversación
+1295510	 ahora
+1295720	 pero
+1294309	__EVENT__
+1295890	
+
+1295900	ahí
+1295960	 está
+1296880	 una
+1297880	 que
+1297910	 está
+1298090	 resuelto
+1298480	 falta
+1295900	__EVENT__
+1298890	
+
+1298900	verla
+1299230	 pero
+1299679	 si
+1299770	 quisiera
+1300070	 volver
+1298900	__EVENT__
+1301250	
+
+1301260	entonces
+1302260	 genial
+1302920	 estamos
+1303690	 en
+1304690	 esta
+1304960	 línea
+1301260	__EVENT__
+1305220	
+
+1305230	excepto
+1305590	 que
+1306240	 no
+1307240	 hable
+1307480	 es
+1307630	 todavía
+1307870	 de
+1305230	__EVENT__
+1308130	
+
+1308140	dortmund
+1308140	__EVENT__
+1310940	
+
+1310950	como
+1312590	 cuál
+1313590	 es
+1313650	 el
+1313740	 rol
+1313950	 que
+1314160	 juega
+1314520	 elijas
+1315000	 en
+1310950	__EVENT__
+1315770	
+
+1315780	esta
+1316680	 discusión
+1316920	 bueno
+1317490	 la
+1317790	 idea
+1317880	 siguiente
+1315780	__EVENT__
+1318530	
+
+1318540	acá
+1319200	 estaba
+1319770	 haciendo
+1320010	 reprex
+1320400	 como
+1320730	 un
+1318540	__EVENT__
+1320840	
+
+1320850	archivo
+1321200	 descartable
+1322200	 pero
+1322710	 qué
+1322920	 tal
+1323130	 si
+1320850	__EVENT__
+1324730	
+
+1324740	en
+1325250	 vez
+1325370	 de
+1325429	 eso
+1326140	 quiero
+1327140	 tener
+1327710	 mucho
+1327980	 texto
+1328429	 y
+1324740	__EVENT__
+1328750	
+
+1328760	muchas
+1329150	 muchas
+1329540	 implicaciones
+1329929	 que
+1330260	 hacer
+1328760	__EVENT__
+1330690	
+
+1330700	conviene
+1331700	 crear
+1332090	 un
+1332240	 archivo
+1332470	 de
+1333490	 marta
+1330700	__EVENT__
+1334620	
+
+1334630	puedes
+1335630	 generar
+1335809	 el
+1336200	 efecto
+1336950	 acá
+1337100	 html
+1337880	 y
+1334630	__EVENT__
+1337900	
+
+1337910	luego
+1338210	 modificar
+1338900	 un
+1339020	 poco
+1339200	 pero
+1339679	 yo
+1337910	__EVENT__
+1339790	
+
+1339800	recomiendo
+1340100	 ya
+1340460	 de
+1340640	 por
+1340790	 sí
+1341000	 usar
+1341480	 el
+1341750	 temple
+1339800	__EVENT__
+1342360	
+
+1342370	directamente
+1343370	 porque
+1343700	 porque
+1344120	 eso
+1344480	 tiene
+1345140	 un
+1342370	__EVENT__
+1345280	
+
+1345290	complemento
+1345740	 específico
+1346160	 diseñado
+1346880	 para
+1345290	__EVENT__
+1347680	
+
+1347690	comportarse
+1348410	 genial
+1347690	__EVENT__
+1349960	
+
+1349970	quiero
+1350240	 mostrar
+1350780	 fíjate
+1351679	 como
+1351860	 el
+1351950	 output
+1352220	 es
+1349970	__EVENT__
+1352390	
+
+1352400	que
+1352820	 el
+1352970	 documento
+1353660	 se
+1353720	 llama
+1353900	 tienes
+1354860	 ya
+1354950	 con
+1352400	__EVENT__
+1355150	
+
+1355160	alguna
+1355580	 opción
+1355790	 acá
+1356270	 que
+1356510	 es
+1355160	__EVENT__
+1358610	
+
+1358620	es
+1359160	 útil
+1359580	 porque
+1359930	 adjudicada
+1360930	 alguno
+1361200	 de
+1361290	 los
+1358620	__EVENT__
+1361400	
+
+1361410	12
+1362360	 código
+1363360	 que
+1363450	 pones
+1363660	 a
+1363750	 abajo
+1363900	 pero
+1361410	__EVENT__
+1364850	
+
+1364860	recomiendo
+1365610	 también
+1365820	 otras
+1366090	 versiones
+1366300	 para
+1364860	__EVENT__
+1366740	
+
+1366750	que
+1366870	 el
+1366960	 código
+1367230	 pueda
+1367470	 ser
+1367650	 corrido
+1366750	__EVENT__
+1369010	
+
+1369020	[Música]
+1369020	__EVENT__
+1372370	
+
+1372380	voy
+1373380	 a
+1373470	 guardar
+1373680	 esto
+1374100	 como
+1374750	 leemos
+1372380	__EVENT__
+1376880	
+
+1376890	vas
+1377160	 a
+1377220	 abordarlo
+1377520	 acá
+1377640	 mismo
+1377910	 a
+1377970	 la
+1378030	 raíz
+1378210	 del
+1376890	__EVENT__
+1378380	
+
+1378390	proyecto
+1379010	 no
+1380010	 tengo
+1380250	 nada
+1380550	 texto
+1381270	 que
+1381390	 para
+1378390	__EVENT__
+1381590	
+
+1381600	correr
+1381960	 pero
+1382320	 no
+1382940	 vamos
+1383940	 a
+1384090	 dejar
+1384120	 el
+1384390	 archivo
+1381600	__EVENT__
+1384680	
+
+1384690	termo
+1384960	 estaba
+1385380	 con
+1386190	 su
+1386400	 código
+1386990	 ok
+1387990	 si
+1388290	 esto
+1388500	 va
+1384690	__EVENT__
+1388580	
+
+1388590	correr
+1388890	 gente
+1389250	 que
+1389340	 los
+1389940	 el
+1390750	 output
+1391170	 de
+1391320	 este
+1388590	__EVENT__
+1391460	
+
+1391470	código
+1391800	 tiene
+1392100	 empieza
+1392850	 como
+1393000	 comentado
+1393690	 de
+1391470	__EVENT__
+1393800	
+
+1393810	manera
+1393870	 tal
+1394230	 que
+1394820	 que
+1395820	 lea
+1396630	 esto
+1396960	 lo
+1397080	 puede
+1393810	__EVENT__
+1397250	
+
+1397260	copiar
+1398000	 esto
+1399000	 ya
+1399180	 es
+1399360	 de
+1399510	 por
+1399630	 sí
+1399720	 muy
+1399810	 útil
+1397260	__EVENT__
+1400190	
+
+1400200	pero
+1400380	 bueno
+1400560	 aprovechó
+1400920	 oportunidad
+1401370	 para
+1400200	__EVENT__
+1401570	
+
+1401580	recomendar
+1402030	 algunas
+1402450	 opciones
+1402720	 sólo
+1403350	 que
+1403470	 uso
+1401580	__EVENT__
+1403730	
+
+1403740	de
+1403980	 algún
+1404280	 com
+1404490	 en
+1403740	__EVENT__
+1404840	
+
+1404850	leamos
+1404970	 le
+1405150	 copio
+1405480	 de
+1405630	 represa
+1406260	 y
+1406650	 uso
+1407070	 el
+1404850	__EVENT__
+1407330	
+
+1407340	comentario
+1408000	 éste
+1407340	__EVENT__
+1409620	
+
+1409630	y
+1410200	 que
+1410770	 más
+1410920	 gusto
+1411820	 también
+1411940	 error
+1412570	 y
+1412990	 por
+1413170	 sus
+1409630	__EVENT__
+1413340	
+
+1413350	frutos
+1413590	 porque
+1414010	 si
+1414760	 hay
+1414820	 un
+1414970	 error
+1415920	 sin
+1416920	 la
+1413350	__EVENT__
+1417540	
+
+1417550	opción
+1417760	 verdadero
+1418420	 en
+1418570	 error
+1418840	 lo
+1419230	 que
+1419350	 pasaría
+1417550	__EVENT__
+1419760	
+
+1419770	es
+1419890	 que
+1419980	 este
+1420190	 archivo
+1420400	 de
+1420520	 implícitamente
+1421060	 no
+1419770	__EVENT__
+1421560	
+
+1421570	no
+1421960	 se
+1422080	 completa
+1422590	 entre
+1423160	 con
+1423370	 la
+1423460	 opción
+1423640	 en
+1421570	__EVENT__
+1423810	
+
+1423820	verdadero
+1424330	 lo
+1424450	 que
+1424570	 hace
+1424750	 si
+1424960	 compete
+1423820	__EVENT__
+1425340	
+
+1425350	simplemente
+1425830	 el
+1426190	 error
+1426400	 como
+1426760	 deberías
+1427380	 y
+1425350	__EVENT__
+1428370	
+
+1428380	finalmente
+1429070	 este
+1429220	 espacio
+1429550	 que
+1429640	 está
+1429760	 acá
+1429850	 por
+1428380	__EVENT__
+1430020	
+
+1430030	ejemplo
+1430330	 entre
+1430540	 el
+1430600	 código
+1430960	 y
+1430990	 el
+1431110	 agua
+1431440	 no
+1430030	__EVENT__
+1431870	
+
+1431880	demasiado
+1431880	__EVENT__
+1434749	
+
+1434759	pérez
+1435509	 iago
+1435809	 collapse
+1434759	__EVENT__
+1437900	
+
+1437910	pues
+1438480	 ya
+1438570	 con
+1438720	 esto
+1439080	 el
+1439380	 auto
+1439620	 que
+1439740	 vas
+1439860	 a
+1439980	 ver
+1437910	__EVENT__
+1440120	
+
+1440130	es
+1440460	 un
+1440670	 poquito
+1440940	 diferente
+1441770	 más
+1442770	 este
+1443070	 como
+1440130	__EVENT__
+1443300	
+
+1443310	compacto
+1443700	 y
+1444510	 fácil
+1445380	 de
+1445590	 copiar
+1445770	 y
+1446400	 de
+1446520	 pegar
+1443310	__EVENT__
+1448940	
+
+1448950	te
+1449160	 haga
+1449340	 con
+1449520	 sola
+1449910	 copia
+1450480	 del
+1450690	 texto
+1450810	 que
+1448950	__EVENT__
+1451040	
+
+1451050	venía
+1451260	 haga
+1451470	 ahí
+1452250	 se
+1452820	 estropeó
+1453450	 acá
+1453660	 y
+1454380	 esto
+1451050	__EVENT__
+1454670	
+
+1454680	con
+1455040	 correa
+1454680	__EVENT__
+1457049	
+
+1457059	entonces
+1457779	 bien
+1457960	 cuando
+1458320	 vos
+1458470	 hacés
+1458700	 mí
+1459700	 en
+1460179	 un
+1457059	__EVENT__
+1460379	
+
+1460389	archivo
+1460779	 de
+1460899	 aeromar
+1461230	 none
+1461559	 lo
+1461710	 que
+1461830	 pasa
+1462220	 es
+1460389	__EVENT__
+1462450	
+
+1462460	que
+1462580	 te
+1462730	 genera
+1462460	__EVENT__
+1463980	
+
+1463990	un
+1464530	 archivo
+1465240	 de
+1463990	__EVENT__
+1468270	
+
+1468280	m
+1469390	 genera
+1470230	 este
+1470620	 output
+1471550	 staples
+1472360	 y
+1472420	 lo
+1468280	__EVENT__
+1472470	
+
+1472480	provincialistas
+1473050	 es
+1473380	 exactamente
+1474130	 lo
+1474220	 que
+1472480	__EVENT__
+1474270	
+
+1474280	verías
+1474670	 opciones
+1475390	 que
+1475480	 me
+1475540	 pareció
+1475900	 lo
+1476050	 que
+1474280	__EVENT__
+1476130	
+
+1476140	verías
+1476440	 en
+1477130	 quizá
+1477610	 si
+1478090	 lo
+1478690	 muestra
+1479020	 como
+1479170	 si
+1476140	__EVENT__
+1479220	
+
+1479230	fuera
+1479680	 un
+1479860	 archivo
+1480340	 html
+1481030	 si
+1481780	 fuera
+1481990	 una
+1479230	__EVENT__
+1482070	
+
+1482080	página
+1482470	 de
+1482560	 internet
+1482920	 para
+1483280	 tu
+1483930	 análisis
+1484930	 lo
+1482080	__EVENT__
+1485370	
+
+1485380	cual
+1485560	 es
+1485620	 genial
+1485980	 porque
+1486840	 en
+1487840	 este
+1487990	 caso
+1485380	__EVENT__
+1488190	
+
+1488200	todavía
+1488380	 no
+1488560	 lo
+1488950	 he
+1489010	 empujado
+1489160	 pero
+1489670	 lo
+1488200	__EVENT__
+1490050	
+
+1490060	primero
+1490330	 que
+1490450	 hacer
+1490660	 digamos
+1490840	 todo
+1491110	 estos
+1490060	__EVENT__
+1491250	
+
+1491260	archivos
+1491470	 que
+1491590	 saca
+1491830	 de
+1491950	 réflex
+1492460	 son
+1493050	 la
+1491260	__EVENT__
+1494040	
+
+1494050	contaminación
+1494320	 archivos
+1495310	 temporales
+1495820	 réflex
+1494050	__EVENT__
+1496620	
+
+1496630	entonces
+1497500	 lo
+1497590	 que
+1497680	 voy
+1497800	 a
+1497830	 hacer
+1498040	 es
+1496630	__EVENT__
+1498270	
+
+1498280	simplemente
+1498610	 agregar
+1499300	 a
+1499450	 mi
+1499540	 cómic
+1499960	 los
+1498280	__EVENT__
+1500250	
+
+1500260	archivos
+1500740	 que
+1500830	 corresponden
+1501810	 el
+1502810	 demo
+1503260	 el
+1503560	 de
+1500260	__EVENT__
+1503700	
+
+1503710	mueve
+1504040	 de
+1504360	 que
+1505360	 se
+1505480	 la
+1505600	 tiró
+1506170	 los
+1506620	 archivos
+1503710	__EVENT__
+1507090	
+
+1507100	asociados
+1507730	 a
+1507880	 esto
+1508270	 todo
+1508990	 lo
+1509080	 demás
+1509320	 lo
+1509650	 dejó
+1507100	__EVENT__
+1509820	
+
+1509830	fuera
+1510100	 del
+1510250	 cómic
+1509830	__EVENT__
+1511869	
+
+1511879	que
+1512149	 más
+1512299	 el
+1512749	 archivo
+1513139	 de
+1513289	 los
+1513619	 datos
+1513979	 lo
+1514249	 vemos
+1511879	__EVENT__
+1514509	
+
+1514519	incluir
+1514519	__EVENT__
+1516140	
+
+1516150	bien
+1516750	 esto
+1517230	 es
+1517260	 lo
+1517470	 que
+1517530	 va
+1517680	 a
+1517710	 mí
+1517830	 correr
+1516150	__EVENT__
+1518150	
+
+1518160	entonces
+1518160	__EVENT__
+1518720	
+
+1518730	[Música]
+1518730	__EVENT__
+1524499	
+
+1524509	como
+1525139	 digo
+1525320	 obviamente
+1525949	 tenemos
+1526219	 que
+1524509	__EVENT__
+1526359	
+
+1526369	escribir
+1526549	 algo
+1526940	 mucho
+1527299	 más
+1527419	 sutil
+1527690	 y
+1527749	 lo
+1527809	 que
+1526369	__EVENT__
+1527889	
+
+1527899	haga
+1528019	 va
+1528109	 a
+1528139	 poner
+1528379	 para
+1528709	 este
+1528859	 d
+1527899	__EVENT__
+1529769	
+
+1529779	si
+1530289	 quieres
+1530529	 estar
+1530769	 de
+1530919	 todos
+1531190	 los
+1531309	 archivos
+1531940	 y
+1529779	__EVENT__
+1532879	
+
+1532889	parte
+1532889	__EVENT__
+1536419	
+
+1536429	de
+1536940	 este
+1537149	 demo
+1537419	 pero
+1537720	 bueno
+1537960	 lo
+1538350	 hago
+1538619	 así
+1536429	__EVENT__
+1538850	
+
+1538860	rápidas
+1539490	 se
+1539669	 van
+1538860	__EVENT__
+1541650	
+
+1541660	vamos
+1542440	 de
+1542710	 vuelta
+1542830	 entonces
+1543640	 ahora
+1543880	 sí
+1543910	 a
+1541660	__EVENT__
+1544080	
+
+1544090	crear
+1544450	 mi
+1544630	 comida
+1544870	 ya
+1545830	 lo
+1545920	 hice
+1546160	 perdón
+1544090	__EVENT__
+1546420	
+
+1546430	empujarlo
+1547620	 de
+1548620	 hecho
+1548920	 ya
+1549400	 interesante
+1549940	 vamos
+1546430	__EVENT__
+1550110	
+
+1550120	a
+1550230	 deshacer
+1551230	 un
+1551440	 error
+1551650	 que
+1551800	 acabo
+1552220	 de
+1552250	 hacer
+1550120	__EVENT__
+1552330	
+
+1552340	para
+1553000	 demostrar
+1553840	 cuál
+1554290	 sería
+1554530	 la
+1554560	 mejor
+1552340	__EVENT__
+1554700	
+
+1554710	práctica
+1555040	 estoy
+1555790	 en
+1556090	 la
+1556180	 rama
+1556420	 master
+1556810	 muy
+1554710	__EVENT__
+1557160	
+
+1557170	bueno
+1557710	 carga
+1558010	 y
+1558670	 lo
+1558850	 que
+1559000	 sería
+1559210	 indicado
+1559690	 es
+1557170	__EVENT__
+1561690	
+
+1561700	casi
+1562360	 el
+1562419	 cómic
+1562720	 en
+1563200	 la
+1563350	 rama
+1563740	 en
+1564610	 otra
+1564880	 rama
+1561700	__EVENT__
+1565110	
+
+1565120	hay
+1565659	 un
+1565779	 par
+1565929	 de
+1565990	 opciones
+1566679	 que
+1567039	 tengo
+1567309	 para
+1565120	__EVENT__
+1567950	
+
+1567960	mover
+1567960	__EVENT__
+1571610	
+
+1571620	lo
+1572620	 que
+1573000	 mejor
+1574000	 ha
+1574210	 sido
+1574389	 además
+1574779	 emitir
+1571620	__EVENT__
+1575549	
+
+1575559	recetas
+1575559	__EVENT__
+1578490	
+
+1578500	vamos
+1579500	 a
+1579590	 poner
+1579860	 estado
+1580309	 conectado
+1580880	 a
+1581539	 un
+1578500	__EVENT__
+1581860	
+
+1581870	comité
+1582139	 antes
+1582620	 de
+1583010	 donde
+1583610	 estamos
+1583789	 ahora
+1581870	__EVENT__
+1585100	
+
+1585110	entonces
+1585770	 abás
+1585920	 y
+1586040	 yo
+1586160	 refresco
+1586700	 master
+1587059	 para
+1585110	__EVENT__
+1587320	
+
+1587330	sacar
+1587630	 los
+1587780	 archivos
+1588170	 que
+1588860	 dice
+1589280	 tengo
+1590120	 que
+1587330	__EVENT__
+1590230	
+
+1590240	dar
+1590360	 el
+1590420	 último
+1590720	 comité
+1590960	 pero
+1591530	 antes
+1590240	__EVENT__
+1591789	
+
+1591799	agregamos
+1592130	 ahora
+1592549	 lo
+1592850	 que
+1592940	 voy
+1593090	 a
+1593120	 hacer
+1593150	 es
+1591799	__EVENT__
+1593620	
+
+1593630	vamos
+1594380	 a
+1594470	 especializar
+1595010	 una
+1595280	 nueva
+1595490	 rama
+1595790	 para
+1593630	__EVENT__
+1596260	
+
+1596270	mostrar
+1596630	 cuál
+1596870	 sería
+1597170	 el
+1597830	 flujo
+1598130	 de
+1598190	 trabajo
+1596270	__EVENT__
+1598419	
+
+1598429	correspondiente
+1599390	 y
+1599780	 linux
+1598429	__EVENT__
+1604410	
+
+1604420	iremos
+1604420	__EVENT__
+1606290	
+
+1606300	pues
+1606870	 ahora
+1607200	 está
+1607590	 ramita
+1607950	 aparece
+1608610	 acá
+1608820	 ahora
+1606300	__EVENT__
+1609380	
+
+1609390	sí
+1609570	 vamos
+1609690	 a
+1610040	 esa
+1611040	 rama
+1609390	__EVENT__
+1616040	
+
+1616050	y
+1616530	 ahora
+1616830	 para
+1617070	 seguir
+1617490	 las
+1617580	 instrucciones
+1617790	 de
+1616050	__EVENT__
+1618410	
+
+1618420	verdad
+1619380	 que
+1619500	 me
+1619650	 da
+1618420	__EVENT__
+1621600	
+
+1621610	y
+1622610	 me
+1622970	 dice
+1623390	 que
+1623420	 tengo
+1623870	 que
+1623960	 recordarles
+1621610	__EVENT__
+1624550	
+
+1624560	empujar
+1624950	 al
+1625070	 concierto
+1625460	 podría
+1626150	 despojar
+1626450	 de
+1624560	__EVENT__
+1626530	
+
+1626540	por
+1626660	 acá
+1626810	 pero
+1627050	 me
+1627740	 gusta
+1627980	 es
+1628670	 un
+1628790	 montón
+1629060	 de
+1629210	 h
+1626540	__EVENT__
+1630100	
+
+1630110	de
+1630200	 subtes
+1630650	 que
+1631010	 hacen
+1632000	 que
+1632090	 el
+1632150	 trabajo
+1632210	 sea
+1630110	__EVENT__
+1632500	
+
+1632510	más
+1632630	 más
+1633520	 entonces
+1634520	 bien
+1635450	 estoy
+1636020	 va
+1636260	 a
+1636290	 punto
+1632510	__EVENT__
+1636580	
+
+1636590	de
+1636650	 someter
+1637010	 esta
+1637160	 solicitud
+1637640	 de
+1637700	 función
+1636590	__EVENT__
+1638880	
+
+1638890	desde
+1639890	 la
+1640220	 ramita
+1640460	 miremos
+1641060	 de
+1641300	 mí
+1641480	 de
+1641810	 este
+1638890	__EVENT__
+1641920	
+
+1641930	repositorio
+1642260	 demo
+1642740	 en
+1643430	 una
+1643520	 cuenta
+1643790	 de
+1641930	__EVENT__
+1643840	
+
+1643850	usuario
+1643940	 a
+1644510	 la
+1644660	 rama
+1644870	 master
+1645260	 como
+1645500	 una
+1643850	__EVENT__
+1645580	
+
+1645590	proposición
+1645800	 del
+1646700	 repositorio
+1647120	 que
+1647420	 tiene
+1645590	__EVENT__
+1647620	
+
+1647630	mismo
+1647840	 nombre
+1648170	 pero
+1648530	 en
+1648710	 esta
+1648920	 cuenta
+1647630	__EVENT__
+1650890	
+
+1650900	de
+1651020	 organización
+1651890	 creemos
+1652700	 esta
+1652850	 solicitud
+1650900	__EVENT__
+1653260	
+
+1653270	de
+1653330	 fusión
+1653420	 hagamos
+1654290	 acá
+1654440	 en
+1654530	 este
+1654680	 caso
+1655010	 un
+1653270	__EVENT__
+1655120	
+
+1655130	raf
+1655550	 para
+1656360	 qué
+1655130	__EVENT__
+1658240	
+
+1658250	las
+1658610	 personas
+1658880	 que
+1658940	 mantienen
+1659390	 este
+1658250	__EVENT__
+1659560	
+
+1659570	repositorio
+1659930	 sepan
+1660380	 que
+1660530	 estamos
+1660860	 listos
+1659570	__EVENT__
+1661030	
+
+1661040	para
+1661040	__EVENT__
+1662850	
+
+1662860	fundir
+1663610	 el
+1663700	 proscrito
+1664059	 de
+1664210	 fusión
+1664570	 pero
+1664840	 sí
+1662860	__EVENT__
+1665130	
+
+1665140	que
+1665260	 queremos
+1665559	 mantener
+1665740	 una
+1666340	 conversación
+1665140	__EVENT__
+1667039	
+
+1667049	del
+1668049	 muchacho
+1668410	 que
+1668530	 cambiaron
+1668980	 acabemos
+1669820	 todo
+1667049	__EVENT__
+1670169	
+
+1670179	lo
+1670270	 que
+1670420	 hay
+1670540	 el
+1671080	 archivo
+1671500	 de
+1671559	 datos
+1672270	 vemos
+1673270	 el
+1670179	__EVENT__
+1673470	
+
+1673480	archivo
+1673900	 de
+1675570	 ahora
+1676570	 estamos
+1676780	 oficiando
+1677380	 como
+1673480	__EVENT__
+1677400	
+
+1677410	si
+1677590	 fuera
+1677830	 la
+1677890	 persona
+1677980	 que
+1678160	 reviste
+1678840	 vista
+1677410	__EVENT__
+1679830	
+
+1679840	pero
+1680049	 también
+1680320	 como
+1680650	 los
+1680770	 trópicos
+1681220	 podría
+1679840	__EVENT__
+1682110	
+
+1682120	hacer
+1682360	 un
+1682510	 comentario
+1682720	 sobre
+1682990	 el
+1683230	 código
+1683620	 por
+1682120	__EVENT__
+1683880	
+
+1683890	ejemplo
+1683890	__EVENT__
+1694640	
+
+1694650	ya
+1695010	 puedes
+1695310	 empezar
+1695400	 un
+1696240	 comentario
+1696600	 simples
+1694650	__EVENT__
+1696980	
+
+1696990	a
+1697170	 empezar
+1697650	 una
+1697950	 revisión
+1696990	__EVENT__
+1701620	
+
+1701630	e
+1701630	__EVENT__
+1702940	
+
+1702950	acá
+1703580	 vemos
+1703700	 el
+1704210	 archivo
+1704630	 m
+1705350	 de
+1705470	 que
+1705830	 es
+1705919	 el
+1702950	__EVENT__
+1706210	
+
+1706220	producto
+1706700	 de
+1707059	 haber
+1707299	 hecho
+1707600	 el
+1707720	 mi
+1707899	 archivo
+1708590	 rm
+1706220	__EVENT__
+1709240	
+
+1709250	y
+1709789	 el
+1710240	 último
+1710600	 es
+1710750	 que
+1710929	 una
+1711289	 imagen
+1711440	 png
+1709250	__EVENT__
+1713170	
+
+1713180	también
+1714080	 por
+1714230	 visualizar
+1715870	 todos
+1716870	 los
+1713180	__EVENT__
+1716980	
+
+1716990	archivos
+1717290	 relacionados
+1717410	 a
+1718130	 esta
+1718600	 función
+1719600	 y
+1716990	__EVENT__
+1719950	
+
+1719960	estamos
+1720080	 en
+1720320	 espera
+1720530	 de
+1720710	 que
+1720920	 hay
+1719960	__EVENT__
+1724880	
+
+1724890	entonces
+1725660	 resumiendo
+1724890	__EVENT__
+1727600	
+
+1727610	y
+1728150	 lo
+1728270	 más
+1728450	 interesante
+1728600	 ahora
+1728990	 de
+1729170	 hecho
+1729260	 es
+1727610	__EVENT__
+1729549	
+
+1729559	cuando
+1730190	 usted
+1730429	 ya
+1730580	 tenéis
+1730820	 el
+1731030	 archivo
+1731390	 md
+1729559	__EVENT__
+1731860	
+
+1731870	generado
+1732470	 como
+1732799	 lo
+1732890	 tengo
+1733130	 acá
+1731870	__EVENT__
+1734020	
+
+1734030	empecé
+1734480	 con
+1734600	 este
+1734809	 archivo
+1734929	 y
+1735679	 zenit
+1736100	 acá
+1734030	__EVENT__
+1737460	
+
+1737470	este
+1737860	 archivo
+1738100	 de
+1738220	 media
+1738429	 automáticamente
+1737470	__EVENT__
+1739110	
+
+1739120	por
+1739270	 el
+1739390	 proceso
+1739780	 de
+1739840	 nick
+1739990	 y
+1740620	 este
+1741070	 archivo
+1741370	 md
+1739120	__EVENT__
+1741899	
+
+1741909	que
+1742450	 se
+1742630	 genera
+1743140	 en
+1743940	 ese
+1744940	 archivo
+1745179	 lo
+1745299	 puedes
+1741909	__EVENT__
+1745669	
+
+1745679	compartir
+1746679	 pero
+1747250	 puedes
+1747490	 visualizar
+1747640	 el
+1748030	 kit
+1745679	__EVENT__
+1748169	
+
+1748179	hub
+1748179	__EVENT__
+1749590	
+
+1749600	y
+1749750	 este
+1750440	 vínculo
+1750830	 lo
+1751309	 compartís
+1751789	 con
+1749600	__EVENT__
+1752080	
+
+1752090	cualquier
+1752419	 persona
+1752090	__EVENT__
+1757280	
+
+1757290	el
+1757680	 código
+1758010	 tal
+1758790	 como
+1759480	 hemos
+1759690	 recomendado
+1757290	__EVENT__
+1762590	
+
+1762600	lo
+1763600	 que
+1763720	 hace
+1763990	 justamente
+1764230	 cumpliendo
+1764799	 las
+1762600	__EVENT__
+1764909	
+
+1764919	propiedades
+1765370	 de
+1765789	 una
+1766210	 conversación
+1764919	__EVENT__
+1766560	
+
+1766570	productiva
+1766870	 porque
+1767440	 está
+1767590	 el
+1767679	 código
+1767830	 que
+1766570	__EVENT__
+1768240	
+
+1768250	corre
+1768640	 no
+1768760	 vemos
+1768880	 y
+1769450	 que
+1769570	 nos
+1770049	 debe
+1770289	 acordar
+1768250	__EVENT__
+1770520	
+
+1770530	porque
+1770710	 lo
+1770830	 veo
+1771010	 violado
+1771520	 puntos
+1771850	 y
+1772000	 cielo
+1770530	__EVENT__
+1772320	
+
+1772330	puede
+1772539	 copiar
+1772809	 y
+1773049	 pegar
+1773110	 en
+1774070	 mí
+1772330	__EVENT__
+1775919	
+
+1775929	con
+1776470	 solá
+1776799	 y
+1776830	 de
+1777340	 viejo
+1775929	__EVENT__
+1778730	
+
+1778740	así
+1779429	 que
+1779870	 bien
+1780870	 entonces
+1781850	 vamos
+1782850	 a
+1782880	 discutir
+1778740	__EVENT__
+1783340	
+
+1783350	este
+1784350	 escenario
+1784530	 tenemos
+1785220	 un
+1785460	 solo
+1785670	 archivo
+1783350	__EVENT__
+1785810	
+
+1785820	pero
+1786240	 en
+1786300	 realidad
+1786450	 fíjate
+1786929	 que
+1787050	 en
+1787260	 realidad
+1785820	__EVENT__
+1787460	
+
+1787470	no
+1787650	 fue
+1787860	 solamente
+1788070	 un
+1788250	 archivo
+1788580	 fueron
+1787470	__EVENT__
+1788840	
+
+1788850	varios
+1789179	 archivos
+1789480	 de
+1789720	 hecho
+1789870	 solicitud
+1790530	 de
+1788850	__EVENT__
+1790610	
+
+1790620	fusión
+1790980	 y
+1791580	 último
+1791880	 cómic
+1792290	 tiene
+1793290	 como
+1790620	__EVENT__
+1794090	
+
+1794100	habíamos
+1794309	 dicho
+1794750	 veces
+1795750	 estos
+1795960	 textos
+1796800	 varios
+1794100	__EVENT__
+1797120	
+
+1797130	archivos
+1797460	 entonces
+1798830	 en
+1799830	 este
+1800010	 caso
+1800510	 también
+1797130	__EVENT__
+1801500	
+
+1801510	es
+1801660	 importante
+1802140	 dejamos
+1802500	 destacar
+1802980	 qué
+1801510	__EVENT__
+1804290	
+
+1804300	en
+1804690	 cierres
+1805620	 pidió
+1805860	 clave
+1806280	 el
+1806340	 super
+1806580	 un
+1806700	 tipo
+1804300	__EVENT__
+1806900	
+
+1806910	yo
+1807060	 podría
+1807330	 compartir
+1807750	 también
+1807960	 este
+1808320	 link
+1806910	__EVENT__
+1809480	
+
+1809490	lo
+1809880	 cual
+1810090	 es
+1810420	 genial
+1810780	 porque
+1811200	 la
+1811560	 persona
+1811860	 que
+1809490	__EVENT__
+1811910	
+
+1811920	revisa
+1812340	 mi
+1812490	 proyecto
+1811920	__EVENT__
+1814250	
+
+1814260	yo
+1814380	 le
+1814500	 doy
+1814560	 este
+1814800	 link
+1815010	 no
+1815250	 pueden
+1815670	 recibir
+1814260	__EVENT__
+1815870	
+
+1815880	directamente
+1816480	 y
+1817260	 empezar
+1817620	 a
+1817680	 trabajar
+1817800	 sin
+1815880	__EVENT__
+1818510	
+
+1818520	instalar
+1819120	 en
+1819240	 sus
+1819890	 computadoras
+1818520	__EVENT__
+1821540	
+
+1821550	ninguno
+1821760	 de
+1821790	 los
+1821850	 paquetes
+1822180	 que
+1822270	 necesito
+1821550	__EVENT__
+1822770	
+
+1822780	como
+1822990	 dependencias
+1823560	 de
+1823620	 este
+1823740	 proyecto
+1824130	 lo
+1822780	__EVENT__
+1824420	
+
+1824430	cual
+1824670	 es
+1824910	 políticamente
+1825870	 correcto
+1826440	 si
+1827570	 no
+1824430	__EVENT__
+1828560	
+
+1828570	corresponde
+1829230	 tomarse
+1829560	 libertades
+1829740	 sobre
+1830310	 las
+1828570	__EVENT__
+1830690	
+
+1830700	computadas
+1831090	 de
+1831180	 otras
+1831360	 personas
+1831780	 y
+1832110	 nuestro
+1830700	__EVENT__
+1832580	
+
+1832590	porque
+1832800	 esto
+1832590	__EVENT__
+1834150	
+
+1834160	el
+1834670	 código
+1834970	 que
+1835030	 queremos
+1835270	 discutir
+1835630	 queremos
+1834160	__EVENT__
+1836310	
+
+1836320	conversar
+1836640	 tiene
+1837640	 dependencias
+1838450	 de
+1838810	 ir
+1838990	 a
+1836320	__EVENT__
+1839010	
+
+1839020	otra
+1839200	 persona
+1839500	 tiene
+1839680	 que
+1839830	 correr
+1840130	 no
+1840340	 estamos
+1839020	__EVENT__
+1840540	
+
+1840550	alguna
+1840730	 forma
+1841000	 obligando
+1841510	 a
+1841540	 instalar
+1842230	 esas
+1840550	__EVENT__
+1842370	
+
+1842380	dependencias
+1842730	 para
+1843730	 poder
+1844030	 ver
+1844800	 la
+1845800	 discusión
+1842380	__EVENT__
+1845940	
+
+1845950	entonces
+1846610	 en
+1846700	 esos
+1846910	 casos
+1847240	 quizás
+1847540	 es
+1847660	 mejor
+1845950	__EVENT__
+1848060	
+
+1848070	crear
+1849900	 un
+1850900	 proyecto
+1851140	 de
+1851710	 estudio
+1851980	 cloud
+1852250	 que
+1848070	__EVENT__
+1852570	
+
+1852580	ya
+1852700	 tiene
+1852940	 tres
+1853150	 dependencias
+1853480	 instaladas
+1853780	 y
+1852580	__EVENT__
+1854220	
+
+1854230	la
+1854320	 persona
+1854740	 con
+1854890	 la
+1854920	 que
+1855010	 tenemos
+1855340	 la
+1854230	__EVENT__
+1855390	
+
+1855400	conversación
+1855880	 lo
+1856030	 puede
+1856270	 abrir
+1856480	 servirse
+1857230	 a
+1855400	__EVENT__
+1857250	
+
+1857260	correr
+1857950	 y
+1858160	 sin
+1858850	 modificar
+1859300	 su
+1859390	 propio
+1857260	__EVENT__
+1860450	
+
+1860460	computador
+1860460	__EVENT__
+1862460	
+
+1862470	y
+1863010	 si
+1863190	 no
+1863280	 tienen
+1863549	 ese
+1863700	 proyecto
+1864030	 tampoco
+1864240	 es
+1862470	__EVENT__
+1864440	
+
+1864450	gran
+1864510	 cosa
+1864780	 porque
+1865140	 en
+1865590	 digamos
+1866580	 desde
+1867090	 el
+1864450	__EVENT__
+1867700	
+
+1867710	repositorio
+1868710	 en
+1868830	 sí
+1869390	 verdad
+1870390	 podrían
+1870900	 ellos
+1867710	__EVENT__
+1871010	
+
+1871020	copiar
+1871590	 la
+1871919	 dirección
+1872549	 de
+1873059	 ekin
+1873360	 dónde
+1874080	 está
+1871020	__EVENT__
+1874220	
+
+1874230	ese
+1874350	 repositorio
+1874230	__EVENT__
+1875659	
+
+1875669	y
+1876030	 abrir
+1876450	 un
+1876570	 nuevo
+1876659	 proyecto
+1877320	 ahora
+1877380	 con
+1877650	 la
+1875669	__EVENT__
+1877730	
+
+1877740	opción
+1877950	 de
+1878220	 nuevo
+1878429	 proyecto
+1878760	 de
+1878850	 dirija
+1877740	__EVENT__
+1879289	
+
+1879299	entonces
+1880140	 a
+1880200	 la
+1880320	 sedeso
+1880740	 pegan
+1881280	 el
+1881700	 vínculo
+1882210	 y
+1879299	__EVENT__
+1882680	
+
+1882690	pueden
+1883020	 generar
+1883169	 directamente
+1883740	 de
+1884400	 ricky
+1884700	 de
+1882690	__EVENT__
+1884810	
+
+1884820	hub
+1884970	 un
+1885720	 un
+1886590	 clon
+1886890	 en
+1887400	 el
+1887730	 estudio
+1888059	 clave
+1888299	 pero
+1884820	__EVENT__
+1889159	
+
+1889169	claro
+1889409	 la
+1889530	 única
+1889650	 diferencia
+1890220	 que
+1890400	 bueno
+1889169	__EVENT__
+1890570	
+
+1890580	ahora
+1890730	 tienen
+1890940	 que
+1891059	 instalar
+1891390	 ellos
+1891600	 mismos
+1890580	__EVENT__
+1892010	
+
+1892020	los
+1892320	 paquetes
+1892740	 que
+1892980	 sean
+1893220	 dependencias
+1893909	 del
+1892020	__EVENT__
+1894140	
+
+1894150	proyecto
+1894150	__EVENT__
+1895820	
+
+1895830	no
+1896399	 es
+1896519	 un
+1896760	 gran
+1897210	 problema
+1897960	 porque
+1898440	 incluso
+1898799	 de
+1895830	__EVENT__
+1898880	
+
+1898890	avisa
+1899610	 si
+1899789	 un
+1900600	 script
+1898890	__EVENT__
+1902429	
+
+1902439	por
+1903439	 ejemplo
+1903649	 llama
+1903949	 por
+1904609	 library
+1905089	 llama
+1905449	 en
+1902439	__EVENT__
+1905559	
+
+1905569	un
+1905689	 paquete
+1906139	 para
+1906499	 mirar
+1907249	 un
+1907309	 paquete
+1907669	 que
+1905569	__EVENT__
+1907779	
+
+1907789	está
+1908569	 instalado
+1909079	 porque
+1909649	 yo
+1910609	 hiciera
+1907789	__EVENT__
+1913540	
+
+1913550	y
+1913550	__EVENT__
+1919980	
+
+1919990	ah
+1919990	__EVENT__
+1921170	
+
+1921180	vamos
+1921510	 así
+1921180	__EVENT__
+1924740	
+
+1924750	o
+1924750	__EVENT__
+1928720	
+
+1928730	bueno
+1929390	 es
+1929690	 que
+1929870	 me
+1930140	 está
+1930260	 avisando
+1930500	 que
+1930740	 vean
+1928730	__EVENT__
+1930940	
+
+1930950	esté
+1931190	 instalado
+1931549	 servicio
+1932000	 de
+1932059	 instalar
+1930950	__EVENT__
+1932970	
+
+1932980	porque
+1933520	 esto
+1933640	 quiere
+1933820	 decir
+1933850	 que
+1934330	 es
+1934450	 el
+1935049	 paso
+1932980	__EVENT__
+1935340	
+
+1935350	más
+1935380	 importante
+1935530	 es
+1936100	 tener
+1936400	 el
+1936940	 repositorio
+1935350	__EVENT__
+1937530	
+
+1937540	en
+1937720	 github
+1938049	 con
+1938919	 el
+1939160	 vínculo
+1939880	 a
+1940020	 posteriori
+1941020	 ya
+1937540	__EVENT__
+1941039	
+
+1941049	es
+1941559	 muy
+1941710	 fácil
+1942040	 para
+1942210	 la
+1943210	 persona
+1943510	 que
+1943600	 va
+1943690	 a
+1941049	__EVENT__
+1943710	
+
+1943720	revisar
+1944200	 tu
+1944500	 código
+1944770	 y
+1945490	 generar
+1946450	 un
+1947169	 proyecto
+1943720	__EVENT__
+1947430	
+
+1947440	que
+1947890	 no
+1948040	 contamine
+1948520	 su
+1948820	 propio
+1949150	 sistema
+1947440	__EVENT__
+1949260	
+
+1949270	podría
+1949929	 haber
+1950080	 un
+1950200	 proyecto
+1951570	 pero
+1952570	 aún
+1952690	 mejor
+1949270	__EVENT__
+1953039	
+
+1953049	si
+1953140	 quiere
+1953590	 facilitar
+1953740	 la
+1954160	 comunicación
+1954340	 ya
+1953049	__EVENT__
+1954810	
+
+1954820	crear
+1954820	__EVENT__
+1957349	
+
+1957359	directamente
+1958359	 y
+1958690	 otros
+1959259	 sé
+1959379	 que
+1959499	 ellos
+1957359	__EVENT__
+1959609	
+
+1959619	quieren
+1959950	 de
+1960099	 mieres
+1960429	 y
+1960639	 si
+1960879	 se
+1961029	 van
+1961330	 por
+1961509	 la
+1959619	__EVENT__
+1961619	
+
+1961629	ruta
+1961779	 vamos
+1962139	 a
+1962200	 borrar
+1962349	 este
+1962619	 proyecto
+1963009	 si
+1961629	__EVENT__
+1963450	
+
+1963460	ambos
+1963729	 la
+1963820	 ruta
+1964149	 de
+1965609	 hacerle
+1966609	 fecha
+1967059	 ocurre
+1963460	__EVENT__
+1967830	
+
+1967840	pues
+1968019	 que
+1968169	 acaba
+1968379	 de
+1968470	 someterse
+1968950	 si
+1969279	 quieren
+1967840	__EVENT__
+1969539	
+
+1969549	importar
+1970450	 el
+1970779	 código
+1971139	 que
+1971499	 acaba
+1972190	 de
+1972279	 someter
+1969549	__EVENT__
+1972629	
+
+1972639	otra
+1973269	 ruta
+1973539	 para
+1973690	 ello
+1973929	 sería
+1974519	 simplemente
+1972639	__EVENT__
+1975509	
+
+1975519	usar
+1976049	 la
+1977049	 observación
+1977679	 de
+1978429	 esas
+1978729	 solicitudes
+1975519	__EVENT__
+1979499	
+
+1979509	de
+1980289	 función
+1980649	 desafiar
+1981190	 vamos
+1981609	 a
+1981700	 demostrar
+1979509	__EVENT__
+1982049	
+
+1982059	eso
+1982389	 a
+1982989	 ver
+1983169	 en
+1983289	 qué
+1983379	 estado
+1983559	 estamos
+1983769	 acá
+1982059	__EVENT__
+1986690	
+
+1986700	entonces
+1987390	 por
+1987540	 ejemplo
+1987600	 digamos
+1988380	 que
+1988500	 estamos
+1986700	__EVENT__
+1988940	
+
+1988950	acá
+1989220	 en
+1989340	 este
+1988950	__EVENT__
+1990409	
+
+1990419	en
+1990929	 este
+1991139	 repositorio
+1991409	 estamos
+1992039	 trabajando
+1990419	__EVENT__
+1992529	
+
+1992539	con
+1993539	 esta
+1993950	 repositorio
+1994950	 dentro
+1995159	 de
+1995220	 esta
+1992539	__EVENT__
+1995330	
+
+1995340	organización
+1996230	 y
+1997230	 que
+1997440	 hay
+1997529	 varias
+1995340	__EVENT__
+1997849	
+
+1997859	solicitudes
+1998279	 de
+1998639	 fusión
+1999029	 y
+1999210	 esta
+1999480	 última
+1999809	 ya
+1997859	__EVENT__
+2000159	
+
+2000169	mi
+2000350	 código
+2000799	 en
+2000980	 la
+2001129	 que
+2001279	 la
+2001879	 persona
+2002059	 que
+2000169	__EVENT__
+2002259	
+
+2002269	quiera
+2002419	 revisar
+2002690	 que
+2003200	 mande
+2003590	 la
+2003710	 conversación
+2002269	__EVENT__
+2005320	
+
+2005330	contigo
+2006330	 la
+2007230	 conversión
+2007559	 la
+2007679	 va
+2007799	 a
+2007830	 tener
+2007950	 acá
+2005330	__EVENT__
+2008269	
+
+2008279	mismo
+2008580	 en
+2008639	 los
+2008879	 países
+2008279	__EVENT__
+2011600	
+
+2011610	6
+2012779	 acá
+2013320	 en
+2013409	 conversación
+2013950	 si
+2014249	 es
+2014879	 de
+2014999	 la
+2011610	__EVENT__
+2015110	
+
+2015120	interfase
+2015480	 que
+2015600	 usan
+2015779	 para
+2015929	 la
+2015990	 discusión
+2015120	__EVENT__
+2016399	
+
+2016409	pero
+2016919	 si
+2017159	 quisieran
+2017610	 correrse
+2018090	 cogió
+2018419	 saben
+2016409	__EVENT__
+2018919	
+
+2018929	que
+2019080	 esta
+2019499	 es
+2019529	 la
+2019769	 solicitud
+2020249	 de
+2020309	 función
+2018929	__EVENT__
+2020600	
+
+2020610	número
+2020730	 15
+2021299	 entonces
+2021990	 se
+2022259	 viene
+2022559	 esto
+2020610	__EVENT__
+2025650	
+
+2025660	sería
+2026110	 sobre
+2026380	 el
+2026440	 tuyo
+2026710	 y
+2026950	 tiran
+2027670	 directamente
+2025660	__EVENT__
+2027810	
+
+2027820	de
+2028540	 esa
+2028900	 solicitud
+2029530	 de
+2029590	 fusión
+2029730	 para
+2027820	__EVENT__
+2030720	
+
+2030730	demostrarlo
+2031240	 voy
+2031390	 a
+2031450	 abrir
+2031630	 otro
+2032020	 proyecto
+2030730	__EVENT__
+2032750	
+
+2032760	simplemente
+2033760	 para
+2034060	 cambiar
+2034330	 el
+2034390	 directorio
+2032760	__EVENT__
+2036010	
+
+2036020	y
+2036500	 voy
+2036680	 a
+2036710	 borrar
+2036860	 el
+2037520	 proyecto
+2037940	 que
+2038090	 está
+2036020	__EVENT__
+2038230	
+
+2038240	asociado
+2038690	 al
+2038750	 repositorio
+2039080	 demo
+2038240	__EVENT__
+2040790	
+
+2040800	y
+2041280	 lo
+2041400	 vamos
+2041550	 a
+2042650	 empezar
+2044420	 a
+2045680	 decir
+2046680	 que
+2052670	 no
+2040800	__EVENT__
+2059250	
+
+2059260	y
+2060429	 estoy
+2061429	 empezando
+2061550	 de
+2061880	 cero
+2061970	 con
+2062630	 un
+2059260	__EVENT__
+2062710	
+
+2062720	repositorio
+2063350	 que
+2063650	 es
+2063740	 un
+2063800	 clon
+2062720	__EVENT__
+2065359	
+
+2065369	de
+2065909	 repositorio
+2066509	 la
+2066569	 organización
+2067019	 central
+2065369	__EVENT__
+2067339	
+
+2067349	pero
+2067950	 ahora
+2068220	 voy
+2068339	 a
+2068369	 hacer
+2068429	 variar
+2068849	 fecha
+2069359	 hoy
+2067349	__EVENT__
+2069799	
+
+2069809	quiero
+2070139	 ver
+2070799	 la
+2071249	 solicitud
+2071849	 de
+2071909	 fusión
+2069809	__EVENT__
+2073369	
+
+2073379	15
+2074339	 ok
+2074700	 entonces
+2075379	 hacemos
+2076379	 pierre
+2076710	 fecha
+2077039	 está
+2073379	__EVENT__
+2077210	
+
+2077220	dentro
+2077429	 para
+2077609	 que
+2077700	 te
+2077819	 justice
+2078149	 le
+2078779	 digo
+2078960	 que
+2077220	__EVENT__
+2079069	
+
+2079079	quiero
+2079710	 traer
+2080039	 que
+2080190	 la
+2080309	 solicitud
+2080700	 de
+2080789	 opción
+2079079	__EVENT__
+2080990	
+
+2081000	15
+2081450	 y
+2081480	 como
+2081720	 ves
+2081869	 es
+2082470	 a
+2082559	 su
+2082679	 disposición
+2083069	 tiene
+2081000	__EVENT__
+2083480	
+
+2083490	este
+2083789	 par
+2083970	 de
+2084089	 archivos
+2084599	 más
+2083490	__EVENT__
+2086070	
+
+2086080	la
+2086590	 capita
+2087010	 de
+2087040	 datos
+2086080	__EVENT__
+2088280	
+
+2088290	estos
+2088890	 dos
+2088980	 archivos
+2089360	 y
+2090360	 este
+2091290	 archivo
+2091650	 y
+2088290	__EVENT__
+2091730	
+
+2091740	tomás
+2092179	 que
+2093179	 corresponden
+2093810	 a
+2094200	 los
+2094590	 cambios
+2091740	__EVENT__
+2094909	
+
+2094919	agregados
+2095340	 a
+2095400	 su
+2095580	 criterio
+2095910	 entonces
+2096630	 ahora
+2094919	__EVENT__
+2096950	
+
+2096960	si
+2097080	 podría
+2097440	 no
+2098280	 sería
+2098610	 muy
+2098820	 fácil
+2099180	 por
+2099330	 esta
+2096960	__EVENT__
+2099500	
+
+2099510	razón
+2099720	 a
+2099810	 volver
+2100050	 a
+2100110	 correr
+2100380	 el
+2100560	 código
+2101010	 y
+2099510	__EVENT__
+2101360	
+
+2101370	verlo
+2102210	 discutirlo
+2102690	 y
+2103130	 entonces
+2104130	 lo
+2104700	 más
+2101370	__EVENT__
+2104810	
+
+2104820	importante
+2105240	 de
+2105300	 todos
+2105540	 es
+2105660	 mover
+2106140	 tu
+2106440	 código
+2106650	 a
+2104820	__EVENT__
+2106790	
+
+2106800	níjar
+2107160	 que
+2107460	 está
+2107820	 justamente
+2108150	 diseñado
+2108780	 para
+2106800	__EVENT__
+2108980	
+
+2108990	mantener
+2109350	 nuestras
+2109770	 destructivas
+2108990	__EVENT__
+2112700	
+
+2112710	bueno
+2113310	 con
+2113550	 eso
+2113820	 cubrimos
+2112710	__EVENT__
+2115790	
+
+2115800	este
+2116580	 último
+2116880	 paso
+2115800	__EVENT__
+2118320	
+
+2118330	y
+2118540	 se
+2118900	 termina
+2119230	 tenemos
+2119530	 acá
+2119890	 espero
+2120160	 que
+2120280	 les
+2118330	__EVENT__
+2120360	
+
+2120370	haya
+2120430	 sido
+2121240	 útil
+2121690	 entonces
+2122080	 cubrimos
+2120370	__EVENT__
+2122930	
+
+2122940	básicamente
+2123940	 la
+2124240	 parte
+2124540	 de
+2124630	 primero
+2124990	 en
+2125410	 otro
+2122940	__EVENT__
+2125760	
+
+2125770	vídeo
+2125980	 anterior
+2126220	 la
+2126580	 parte
+2126820	 más
+2127090	 teórica
+2127270	 de
+2125770	__EVENT__
+2127710	
+
+2127720	por
+2127960	 qué
+2128140	 está
+2129100	 la
+2129130	 población
+2129610	 es
+2129700	 de
+2130210	 código
+2127720	__EVENT__
+2130350	
+
+2130360	productiva
+2132240	 cuáles
+2133240	 son
+2133330	 los
+2133420	 elementos
+2133510	 más
+2130360	__EVENT__
+2134220	
+
+2134230	importantes
+2134410	 código
+2135220	 que
+2135280	 tiene
+2135460	 que
+2135520	 correr
+2134230	__EVENT__
+2135780	
+
+2135790	juego
+2136180	 que
+2136270	 no
+2136360	 tengo
+2136690	 que
+2136750	 correr
+2137050	 pero
+2137320	 que
+2135790	__EVENT__
+2137460	
+
+2137470	se
+2137590	 hiciera
+2137890	 de
+2138460	 manera
+2138550	 fácil
+2138910	 y
+2140370	 básicamente
+2137470	__EVENT__
+2141360	
+
+2141370	hemos
+2142060	 compartido
+2142450	 un
+2142510	 par
+2142630	 de
+2143250	 ideas
+2141370	__EVENT__
+2145300	
+
+2145310	lo
+2145850	 último
+2146240	 que
+2147170	 dejar
+2147500	 son
+2148190	 con
+2148810	 herramientas
+2145310	__EVENT__
+2149800	
+
+2149810	de
+2150050	 hecho
+2150230	 que
+2150350	 permite
+2150680	 implementar
+2150860	 esas
+2149810	__EVENT__
+2151660	
+
+2151670	ideas
+2151910	 de
+2152240	 la
+2152330	 forma
+2152570	 más
+2152660	 fluida
+2152930	 posible
+2153110	 y
+2151670	__EVENT__
+2153640	
+
+2153650	vimos
+2153890	 cómo
+2154130	 trabajar
+2154720	 con
+2155720	 herramientas
+2153650	__EVENT__
+2155860	
+
+2155870	según
+2156800	 la
+2157340	 cantidad
+2157790	 de
+2157940	 herramienta
+2158450	 a
+2155870	__EVENT__
+2158470	
+
+2158480	utilizar
+2158510	 según
+2159320	 la
+2159470	 cantidad
+2159740	 código
+2160070	 que
+2158480	__EVENT__
+2160150	
+
+2160160	tenga
+2160460	 mucho
+2161090	 código
+2161590	 poco
+2162590	 código
+2163010	 como
+2163250	 en
+2160160	__EVENT__
+2163300	
+
+2163310	este
+2163460	 caso
+2163790	 puede
+2164060	 ser
+2164240	 reflex
+2164780	 y
+2163310	__EVENT__
+2165130	
+
+2165140	compartirlas
+2165980	 simplemente
+2166460	 por
+2166580	 solar
+2165140	__EVENT__
+2167470	
+
+2167480	artist
+2168640	 y
+2169640	 cuando
+2169880	 tenés
+2170060	 un
+2170120	 archivo
+2170540	 o
+2167480	__EVENT__
+2171070	
+
+2171080	varios
+2171500	 archivos
+2171770	 ya
+2172310	 estamos
+2172820	 pensando
+2173420	 en
+2171080	__EVENT__
+2174150	
+
+2174160	trabajar
+2175160	 dentro
+2175550	 de
+2175700	 repositorios
+2176270	 de
+2176390	 git
+2174160	__EVENT__
+2176500	
+
+2176510	hub
+2176720	 si
+2177230	 es
+2177290	 solamente
+2177440	 un
+2177680	 archivo
+2178010	 puedes
+2176510	__EVENT__
+2178330	
+
+2178340	usar
+2178580	 la
+2178700	 interfase
+2179120	 de
+2179210	 giza
+2179450	 para
+2179690	 agregar
+2178340	__EVENT__
+2180190	
+
+2180200	archivos
+2180680	 subirlo
+2181400	 desde
+2181610	 tu
+2181700	 computadora
+2181820	 oa
+2180200	__EVENT__
+2182440	
+
+2182450	greco
+2182750	 creado
+2183110	 ahí
+2183200	 en
+2183380	 el
+2183440	 aire
+2182450	__EVENT__
+2184110	
+
+2184120	pero
+2185120	 está
+2185900	 súper
+2186170	 recomendable
+2186620	 usar
+2186710	 y
+2184120	__EVENT__
+2186910	
+
+2186920	quizás
+2187160	 dos
+2187340	 meses
+2187730	 porque
+2188090	 te
+2188210	 permiten
+2186920	__EVENT__
+2188700	
+
+2188710	visualizar
+2190120	 directamente
+2191120	 los
+2191750	 archivos
+2188710	__EVENT__
+2192280	
+
+2192290	como
+2192590	 si
+2192680	 fuera
+2192920	 una
+2193040	 página
+2193400	 de
+2193610	 internet
+2192290	__EVENT__
+2197109	
+
+2197119	y
+2197599	 finalmente
+2197869	 si
+2198079	 tienes
+2198259	 muchos
+2198589	 archivos
+2197119	__EVENT__
+2198900	
+
+2198910	bueno
+2199910	 quizás
+2200599	 quieras
+2201380	 pensar
+2201740	 en
+2201890	 crear
+2202309	 un
+2198910	__EVENT__
+2202950	
+
+2202960	proyecto
+2203960	 de
+2204049	 estudio
+2204289	 claro
+2204619	 que
+2204740	 ya
+2204890	 tenga
+2202960	__EVENT__
+2205120	
+
+2205130	las
+2205220	 dependencias
+2205880	 del
+2206599	 código
+2207319	 que
+2207529	 quieras
+2205130	__EVENT__
+2207849	
+
+2207859	discutir
+2208579	 ok
+2209029	 espero
+2209420	 que
+2209509	 les
+2209630	 haya
+2209690	 servido
+2207859	__EVENT__
+2209890	
+
+2209900	gracias
+2209900	__EVENT__

@@ -1,0 +1,720 @@
+so today the data science incubator is
+one of the
+last few chapters before the end of this
+series today i wanted to talk about
+our packages as an infrastructure that
+can help you develop shiny apps
+it is one good way to scale up so
+basically when your
+apps become too many or become too big
+then the infrastructure that on our
+package provides
+becomes like really helpful so i wanted
+to kind of
+walk you through the process of moving
+from a single file app
+to one that is hosted inside on our
+package
+but before we do that um maybe let's
+briefly discuss some of the benefits
+that um
+on our package can give you as a
+developer of
+a shiny app and there is there is a
+bunch of things but
+i'm gonna discuss only three things so
+one
+is your workflow so today you're gonna
+see me
+change an app from as i said a single
+file to another package and
+and you're gonna see me um use keyboard
+shortcuts and all the tooling
+that comes with our packages that is
+going to be available to you
+so if you are already familiar with our
+packages because you build them for
+other purposes now you can reuse that
+knowledge
+in the context of developing a shiny app
+then another great benefit
+is that in r our packages are the main
+vehicle for distributing software right
+so
+immediately as you package your app you
+have a way to share your work with the
+world
+you can even publish it on cran or you
+can host it on github and people can use
+a function like you know
+install underscore github and install
+your app
+right away in their systems and then
+with some of the functions that you
+give in the package they can trigger the
+app and start using it
+uh and finally uh there's more benefits
+but the one that
+i wanted to mention third today is the
+idea of testing
+i'm not going to be showing that today
+because you know we kind of cover
+testing in
+other series and and also because this
+is a kind of complex topic that
+might take too long but basically
+as you know once you have on our package
+it's very easy
+to test or to use test that
+and the infrastructure the package
+provides to test the code that you have
+and you know shiny is no different so
+you can test any function
+that you write in your app
+you can test it as you could do
+with any other normal function except
+that when your functions are
+uh you know produce reactives there's a
+different framework that you need to use
+on top of test dot to be able to test
+those reactives so if you're interested
+in in building
+very robust shiny applications and
+you're interested in testing not just
+you know vanilla functions but also
+reactive functions
+then um you need to probably go to
+some resources to learn on your own you
+know how to do that uh
+i have some examples in apps that i that
+i'm building
+for two degrees there is uh information
+at least the minimum that you need
+in the mastering shiny book which is the
+one that i'm using to
+teach this series so you should have
+there
+everything to get started but now let's
+go
+um to our studio and let's do a little
+demo
+of um how to move from
+a single file app to another package
+before we do that maybe
+i'll ask cj to remind me in 10 minutes
+when it's
+20 past four questions and stuff
+and also before i do that is there any
+comment
+a question right now before we actually
+start with the demo
+we're good to go perfect
+okay so what you are seeing now
+on screen is um a very
+simple app it is in this single file
+called app.r
+and let's just run this file i'm going
+to press shift ctrl enter
+to source this file and that triggers
+oh that runs the application so we can
+hear see it here in the in the viewer
+panel
+uh basically what it's doing it's
+looking into the different
+data sets that come with a package
+called
+datasets and that package comes with r
+so it has a bunch of data sets including
+the for example the very famous
+data set empty cars for example which
+should be somewhere here
+this one for example here empty cars and
+immediately produces a summary of your
+data set
+and and shows you a table
+right so that's kind of useful it's a
+useful app because sometimes
+you need a data set for some kind of
+example
+and uh and you may be wondering where i
+could get that kind of data set so with
+an app like this one you can very
+quickly explore
+the very large number of data sets that
+already come with r and you may
+not even know that some of the data sets
+uh that are there
+like for example i really like like this
+very tiny
+data frame vo d
+this one i like it because it's very
+small
+and sometimes i just need to show how to
+do something with a tiny data set
+and and this is the one that i usually
+use so
+how do we create the package
+infrastructure at least the minimum that
+we need
+to start benefiting from from the things
+that come within our package
+okay for that i super recommend
+these guidelines that come with the
+mastering shiny book
+there is a section called converting an
+existing app
+and we're going to be walking through
+that very short section
+to show you basically how minimal it is
+what you need to do
+to start using uh another package
+as as the infrastructure for your app
+so um
+usually um what um i mean in another
+package every code
+goes in a folder called r but
+it is it is common that if you have a
+very bare bones app
+you wouldn't have that folder already
+you would have probably just
+another studio project and maybe not
+even that and you could probably have
+just
+one file called app.r here we have also
+a couple of hidden files
+let's see if i can just hide them so
+that uh
+we focus on
+[Music]
+what really matters well no we have a
+getting note on our history but those
+files come with our studio when you
+create
+an app with the rstudio template
+uh otherwise you could just have that
+app.r file
+so um the very first thing you could
+probably do is
+create a folder and call it r it has to
+be called that way
+that's like a convention in our packages
+and then you could move
+that file up dot r uh you could move it
+to that
+directory and so let's do just that
+so we're gonna put it in here
+and now you know once it's there you
+could call it
+whatever really that file and it does
+make sense
+when it's in the root that is called
+app.r because that name
+is kind of special for shiny and that
+name makes it makes it discoverable
+for frameworks like for example a shiny
+app store io
+but now that it's in r um you will
+also you know be able to rename it
+but before we do that let's first um go
+to the second step
+in converting a vanilla single
+um file app into our package which is
+to transform you know your script into a
+standalone function so all you need to
+do is to
+take all that code that you have there
+and a wrap it inside a function so
+we now need a name for our function so
+let's call it
+because this creates a data set summary
+uh let's call it
+uh data set or summary data set
+summary data set
+so let's create our function
+uh we don't need to pass any argument
+here um
+we just paste the code that i copied
+from before
+i'm gonna tie this up a little bit
+by indenting the code
+a little bit and here is our
+our function um so that's step
+two to transform our app
+in a function that wraps it and then
+to really create a package all you need
+any project that has
+a file called description with a correct
+structure because right format
+um or correct content uh
+will become automatically in our package
+so you can add such a file
+with the function use description from
+the package
+use this so let's do just that
+so if i am in this project and call
+use this use
+description then the function will
+add in the root of the project in this
+case
+the root of my project is called my app
+and now you see how
+it added this file called description so
+that
+already is uh on our package so now my
+app
+folder is no longer just a vanilla
+folder it's now
+in our package so it has all the
+properties that come
+with another package including the
+ability to use some keyword shortcuts
+that
+our studio is aware of but to activate
+those um keyword shortcuts and to start
+using the r package development
+workflow we first need to restart this
+project
+so let me confirm that that is a step
+that is documented here okay
+the the book is also reminding us that
+if you haven't already
+uh added an um another studio project
+file in your folder then it's a good
+time to do it now
+and you could do it with the function
+use this use rstudio
+you can you know do it programmatically
+but in this case i already have
+a file i could overwrite it if i wanted
+with the function
+use this use
+rstudio and all it's going to do
+in this case it's going to detect i
+already have a file and it's asking me
+if i want to overwrite it
+let's say yes um
+and here we go uh i kind of like to run
+uh this because when the folder has a
+description file
+the r studio project file also
+is aware of the kind of project that it
+is
+it's no longer just a vanilla project
+it's an a package project
+so i want to want to overwrite it so
+that i'm i'm sure that our studio is
+aware that this
+is a package type of project
+and then the next thing that we need to
+do let's confirm that the book
+says so is to restart our studio so one
+way to do that it would be to come here
+to the r studio icon at the top
+and you can click on the on the name of
+the same project that you have
+open and that will kind of
+close and reopen and relaunch our studio
+in in the exact same project it is not
+just
+restarting your r session which you
+could do with shift ctrl
+f10 but it is restarting our studio so
+that will
+um what we'll make is that our studio
+now
+will detect this uh description file
+which wasn't before when the our studio
+project had been launched
+in the first place and now having
+identified this description file
+is going to give you a tab for example
+like this one it's called build
+build that before wasn't there actually
+i forgot to kind of mention that
+to to notice that it wasn't there and
+now it is so that tab
+is the tab that package developers use
+and includes icons like check to run
+uh a bunch of checks that confirm
+or verify if the structure of your
+package is correct or not
+uh following the policies of of crime
+so that's about it that also means that
+you are now ready to
+use the workflow of another package
+development
+which means that you can run a command
+or ctrl shift
+l and that will load all the functions
+and so you no longer need to source any
+code
+you just call load all and you don't
+have to type anything
+because rstudio provides a keyword
+shortcut so we do i'm going to press
+shift ctrl l
+and that will load the code so if i did
+any change to my app.r file
+it will be um it will be kind of now
+expressed it will be kind of loaded back
+into r
+so the change will manifest itself and
+now i could call because
+because i have loaded everything in this
+package i can also call the function
+summary that is said
+thanks dj i'm gonna make it pause very
+very quick
+quickly i can call the function summary
+data set
+and that will um will
+call uh the app right i will launch it
+right so now uh we are kind of and
+we don't have a perfect package we have
+only a minimum package
+but as you can see with that very
+minimal effort we already can leverage
+the power or the benefits of or many of
+the benefits of our packages like
+including
+um you know the workflow that comes with
+you know like just
+loading the code with shift ctrl l
+and then calling the name of the
+function that we used to wrap the app
+and trigger the the app
+and that also means that you could have
+in a single project in a single package
+you could have
+many apps you don't you're not limited
+to just one app per project you can have
+as many apps as functions you know you
+you you have in your package that wrap
+shiny apps
+okay so that i think it's a good uh
+stopping point for
+for some comments or questions and then
+we can continue if this time
+after this this series of questions so
+let's go back to your faces here
+um do you have any any question here
+any comment maybe anyone who has used
+shiny apps in
+with with and without packages
+i'm going to ask a question to jackson
+because you you're uh can you tell me
+jackson is the app
+that uh that you published
+on the word you know what advertising
+the wording is that uh another package
+or is just a vanilla
+kind of file it's it's in our package
+every shiny app i make
+basically is in our package
+like the testing framework and the
+checking checks and
+the um honestly just devtools load all
+is like very useful right
+yeah so the i i know it might feel like
+uh you know for such a small benefit
+like is that
+all there is but the workflow is pretty
+fluid um i mean i have the app there
+ready to go
+i can stop it with escape
+i can press ctrl 1 to jump to
+the panel to my top left i can edit
+the app say you know let's call what i'm
+gonna
+edit now is uh let's pretend that i want
+the label to be
+data set all caps
+and now i don't even save the file i
+press again shift ctrl l
+that will pop up this window that com
+asks me to confirm if i want to save
+this file i'm going to
+hit enter that loads the app
+and then because i called the function
+summary that i said before
+it is in the history of calls that i
+have so i'm going to press my up arrow
+a couple of times and there is the the
+call so i can now press
+enter and i will retrigger the app and
+now the
+you know the change that i did which is
+to make this
+uppercase is not manifested here um so
+if i have
+any tests i could also press shift ctrl
+t and i would you know run
+all my tests meaning that any effort
+that i did
+that i invested in um in making sure
+that my app works
+um is now out you know would be
+automated and good you know all those
+that effort will be reused every time i
+want to check
+that things go as planned um any other
+comment
+or question here i have one other
+comment maybe
+if people just said people don't see the
+usefulness of um of the checks
+but if you if you run
+on like the automated checks that are
+that are to check if the package is like
+up to the standards
+of um crayon it also it helps in your
+development process to ensure that the
+application
+uh the shiny app you're developing um
+will work on just on most environments
+like just about it's not it's not quite
+as nice as like a dockerfile or
+something like that
+um but it ensures that reproducibility
+of the app so like
+and if if there's a part of your app
+that requires you use third party data
+or something makes it really obvious
+where those those kind of separations
+are
+and i think it really helps with
+collaborating with other people
+to ensure that like you don't have some
+stray scripts they need to install some
+random things
+that are accessing things only on your
+desktop
+packages that fall together it forces
+you to
+develop like that i agree so let's uh
+let's actually um
+demonstrate in a way uh what you're
+saying
+by making this package a little bit more
+compliant with
+uh with kind of crime policy so
+you know what the the bunch of people
+that this that said what a package
+should look like
+um you know wrote a bunch of rules
+that a project should kind of meet and
+those rules are automatically
+uh implemented and used to test that
+your package dashboard does not comply
+with those rules
+through this command that is called rcmd
+check so the way to run that command
+in our studio um
+the easiest way is to click here this
+this button that is called check
+and that will run i mean for free you're
+going to get all this verification
+that checks a bunch of things so you
+will see that
+you know this this check will find a
+bunch of problems now because our
+package is so minimal we
+so far we haven't invested any time in
+making it compliant with the structure
+of
+that that you know this bunch of people
+decided that a package should have
+uh but as this goes on
+um i'm going to start actually kind of
+explaining some of those things
+that that make a package compliant
+and some of the things that we can
+change in our app as
+is now to become uh
+basically to pass this check in in a
+clean way
+so one of the things that you don't do
+in our packages and you're doing scripts
+it's called
+uh library right so if you need to use a
+package
+inside another package so this is my
+package it's called my app
+and my package needs the package shiny
+right because it's built on top of it
+so i need to use shiny and so if this is
+a script the way i use shiny is just by
+calling library
+shiny but actually here you're seeing
+the check is actually
+talking about this precise issue right
+now
+so when you want to use a package
+what you what you do is you add you list
+that package in a field called
+imports inside the file description so
+you could do that manually but it's a
+bit of a pain
+and error prone so we don't still have a
+field called imports
+but we can do all of that using the
+function use this
+use underscore package
+and and we will say which package is the
+one that we want to use
+in this case shiny so this app the only
+package that uses is shiny um
+so that's the only
+package that i need um so now you see
+that
+the checks have completed and it
+detected
+no errors but detected two warnings and
+one node
+so the order uh is that of severity so
+errors are the worst thing that you can
+have
+warnings are the second worst and then
+the notes are you know you need to
+work on them but it's not terrible so it
+detected a bunch of things
+uh and a bunch are also kind of
+interrelated uh
+one thing that i have just fixed is that
+you know the package
+giant shiny should be declared in
+imports
+and also i i need to
+uh this is kind of a funky thing in
+packages you not only need to
+to list it there you also need to say
+uh that each you know to each function
+you need to say where it comes from so i
+should say something like okay the
+the function fluid page comes from shiny
+and then the function select input also
+comes from shiny
+and so on and so forth but because that
+is so tiring
+instead what you can do is
+in a case of a package that you know you
+use so heavily
+you can just say add import
+and say the name of the package
+this is considered not a good practice
+and instead
+the better practice is to import each
+function specifically
+but in the case of an app where shiny of
+a shiny app where chinese use so heavily
+this is one of those exceptions where um
+it kind of makes sense to do it that way
+and also once we have declared the shiny
+uh in imports and also we have imported
+it
+we can remove that code to library and
+that is going to be one of those things
+that you know
+make us pass the checks a bit more
+cleanly
+so i'm going to click here check again
+still this is not
+um you know a perfect package sorry i
+hit the wrong
+bottom but we should see that the checks
+are now a bit cleaner which can support
+the comment
+that jackson just did the idea that for
+free
+you have all these checks and it helps
+you detect
+what issues you still need to address
+before your package is kind of really
+ready
+to share with the world and robust so as
+the checks
+finish i'm gonna go back to your faces
+um
+and and see if there's any last question
+or comment
+and because we are about the time when
+we need to finish
+okay in the meantime i'm going to say
+what's the plan for this series
+um i'm planning to wrap this series in
+one or two more meet
+ups because the series was conceived
+originally as a series about
+building shiny apps and also publishing
+shiny apps
+the one thing that we have absolutely
+not covered so far
+is publishing so the next meetup i would
+like to show you
+different i mean i won't cover all the
+possible ways in which you can publish
+shiny apps but
+i will cover some very different
+ways and platforms uh that will be more
+or less suitable depending particularly
+on the audience that you have
+for example is your audience someone who
+has r
+in their computer or is someone who has
+gonna interact with your app only on the
+web browser
+that kind of question is gonna be the
+one determining which is the
+the best way to kind of publish your app
+so that's gonna be
+what i would like to be talking next
+time and then there is a conditional
+meetup after that one with which uh
+could be
+a show and tell kind of thing uh maybe
+jackson can show us
+his app i have some apps to show too
+maybe someone else in the room has
+other apps to show so a demo of you know
+what we have done
+what we have accomplished with shiny
+before we actually call it
+a series and we close the series
+so that's the plan and then i'm going to
+be asking you for your ideas about next
+series so okay going back to our studio
+and just about to finish
+i show you that you know before we had
+two warnings and one note
+now we only have one warning and so as
+you can see this package is kind of
+approaching
+the you know compliance
+uh and the one warning that we have is
+pretty straightforward it is telling me
+that
+there is no file basically called
+license so we need
+any every package needs a license and
+it's very easy to fix i can do
+use uh something like mit license
+um and that will fix the problem so now
+use this without that license file and
+then when i run check now
+my package should be good to go i'm not
+going to wait for this to complete
+because it's time to wrap up
+but instead i'm going to say thank you
+and see you next time
+before people leave um i'm just
+wondering
+if anyone who wants to start talking
+about um some of the changes that
+jackson mentioned in the dev hangout
+thread
+um i'm thinking maybe we can just stay
+on the call that's cool
+that works more fun to jump to a
+completely new
+google me
+i'm gonna save the

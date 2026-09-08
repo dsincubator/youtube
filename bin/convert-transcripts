@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+set -u
+
+PROGRAM="${0##*/}"
+usage() {
+    cat <<EOF
+Usage: $PROGRAM [OPTIONS] [CSV] [OUT_DIR]
+Convert transcripts/*.json3 to readable .txt and .tsv formats.
+
+Options:
+  -h, --help            Show this help message and exit
+  --csv PATH            Metadata CSV (default: data/metadata.csv)
+  --out-dir DIR         Output directory (default: transcripts)
+  --format FORMAT       Output format: txt, tsv, or both (default: both)
+  -n, --count N         Process only the first N videos
+EOF
+}
+
+CSV="data/metadata.csv"
+OUT_DIR="transcripts"
+FORMAT="both"
+COUNT=0
+
+need_arg() {
+    [[ $# -ge 2 ]] || { echo "[$PROGRAM] $1 needs a value" >&2; exit 2; }
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help) usage; exit 0 ;;
+        --csv) need_arg "$@"; CSV="$2"; shift 2 ;;
+        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        --format) need_arg "$@"; FORMAT="$2"; shift 2 ;;
+        -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
+        *)
+            if [[ "$1" == *.csv ]]; then CSV="$1"
+            elif [[ "$1" == transcripts* ]]; then OUT_DIR="$1"
+            elif [[ "$1" == "txt" || "$1" == "tsv" || "$1" == "both" ]]; then FORMAT="$1"
+            else
+                echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2
+            fi
+            shift
+            ;;
+    esac
+done
+
+python3 - "$CSV" "$OUT_DIR" "$FORMAT" "$COUNT" <<'PYEOF'
+import csv, json, os, sys
+
+csv_path, out_dir, fmt, count_str = sys.argv[1:5]
+count = int(count_str)
+
+ids = []
+with open(csv_path) as f:
+    for row in csv.DictReader(f):
+        ids.append(row["id"].strip())
+
+if count > 0:
+    ids = ids[:count]
+
+ok = 0
+for vid in ids:
+    path = None
+    for name in os.listdir(out_dir):
+        if name.startswith(vid + ".") and name.endswith(".json3"):
+            path = os.path.join(out_dir, name)
+            break
+    if not path or not os.path.isfile(path):
+        continue
+
+    with open(path) as f:
+        data = json.load(f)
+
+    events = data.get("events", [])
+    lines = []
+    tsv_rows = []
+
+    for ev in events:
+        t_start = ev.get("tStartMs", 0)
+        segs = ev.get("segs", [])
+        text_parts = []
+        for seg in segs:
+            utf8 = seg.get("utf8", "")
+            t_offset = seg.get("tOffsetMs", 0)
+            text_parts.append(utf8)
+            tsv_rows.append((t_start + t_offset, utf8))
+        text = "".join(text_parts).strip()
+        if text:
+            lines.append(text)
+            tsv_rows.append((t_start, "__EVENT__"))
+
+    base = path.replace(".json3", "")
+
+    with open(base + ".txt", "w") as f:
+        f.write("\n".join(lines) + "\n")
+
+    with open(base + ".tsv", "w") as f:
+        for t, text in tsv_rows:
+            f.write(f"{t}\t{text}\n")
+
+    ok += 1
+
+print(f"[convert-transcripts] converted {ok}/{len(ids)} transcripts ({fmt} format)")
+PYEOF

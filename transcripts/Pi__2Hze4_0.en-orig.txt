@@ -1,0 +1,510 @@
+thanks a lot okay I see someone joining
+they're gonna meet that person he says
+Diana I think we are all Diana that's
+why you know we are now using a
+different account because I didn't want
+to kind of overlap so much so today I'd
+like to start focusing on on some things
+that we will need probably in about six
+Tuesdays from now remember that you know
+originally the team retreat was
+connected to like a in person version of
+these meetups my last information I got
+from Klaus such as that that meaning
+that the temperature will not happen
+right now it's postponed it but the
+coding workshop we could probably still
+do it on some kind of a remote mode so
+if that's correct in in six sessions
+from today we will be kind of meeting
+online and working I understand on the
+are to the AI analysis package so we
+would have like a kind of internal
+hackathon so what I would like to try do
+in the following meetups is to kind of
+focus on that on those today is to try
+get everything that we need to succeed
+so with this I would like to ask in the
+office if there is any more information
+that you might have that I don't forgot
+about those today
+anyone hear about about what's happening
+there okay so you still undecided
+great thanks clay cool okay and so I
+will come back with more information
+after discussing that with Klaus but you
+know still these skills
+should be useful so the point is to
+start talking more focus on what things
+happen we'll be working in our package
+so because really yes go ahead I'm sorry
+to interrupt but before you started
+you're attempting to record I don't know
+exactly what's happening but like this
+your screen is showing I'm what screen
+and then your face is on another screen
+and it says recording on the screen
+where your face is and I don't know what
+that means that actually captures those
+okay that's a good boy okay I'm stopping
+the video thanks for let me know and I
+think I'm continuing to record hopefully
+fingers crossed will will work okay so
+because you know I I'm receiving a lot
+of contributions which is excellent and
+two packages I thought that will given
+you some overview of you know what is
+the structure of on our package and how
+you can actually benefit from the
+structure of our package and the
+workflows that our packages allow you
+that would probably save you a lot of
+time and pain infrastructure okay so the
+brownie one place that I would suggest
+you go if you want to learn a bit more
+about packages is the excellent book
+packages by hudley Wickham I'm Jenny
+Brian and in particular and I mean it's
+not a long read honestly it's pretty
+short but but you know if you just want
+an overview the one chapter I recommend
+is chapter two which is called the whole
+game so they're at this link you can
+find that chapter it just gives you a
+very broad overview of all the kind of
+tools that you have at your disposal to
+create packages and to you know add
+functions to check a package to test a
+package and so on so maybe in an hour or
+two you could you could have a good idea
+of okay what it looks like to work in
+that package and that would be if you
+are interested something that you could
+do on your own time but and it kind of
+shows an example that is very generic so
+to
+what I would like to do is to instead of
+you know using a very generic example I
+would like to work on an example a
+s'more start building at the package
+that it has some more like it's not in
+connection to what we do so I created
+this new package called they were
+packaged and the way I created that demo
+package is with the function from the
+use this package create package and then
+you just pass it the name of the package
+you want to create and creates it so
+that is a function that is demonstrated
+in that book chapter so you can even
+learn more about that function there
+then I use the function use it to
+transform my package into also a git
+repository so I could start tracking the
+different versions of my package and
+then I use the function use github and I
+gave the name of the organization where
+I want to post that package and you know
+what that did you created a git repo
+automatically automatically for me on
+the 2° depersonalization from there I
+forked the package as you could normally
+do from the organization to the Greece
+demo which I'm going to click here so
+from here I went to fork which you
+already know how to do and fork that
+into my own user account so basically
+I'm going to be working with model upon
+a table from there I I copied this this
+link I'm using now the SS h a link and
+went to our studio cloud because i want
+to advertise that service that we now
+have so we have this space in our sweden
+cloud that it can help you especially
+get started with these package
+development tools because you know you
+have to have a specific development
+environment for example you have to have
+the dev tools package installed and a
+few other things so if you're
+experiencing friction locally maybe you
+want to go
+to the project that it's linked down
+here and and tried there so maybe it
+locally you're lacking some you know
+package development tool and that is
+causing a lot of friction so how I did
+how I created a repo on our studio cloud
+was simply you can copy a link from the
+browser on github or you can also copy
+the clone URL so remember if I was in a
+place like here I could copy this
+address or this address here and and
+then you give it to to our studio cloud
+it has a bottomless size new project and
+besides new project from github you just
+paste a link click OK
+and you get you learned in a project
+similar to the one linked here so if you
+click here you should get a copy of the
+project that I'll be working on so
+because these meetings are very short
+I'm going to kind of break up the
+session in few meetings so today it's
+mostly the setup and the instruction I
+think I don't think we're gonna be able
+to like that so this is what the
+interface should look like very similar
+to what you experience when you have our
+studio locally then you click what time
+is it so we are 10 minutes already into
+the meeting and also to guide to I mean
+I want to make this exercise of building
+a package together you know with you
+demo package and very focused so and I'm
+building based on my experience
+receiving pull requests and trying to
+notice which patterns I see in the kind
+of problems that people experience and
+those patterns are particularly
+noticeable when what I notice is that a
+lot of it friction comes from being used
+to working with like scripts and
+projects in general and then when we
+need to be you know
+working in a package there are some
+things that we are used to doing when
+we're working in general strips that you
+know we need to adjust so I'm learning
+those lessons from experience with the
+interaction with you and I'm you know
+collecting those what I don't go just go
+just when moving from the code from
+script to another package I'm collecting
+them here in the book associated to
+their data sizing quail so in the next
+few minutes I have a black cover the
+setup I'm probably well leave space for
+questions so the first thing when you
+build packages the first setup and you
+need to do is the same setup that you
+have already done and they set up for
+our our studio and if you still need if
+you see cyclists any of those steps you
+know here you have all the links again
+so I'm the wrong timing and going
+uncheck you know what kind of setting
+you might need to adjust but what is new
+to package development and we have any
+stuff before is the basic setup for dev
+tools and tests that which are two
+packages that we heavily use when we
+build our characters so the way you add
+that is you can use the function use
+these any our profile so if I have an
+empty approach so what you see here is
+the clone of the repository that I you
+know got from github right and it's
+pretty much an empty and empty package
+so I'm going to start adding that set up
+here so I need the package to use this
+in particular function edit our profile
+and that function will open and our
+profile file and I'm here what I want to
+do is just to paste the code that I kind
+of give you there in there in the book
+you save the file you got closer if you
+want and then you need rest our decision
+sorry that then you need to rest a
+little shift ctrl F then so with that
+that means that all the functions of the
+package use these and their tools in
+general because they've chosen close use
+this we
+available every time you rest on your
+session so you're ready to use functions
+like use that function as you can see
+here coming from the use days and it's
+already available for you to use let's
+see what else we need to do and of
+course we also need to well you would
+not add in your art profile this is just
+a warning you would not add to your
+profile packages like deep fire or
+ggplot2 for example any package that is
+for data analysis you don't add to your
+profile it is okay to you add you know
+them tools and there's that because
+those are packages for package
+development not for analysis so these
+packet is cheaper to anybody should
+leave on your script and and then the
+last one thing that you need to make
+sure that you have your setup is
+something that we have discussed many
+times you have to make sure that
+basically you style your our sessions
+from a blank slate but you're not
+running objects that you creating
+different sessions into your current
+session so how you would do that okay so
+you go to tools go options as usual and
+here in general you uncheck this box and
+here you say never and then you just
+apply it you're good to go
+so that's nothing you have a very you so
+far except for a they set up for tech
+tools next time I would like to start
+talking about these functions you gotta
+grow and use data because the kind of
+contributions that I see in our packages
+are very heavily related to data and I
+see that you know we are used to
+for example storing data in a folder
+called data which is very confusing
+because they folder called data in an R
+package has some very specific
+properties and has to be used in a very
+particular way so if you want to get
+like a histories for what that
+discussion will look like you've gotta
+come here do they go test and see you
+know what what is the right way to use
+data
+or to put data into the data folder in a
+package compared to scripts but that
+would treat so we are healing the amount
+of the 15 minutes so I would like to
+leave it at that and I know be in the
+room for 4 questions comments and so one
+thing like you mentioned loading in a
+github repository into our studio cloud
+and I personally have had like a lot of
+difficulties with that in the past
+that's partially because one I have a
+tendency to use SSH instead of the HTTPS
+which is becomes more complicated and
+then additionally I have a two-factor
+authentication on my thing which makes
+it even more of a pain but even with age
+yes I think it's not like super clear
+whether or not your authorization gets
+saved with inside the virtual project
+that you leave on our studio cloud or
+something I thought that's a bit
+confusing so I wondering you know any
+like insight into like how can you
+expect that it remains authorized would
+you be able to then push and pull
+through github yeah I haven't used it
+did to authentic Asian that you use up I
+may have experienced in there I have
+used the AZ SSH protocol in our studio
+cloud before and the way I was doing it
+and I would go to my local my local our
+studio desktop and try to get that view
+from there and add it to the same thing
+in our studio cloud so I don't know if I
+think that you know a lot more than me
+about education and maybe when I was a
+little dodgy so I don't know you are you
+so your concerns I'm mostly about
+security I think the thing is actually
+secure or is more about kind of getting
+it right so it doesn't so he actually
+works it's just
+I've had a little bit of difficulty with
+it past I was wondering if you had any
+interesting like resolution or like you
+know I think I know people understand
+it's like once to set up the github
+authorization on your on your laptop and
+you kind of don't have to think about it
+or worry about it anymore which is nice
+yeah well with ours we kind of
+understand that when you create a new
+project at art studio cloud it doesn't
+it doesn't bring forward with you
+whatever you would have done to
+authorize another project yeah it makes
+it a little different in a desktop so
+you need to be aware of that and then so
+each time you pay a new project and try
+to connect yeah fair enough
+I think you know you bring something
+very interesting because I also
+experienced travel trying to say for
+example make make available my my key
+configuration file across projects and
+so I hate to do is I'm now I'm in every
+project just uploading my configuration
+file and reuse it I think that you know
+the way probably actually apply this
+design is such that every projects like
+haven't we percent isolated from the
+rest which is good in most cases but in
+some specific pages like the one you're
+discussing and it's a pain because you
+know that configuration is something
+that you want to do so I think there are
+the SDS HTTP protocol is working really
+nice with the latest versions of kid
+because you know it's handled by some
+kind of manager credentials whatever
+which means that it just works so if
+you're not extremely worried about
+security then each HTTP might be the way
+to go but really for those who are near
+to two hours to your cloud and github
+yeah and so one other quick thing I
+wanted us was as a possible alternative
+using like they use this package and
+having these set of things that have you
+considered using like a github template
+like a
+yeah repo like template that you could
+just form and that would give you he
+started it like I understand the value
+of using the uses package but I think
+also there could be some thought into
+having some to di specific sort of like
+defaults or things that you would want
+for Hackett it would make some like
+github repo template where you simply
+fork it and then you or you know or make
+a branch but then you already have all
+those things set up for you is that yeah
+yeah absolutely
+how do you tried it yourself yeah I mean
+I I before use this was like so well
+talked about and whatever I had like a
+package making repo I would just fork
+what I wanted to start a new package and
+it kind of it already had like you know
+ignore for while with what I thought
+would be most relevant to that it
+already had the kind of file structure
+and it basically does a lot of the same
+things that you this does but it was
+just for my own personal preferences
+those things rather than trying to
+remember commands of a package that
+you've install and loading for me was a
+little more straightforward to just for
+a week already like a template for a
+package yeah yeah I do that I think that
+you know that probably follows the best
+practice of trying to reuse your effort
+and trying to identify patterns in your
+work and reuse them so in my experience
+I think I've you know I have you know I
+have special you know templates and
+things that I reuse all the time and I'm
+saving them in this package call Artie I
+use this which is basically a collection
+I'm gonna go to the repo because that's
+more clearly shows what it is so if in
+East
+templates there is a bunch of templates
+that I use all the time and you've got
+here store
+you know Travis configuration files and
+whatever you want to use so you don't
+have to think oh how is that I do this
+because you know you do it maybe once a
+month or once every two months and then
+you forget so yeah in my experience that
+they paid me whole the whole package
+template hasn't worked very well because
+I kind of prefer to kind of build from
+the bottom up then to start with
+skeleton and then start deleting but I
+think that that's just a personal
+preference I think that we both agree
+that reducing your effort is the way to
+go in whatever way you prefer and I
+think that we have every time more is is
+making it easier to create templates and
+I think our studio as well has the
+notion of templates in many places yeah
+yeah so better with this approach you
+know you put in templating in an East
+folder inside templates what it allows
+you to do is I'm going to show you my
+local section here so what allows you to
+do is console you can use a function use
+template and then you say which template
+you want to use so I think in my case
+Travis thought ya know ya know this is
+one template I use and they have to say
+which package comes from and this case
+is the heart so yeah these ways is
+adding to the current project or package
+the Travis file that I usually use am a
+and maybe I will do just like little
+tweaks to that particular file so I have
+it not here in this project with all
+there comes usual set ups that I usually
+do so maybe I need to remove you know
+this last couple of older versions of
+Carla is no longer that's of course yeah
+alright so yeah
+every word nobody has questions so good
+okay I look forward to discussing more
+exciting things unfortunately these
+setup is something that we cannot skip
+because if we do then
+then we won't know where the problems
+come from hopefully next time we'll be
+particularly talking about how to add
+data to a package and move from there
+sorry before we you go just a reflection
+about them you know must-haves and nice
+to have do you have any any personal
+ideas about about how to label this
+session I mean my I question how many
+people here are actually gonna be
+writing packages may be contributing to
+them but yeah I feel like the
+expectation or impetus to actually start
+a package from scratch is probably
+there's only a couple people here that
+are it's gonna be doing that frequently
+if ever so that makes me lean a little
+bit towards yeah but I think if you are
+if you are doing this then yeah this is
+very important start to talk about
+cool yeah the intention with which I'll
+try to kind of focus these sessions is
+more for from the perspective of enable
+empowering people to do contributions
+that get accepted as quickly as possible
+you know I that's why I can I just
+mentioned the function that create but I
+don't I agree with you I don't think
+that the focus should be you know to
+build a package from scratch my
+intention would be to kind of give you
+that a basic understanding of the
+influence factor of the package so you
+know I mean soon you will be talking
+about you know checking the tools check
+or levels test document so those things
+as a contributor you you need to know
+because if you are breaking something in
+a pre-existing package those things will
+tell you where the problems are
+and so yeah well I think that from my in
+my opinion this is kinda nice to have in
+that you know it is my job to develop
+the infrastructure of package so if you
+if you just pro code at me
+you know I will figure it out so I think
+that it is from your perspective you
+should be like a nice to have so if you
+if you are interested in learning and
+basically how your contributions can be
+accepted more quickly then this is the
+way to go but it doesn't mean that you
+have to that's my yep sounds good
+alright thank you very much

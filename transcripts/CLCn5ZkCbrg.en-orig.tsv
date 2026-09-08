@@ -1,0 +1,6306 @@
+1159	okay
+2159	 then
+2970	 thank
+3360	 you
+3419	 very
+3480	 much
+3780	 for
+4049	 coming
+1159	__EVENT__
+4820	
+
+4830	today
+4830	__EVENT__
+6849	
+
+6859	the
+7859	 science
+9260	 plan
+10260	 is
+10380	 to
+10559	 talk
+10740	 about
+10800	 the
+6859	__EVENT__
+11570	
+
+11580	pull
+12000	 request
+12120	 helpers
+12900	 very
+13769	 briefly
+14160	 I'm
+11580	__EVENT__
+14419	
+
+14429	only
+14700	 going
+15059	 to
+15120	 focus
+15210	 on
+15630	 the
+15750	 main
+15990	 pillars
+14429	__EVENT__
+17230	
+
+17240	and
+18439	 the
+19439	 reason
+19859	 why
+20039	 we
+20250	 might
+20430	 want
+20670	 to
+20730	 do
+17240	__EVENT__
+20900	
+
+20910	that
+21119	 is
+21390	 because
+21859	 a
+23060	 lot
+24060	 of
+24090	 people
+20910	__EVENT__
+24500	
+
+24510	including
+24660	 ourselves
+25019	 are
+25650	 using
+26130	 github
+27470	 as
+24510	__EVENT__
+28460	
+
+28470	a
+28619	 platform
+29160	 for
+29310	 sharing
+29369	 code
+30150	 and
+31850	 actually
+28470	__EVENT__
+32840	
+
+32850	the
+33329	 workflow
+33750	 is
+33960	 pretty
+34469	 well
+34680	 polished
+35130	 but
+32850	__EVENT__
+35600	
+
+35610	it
+36170	 has
+37170	 so
+37440	 many
+37680	 mobile
+38129	 movement
+38640	 and
+35610	__EVENT__
+38750	
+
+38760	moveable
+39149	 parts
+39420	 that
+40320	 it's
+40469	 very
+40680	 difficult
+38760	__EVENT__
+41420	
+
+41430	to
+41730	 kind
+41940	 of
+42000	 learn
+42329	 and
+42719	 I
+42780	 just
+43160	 so
+44160	 these
+41430	__EVENT__
+44630	
+
+44640	helpers
+45329	 from
+46079	 the
+46320	 Eustace
+46739	 package
+47219	 can
+44640	__EVENT__
+47690	
+
+47700	help
+48090	 those
+48660	 who
+48960	 use
+49230	 our
+49410	 and
+50340	 help
+50730	 them
+47700	__EVENT__
+50930	
+
+50940	contribute
+51480	 code
+51960	 in
+52320	 a
+52410	 very
+53210	 fluent
+54210	 way
+54360	 and
+50940	__EVENT__
+54860	
+
+54870	those
+55140	 who
+55320	 maintain
+55469	 code
+56100	 as
+56370	 well
+57120	 so
+54870	__EVENT__
+58069	
+
+58079	that's
+58260	 the
+58559	 plan
+58800	 for
+58829	 today
+59239	 so
+60239	 here
+60510	 in
+60660	 the
+58079	__EVENT__
+61090	
+
+61100	repository
+62100	 associated
+62609	 to
+62760	 this
+62879	 meetup
+63329	 you
+61100	__EVENT__
+64039	
+
+64049	will
+64199	 find
+64500	 that
+64739	 there
+64860	 is
+64890	 a
+65070	 new
+65369	 issue
+68840	 that
+64049	__EVENT__
+69830	
+
+69840	contains
+70229	 the
+70619	 links
+71010	 to
+72619	 basically
+73619	 the
+73799	 help
+69840	__EVENT__
+74060	
+
+74070	file
+74369	 of
+74760	 this
+75150	 function
+75960	 so
+75990	 you
+76200	 see
+76350	 now
+76500	 on
+74070	__EVENT__
+76760	
+
+76770	screen
+77390	 which
+79159	 these
+80159	 help
+80430	 files
+80670	 really
+76770	__EVENT__
+81080	
+
+81090	nicely
+81630	 written
+83090	 so
+84090	 I'm
+84240	 basically
+84360	 going
+84600	 to
+81090	__EVENT__
+84800	
+
+84810	walk
+85049	 through
+85229	 this
+85409	 help
+85799	 file
+86040	 and
+86430	 point
+91549	 so
+84810	__EVENT__
+92539	
+
+92549	before
+92820	 we
+92939	 continue
+93439	 just
+94439	 to
+95369	 check
+123500	 you
+124500	 see
+92549	__EVENT__
+124639	
+
+124649	my
+124770	 screen
+124979	 okay
+125869	 yes
+127429	 exit
+128429	 it
+128970	 may
+129360	 ask
+129599	 you
+124649	__EVENT__
+129710	
+
+129720	to
+129750	 mute
+130530	 yourself
+130950	 for
+131129	 a
+131160	 sec
+129720	__EVENT__
+132350	
+
+132360	and
+132480	 do
+132600	 you
+132690	 have
+132840	 questions
+133260	 or
+133440	 comments
+132360	__EVENT__
+137699	
+
+137709	cool
+138310	 thank
+138609	 you
+138930	 so
+140489	 these
+141489	 list
+141909	 of
+137709	__EVENT__
+142050	
+
+142060	functions
+142569	 is
+142900	 kind
+143230	 of
+143260	 a
+143349	 comprehensive
+142060	__EVENT__
+144000	
+
+144010	list
+144219	 but
+144489	 I'm
+145060	 going
+145299	 to
+145359	 cover
+145540	 basically
+144010	__EVENT__
+146130	
+
+146140	how
+146290	 to
+146319	 initiate
+146650	 a
+147250	 new
+147420	 pull
+148420	 request
+148780	 from
+146140	__EVENT__
+149610	
+
+149620	the
+149739	 perspective
+150280	 of
+150719	 contributor
+151799	 then
+152799	 how
+149620	__EVENT__
+153089	
+
+153099	to
+153159	 fetch
+153579	 a
+153909	 pull
+154239	 request
+154269	 that
+154780	 is
+154870	 already
+153099	__EVENT__
+155069	
+
+155079	opened
+155560	 from
+156040	 the
+156099	 perspective
+156760	 of
+156879	 a
+155079	__EVENT__
+157199	
+
+157209	maintainer
+157599	 and
+157930	 then
+158889	 how
+159219	 to
+159250	 kind
+159549	 of
+159609	 push
+157209	__EVENT__
+160110	
+
+160120	changes
+160950	 either
+161950	 if
+162430	 you
+162609	 are
+162760	 a
+162790	 maintainer
+160120	__EVENT__
+163199	
+
+163209	or
+163480	 a
+163569	 contributor
+164139	 have
+164319	 the
+164439	 push
+164620	 changes
+163209	__EVENT__
+165000	
+
+165010	from
+165189	 you
+165370	 know
+165489	 your
+165639	 local
+165909	 copy
+166599	 of
+166930	 a
+167879	 fork
+165010	__EVENT__
+168869	
+
+168879	up
+169180	 to
+169480	 eat
+169599	 hub
+169840	 and
+170769	 that's
+171489	 about
+171609	 it
+171760	 really
+168879	__EVENT__
+172349	
+
+172359	the
+172870	 rest
+173079	 are
+173319	 kind
+174099	 of
+174129	 for
+174280	 more
+175829	 advanced
+172359	__EVENT__
+176819	
+
+176829	used
+177280	 and
+177900	 if
+178900	 you
+179139	 gotta
+179349	 hit
+179530	 hook
+179799	 today
+180040	 to
+176829	__EVENT__
+180599	
+
+180609	what
+180760	 I'm
+180849	 trying
+181030	 to
+181239	 kind
+181389	 of
+181469	 show
+182469	 today
+180609	__EVENT__
+182819	
+
+182829	then
+183340	 I'm
+183579	 sure
+183790	 you
+183939	 will
+184090	 learn
+184500	 more
+182829	__EVENT__
+185490	
+
+185500	fine-grained
+186189	 details
+186549	 on
+187030	 your
+187239	 own
+187389	 and
+187719	 I'm
+185500	__EVENT__
+187830	
+
+187840	here
+188109	 to
+188260	 help
+187840	__EVENT__
+188699	
+
+188709	so
+189659	 basically
+190659	 going
+191620	 down
+191739	 in
+192430	 this
+192669	 help
+188709	__EVENT__
+192959	
+
+192969	file
+193209	 the
+193810	 first
+194109	 thing
+194349	 you
+194469	 need
+194620	 to
+194650	 be
+192969	__EVENT__
+194849	
+
+194859	aware
+195129	 of
+195310	 is
+195549	 how
+195609	 to
+195819	 set
+196239	 things
+196540	 up
+197280	 the
+194859	__EVENT__
+198270	
+
+198280	hill
+198459	 file
+198700	 it
+198879	 does
+199090	 include
+199560	 advice
+200560	 about
+198280	__EVENT__
+200849	
+
+200859	that
+201250	 and
+201549	 the
+202269	 only
+202419	 kind
+202840	 of
+202930	 theme
+203440	 that
+203709	 you
+200859	__EVENT__
+203789	
+
+203799	need
+203949	 to
+204099	 do
+204250	 that
+204400	 you
+204459	 may
+204699	 not
+204940	 have
+205239	 done
+205479	 so
+203799	__EVENT__
+205710	
+
+205720	far
+206109	 is
+206440	 that
+206739	 you
+207159	 need
+207720	 github
+208720	 token
+209379	 so
+210280	 we
+205720	__EVENT__
+210659	
+
+210669	use
+210849	 the
+211030	 usage
+211359	 package
+211780	 of
+211959	 course
+212199	 needs
+212440	 to
+210669	__EVENT__
+212520	
+
+212530	be
+212590	 installed
+213040	 first
+213340	 so
+213819	 that
+213849	 you
+214090	 can
+214269	 run
+212530	__EVENT__
+214679	
+
+214689	you
+214840	 know
+214870	 something
+215199	 like
+215290	 maybe
+215500	 use
+216280	 this
+214689	__EVENT__
+216479	
+
+216489	and
+216819	 and
+217750	 the
+217840	 useless
+217989	 package
+218409	 itself
+216489	__EVENT__
+218990	
+
+219000	includes
+220000	 a
+220239	 function
+221019	 called
+221470	 browse
+223470	 github
+219000	__EVENT__
+224460	
+
+224470	token
+225099	 so
+225909	 this
+226150	 function
+226629	 if
+226810	 you
+226989	 don't
+227199	 have
+224470	__EVENT__
+227429	
+
+227439	a
+227650	 token
+227919	 already
+228370	 you
+229120	 can
+229299	 use
+229449	 this
+227439	__EVENT__
+229589	
+
+229599	function
+230019	 to
+230049	 create
+230470	 one
+230759	 and
+231759	 the
+229599	__EVENT__
+231990	
+
+232000	information
+232329	 about
+232629	 how
+232840	 to
+232870	 do
+233169	 that
+233379	 is
+233650	 is
+232000	__EVENT__
+234360	
+
+234370	well-documented
+235019	 particularly
+236019	 well
+236319	 in
+234370	__EVENT__
+236610	
+
+236620	this
+237549	 stuff
+237879	 here
+238239	 called
+238540	 set
+238900	 up
+239019	 in
+239470	 the
+236620	__EVENT__
+239819	
+
+239829	website
+240250	 of
+240430	 a
+240519	 useless
+240729	 package
+241180	 if
+241629	 you
+239829	__EVENT__
+241740	
+
+241750	click
+242079	 there
+242439	 you
+242470	 will
+243099	 see
+243359	 you
+244359	 can
+244509	 scroll
+241750	__EVENT__
+244979	
+
+244989	down
+245169	 to
+245319	 the
+245439	 menu
+245680	 here
+245889	 on
+245979	 the
+246069	 right
+246220	 you
+244989	__EVENT__
+246659	
+
+246669	will
+246790	 see
+246970	 that
+247120	 there
+247299	 is
+247359	 a
+247419	 link
+247750	 that
+246669	__EVENT__
+247920	
+
+247930	describes
+248379	 how
+248560	 to
+248590	 get
+248949	 installed
+249579	 to
+249790	 github
+247930	__EVENT__
+250199	
+
+250209	personal
+250720	 target
+251109	 so
+251919	 that's
+252220	 the
+252790	 sixth
+253090	 are
+250209	__EVENT__
+253229	
+
+253239	here
+253540	 I'm
+253720	 not
+253989	 going
+254169	 to
+254259	 cover
+254439	 them
+254739	 today
+253239	__EVENT__
+254969	
+
+254979	because
+255430	 I
+256030	 would
+256509	 really
+257320	 focus
+257500	 on
+257829	 it
+258009	 or
+254979	__EVENT__
+258360	
+
+258370	maybe
+258430	 and
+258940	 helpers
+259269	 themselves
+259780	 but
+260349	 feel
+258370	__EVENT__
+260610	
+
+260620	free
+260739	 to
+260829	 kind
+261159	 of
+261190	 try
+261400	 set
+261699	 they
+261849	 set
+262030	 up
+260620	__EVENT__
+262110	
+
+262120	yourself
+262240	 and
+262780	 if
+262900	 you
+262990	 have
+263139	 any
+263259	 issues
+263680	 just
+262120	__EVENT__
+263850	
+
+263860	discuss
+264400	 them
+264699	 with
+265240	 me
+265919	 so
+267300	 once
+268300	 you
+268450	 have
+263860	__EVENT__
+268589	
+
+268599	things
+268960	 set
+269229	 up
+269550	 then
+270550	 well
+271210	 imagine
+268599	__EVENT__
+271890	
+
+271900	that
+272050	 you
+272170	 are
+272260	 a
+272320	 contributor
+272920	 and
+273100	 that
+273520	 you
+271900	__EVENT__
+273660	
+
+273670	want
+273910	 to
+274000	 contribute
+274390	 to
+274660	 a
+274990	 repository
+275260	 as
+273670	__EVENT__
+275820	
+
+275830	someone
+276160	 else
+276400	 contains
+277210	 so
+277930	 let's
+278140	 pretend
+275830	__EVENT__
+278340	
+
+278350	for
+278830	 a
+278890	 moment
+279040	 that
+279400	 the
+279730	 repository
+280270	 you
+278350	__EVENT__
+280380	
+
+280390	want
+280600	 to
+280690	 contribute
+281170	 to
+281500	 is
+281920	 for
+282550	 example
+280390	__EVENT__
+282930	
+
+282940	this
+286200	 very
+287200	 repository
+287890	 called
+288070	 es
+288870	 so
+290940	 you
+282940	__EVENT__
+291930	
+
+291940	know
+292030	 we
+292150	 have
+292330	 discussed
+292420	 in
+292870	 other
+292960	 sessions
+291940	__EVENT__
+293310	
+
+293320	in
+293860	 other
+294010	 meetings
+294930	 is
+295930	 as
+296140	 follows
+293320	__EVENT__
+296490	
+
+296500	basically
+296710	 you
+297100	 know
+297190	 you
+297310	 go
+297460	 to
+297520	 the
+297730	 main
+296500	__EVENT__
+297900	
+
+297910	repository
+298120	 where
+298900	 you
+299290	 want
+299590	 to
+299710	 contribute
+297910	__EVENT__
+300000	
+
+300010	and
+300430	 then
+301000	 you
+301150	 create
+301360	 a
+301450	 fork
+301750	 by
+302110	 clicking
+300010	__EVENT__
+302520	
+
+302530	here
+302800	 in
+302830	 the
+303040	 fork
+303340	 button
+303640	 at
+304030	 the
+304150	 top
+304360	 right
+302530	__EVENT__
+304820	
+
+304830	then
+305830	 you
+306010	 choose
+306540	 basically
+307540	 you
+307690	 would
+307840	 be
+304830	__EVENT__
+307860	
+
+307870	normally
+308800	 you
+309100	 would
+309250	 be
+309370	 using
+309690	 choosing
+307870	__EVENT__
+310680	
+
+310690	your
+310840	 user
+311080	 account
+311530	 so
+312340	 this
+312460	 is
+312640	 the
+312760	 one
+312880	 I'm
+310690	__EVENT__
+312990	
+
+313000	going
+313180	 to
+313270	 choose
+314170	 what
+314950	 this
+315130	 is
+315280	 doing
+315520	 is
+313000	__EVENT__
+315750	
+
+315760	creating
+315820	 a
+316240	 fork
+316570	 basically
+317200	 an
+317410	 identical
+315760	__EVENT__
+317940	
+
+317950	clone
+318250	 of
+318610	 that
+318820	 main
+319030	 repository
+319360	 but
+319930	 under
+317950	__EVENT__
+320550	
+
+320560	your
+321010	 username
+321490	 so
+321970	 now
+322150	 the
+322210	 person
+322660	 who
+322690	 owns
+320560	__EVENT__
+323010	
+
+323020	that
+323910	 that
+324910	 repo
+325420	 or
+325840	 that
+326080	 copy
+326350	 of
+326530	 the
+326620	 repo
+323020	__EVENT__
+326760	
+
+326770	in
+327310	 this
+327610	 case
+327820	 is
+328000	 Mallory
+328300	 Libre
+328600	 is
+328840	 no
+326770	__EVENT__
+329040	
+
+329050	longer
+329320	 the
+329620	 main
+329830	 repository
+330190	 which
+330730	 was
+331000	 2
+329050	__EVENT__
+331920	
+
+331930	degrees
+332260	 so
+333250	 that
+333400	 was
+333520	 a
+333550	 main
+333730	 owner
+334020	 so
+335020	 with
+331930	__EVENT__
+335190	
+
+335200	this
+335350	 form
+335650	 in
+335830	 place
+335860	 you
+336520	 can
+336700	 as
+337030	 usual
+335200	__EVENT__
+337500	
+
+337510	click
+337840	 here
+338110	 this
+338310	 cloning
+339310	 button
+339820	 and
+340080	 copy
+337510	__EVENT__
+341070	
+
+341080	the
+341650	 URL
+341890	 when
+342610	 you
+342700	 get
+342850	 there
+343230	 unless
+344230	 you
+341080	__EVENT__
+344610	
+
+344620	have
+344800	 already
+345160	 set
+345430	 up
+345460	 SSH
+344620	__EVENT__
+346380	
+
+346390	you
+346870	 know
+346960	 the
+347110	 N
+347320	 HTTP
+348330	 protocol
+349330	 should
+349570	 be
+346390	__EVENT__
+349680	
+
+349690	fine
+349690	__EVENT__
+350190	
+
+350200	I'm
+350770	 moving
+351070	 kind
+351400	 of
+351430	 fast
+351490	 through
+352180	 this
+350200	__EVENT__
+352320	
+
+352330	because
+352690	 we
+352840	 covered
+353140	 it
+353410	 many
+353830	 times
+354100	 but
+352330	__EVENT__
+354420	
+
+354430	again
+354550	 feel
+355390	 free
+355450	 to
+355690	 ask
+355990	 me
+356140	 questions
+356710	 if
+354430	__EVENT__
+358490	
+
+358500	you're
+359500	 kind
+359680	 of
+359710	 struggling
+360040	 with
+360250	 this
+360370	 this
+358500	__EVENT__
+361230	
+
+361240	is
+361450	 so
+361570	 far
+361810	 the
+361870	 kind
+362350	 of
+362380	 usual
+362910	 workflow
+364260	 and
+361240	__EVENT__
+365250	
+
+365260	then
+365470	 the
+365650	 next
+365950	 step
+366190	 could
+366460	 be
+366640	 to
+366820	 open
+367180	 just
+365260	__EVENT__
+367350	
+
+367360	any
+367630	 open
+368110	 session
+368560	 of
+368710	 our
+369310	 studio
+369790	 and
+370090	 I
+367360	__EVENT__
+370920	
+
+370930	like
+371140	 it
+371290	 you
+371470	 see
+371680	 here
+372010	 this
+372160	 icon
+372940	 at
+373420	 the
+370930	__EVENT__
+373440	
+
+373450	top
+373690	 right
+373900	 and
+374230	 go
+374710	 to
+374770	 the
+375550	 new
+375790	 project
+376060	 and
+373450	__EVENT__
+377720	
+
+377730	then
+378730	 you
+378790	 go
+379030	 to
+379060	 version
+379420	 control
+380010	 gate
+381010	 and
+377730	__EVENT__
+381420	
+
+381430	then
+381850	 you
+381940	 paste
+382240	 the
+382360	 URL
+382570	 once
+383530	 again
+383830	 you
+381430	__EVENT__
+384060	
+
+384070	know
+384160	 we've
+384340	 covered
+384760	 this
+384970	 many
+385450	 times
+384070	__EVENT__
+385710	
+
+385720	before
+386170	 and
+386880	 this
+387880	 is
+387940	 like
+392130	 you
+393130	 choose
+393490	 a
+385720	__EVENT__
+393660	
+
+393670	location
+393970	 in
+394210	 your
+394240	 computer
+394870	 you
+395740	 would
+396430	 like
+393670	__EVENT__
+396600	
+
+396610	to
+396730	 store
+397060	 this
+397480	 basically
+398290	 this
+398560	 local
+399100	 copy
+396610	__EVENT__
+399450	
+
+399460	of
+399760	 your
+400240	 fork
+400630	 of
+401260	 the
+401320	 main
+401890	 repository
+399460	__EVENT__
+403470	
+
+403480	and
+404130	 I'm
+405130	 going
+405400	 to
+405460	 choose
+405640	 this
+412290	 package
+413290	 and
+403480	__EVENT__
+413610	
+
+413620	I
+413920	 hit
+414130	 create
+414450	 project
+415450	 what
+416230	 these
+416500	 habits
+416890	 I
+413620	__EVENT__
+417150	
+
+417160	would
+417820	 like
+417970	 to
+418090	 show
+418330	 you
+418390	 that
+419290	 the
+420060	 useless
+417160	__EVENT__
+421050	
+
+421060	package
+421510	 has
+422260	 actually
+422740	 a
+422770	 function
+423460	 that
+423670	 can
+421060	__EVENT__
+424140	
+
+424150	help
+424540	 you
+424840	 do
+425200	 all
+425260	 of
+425860	 what
+426130	 we
+426250	 have
+426400	 just
+424150	__EVENT__
+426420	
+
+426430	done
+426940	 in
+427720	 one
+428110	 step
+429570	 for
+430570	 that
+433110	 let
+434110	 me
+434140	 show
+426430	__EVENT__
+434310	
+
+434320	you
+434680	 here
+435310	 so
+435610	 if
+435730	 you
+435850	 were
+436000	 a
+436030	 contributor
+434320	__EVENT__
+437630	
+
+437640	you
+438640	 could
+438850	 do
+439030	 what
+439210	 we
+439300	 have
+439450	 we
+439960	 have
+440110	 just
+437640	__EVENT__
+440130	
+
+440140	done
+440560	 basically
+441040	 don't
+441400	 do
+441610	 it
+441730	 the
+441820	 fork
+442120	 and
+440140	__EVENT__
+442350	
+
+442360	creating
+443290	 a
+443380	 level
+443560	 clone
+443890	 with
+444580	 a
+444610	 function
+442360	__EVENT__
+445170	
+
+445180	created
+445990	 from
+446230	 github
+446620	 and
+447010	 then
+447700	 you
+447850	 will
+445180	__EVENT__
+447960	
+
+447970	give
+448180	 the
+448360	 name
+448540	 of
+448750	 the
+448930	 owner
+449140	 the
+449740	 owner
+447970	__EVENT__
+449760	
+
+449770	will
+450130	 be
+450280	 -
+450430	 the
+450550	 best
+450700	 best
+450970	 team
+453660	 yes
+454660	 -
+457440	 so
+449770	__EVENT__
+458430	
+
+458440	this
+458650	 is
+460620	 normally
+461620	 do
+462370	 as
+462700	 I
+463060	 showed
+463390	 before
+458440	__EVENT__
+463650	
+
+463660	right
+464410	 so
+464650	 I
+464680	 did
+464800	 the
+465070	 kind
+465250	 of
+465310	 a
+465370	 long
+463660	__EVENT__
+465600	
+
+465610	process
+465850	 and
+466390	 you
+466600	 could
+466810	 you
+467050	 know
+467140	 you're
+465610	__EVENT__
+467280	
+
+467290	welcome
+467500	 to
+467650	 use
+467980	 this
+468300	 shortcut
+470640	 so
+471640	 let's
+472090	 go
+467290	__EVENT__
+472200	
+
+472210	back
+472420	 to
+472600	 our
+472630	 studio
+473200	 so
+473530	 now
+474340	 what
+474640	 we
+474760	 have
+472210	__EVENT__
+474780	
+
+474790	here
+475480	 is
+475690	 a
+477060	 local
+478060	 copy
+478420	 of
+478570	 our
+479410	 fork
+480130	 and
+480690	 all
+474790	__EVENT__
+481680	
+
+481690	the
+482230	 data
+482410	 science
+482680	 in
+482920	 Quetta
+483160	 most
+483580	 so
+484270	 as
+484540	 a
+481690	__EVENT__
+484710	
+
+484720	contributor
+485350	 remember
+485830	 that
+485980	 we're
+486100	 not
+484720	__EVENT__
+486240	
+
+486250	pretending
+486580	 to
+486730	 be
+486910	 a
+486940	 contributor
+487570	 let's
+487840	 say
+486250	__EVENT__
+488010	
+
+488020	that
+488200	 we
+488290	 want
+488560	 to
+488620	 add
+488950	 a
+488980	 new
+489310	 file
+489640	 to
+490210	 this
+488020	__EVENT__
+490880	
+
+490890	red
+491890	 book
+492040	 actually
+492880	 now
+493360	 I
+493390	 notice
+493720	 that
+493840	 you
+490890	__EVENT__
+493950	
+
+493960	may
+494050	 in
+494320	 my
+494440	 practice
+494770	 of
+495280	 this
+495520	 talk
+495850	 I
+493960	__EVENT__
+496080	
+
+496090	already
+496690	 in
+496960	 your
+497080	 files
+497290	 I'm
+497470	 going
+497680	 to
+497800	 add
+496090	__EVENT__
+497910	
+
+497920	another
+498610	 file
+498880	 by
+499870	 clicking
+499900	 here
+500770	 on
+501060	 script
+497920	__EVENT__
+502850	
+
+502860	I'm
+503860	 going
+504040	 to
+504100	 type
+504310	 something
+504760	 whatever
+505210	 it
+502860	__EVENT__
+505590	
+
+505600	doesn't
+505960	 really
+506080	 matter
+506290	 it's
+506650	 just
+506860	 a
+506950	 demo
+505600	__EVENT__
+507120	
+
+507130	but
+507640	 just
+507850	 to
+507940	 show
+508210	 you
+508240	 what
+509230	 you
+509530	 know
+509620	 the
+507130	__EVENT__
+509970	
+
+509980	world
+510220	 would
+510610	 look
+510820	 like
+510880	 for
+511330	 a
+511390	 configure
+511900	 so
+509980	__EVENT__
+512310	
+
+512320	I'm
+512440	 going
+512620	 to
+512710	 type
+513270	 align
+517080	 contributor
+518520	 so
+512320	__EVENT__
+519510	
+
+519520	this
+519669	 is
+519790	 going
+520000	 to
+520120	 be
+520240	 the
+520660	 change
+521290	 that
+521710	 I
+519520	__EVENT__
+521760	
+
+521770	want
+521979	 to
+522070	 stab
+522250	 it
+523320	 I'm
+524320	 going
+524560	 to
+524650	 save
+524860	 this
+521770	__EVENT__
+525030	
+
+525040	file
+525340	 I'm
+526060	 going
+526120	 to
+526390	 say
+526740	 new
+527740	 file
+528480	 let's
+529480	 go
+525040	__EVENT__
+530040	
+
+530050	guys
+530050	__EVENT__
+532110	
+
+532120	you
+532329	 file
+532920	 -
+536279	 it's
+537279	 just
+537399	 a
+537749	 random
+538749	 name
+540509	 if
+541509	 I
+532120	__EVENT__
+541710	
+
+541720	now
+541839	 go
+541899	 to
+542079	 they
+542319	 get
+542499	 time
+542829	 you
+543339	 will
+543519	 see
+541720	__EVENT__
+543749	
+
+543759	that
+544180	 first
+545139	 you
+545529	 know
+545680	 then
+546100	 what
+546430	 we
+546550	 have
+543759	__EVENT__
+546689	
+
+546699	here
+546730	 is
+547149	 the
+547540	 name
+548499	 of
+548529	 the
+549009	 master
+549309	 branch
+546699	__EVENT__
+549509	
+
+549519	but
+549819	 it
+549939	 is
+550059	 the
+550269	 strong
+550720	 a
+550930	 simply
+551379	 and
+551620	 I
+552160	 need
+549519	__EVENT__
+552360	
+
+552370	to
+552459	 kind
+552610	 of
+552639	 refresh
+555329	 no
+556329	 sorry
+556660	 there
+556990	 we
+557139	 go
+552370	__EVENT__
+557309	
+
+557319	actually
+558040	 I
+558720	 did
+559720	 something
+560230	 wrong
+560499	 I
+561180	 didn't
+557319	__EVENT__
+562170	
+
+562180	intend
+562689	 so
+562899	 I'm
+562959	 going
+563139	 to
+563199	 go
+563319	 revert
+563860	 back
+564100	 to
+562180	__EVENT__
+564889	
+
+564899	what
+565899	 we
+566019	 were
+566050	 doing
+566579	 before
+564899	__EVENT__
+572650	
+
+572660	I'm
+573200	 going
+573440	 to
+573530	 remove
+573860	 this
+574250	 rebel
+575060	 from
+575480	 my
+572660	__EVENT__
+575560	
+
+575570	local
+575810	 computer
+575990	 because
+576860	 I
+576890	 want
+577130	 to
+577190	 show
+577400	 I
+575570	__EVENT__
+577980	
+
+577990	can
+578990	 skip
+579290	 one
+579320	 step
+579740	 so
+579860	 I'm
+579920	 going
+580130	 to
+580160	 remove
+577990	__EVENT__
+580360	
+
+580370	this
+580700	 rebel
+580970	 completely
+581570	 and
+581810	 then
+582080	 leaving
+580370	__EVENT__
+582220	
+
+582230	it
+582350	 from
+582560	 my
+582650	 computer
+582800	 and
+583580	 I'm
+583670	 going
+583880	 to
+582230	__EVENT__
+583960	
+
+583970	repeat
+584240	 the
+584300	 process
+584420	 where
+584930	 I
+584960	 go
+585200	 to
+585260	 my
+586220	 fork
+583970	__EVENT__
+586630	
+
+586640	right
+587330	 I
+587510	 click
+587840	 the
+587870	 URL
+588730	 then
+589730	 I
+590060	 go
+590240	 to
+590300	 any
+586640	__EVENT__
+590710	
+
+590720	our
+591350	 studio
+591860	 session
+590720	__EVENT__
+596970	
+
+596980	our
+597670	 students
+598060	 open
+598389	 now
+596980	__EVENT__
+601360	
+
+601370	I
+601400	 was
+602060	 you
+602360	 know
+602450	 going
+602600	 ahead
+602779	 of
+603020	 myself
+603470	 I
+601370	__EVENT__
+603840	
+
+603850	remember
+604850	 we
+605029	 go
+605150	 today
+605330	 to
+605660	 this
+605779	 button
+606020	 here
+603850	__EVENT__
+609170	
+
+609180	you
+609180	__EVENT__
+610720	
+
+610730	creating
+611720	 your
+611750	 project
+613840	 perfect
+614840	 control
+610730	__EVENT__
+615190	
+
+615200	kids
+616040	 we
+616610	 paste
+616940	 the
+617030	 URL
+617240	 we
+618080	 choose
+618290	 a
+615200	__EVENT__
+618310	
+
+618320	location
+618620	 which
+618920	 is
+618950	 fine
+619280	 with
+619430	 me
+618320	__EVENT__
+619840	
+
+619850	and
+620240	 we
+620420	 create
+620750	 a
+620810	 project
+621410	 so
+622280	 now
+622790	 let
+623090	 me
+619850	__EVENT__
+623110	
+
+623120	follow
+623390	 the
+623540	 script
+623900	 because
+624080	 otherwise
+624440	 I
+623120	__EVENT__
+624850	
+
+624860	help
+625790	 myself
+625970	 so
+626420	 if
+626600	 we
+626780	 go
+626930	 to
+626990	 the
+627260	 help
+627860	 file
+624860	__EVENT__
+628440	
+
+628450	this
+629450	 is
+629630	 what
+629810	 I
+629840	 contributed
+630770	 good
+631070	 too
+631250	 if
+628450	__EVENT__
+631570	
+
+631580	you
+631940	 want
+632210	 to
+632270	 initiate
+632690	 the
+633140	 whole
+633320	 request
+631580	__EVENT__
+633700	
+
+633710	you
+634190	 use
+634520	 the
+634970	 pr
+635690	 init
+636410	 function
+636970	 so
+637970	 that's
+633710	__EVENT__
+638230	
+
+638240	what
+638480	 we
+639350	 are
+639440	 gonna
+639590	 do
+639830	 i
+640390	 as
+641390	 a
+641450	 contributor
+638240	__EVENT__
+642100	
+
+642110	let's
+642470	 pretend
+642710	 that
+642770	 i
+642890	 want
+643100	 to
+643190	 contribute
+642110	__EVENT__
+643570	
+
+643580	with
+643940	 the
+644090	 new
+644240	 pull
+644480	 request
+644840	 and
+645050	 i'm
+645530	 going
+643580	__EVENT__
+645670	
+
+645680	to
+645830	 use
+645980	 the
+646130	 first
+646610	 i'm
+646850	 going
+647000	 to
+647120	 lower
+647390	 the
+645680	__EVENT__
+647590	
+
+647600	package
+647960	 attach
+648380	 the
+648560	 package
+648860	 use
+649550	 this
+647600	__EVENT__
+652140	
+
+652150	right
+653150	 and
+653360	 we
+653420	 use
+653810	 the
+653900	 function
+654350	 PR
+654710	 in
+655490	 it
+652150	__EVENT__
+655780	
+
+655790	this
+656690	 function
+657140	 takes
+657260	 the
+657740	 name
+657950	 of
+658190	 the
+655790	__EVENT__
+658330	
+
+658340	branch
+658610	 so
+659110	 something
+660110	 like
+660910	 my
+661910	 feature
+658340	__EVENT__
+662200	
+
+662210	would
+662780	 work
+663050	 and
+663490	 as
+664490	 you
+664580	 can
+664700	 see
+664760	 use
+665330	 these
+662210	__EVENT__
+665590	
+
+665600	instead
+666080	 of
+666140	 talking
+666440	 to
+666590	 gate
+666920	 and
+667160	 to
+667550	 github
+665600	__EVENT__
+668050	
+
+668060	i'm
+668120	 doing
+668510	 a
+668630	 lot
+668840	 of
+668930	 work
+669140	 for
+669380	 me
+669560	 a
+669800	 lot
+670190	 of
+668060	__EVENT__
+670240	
+
+670250	work
+670400	 that
+670610	 otherwise
+671000	 i
+671320	 need
+672320	 to
+672440	 do
+670250	__EVENT__
+672550	
+
+672560	manually
+673040	 and
+673250	 it's
+673400	 like
+673580	 easy
+673910	 to
+674150	 kind
+674360	 of
+672560	__EVENT__
+674410	
+
+674420	get
+675260	 wrong
+675500	 and
+675740	 that's
+676070	 the
+676310	 magic
+676490	 of
+676850	 this
+674420	__EVENT__
+677080	
+
+677090	TR
+677690	 helpers
+678170	 so
+678830	 now
+679130	 what
+679760	 i
+679790	 want
+679970	 to
+680060	 show
+677090	__EVENT__
+680200	
+
+680210	you
+680240	 before
+680450	 is
+680930	 if
+681230	 I
+681380	 go
+681530	 to
+681590	 the
+681740	 get
+681890	 Tao
+680210	__EVENT__
+682950	
+
+682960	what
+687430	 we
+688430	 learned
+688670	 when
+689000	 we
+689060	 create
+689570	 a
+689810	 new
+682960	__EVENT__
+689830	
+
+689840	function
+690320	 however
+690980	 this
+691310	 is
+691460	 an
+691610	 updated
+691910	 if
+692120	 i
+689840	__EVENT__
+692230	
+
+692240	refresh
+692600	 here
+693200	 you
+694040	 will
+694190	 see
+694400	 that
+694580	 the
+692240	__EVENT__
+694840	
+
+694850	actual
+695240	 branch
+695510	 that
+695960	 it
+696380	 knows
+696680	 about
+697040	 now
+697280	 is
+694850	__EVENT__
+697810	
+
+697820	the
+698060	 ranch
+698270	 my
+698600	 feature
+698870	 which
+699650	 is
+703570	 so
+704570	 now
+704840	 is
+697820	__EVENT__
+705130	
+
+705140	when
+705170	 I
+705710	 start
+706640	 doing
+706820	 changes
+707480	 I
+707570	 don't
+707930	 you
+705140	__EVENT__
+708310	
+
+708320	never
+708560	 start
+708890	 doing
+709100	 changes
+709400	 on
+709550	 master
+709940	 you
+708320	__EVENT__
+710170	
+
+710180	start
+710480	 doing
+710630	 changes
+711080	 in
+711320	 the
+711860	 feature
+710180	__EVENT__
+712300	
+
+712310	branch
+712580	 of
+712970	 your
+713570	 pull
+713780	 request
+713900	 so
+714680	 now
+714920	 I
+712310	__EVENT__
+714940	
+
+714950	create
+715490	 a
+715700	 second
+716440	 contributor
+717440	 I
+717650	 create
+718040	 a
+714950	__EVENT__
+718060	
+
+718070	file
+718400	 I
+718790	 add
+719390	 a
+719420	 line
+719870	 a
+720380	 line
+720980	 by
+722920	 contributor
+718070	__EVENT__
+723910	
+
+723920	and
+725110	 then
+726110	 I
+726320	 say
+726650	 the
+726680	 file
+727070	 let's
+727760	 save
+727970	 it
+723920	__EVENT__
+727990	
+
+728000	with
+728240	 the
+728270	 name
+730540	 new
+731540	 file
+732380	 to
+728000	__EVENT__
+734590	
+
+734600	just
+734840	 a
+734930	 random
+735260	 file
+735470	 it's
+735830	 randomly
+736340	 finally
+734600	__EVENT__
+736870	
+
+736880	chose
+737120	 and
+737720	 now
+737930	 yes
+738170	 I
+738410	 do
+738470	 and
+738890	 you
+739640	 know
+739700	 what
+736880	__EVENT__
+739810	
+
+739820	I
+739850	 want
+740060	 to
+740150	 do
+740240	 is
+740330	 to
+740480	 commit
+740840	 the
+741740	 changes
+742700	 so
+739820	__EVENT__
+742930	
+
+742940	basically
+743300	 once
+743870	 you
+743960	 have
+744110	 initiated
+744650	 with
+745070	 a
+742940	__EVENT__
+745090	
+
+745100	function
+745520	 P
+745730	 R
+745940	 in
+746270	 it
+746450	 you
+746930	 have
+747080	 initiated
+745100	__EVENT__
+747280	
+
+747290	your
+747620	 people
+748100	 request
+748400	 you
+748760	 just
+749000	 not
+749270	 work
+749480	 as
+747290	__EVENT__
+749650	
+
+749660	normally
+750260	 right
+750710	 you
+750890	 just
+751130	 do
+751760	 changes
+752270	 and
+749660	__EVENT__
+752500	
+
+752510	add
+752810	 those
+753110	 changes
+753850	 to
+754850	 version
+755210	 control
+755360	 by
+752510	__EVENT__
+756250	
+
+756260	committing
+756770	 so
+757370	 now
+757580	 I'm
+757730	 going
+757970	 to
+758090	 do
+758210	 a
+756260	__EVENT__
+758550	
+
+758560	commit
+759560	 by
+760930	 contributor
+761930	 I
+763420	 do
+764420	 the
+764720	 committee
+758560	__EVENT__
+765010	
+
+765020	I
+765760	 close
+766760	 this
+766910	 window
+767140	 and
+768140	 I
+768320	 can
+768500	 continue
+765020	__EVENT__
+768850	
+
+768860	to
+769070	 do
+769190	 as
+769400	 many
+769610	 comments
+770030	 as
+770180	 I
+770570	 wanted
+770990	 I
+768860	__EVENT__
+771100	
+
+771110	could
+771140	 do
+771440	 a
+771470	 second
+771920	 commit
+772220	 if
+772340	 I
+772430	 wanted
+772820	 by
+771110	__EVENT__
+773020	
+
+773030	adding
+773390	 another
+774050	 wine
+774530	 for
+774980	 example
+775810	 and
+777760	 then
+773030	__EVENT__
+778890	
+
+778900	if
+779900	 I
+780110	 changed
+780740	 I
+780980	 create
+781430	 a
+781460	 second
+781820	 commit
+778900	__EVENT__
+789600	
+
+789610	right
+790610	 I
+790850	 commit
+791690	 that
+791840	 file
+792310	 so
+793310	 if
+793460	 I
+793550	 see
+793700	 the
+789610	__EVENT__
+793810	
+
+793820	history
+794300	 of
+797230	 the
+798230	 world
+798500	 for
+799100	 this
+799250	 BR
+799610	 started
+793820	__EVENT__
+800020	
+
+800030	here
+800210	 last
+800360	 month
+800570	 at
+800720	 must
+800930	 ask
+801230	 man
+801380	 at
+800030	__EVENT__
+801550	
+
+801560	master
+802010	 and
+802190	 then
+802850	 since
+803210	 then
+803450	 I
+803750	 create
+804410	 a
+801560	__EVENT__
+804580	
+
+804590	new
+804830	 feature
+805340	 branch
+805730	 which
+806120	 is
+806470	 right
+807470	 here
+804590	__EVENT__
+807490	
+
+807500	and
+808100	 now
+808640	 it
+808790	 has
+808970	 two
+809240	 commits
+809570	 the
+810050	 first
+807500	__EVENT__
+810310	
+
+810320	commit
+810560	 message
+810890	 is
+811250	 this
+811580	 one
+811820	 and
+812060	 the
+810320	__EVENT__
+812230	
+
+812240	second
+812570	 is
+812990	 an
+813770	 all
+814280	 the
+814400	 change
+814670	 is
+814940	 this
+815300	 file
+812240	__EVENT__
+815950	
+
+815960	called
+816350	 new
+816500	 fine
+816710	 too
+817040	 but
+817610	 now
+817760	 has
+818000	 two
+818270	 new
+815960	__EVENT__
+818470	
+
+818480	lines
+818660	 but
+819350	 all
+819530	 these
+819680	 changes
+819890	 so
+820250	 far
+820460	 live
+818480	__EVENT__
+820810	
+
+820820	in
+821030	 my
+821180	 computer
+821720	 so
+822020	 let's
+822050	 go
+822380	 back
+822620	 to
+822980	 the
+820820	__EVENT__
+823450	
+
+823460	help
+823760	 file
+824030	 of
+824380	 the
+825380	 deal
+825560	 helpers
+826070	 to
+826280	 know
+823460	__EVENT__
+826390	
+
+826400	what's
+826760	 next
+827210	 so
+828700	 what
+829700	 we
+829820	 have
+829940	 just
+830150	 done
+830390	 is
+826400	__EVENT__
+830590	
+
+830600	this
+830750	 one
+831050	 where
+831230	 we
+831260	 know
+831440	 we
+831590	 work
+831800	 locally
+830600	__EVENT__
+832090	
+
+832100	making
+832880	 changes
+833210	 to
+833270	 the
+833480	 files
+833750	 and
+834050	 checking
+832100	__EVENT__
+834550	
+
+834560	them
+834770	 in
+835070	 to
+835280	 you
+835400	 and
+835610	 then
+836270	 when
+836450	 you're
+834560	__EVENT__
+836590	
+
+836600	ready
+836630	 to
+836870	 submit
+837050	 your
+837740	 request
+838400	 all
+838670	 you
+836600	__EVENT__
+838900	
+
+838910	need
+839060	 to
+839180	 do
+839300	 is
+839600	 to
+839780	 run
+839990	 the
+840140	 function
+840350	 P
+840890	 R
+841240	 so
+838910	__EVENT__
+842230	
+
+842240	let's
+842450	 do
+842630	 that
+842660	 let's
+842930	 pretend
+843380	 that
+843500	 these
+842240	__EVENT__
+843760	
+
+843770	two
+844520	 comments
+844820	 are
+845060	 all
+845390	 the
+845540	 commits
+845840	 that
+845900	 I
+843770	__EVENT__
+846040	
+
+846050	will
+846230	 be
+846320	 shared
+846680	 with
+846890	 me
+847220	 in
+847490	 my
+847610	 own
+847790	 request
+846050	__EVENT__
+847990	
+
+848000	so
+848660	 I
+848690	 simply
+849050	 follow
+849530	 the
+849680	 instructions
+849710	 that
+848000	__EVENT__
+850450	
+
+850460	agree
+851090	 here
+851990	 so
+852320	 I
+852350	 just
+852470	 do
+853240	 PR
+854290	 push
+855910	 and
+850460	__EVENT__
+856900	
+
+856910	again
+857440	 they
+858440	 use
+858740	 this
+856910	__EVENT__
+858990	
+
+859000	package
+859300	 is
+859540	 going
+859720	 to
+859870	 be
+859990	 working
+860500	 Allen
+859000	__EVENT__
+861030	
+
+861040	along
+861370	 with
+861640	 deeds
+861940	 and
+862150	 didn't
+862480	 have
+862630	 to
+863140	 make
+861040	__EVENT__
+863490	
+
+863500	this
+863650	 happen
+863890	 it's
+864280	 doing
+864910	 a
+865030	 lot
+865150	 of
+865180	 work
+865450	 for
+863500	__EVENT__
+865620	
+
+865630	me
+865690	 and
+866020	 now
+866320	 automatically
+867130	 it
+867400	 is
+867460	 opening
+865630	__EVENT__
+868080	
+
+868090	this
+868270	 new
+868330	 window
+869020	 and
+869520	 on
+870520	 the
+871000	 main
+868090	__EVENT__
+871380	
+
+871390	repository
+871870	 onto
+872740	 the
+872860	 grease
+873100	 Diaz
+873730	 equator
+871390	__EVENT__
+874260	
+
+874270	for
+875200	 me
+875350	 to
+875560	 kind
+875920	 of
+875950	 review
+876400	 what's
+876730	 going
+877030	 on
+874270	__EVENT__
+877170	
+
+877180	and
+877510	 then
+877930	 click
+878350	 here
+878680	 create
+879370	 new
+879550	 request
+877180	__EVENT__
+880020	
+
+880030	so
+880780	 basically
+881140	 what's
+881410	 happening
+881800	 is
+883260	 crunch
+880030	__EVENT__
+884250	
+
+884260	my
+884530	 feature
+884830	 in
+885280	 a
+886230	 repository
+887230	 of
+887590	 my
+888220	 user
+884260	__EVENT__
+889020	
+
+889030	account
+889290	 those
+890290	 comments
+890830	 are
+891010	 going
+891130	 to
+889030	__EVENT__
+891270	
+
+891280	travel
+891640	 or
+892150	 are
+892390	 uncomfortable
+892660	 seeing
+893500	 them
+891280	__EVENT__
+893700	
+
+893710	to
+894040	 is
+894870	 included
+895870	 in
+896080	 the
+896260	 master
+896500	 branch
+896860	 of
+893710	__EVENT__
+897180	
+
+897190	the
+897550	 deep
+897760	 data
+898000	 sizing
+898510	 way
+898750	 of
+898900	 repository
+897190	__EVENT__
+899460	
+
+899470	of
+899680	 the
+900340	 owner
+900520	 to
+901030	 the
+901060	 business
+901570	 so
+902290	 this
+902470	 is
+899470	__EVENT__
+902610	
+
+902620	simply
+903010	 just
+903190	 a
+903490	 shortcut
+903940	 to
+904150	 how
+904360	 can
+904660	 create
+902620	__EVENT__
+904980	
+
+904990	a
+905170	 bonus
+905710	 as
+906430	 a
+906490	 contributor
+907120	 you
+907330	 could
+907480	 then
+904990	__EVENT__
+907680	
+
+907690	are
+907930	 the
+908020	 message
+908290	 if
+908410	 you
+908440	 want
+908560	 I
+909010	 don't
+909220	 need
+907690	__EVENT__
+909480	
+
+909490	one
+909760	 so
+910030	 I'm
+910090	 just
+910150	 going
+910540	 to
+910690	 click
+910960	 create
+909490	__EVENT__
+911520	
+
+911530	pull
+911860	 request
+912190	 and
+913350	 that's
+914350	 done
+914710	 the
+915070	 pull
+911530	__EVENT__
+915240	
+
+915250	request
+915340	 has
+915700	 been
+915730	 submitted
+916090	 you
+916630	 see
+916840	 that
+915250	__EVENT__
+917070	
+
+917080	in
+917200	 the
+917290	 travel
+917740	 request
+917860	 race
+918370	 number
+918820	 one
+919410	 so
+917080	__EVENT__
+920400	
+
+920410	now
+920730	 what
+921730	 good
+922000	 life
+922510	 look
+923200	 like
+923230	 for
+923800	 the
+920410	__EVENT__
+924300	
+
+924310	maintainer
+925080	 if
+926080	 you
+926320	 are
+926530	 maintaining
+927010	 for
+924310	__EVENT__
+927300	
+
+927310	example
+927670	 the
+927730	 data
+927910	 science
+928150	 in
+928360	 Quetta
+927310	__EVENT__
+928590	
+
+928600	package
+929110	 in
+929320	 the
+929500	 two
+929650	 division
+930010	 vessel
+928600	__EVENT__
+930360	
+
+930370	repository
+931000	 and
+931180	 someone
+931570	 has
+931720	 made
+932170	 it
+932320	 all
+930370	__EVENT__
+932520	
+
+932530	request
+933250	 what
+934000	 what
+934540	 do
+934630	 you
+934720	 do
+934870	 how
+935470	 these
+932530	__EVENT__
+935790	
+
+935800	helpers
+936339	 can
+936760	 help
+937060	 you
+937330	 okay
+938230	 so
+938530	 let's
+938740	 go
+935800	__EVENT__
+938880	
+
+938890	now
+938890	__EVENT__
+939360	
+
+939370	at
+940080	 here
+941080	 and
+941320	 let's
+942250	 see
+942460	 what
+942790	 life
+943570	 looks
+939370	__EVENT__
+944070	
+
+944080	for
+944380	 maintenance
+944740	 so
+945100	 Amanda
+945640	 is
+945670	 what
+946000	 they
+944080	__EVENT__
+946170	
+
+946180	will
+946390	 do
+946600	 is
+947080	 simply
+947320	 to
+947589	 fetch
+947980	 that
+948520	 good
+946180	__EVENT__
+948900	
+
+948910	request
+949330	 using
+950260	 the
+950320	 function
+950830	 P
+951460	 R
+951730	 fetch
+952380	 so
+948910	__EVENT__
+953370	
+
+953380	now
+953620	 let
+954220	 me
+954250	 kind
+954520	 of
+954580	 many
+954970	 pounds
+955480	 in
+955690	 this
+953380	__EVENT__
+957020	
+
+957030	talk
+958030	 I
+958330	 list
+959050	 now
+959200	 we
+959260	 kind
+959440	 of
+959530	 changed
+960100	 our
+957030	__EVENT__
+960240	
+
+960250	mindset
+960790	 to
+961390	 pretend
+961839	 that
+961930	 we
+962290	 are
+962320	 no
+962500	 longer
+960250	__EVENT__
+962730	
+
+962740	the
+962950	 contributors
+963640	 they
+963940	 stop
+964240	 the
+964570	 world
+962740	__EVENT__
+964800	
+
+964810	issues
+965200	 of
+965410	 them
+965710	 on
+965830	 tape
+966070	 right
+966520	 ok
+967480	 so
+967510	 what
+964810	__EVENT__
+968190	
+
+968200	what
+968830	 do
+968950	 we
+969040	 do
+969190	 now
+969400	 okay
+969730	 so
+969790	 let
+970089	 me
+970120	 open
+970330	 a
+968200	__EVENT__
+970740	
+
+970750	new
+972150	 in
+973150	 you
+973660	 and
+974080	 let
+974770	 me
+974800	 open
+974950	 a
+975100	 project
+975400	 I
+970750	__EVENT__
+975810	
+
+975820	have
+976030	 however
+976480	 a
+976750	 store
+977020	 in
+977140	 my
+977230	 computer
+977670	 he
+975820	__EVENT__
+978660	
+
+978670	lives
+978910	 somewhere
+979240	 else
+978670	__EVENT__
+981590	
+
+981600	in
+982250	 this
+983250	 different
+984500	 folder
+985500	 the
+986160	 person
+981600	__EVENT__
+986540	
+
+986550	would
+986670	 look
+986850	 very
+987120	 similar
+987900	 but
+988140	 let's
+988980	 now
+986550	__EVENT__
+989150	
+
+989160	pretend
+989580	 that
+989700	 this
+989850	 is
+990000	 the
+990150	 computer
+989160	__EVENT__
+994390	
+
+994400	confusing
+995400	 but
+995610	 in
+995940	 the
+996030	 real
+996210	 world
+1006640	 the
+994400	__EVENT__
+1007630	
+
+1007640	maintainer
+1008000	 has
+1008270	 seen
+1008750	 that
+1009110	 there
+1009230	 is
+1009290	 a
+1009320	 new
+1007640	__EVENT__
+1009610	
+
+1009620	pull
+1009860	 request
+1010570	 right
+1011570	 here
+1012020	 in
+1012110	 the
+1012200	 tab
+1012440	 and
+1009620	__EVENT__
+1012670	
+
+1012680	the
+1013340	 maintainer
+1013550	 wants
+1014030	 to
+1014210	 fetch
+1015020	 that
+1015260	 pull
+1012680	__EVENT__
+1015460	
+
+1015470	request
+1015500	 and
+1016040	 review
+1016490	 it
+1016610	 and
+1016760	 see
+1017120	 kind
+1017420	 of
+1015470	__EVENT__
+1017500	
+
+1017510	what's
+1017750	 going
+1017930	 on
+1018170	 and
+1018560	 maybe
+1018920	 add
+1019160	 some
+1017510	__EVENT__
+1019450	
+
+1019460	changes
+1019880	 so
+1020600	 the
+1020870	 first
+1021080	 thing
+1021290	 that
+1021500	 the
+1019460	__EVENT__
+1021610	
+
+1021620	maintainer
+1021920	 will
+1022100	 notice
+1022490	 is
+1022730	 the
+1022760	 number
+1023210	 is
+1021620	__EVENT__
+1023350	
+
+1023360	the
+1023600	 number
+1023630	 8
+1024430	 that's
+1025430	 the
+1025699	 number
+1023360	__EVENT__
+1025930	
+
+1025940	associated
+1026209	 to
+1026660	 the
+1026750	 pull
+1026930	 request
+1027020	 a
+1027350	 little
+1025940	__EVENT__
+1027460	
+
+1027470	break
+1027740	 here
+1027920	 as
+1028160	 well
+1028400	 so
+1028940	 the
+1029030	 maintainer
+1027470	__EVENT__
+1029380	
+
+1029390	when
+1029900	 it
+1030020	 has
+1030199	 the
+1030530	 person
+1030829	 has
+1030949	 to
+1031130	 do
+1031250	 is
+1031520	 to
+1029390	__EVENT__
+1031780	
+
+1031790	run
+1031940	 the
+1032209	 one
+1032510	 first
+1032870	 is
+1033140	 going
+1033410	 to
+1033530	 load
+1033949	 the
+1031790	__EVENT__
+1034810	
+
+1034820	baggage
+1035209	 use
+1035510	 this
+1037000	 and
+1038000	 then
+1038449	 it's
+1038660	 going
+1038839	 to
+1034820	__EVENT__
+1038920	
+
+1038930	run
+1039170	 the
+1039290	 function
+1039500	 PR
+1040370	 fetch
+1041030	 and
+1042020	 it
+1042290	 has
+1042440	 you
+1038930	__EVENT__
+1042670	
+
+1042680	have
+1042829	 to
+1042949	 give
+1043130	 it
+1043280	 the
+1043459	 name
+1043699	 the
+1044000	 number
+1044329	 of
+1042680	__EVENT__
+1044500	
+
+1044510	the
+1044810	 pull
+1045110	 requests
+1045530	 that
+1045650	 you
+1045709	 want
+1045980	 to
+1046100	 fetch
+1044510	__EVENT__
+1046300	
+
+1046310	so
+1046820	 in
+1046939	 this
+1047060	 case
+1047300	 it's
+1047480	 number
+1047720	 8
+1047900	 so
+1048590	 PR
+1046310	__EVENT__
+1049120	
+
+1049130	fetch
+1049430	 should
+1049910	 do
+1050090	 the
+1050210	 trick
+1050420	 as
+1050690	 you
+1051200	 can
+1051350	 see
+1049130	__EVENT__
+1051520	
+
+1051530	once
+1051950	 again
+1052250	 the
+1053120	 use
+1053630	 this
+1053810	 package
+1054110	 is
+1051530	__EVENT__
+1054370	
+
+1054380	working
+1054740	 with
+1054890	 kids
+1055100	 and
+1055280	 it
+1055580	 have
+1055850	 to
+1056090	 make
+1054380	__EVENT__
+1056260	
+
+1056270	only
+1056600	 much
+1056720	 happen
+1057200	 and
+1057380	 if
+1058190	 you
+1058340	 go
+1058520	 here
+1058850	 the
+1056270	__EVENT__
+1059050	
+
+1059060	top
+1059270	 right
+1059510	 you
+1059720	 will
+1059870	 see
+1060080	 when
+1060530	 i
+1060710	 refresh
+1059060	__EVENT__
+1061030	
+
+1061040	the
+1061880	 eat
+1062090	 paint
+1062390	 that
+1062810	 the
+1063170	 branch
+1064010	 master
+1061040	__EVENT__
+1064720	
+
+1064730	will
+1064970	 change
+1065360	 to
+1066020	 something
+1066230	 different
+1066530	 which
+1064730	__EVENT__
+1067180	
+
+1067190	is
+1067220	 the
+1067640	 name
+1068240	 of
+1068270	 the
+1068540	 branch
+1068810	 that
+1069110	 the
+1067190	__EVENT__
+1069490	
+
+1069500	contributor
+1070040	 created
+1070990	 with
+1071990	 the
+1072200	 suffix
+1072680	 of
+1069500	__EVENT__
+1072900	
+
+1072910	the
+1073910	 username
+1074300	 actually
+1075200	 that's
+1075380	 that's
+1075770	 kind
+1072910	__EVENT__
+1076180	
+
+1076190	of
+1076250	 a
+1076580	 convention
+1076910	 that
+1077210	 it
+1077510	 gives
+1077690	 this
+1076190	__EVENT__
+1077830	
+
+1077840	package
+1078200	 so
+1079070	 he
+1079670	 creates
+1080120	 a
+1080780	 local
+1081380	 copy
+1081800	 of
+1077840	__EVENT__
+1082120	
+
+1082130	the
+1082730	 pull
+1082970	 request
+1083150	 that
+1083690	 was
+1083870	 submitted
+1084080	 by
+1082130	__EVENT__
+1084580	
+
+1084590	the
+1084620	 contributor
+1084590	__EVENT__
+1085540	
+
+1085550	now
+1086450	 the
+1087230	 condiment
+1087710	 ainur
+1088070	 can
+1088400	 see
+1088910	 the
+1085550	__EVENT__
+1089020	
+
+1089030	history
+1089480	 of
+1090130	 this
+1091130	 pull
+1091580	 request
+1091940	 and
+1092120	 noticed
+1089030	__EVENT__
+1093040	
+
+1093050	for
+1093260	 example
+1093530	 that
+1093740	 since
+1094520	 the
+1095240	 history
+1093050	__EVENT__
+1095710	
+
+1095720	master
+1096350	 there
+1096770	 have
+1097040	 been
+1097250	 two
+1097670	 new
+1097880	 commands
+1095720	__EVENT__
+1098470	
+
+1098480	associated
+1099350	 to
+1099830	 this
+1099950	 pull
+1100700	 request
+1100870	 may
+1101870	 be
+1098480	__EVENT__
+1101920	
+
+1101930	the
+1102380	 maintainer
+1102740	 also
+1103370	 add
+1103520	 a
+1103550	 new
+1103790	 commit
+1104090	 for
+1101930	__EVENT__
+1104530	
+
+1104540	example
+1105020	 maybe
+1105380	 they
+1105830	 want
+1106130	 to
+1106250	 go
+1106730	 to
+1106790	 the
+1104540	__EVENT__
+1106990	
+
+1107000	file
+1107270	 that
+1107540	 was
+1107780	 submitted
+1108280	 which
+1109280	 was
+1109550	 this
+1107000	__EVENT__
+1109720	
+
+1109730	one
+1109940	 here
+1110300	 and
+1109730	__EVENT__
+1112310	
+
+1112320	a
+1112350	 new
+1113160	 line
+1113400	 by
+1114240	 de
+1114840	 Montaigne
+1116000	 so
+1117000	 let's
+1112320	__EVENT__
+1117290	
+
+1117300	pretend
+1117510	 now
+1117840	 that
+1117870	 the
+1118140	 maintainer
+1118470	 is
+1118920	 happy
+1117300	__EVENT__
+1119420	
+
+1119430	with
+1119550	 the
+1119640	 changes
+1120000	 but
+1120210	 wants
+1120540	 to
+1120570	 have
+1120810	 a
+1121080	 new
+1119430	__EVENT__
+1121310	
+
+1121320	change
+1122090	 and
+1123090	 maybe
+1123860	 you
+1124860	 know
+1124950	 other
+1125160	 little
+1121320	__EVENT__
+1126550	
+
+1126560	details
+1127560	 to
+1128040	 the
+1128160	 previous
+1128580	 changes
+1126560	__EVENT__
+1129530	
+
+1129540	submitted
+1130020	 by
+1130140	 the
+1130200	 contributor
+1130890	 something
+1129540	__EVENT__
+1131570	
+
+1131580	like
+1131670	 this
+1131820	 fulfilled
+1131580	__EVENT__
+1132590	
+
+1132600	so
+1133470	 these
+1133620	 are
+1133860	 the
+1134010	 changes
+1134400	 that
+1134430	 the
+1132600	__EVENT__
+1134630	
+
+1134640	maintainer
+1135090	 is
+1135420	 adding
+1136020	 to
+1136800	 the
+1137220	 pub
+1138120	 request
+1134640	__EVENT__
+1138730	
+
+1138740	changes
+1139740	 are
+1139890	 made
+1140070	 and
+1140400	 now
+1140670	 we
+1140730	 are
+1140850	 going
+1141000	 to
+1138740	__EVENT__
+1141110	
+
+1141120	commit
+1141690	 those
+1141870	 changes
+1141930	 as
+1142590	 the
+1142890	 maintainer
+1141120	__EVENT__
+1147850	
+
+1147860	they
+1148860	 commit
+1149160	 by
+1149310	 the
+1149370	 maintainer
+1149760	 we
+1151070	 now
+1147860	__EVENT__
+1152060	
+
+1152070	let's
+1152340	 see
+1152520	 what
+1152790	 the
+1153030	 health
+1153930	 file
+1154200	 says
+1154590	 that
+1152070	__EVENT__
+1155000	
+
+1155010	we
+1155130	 should
+1155370	 do
+1155550	 let's
+1156330	 go
+1156540	 back
+1156810	 to
+1156990	 the
+1157080	 health
+1155010	__EVENT__
+1157280	
+
+1157290	file
+1157590	 so
+1158190	 a
+1158220	 cement
+1158700	 diner
+1158910	 you
+1159330	 know
+1159450	 you
+1159930	 will
+1157290	__EVENT__
+1160070	
+
+1160080	need
+1160170	 this
+1160320	 B
+1160560	 you
+1161130	 will
+1161460	 fetch
+1161730	 the
+1162030	 pull
+1160080	__EVENT__
+1162230	
+
+1162240	request
+1162410	 we
+1163410	 made
+1163440	 some
+1163950	 changes
+1164430	 and
+1164700	 then
+1162240	__EVENT__
+1165050	
+
+1165060	when
+1165210	 we
+1165330	 are
+1165360	 ready
+1165480	 we
+1166050	 run
+1166440	 the
+1166560	 function
+1167010	 P
+1165060	__EVENT__
+1167270	
+
+1167280	and
+1167460	 push
+1167700	 and
+1167880	 that
+1168540	 will
+1168840	 push
+1169140	 them
+1169380	 back
+1169710	 so
+1167280	__EVENT__
+1170570	
+
+1170580	let's
+1170760	 do
+1170940	 just
+1170970	 that
+1170580	__EVENT__
+1171680	
+
+1171690	let's
+1172230	 go
+1172380	 here
+1172740	 I
+1172950	 do
+1173130	 PR
+1174590	 push
+1171690	__EVENT__
+1177670	
+
+1177680	remember
+1178430	 we
+1178580	 are
+1178640	 the
+1178730	 maintainer
+1179000	 now
+1180460	 use
+1177680	__EVENT__
+1181450	
+
+1181460	this
+1181640	 again
+1182000	 is
+1182240	 working
+1182540	 with
+1182690	 git
+1182900	 and
+1181460	__EVENT__
+1183070	
+
+1183080	github
+1183320	 making
+1184070	 everything
+1184250	 happen
+1184490	 under
+1183080	__EVENT__
+1184870	
+
+1184880	booth
+1185210	 without
+1185600	 us
+1185810	 worrying
+1186350	 too
+1186560	 much
+1186590	 about
+1184880	__EVENT__
+1186760	
+
+1186770	that
+1187130	 and
+1187430	 it's
+1188120	 also
+1188300	 telling
+1188570	 us
+1188810	 that
+1189020	 we
+1186770	__EVENT__
+1189100	
+
+1189110	could
+1189260	 run
+1189440	 if
+1189590	 we
+1189740	 wanted
+1190130	 the
+1190310	 function
+1190730	 P
+1190940	 of
+1189110	__EVENT__
+1190960	
+
+1190970	view
+1191330	 as
+1191570	 a
+1191630	 shortcut
+1192590	 to
+1192650	 just
+1193190	 navigate
+1193700	 to
+1190970	__EVENT__
+1194050	
+
+1194060	that
+1194330	 PR
+1194960	 on
+1195260	 github
+1195650	 that
+1196040	 will
+1194060	__EVENT__
+1196840	
+
+1196850	automatically
+1197420	 open
+1197540	 this
+1197960	 window
+1198230	 on
+1198650	 the
+1196850	__EVENT__
+1198790	
+
+1198800	web
+1198980	 browser
+1199460	 and
+1202210	 do
+1203210	 we
+1203300	 have
+1203330	 any
+1203450	 question
+1198800	__EVENT__
+1203830	
+
+1203840	there
+1206560	 good
+1212800	 showing
+1213800	 what
+1214520	 the
+1214670	 PR
+1215180	 looks
+1203840	__EVENT__
+1215560	
+
+1215570	like
+1215840	 they
+1216650	 make
+1216830	 enough
+1217070	 debrief
+1217940	 what
+1218330	 we
+1215570	__EVENT__
+1218470	
+
+1218480	see
+1218720	 we
+1219440	 see
+1219650	 these
+1219950	 first
+1220190	 two
+1220490	 commits
+1220820	 that
+1218480	__EVENT__
+1220960	
+
+1220970	were
+1221210	 done
+1221480	 by
+1221810	 the
+1222140	 person
+1222590	 who
+1222860	 pretended
+1223280	 to
+1220970	__EVENT__
+1223330	
+
+1223340	be
+1223490	 the
+1223520	 maintainer
+1223880	 sorry
+1224570	 a
+1224750	 contributor
+1223340	__EVENT__
+1225370	
+
+1225380	which
+1225620	 was
+1225860	 me
+1226130	 and
+1226640	 then
+1227360	 this
+1227570	 third
+1228050	 coming
+1225380	__EVENT__
+1228400	
+
+1228410	is
+1228650	 the
+1228830	 committee
+1229130	 added
+1229340	 by
+1229640	 the
+1229700	 maintainer
+1228410	__EVENT__
+1230140	
+
+1230150	which
+1230450	 in
+1230570	 this
+1230660	 case
+1230840	 is
+1230990	 also
+1231200	 in
+1231860	 the
+1231980	 real
+1230150	__EVENT__
+1232150	
+
+1232160	world
+1232430	 this
+1233090	 could
+1233360	 be
+1233450	 two
+1233630	 different
+1233750	 person
+1232160	__EVENT__
+1234280	
+
+1234290	convinced
+1235130	 by
+1235280	 the
+1235340	 contributor
+1235970	 will
+1236240	 come
+1234290	__EVENT__
+1236470	
+
+1236480	from
+1236630	 someone
+1237020	 and
+1237170	 they
+1237740	 commit
+1238040	 from
+1238280	 the
+1236480	__EVENT__
+1238420	
+
+1238430	maintainer
+1238820	 or
+1239210	 maintain
+1239750	 errs
+1239930	 who
+1240530	 come
+1238430	__EVENT__
+1240820	
+
+1240830	from
+1241040	 someone
+1241700	 else
+1241880	 so
+1242870	 let's
+1243290	 pretend
+1243440	 that
+1240830	__EVENT__
+1243670	
+
+1243680	this
+1243920	 is
+1262990	 so
+1263990	 here
+1264590	 is
+1264800	 something
+1265100	 what's
+1243680	__EVENT__
+1265390	
+
+1265400	going
+1265550	 to
+1265640	 happen
+1265970	 they
+1266150	 commit
+1266420	 came
+1266780	 from
+1265400	__EVENT__
+1267070	
+
+1267080	this
+1267350	 branch
+1267770	 of
+1268070	 this
+1268400	 owner
+1268760	 and
+1269120	 they
+1269480	 are
+1267080	__EVENT__
+1269530	
+
+1269540	going
+1269690	 to
+1269810	 trial
+1270050	 into
+1270500	 the
+1270590	 master
+1270950	 branch
+1271160	 of
+1269540	__EVENT__
+1271510	
+
+1271520	the
+1272120	 mangrove
+1272510	 of
+1272740	 one
+1273740	 common
+1274040	 thing
+1274340	 that
+1274370	 I
+1271520	__EVENT__
+1274630	
+
+1274640	do
+1274700	 personally
+1275480	 is
+1275570	 to
+1275780	 squash
+1276080	 these
+1276320	 commits
+1274640	__EVENT__
+1276700	
+
+1276710	if
+1276950	 they
+1277100	 don't
+1277280	 relate
+1277610	 to
+1277700	 the
+1277790	 same
+1277970	 problem
+1276710	__EVENT__
+1278410	
+
+1278420	which
+1278660	 they
+1278840	 should
+1279110	 because
+1279530	 they
+1281980	 so
+1282980	 I
+1283340	 can
+1278420	__EVENT__
+1283720	
+
+1283730	just
+1284120	 click
+1284450	 squash
+1284930	 and
+1285110	 merge
+1285290	 and
+1286030	 you
+1287030	 can
+1283730	__EVENT__
+1287170	
+
+1287180	also
+1287330	 wear
+1287600	 rights
+1287840	 becoming
+1288410	 history
+1289040	 if
+1289190	 you
+1287180	__EVENT__
+1289270	
+
+1289280	want
+1289520	 saying
+1289940	 the
+1290570	 commit
+1290810	 message
+1291110	 saying
+1289280	__EVENT__
+1291460	
+
+1291470	something
+1291920	 like
+1292030	 you
+1294760	 file
+1296170	 to
+1297170	 and
+1298060	 confirm
+1291470	__EVENT__
+1299050	
+
+1299060	and
+1299330	 squash
+1299660	 so
+1300290	 that
+1300620	 will
+1301010	 do
+1301250	 is
+1301580	 that
+1299060	__EVENT__
+1301870	
+
+1301880	although
+1302150	 the
+1302690	 beer
+1302900	 has
+1303230	 three
+1303650	 commits
+1304390	 the
+1301880	__EVENT__
+1305380	
+
+1305390	history
+1306050	 in
+1306230	 the
+1306350	 master
+1306740	 branch
+1306920	 we
+1307310	 have
+1305390	__EVENT__
+1307540	
+
+1307550	only
+1307700	 one
+1307550	__EVENT__
+1308350	
+
+1308360	three
+1308899	 commissioners
+1309200	 question
+1310190	 to
+1310279	 a
+1310340	 single
+1308360	__EVENT__
+1310720	
+
+1310730	one
+1310850	 and
+1311059	 incorporated
+1311899	 in
+1312110	 the
+1312320	 master
+1310730	__EVENT__
+1313060	
+
+1313070	branch
+1313419	 so
+1314860	 we're
+1315860	 kind
+1316070	 of
+1316100	 getting
+1316399	 to
+1316669	 the
+1313070	__EVENT__
+1316750	
+
+1316760	end
+1316909	 of
+1317179	 this
+1317360	 let's
+1318140	 see
+1318320	 what
+1318500	 else
+1318710	 we
+1319130	 can
+1316760	__EVENT__
+1319330	
+
+1319340	do
+1319549	 so
+1320510	 for
+1320779	 the
+1320809	 maintainer
+1321169	 after
+1321980	 they
+1322190	 have
+1319340	__EVENT__
+1322360	
+
+1322370	a
+1332230	 copy
+1333230	 of
+1333610	 of
+1334610	 this
+1334850	 repo
+1335269	 in
+1335480	 the
+1322370	__EVENT__
+1335590	
+
+1335600	maintenance
+1335899	 computer
+1336590	 and
+1337100	 this
+1337279	 one
+1337549	 being
+1335600	__EVENT__
+1338049	
+
+1338059	our
+1338240	 fridge
+1339250	 so
+1340250	 that
+1340490	 will
+1340970	 do
+1341179	 is
+1341510	 basically
+1338059	__EVENT__
+1341710	
+
+1341720	it
+1342049	 will
+1342139	 get
+1342380	 rid
+1342679	 of
+1342710	 the
+1343159	 branch
+1343429	 that
+1343880	 was
+1341720	__EVENT__
+1343990	
+
+1344000	created
+1344419	 for
+1344720	 this
+1344870	 request
+1345409	 and
+1346309	 do
+1346490	 a
+1346519	 little
+1344000	__EVENT__
+1346810	
+
+1346820	a
+1347059	 little
+1347330	 more
+1347570	 cleanup
+1348019	 and
+1348740	 that's
+1349250	 a
+1349370	 the
+1346820	__EVENT__
+1349539	
+
+1349549	commentary
+1349909	 I'll
+1350120	 continue
+1350480	 working
+1350960	 on
+1351470	 the
+1349549	__EVENT__
+1352360	
+
+1352370	main
+1352549	 repo
+1352909	 or
+1353240	 managing
+1353690	 other
+1353929	 core
+1352370	__EVENT__
+1354490	
+
+1354500	requests
+1355010	 so
+1355580	 for
+1355909	 now
+1356059	 I'm
+1356269	 going
+1356480	 to
+1356600	 close
+1354500	__EVENT__
+1357009	
+
+1357019	the
+1357500	 arts
+1357919	 to
+1358070	 your
+1358220	 session
+1358610	 of
+1358789	 the
+1357019	__EVENT__
+1358899	
+
+1358909	maintainer
+1359330	 and
+1359710	 I'm
+1360710	 going
+1360889	 to
+1360950	 direct
+1361070	 your
+1358909	__EVENT__
+1361330	
+
+1361340	attention
+1361429	 to
+1361850	 a
+1362000	 few
+1362240	 other
+1362419	 things
+1362659	 that
+1363399	 the
+1361340	__EVENT__
+1364389	
+
+1364399	contributor
+1365059	 could
+1365299	 so
+1366110	 they
+1366200	 contribute
+1364399	__EVENT__
+1367019	
+
+1367029	also
+1368200	 finish
+1369580	 with
+1370580	 the
+1370700	 same
+1370970	 function
+1371510	 so
+1371720	 if
+1367029	__EVENT__
+1372310	
+
+1372320	we
+1372500	 go
+1372679	 to
+1372710	 you
+1373250	 now
+1373370	 let's
+1373610	 pretend
+1373789	 again
+1372320	__EVENT__
+1374529	
+
+1374539	that
+1375350	 we
+1375590	 are
+1375620	 the
+1378039	 contributor
+1379039	 so
+1379610	 the
+1374539	__EVENT__
+1379690	
+
+1379700	contributor
+1380210	 has
+1380360	 already
+1381580	 so
+1382580	 he
+1382820	 saw
+1383090	 her
+1379700	__EVENT__
+1383350	
+
+1383360	pull
+1384260	 request
+1384590	 has
+1384769	 already
+1385190	 been
+1385510	 accepted
+1383360	__EVENT__
+1386500	
+
+1386510	and
+1386929	 included
+1387470	 into
+1387799	 the
+1387919	 main
+1388070	 stream
+1386510	__EVENT__
+1388299	
+
+1388309	package
+1389090	 or
+1389559	 repo
+1390559	 so
+1391340	 they
+1391580	 last
+1391760	 so
+1392210	 there
+1392389	 is
+1388309	__EVENT__
+1392470	
+
+1392480	nothing
+1392690	 else
+1392870	 that
+1393200	 needs
+1393769	 to
+1393950	 be
+1393980	 done
+1394250	 in
+1392480	__EVENT__
+1394600	
+
+1394610	that
+1394789	 particular
+1395299	 request
+1395779	 so
+1396470	 the
+1394610	__EVENT__
+1396639	
+
+1396649	contributor
+1397190	 can
+1397490	 after
+1398260	 attaching
+1399260	 the
+1396649	__EVENT__
+1399490	
+
+1399500	package
+1399860	 once
+1400639	 again
+1400909	 use
+1401269	 this
+1401510	 can
+1402350	 do
+1402740	 as
+1399500	__EVENT__
+1403000	
+
+1403010	well
+1403220	 we
+1403820	 are
+1404000	 finished
+1404419	 and
+1405260	 I
+1405440	 will
+1405590	 also
+1405950	 do
+1403010	__EVENT__
+1406060	
+
+1406070	some
+1406309	 cleanup
+1406610	 in
+1407570	 hair
+1407929	 keys
+1408250	 computer
+1409600	 so
+1406070	__EVENT__
+1410590	
+
+1410600	that's
+1410899	 about
+1411019	 it
+1411350	 there
+1412070	 are
+1412130	 a
+1412340	 few
+1412490	 other
+1410600	__EVENT__
+1412659	
+
+1412669	scenarios
+1413210	 are
+1413419	 more
+1413630	 complex
+1414080	 where
+1414529	 for
+1412669	__EVENT__
+1414789	
+
+1414799	example
+1414889	 the
+1415870	 mainstream
+1416870	 repo
+1417139	 has
+1417950	 new
+1414799	__EVENT__
+1418240	
+
+1418250	changes
+1418789	 that
+1419350	 are
+1420350	 independent
+1421250	 from
+1421490	 the
+1421610	 TR
+1418250	__EVENT__
+1421990	
+
+1422000	and
+1422210	 the
+1423049	 contributor
+1423649	 needs
+1423889	 can
+1422000	__EVENT__
+1424149	
+
+1424159	synchronize
+1424850	 those
+1425750	 changes
+1426289	 before
+1426500	 the
+1426980	 PR
+1424159	__EVENT__
+1427269	
+
+1427279	can
+1427519	 be
+1427730	 and
+1427970	 submit
+1428840	 so
+1429590	 that
+1430159	 is
+1430490	 that
+1430940	 magic
+1427279	__EVENT__
+1431379	
+
+1431389	is
+1431659	 done
+1431990	 by
+1432200	 the
+1432260	 PR
+1433070	 sync
+1433460	 and
+1434000	 we
+1434120	 are
+1434179	 not
+1431389	__EVENT__
+1434289	
+
+1434299	going
+1434510	 to
+1434600	 cover
+1434779	 it
+1434899	 because
+1435110	 it's
+1435380	 a
+1435470	 little
+1434299	__EVENT__
+1435669	
+
+1435679	bit
+1435769	 more
+1435950	 advanced
+1435679	__EVENT__
+1439800	
+
+1439810	but
+1440020	 we'll
+1440170	 see
+1440260	 we
+1440410	 just
+1440440	 don't
+1440980	 have
+1441160	 time
+1441370	 I
+1439810	__EVENT__
+1441660	
+
+1441670	mean
+1442360	 the
+1442510	 PR
+1442810	 view
+1443080	 we
+1443290	 already
+1443530	 covered
+1441670	__EVENT__
+1443730	
+
+1443740	basically
+1444340	 shotgun
+1445330	 for
+1445660	 browsing
+1445930	 the
+1446580	 PR
+1447580	 on
+1443740	__EVENT__
+1447810	
+
+1447820	github
+1448180	 ampere
+1448930	 powers
+1449290	 which
+1449590	 allows
+1449980	 you
+1450250	 to
+1447820	__EVENT__
+1450390	
+
+1450400	kind
+1450520	 of
+1450610	 stop
+1450850	 or
+1451000	 you're
+1451120	 doing
+1451510	 on
+1451780	 the
+1452410	 PR
+1450400	__EVENT__
+1452670	
+
+1452680	go
+1453250	 back
+1453490	 to
+1453840	 you
+1454840	 know
+1454900	 the
+1454990	 master
+1455560	 branch
+1452680	__EVENT__
+1455760	
+
+1455770	and
+1455950	 do
+1456100	 other
+1456220	 things
+1456340	 and
+1456730	 then
+1457060	 you
+1457090	 can
+1455770	__EVENT__
+1457350	
+
+1457360	resume
+1457690	 your
+1457930	 PR
+1458350	 whenever
+1458800	 you're
+1458980	 right
+1459160	 so
+1457360	__EVENT__
+1459690	
+
+1459700	these
+1459880	 things
+1460120	 I'm
+1460450	 not
+1460900	 covering
+1459700	__EVENT__
+1461100	
+
+1461110	intentionally
+1461950	 simply
+1462430	 because
+1462790	 we
+1463360	 don't
+1461110	__EVENT__
+1463530	
+
+1463540	have
+1463660	 time
+1463840	 and
+1464140	 also
+1464440	 because
+1464800	 I'm
+1464920	 pretty
+1463540	__EVENT__
+1465060	
+
+1465070	new
+1465430	 to
+1465640	 this
+1465820	 approach
+1466090	 to
+1466510	 be
+1466690	 honest
+1467050	 and
+1465070	__EVENT__
+1467190	
+
+1467200	I'm
+1467830	 trying
+1468190	 it
+1468370	 as
+1468580	 I
+1468700	 go
+1468910	 and
+1469210	 honestly
+1469720	 I'm
+1467200	__EVENT__
+1469860	
+
+1469870	really
+1470230	 liking
+1470680	 how
+1471400	 five
+1472060	 much
+1472300	 faster
+1472930	 and
+1469870	__EVENT__
+1473070	
+
+1473080	simpler
+1473650	 my
+1474220	 workflow
+1474700	 becomes
+1475620	 so
+1476620	 with
+1476800	 that
+1473080	__EVENT__
+1477030	
+
+1477040	I
+1478000	 end
+1478230	 what
+1479230	 I
+1479260	 planned
+1477040	__EVENT__
+1479880	
+
+1479890	if
+1480490	 you
+1480670	 today
+1481000	 so
+1481570	 I
+1481600	 would
+1482050	 really
+1482380	 like
+1482500	 to
+1479890	__EVENT__
+1482690	
+
+1482700	to
+1483700	 hear
+1483970	 your
+1484150	 comments
+1484630	 or
+1484780	 questions
+1482700	__EVENT__
+1484890	
+
+1484900	before
+1485770	 we
+1485800	 say
+1484900	__EVENT__
+1488659	
+
+1488669	thanks
+1489669	 Mary
+1489850	 I've
+1490720	 got
+1490960	 one
+1491590	 quick
+1491830	 question
+1488669	__EVENT__
+1492480	
+
+1492490	maybe
+1493210	 it's
+1493360	 quick
+1494429	 with
+1495429	 regard
+1495820	 to
+1495880	 a
+1496059	 pull
+1492490	__EVENT__
+1496260	
+
+1496270	request
+1496299	 so
+1499679	 initialize
+1500679	 my
+1500950	 branch
+1501250	 made
+1501820	 my
+1496270	__EVENT__
+1501990	
+
+1502000	changes
+1502830	 I
+1504029	 push
+1505029	 it
+1505240	 I
+1505450	 push
+1506200	 it
+1506350	 towards
+1506710	 the
+1502000	__EVENT__
+1506760	
+
+1506770	master
+1507130	 branch
+1508350	 let's
+1509350	 just
+1509620	 say
+1509880	 classes
+1510880	 the
+1506770	__EVENT__
+1511080	
+
+1511090	or
+1511419	 yourself
+1511929	 with
+1512049	 the
+1512110	 maintainer
+1512500	 in
+1512710	 your
+1511090	__EVENT__
+1512909	
+
+1512919	on
+1513130	 a
+1513460	 holiday
+1514299	 so
+1514450	 you
+1514690	 don't
+1514960	 get
+1515080	 to
+1515260	 this
+1512919	__EVENT__
+1515399	
+
+1515409	and
+1516220	 I
+1516340	 want
+1516549	 to
+1516640	 keep
+1517090	 working
+1517419	 on
+1518080	 that
+1518289	 Douai
+1515409	__EVENT__
+1518909	
+
+1518919	and
+1520289	 pull
+1521289	 the
+1521620	 pull
+1521830	 request
+1521980	 all
+1522549	 the
+1522730	 way
+1518919	__EVENT__
+1522870	
+
+1522880	can
+1523270	 I
+1523360	 create
+1523600	 a
+1523690	 new
+1523750	 pull
+1524140	 request
+1524590	 of
+1524830	 that
+1522880	__EVENT__
+1525480	
+
+1525490	work
+1526000	 that
+1526240	 I've
+1526360	 already
+1526600	 been
+1526899	 doing
+1527230	 or
+1528179	 can
+1525490	__EVENT__
+1529169	
+
+1529179	you
+1529270	 maybe
+1529450	 add
+1529840	 one
+1530200	 or
+1530289	 two
+1530320	 comments
+1530649	 to
+1529179	__EVENT__
+1531409	
+
+1531419	when
+1532419	 that
+1533140	 happens
+1534059	 yeah
+1535059	 yeah
+1535450	 absolutely
+1531419	__EVENT__
+1537320	
+
+1537330	you
+1538330	 can
+1538860	 in
+1539860	 your
+1539890	 fork
+1541620	 which
+1542620	 is
+1542799	 like
+1542980	 a
+1537330	__EVENT__
+1543000	
+
+1543010	clone
+1543429	 from
+1544029	 the
+1544120	 main
+1544330	 repo
+1544690	 you
+1544929	 can
+1545080	 do
+1543010	__EVENT__
+1545250	
+
+1545260	whatever
+1545500	 you
+1545770	 want
+1546039	 independently
+1546940	 from
+1547059	 the
+1545260	__EVENT__
+1547139	
+
+1547149	maintainer
+1547600	 but
+1548320	 if
+1548440	 you
+1548559	 want
+1548860	 to
+1549039	 continue
+1547149	__EVENT__
+1550940	
+
+1550950	working
+1551950	 off
+1552850	 the
+1553809	 main
+1554020	 repo
+1556110	 you
+1557110	 will
+1557289	 need
+1550950	__EVENT__
+1557549	
+
+1557559	to
+1557830	 do
+1558820	 two
+1559059	 things
+1559090	 either
+1559600	 kind
+1559840	 of
+1559929	 wait
+1557559	__EVENT__
+1560250	
+
+1560260	until
+1561070	 I
+1561370	 mean
+1561909	 if
+1562000	 you
+1562090	 need
+1562210	 to
+1562360	 build
+1562570	 on
+1562809	 top
+1560260	__EVENT__
+1562950	
+
+1562960	of
+1563020	 the
+1563200	 PRA
+1563919	 you
+1564279	 ready
+1564520	 yeah
+1565179	 there
+1565630	 that
+1562960	__EVENT__
+1565799	
+
+1565809	here
+1566020	 has
+1566200	 to
+1566440	 be
+1566470	 merged
+1567279	 eventually
+1568000	 before
+1565809	__EVENT__
+1568380	
+
+1568390	you
+1570330	 before
+1571330	 you
+1571600	 continue
+1572110	 so
+1572230	 that's
+1572409	 the
+1568390	__EVENT__
+1572519	
+
+1572529	ideal
+1572770	 undeceive
+1573309	 the
+1573429	 scenario
+1573880	 but
+1574450	 you
+1574600	 can
+1572529	__EVENT__
+1574830	
+
+1574840	if
+1575049	 you
+1575169	 want
+1575380	 go
+1576340	 you
+1576850	 know
+1576909	 back
+1577240	 to
+1577270	 the
+1578340	 so
+1574840	__EVENT__
+1579330	
+
+1579340	say
+1579520	 that
+1579730	 you
+1579820	 know
+1579880	 you
+1580000	 started
+1580270	 with
+1580419	 with
+1579340	__EVENT__
+1580799	
+
+1580809	the
+1581350	 state
+1581649	 of
+1581860	 master
+1582419	 then
+1583419	 you
+1583450	 created
+1584020	 a
+1580809	__EVENT__
+1584100	
+
+1584110	PR
+1584409	 which
+1584799	 added
+1585100	 three
+1585340	 commits
+1585700	 if
+1586480	 your
+1586929	 new
+1584110	__EVENT__
+1587190	
+
+1587200	work
+1587760	 is
+1588760	 independent
+1589600	 from
+1589870	 those
+1590049	 three
+1587200	__EVENT__
+1590310	
+
+1590320	commits
+1590649	 that
+1590740	 your
+1590950	 other
+1598919	 so
+1599919	 you
+1600010	 can
+1600039	 add
+1590320	__EVENT__
+1600330	
+
+1600340	as
+1600549	 many
+1600880	 peers
+1601299	 as
+1601600	 you
+1601809	 want
+1602080	 of
+1602350	 the
+1603309	 state
+1600340	__EVENT__
+1603630	
+
+1603640	of
+1603909	 the
+1604360	 master
+1604690	 branch
+1604870	 of
+1605110	 the
+1605200	 main
+1605380	 rebel
+1603640	__EVENT__
+1605580	
+
+1605590	and
+1606100	 there
+1606730	 is
+1606820	 no
+1606970	 promise
+1607480	 they
+1607720	 are
+1605590	__EVENT__
+1607740	
+
+1607750	independent
+1608649	 but
+1608950	 if
+1609340	 one
+1610029	 PR
+1610390	 depends
+1610960	 on
+1611110	 the
+1607750	__EVENT__
+1611519	
+
+1611529	completion
+1611890	 of
+1612070	 the
+1612220	 other
+1612370	 one
+1612640	 then
+1613500	 again
+1611529	__EVENT__
+1614519	
+
+1614529	so
+1614830	 you
+1614890	 either
+1615190	 wait
+1615520	 until
+1616030	 one
+1616240	 is
+1616510	 merge
+1614529	__EVENT__
+1616799	
+
+1616809	reaches
+1616809	__EVENT__
+1618110	
+
+1618120	it
+1618480	 was
+1618659	 first
+1619020	 and
+1619350	 you
+1619500	 continue
+1619980	 working
+1618120	__EVENT__
+1620180	
+
+1620190	off
+1620580	 the
+1621419	 talk
+1621720	 of
+1621929	 the
+1622740	 PR
+1623010	 so
+1623370	 beyond
+1623730	 you
+1623880	 do
+1620190	__EVENT__
+1624019	
+
+1624029	PR
+1624240	 one
+1624570	 you
+1624929	 are
+1625049	 free
+1625230	 commit
+1636740	 incorporates
+1624029	__EVENT__
+1637730	
+
+1637740	your
+1638250	 first
+1638669	 PR
+1639000	 then
+1639690	 everything
+1640260	 will
+1640380	 be
+1637740	__EVENT__
+1640430	
+
+1640440	ready
+1640679	 to
+1640860	 go
+1641010	 for
+1641250	 you
+1641400	 to
+1641549	 kind
+1641669	 of
+1641789	 merge
+1642240	 the
+1640440	__EVENT__
+1642470	
+
+1642480	second
+1643460	 that
+1644460	 is
+1644610	 where
+1644789	 things
+1645000	 get
+1645270	 a
+1645330	 little
+1642480	__EVENT__
+1645440	
+
+1645450	tricky
+1645720	 and
+1646140	 it's
+1647130	 way
+1647909	 beyond
+1648240	 what
+1648390	 we
+1648450	 can
+1645450	__EVENT__
+1648680	
+
+1648690	do
+1648870	 in
+1649049	 15
+1649380	 minutes
+1649679	 actually
+1650210	 but
+1651210	 I'm
+1651620	 it
+1652620	 is
+1648690	__EVENT__
+1652669	
+
+1652679	nothing
+1653100	 that
+1653250	 I
+1653370	 want
+1653399	 gonna
+1653789	 drop
+1654179	 you
+1654360	 alone
+1652679	__EVENT__
+1654889	
+
+1654899	on
+1655230	 so
+1655860	 I
+1655890	 would
+1656190	 really
+1656520	 like
+1656669	 to
+1656730	 and
+1657539	 work
+1658409	 on
+1654899	__EVENT__
+1658580	
+
+1658590	you
+1658740	 with
+1658950	 you
+1665480	 I
+1669409	 have
+1670409	 a
+1670529	 question
+1672049	 do
+1673049	 we
+1658590	__EVENT__
+1673190	
+
+1673200	have
+1673380	 a
+1673440	 like
+1674840	 organizational
+1675840	 standard
+1676470	 and
+1673200	__EVENT__
+1676669	
+
+1676679	under
+1677640	 what
+1677820	 conditions
+1678830	 you
+1679830	 would
+1680010	 do
+1680580	 glory
+1676679	__EVENT__
+1680990	
+
+1681000	class
+1681299	 rather
+1681659	 than
+1681809	 making
+1682140	 commits
+1681000	__EVENT__
+1682580	
+
+1682590	directly
+1683039	 to
+1683159	 the
+1683250	 repository
+1683899	 but
+1685340	 that's
+1682590	__EVENT__
+1686330	
+
+1686340	not
+1686580	 something
+1686700	 I've
+1686970	 experienced
+1687450	 here
+1687570	 yet
+1686340	__EVENT__
+1687740	
+
+1687750	but
+1687870	 maybe
+1688020	 the
+1688649	 other
+1688830	 repositories
+1689220	 have
+1687750	__EVENT__
+1689690	
+
+1689700	this
+1690059	 kind
+1690390	 of
+1690440	 management
+1691440	 structure
+1693049	 like
+1689700	__EVENT__
+1694039	
+
+1694049	that
+1694080	 under
+1694500	 which
+1694649	 cases
+1695340	 with
+1695549	 it
+1696029	 we
+1696419	 we
+1694049	__EVENT__
+1697310	
+
+1697320	want
+1697529	 to
+1697620	 use
+1697799	 it
+1697950	 for
+1697980	 us
+1698549	 rather
+1698850	 than
+1699120	 just
+1697320	__EVENT__
+1699350	
+
+1699360	like
+1699929	 how
+1700140	 I
+1700169	 can
+1700529	 convince
+1710929	 a
+1712130	 few
+1713130	 one
+1713610	 of
+1713820	 you
+1699360	__EVENT__
+1714080	
+
+1714090	maintain
+1714419	 errs
+1714600	 and
+1714890	 as
+1715890	 many
+1716309	 computers
+1717270	 as
+1714090	__EVENT__
+1717289	
+
+1717299	as
+1718260	 you
+1718440	 wish
+1718669	 others
+1719669	 making
+1720179	 the
+1717299	__EVENT__
+1722200	
+
+1722210	permissions
+1723210	 to
+1723570	 push
+1724500	 into
+1724830	 the
+1725700	 mainstream
+1722210	__EVENT__
+1725930	
+
+1725940	preto
+1726630	 more
+1727140	 restrictive
+1728210	 but
+1729210	 that's
+1725940	__EVENT__
+1729409	
+
+1729419	something
+1729690	 that
+1729809	 it
+1729960	 seems
+1730320	 that
+1730470	 is
+1730590	 still
+1729419	__EVENT__
+1730789	
+
+1730799	kind
+1730980	 of
+1731010	 an
+1731130	 open
+1731370	 discussion
+1731549	 in
+1732210	 my
+1739010	 master
+1730799	__EVENT__
+1740000	
+
+1740010	branch
+1740460	 of
+1740700	 mainstream
+1741240	 is
+1741809	 freedom
+1742649	 but
+1740010	__EVENT__
+1742850	
+
+1742860	actually
+1743490	 it
+1743730	 is
+1743970	 a
+1744270	 pain
+1744690	 in
+1744779	 the
+1744809	 butt
+1742860	__EVENT__
+1744980	
+
+1744990	because
+1746030	 you
+1747030	 have
+1747179	 to
+1744990	__EVENT__
+1756980	
+
+1756990	at
+1757990	 least
+1758409	 until
+1758649	 all
+1759340	 the
+1759490	 contributors
+1759879	 that
+1756990	__EVENT__
+1760200	
+
+1760210	want
+1760809	 to
+1761110	 be
+1761279	 privileged
+1762279	 to
+1762730	 push
+1762970	 into
+1760210	__EVENT__
+1763169	
+
+1763179	master
+1763629	 have
+1764289	 gained
+1764649	 experience
+1765580	 so
+1766539	 that
+1763179	__EVENT__
+1766649	
+
+1766659	they
+1766779	 know
+1766990	 how
+1767230	 to
+1767259	 kind
+1767559	 of
+1767619	 at
+1768369	 least
+1768820	 you
+1766659	__EVENT__
+1768960	
+
+1768970	know
+1769090	 fix
+1769360	 merge
+1770049	 problems
+1770769	 and
+1771220	 you
+1771369	 know
+1768970	__EVENT__
+1772519	
+
+1772529	maybe
+1773529	 Rebecca
+1773799	 means
+1774340	 and
+1775029	 clean
+1775299	 up
+1775419	 the
+1772529	__EVENT__
+1775560	
+
+1775570	history
+1776039	 so
+1777039	 that's
+1777220	 basically
+1777820	 my
+1777909	 opinion
+1778480	 I
+1775570	__EVENT__
+1778619	
+
+1778629	will
+1778720	 I
+1778929	 do
+1778990	 and
+1779379	 actually
+1779799	 hear
+1780070	 the
+1780249	 opinion
+1778629	__EVENT__
+1780570	
+
+1780580	of
+1780669	 others
+1780999	 in
+1781629	 the
+1781869	 room
+1782730	 to
+1783730	 see
+1783970	 if
+1783999	 they're
+1780580	__EVENT__
+1784289	
+
+1784299	go
+1784450	 decide
+1784809	 it
+1784929	 with
+1785049	 me
+1785999	 so
+1786999	 related
+1787659	 to
+1787690	 that
+1784299	__EVENT__
+1789230	
+
+1789240	is
+1790240	 there
+1790509	 what
+1790960	 is
+1791080	 the
+1791350	 you
+1791409	 see
+1791619	 the
+1789240	__EVENT__
+1791730	
+
+1791740	advantage
+1792220	 of
+1793080	 sending
+1794080	 home
+1794379	 request
+1794799	 from
+1795190	 a
+1791740	__EVENT__
+1795389	
+
+1795399	severed
+1795789	 for
+1796059	 verses
+1796600	 like
+1796840	 for
+1797799	 instance
+1795399	__EVENT__
+1798119	
+
+1798129	having
+1813389	 because
+1816299	 you're
+1817299	 kind
+1817509	 of
+1817539	 following
+1798129	__EVENT__
+1817680	
+
+1817690	this
+1818369	 workflow
+1819369	 where
+1819700	 you
+1819789	 know
+1819879	 you
+1819999	 branch
+1817690	__EVENT__
+1820230	
+
+1820240	if
+1820749	 for
+1821049	 fork
+1821379	 and
+1821649	 then
+1822190	 you
+1822490	 create
+1822789	 a
+1822879	 band
+1823149	 a
+1820240	__EVENT__
+1823350	
+
+1823360	branch
+1823600	 from
+1823869	 your
+1824289	 for
+1824559	 which
+1824889	 is
+1827039	 the
+1823360	__EVENT__
+1828029	
+
+1828039	benefit
+1828429	 that
+1828460	 we
+1828669	 see
+1828970	 is
+1829179	 that
+1829240	 the
+1828039	__EVENT__
+1829440	
+
+1829450	maintainer
+1829840	 can
+1830200	 push
+1831009	 changes
+1831999	 into
+1832690	 the
+1829450	__EVENT__
+1832799	
+
+1832809	fork
+1833200	 and
+1833409	 not
+1833710	 into
+1833980	 mainstream
+1834549	 and
+1834820	 then
+1832809	__EVENT__
+1835409	
+
+1835419	when
+1835570	 everything
+1835779	 is
+1836019	 clean
+1836320	 you
+1836470	 can
+1836649	 support
+1835419	__EVENT__
+1836999	
+
+1837009	the
+1837490	 branch
+1837850	 into
+1838240	 a
+1838299	 single
+1838600	 commit
+1838899	 meaning
+1837009	__EVENT__
+1839430	
+
+1839440	that
+1839619	 the
+1839919	 end
+1840249	 I
+1841169	 mean
+1842169	 the
+1842259	 final
+1842499	 hist
+1839440	__EVENT__
+1842940	
+
+1842950	commit
+1843399	 history
+1843909	 of
+1844090	 the
+1844269	 main
+1844450	 wrapper
+1842950	__EVENT__
+1844799	
+
+1844809	becomes
+1845649	 really
+1845950	 clean
+1846309	 and
+1846490	 the
+1847029	 maintainer
+1844809	__EVENT__
+1847649	
+
+1847659	can
+1848049	 add
+1848230	 comments
+1848710	 such
+1848830	 as
+1849009	 you
+1849490	 know
+1849610	 key
+1847659	__EVENT__
+1850289	
+
+1850299	words
+1850509	 such
+1850659	 as
+1850720	 no
+1851049	 closes
+1851529	 you
+1851799	 know
+1851889	 PR
+1852220	 such
+1850299	__EVENT__
+1852450	
+
+1852460	and
+1852669	 such
+1852909	 or
+1853240	 cross
+1853419	 this
+1853509	 issue
+1853690	 such
+1853929	 and
+1852460	__EVENT__
+1854100	
+
+1854110	such
+1854320	 and
+1854649	 things
+1855309	 to
+1855580	 add
+1855850	 mentioned
+1856360	 user
+1854110	__EVENT__
+1856590	
+
+1856600	name
+1856929	 and
+1857169	 so
+1857320	 forth
+1856600	__EVENT__
+1857730	
+
+1857740	so
+1858159	 I
+1858730	 have
+1859330	 a
+1859360	 bunch
+1859539	 of
+1859690	 examples
+1860200	 of
+1860289	 that
+1857740	__EVENT__
+1860460	
+
+1860470	I'm
+1860740	 working
+1861100	 a
+1861279	 lot
+1861490	 with
+1861549	 Jackson
+1862240	 kind
+1862990	 of
+1860470	__EVENT__
+1863039	
+
+1863049	polishing
+1863440	 that
+1863649	 workflow
+1864190	 but
+1864700	 basically
+1863049	__EVENT__
+1865169	
+
+1865179	the
+1865539	 idea
+1865629	 of
+1865960	 working
+1866350	 on
+1866619	 a
+1866860	 pull
+1867399	 request
+1865179	__EVENT__
+1867509	
+
+1867519	allows
+1868299	 you
+1868659	 to
+1869129	 classically
+1870129	 change
+1870610	 the
+1867519	__EVENT__
+1870989	
+
+1870999	commit
+1871299	 history
+1871539	 of
+1872019	 that
+1872289	 pull
+1872499	 request
+1870999	__EVENT__
+1873060	
+
+1873070	I'm
+1873210	 cleaning
+1874210	 very
+1874749	 neatly
+1875649	 before
+1876609	 you
+1873070	__EVENT__
+1876749	
+
+1876759	included
+1877330	 into
+1877629	 the
+1877720	 mainstream
+1878159	 then
+1879159	 and
+1879580	 I
+1876759	__EVENT__
+1879690	
+
+1879700	asked
+1879970	 you
+1879999	 how
+1880450	 that
+1881289	 relay
+1879700	__EVENT__
+1883160	
+
+1883170	-
+1884170	 how
+1884620	 is
+1884770	 that
+1884890	 a
+1885040	 fight
+1885070	 -
+1885340	 having
+1885580	 many
+1883170	__EVENT__
+1885810	
+
+1885820	wrenches
+1886270	 on
+1886420	 a
+1886840	 rep
+1887080	 oh
+1887260	 I
+1887500	 don't
+1887799	 know
+1888190	 very
+1885820	__EVENT__
+1888210	
+
+1888220	very
+1888640	 much
+1889030	 and
+1889900	 I
+1889990	 would
+1890140	 like
+1890260	 to
+1890290	 kind
+1890470	 of
+1888220	__EVENT__
+1890490	
+
+1890500	hear
+1890740	 how
+1891130	 that
+1891190	 work
+1891549	 for
+1891790	 work
+1891970	 work
+1892240	 for
+1892450	 you
+1890500	__EVENT__
+1892500	
+
+1892510	before
+1894600	 all
+1895600	 right
+1895690	 well
+1895900	 we
+1896230	 can
+1896380	 talk
+1896559	 about
+1892510	__EVENT__
+1896789	
+
+1896799	that
+1896950	 separately
+1897220	 because
+1897549	 it's
+1897760	 maybe
+1897940	 a
+1896799	__EVENT__
+1898049	
+
+1898059	large
+1898330	 number
+1898600	 but
+1899140	 yeah
+1900100	 I
+1900370	 have
+1900790	 worked
+1901059	 on
+1898059	__EVENT__
+1901230	
+
+1901240	like
+1901420	 an
+1901600	 individual
+1902440	 repo
+1902770	 with
+1903040	 multiple
+1901240	__EVENT__
+1903390	
+
+1903400	people
+1903520	 and
+1903850	 that
+1903940	 we
+1904030	 all
+1904179	 we
+1904600	 all
+1904630	 had
+1905020	 our
+1903400	__EVENT__
+1905039	
+
+1905049	own
+1905490	 separate
+1906490	 branch
+1906880	 not
+1907270	 a
+1907299	 separate
+1907660	 fort
+1905049	__EVENT__
+1907919	
+
+1907929	but
+1908140	 a
+1908170	 separate
+1908470	 branch
+1908740	 within
+1909070	 the
+1909309	 visual
+1907929	__EVENT__
+1909810	
+
+1909820	repo
+1910240	 net
+1910510	 we
+1911140	 could
+1911320	 work
+1911470	 on
+1911590	 that
+1909820	__EVENT__
+1911610	
+
+1911620	separately
+1912160	 at
+1912549	 merge
+1912820	 thank
+1913390	 you
+1913750	 master
+1911620	__EVENT__
+1914450	
+
+1914460	changes
+1915460	 that
+1915610	 we
+1915730	 gave
+1915910	 which
+1916120	 is
+1916240	 pretty
+1914460	__EVENT__
+1916560	
+
+1916570	similar
+1917020	 but
+1917230	 it
+1918220	 means
+1918370	 you
+1918580	 don't
+1918700	 have
+1918880	 a
+1916570	__EVENT__
+1918900	
+
+1918910	result
+1919330	 separate
+1919870	 private
+1920350	 forms
+1921160	 from
+1918910	__EVENT__
+1921659	
+
+1921669	people
+1922710	 right
+1923710	 so
+1924400	 then
+1924850	 I
+1925270	 think
+1925929	 that
+1926110	 you're
+1921669	__EVENT__
+1926310	
+
+1926320	basically
+1926650	 not
+1926830	 having
+1926890	 everyone
+1927309	 having
+1926320	__EVENT__
+1927690	
+
+1927700	different
+1928000	 branches
+1928419	 in
+1928570	 the
+1928690	 main
+1928870	 repo
+1929290	 as
+1927700	__EVENT__
+1929460	
+
+1929470	opposed
+1929830	 to
+1929919	 from
+1930160	 a
+1930220	 fork
+1930669	 the
+1931179	 main
+1929470	__EVENT__
+1931350	
+
+1931360	difference
+1931720	 I
+1931840	 see
+1932260	 is
+1932559	 instead
+1933370	 of
+1937110	 basically
+1931360	__EVENT__
+1938100	
+
+1938110	you
+1938200	 know
+1938320	 hold
+1938590	 on
+1938770	 on
+1939040	 a
+1939100	 fork
+1939549	 and
+1939820	 feel
+1940210	 that
+1938110	__EVENT__
+1940409	
+
+1940419	it
+1940510	 is
+1940600	 easier
+1941169	 to
+1941200	 clean
+1941590	 the
+1942070	 history
+1942580	 of
+1943710	 a
+1940419	__EVENT__
+1944700	
+
+1944710	pull
+1945100	 request
+1945130	 and
+1945640	 force
+1946059	 it
+1946179	 into
+1946240	 you
+1946510	 know
+1944710	__EVENT__
+1946620	
+
+1946630	one
+1946900	 nice
+1947410	 commit
+1947860	 that
+1948100	 represents
+1948820	 what
+1949600	 has
+1946630	__EVENT__
+1949799	
+
+1949809	happened
+1950429	 but
+1951429	 we
+1952330	 should
+1952510	 try
+1952720	 it
+1952780	 you
+1952990	 know
+1949809	__EVENT__
+1953070	
+
+1953080	so
+1953290	 far
+1953500	 I'm
+1953679	 liking
+1953860	 the
+1954220	 approach
+1954490	 proposed
+1953080	__EVENT__
+1955320	
+
+1955330	by
+1956250	 this
+1957250	 work
+1957460	 some
+1963120	 might
+1964120	 suggest
+1964330	 that
+1964690	 the
+1955330	__EVENT__
+1965190	
+
+1965200	contributors
+1965770	 may
+1965799	 need
+1966190	 to
+1966309	 have
+1966490	 a
+1965200	__EVENT__
+1966720	
+
+1966730	relatively
+1967630	 high
+1967840	 level
+1968530	 of
+1976500	 its
+1977500	 kind
+1977650	 of
+1966730	__EVENT__
+1977730	
+
+1977740	build
+1978040	 so
+1978220	 that
+1978250	 even
+1978700	 if
+1978850	 you
+1978940	 don't
+1979150	 really
+1977740	__EVENT__
+1979260	
+
+1979270	know
+1979510	 what
+1979929	 is
+1980760	 before
+1981760	 it
+1982570	 just
+1982809	 happens
+1983169	 kind
+1979270	__EVENT__
+1983400	
+
+1983410	of
+1983470	 individuals
+1984040	 which
+1984880	 is
+1984910	 not
+1985540	 very
+1985720	 good
+1983410	__EVENT__
+1985890	
+
+1985900	for
+1986110	 learning
+1986290	 in
+1986590	 the
+1986650	 long
+1986799	 run
+1987010	 but
+1987429	 it
+1987580	 is
+1985900	__EVENT__
+1987690	
+
+1987700	very
+1987940	 good
+1988120	 for
+1987700	__EVENT__
+1997550	
+
+1997560	[Music]
+1997560	__EVENT__
+2016470	
+
+2016480	you
+2016480	__EVENT__

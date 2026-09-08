@@ -1,0 +1,651 @@
+330	[Music]
+330	__EVENT__
+2030	
+
+2040	in
+2200	 this
+2399	 video
+2720	 we're
+2919	 going
+3040	 to
+3199	 be
+2040	__EVENT__
+3470	
+
+3480	installing
+4680	 DBT
+5680	 in
+6080	 a
+6319	 GitHub
+6799	 code
+7240	 space
+8040	 I
+3480	__EVENT__
+8150	
+
+8160	choose
+8480	 gith
+8880	 code
+9160	 space
+9639	 because
+9960	 it
+10120	 allows
+8160	__EVENT__
+10549	
+
+10559	us
+11080	 to
+11320	 very
+11559	 quickly
+12120	 access
+12519	 an
+12759	 environment
+10559	__EVENT__
+13470	
+
+13480	where
+13759	 this
+14000	 type
+14200	 of
+14360	 installations
+13480	__EVENT__
+15150	
+
+15160	installation
+15639	 instructions
+16240	 will
+16600	 work
+15160	__EVENT__
+17590	
+
+17600	without
+17960	 contamin
+18640	 our
+18960	 own
+19439	 development
+17600	__EVENT__
+19950	
+
+19960	environment
+20840	 so
+21080	 let's
+21400	 copy
+22199	 that
+22600	 code
+23240	 and
+19960	__EVENT__
+23470	
+
+23480	let's
+23680	 go
+23840	 to
+24119	 one
+24640	 GitHub
+25119	 code
+25400	 space
+26080	 you
+23480	__EVENT__
+26189	
+
+26199	can
+26439	 access
+26800	 that
+27000	 by
+27160	 going
+27480	 for
+27679	 example
+28039	 to
+26199	__EVENT__
+28189	
+
+28199	the
+28359	 repo
+28960	 where
+29279	 I'm
+29519	 hosting
+30119	 this
+30599	 uh
+28199	__EVENT__
+31109	
+
+31119	series
+31759	 of
+32719	 uh
+32920	 videos
+33800	 this
+33960	 is
+34160	 DS
+34640	 inator
+31119	__EVENT__
+35630	
+
+35640	DVT
+36480	 you'll
+36719	 see
+37120	 a
+37320	 green
+37600	 button
+38000	 there
+38160	 it
+35640	__EVENT__
+38310	
+
+38320	says
+38719	 code
+39440	 space
+40440	 and
+40600	 you
+40719	 can
+40960	 hit
+41280	 here
+41440	 on
+38320	__EVENT__
+41709	
+
+41719	create
+42120	 code
+42480	 space
+42920	 on
+43600	 the
+43800	 main
+44039	 branch
+44440	 of
+41719	__EVENT__
+44590	
+
+44600	this
+44600	__EVENT__
+45430	
+
+45440	repo
+46440	 everyone
+47000	 has
+47760	 uh
+47879	 some
+48320	 free
+48840	 time
+49239	 to
+45440	__EVENT__
+49670	
+
+49680	use
+50719	 um
+51719	 GitHub
+52199	 code
+52640	 spaces
+53640	 it
+53800	 takes
+54079	 a
+49680	__EVENT__
+54229	
+
+54239	little
+54840	 a
+55000	 little
+55399	 while
+55879	 and
+56079	 then
+56320	 you'll
+56520	 be
+54239	__EVENT__
+56709	
+
+56719	dumped
+57120	 into
+57359	 a
+57520	 vs
+57960	 code
+58840	 editor
+59640	 and
+60000	 here
+56719	__EVENT__
+60110	
+
+60120	you
+60320	 have
+60559	 a
+60760	 terminal
+61600	 after
+61960	 a
+62120	 little
+62359	 bit
+60120	__EVENT__
+62670	
+
+62680	you
+62800	 will
+62960	 be
+63120	 able
+63320	 to
+63559	 paste
+63800	 the
+63960	 code
+64400	 just
+62680	__EVENT__
+64670	
+
+64680	there
+65360	 that
+65600	 we
+65840	 copied
+66280	 from
+66960	 the
+64680	__EVENT__
+67270	
+
+67280	installation
+67840	 instructions
+68439	 actually
+68680	 you
+67280	__EVENT__
+68749	
+
+68759	can
+69080	 click
+69360	 on
+69520	 the
+69640	 file
+69920	 if
+70040	 you
+70280	 did
+71119	 go
+71360	 to
+68759	__EVENT__
+72030	
+
+72040	the
+72200	 repo
+72680	 that
+72759	 I
+72880	 showed
+73159	 you
+73759	 here
+73920	 you
+74040	 will
+72040	__EVENT__
+74310	
+
+74320	have
+74920	 the
+75560	 installation
+76560	 instructions
+77560	 you
+74320	__EVENT__
+77710	
+
+77720	can
+78000	 you
+78119	 know
+78320	 copy
+78600	 one
+79000	 by
+79200	 one
+79400	 if
+79520	 you
+79680	 want
+77720	__EVENT__
+80069	
+
+80079	or
+80320	 just
+80520	 copy
+80759	 the
+80880	 whole
+81119	 thing
+81360	 and
+81600	 paste
+80079	__EVENT__
+81789	
+
+81799	it
+81960	 right
+82119	 there
+82280	 I'm
+82360	 going
+82439	 to
+82600	 do
+82799	 that
+83280	 what
+81799	__EVENT__
+83429	
+
+83439	this
+83560	 is
+83680	 going
+83759	 to
+83960	 be
+84280	 doing
+85280	 is
+85759	 while
+86079	 you
+83439	__EVENT__
+86190	
+
+86200	know
+86320	 I
+86479	 paste
+86759	 this
+86880	 and
+87040	 it
+87159	 runs
+87960	 I'm
+88079	 going
+86200	__EVENT__
+88190	
+
+88200	to
+88320	 be
+88600	 explaining
+89240	 a
+89400	 little
+89560	 bit
+89960	 of
+90200	 what
+88200	__EVENT__
+90350	
+
+90360	that
+90560	 command
+91159	 does
+91680	 let's
+91960	 bace
+92680	 everything
+90360	__EVENT__
+93830	
+
+93840	there
+94840	 so
+95240	 first
+95479	 we're
+95600	 going
+95720	 to
+95799	 be
+93840	__EVENT__
+95910	
+
+95920	installing
+96520	 Python
+97520	 and
+97880	 also
+98520	 pip
+99159	 and
+99280	 then
+95920	__EVENT__
+99389	
+
+99399	we
+99520	 use
+99799	 pip
+100280	 to
+100520	 install
+101040	 DBT
+101479	 core
+101799	 which
+101920	 is
+99399	__EVENT__
+102030	
+
+102040	the
+102200	 essential
+102600	 piece
+102759	 of
+103159	 software
+104159	 U
+102040	__EVENT__
+105030	
+
+105040	about
+106040	 of
+106240	 which
+106360	 you
+106479	 know
+106719	 this
+106920	 these
+105040	__EVENT__
+107109	
+
+107119	tutorials
+107920	 are
+108200	 about
+109200	 and
+109960	 uh
+110119	 then
+110240	 we're
+107119	__EVENT__
+110350	
+
+110360	going
+110479	 to
+110600	 be
+110840	 using
+111200	 pip
+111520	 again
+111880	 to
+112119	 install
+110360	__EVENT__
+112789	
+
+112799	what's
+113320	 called
+114320	 a
+114520	 database
+115119	 adapter
+116000	 so
+116520	 that
+112799	__EVENT__
+116709	
+
+116719	is
+117280	 a
+117439	 piece
+117600	 of
+117799	 software
+118520	 that
+118680	 knows
+119000	 the
+116719	__EVENT__
+119190	
+
+119200	details
+119560	 of
+120000	 particular
+120439	 database
+121000	 in
+121159	 this
+119200	__EVENT__
+121389	
+
+121399	case
+121799	 that
+122119	 TV
+122960	 and
+123200	 connects
+123880	 it
+124560	 to
+124960	 DBT
+125399	 core
+121399	__EVENT__
+125990	
+
+126000	I'm
+126159	 choosing
+126840	 D
+127159	 TV
+127640	 because
+128200	 it
+128440	 is
+129039	 a
+129319	 very
+126000	__EVENT__
+129669	
+
+129679	simple
+130319	 database
+130840	 it's
+131160	 very
+131440	 cool
+131800	 if
+131879	 you
+129679	__EVENT__
+132030	
+
+132040	want
+132239	 to
+132480	 actually
+132720	 use
+132920	 it
+133080	 for
+133319	 for
+133520	 real
+132040	__EVENT__
+133790	
+
+133800	usage
+134360	 but
+134599	 particularly
+135239	 cool
+135560	 for
+135879	 this
+133800	__EVENT__
+136110	
+
+136120	example
+136840	 because
+137040	 it
+137200	 requires
+137680	 almost
+138120	 no
+136120	__EVENT__
+138509	
+
+138519	configuration
+139360	 and
+139480	 you
+139599	 can
+139879	 run
+140599	 something
+138519	__EVENT__
+141589	
+
+141599	uh
+141840	 without
+142440	 having
+143160	 an
+143440	 account
+143879	 in
+144040	 any
+144239	 kind
+141599	__EVENT__
+144350	
+
+144360	of
+144599	 cloud
+145519	 uh
+145680	 database
+146200	 provider
+147040	 okay
+147680	 so
+148480	 um
+144360	__EVENT__
+149110	
+
+149120	let's
+149319	 see
+150280	 now
+150720	 let's
+151000	 run
+151519	 the
+151800	 pep
+152120	 install.
+149120	__EVENT__
+154030	
+
+154040	TP
+155040	 in
+155239	 case
+155400	 I
+155879	 didn't
+156120	 run
+156680	 before
+157680	 and
+157879	 that
+154040	__EVENT__
+158030	
+
+158040	should
+158239	 be
+158400	 it
+158599	 so
+158840	 now
+159200	 we
+159319	 can
+159560	 try
+160080	 verifying
+158040	__EVENT__
+161070	
+
+161080	with
+161720	 um
+162480	 DBT
+163480	 version
+164440	 to
+164599	 see
+164840	 if
+165080	 that
+165440	 D
+161080	__EVENT__
+168990	
+
+169000	install
+170000	 and
+170319	 there
+170480	 we
+170599	 are
+171080	 we
+171239	 have
+171560	 DBT
+169000	__EVENT__
+172309	
+
+172319	installed
+173319	 next
+173599	 we
+173760	 are
+173879	 going
+174000	 to
+174120	 be
+172319	__EVENT__
+174350	
+
+174360	talking
+174720	 a
+174840	 little
+175040	 bit
+175239	 about
+175440	 the
+175599	 basic
+174360	__EVENT__
+175949	
+
+175959	usage
+176560	 and
+176760	 later
+177080	 we're
+177200	 going
+177319	 to
+177440	 be
+175959	__EVENT__
+177550	
+
+177560	talking
+177879	 about
+178120	 the
+178319	 structure
+178840	 of
+179239	 the
+179400	 DVT
+177560	__EVENT__
+179869	
+
+179879	project
+179879	__EVENT__

@@ -1,0 +1,467 @@
+0	[Music]
+0	__EVENT__
+3070	
+
+3080	here
+3280	 is
+3439	 a
+3959	 tip
+4359	 to
+4560	 help
+4799	 you
+5040	 speed
+5400	 up
+5640	 your
+3080	__EVENT__
+5950	
+
+5960	computer
+6720	 programs
+7720	 by
+8120	 storing
+8519	 the
+8679	 result
+5960	__EVENT__
+9070	
+
+9080	of
+9240	 your
+9440	 expensive
+9960	 function
+10639	 calls
+11639	 and
+9080	__EVENT__
+11830	
+
+11840	returning
+12320	 the
+12519	 cash
+12840	 result
+13320	 when
+13480	 the
+13599	 same
+11840	__EVENT__
+13870	
+
+13880	inputs
+14400	 apply
+15280	 so
+15480	 this
+15559	 is
+15759	 the
+15920	 idea
+16279	 of
+13880	__EVENT__
+16510	
+
+16520	memorization
+17520	 and
+17720	 you
+17840	 can
+18279	 read
+18600	 about
+18920	 that
+16520	__EVENT__
+19269	
+
+19279	on
+20199	 Wikipedia
+21199	 But
+21600	 the
+21720	 cool
+22000	 thing
+22279	 is
+19279	__EVENT__
+22470	
+
+22480	probably
+22800	 to
+22920	 see
+23599	 uh
+23720	 an
+23960	 example
+24439	 of
+24680	 that
+24960	 so
+22480	__EVENT__
+25189	
+
+25199	let's
+25439	 let's
+25599	 do
+25880	 just
+26160	 that
+26800	 so
+27080	 say
+27320	 that
+27480	 I
+25199	__EVENT__
+27710	
+
+27720	have
+28160	 a
+28359	 function
+28880	 f
+29679	 that
+30160	 that's
+30439	 something
+27720	__EVENT__
+30870	
+
+30880	you
+31000	 know
+31240	 that
+31359	 is
+31519	 pretty
+31720	 slow
+32079	 so
+32239	 in
+32360	 this
+30880	__EVENT__
+32549	
+
+32559	case
+32920	 that
+33160	 slow
+33520	 thing
+33760	 is
+34000	 just
+34320	 calling
+32559	__EVENT__
+34869	
+
+34879	system
+35280	 sleep
+36160	 for
+34879	__EVENT__
+37830	
+
+37840	um
+38840	 for
+39160	 whatever
+39559	 time
+39879	 you
+40039	 want
+40480	 right
+40960	 so
+37840	__EVENT__
+41389	
+
+41399	let's
+41760	 let's
+42320	 do
+42600	 a
+43079	 a
+43239	 call
+43600	 that
+43719	 would
+43920	 take
+41399	__EVENT__
+44229	
+
+44239	three
+44559	 seconds
+45039	 so
+45239	 if
+45440	 I
+46199	 uh
+46320	 run
+46760	 that
+47199	 system
+44239	__EVENT__
+47630	
+
+47640	time
+48360	 and
+48840	 and
+49199	 to
+49360	 measure
+49840	 how
+50039	 long
+50320	 it
+47640	__EVENT__
+50430	
+
+50440	takes
+50680	 to
+50840	 call
+51160	 the
+51320	 function
+51680	 f
+52079	 with
+52239	 the
+50440	__EVENT__
+52349	
+
+52359	argument
+52840	 three
+53760	 then
+54079	 you
+54160	 know
+54320	 it
+54440	 takes
+52359	__EVENT__
+54750	
+
+54760	three
+55079	 seconds
+55640	 right
+56039	 so
+56280	 what
+56440	 happens
+56719	 if
+56840	 I
+54760	__EVENT__
+56950	
+
+56960	call
+57280	 the
+57440	 same
+57760	 function
+58239	 with
+58359	 the
+58519	 same
+56960	__EVENT__
+58750	
+
+58760	argument
+59280	 one
+59440	 more
+59680	 time
+58760	__EVENT__
+60590	
+
+60600	well
+61000	 unfortunately
+61879	 we
+62079	 have
+62239	 to
+62440	 wait
+60600	__EVENT__
+62750	
+
+62760	another
+63199	 3
+63440	 seconds
+63840	 more
+63960	 or
+64119	 less
+64360	 so
+64519	 you
+62760	__EVENT__
+64630	
+
+64640	can
+64760	 see
+65040	 here
+65239	 on
+65400	 the
+65840	 elapsed
+66840	 uh
+67000	 section
+64640	__EVENT__
+67390	
+
+67400	to
+67600	 my
+67840	 to
+68000	 my
+68280	 right
+68720	 right
+69320	 so
+69880	 uh
+70080	 how
+70200	 can
+67400	__EVENT__
+70390	
+
+70400	you
+70720	 you
+70840	 know
+71240	 make
+71439	 a
+71680	 huge
+71960	 improvement
+70400	__EVENT__
+72630	
+
+72640	with
+72840	 something
+73159	 that
+73280	 is
+73479	 extremely
+74080	 simple
+72640	__EVENT__
+74749	
+
+74759	all
+74920	 right
+75240	 you
+75520	 memorize
+76119	 that
+76360	 function
+74759	__EVENT__
+76830	
+
+76840	right
+76960	 so
+77119	 you
+77240	 call
+77520	 the
+77799	 function
+78200	 memorize
+76840	__EVENT__
+78710	
+
+78720	in
+78840	 the
+79040	 package
+79840	 memorize
+80840	 and
+80960	 you
+81159	 create
+81799	 a
+78720	__EVENT__
+81950	
+
+81960	modified
+82479	 version
+83000	 of
+83119	 the
+83240	 region
+83799	 function
+81960	__EVENT__
+84670	
+
+84680	that
+84880	 when
+85040	 you
+85240	 call
+85439	 it
+85560	 the
+85680	 first
+85880	 time
+84680	__EVENT__
+86069	
+
+86079	it's
+86200	 going
+86280	 to
+86439	 take
+86600	 still
+86920	 the
+87040	 three
+86079	__EVENT__
+87350	
+
+87360	seconds
+87840	 that
+88159	 uh
+88759	 uh
+88880	 you
+89000	 know
+89240	 you
+89360	 know
+89640	 it
+87360	__EVENT__
+89990	
+
+90000	to
+90280	 in
+90360	 the
+90520	 first
+90840	 place
+91280	 right
+91840	 but
+92520	 the
+92680	 the
+90000	__EVENT__
+92789	
+
+92799	beauty
+93280	 comes
+93640	 when
+94119	 you
+94240	 need
+94439	 to
+94960	 uh
+95040	 do
+92799	__EVENT__
+95350	
+
+95360	subsequent
+95960	 calls
+96320	 with
+96600	 exact
+96960	 same
+95360	__EVENT__
+97190	
+
+97200	arguments
+97960	 so
+98200	 if
+98320	 I
+98439	 call
+98880	 now
+99720	 FM
+100439	 which
+100600	 is
+97200	__EVENT__
+100870	
+
+100880	the
+101040	 memoized
+101600	 version
+102040	 of
+102320	 f
+102960	 if
+103079	 I
+103200	 call
+103360	 it
+100880	__EVENT__
+103789	
+
+103799	again
+104799	 with
+105079	 exact
+105399	 same
+105600	 arguments
+106240	 you
+106360	 see
+103799	__EVENT__
+106709	
+
+106719	how
+107000	 you
+107119	 know
+107399	 it
+107600	 it
+107759	 virtually
+108200	 takes
+108439	 no
+106719	__EVENT__
+108709	
+
+108719	time
+109479	 right
+110000	 because
+110960	 the
+111079	 result
+111360	 is
+111479	 not
+108719	__EVENT__
+111630	
+
+111640	being
+111840	 recomputed
+112520	 instead
+112840	 is
+113000	 being
+111640	__EVENT__
+113310	
+
+113320	retrieved
+113920	 from
+114119	 the
+114320	 cach
+113320	__EVENT__

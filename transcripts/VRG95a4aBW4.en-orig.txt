@@ -1,0 +1,781 @@
+welcome again to the ds incubator we are
+still on the series about cloud
+computing and today we are going to be
+talking about more ways to move data
+last time we talked about moving data in
+a kind of special way with the
+basically using github as an interface
+like moving data from
+from you know whatever you have either
+the server itself or a container running
+inside that server and then you know
+moving it to github and then from there
+you can move it to your local computer
+so using github as an intermediary and i
+advertise the gh cli the gh command line
+interface because i use it a lot and i
+think it's awesome
+as a way to move data to github very
+easily with github releases but today
+we're going to be talking about actually
+more common ways to move data around and
+more kind of straightforward
+the first idea is the simplest is the
+idea of moving data from your computer
+to a
+server to a remote computer
+in this case it's going to be a digital
+ocean droplet on the cloud it could be
+any remote computer
+and then we're going to be talking about
+the idea of moving data between
+containers and between the server and
+containers we have been touching on that
+idea we used already volumes which is
+the tool that i'm going to be
+demonstrating today um docker volumes
+but we have not talked about one flavor
+of docker volumes that is the idea of
+named
+volumes that are not managed kind of by
+you i manage automatically by docker so
+i'm going to explain that in in a bit
+so let's get started going to the
+folder of today's meetup which is number
+five more waves more ways to move data
+so let me expand
+actually move this to a side and open a
+little terminal here
+and there we go
+let's make this a little bigger
+and this little bigger too
+okay
+so
+um
+first
+you know everything i'm gonna be
+demonstrating today
+requires
+that you you know have a connection via
+ssh
+between your local computer and a remote
+computer in here i'm working with
+digital ocean droplets
+as a server
+so that's what i'm going to be
+demonstrating so how you create that
+connection via ssh i think i
+demonstrated it a few meetups ago but
+basically there are a couple of
+resources that i'm going to show at the
+very end and also this link here if you
+have an account already you will see
+something like this so let me show you
+what it looks like
+i already have an account in
+digitalocean and in the account security
+uh you have a link to add ssh key so
+that is how you would create an ssh key
+there are instructions here that are not
+super long not super hard and
+but you know you can serve yourself to
+creating that that connection that you
+will need
+so now i'm going to assume that we do
+already have an ssh key that is going to
+be the link between our local computer
+and the remote computer
+so um the the very first thing i would
+like to do is to create some fake data
+on my computer so this is what i'm going
+to be doing basically in my local
+computer i'm gonna make a directory
+in
+the temporary directory i'm gonna create
+another directory it's called data so
+the temp
+directory already exists in my computer
+but data doesn't so i'm gonna create it
+right now and now i'm going to change
+directory to that
+temp and show you that if i do analysis
+on data the directory exists it's just
+that it is empty so i'm going to touch
+some data i'm going to you know create a
+data set called a dot csv and a data set
+called b dot csv so if i do an ls on
+data now you should see them there right
+so that's that's the beginning so we
+have some data in our local computer
+and we would like to move it
+to a remote computer
+so let's then create another open
+another terminal here where i'm going to
+be
+connecting to my
+remote server so this is how i would
+connect and
+if this looks odd to you let me break
+that down for a second ssh is just a
+command line tool that allows you to say
+okay who is the user that's going to
+connect to a server so in this case the
+user is going to be root and and at
+you have to then say the address of that
+remote computer so the address comes
+from here so if you already have an
+account on digitalocean for example
+you'd have
+the ability to create projects and
+inside those projects you would be able
+to create
+droplets which are no more and no less
+that computers running on on a remote
+server so here i have one already
+this this is the name of it it's a
+little weird name docker wound blah blah
+blah
+so this is the number that i have been
+using every single meet up the one that
+you need to find that
+that server on the cloud so that number
+is what i'm going to stick here
+right so that's that's the number that
+you see here
+is the address of that remote computer
+on the internet right now so i'm going
+to execute that by running by pressing
+enter
+and all this text just confirms that i
+have
+effectively logged in i'm going to press
+ctrl l to clear that up
+and i'm going to go back to my notes
+here and move them again to my right
+so we can follow them so we already have
+then some data on my local computer we
+already have a connection um on on a
+remote server
+so i'm gonna be talking between these
+two comp these two computers right so
+and these are the two computers so the
+one here on the left on green is my
+local computer and the one here on the
+right
+is my
+my server
+so let's go back to my notes
+so the first the first thing we want to
+do is remember we created a data folder
+inside my local computer so we're going
+to copy that data
+to
+the server so let me break this now um
+so
+we're going to be of course using
+the address of our remote computer right
+because that's the destination of the
+data that we want to copy
+uh usually in you know if you are used
+to the terminal you could type something
+like copy some file
+to somewhere else
+now the file that we want to copy is the
+one or the folder we're going to copy is
+is data
+right
+and because we want to copy all files we
+have to say that it is recursive copy
+but copy itself won't do it we need s
+copy that is secure copy that is what
+uses the ssh key to actually copy the
+data
+so this is how i'm kind of slowly
+building the
+uh the command so we securely copy
+recursively the data folder and all its
+contents as they used as the user root
+at the address
+given here and where then we have to say
+where we want to copy it so the address
+is so far the address of the computer
+itself but now we have to say where in
+that computer we want the data to land
+so i'm going to say column
+and
+slash tmp so i'm going to copy it
+copy data to the tmp directory inside
+the
+the remote server right and that tmp
+folder always exists in a linux system
+so i'm confident that it exists so i'm
+going to run enter here
+and that should do the trick it's going
+to take a little second and it's telling
+me
+the process so a has been
+copied and b has been copied so now if i
+go so remember this this terminal in
+green is my local computer so if i go to
+the other computer the one on the server
+here if i do an ls on tmp data i should
+see those files so i have effectively
+copied
+the entire contents of data
+from my local computer to the server
+so the next thing we're going to do is
+do the opposite so we demonstrated one
+way one direction from my log computer
+to the server and now let's try from the
+server to my local computer so the
+command is is of course very similar so
+i'm gonna
+[Music]
+go back to my local computer so i'm
+going to operate from my local computer
+i'm going to clear this up with ctrl l
+press the arrow up
+to recover a command that is similar to
+what i want to do
+and now i want to reverse
+the order of things so now let's say
+that i want to copy the data that exists
+already in
+at the server
+under the directory tmp so we already
+have that data we already saw it
+and now
+what i want to do is the opposite so i
+copy from
+the uh server that's the the source and
+two and now i can choose any other
+destination just to to make things clear
+i'm gonna copy the data
+back not to the same location where it
+was stored in the beginning but not i'm
+not gonna do like the round
+trip i'm gonna copy it somewhere else so
+we can admire it somewhere else so where
+you know let's say downloads let's try
+that downloads
+is a folder where it's very common to
+put stuff that you bring from
+from the outer
+world from the internet so let's do that
+so now the command makes hopefully makes
+more sense so we are copying things in a
+secure way so s copy
+because we're going to copy not just one
+file but an entire directory is we need
+to call recursively
+we're going to be acting as the root
+user on the server the address of the
+server is this one here and the location
+of the data that we want to copy is a
+temp
+data so this is the source of the data
+and the destination is going to be the
+home directory of my local computer at
+the downloads directory so let's run
+that
+and let's admire the process
+so with this we have learned how to move
+data from my logo computer to the cloud
+and from the cloud to my local computer
+and the requirement remember it was that
+we have
+a connection via ssh so that's that's
+what makes the collection secure
+that means that if the traffic that i'm
+sending from my computer to the cloud or
+from the cloud to my computer is
+intercepted by hacker
+the data is still safe because it
+travels in an encrypted way that is what
+ssh does it gives a security to the
+trans to the transfer of data
+all right so let's now talk about
+another
+way of moving data um or like from from
+different sources and destinations so
+now i'm going gonna be talking about the
+idea of moving data between a server
+like the one that we had like a moment
+ago and a container so actually because
+i do have
+a terminal on a server running this one
+here this one is on the server i'm going
+to use this terminal here so this
+command i don't need to run because i
+already run it
+before so we're going to be using the
+volumes um so if you need to more know
+more about volumes here's the link to
+learn more
+docker actually recommends volume as the
+preferred way to share data between
+containers and
+volumes come in two flavors one is the
+idea of basically mapping one place in
+your computer or
+in this case it's going to be when i
+talk about the host computer here is
+going to be
+a droplet training digital ocean i want
+to talk about a server of that computer
+in this case it's going to be
+the
+the container running on that
+on that server which is a very common
+pattern right
+of running containers inside um you know
+cloud computers
+so
+the
+the volumes come in two into flavors one
+where you have to specify which is the
+location
+in the host computer
+that maps to a location in the
+in the server computer in this case in
+the container but the other flavor is
+one where you only say where
+the the
+folder will live in the container but
+you don't specify any location on the
+host
+you just say name so it's just a name
+for
+that
+directory that is going to be managed
+entirely by docker so you don't need to
+know where the data is going to land and
+because docker will know for you so this
+is the idea of delegating the
+responsibility of managing the location
+of that directory to docker that way you
+know the data is more portable you can
+share that data across containers
+regardless of
+the file system structure of the host
+computer
+if this is a lot of jargon
+it is
+it's true
+but if at some point this you know comes
+in
+something useful
+then no i recommend you to read the link
+here about volumes because it's a very
+powerful idea the idea of abstracting
+um
+the the actual file system of the host
+computer not needing to know where it is
+okay so the next thing i'm going to do
+is i'm going to run this container so
+i'm going to explain what it does
+and then actually run it so we did
+something like this many times
+throughout this series and if you need
+to know more about docker in general i
+recommend the series about docker at the
+ds.docker and a two degrees invest
+initiative
+um so you can find that series and learn
+more about this here i'm gonna go real
+fast so basically i'm asking docker to
+run
+a container i'm gonna call it with a
+name it's going to be called my
+container i'm going to detach
+the output from the terminal that that
+is going to run this command so i can
+use that terminal for other things and
+it's going to be the container is going
+to die when i stop that container so i
+don't need to do any cleanup and i'm
+going to create two volumes basically uh
+the first one is going to be a volume
+managed by docker where i don't see i
+don't say the location of the host
+computer i just say the name of that
+volume
+and i do say where i want that volume to
+land in the container so i want it in
+the home directory of the container i
+know a lot about this container and the
+home directory of this container is home
+are studio so there is where i'm going
+to put that volume managed by docker
+then i'm going to create another volume
+just to compare this different type of
+volume is is called a bind mount
+basically how to explicitly say where in
+the host computer that volume leaves in
+this case it's going to leave under the
+root directly at the root of that's why
+there is a slash here at the root of the
+system
+and the folder is going to be called
+bind mount that's the name that docker
+gives to this type of containers and
+where is it going to land on the
+container well also on the
+home directory of that container homer
+studio
+and the name is going to be of course by
+mount to make things easier then this
+particular container rocker verse
+requires a few other things it requires
+a password it requires a place
+an address
+where i want to find it and
+i'm gonna give it root privileges so i
+can do just about anything with it and
+i'm gonna show you how that that's
+useful in a moment
+okay so that was a lot um again if you
+are new to docker this will be a lot to
+digest but for now because docker is not
+the focus of it but actually the idea of
+using docker volumes let's just run it
+so let me clear this up with ctrl l and
+now paste what i copied from there
+this should now give me a docker
+container running so if i do let me
+clear this up again if i do a docker ps
+you will see that there is this my
+container container
+already running so how can i access
+access it well i um
+i mapped it
+to
+the port 8787 and i can find it also at
+where is it here
+actually before i go there i wanted to
+show you
+um
+before i go to the i log into our studio
+because that broker first image runs our
+studio and before i do that i want to
+show you
+that docker volume
+so docker
+volume is a command that
+allows you to manage volume so if i go
+docker volume ls to list the volumes you
+see now that that named
+docker volume that we don't know where
+it lives we just know that docker is
+going to manage it already exists is
+there
+and also if i do an ls
+on
+the route remember that we mapped and we
+created another volume called vine mount
+at the root of the system so
+running this command and getting no
+output means that the directory exists
+uh but is empty so if i do an ls on root
+you see that uh that by mount the volume
+exists so very we successfully created
+these two volumes which will allow us to
+share data between the container and the
+server and between two containers one is
+here i'm highlighting it right now it's
+my mount and it exists at the root of
+the system of the server and the other
+one
+exists in somewhere in the world where
+docker manages it we don't need to know
+where it lives but now we're going to
+look at those two condos those two
+volumes inside the container that is
+running so let's do just that now
+so for that i'm going to create
+i'm going to open another
+window here and i'm going to paste this
+address so this is the address where i
+can find
+the
+container running of course it has you
+know that number that i you know have
+been talking about a lot and and also
+has the 8787 magic number that comes
+from that call
+from here basically right so i'm gonna
+open a new window i want it to be a
+private window i don't know why it has
+to be somewhere yes here so i'm going to
+paste that there
+ah this gives me an interface to log
+into our studio
+i'm going to put the password that i
+chose for myself
+and in the meantime i acknowledge linda
+that is 8 22 on my computer so
+i think i should be able to demonstrate
+the rest of the meetup
+maybe remind me if i'm if i'm you know
+when i'm very close to uh half past so
+i'm already locked in to the container
+um rockerverse
+from rugerburst and you already see here
+on my
+let me make this a little bigger you can
+already see on my home directory that i
+have these two volumes that i created
+when when this
+container was was run so i'm interested
+now in working on it with the terminal
+so i'm going to click here on the
+terminal tab
+and let's move this here to the left to
+the right and let's move my notes here
+to the left so i remember what i wanted
+to show you
+here is where we are okay so the first
+thing i wanted to show you is that
+uh okay basically that
+this
+um
+you know these two volumes already exist
+and now i'm going to try kind of share
+data between the container and the
+server that um that you know between the
+container and the host of this container
+so
+for example like i will the first thing
+i will i want to try to do will fail so
+i'm going to try to create a new file
+with the command touch
+it's going to be inside the bind mount
+directory and let's call it a dot csv
+if i try to run that it will fail
+because that directory is
+you know hasn't it's kind of restricted
+in the privileges who can write to it
+only the root could could write it so i
+could hack that with the sudo command
+when i run this container i use
+an environment variable called root
+equal to true that allows me to run sudo
+so if i do that then it will work so if
+i do an ls now on bind mount you will
+see that the a dot csv file exists there
+but you know that's kind of painful
+because i should do this for every
+single file that i want to copy inside
+that and it makes no sense because where
+am i i'm at the um working at the
+home directory of this user so this user
+should have privileges to you know add
+files inside its home directory right so
+we can fix that in a general way uh
+using um this command so we're gonna do
+is basically use sudo
+to act as the administrator only once
+and then just change the
+ownership ch own change the ownership of
+anything recursively
+inside home
+rstudio
+and we have to say okay who is going to
+own this
+and the trick is this so in this case
+the the user that we are now is called
+our studio
+so uh and we need to call it like this r
+studio our studio because our studio is
+actually two things it's the it's a
+group and it's also a user it doesn't
+matter if you don't understand what this
+is um actually here i committed a typo
+arts
+studio
+and
+but if at some point you need this you
+will find this hopefully this meetup
+useful so with this i'm changing the
+ownership of anything that is inside the
+[Music]
+home directory of the user r studio so
+that the user studio can do anything
+with it so that means that if i now
+rerun that
+command
+that i did before like touch a
+touch bind
+mount
+a csv i don't need sudo to do that
+anymore
+and the same thing would work for the
+other volume for the one that is managed
+by by docker volume managed by docker if
+i create another file say b dot csv
+so that's the trick uh if you find
+yourself that you do have privileges to
+work as an administrator but you know
+when you want to save files you get that
+permission tonight you may just want to
+change the ownership of the entire um of
+recursively of your entire home
+directory so that you can do anything
+with you know directors that live there
+all right so now let's enjoy
+let's kind of demonstrate that we are
+actually sharing
+sharing data so i have added files
+inside the container but what we want is
+to see those files now outside the
+container on the server is that true
+okay let's let's go back to a terminal
+that is running on that server which is
+here
+and now let's do an ls on uh bind mount
+and we see already that file a csv
+so you can see that we could use that
+mine mount type of volume to share data
+between
+a container and a server and if i touch
+another file here for example
+from the server let's type
+touch c no yeah c dot csv
+i'm creating a new file now on the
+server and i want to see if that you
+know makes it all the way to the
+container so let's do now an ls here on
+bind mount
+yes linda
+very close to the end right
+thank you
+okay so right now i have demonstrated
+that
+the opposite is also true i can create a
+file inside that
+um server and make it appear on the
+container so right the the route goes
+both ways the very last thing i would
+like to show is this idea of okay so now
+how do we use
+that other file that we created in
+in the
+volume that is managed by docker that
+file called bcsb for example what if we
+want to share it with another container
+how could we do that all right the the
+trick is to create a new container so
+let me show you that
+um
+so in in this kind of volumes is
+suitable for situations where you don't
+need actually to know the actual
+location
+and but
+despite that you know you can access the
+data that lives in one container from
+another container so let's do that now
+so i'm going to create another container
+i'm going to type
+this
+let me break it down for you let me make
+this bigger
+so i'm here on the server and i'm about
+to run another docker container i'm
+going to remove it also when it's done
+and it's a different kind of container
+it's a lot simpler it's going to be a ti
+means interactive and i'm going to do
+exactly the same thing that i did before
+create you know create a volume but this
+in this case the volume already exists
+so because the volume already exists
+somewhere in the space that is managed
+by docker that volume will actually with
+its contents populate the new container
+so that's the way that we use to kind of
+move data from one container to the
+other
+and in this particular case i'm not
+going to map it to homer studio i'm
+going to just put it at the root of that
+new container
+and the system that i'm going to be
+running here only runs bash so let me
+run that there
+now i am in a container it doesn't look
+very flashy as it does the interface of
+our studio server but uh but this is it
+so let me clear this up this is a
+container of running inside my server
+and and if i do now an ls you can see
+that that volume is there and now what
+you would expect if i do an ls on that
+directory you should see the files that
+we added in the other container so let
+me wrap this up what do we do we in this
+very last example we created some data
+in one container and now we are making
+it accessible
+in another container right so that that
+was the the idea of sharing data between
+containers in this case never going
+through
+the kind of the server itself other than
+by storing it in a space that is matched
+by docker all right so that's the end
+i'm going to go back to your faces and
+do a super quick wrap up to mention once
+again what we did and open the floor for
+questions so what we did is we talked
+about common ways of sharing data
+between your local computer and a remote
+computer
+in this case using as an example
+server on digitalocean and then we also
+saw a couple of ways to share data
+between
+your droplet on digitalocean and
+containers running in it first we did it
+directly from one
+you know using
+bind mount
+type of volumes that map a location in
+the digital ocean droplet to the
+container and then we also did it with
+the other type of volumes which is a
+managed
+volume volume managed by docker which
+location we don't need to know and but
+allows us to share data between
+containers uh in a very portable way
+all right um i'm sure there is a ton of
+questions in your head but maybe
+maybe that's so complex that it might be
+hard to articulate so any comment
+question here
+before we go
+[Music]
+good this has been an extremely
+technical meet up acknowledge that
+that's probably the reason why we don't
+have so many questions but it does
+respond to an issue that we face with
+linda when we are working with
+containers and you know basically
+creating data inside a container that we
+wanted out and many times we got that
+permission then i think which um you
+know motivated me to investigate a bit
+more how to kind of fix that problem for
+for for once
+and for good um
+so yeah i wanted to capture that in a
+meetup and i think this might be the
+last meetup of this series or maybe not
+and there is one more topic that i may
+need to cover for the next meetup
+otherwise we'll be changing topics very
+soon
+thank you very much for joining see you
+next time

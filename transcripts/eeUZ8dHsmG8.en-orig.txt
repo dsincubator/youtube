@@ -1,0 +1,674 @@
+today the DS incubator is going to
+demonstrate with examples some of or
+hopefully all of the practices that we
+are drafting in terms of working with
+kit as you know we are developing this
+documentation about the practices that
+we would like to display at two degrees
+and we have just discussed the the draft
+of practices about kid um you you know
+our colleagues are going to be asked to
+ref them so so far nothing that I'm
+going to be showing today is kind of
+written in stone and by showing this
+you're not kind of agreeing that this is
+the way to go but uh but you know I
+thought of before actually you can um
+review uh the draft critically I thought
+that it is important to do something
+that Monica had been asking for which is
+this idea of examples because some of
+the practices are very abstract and
+without an example you may feel that you
+are agreeing on something that you you
+don't really know what I'm what we mean
+so this is one way of uh kind of
+addressing that issue giving specific
+one tiny specific
+example uh for each of these practices
+so let me first review them very quickly
+um
+basically all of them first um refer to
+Shared commits a commit history that we
+share with someone else and do not apply
+uh locally uh at least not as strictly
+you may adopt your own practices uh but
+uh once you share these things apply and
+today I am going to be showing some
+things that I do when I work locally but
+not when I share uh know not once I have
+shared some specific comit for example
+the idea of rewriting history only
+applies uh before you share the com once
+you share it you're kind of stuck with
+what you have and you have other
+strategies that you can still uh you you
+can still change
+uh things but not change the history of
+comms seven
+practices more or less summarize the
+discussion that we are having so far
+this is all in a draft mode number one
+the changes that you share should be
+close closely related to each other so
+in one commit uh what we want is again
+this is a draft I would like to you know
+we would like to see is that all the
+changes in that one commit are related
+to each
+other then the idea of committing often
+uh is associated with the idea of the
+size of each commit each commit should
+be as small as it can be and a
+collection of commits should tell the
+story of a feature H each commit in
+itself should be complete and each
+commit actually this I'm I'm going ahead
+of myself this one the third one each
+commit in itself should do what it
+promises what its message promises but
+then every collection of commits towards
+building a feature should also do what
+it promises so basically this idea of
+that your work should be complete is at
+two levels at the level of the commit
+and at the level of the collection of
+commits that compose or that create a
+feature we can think of features as
+branches for example of pool requests
+for the idea that you you know we we aim
+to try to test somehow even if it's
+interactively that's the code that we uh
+added to the code base or we propos to
+add the code base that's what we think
+it does five that the Comm messages
+should be structured in a particular way
+to make it easy to read uh and the idea
+is basically that is like an email where
+it has a subject at a body the body is
+optional the in in commits you have to
+write a message so the the subject is
+compulsory and it's much much much much
+more readable if uh the subject has 50
+characters or less because that's how
+much characters
+GitHub is able to show on on a line uh
+on the commits history and the body is a
+bit more flexible but you know the
+recommendation that you read round is
+that you should try to rra it at around
+uh 70 characters otherwise you know
+people find know that the teste kind of
+goes overflows the screen um six that to
+do know ideally you know you're working
+in a team and the team should agree on a
+particular workflow this already brings
+idea of branches in git branches are a
+really powerful feature of git and all
+of the workflows that we have been
+considering use branches very
+heavily uh and finally that there are
+some tools that make our work more
+productive and less error PR so today
+for example you see me here working with
+a very customized terminal it has things
+like color it has things like the name
+of the branch that I'm standing on it's
+called main it is the default branch in
+this repository uh so all of those
+things you'll see me working with um
+with um aliases for example I
+type this glol and I show you a very
+nice this nice to me very informative to
+me the log of this repos let me do a
+little smaller that add some things are
+not the default it adds the time it adds
+the name so just by showing you this I'm
+basically
+addressing uh practice number seven for
+example that's so this is one example of
+you know what I mean what we mean sorry
+what we mean uh yakob ja how work in
+this project and everyone has already
+contributed some inputs um so we all uh
+are um what we mean when we say hey use
+tools that make your work more less ER
+prone and more
+productive uh in terms of workflow well
+I'm I'm working on a main uh Branch this
+is the default Branch I'm going to be
+working on a um a new Branch because
+that's the workflow that I choose to
+demonstrate today uh so I'm going to
+start by
+there get check out Branch a new Branch
+I'm going to call it um uh new package
+uh in this example today I'm going to be
+creating a an empty package the
+infrastructure of a package that has
+nothing just the infrastructure of it
+it's
+empty so if I show you this repository
+um sorry I hear some typings if if you
+are in the meeting and not muted it will
+be great if you can um so that the
+recording is kind of cleaner I already
+have some construction work going on
+here so sorry if you hear that there
+noises so as you can see this let me
+clear this with contrl L if I do LS
+you'll see that the contents of this
+repository is nothing it's just this
+noes file and the noes files if I show
+you the contents is just the notes I
+have just read but I would like this
+reposit to become an r package so I'm
+just going to execute r with
+r uh so I'm now running R here let me
+clear the console and I'm going to use
+use this but because I added already to
+the um to the our profile file h i don't
+need to attach it to this session so I'm
+just going to call the function
+create
+package from uh they use this
+um from the use this package and I'm
+going to use a little trick that uh all
+it does is basically does that the
+current working directory is directory
+is going to become an package so it's
+going this called practices demo so with
+this uh if I show you now an LS of this
+repo now you see that I have a
+description file an npace file the same
+F notes that I had before and the r
+folder which is actually
+empty but if I query the G status you
+see that I have two files H and you know
+because we want remember if I remember
+the practices notes uh we want to create
+small commits we want to commit often uh
+we want the changes to be related to
+each other so it is now a very good time
+to do a little uh to add everything to
+the staging area and there they are the
+two files that were added by this
+command and to create a little message
+that is something like
+create
+package so this is a minimum package it
+has only those two files but uh you know
+the feature that we want to create or I
+want to create in this particular
+example is the idea of giving the
+infrastructure of a minimum package and
+you know I Define as a minimum package
+something that has a few more things for
+for example it has to be explicit about
+the license that this package has so
+let's use R again to uh add a new uh
+license so let's do use let's let's use
+the MIT uh
+license oops sorry license um so use
+this added that for me and again in part
+of this practices I'm also demonstrating
+that as a tool use this uh makes me more
+productive see how much stuff I did
+already with just one command um let me
+show you the status so it modified
+description added something to Arbor
+added file called license add file
+called license.md so let me add show you
+at least the diff of description
+basically the default description file
+came with uh like a placeholder kind of
+it says file license but there was no
+file license when I first run the
+command create package but now with the
+function used license uh this line has
+been edited and points specifically to
+to a file that now does exist in this
+repo so let me add a message um let's do
+use MIT
+license so if you see oh actually I
+forgot and this is a good example
+actually to show how to um amend commits
+uh I created a commit uh that is called
+uh which message use MIT license but I
+forgot to add what do I have here
+to there you go I forgot to add uh o
+look at that
+trash trash
+sl033 I added there something
+odd there you go sorry that was
+unintended so I forgot to add these
+files that were new to the to git so I'm
+I'm going to add them now you see they
+now in my staging area and I'm going to
+amend me instead of adding a new commit
+right now I just you know what would
+happen why I'm doing this because the
+practices say let's do that let's cut
+notes um cat notes so the practices say
+that each commit should be complete
+right so uh the commit that I I wrote
+before is not complete because it says
+that it you know it promises that it
+adds MIT license but it doesn't because
+those files are still on my station area
+so let's just amend the previous commit
+so it does what it promises so keep
+commit amend um use MIT lense so now uh
+I'm not going to change the message
+because it is appropriate but uh I did
+you know my my station area is now clean
+and if you see uh the you know the log
+is you know looks the same
+but uh if I show you the last commit you
+know which files I modified you see that
+now that commit is complete it has all
+the files that relate to adding an MIT
+license it has the the license itself it
+has you know the modification to the
+description file and has added that file
+also to the art billore because it is
+not a standard file in another package
+so I need to add it to the building if
+you're not used to the to building
+packages a lot of these may be um
+unfamiliar but that's fine basically
+just take away not um you know you know
+what relates the packages but what
+relates to the um implementation of the
+practices that that we are talking about
+so um let's do a little L less we have a
+description file we have a license file
+um we have this notes file uh that we
+need to kind of get rid of and I will
+show you why soon H but before I want to
+add something that I also consider
+crucial in an art package and that is
+the idea of an our Mark um of a rme file
+so we can tell the world what that
+package is is about so uh let's run R
+and uh let's run the function use um
+read me rmd um there's two flavors MD
+and rmd I'm going to add the file rme
+rmd um and this is it and it gives me
+the chance to edit it and I could if I
+wanted start editing it here and uh say
+for example what's the goal of this
+package but I'm not going to do that
+instead I'm going to just close this
+file uh because I think that you know
+adding the the rymy the skeleton of it
+is is one thing and then editing it so
+it kind of reflects what the package
+does is kind of another thing uh at
+least that's how I I perceive it at
+least now so um the status I you know
+shows that the AR has been Ed edited
+because this new file R me has been
+added by use this um and I need to add
+um also R me rmd to the staging area so
+now I have the two files that are
+associated to this one commit of
+adding R me but I'm going to make a
+mistake intentionally now I'm going to
+try commit this uh and see what happens
+uh
+at read me um so when I do this I get
+this error error or not this error like
+this message that says that R me is here
+but someone wrote a hook that you know
+forces me to render the rmy file to
+create a rmy MD file because kab does
+not show very nicely the rmd what it
+shows nicely is the MD so I need to knit
+the rmd the r me so that it shows uh
+kind of beautifully its contents as an
+MD file in GitHub so what I need to do
+is
+um is to just knit that file but I'm
+going to um I'm going to force uh this
+commit Now by adding what it says here
+no
+verify this hint here right so I'm going
+to execute it so I can actually do um
+the the commit there but it is an
+incomplete commit right so again going
+back to the notes uh let's see remember
+that you know we want each commit to be
+complete and it is not complete until I
+render my um rmd file to become to
+create an MD file so let's do that just
+now and then I'll show you how I can can
+fix that so that these two new two
+commits become just one so let's execute
+R and now let's R let's use kner to uh
+knit the file rme uh rmd uh this will
+create the MD and I can kind of leave R
+now and uh I can show you the status so
+now you see that there there is a r me
+file um and there is also a man um
+folder I add this to the staging area
+and I do the same uh I'm going to say
+something like
+render um to
+ND and I have to say no verify again to
+be able to do this commit without the
+rmd so basically rmd and MD should both
+be in the same commit and I haven't done
+that I have forced that to show you one
+way in which you can fix that if you
+have
+committed incomplete work and to make it
+complete you need to kind of squash
+different commits so let's do just that
+so let me show you the log uh you see
+that you know these last two commits
+actually relate to the
+same uh task of you know creating add a
+r me so one way in which you can squash
+those commit is with a very handy G rase
+interactive minus E um so you can you
+can say you know up up to when you you
+want to Ras I mean to make
+easy I could say up to main uh G log
+let's
+see or let's do just a couple I don't
+know why that fail really so get Reas
+interactive let's see head one two three
+commits what's happening ah because I'm
+I'm mistyping there you go I'm mistyping
+rease
+rease that is it and I use a main so I'm
+going to rase uh I'm not but you know
+I'm gonna ask for the option to race all
+the comit all the way back to where main
+was pointing so main was pointing here
+to the very top to where it says one H
+but the two coms I'm I'm interested in
+are the last two so the one that says in
+in line three and the one in line four
+so what I'm going to do is you know if
+you read these instructions here they
+tell you what you could do and I'm going
+to squash or short for squash is s I'm
+going to say say that
+um uh the commit that is now shown in
+line four should be squash with the
+commit that is now in line three so if I
+now close this file um I I'm given the
+option to basically rewrite a commit
+that is composition of of the two um I
+think that the one that you know makes
+sense is the one in line four so I'm
+going to delete uh these three lines and
+then also this and this so this is going
+to be my
+squashed commit message and as you can
+see this commit message will contain
+everything that relates to adding the Ry
+file both the Ry and the MD sorry the Ry
+rmd and the Ry MD so now this work is
+complete it's kind of follows our um
+intended or drafted uh git practices so
+let's close this file so now if you see
+my my stationary is clean and the log
+shows that uh this just this one commit
+right with uh I could I could do git log
+um G show with stat again to show you
+that this one last commit has uh you
+know everything that relates to adding
+Ry Ry rmd and Ry MD okay so let's do a
+little less this is H our package so far
+and one of the practices that I haven't
+addressed yet is uh the one that tells
+about uh trying to test what you do so
+there is one handy way to test an art
+package uh which is with a function
+check uh check will run a number of
+checks uh you know R will build a bundle
+of all those files into a package that
+is kind of ready to install but before
+doing that you kind just going to check
+that a bunch of things um as expected
+and when I run that I expect some things
+to not go so well because this file noes
+is not a standard file for our packages
+so it's going to tell me about that um
+so you know one way we can do that let
+execute R and basically Dev tools has a
+function is called check and because Dev
+tools I have already added it to my um
+our profile I can just run check without
+name spacing it with de Dev Dev tools
+there you go so now this is kind of
+running a bunch of checks to to see the
+sanity of um of my empty r package uh so
+let's pop up another terminal in the
+meantime and let's navigate to the same
+repo here we are again um
+basically uh in the meantime while that
+executes uh let me see how we're going
+yeah because that may take just a little
+while so I know that one of the problems
+that I have is that I have these file
+notes uh which is useful and I would
+like to add those notes to the r me um
+rmd right uh so one way I I could do
+that is I could do cut notes right and
+once I have that here on the on the
+console I can you know redirect that to
+the end of RIT rmd uh so if if I show
+you now the diff of rme rmd you can see
+that at the very end I have just added
+the contents of notes which means that I
+can now remove uh notes hit remove notes
+H there it is and uh I can now edit um
+read me a little bit more oops sorry I
+didn't intend to do that uh R me R MD
+there you go so let's go to the end here
+is the text that I have just added
+uh here uh let's add a line here at the
+end I'm going to tie this up in a
+moment uh okay I have just removed the
+file uh notes I have added the contents
+to R me so I can now say uh a commit
+that says um move
+notes to read
+me um and notice that I get the same
+message because I haven't rendered this
+file so let's do just that let's do
+neither
+need R me
+re R
+me me
+rmd okay there it is it's rendered
+and now I have all the files that I want
+and I can just uh move noes with me so
+now it does work this is the log of my
+repo my last commit has moved notes to
+read me I have also rendered the that
+rmd file to create a an equivalent MD
+file and let's see what's the status of
+my check so here we have it uh it noted
+that um it has a few things going on uh
+let's see the warning uh no parts files
+found it looks like uh maybe because the
+man
+fer uh checking for maybe because of the
+man folder is empty or something I don't
+know what that means uh but the one that
+I wanted to remove is this one here
+nonstandard files in the you know need
+to be basically removed and I just did
+that so this is the the check that I
+wanted to demonstrate and uh let's if I
+do our check again actually I'm going to
+show you a trick because you know the
+function check from Dev tools is easy to
+wrap in a common Line application so I
+did that so I can now run R check from
+here from the
+terminal uh so I don't need to enter R
+to just run run that um and remember I
+removed the notes file uh that also
+should remove the note in the rmd check
+that tells me about that file so that
+that problem at least should become
+fixed and the Very F last thing that I'm
+going to do with this repo before we uh
+end and subit a pro request is um
+editing the contents of
+um description and read me so that it is
+uh more indicative of what this package
+really does so um if I show you um
+description let's edit description see
+that you know it has like a placeholder
+here it says what the package does but
+doesn't say what actually it does so
+let's remove that and say uh uh
+examples
+of
+um
+G
+practices I'm going to close that file
+and I'm going to do the same with Ry
+because you know now that I'm documented
+with the package does I also want to uh
+document that in Ry so the goal of
+practices is to um give an example of
+git practice
+say right and another thing that I'm
+going to do here um actually know I
+could just leave it there just just that
+um I'm going to uh
+NE
+meter uh oops NE
+meet R
+me read me
+R&D right once again remember every time
+I commit um Neer NE r
+so every time I commit uh rmd I need to
+also commit
+MD uh so you see now all those files
+there I'm going to um say uh add
+explain
+go of this package and there is one last
+thing I would like to do to R me which
+is you know rney comes with a bunch of
+information that is not relevant in this
+package for example it says how to
+install it from Crown but this package
+is not in Crown yet and also
+say uh all this information here uh is
+not relevant all the way to here this is
+just like placeholders kind to explain
+how uh how the file uh really works how
+written it works and what you should do
+with it um so let's do
+practices so this is said let's do
+nether once again
+need R me rmd and with this I'm ready to
+create a pull request so now I'm going
+to say
+prune read me um and this is a log uh as
+you can see I have been very granular
+very small commits each one is
+self-contained and that's one thing and
+now the whole feature is a pull request
+is the whole thing that's one thing
+which is to basically provide the basic
+uh package infrastructure so I can now
+do GH PR create and I like doing it with
+the minus d uh flag because that creates
+uh a p request in this case in the two
+degrees investing organization uh the
+title I want to edit it I going to say
+uh create basic
+package uh the message um you know I
+could know show you uh what I mean by an
+email like um commit message so
+basically if this is the first line and
+this is the subject then there should be
+an empty line and then one line after
+that there should be the body if you
+want to add a body so uh here um I add
+um a bunch of
+files. create a basic
+package and notice how I wrapped the
+text here so that it's not super long
+I'm not super picky about you know 70
+characters 80 or whatever but you know
+at least just be mindful that if you are
+if you make it too long uh it's going to
+be difficult for people to read so I'm
+now proceeding with the process I'm uh
+submitting this P request as being
+pushed to the to theg investing
+organization and the last thing I'm
+going to do is just navigate there uh
+before I say goodbye and uh and show you
+that P request uh how it looks so it's
+now on a draft mode but I could I could
+say hey it's ready to review because I
+think it's complete and if you see uh it
+has the message as I typed it you know
+this uh subject body each commit is
+self-contained so you could go to the
+commits Tab and uh if you're interested
+in seeing how this was built uh you can
+click on the first one and then go one
+by one and clicking the next button here
+and understand you know basically how
+each self contain commit tells the story
+of the feature so let's go to so this
+one because there are selfcontain is
+easy to write a message that is specific
+create package and this is what it does
+and then if I go to the next commit
+message this one adds the you know MIT
+license and this is exactly what it does
+you know just the license file and
+modify a few things
+right okay that was a long long long
+long um or a bunch of things but I think
+we did
+Cover um let's see uh the tale of uh
+read me uh MD let's do the tail of 20
+lines
+o tail 20 there you go so these are our
+practices H we talked about changes that
+should be related to each other uh
+commits that should be small and commit
+often uh the work that you know in each
+commit and in each B request should be
+complete it should it should do what it
+promises you should check or test you
+know what you do that it is what you
+expect the structure of your commit
+messages is important is kind of the
+structed of an email let's agree on a
+workflow I have just have just used the
+GitHub workflow with a feature Branch
+that's going to be merged into master
+and use tools to become more productive
+and less error Pro so with that I'm
+sorry it's a bit late uh do we have any
+questions or comments
+[Laughter]
+thank you yeah
+yeah of course it's not going to cover
+every possible scenario but at least we
+have one example and we can you know as
+if everyone um realizes that what
+they're doing might be a good example I
+would be you know interested in in
+taking those um and Link them to uh from
+from the practices repo
+okay thank you very much sorry again for
+being late I think it's it's bad but you
+see the recording over there thank you
+Chia Chow

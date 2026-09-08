@@ -1,0 +1,562 @@
+340	[Music]
+340	__EVENT__
+4390	
+
+4400	I
+4480	 am
+4720	 about
+5319	 to
+6319	 uh
+6440	 least
+6879	 and
+7120	 review
+7759	 and
+4400	__EVENT__
+7950	
+
+7960	then
+8120	 merge
+8519	 a
+8719	 p
+9000	 request
+9960	 so
+10360	 I
+10759	 I
+10880	 thought
+11040	 of
+7960	__EVENT__
+11150	
+
+11160	sharing
+11559	 with
+11679	 you
+11880	 how
+12000	 to
+12120	 do
+12240	 it
+12400	 with
+12639	 the
+11160	__EVENT__
+13390	
+
+13400	GH
+14200	 CLI
+15120	 it's
+15320	 very
+15519	 convenient
+15879	 because
+16080	 you
+13400	__EVENT__
+16150	
+
+16160	can
+16279	 do
+16400	 it
+16560	 from
+16800	 any
+17039	 terminal
+17920	 I'm
+18160	 here
+18400	 on
+16160	__EVENT__
+18710	
+
+18720	the
+18880	 terminal
+19320	 from
+19560	 our
+19880	 studio
+20439	 so
+20640	 if
+20760	 I
+20920	 do
+18720	__EVENT__
+21950	
+
+21960	GH
+22960	 be
+21960	__EVENT__
+24070	
+
+24080	list
+25080	 I
+25160	 can
+25320	 see
+25480	 that
+25599	 there
+25720	 is
+25920	 one
+26359	 p
+24080	__EVENT__
+26630	
+
+26640	request
+27800	 118
+28800	 so
+29080	 I
+29199	 could
+29720	 um
+30199	 view
+30480	 that
+30759	 PR
+31640	 I
+26640	__EVENT__
+31710	
+
+31720	could
+31880	 also
+32040	 do
+32320	 GH
+32800	 PR
+33320	 status
+34120	 and
+34280	 that
+34360	 will
+31720	__EVENT__
+34510	
+
+34520	give
+34640	 you
+34800	 a
+34879	 little
+35040	 bit
+35200	 more
+34520	__EVENT__
+36150	
+
+36160	information
+37160	 about
+37480	 it
+38239	 uh
+38920	 if
+39079	 there
+39280	 is
+40280	 some
+36160	__EVENT__
+40549	
+
+40559	checks
+41079	 you
+41239	 can
+41360	 see
+41520	 if
+41640	 they're
+41879	 passing
+42200	 or
+40559	__EVENT__
+42350	
+
+42360	not
+42920	 so
+43360	 everything
+43600	 is
+43760	 looking
+44039	 good
+44280	 but
+44399	 I
+42360	__EVENT__
+44430	
+
+44440	would
+44600	 like
+44719	 to
+44879	 review
+45280	 it
+45600	 on
+46160	 GitHub
+46640	 itself
+44440	__EVENT__
+47470	
+
+47480	uh
+47680	 just
+47800	 to
+48360	 enjoy
+48800	 the
+49600	 beautiful
+50039	 diff
+50440	 that
+47480	__EVENT__
+50549	
+
+50559	it
+50719	 offers
+51079	 so
+51280	 let's
+51399	 do
+51719	 G
+52719	 PR
+50559	__EVENT__
+53750	
+
+53760	view
+55039	 118
+56039	 on
+56239	 the
+56440	 web
+56680	 browser
+53760	__EVENT__
+60830	
+
+60840	so
+61239	 here
+61800	 we
+61960	 are
+62960	 um
+63600	 on
+63760	 the
+63920	 pull
+64320	 request
+65320	 um
+60840	__EVENT__
+65630	
+
+65640	we
+65760	 can
+65960	 go
+66119	 to
+66400	 file
+65640	__EVENT__
+67830	
+
+67840	changed
+68840	 and
+69000	 see
+69560	 that
+69920	 change
+70759	 corresponds
+67840	__EVENT__
+71270	
+
+71280	to
+71439	 a
+71560	 change
+71759	 in
+71880	 a
+72240	 URL
+73240	 which
+73680	 uh
+73759	 looks
+74080	 good
+71280	__EVENT__
+74230	
+
+74240	to
+74400	 me
+75280	 uh
+75439	 so
+75640	 if
+75759	 I
+75880	 need
+76040	 to
+76159	 review
+76439	 it
+76640	 then
+74240	__EVENT__
+76749	
+
+76759	I
+76880	 could
+77080	 do
+77960	 that's
+78320	 good
+79040	 to
+76759	__EVENT__
+80910	
+
+80920	me
+81920	 review
+82680	 that
+83680	 and
+84159	 we
+84320	 are
+85079	 we
+85200	 are
+85439	 done
+86439	 if
+80920	__EVENT__
+86550	
+
+86560	I
+86720	 wanted
+87079	 to
+87960	 um
+88320	 continue
+89040	 with
+89280	 this
+89759	 uh
+90159	 um
+86560	__EVENT__
+90990	
+
+91000	with
+91159	 the
+91320	 process
+91640	 of
+91759	 merging
+92159	 that
+92320	 pull
+91000	__EVENT__
+92990	
+
+93000	request
+94000	 you
+94079	 can
+94280	 do
+94399	 it
+94560	 from
+95280	 the
+95799	 uh
+96000	 UI
+93000	__EVENT__
+96830	
+
+96840	right
+97040	 here
+97439	 from
+97920	 GitHub
+98479	 but
+98600	 you
+98680	 can
+98799	 also
+96840	__EVENT__
+98950	
+
+98960	do
+99079	 it
+99159	 from
+99320	 the
+99439	 terminal
+99920	 so
+100399	 one
+100640	 way
+100799	 to
+100960	 do
+98960	__EVENT__
+101109	
+
+101119	it
+101280	 is
+101759	 with
+102119	 GH
+101119	__EVENT__
+103670	
+
+103680	PR
+104680	 to
+105040	 count
+105360	 on
+105520	 the
+105640	 number
+105920	 of
+106000	 the
+106159	 pr
+106640	 that
+103680	__EVENT__
+107389	
+
+107399	uh
+107479	 you
+107600	 want
+107759	 to
+107880	 check
+107399	__EVENT__
+109429	
+
+109439	out
+110439	 that
+110600	 will
+110880	 give
+111040	 you
+111759	 uh
+112079	 you
+112200	 know
+112360	 drop
+109439	__EVENT__
+112590	
+
+112600	you
+113040	 into
+113280	 that
+113479	 Branch
+114240	 after
+114759	 having
+115320	 pulled
+112600	__EVENT__
+115709	
+
+115719	it
+115920	 from
+116159	 GitHub
+117000	 and
+117200	 then
+117880	 uh
+118240	 you
+118360	 can
+118600	 do
+119240	 uh
+115719	__EVENT__
+119429	
+
+119439	from
+119640	 here
+120079	 actually
+120399	 because
+120600	 you
+120680	 are
+120799	 on
+119439	__EVENT__
+120910	
+
+120920	that
+121039	 Branch
+121280	 you
+121360	 can
+121560	 also
+121719	 do
+121880	 a
+122200	 GH
+123200	 PR
+120920	__EVENT__
+123550	
+
+123560	checks
+124159	 to
+124520	 confirm
+125520	 that
+125840	 uh
+126000	 everything
+126320	 is
+123560	__EVENT__
+126469	
+
+126479	looking
+126840	 good
+127079	 it's
+127200	 looking
+127479	 green
+128080	 and
+128160	 then
+126479	__EVENT__
+128270	
+
+128280	you
+128360	 can
+128520	 do
+128280	__EVENT__
+129309	
+
+129319	G
+130319	 PR
+131160	 merch
+131800	 and
+132040	 you
+132160	 may
+132400	 have
+132560	 some
+132760	 flavors
+129319	__EVENT__
+133550	
+
+133560	of
+133840	 merch
+134360	 that
+134480	 you
+134560	 want
+134680	 to
+135000	 explore
+135440	 so
+135560	 in
+133560	__EVENT__
+135670	
+
+135680	my
+135920	 case
+136200	 I
+136519	 typically
+136879	 use
+137360	 a
+137680	 squash
+138680	 and
+138800	 I
+135680	__EVENT__
+138869	
+
+138879	want
+139040	 to
+139560	 delete
+140560	 the
+140920	 the
+141160	 branch
+142160	 um
+143000	 after
+138879	__EVENT__
+143350	
+
+143360	it
+143480	 has
+143640	 been
+143879	 merged
+144720	 and
+144879	 if
+145080	 this
+143360	__EVENT__
+145270	
+
+145280	repository
+145879	 requires
+146400	 Administration
+145280	__EVENT__
+148270	
+
+148280	privileges
+149280	 then
+149400	 you
+149519	 may
+149640	 need
+149920	 to
+150080	 do
+150640	 admin
+148280	__EVENT__
+151589	
+
+151599	as
+151800	 well
+152519	 so
+152800	 with
+153040	 this
+153519	 that
+154239	 um
+154599	 branch
+154920	 is
+151599	__EVENT__
+155030	
+
+155040	going
+155160	 to
+155319	 be
+155560	 merged
+156000	 into
+156319	 Main
+156920	 and
+157120	 then
+157599	 I
+155040	__EVENT__
+157710	
+
+157720	can
+158080	 I
+158200	 can
+158400	 put
+158560	 it
+158760	 back
+159040	 here
+159840	 okay
+160120	 I
+160239	 hope
+157720	__EVENT__
+160470	
+
+160480	that
+160640	 helps
+160480	__EVENT__

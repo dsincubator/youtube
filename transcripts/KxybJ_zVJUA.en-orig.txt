@@ -1,0 +1,707 @@
+the executor continues on the series
+about exploring uh data with the thai
+diverse
+uh and today we are going to be talking
+about
+typical values unusual values and
+missing values
+[Music]
+there is a section for each of those in
+the book that we are following today and
+the objectives are to visualize the most
+common values in the data set and also
+the more like the rare values
+explore outliers
+um both analytically and
+also
+through plots we will need to zoom in to
+a plot to find those layers you'll see
+some strategies to do that
+also we're going to be transforming
+incorrect values once we kind of decided
+that they are wrong uh with missing
+values
+as one strategy to manage that kind of
+issue
+and lately we are going to convert
+missing values into
+a logical um
+value either you know this is kind of
+wrong data yes or no like true or false
+so that we can um transform missing data
+into something we can you know work with
+we can count and we can visualize
+so those are the objectives of today uh
+as usual you know each series it has a
+dedicated repo um
+we've been working with this repo called
+ds dot tidy eda
+and i'm gonna scroll up all the way to
+the top of the repo to find the folders
+click here on
+the folder of the day meetup number four
+for uh
+the contents of of today's meetup and in
+a way it's also like a quick review of
+not just you know the conceptual aspect
+of what we are talking about here but
+also a little bit of the tools you know
+remember we are talking um about
+exploratory data analysis with a
+specific very specific toolkit which is
+the tidy verse so when we you know do
+library television we get a bunch of
+packages ingredients the one that we're
+going to be working with today deep
+player and g plot 2.
+also we've been working with a specific
+data set called diamonds that comes with
+the ggplot2 package so when you attach
+ggplot2 by doing library tie reverse or
+if you would
+you can do also like library digital too
+then
+you get access to this dataset so you
+just type diamonds and you get a data
+set
+but i wanted to highlight a couple of
+things that i think i forgot so if you
+do question mark and the name of
+anything
+that exists in r so for example once you
+attach the paragraph 2 the diamonds data
+set becomes available and it does has
+have a help file that you can consult to
+know more about that data set
+so if you do question mark diamonds let
+me show you how you would do that in r
+so let's go here to my console and and
+just type
+there customer diamonds
+so what you get is this html type of
+file here that you can explore
+and
+it does have very nicely they did a
+it doesn't come by default so actually
+the developers you know took care to
+define each of those variables i think
+the useful ones for today are
+the variable called price the one called
+carat
+which is the weight of the diamond and
+then the variables x y and z that are
+correspond to the length width and depth
+in millimeters of diamonds
+also remember that the d plier package
+comes with a function called select that
+allows us to kind of zoom in
+a specific
+you know
+set of columns in this case we want to
+for example you know focus on those
+columns that i just defined at the top
+just to you know kind of focus our
+attention on them so if i do diamonds
+and then pipe that remember that the the
+pipe operator we
+pronounce it as then so we take the
+diamonds data set and then we select the
+columns price correct karat x y and z
+and this is what we get so this is one
+way to kind of start becoming familiar
+with the data set one other thing that i
+didn't show
+is a tool called glimpse so also comes
+with a tidy verse specifically with a d
+player package it is a different view of
+the data set and it's kind of useful
+because it scales up very well so if
+your data set has
+say 100 columns each of those columns is
+going to be listed one under the other
+one so that then you can just scroll
+down and have an overview of the entire
+data set and then you also get the type
+of column so for example cat is a double
+column a numeric column
+we know that price is an integer column
+for example there is like no it's like
+all all round price numbers and and then
+we have you know a few values just
+whatever you can fit on the screen
+depending on what you know size of
+stream you have at the time that you
+call that function so that's a cool
+function to be aware of
+as a way to start gathering some very
+basic
+information about your data and start
+prompting your brain the questions that
+will drive your exploratory data
+analysis
+which is the point
+so let's start with this idea of trying
+to understand the most common and the
+most rare values in the data set so last
+time we worked with
+two types of var plots one is like
+necessarily directly called a bar chart
+and the other one is a histogram
+both of them
+represent data in bars and then the
+total bars are the ones that are going
+to be showing us the most common values
+so it's very easy you know using
+histogram for example to see which are
+the most common values in the entire
+distribution of the variable
+and on the other hand you know shorter
+bars will tell us the less common values
+values and gaps in your data when you
+see that your histogram is kind of
+broken you may start having questions
+about why do i not have data in that
+specific range of values for this
+variable so we're going to be seeing
+this in a moment but those even those
+very basic aspects of
+the data set may prompt us some
+questions that are useful just in about
+every data science
+exploration that you do with any data
+set pretty much for example which are
+those most common values and y
+which are the most rare values and why
+and that's not much your expectation yes
+or no before you even explore your data
+you may have some
+assumptions or some expectations about
+what that data contains so it's very
+interesting to try
+explicitly articulate those questions in
+your head or in writing and then see if
+your exploration matches that
+expectations or not
+um also can you see any patterns like
+groups of data that may have some
+meaning and if if you see those
+groupings are they just random groupings
+or do they have some meaning that you
+can derive from there
+so that's those are questions are very
+general and you could apply them to just
+about any data set uh but now let's
+let's have a quick look at some uh
+real data um and and you know see how
+that data can drive these couple of
+questions
+so what we're gonna be doing is okay
+let's first
+take the data set diamond diamonds
+and then let's
+just the values just the rows where the
+column karat
+is less than
+uh three
+so karat was the weight remember and you
+know we're focusing on um
+on
+rows that are less than three
+and so now we assign the result of that
+to a new data set called smaller which
+contains just a subset of that data and
+we plot it with the tool that we are
+using ggplot remember then we usually
+you know give it the as the first
+argument the name of the data set and
+then the mappings we can you know even
+either give it to them in the ggplot2
+call in the gigi plot sorry call or you
+can also give it in the geom code in
+this case you know we are choosing to do
+it in the gg plot call
+so we're going to be using a geom
+histogram which is the geometric
+representation that we choose for this
+specific
+plot
+and and this is what we get we choose a
+bandwidth that is very narrow just a
+0.01
+width
+and because we have a huge data set here
+and this is what we get
+so the questions that may come to mind
+so notice how for example we have bars
+that match the white
+grid lines underneath
+and those white grid lines correspond to
+round numbers like two one
+one and a half you know one and a
+quarter that we don't have it but it
+will be here so notice how there seems
+to be
+um more
+uh values or more um
+diamonds
+uh with a weight that is exactly around
+either the the big kind of
+the round numbers or at you know like
+the nice fractions of those numbers like
+you know half of something or a quarter
+of something right
+uh so
+this is you know one question that you
+may you may ask why do you think you
+know
+um
+we have more diamonds at whole carats
+uh and or at common fractions of carats
+and then
+also why there are maybe more diamonds
+slightly to the right of each peak as
+opposed to the left
+uh so because this
+ds equator series is more about
+or is a mix you know between the tools
+but also about the questions that you
+know you may answer your data i would
+like to kind of stop now and
+for a moment and try to see if anyone
+has any idea
+as for i mean you don't have to be right
+or wrong you know this is an exploration
+we're just you know brainstorming you
+know ideas so if we make these
+observations like you know we see that
+there are more diamonds at the round
+carats or fractions of carats that are
+like nice fractions and we also observe
+that you know the distribution of the
+values
+around those peaks is kind of biased to
+the to the right
+any idea of why that might be a case
+here in the room
+go back to your three faces here
+or maybe what i should do is i leave the
+plot so i prompt
+so my questions are yeah let's see who
+we have here
+katarina go ahead
+um
+correct yeah
+perfect yeah
+i agree with you i mean diamond you know
+these are diamonds are processed and i'm
+guessing i mean i i haven't read very
+deeply about this particular data i'm
+guessing that they are for sale right so
+someone created these diamonds and they
+gave it a price and stuff
+so yeah i don't think they just come
+from nature i mean someone has had to
+kind of craft them in a way
+yeah that's what i think
+mm-hmm
+oh yeah
+yeah okay i take
+yeah i take your i think it's
+interesting the
+[Music]
+the rounding one uh
+but i think that that wouldn't explain
+for example a bias towards the right so
+you say for example if uh you know if
+i'm someone waiting the thing and i see
+put it the diamond on my scale and i see
+0.8 i could target one and if i see you
+know 1.1 then i'll get one
+but uh
+so i i could get how okay i would get
+more peaks
+in the ones but that doesn't explain why
+i see such a clear kind of
+tail on the right any other one may i
+think we can build on that i think my
+guess is that there is some human
+choice here or human decision in you
+know influencing the numbers for sure
+and but i would love to see if there is
+any other idea that could also explain
+that bias to the right
+anyone ideas
+she
+so
+i like that that kind of explains um
+the round numbers in a very kind of
+human bias way
+um
+may i throw one because also i would
+like to kind of move on so i'm gonna
+also you know the the good ideas come
+from asking many ideas right uh so the
+more questions you know if we spend five
+minutes with all these brains here i'm
+sure i will come up with very good
+potential answers to that question and
+i've been working with this you know for
+a few hours now so you know i have some
+some ideas too i'm thinking that
+uh
+these are diamonds for sale so if i'm
+the person that wants to sell cara you
+know diamonds i think uh you know like
+people like round numbers so someone may
+want to okay would you like you know one
+that is like one carat or one and a half
+karat but if would you like one that is
+one point you know 23 carats maybe my
+clients i know like give me one or give
+me two give me one and a half for one
+and a quarter so i think that that
+explains peaks
+uh like around kind of beautiful
+fractions but then the bias i think is
+because like as a client if you tell me
+hey this is one crowd okay good
+show me and you waited and it's like you
+know like
+0.98 is that well you're trying to
+charge me for one crowd but you're
+giving me only you know a little less so
+my intuition is that clients will
+complain more if you if you are biased
+to the left that is your bias to the
+right so that's
+that was my my own explanation i see
+someone else with another idea go ahead
+oh
+some kind of mathematical though you
+mean
+[Music]
+yeah
+yeah
+so yeah i think that the point is made
+is that in this case
+and the book actually poses a bunch of
+questions but no answer precisely
+because the
+i mean
+the answer will be specific for this
+data set but it doesn't really matter
+because we don't care about this data
+set we care about you know the dataset
+that we work with but the book is
+teaching us to you know use data as as
+or exploit to that analysis as a way to
+prompt questions and come up with
+answers that may be relevant for our
+specific use cases go ahead i see a hand
+over there
+cj
+mm-hmm
+yeah yeah yeah
+okay cool exciting that uh you are
+engaged in the
+in the questions that you know come to
+our brain when we start revealing some
+aspects of the data that are there but
+are hidden until we expose them and
+great ways to expose them is like with
+good counts with good you know
+histograms and things like that like
+this is like nothing like really earth
+shattering just a very basic tool like
+histogram is like super basic and still
+you know see how it can reveal a bunch
+of questions another aspect that we you
+know we're not going to record in depth
+is the idea of patterns that you know
+are created by groups of data that they
+could be just at random but at least you
+have to try make an effort to explain
+those patterns in your head like are
+they really random and if there is a
+pattern then later we'll see tools to
+try extract
+that pattern and confirm if if it is
+what you thought it was
+um
+or not basically that you know basically
+that that comes mostly with the
+relationship between two different
+variables but one variable explains a
+lot of the
+of the
+values that you see in another variable
+um so questions that may come from
+observing patterns are like these ones
+here like how do the observations with
+within each cluster are similar to each
+other and how they are different to
+observations in a different cluster
+and and why you know you also need to
+ask why the appearance of the of the
+cluster might be misleading so in the
+case of for example
+perfect thank you thanks a lot i
+probably need you to again say something
+at 25 or so because we are you know i
+try we're going to be kind of
+interacting more than in the typical
+meet up
+so one aspect that i was thinking in
+terms of how a pattern could be
+misleading is this idea of
+um of the being with that we explored
+the other day so let's see where we are
+here uh
+i think here if i if i run all the
+chunks on top of this one
+run this histogram
+okay i see here you know i can see with
+this specific being with i can see some
+patterns like the ones we were trying to
+explain right that there is like some
+peaks around the whole numbers and and
+then around the fractions the nice
+fractions of whole numbers but if i went
+like 0.5 if i just change the the
+the beam width i see a completely
+different pattern i see that you know
+most of the diamonds are you know less
+than one cutout
+around like i know a little what is it
+like the half of a carat uh so that
+pattern was you know was there before
+but wasn't all that obvious and we have
+totally kind of lost this idea that
+there is a lot of
+um we have lost the patterns that we saw
+uh with peaks around each of the nice
+fractions of a goddess right so the idea
+of patterns being misleading or being
+hidden um
+might have also
+um
+you know has something to do sometimes
+with how you are exploring your data if
+you're visualizing it for example in
+this case with a beam width that is not
+the right
+bandwidth to explore the specific
+pattern so that's why it is always
+recommended to explore a bunch of being
+width you know you go one you go 0 you
+know 0.5 you go
+0.01
+you know like everything so you start
+seeing
+alternative patterns and coming up with
+alternative questions so that you can
+then focus your attention in what seems
+like a promising pattern to explore
+i see
+on go ahead
+quick question on that um
+so when i did histograms um it was like
+sometimes that r was telling me it's not
+the right bin worth do you have any
+advice or do you have any
+suggestions to make like how to find a
+proper bin with from the beginning
+onwards because i don't know if you have
+or is it really just exploring and
+trying out several things and then also
+why is ark telling me this yeah
+honestly i am not familiar with a
+message that you mentioned um
+maybe if you can
+you know unpack that a little more and
+just because i'm very curious what i
+read in this book and in general is that
+it's very exploratory like that you i
+mean the right being with it depends on
+what are you asking actually depends on
+your question right you know maybe if
+you are interested in in you know like
+precisely you know
+explain you know how people behave when
+they cut you know diamonds maybe
+being with 0.01 is a good one because it
+reveals reveals that pattern but maybe
+your research question has nothing to do
+with that and then that when being with
+is not
+useful to you it's more like okay you
+know from all the diamonds which are the
+ones that you know people buy the most
+and maybe you know that 0.5 being with
+is more useful because it reveals a peak
+around the half car you know so i think
+it's totally dependent on your question
+so please explain a little more about
+that idea of
+r telling you do you remember which
+function it was that told you that
+yeah like definitely i can just no it's
+the normal ggplot histogram function and
+then like with
+just the same code that you have right
+now there
+and but i will like what i can do i will
+just like um after the meeting have a
+look like where i found it and make a
+screenshot so that you can see perfect
+but
+there are some messages that we i think
+we're gonna get have time to show that
+relate to values that are being dropped
+because they are missing um and you know
+i remember seeing those messages but i
+have i honestly i don't remember seeing
+that cj's has his and app so maybe he
+does remember the message or something
+else cj please go ahead
+um no i was just going to mention that
+like histograms are
+problematic for continuous variables
+and there are alternatives to plotting
+distributions of continuous variables so
+histogram works well
+with discrete variables that have like
+a fixed
+bounded range of
+possible values
+and then also like determining what kind
+of pin you want for your instagram is
+a little more rational with a discrete
+value but continuous you have to kind of
+play with this because
+yeah you have to capture so many of them
+but it's really
+arbitrary but like there are other
+plotting things like a density
+i think there's even um
+[Music]
+yeah we covered a little bit on um
+a little bit on that last time uh
+only cover the difference between the gm
+bar and the gm histogram which the
+jumbar um
+you know once you already have something
+that is already straight you know you
+could put you know the bars in the right
+places and the jion histogram would
+discretize
+a continuous variable based on the beam
+width that you choose or you could we
+also did it manually like first we you
+know with deep player we cut
+we use a cut width from the ggplot2
+package to cut a continuous variables in
+in discrete intervals and then make you
+know transform a continuous variable
+into a discrete one and then use jumbar
+to to plot those things i think that the
+most important point that cj highlights
+is that um
+yeah yeah so there is different tools at
+your disposal the more tools that you
+know
+the better questions on the the easier
+you will find you will have it over time
+when you are trying to refine your
+questions uh so far in this you know
+first kind of i would say like
+introduction to exploitation analysis we
+are using the very kind of course tools
+and good enough you know to kind of get
+a good understanding uh but surely a cj
+highlights you know you probably need
+more tools once you get kind of narrower
+into specific aspects of your data
+any other thing you would like to share
+cj before
+um we're not gonna record everything
+anyway so you know i'm happy to use the
+time
+for some more comments and see or see
+how far we can go
+okay i mean you could probably try a gm
+density just to see what it looks like
+sorry i just want to say that it's 10 20
+yet i'm sorry it's 28 fast i don't want
+to
+thank you
+lovely
+let's see what we get so in this case
+actually shouldn't happily remove this
+one so we can we can compare
+one cool thing we could do is to overlay
+the two uh so let's do that um
+if it is still there
+i would love to be able to compare
+and maybe the density i would do
+something like color
+oh
+let's say blue
+for some reason it looks like it's
+been
+kind of pushed ah because one is the
+count
+and the other one may have just the
+scale of the variables themselves
+or
+i'm not sure i mean i need to explore
+more but i think i think it's
+interesting it's kind of the profile of
+the histogram as opposed to
+the bars
+so somehow you i could imagine like a
+line being drawn
+you know
+up and down along this and along this
+thing is maybe if i change the beam
+width i could make it even more similar
+um
+[Music]
+i mean that your
+y-axis can be on a totally different
+scale so you're never going to see them
+really next to each other and just
+modify the
+yeah yeah
+well good i mean i think that the point
+the most important point that you bring
+is that the one of you know different
+tools may reveal different aspects of
+your data you can't do everything with
+just a histogram and for now i'm gonna
+kind of feel happy with
+you know showing what we have
+let's see what else
+okay so let's try so we did talk about
+the idea of
+patterns
+um
+maybe yes we are this is a pretty
+important topic the idea of outliers
+and how we can zoom in so i'm gonna
+leave this for the next
+meetup so we're gonna be next time we're
+gonna be talking about um
+outliers and transforming them when we
+are sure that they are bad data
+transforming them into
+um
+missing values and them into logical
+values in a in a you know binary
+variable so we can plot them and
+visualize them so this is now then the
+end of as far as we could get thanks a
+lot for being
+chatty today and sharing your ideas see
+you next
+bye time catch out

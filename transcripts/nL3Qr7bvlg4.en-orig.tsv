@@ -1,0 +1,870 @@
+320	[Music]
+320	__EVENT__
+2230	
+
+2240	welcome
+2639	 back
+2800	 to
+2960	 the
+3080	 DS
+3520	 incubator
+4520	 in
+4720	 this
+2240	__EVENT__
+4910	
+
+4920	video
+5200	 we're
+5359	 going
+5440	 to
+5560	 be
+5759	 talking
+6279	 about
+4920	__EVENT__
+6710	
+
+6720	the
+6960	 basic
+7439	 usage
+8160	 of
+8719	 DBT
+9719	 we're
+9840	 going
+9960	 to
+10080	 be
+6720	__EVENT__
+10270	
+
+10280	talking
+10559	 about
+10800	 DBT
+11280	 run
+11840	 to
+12040	 execute
+10280	__EVENT__
+12509	
+
+12519	Transformations
+13519	 DBT
+14080	 test
+14480	 to
+14719	 validate
+15400	 the
+12519	__EVENT__
+15549	
+
+15559	Integrity
+16160	 of
+16279	 the
+16440	 transformed
+17320	 data
+18320	 and
+15559	__EVENT__
+19029	
+
+19039	DBT
+19560	 docs
+20000	 generate
+20600	 and
+20800	 DBT
+21199	 docs
+21720	 serve
+22400	 to
+19039	__EVENT__
+22630	
+
+22640	generate
+23000	 and
+23279	 access
+23560	 the
+23720	 documentation
+24640	 of
+22640	__EVENT__
+24870	
+
+24880	the
+24880	__EVENT__
+26109	
+
+26119	database
+27119	 one
+27480	 way
+27880	 in
+28080	 which
+28400	 we
+28519	 can
+28840	 execute
+26119	__EVENT__
+29269	
+
+29279	those
+29519	 commands
+30160	 is
+30359	 in
+30640	 GitHub
+31119	 code
+31480	 spaces
+29279	__EVENT__
+32470	
+
+32480	which
+32759	 I
+32960	 set
+33239	 up
+33719	 in
+34040	 the
+34239	 previous
+34640	 video
+35280	 the
+32480	__EVENT__
+35389	
+
+35399	one
+35760	 just
+36079	 before
+36480	 this
+36640	 one
+37360	 if
+37520	 you
+37960	 already
+35399	__EVENT__
+38389	
+
+38399	did
+38719	 that
+39200	 you
+39320	 may
+39559	 still
+39920	 have
+40480	 that
+41280	 um
+42280	 kth
+38399	__EVENT__
+42549	
+
+42559	have
+42760	 code
+43120	 space
+43719	 still
+44079	 running
+44719	 so
+44879	 I'm
+42559	__EVENT__
+44950	
+
+44960	going
+45079	 to
+45280	 click
+45480	 on
+45680	 that
+46079	 to
+46360	 get
+46719	 access
+47320	 to
+44960	__EVENT__
+47549	
+
+47559	that
+48000	 environment
+49000	 this
+49399	 code
+49760	 space
+50199	 should
+47559	__EVENT__
+50549	
+
+50559	already
+51120	 have
+51760	 the
+51920	 DBT
+52480	 tool
+53039	 installed
+50559	__EVENT__
+53790	
+
+53800	along
+54160	 with
+54320	 the
+54440	 other
+55120	 little
+55359	 pieces
+55600	 of
+53800	__EVENT__
+55790	
+
+55800	software
+56480	 that
+56600	 are
+56760	 needed
+57160	 for
+57680	 this
+57920	 to
+55800	__EVENT__
+58189	
+
+58199	work
+59079	 so
+59760	 uh
+60199	 I'm
+60320	 not
+60840	 gonna
+61840	 explore
+62680	 too
+58199	__EVENT__
+62950	
+
+62960	much
+63280	 of
+63480	 what's
+63719	 going
+63960	 on
+64439	 is
+64799	 this
+64960	 is
+62960	__EVENT__
+65350	
+
+65360	mostly
+65799	 to
+66040	 give
+66200	 you
+66600	 an
+66920	 idea
+67799	 of
+68040	 the
+65360	__EVENT__
+68270	
+
+68280	experience
+69080	 as
+69200	 a
+69360	 user
+69920	 that
+70080	 you
+70200	 would
+70520	 have
+68280	__EVENT__
+71190	
+
+71200	running
+71960	 uh
+72119	 a
+72360	 project
+72840	 or
+73000	 managing
+73400	 a
+71200	__EVENT__
+73590	
+
+73600	project
+74600	 that
+74720	 uses
+75200	 DVP
+76200	 so
+76560	 here
+76759	 let's
+77000	 go
+73600	__EVENT__
+77149	
+
+77159	to
+77479	 a
+77680	 new
+77159	__EVENT__
+80789	
+
+80799	terminal
+81799	 and
+82280	 let's
+82479	 do
+82880	 just
+83159	 that
+83400	 so
+83720	 DBT
+80799	__EVENT__
+84230	
+
+84240	run
+84680	 if
+84759	 you
+84880	 don't
+85119	 have
+85320	 DBT
+86119	 then
+86400	 this
+86600	 will
+84240	__EVENT__
+86910	
+
+86920	fail
+87360	 and
+87520	 it
+87600	 will
+87960	 remind
+88360	 you
+88799	 to
+89040	 go
+89280	 back
+86920	__EVENT__
+89429	
+
+89439	to
+89560	 the
+89680	 prev
+89920	 previous
+90240	 video
+90680	 and
+90840	 see
+91439	 the
+89439	__EVENT__
+91670	
+
+91680	installation
+92439	 instructions
+93439	 so
+93720	 this
+93880	 worked
+91680	__EVENT__
+94550	
+
+94560	successfully
+95560	 and
+95759	 now
+96079	 we
+96200	 can
+96399	 do
+96880	 DVD
+94560	__EVENT__
+99789	
+
+99799	test
+100799	 this
+100960	 will
+101240	 validate
+101880	 that
+102159	 the
+102320	 data
+99799	__EVENT__
+103030	
+
+103040	has
+103159	 been
+103399	 transformed
+104079	 the
+104240	 way
+104479	 we
+104640	 want
+105600	 um
+103040	__EVENT__
+105910	
+
+105920	we
+106240	 are
+106439	 not
+106719	 covering
+107200	 here
+107479	 know
+107799	 how
+108000	 to
+108280	 WR
+105920	__EVENT__
+108550	
+
+108560	to
+108759	 write
+109079	 the
+109240	 tests
+109840	 but
+110000	 simply
+110320	 how
+110479	 to
+110680	 run
+108560	__EVENT__
+110950	
+
+110960	them
+111799	 and
+111960	 finally
+112439	 we
+112560	 want
+112759	 to
+113320	 explore
+113799	 the
+110960	__EVENT__
+113990	
+
+114000	documentation
+114680	 so
+114920	 first
+115159	 we
+115280	 need
+115439	 to
+115560	 do
+116159	 DBT
+114000	__EVENT__
+117190	
+
+117200	docs
+118360	 generate
+119360	 and
+119560	 then
+117200	__EVENT__
+120469	
+
+120479	we're
+120640	 going
+120759	 to
+120960	 do
+121399	 DBT
+121960	 docs
+120479	__EVENT__
+125469	
+
+125479	serve
+126479	 so
+127079	 generate
+127600	 will
+127959	 create
+128959	 files
+129440	 that
+125479	__EVENT__
+129550	
+
+129560	are
+129879	 then
+130399	 browsable
+131319	 on
+131879	 a
+132120	 web
+132360	 browser
+133160	 and
+129560	__EVENT__
+133350	
+
+133360	serve
+133760	 will
+133959	 serve
+134400	 those
+134599	 files
+135000	 as
+135080	 if
+135239	 they
+133360	__EVENT__
+135350	
+
+135360	were
+135519	 a
+135680	 website
+136239	 the
+136400	 static
+136760	 website
+137080	 I
+137280	 got
+135360	__EVENT__
+137790	
+
+137800	bring
+138480	 so
+138800	 before
+139160	 I
+139360	 hit
+140000	 uh
+140239	 I
+140400	 I
+140519	 run
+141319	 DVD
+137800	__EVENT__
+141750	
+
+141760	serve
+142239	 I
+142319	 wanted
+142599	 to
+142760	 show
+143000	 you
+143440	 the
+143640	 status
+144200	 of
+141760	__EVENT__
+144390	
+
+144400	this
+144599	 kit
+144400	__EVENT__
+145910	
+
+145920	reposter
+147239	 because
+148239	 the
+148400	 fact
+148640	 that
+148760	 you
+148879	 see
+145920	__EVENT__
+149150	
+
+149160	this
+149319	 file
+149519	 is
+150239	 here
+150519	 these
+150680	 folders
+151560	 listed
+149160	__EVENT__
+151990	
+
+152000	here
+152959	 shows
+153519	 that
+153680	 the
+153879	 structure
+154400	 of
+154640	 this
+152000	__EVENT__
+155229	
+
+155239	repository
+156239	 has
+156800	 changed
+157319	 so
+157640	 those
+157959	 commands
+155239	__EVENT__
+158670	
+
+158680	what
+158959	 have
+159480	 uh
+159720	 created
+160560	 is
+161000	 a
+161159	 number
+161400	 of
+158680	__EVENT__
+161550	
+
+161560	files
+161879	 and
+162080	 folders
+162840	 inside
+163319	 the
+163560	 directory
+161560	__EVENT__
+164390	
+
+164400	where
+164599	 you
+164920	 have
+165200	 your
+165440	 DVT
+165920	 project
+166519	 so
+167319	 uh
+164400	__EVENT__
+167470	
+
+167480	let's
+167720	 do
+168440	 a
+168760	 the
+169200	 ad
+169680	 to
+169840	 see
+170159	 more
+170440	 details
+167480	__EVENT__
+172270	
+
+172280	about
+172280	__EVENT__
+174710	
+
+174720	um
+175720	 all
+176319	 and
+176519	 now
+176920	 need
+177400	 status
+178200	 to
+178360	 see
+179080	 more
+174720	__EVENT__
+179270	
+
+179280	details
+179599	 about
+179920	 what
+180120	 has
+180280	 been
+180519	 added
+180920	 here
+179280	__EVENT__
+181149	
+
+181159	so
+181360	 we
+181480	 can
+181640	 see
+182080	 that
+182519	 there
+182640	 is
+182760	 a
+182920	 logs
+181159	__EVENT__
+183270	
+
+183280	folder
+183680	 that
+183799	 has
+183959	 been
+184319	 added
+185319	 and
+185599	 also
+186000	 a
+183280	__EVENT__
+186229	
+
+186239	Target
+186959	 folder
+187480	 that
+187599	 has
+187799	 been
+188080	 add
+188519	 we're
+186239	__EVENT__
+188630	
+
+188640	going
+188760	 to
+189120	 see
+189560	 that
+189760	 Target
+190080	 folder
+190920	 in
+191040	 the
+188640	__EVENT__
+191270	
+
+191280	next
+191760	 video
+192400	 where
+192560	 we
+192760	 go
+193159	 the
+193319	 structure
+193799	 of
+191280	__EVENT__
+193990	
+
+194000	a
+194159	 DBT
+194519	 project
+195200	 but
+195360	 to
+195519	 begin
+195879	 with
+196080	 you
+196200	 can
+194000	__EVENT__
+196350	
+
+196360	see
+196640	 that
+196879	 there
+197000	 is
+197200	 for
+197400	 example
+197879	 a
+198080	 an
+198280	 index
+196360	__EVENT__
+198670	
+
+198680	file
+199080	 which
+198680	__EVENT__
+200229	
+
+200239	typically
+201239	 are
+201599	 is
+201799	 associated
+202319	 to
+202720	 websites
+200239	__EVENT__
+203710	
+
+203720	uh
+204040	 so
+204799	 uh
+205120	 the
+205280	 next
+205519	 step
+206000	 for
+206239	 us
+206680	 now
+207400	 is
+207560	 to
+203720	__EVENT__
+207869	
+
+207879	serve
+208519	 the
+208720	 website
+209200	 where
+209360	 we
+209439	 can
+209959	 the
+207879	__EVENT__
+210110	
+
+210120	documentation
+210799	 so
+210959	 we're
+211080	 going
+211200	 to
+211360	 do
+212319	 DVT
+210120	__EVENT__
+216229	
+
+216239	serve
+217239	 sorry
+217480	 I
+217560	 forgot
+217959	 to
+218080	 do
+218319	 DVD
+219040	 doc
+216239	__EVENT__
+221630	
+
+221640	ser
+222640	 and
+222799	 that
+222920	 will
+223200	 open
+224159	 a
+224439	 web
+224680	 browser
+221640	__EVENT__
+225309	
+
+225319	here
+225480	 it
+225599	 is
+225920	 automatically
+226680	 where
+226879	 we
+227080	 get
+225319	__EVENT__
+227589	
+
+227599	access
+228599	 uh
+228879	 to
+229280	 the
+229480	 documentation
+230200	 in
+230319	 the
+227599	__EVENT__
+230470	
+
+230480	form
+230799	 of
+231560	 a
+231720	 website
+232159	 that's
+232360	 pretty
+232599	 cool
+233120	 so
+230480	__EVENT__
+233509	
+
+233519	here
+233760	 is
+233959	 my
+234239	 Hello
+234560	 World
+235319	 little
+235760	 project
+233519	__EVENT__
+236309	
+
+236319	I'm
+236400	 going
+236519	 to
+236720	 keep
+237079	 keep
+237319	 continuing
+236319	__EVENT__
+237910	
+
+237920	clicking
+238360	 there
+239239	 and
+239439	 here
+239560	 is
+239920	 some
+237920	__EVENT__
+240110	
+
+240120	information
+240959	 some
+241239	 details
+241920	 about
+242599	 about
+242879	 my
+240120	__EVENT__
+243110	
+
+243120	data
+243640	 and
+243799	 the
+243959	 source
+244319	 code
+244879	 that
+245280	 generated
+243120	__EVENT__
+245750	
+
+245760	or
+245959	 transform
+246959	 the
+247120	 data
+248079	 okay
+248480	 that's
+248720	 all
+245760	__EVENT__
+248910	
+
+248920	for
+249200	 now
+249879	 uh
+250280	 again
+251000	 um
+251680	 the
+251840	 the
+252000	 goal
+252400	 was
+252760	 to
+248920	__EVENT__
+253190	
+
+253200	Simply
+254200	 get
+254480	 familiarized
+255360	 with
+255760	 how
+256000	 to
+256239	 use
+253200	__EVENT__
+256949	
+
+256959	the
+257160	 most
+257519	 basic
+257959	 commands
+258560	 in
+258799	 DVD
+256959	__EVENT__

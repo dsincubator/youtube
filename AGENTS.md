@@ -164,6 +164,27 @@ All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
 5. **Verification**: Human review adds `verified` fields (§5.2)
 6. **Conformance check**: Validate against §11
 
+### Searching the wiki: qmd + rg (complements LLM)
+
+Raw LLM can `cat` all 216 files, but local hybrid search saves context and finds semantic matches. Prefer `qmd query` for discovery, `rg`/`qmd search` for exact symbols.
+
+Install: `npm install -g @tobilu/qmd` or `bun install -g @tobilu/qmd` / `npx @tobilu/qmd`; models auto-download to `~/.cache/qmd`. Repo: <https://github.com/tobi/qmd>. Collection `dsincubator` already indexed (`qmd ls dsincubator` → 216, `qmd status` → 1155 vectors).
+
+```sh
+qmd ls dsincubator                                     # list indexed files
+qmd search "docker" -c dsincubator -n 3                # fast BM25 (exact)
+qmd query "targets pipeline caching" -c dsincubator    # hybrid BM25+vector+LLM rerank (best)
+qmd query "how to handle merge conflicts git" -c dsincubator  # → pr_sync + topics/git/merge-conflicts.md
+qmd get qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md  # pull full doc
+qmd multi-get "dsincubator/topics/pipelines/*"          # batch
+rg -n "key_topics" dsincubator/sources/*.md             # exact grep complement
+rg -n "tar_make|expect_snapshot" dsincubator/topics/    # symbol search
+# after dsincubator/ changes:
+qmd update && qmd embed -c dsincubator
+```
+
+Use `qmd query` for prose/questions, `qmd search`/`rg` for symbols (`tar_make`, `expect_snapshot`, `gh pr`); then `qmd get` + `rg -A` to pull context. See `qmd --help` and `rg --help`.
+
 ### Extraction Prompt (v2 — hardened by 3-file pilot + adversarial review)
 Distillation agents MUST follow these rules (pilot caught: invented `tar_load`, rewritten `tags`, unanchored `reproducibility`, false `None mentioned`, target/function conflation):
 1. **Quote-to-name**: every package/function name must trace to an exact caption fragment (keep mangled quote + normalized form, e.g. `tar_read` ← `car read`, `covr` ← `cover package`). Cannot quote it → do not write it.

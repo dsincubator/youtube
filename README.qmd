@@ -123,3 +123,32 @@ fs::dir_ls("dsincubator/sources", regexp = "source_.*\\.md$")[[1]] |> readLines(
 ```{r}
 fs::dir_ls("dsincubator/topics", regexp = "\\.md$", recurse = TRUE)[[2]] |> readLines(n = 40) |> writeLines()
 ```
+
+### Search the wiki with qmd (complements LLM)
+
+Raw LLM can `grep`/`cat` all 216 files, but [`qmd`](https://github.com/tobi/qmd) gives local hybrid search (BM25 + vector + LLM rerank) without loading the bundle — useful for agents and humans.
+
+Install: `npm install -g @tobilu/qmd` or `bun install -g @tobilu/qmd` / `npx @tobilu/qmd` — models auto-download to `~/.cache/qmd`. Repo: <https://github.com/tobi/qmd>.
+
+This repo's collection is `dsincubator` (216 `**/*.md`, 1155 vectors):
+
+```sh
+qmd ls dsincubator                          # 216 indexed
+qmd status                                  # 1155 vectors, updated 44s ago
+qmd search "docker" -c dsincubator -n 3     # fast BM25
+qmd query "targets pipeline caching" -c dsincubator  # hybrid + rerank (best)
+qmd get qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md
+qmd multi-get "dsincubator/topics/pipelines/*"       # batch fetch
+rg -n "key_topics" dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md  # exact grep complement
+```
+
+Example — hybrid query finds the right concept even when keywords don't match verbatim:
+
+```sh
+qmd query "how to handle merge conflicts git" -c dsincubator
+# → source_g1PRMaTFYdk (pr_sync, 85%) + topics/git/merge-conflicts.md (62%)
+qmd query "Shiny debugging browser" -c dsincubator
+# → topics/workflow/debugging-workflows.md (100%) + topics/shiny/shiny-debugging.md
+```
+
+For agents: prefer `qmd query` for discovery (prose/semantic), `qmd search`/`rg` for exact symbols (`tar_make`, `expect_snapshot`), then `qmd get`/`rg -A` to pull context. Run `qmd update && qmd embed -c dsincubator` after `dsincubator/` changes.

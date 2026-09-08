@@ -92,7 +92,7 @@ Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<i
 - [x] `data/metadata.csv`: 151 rows derived, join integrity holds.
 - [x] `transcripts/`: 151/151 fetched, all `ok`; `.txt`/`.tsv`/`.md` (OKF v0.2) derived for all 151 via `bin/convert-transcripts`.
 - [x] `bin/convert-transcripts`: supports `--format md` and `--format all`; generates OKF v0.2 transcripts with YAML frontmatter.
-- [x] `README.qmd`: created with live R chunks (metadata overview, sample metadata, transcript join via `fs::dir_ls()` → `tibble()` → `dplyr::left_join()`).
+- [x] `README.qmd`: created with live R chunks (Structure, Overview inc. `fs::dir_ls()` → `tibble()` → `purrr::map_chr()` → `left_join()`, Example transcript via `fs::dir_ls()[[5]]`); libs at top, `knitr::opts_chunk$set()` header, no `head()`/`Join Summary`.
 - [x] `README.md`: rendered from `README.qmd` via `quarto render README.qmd --to gfm --quiet`.
 - [x] Open question resolved: `sbp5Q8niTho` comment was deleted from YouTube (fetch succeeded, database stands).
 - [x] `fetch-transcripts` prune fix: `pick_transcript`/`--force` now touch subtitle extensions only (earlier `*.*` glob deleted converted `.txt`/`.tsv` on re-runs).

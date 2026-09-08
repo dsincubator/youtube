@@ -14,6 +14,7 @@ Options:
   --format FORMAT       Output format: txt, tsv, md, both, or all (default: both)
                         txt: plain text, tsv: tab-separated, md: OKF markdown,
                         both: txt+tsv, all: txt+tsv+md
+  --tag TAG             Bundle tag for frontmatter tags (default: ds-incubator)
   -n, --count N         Process only the first N videos
 EOF
 }
@@ -21,6 +22,7 @@ EOF
 CSV="data/metadata.csv"
 OUT_DIR="transcripts"
 FORMAT="both"
+TAG="ds-incubator"
 COUNT=0
 
 need_arg() {
@@ -33,6 +35,7 @@ while [[ $# -gt 0 ]]; do
         --csv) need_arg "$@"; CSV="$2"; shift 2 ;;
         --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
         --format) need_arg "$@"; FORMAT="$2"; shift 2 ;;
+        --tag) need_arg "$@"; TAG="$2"; shift 2 ;;
         -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
         *)
             if [[ "$1" == *.csv ]]; then CSV="$1"
@@ -47,11 +50,11 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-python3 - "$CSV" "$OUT_DIR" "$FORMAT" "$COUNT" <<'PYEOF'
+python3 - "$CSV" "$OUT_DIR" "$FORMAT" "$COUNT" "$TAG" <<'PYEOF'
 import csv, json, os, sys, re, unicodedata
 from datetime import datetime, timezone
 
-csv_path, out_dir, fmt, count_str = sys.argv[1:5]
+csv_path, out_dir, fmt, count_str, tag = sys.argv[1:6]
 count = int(count_str)
 
 def slugify(title):
@@ -218,20 +221,33 @@ def do_md(base, path, vid):
     title = meta.get("title", "")
     events = data.get("events", [])
     body_lines = []
+    plain_lines = []
     for ev in events:
         segs = ev.get("segs", [])
         text = "".join(seg.get("utf8", "") for seg in segs).strip()
-        if text:
-            body_lines.append(text)
+        if not text:
+            continue
+        plain_lines.append(text)
+        t_ms = ev.get("tStartMs", 0)
+        try:
+            total_s = int(t_ms) // 1000
+        except Exception:
+            total_s = 0
+        m, s = divmod(total_s, 60)
+        h, m = divmod(m, 60)
+        ts = f"{h}:{m:02d}:{s:02d}" if h else f"{m:02d}:{s:02d}"
+        body_lines.append(f"{ts}: {text}")
     body = "\n\n".join(body_lines)
+    plain_body = "\n\n".join(plain_lines)
     if not body:
         body = "No transcript content."
+        plain_body = body
     lang = "en"
     m = re.search(r"\.([a-z]{2})(?:-orig)?\.json3$", os.path.basename(path))
     if m:
         lang = m.group(1)
-    desc = summarize(title, body)
-    tags = ["ds-incubator"] + topical_tags(title, body)
+    desc = summarize(title, plain_body)
+    tags = [tag] + topical_tags(title, plain_body)
     slug = slugify(title) if title else vid
     md_path = out_dir + "/" + vid + "_" + slug + ".md"
     fm_lines = [

@@ -63,7 +63,7 @@ CMD_TRANS=(./bin/fetch-transcripts --csv "$CSV_PATH" --out-dir "$OUT_DIR/transcr
 "${CMD_TRANS[@]}"
 
 echo "=== Step 3: Converting Transcripts to OKF Markdown ==="
-CMD_CONV=(./bin/convert-transcripts --csv "$CSV_PATH" --out-dir "$OUT_DIR/transcripts" --format md)
+CMD_CONV=(./bin/convert-transcripts --csv "$CSV_PATH" --out-dir "$OUT_DIR/transcripts" --format md --tag "$BUNDLE_TAG")
 [[ "$COUNT" -gt 0 ]] && CMD_CONV+=(--count "$COUNT")
 "${CMD_CONV[@]}"
 

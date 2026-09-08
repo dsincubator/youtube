@@ -101,20 +101,22 @@ pick_transcript() {
     done
     done
     SURVIVOR=""
-    for _e in $SUB_EXTS; do
-    for _f in "$OUT_DIR"/${_id}.*-orig.${_e}; do
-        [[ -f "$_f" ]] || continue
-        SURVIVOR="$_f"
-        break 2
-    done
+    for _pref in "en-orig" "es-orig" "*-orig" "en" "es"; do
+        for _e in $SUB_EXTS; do
+            for _f in "$OUT_DIR"/${_id}.${_pref}.${_e}; do
+                [[ -f "$_f" ]] || continue
+                SURVIVOR="$_f"
+                break 3
+            done
+        done
     done
     if [[ -z "$SURVIVOR" ]]; then
         for _e in $SUB_EXTS; do
-        for _f in "$OUT_DIR"/${_id}.*.${_e}; do
-            [[ -f "$_f" ]] || continue
-            SURVIVOR="$_f"
-            break 2
-        done
+            for _f in "$OUT_DIR"/${_id}.*.${_e}; do
+                [[ -f "$_f" ]] || continue
+                SURVIVOR="$_f"
+                break 2
+            done
         done
     fi
     if [[ -n "$SURVIVOR" ]]; then
@@ -179,7 +181,7 @@ for i in $(seq 0 $((TOTAL - 1))); do
     attempt=0
     while [[ $attempt -lt $RETRIES ]]; do
         attempt=$((attempt + 1))
-        if fetch_one "$ID" ".*-orig" 0; then
+        if fetch_one "$ID" "en-orig,es-orig,en.*,es.*" 0; then
             break
         fi
         echo "[fetch-transcripts] attempt ${attempt}/${RETRIES} failed for ${ID}, retrying in ${SLEEP}s"
@@ -188,9 +190,9 @@ for i in $(seq 0 $((TOTAL - 1))); do
 
     pick_transcript "$ID"
     if [[ -z "$SURVIVOR" ]]; then
-        # Fallback for videos without *-orig tracks: broader langs, then prune.
-        echo "[fetch-transcripts] fallback ${ID} (trying en.*,es.*)"
-        fetch_one "$ID" "en.*,es.*" 1 || true
+        # Fallback for videos without en/es tracks: any original, then prune.
+        echo "[fetch-transcripts] fallback ${ID} (trying .*-orig)"
+        fetch_one "$ID" ".*-orig" 1 || true
         pick_transcript "$ID"
     fi
 

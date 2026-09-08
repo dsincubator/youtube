@@ -37,7 +37,7 @@ README.md                    # Rendered output (git-flavored markdown)
 ```
 
 - `json3` = `events[].tStartMs/dDurationMs` + `segs[].utf8/tOffsetMs` (word-level timing for editing).
-- `.md` transcripts follow OKF v0.2: YAML frontmatter (`type`, `title`, `description`, `resource`, `tags`, `lang`, `generated`, `status`, `sources` + `usage_window`) + `# Transcript` body. Frontmatter is regenerated from spec by `bin/convert-transcripts` — never trust it, re-derive it (description = first substantive sentence, not caption filler; `tags` = topical keyword scan + `ds-incubator`; `generated.by` = `process:convert-transcripts` per §7; `lang` from caption track; `usage_count`/`last_modified`/`usage_window` from CSV).
+- `.md` transcripts follow OKF v0.2: YAML frontmatter (`type`, `title`, `description`, `resource`, `tags`, `lang`, `generated`, `status`, `sources` + `usage_window`) + `# Transcript` body with deterministic timestamps (`00:08: text` per event derived from `tStartMs`, no LLM). Frontmatter is regenerated from spec by `bin/convert-transcripts` — never trust it, re-derive it (description = first substantive sentence, not caption filler; `tags` = topical keyword scan + bundle tag (`ds-incubator` default, `--tag` override); `generated.by` = `process:convert-transcripts` per §7; `lang` from caption track; `usage_count`/`last_modified`/`usage_window` from CSV).
 - `lang` = original spoken language (`en` most videos, `es` for 6 Spanish-titled ones: `1lpcCHfozh0`, `EmDubkF8DpQ`, `hs_Pzxny7XE`, `kNV8dDGF7Hw`, `nSJT8NGhSTs`, `xx5WNZgQEdY`).
 - The `g1PRMaTFYdk` duplicate rows are byte-identical, so either survives the collapse.
 - The 3 `private` videos have no CSV rows and are never attempted by `fetch-transcripts`; the transcript gate below applies to the 151 public IDs only.
@@ -344,21 +344,12 @@ qmd query "question" -c dslab -n 3
 - [ ] **Full run (all 27 videos)**: `./bin/build-wiki --playlist "PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab`
 - [ ] **qmd integration**: `qmd collection add ./dslab --name dslab && qmd embed -c dslab`
 
-### Existing IDEAS / PLAN — TODOs to discuss next session
+### IDEAS / PLAN
 
-Source: [awesome-llm-wiki](https://github.com/gavischneider/awesome-llm-wiki) — curated blueprints for compounding AI-compiled knowledge bases (raw → wiki → schema, Ingest → Compile → Query → Lint, Dream Cycles, MCP, OKF).
-
-- [ ] **Practice & document wiki maintenance workflows** — iterate on ingest (new video → distill → aggregate → topics → bundle → `qmd update`), review (`verified` flip), lint (broken links/orphans/contradictions), gap analysis; doc in `AGENTS.md:114` + `README.qmd:96` (done once, keep current).
-- [ ] ~~**Generalize tools for other playlists**~~ — ✅ DONE, see GENERALIZED WORKFLOW section above.
-- [ ] **Wiki for ds-handout + ds-lab** — new bundles from those repos' content (handouts/labs as `transcripts/` analogues).
-- [ ] **Wiki for rOpenSci** — two sub-bundles:
-  - [ ] videos (YouTube/talks)
-  - [ ] devguide (book/docs) with `qmd` search — `qmd collection add devguide/ --name ropensci-devguide` + `qmd context add` + hybrid `qmd query`.
-- [ ] **From awesome-llm-wiki (prioritized)**:
-  - [ ] `Dream Cycles` / lint pass — scheduled `wiki-lint` (contradictions, stale `stale_after`, orphans, gaps) — see `agent-wiki-cli`/`Klore`.
-  - [ ] `Two-pass distillation` — extract → resolve cross-links to reduce hallucination.
-  - [ ] `Broken link linting` — CI check for `dsincubator/topics/` links.
-  - [ ] `MCP server` — expose `dsincubator/` via `pi-llm-wiki`/`Synto` for Claude Desktop / MCP clients (`qmd mcp` already does search).
-  - [ ] `Agent roles` — specialize `Ingestor`/`Librarian`/`Linter` for scale.
-  - [ ] `Type-safe frontmatter` — Pydantic schemas for `type/tags` validation (as in `synthadoc`/`OpenKB`).
-  - [ ] `Entity resolution` — `graphwiki` → Neo4j for cross-source entity linking (P3).
+All future plans, local model optimization strategies, evaluation frameworks, generalized pipeline tasks, new bundle targets, and advanced architecture ideas (from `awesome-llm-wiki`) are fully detailed in **`ideas/`**:
+- [`ideas/local-llm-workflow-optimization.md`](ideas/local-llm-workflow-optimization.md) — Local-first pipeline optimization & model routing
+- [`ideas/eval-plan.md`](ideas/eval-plan.md) — Comprehensive evaluation plan (T1–T5 tasks × models, judge calibration, CI gates)
+- [`ideas/generalized-wiki-pipeline.md`](ideas/generalized-wiki-pipeline.md) — Generalized pipeline scripts & dslab execution plan
+- [`ideas/new-bundles.md`](ideas/new-bundles.md) — Expansion to ds-handout, ds-lab, and rOpenSci
+- [`ideas/awesome-llm-wiki-ideas.md`](ideas/awesome-llm-wiki-ideas.md) — Advanced blueprints (Dream Cycles, two-pass distillation, MCP, Pydantic, graphwiki)
+- [`ideas/wiki-maintenance-workflows.md`](ideas/wiki-maintenance-workflows.md) — Day-2 maintenance, incremental ingest, verification (§5.2), gap analysis

@@ -20,7 +20,10 @@ bin/fetch-transcripts        # fetch captions
 ```
 
 - `json3` = `events[].tStartMs/dDurationMs` + `segs[].utf8/tOffsetMs` (word-level timing for editing; derive readable `.txt`/`.tsv` later).
-- `lang` = original spoken language (`en` most videos, `es` for 4 Spanish-titled ones).
+- `lang` = original spoken language (`en` most videos, `es` for 4 Spanish-titled ones: `EmDubkF8DpQ`, `nSJT8NGhSTs`, `hs_Pzxny7XE`, `xx5WNZgQEdY`).
+- The `g1PRMaTFYdk` duplicate rows are byte-identical, so either survives the collapse.
+- The 3 `private` videos have no CSV rows and are never attempted by `fetch-transcripts`; the transcript gate below applies to the 151 public IDs only.
+- `--count N` / `--limit N` take the first N IDs in sorted order. Add `--cookies-from-browser chrome` whenever output contains "Sign in to confirm you're not a bot".
 - Never commit `raw/`, `.omo/`, `.Rhistory`, `.Rproj.user`, `*/blog_files`, `**/*.html`.
 
 ## PLAN
@@ -57,9 +60,26 @@ Flags: `--refresh`, `--playlist URL`, `--csv PATH`, `--meta-dir DIR`, `--limit N
 
 Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<id>.json` (skips existing dumps unless `--refresh`; corrupt dumps re-fetched), then `data/metadata.csv` derived from the store (atomic replace; refresh aborts when >2 and >10% of videos fail). Terminal states (`private`/`unavailable` with reason) are recorded in `metadata/manifest.tsv` and skipped on later runs — `--refresh` re-probes them. Per-video logs to `/tmp/fetch-metadata-<id>.log`.
 
+## STATUS (2026-09-08)
+
+- [x] `metadata/`: 151 dumps + `manifest.tsv` (154 rows: 151 `ok`, 3 `private` with reasons).
+- [x] `data/metadata.csv`: 151 rows derived, join integrity holds.
+- [ ] `transcripts/`: 3 of 151 fetched — full run pending (see NEXT).
+- [ ] Open question: `sbp5Q8niTho` dump reports 0 comments despite a known comment — degraded fetch or deleted comment (see NEXT).
+
+## NEXT
+
+1. `./bin/fetch-transcripts` (VPN off) — fetches the remaining 148 captions; 3 existing skip.
+2. Re-run the step-3 verify one-liner — empty output = complete.
+3. Probe the comments question (writes only to `/tmp`):
+   `yt-dlp --skip-download --dump-single-json --write-comments --no-write-info-json -- "https://www.youtube.com/watch?v=sbp5Q8niTho" > /tmp/sbp.json 2>/tmp/sbp.err || { echo "FETCH FAILED — inconclusive, see /tmp/sbp.err"; }`
+   then `python3 -c "import json; d=json.load(open('/tmp/sbp.json')); print('comments:', len(d.get('comments') or []), '| comment_count:', d.get('comment_count'))"`
+   (A failed fetch must never be read as "zero comments" — check `/tmp/sbp.err` first.)
+   Nonzero = stored dump is stale → `rm metadata/sbp5Q8niTho.json && ./bin/fetch-metadata` (re-fetches just it; `--refresh` is full-rebuild only, there is no per-video flag); zero with a successful fetch = comment gone from YouTube, database stands.
+
 ## QUALITY GATES
 
-- [ ] Every `id` in CSV has `transcripts/<id>.<lang>.json3` (`status ok`).
+- [ ] Every `id` in CSV (151 public videos; private ones have no rows) has `transcripts/<id>.<lang>.json3` (`status ok`).
 - [ ] No unexplained `missing`/`error` rows.
 - [ ] `manifest.tsv file` resolves to a real file; `lang` matches spoken language.
 - [ ] Join integrity: each manifest `id` appears exactly once in CSV.

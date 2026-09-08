@@ -1,6 +1,6 @@
 # AGENTS.md — dsincubator transcript database + LLM wiki
 
-Goal: build `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF v0.2 format) linked by `id`, then transform the 151 transcripts into an OKF v0.2 LLM wiki bundle (`dsincubator_wiki/`) per `planning_manifest.json`.
+Goal: build `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF v0.2 format) linked by `id`, then transform the 151 transcripts into an OKF v0.2 LLM wiki bundle (`dsincubator_wiki/`) per `planning_manifest.json`. **Wiki entry point: [`dsincubator_wiki/index.md`](dsincubator_wiki/index.md)** (§8/§12) — directory indexes [`dsincubator_wiki/topics/index.md`](dsincubator_wiki/topics/index.md) / [`dsincubator_wiki/sources/index.md`](dsincubator_wiki/sources/index.md), history [`dsincubator_wiki/log.md`](dsincubator_wiki/log.md) (§9).
 
 When repo state changes (new videos, updated transcripts, schema changes, wiki plan/bundle changes), update `README.qmd` and re-render with `quarto render README.qmd --to gfm --quiet`.
 
@@ -18,12 +18,16 @@ metadata/<id>.json           # raw per-video dump (--dump-single-json incl. comm
 metadata/manifest.tsv        # id | status | reason | file (ok/private/unavailable/error)
 transcripts/<id>_<title>.md  # OKF v0.2 transcript (YAML frontmatter + markdown body)
 transcripts/manifest.tsv        # id | status | file | lang
-planning_manifest.json       # wiki plan: 44 topic pages across 13 categories
-dsincubator_wiki/            # OKF v0.2 LLM wiki bundle (planned: topics/ + sources/ + index.md + log.md + references/)
+planning_manifest.json       # wiki plan: 59 topic pages across 13 categories (44 + 8 missing topics + overview)
+dsincubator_wiki/            # OKF v0.2 LLM wiki bundle (59 topics + 151 sources + index.md + log.md + references/)
+dsincubator_wiki/index.md    # bundle root (okf_version 0.2 §12) — START HERE
+dsincubator_wiki/topics/     # 59 topic pages (each an OKF concept with type) + topics/index.md (§8)
+dsincubator_wiki/sources/    # 151 distilled sources + sources/index.md (§8) + sources/log.md (§9)
+dsincubator_wiki/references/ # external executors/attesters (§6.3)
 bin/fetch-metadata           # raw dumps + derive CSV
 bin/fetch-transcripts        # fetch captions
 bin/convert-transcripts      # json3 -> txt/tsv/md
-README.qmd                   # Quarto source with live R chunks → rendered to README.md
+README.qmd                   # Quarto source with 3 sections (Fetch → Example metadata/transcript → Wiki → Example topics/source) → rendered to README.md
 README.md                    # Rendered output (git-flavored markdown)
 ```
 
@@ -94,35 +98,38 @@ Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<i
 - [x] `data/metadata.csv`: 151 rows derived, join integrity holds.
 - [x] `transcripts/`: 151/151 fetched, all `ok`; `.txt`/`.tsv`/`.md` (OKF v0.2) derived for all 151 via `bin/convert-transcripts`.
 - [x] `bin/convert-transcripts`: supports `--format md` and `--format all`; generates OKF v0.2 transcripts with YAML frontmatter.
-- [x] `README.qmd`: created with live R chunks (Structure, Overview inc. `fs::dir_ls()` → `tibble()` → `purrr::map_chr()` → `left_join()`, Example transcript via `fs::dir_ls()[[5]]`); libs at top, `knitr::opts_chunk$set()` header, no `head()`/`Join Summary`.
+- [x] `README.qmd`: live R chunks (Structure, Fetch → Example metadata/transcript, Wiki → Example topics/source); libs at top, `knitr::opts_chunk$set()` header, no `head()`/`Join Summary`; restructured to workflow order (fewer/shorter headings).
 - [x] `README.md`: rendered from `README.qmd` via `quarto render README.qmd --to gfm --quiet`.
 - [x] Open question resolved: `sbp5Q8niTho` comment was deleted from YouTube (fetch succeeded, database stands).
 - [x] `fetch-transcripts` prune fix: `pick_transcript`/`--force` now touch subtitle extensions only (earlier `*.*` glob deleted converted `.txt`/`.tsv` on re-runs).
 - [x] Title sanitization: ASCII-only, lowercase, hyphen-separated words.
 - [x] Frontmatter regen from spec (2026-09-08): `bin/convert-transcripts` re-derived all 151 `.md` frontmatters — actor fix (`process:convert-transcripts`), substantive descriptions, topical tags, `lang`, credibility signals (`usage_count`/`last_modified`/`usage_window`). Old frontmatter treated as untrusted.
 - [x] Wiki pilot (2026-09-08): 3 distilled `dsincubator_wiki/sources/` done (`-9QCNwmpTOE` TDD, `pbc6NX1n01Q` targets, `1lpcCHfozh0` Spanish) + adversarial review (1 FAIL fixed: invented `tar_load`, rewritten `tags`, false `None mentioned`) → Extraction Prompt v2 below.
-- [x] `README.qmd`: Wiki section added (live chunks from `planning_manifest.json` + `dsincubator_wiki/sources/`); `README.md` re-rendered.
+- [x] `sources/` (2026-09-08): **151/151** `dsincubator_wiki/sources/source_<id>_<slug>.md` distilled per Extraction Prompt v2 (frozen frontmatter, quote-to-name, anchored `key_topics`, bilingual headings for `es`) via parallel subagents + spot-checks.
+- [x] `planning_manifest.json` aggregation: `source_files[]` populated for all 59 topics (0 unassigned); clustering verified.
+- [x] `topics/` (2026-09-08): **59/59** `dsincubator_wiki/topics/` pages with `type` (§4.1), `sources` credibility (§5.1), actor `agent:okf-wiki-builder/1.0` (§7), cross-links (§6), `Attested Computation` for pipelines (§10); YAML quoting fixed for 3 topics.
+- [x] Bundle assembly: `dsincubator_wiki/index.md` (okf_version 0.2 §12), `topics/index.md` (§8), `sources/index.md` (§8), `sources/log.md` (§9), `log.md` (§9), `references/` (§6.3); conformance check passed.
+- [x] `README.qmd`: Wiki section points to bundle entry point; `README.md` re-rendered (workflow order, fewer headings, 1-row tables dropped).
 
 ## NEXT (fresh-agent runbook — start here)
 
-0. Read this file top to bottom, then `planning_manifest.json`. Do not touch `transcripts/` frontmatter by hand — `bin/convert-transcripts` owns it.
-1. **Finish `sources/` (148 of 151 pending)**: for each transcript without a `dsincubator_wiki/sources/source_<id>_<slug>.md`:
-   a. Scaffold frontmatter deterministically from the transcript's frontmatter + `data/metadata.csv` (copy `title`, `tags`, `lang`, `usage_count`, `last_modified`, `usage_window`, `sources[]` byte-identical; set `type: source`, `generated.by: agent:okf-wiki-builder/1.0`, `status: draft`; leave `key_topics: []` for the agent).
-   b. Distill the body per **Extraction Prompt v2** below (Summary + Key Concepts + verbatim Code Snippets; Spanish transcripts → Spanish body, English `key_topics` with bilingual headings).
-   c. Work in batches via parallel `general` subagents (5–10 transcripts each); spot-check each batch with one adversarial review pass (same brief as the pilot review).
-   d. Commit per batch. Re-render `README.qmd` (Wiki progress chunks update automatically) whenever `sources/` changes.
-2. **Aggregation**: read all 151 `sources/` frontmatter + summaries → populate `planning_manifest.json` `source_files[]` (currently empty) and adjust the 44 topics if clustering demands it.
-3. **Topic generation**: write the 44 `dsincubator_wiki/topics/` pages with cross-links (§6); pipeline topics use `type: Attested Computation`.
-4. **Bundle assembly**: `index.md` files (§8), root `log.md` (§9), `references/` (§6.3); conformance check vs §11.
-5. **Verification**: flip `status: draft` → `stable` and add `verified: { by: human:<reviewer>, at: <date> }` only after human review (§5.2).
-6. Housekeeping (always): update `README.qmd` + `quarto render README.qmd --to gfm --quiet` on any repo-state change; re-run `./bin/convert-transcripts --format md` if new transcripts are fetched.
+0. Read this file top to bottom, then `planning_manifest.json` and [`dsincubator_wiki/index.md`](dsincubator_wiki/index.md). Do not touch `transcripts/` frontmatter by hand — `bin/convert-transcripts` owns it.
+1. **Bundle is complete as of 2026-09-08**: `sources/` 151/151, `topics/` 59/59, bundle indexes + `log.md` present. The workflow below is the maintenance path.
+2. **When a new video/transcript appears** (or existing transcript updated):
+   a. Fetch: `./bin/fetch-metadata` → `./bin/fetch-transcripts` → `./bin/convert-transcripts --format md` (creates `transcripts/<id>_<slug>.md` OKF v0.2).
+   b. Distill one source: scaffold frontmatter deterministically from transcript + `data/metadata.csv` (copy `title`, `tags`, `lang`, `usage_count`, `last_modified`, `usage_window`, `sources[]` byte-identical; `type: source`, `generated.by: agent:okf-wiki-builder/1.0`, `status: draft`; fill `key_topics` only) and write body per **Extraction Prompt v2** (Summary + Key Concepts + Code Snippets; `es` → Spanish body, English `key_topics` bilingual headings). Use `transcripts/<id>_*.md` glob for slug.
+   c. Aggregation: re-read all `sources/` frontmatter + summaries → update `planning_manifest.json` `source_files[]` for affected topics; add a new topic if clustering demands it (keep `type` per §4.1).
+   d. Topics: (re)generate affected `dsincubator_wiki/topics/` pages with cross-links (§6); pipelines stay `type: Attested Computation`.
+   e. Bundle: touch `dsincubator_wiki/log.md` (§9) + `sources/log.md` with date + new `id`; ensure `dsincubator_wiki/index.md` (okf_version 0.2 §12) + `topics/index.md` (§8) + `sources/index.md` (§8) + `references/` (§6.3) still valid; conformance check vs §11.
+   f. Housekeeping (always): update `README.qmd` (Fetch → Example metadata/transcript → Wiki → Example topics/source) + `quarto render README.qmd --to gfm --quiet`; commit. Re-run `./bin/convert-transcripts --format md` if `transcripts/` changed. For incremental adds, `status: draft` until human `verified` (§5.2); flip to `stable` + `verified: { by: human:<reviewer>, at: <date> }` only after review.
+3. **Verification**: flip `status: draft` → `stable` and add `verified: { by: human:<reviewer>, at: <date> }` only after human review (§5.2).
 
 ## OKF LLM WIKI BUNDLE
 
-Goal: Transform 151 transcript `.md` files into a structured OKF v0.2 knowledge bundle (`dsincubator_wiki/`).
+Goal: Transform 151 transcript `.md` files into a structured OKF v0.2 knowledge bundle (`dsincubator_wiki/`). **Entry point: [`dsincubator_wiki/index.md`](dsincubator_wiki/index.md)** (§8/§12) — see also [`dsincubator_wiki/topics/index.md`](dsincubator_wiki/topics/index.md) / [`dsincubator_wiki/sources/index.md`](dsincubator_wiki/sources/index.md) and history [`dsincubator_wiki/log.md`](dsincubator_wiki/log.md) (§9).
 
 ### Key Documents
-- `planning_manifest.json` — Plan defining 44 topic pages across 13 categories
+- `planning_manifest.json` — Plan defining 59 topic pages across 13 categories (44 + 8 missing topics + overview)
 - `topics/` — Aggregated topic/concept pages (each an OKF concept with `type` field)
 - `sources/source_<id>_<slug>.md` — Processed source files (1 per transcript)
 - `sources/index.md` (§8 index) + `sources/log.md` (§9 history)
@@ -152,7 +159,7 @@ All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
 ### Pipeline Steps
 1. **Source generation**: LLM extracts concepts from each transcript → `sources/source_<id>_<slug>.md` (script scaffolds frontmatter; agent writes body only)
 2. **Aggregation**: Read all source frontmatter + summaries → cluster into topics
-3. **Topic generation**: Create 44 topic pages with cross-links (§6)
+3. **Topic generation**: Create 59 topic pages with cross-links (§6)
 4. **Bundle assembly**: Create `index.md`, `log.md`, `references/`
 5. **Verification**: Human review adds `verified` fields (§5.2)
 6. **Conformance check**: Validate against §11
@@ -174,9 +181,9 @@ Distillation agents MUST follow these rules (pilot caught: invented `tar_load`, 
 - [x] No unexplained `missing`/`error` rows.
 - [x] `manifest.tsv file` resolves to a real file; `lang` matches spoken language.
 - [x] Join integrity: each manifest `id` appears exactly once in CSV.
-- [ ] OKF bundle conformance: every concept has `type` field (§4.1)
-- [ ] OKF bundle conformance: `sources` arrays populated with credibility signals (§5.1)
-- [ ] OKF bundle conformance: actor convention followed in all `generated.by` fields (§7)
-- [ ] OKF bundle conformance: `verified` fields added after human review (§5.2)
-- [ ] No reserved filenames used for concept documents (§3.1)
-- [ ] `log.md` present at bundle root (§9)
+- [x] OKF bundle conformance: every concept has `type` field (§4.1) — 59 topics + 151 sources all `type`
+- [x] OKF bundle conformance: `sources` arrays populated with credibility signals (§5.1) — `author`/`usage_count`/`last_modified` per §5.1, `usage_window` sibling
+- [x] OKF bundle conformance: actor convention followed in all `generated.by` fields (§7) — `agent:okf-wiki-builder/1.0`, `process:convert-transcripts`, `process:yt-dlp`
+- [ ] OKF bundle conformance: `verified` fields added after human review (§5.2) — TODO, all `status: draft` until human `verified`
+- [x] No reserved filenames used for concept documents (§3.1) — `topics/concepts-overview.md` not `topics/index.md`; indexes are `index.md` per §8
+- [x] `log.md` present at bundle root (§9) — `dsincubator_wiki/log.md` + `sources/log.md`

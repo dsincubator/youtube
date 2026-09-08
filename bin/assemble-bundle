@@ -101,7 +101,6 @@ Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: t
 ```sh
 ./bin/build-wiki --playlist "{playlist_url}" --name {bundle_name} --tag {bundle_tag} --out-dir ./{bundle_name} --count 3  # quick test
 ./bin/build-wiki --playlist "{playlist_url}" --name {bundle_name} --tag {bundle_tag} --out-dir ./{bundle_name}          # full
-just wiki  # if just installed
 ```
 
 ## Search

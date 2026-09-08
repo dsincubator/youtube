@@ -28,7 +28,6 @@ linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
     bin/generate-topics          # manifest + sources → topics/{category}/{topic}.md
     bin/assemble-bundle          # generate index.md, indexes, log.md, references/
     bin/build-wiki               # orchestrator: runs full pipeline
-    justfile                     # task runner (optional; brew install just)
     requirements.txt             # Python deps for clustering (numpy, scipy, sklearn, hdbscan)
 
 ## Fetch
@@ -72,12 +71,20 @@ linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
 ./bin/assemble-bundle --bundle-dir dsincubator --manifest planning_manifest.json --bundle-name dsincubator --bundle-tag ds-incubator
 ```
 
-### Task runner (optional)
+> **Note on `sources/` summaries:** `bin/distill-sources` as shipped is
+> **deterministic and offline** — it scaffolds frontmatter from
+> `data/metadata.csv` + `transcripts/*.md` and fills `key_topics` via
+> word-frequency. The 151 `dsincubator/sources/` distilled via LLM
+> (Extraction Prompt v2 at `AGENTS.md:178`) are not reproduced by
+> `build-wiki`; the generalized bundles (`dslab`, `dshangout`) currently
+> contain placeholder summaries. Replace the placeholder with an LLM
+> pass (`--llm` flag) to get Summary + Key Concepts + Code Snippets per
+> Extraction Prompt v2.
+
+Run directly via `bin/build-wiki` (no task runner):
 
 ``` sh
-# If just is installed (brew install just):
-just wiki                  # full pipeline
-just test                  # full pipeline with --count 3
+./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL..." --name dslab --tag ds-lab --out-dir ./dslab --count 3
 ```
 
 ### Example metadata
@@ -363,7 +370,7 @@ qmd search "docker" -c dsincubator -n 2 | head -n 20
 #> qmd://dsincubator/sources/source_RO-OdWXfpBc_docker-managing-containers.md:3 #66fb87
 #> Title: Docker: managing containers
 #> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
-#> Score:  67%
+#> Score:  73%
 #> 
 #> @@ -2,4 @@ (1 before, 79 after)
 #> type: source
@@ -375,7 +382,7 @@ qmd search "docker" -c dsincubator -n 2 | head -n 20
 #> qmd://dsincubator/sources/source_3_0gUMqKikw_docker-managing-images.md:3 #163c4e
 #> Title: Docker: Managing images
 #> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
-#> Score:  67%
+#> Score:  73%
 #> 
 #> @@ -2,4 @@ (1 before, 58 after)
 #> type: source
@@ -384,15 +391,15 @@ qmd search "docker" -c dsincubator -n 2 | head -n 20
 
 ``` bash
 qmd query "how to handle merge conflicts git" -c dsincubator -n 2
-#> Expanding query... (1ms)
+#> Expanding query... (0ms)
 #> ├─ how to handle merge conflicts git
-#> ├─ lex: guide to dealing
-#> ├─ vec: steps for resolving git merge conflicts
-#> ├─ vec: guide to dealing with git merge problems
-#> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
+#> ├─ lex: guide to resolving
+#> ├─ vec: guide to resolving git merge conflicts
+#> ├─ vec: steps for managing git merge conflicts
+#> └─ hyde: The process of handle merge conflicts git involves several steps. Fir...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.6s)
-#> Reranking 25 chunks... (1ms)
+#> Embedding 4 queries... (1.3s)
+#> Reranking 27 chunks... (1ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)
 #> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.

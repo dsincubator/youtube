@@ -43,7 +43,6 @@ bin/cluster-topics           # auto-cluster sources → planning_manifest.json
 bin/generate-topics          # manifest + sources → topics/{category}/{topic}.md
 bin/assemble-bundle          # generate index.md, indexes, log.md, references/
 bin/build-wiki               # orchestrator: runs full pipeline
-justfile                     # task runner (optional; brew install just)
 requirements.txt             # Python deps for clustering (numpy, scipy, sklearn, hdbscan)
 ```
 
@@ -88,12 +87,12 @@ requirements.txt             # Python deps for clustering (numpy, scipy, sklearn
 ./bin/assemble-bundle --bundle-dir dsincubator --manifest planning_manifest.json --bundle-name dsincubator --bundle-tag ds-incubator
 ```
 
-### Task runner (optional)
+> **Note on `sources/` summaries:** `bin/distill-sources` as shipped is **deterministic and offline** — it scaffolds frontmatter from `data/metadata.csv` + `transcripts/*.md` and fills `key_topics` via word-frequency. The 151 `dsincubator/sources/` distilled via LLM (Extraction Prompt v2 at `AGENTS.md:178`) are not reproduced by `build-wiki`; the generalized bundles (`dslab`, `dshangout`) currently contain placeholder summaries. Replace the placeholder with an LLM pass (`--llm` flag) to get Summary + Key Concepts + Code Snippets per Extraction Prompt v2.
+
+Run directly via `bin/build-wiki` (no task runner):
 
 ```sh
-# If just is installed (brew install just):
-just wiki                  # full pipeline
-just test                  # full pipeline with --count 3
+./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL..." --name dslab --tag ds-lab --out-dir ./dslab --count 3
 ```
 
 ### Example metadata

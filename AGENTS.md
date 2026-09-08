@@ -203,7 +203,7 @@ Distillation agents MUST follow these rules (pilot caught: invented `tar_load`, 
 
 ## GENERALIZED WORKFLOW — Build wiki for ANY public playlist
 
-Goal: parametrize the entire pipeline so `bin/build-wiki` or `just wiki` produces a complete OKF v0.2 LLM wiki bundle for any public YouTube playlist. Output directory is an argument with a sensible default (working directory). Tested with `dslab` playlist (`PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT`) at `./dslab/`.
+Goal: parametrize the entire pipeline so `bin/build-wiki` produces a complete OKF v0.2 LLM wiki bundle for any public YouTube playlist. Output directory is an argument with a sensible default (working directory). Tested with `dslab` playlist (`PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT`) at `./dslab/`.
 
 ### Parameters
 
@@ -229,7 +229,7 @@ Goal: parametrize the entire pipeline so `bin/build-wiki` or `just wiki` produce
 - `bin/assemble-bundle` → `index.md`, `topics/index.md`, `sources/index.md`, `log.md`, `references/`
 - `bin/build-wiki` — orchestrator (runs full pipeline with `--count N` support)
 
-**Task runner:** `justfile` (`brew install just`) — optional convenience wrapper. `bin/build-wiki` works standalone.
+`bin/build-wiki` is the standalone orchestrator (no task runner).
 
 ### Script Specs
 
@@ -301,9 +301,7 @@ PyYAML>=6.0
 ```
 Install: `pip3 install -r requirements.txt`
 
-**`justfile`** — Task runner (optional; `brew install just`):
-- Tasks: `wiki`, `fetch-metadata`, `fetch-transcripts`, `convert-transcripts`, `distill-sources`, `cluster-topics`, `generate-topics`, `assemble-bundle`, `test`
-- Variables: `PLAYLIST_URL`, `BUNDLE_NAME`, `BUNDLE_TAG`, `OUT_DIR`, `COUNT`
+No task runner — use `bin/build-wiki` directly.
 
 ### Search Integration (suggested, not enforced)
 
@@ -331,13 +329,13 @@ qmd query "question" -c dslab -n 3
 
 - [x] **Add `requirements.txt`** with numpy, scipy, scikit-learn, hdbscan, PyYAML
 - [x] **Install Python deps**: `pip3 install -r requirements.txt`
-- [x] **Install `just`**: `brew install just` (optional task runner)
+- [x] ~~**Install `just`**~~ — removed (no task runner)
 - [x] **Create `bin/distill-sources`**: transcript → source .md with key_topics + restructured body
 - [x] **Create `bin/cluster-topics`**: TF-IDF → HDBSCAN → silhouette eval → `planning_manifest.json`
 - [x] **Create `bin/generate-topics`**: manifest + sources → topic pages with cross-links, type field
 - [x] **Create `bin/assemble-bundle`**: generates index.md, indexes, log.md, references/
 - [x] **Create `bin/build-wiki`**: orchestrator script (standalone, `--count N` support)
-- [x] **Create `justfile`**: task runner with all steps (optional, if `just` installed)
+- [x] ~~**Create `justfile`**~~ — removed; `bin/build-wiki` is standalone (no task runner)
 - [x] **Update `AGENTS.md`**: add generalizations section (done)
 - [x] **Update `README.qmd`/`README.md`**: add dslab section or make generic
 - [x] **Test with `--count 3`**: `./bin/build-wiki --count 3 --playlist "PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab`

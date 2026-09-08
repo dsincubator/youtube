@@ -80,10 +80,14 @@ echo "[fetch-transcripts] processing: ${TOTAL}"
 
 # pick_transcript <id>: collapse doubled names (<id>.en.en-orig.json3 ->
 # <id>.en-orig.json3), keep one file per id preferring *-orig, delete the rest.
+# Only subtitle extensions are considered -- derived .txt/.tsv files from
+# bin/convert-transcripts live in the same dir and must never be pruned.
 # Sets SURVIVOR to the kept path, or empty when nothing is on disk.
+SUB_EXTS="json3 srv3 srv2 srv1 vtt srt ttml sbv"
 pick_transcript() {
-    local _id="$1" _f _base _rest _ext _noext _first _last
-    for _f in "$OUT_DIR"/${_id}.*.*; do
+    local _id="$1" _f _base _rest _ext _noext _first _last _e
+    for _e in $SUB_EXTS; do
+    for _f in "$OUT_DIR"/${_id}.*.${_e}; do
         [[ -f "$_f" ]] || continue
         _base=$(basename "$_f")
         _rest=${_base#${_id}.}
@@ -95,24 +99,31 @@ pick_transcript() {
             mv -f "$_f" "$OUT_DIR/${_id}.${_last}.${_ext}"
         fi
     done
+    done
     SURVIVOR=""
-    for _f in "$OUT_DIR"/${_id}.*-orig.*; do
+    for _e in $SUB_EXTS; do
+    for _f in "$OUT_DIR"/${_id}.*-orig.${_e}; do
         [[ -f "$_f" ]] || continue
         SURVIVOR="$_f"
-        break
+        break 2
+    done
     done
     if [[ -z "$SURVIVOR" ]]; then
-        for _f in "$OUT_DIR"/${_id}.*.*; do
+        for _e in $SUB_EXTS; do
+        for _f in "$OUT_DIR"/${_id}.*.${_e}; do
             [[ -f "$_f" ]] || continue
             SURVIVOR="$_f"
-            break
+            break 2
+        done
         done
     fi
     if [[ -n "$SURVIVOR" ]]; then
-        for _f in "$OUT_DIR"/${_id}.*.*; do
+        for _e in $SUB_EXTS; do
+        for _f in "$OUT_DIR"/${_id}.*.${_e}; do
             [[ -f "$_f" ]] || continue
             [[ "$_f" != "$SURVIVOR" ]] || continue
             rm -f "$_f"
+        done
         done
     fi
 }
@@ -161,7 +172,7 @@ for i in $(seq 0 $((TOTAL - 1))); do
     fi
 
     if [[ "$FORCE" -eq 1 ]]; then
-        rm -f "$OUT_DIR"/${ID}.*.* 2>/dev/null || true
+        for _e in $SUB_EXTS; do rm -f "$OUT_DIR"/${ID}.*.${_e} 2>/dev/null || true; done
         SURVIVOR=""
     fi
 

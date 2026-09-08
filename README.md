@@ -366,6 +366,16 @@ view, backlinks, and
 frontmatter queries) or any markdown editor. `qmd` already indexes it
 for the LLM; humans get the same files in Obsidian.
 
+Dataview example (in Obsidian, `FROM` is vault-relative):
+
+``` dataview
+TABLE title, usage_count, last_modified
+FROM "dsincubator/sources"
+WHERE contains(tags, "targets")
+SORT usage_count DESC
+LIMIT 5
+```
+
 See other [tips and
 tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks).
 

@@ -19,6 +19,7 @@ library(fs)
 library(stringr)
 library(purrr)
 library(tibble)
+library(jsonlite)
 ```
 
 ## Structure
@@ -27,6 +28,8 @@ library(tibble)
 data/metadata.csv            # derived table, 151 videos
 transcripts/<id>_<title>.md  # OKF transcript (YAML frontmatter + body)
 transcripts/manifest.tsv     # id | status | file | lang
+planning_manifest.json       # wiki plan: 44 topic pages across 13 categories
+dsincubator_wiki/sources/    # distilled wiki sources (3 pilots; 148 pending)
 bin/fetch-metadata           # raw dumps + derive CSV
 bin/fetch-transcripts        # fetch captions
 bin/convert-transcripts      # json3 -> txt/tsv/md
@@ -63,6 +66,44 @@ joined |>
 
 ```{r}
 fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeLines()
+```
+
+## Wiki (OKF LLM bundle)
+
+The 151 transcripts feed an OKF v0.2 knowledge bundle (`dsincubator_wiki/`), planned in `planning_manifest.json` with distilled `sources/` (one per transcript) aggregated into topic pages.
+
+```{r}
+manifest <- jsonlite::read_json("planning_manifest.json")
+
+tibble(
+  bundle = manifest$bundle_name,
+  transcripts = manifest$total_transcripts_processed,
+  topics = manifest$total_planned_topics
+)
+```
+
+```{r}
+topic_paths <- purrr::map_chr(manifest$topics, "topic_filename")
+
+tibble(path = topic_paths) |>
+  mutate(category = stringr::str_extract(path, "(?<=topics/)[^/]+")) |>
+  filter(path != "topics/concepts-overview.md") |>
+  count(category, name = "topics") |>
+  arrange(dplyr::desc(topics))
+```
+
+```{r}
+wiki_sources <- dir_ls("dsincubator_wiki/sources", regexp = "\\.md$") |>
+  tibble(source_path = _)
+
+tibble(
+  sources_done = nrow(wiki_sources),
+  sources_pending = manifest$total_transcripts_processed - nrow(wiki_sources)
+)
+```
+
+```{r}
+wiki_sources |> select(source_path)
 ```
 
 ## Commands

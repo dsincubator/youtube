@@ -12,6 +12,8 @@ by `id`.
     data/metadata.csv            # derived table, 151 videos
     transcripts/<id>_<title>.md  # OKF transcript (YAML frontmatter + body)
     transcripts/manifest.tsv     # id | status | file | lang
+    planning_manifest.json       # wiki plan: 44 topic pages across 13 categories
+    dsincubator_wiki/sources/    # distilled wiki sources (3 pilots; 148 pending)
     bin/fetch-metadata           # raw dumps + derive CSV
     bin/fetch-transcripts        # fetch captions
     bin/convert-transcripts      # json3 -> txt/tsv/md
@@ -93,18 +95,22 @@ fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeL
 #> ---
 #> type: Video Transcript
 #> title: "2020 09 08 code reviews -- in practice"
-#> description: "today the data science incubator is a  continuation  of what we started last week so the  focus is discussing  code reviews and last week we talked  about  most"
+#> description: "Code that person submitting the code to you know getting to a standard where at least the code runs even if if running the code means producing an..."
 #> resource: "https://www.youtube.com/watch?v=-ho1CfoMHKQ"
-#> tags: ["youtube", "ds-incubator"]
+#> tags: ["ds-incubator", "github", "pull-requests", "r-packages", "code-reviews"]
+#> lang: en
 #> generated:
-#>   by: "bin/convert-transcripts"
-#>   at: "2026-09-08T02:25:20Z"
+#>   by: "process:convert-transcripts"
+#>   at: "2026-09-08T04:02:00Z"
 #> status: stable
 #> sources:
 #>   - id: youtube-original
 #>     resource: "https://www.youtube.com/watch?v=-ho1CfoMHKQ"
 #>     title: "YouTube auto-generated caption (json3)"
 #>     author: "process:yt-dlp"
+#>     last_modified: "2020-09-08T00:00:00Z"
+#>     usage_count: 18
+#> usage_window: { from: "2020-09-08T00:00:00Z", to: "2026-09-08T04:02:00Z" }
 #> ---
 #> 
 #> # Transcript
@@ -116,10 +122,75 @@ fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeL
 #> of what we started last week so the
 #> 
 #> focus is discussing
-#> 
-#> code reviews and last week we talked
-#> 
-#> about
+```
+
+## Wiki (OKF LLM bundle)
+
+The 151 transcripts feed an OKF v0.2 knowledge bundle
+(`dsincubator_wiki/`), planned in `planning_manifest.json` with
+distilled `sources/` (one per transcript) aggregated into topic pages.
+
+``` r
+manifest <- jsonlite::read_json("planning_manifest.json")
+
+tibble(
+  bundle = manifest$bundle_name,
+  transcripts = manifest$total_transcripts_processed,
+  topics = manifest$total_planned_topics
+)
+#> # A tibble: 1 × 3
+#>   bundle           transcripts topics
+#>   <chr>                  <int>  <int>
+#> 1 dsincubator_wiki         151     44
+```
+
+``` r
+topic_paths <- purrr::map_chr(manifest$topics, "topic_filename")
+
+tibble(path = topic_paths) |>
+  mutate(category = stringr::str_extract(path, "(?<=topics/)[^/]+")) |>
+  filter(path != "topics/concepts-overview.md") |>
+  count(category, name = "topics") |>
+  arrange(dplyr::desc(topics))
+#> # A tibble: 12 × 2
+#>    category      topics
+#>    <chr>          <int>
+#>  1 data              11
+#>  2 tidyverse          8
+#>  3 git                6
+#>  4 r-packages         5
+#>  5 shiny              5
+#>  6 cloud              4
+#>  7 pipelines          4
+#>  8 testing            4
+#>  9 communication      3
+#> 10 docker             3
+#> 11 workflow           3
+#> 12 terminal           2
+```
+
+``` r
+wiki_sources <- dir_ls("dsincubator_wiki/sources", regexp = "\\.md$") |>
+  tibble(source_path = _)
+
+tibble(
+  sources_done = nrow(wiki_sources),
+  sources_pending = manifest$total_transcripts_processed - nrow(wiki_sources)
+)
+#> # A tibble: 1 × 2
+#>   sources_done sources_pending
+#>          <int>           <int>
+#> 1            3             148
+```
+
+``` r
+wiki_sources |> select(source_path)
+#> # A tibble: 3 × 1
+#>   source_path                                                                   
+#>   <fs::path>                                                                    
+#> 1 dsincubator_wiki/sources/source_-9QCNwmpTOE_test-driven-development.md        
+#> 2 …rces/source_1lpcCHfozh0_conversaciones-productivas-sobre-codigo-argumentos.md
+#> 3 dsincubator_wiki/sources/source_pbc6NX1n01Q_targets-introduction.md
 ```
 
 ## Commands

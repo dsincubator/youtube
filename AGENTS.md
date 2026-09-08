@@ -100,12 +100,22 @@ Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<i
 - [x] `fetch-transcripts` prune fix: `pick_transcript`/`--force` now touch subtitle extensions only (earlier `*.*` glob deleted converted `.txt`/`.tsv` on re-runs).
 - [x] Title sanitization: ASCII-only, lowercase, hyphen-separated words.
 - [x] Frontmatter regen from spec (2026-09-08): `bin/convert-transcripts` re-derived all 151 `.md` frontmatters — actor fix (`process:convert-transcripts`), substantive descriptions, topical tags, `lang`, credibility signals (`usage_count`/`last_modified`/`usage_window`). Old frontmatter treated as untrusted.
+- [x] Wiki pilot (2026-09-08): 3 distilled `dsincubator_wiki/sources/` done (`-9QCNwmpTOE` TDD, `pbc6NX1n01Q` targets, `1lpcCHfozh0` Spanish) + adversarial review (1 FAIL fixed: invented `tar_load`, rewritten `tags`, false `None mentioned`) → Extraction Prompt v2 below.
+- [x] `README.qmd`: Wiki section added (live chunks from `planning_manifest.json` + `dsincubator_wiki/sources/`); `README.md` re-rendered.
 
-## NEXT
+## NEXT (fresh-agent runbook — start here)
 
-1. When repo state changes (new videos, updated transcripts, schema changes), update `README.qmd` and re-render with `quarto render README.qmd --to gfm --quiet`.
-2. Re-run `./bin/convert-transcripts --format md` if new transcripts are fetched.
-3. Optional: probe other open questions.
+0. Read this file top to bottom, then `planning_manifest.json`. Do not touch `transcripts/` frontmatter by hand — `bin/convert-transcripts` owns it.
+1. **Finish `sources/` (148 of 151 pending)**: for each transcript without a `dsincubator_wiki/sources/source_<id>_<slug>.md`:
+   a. Scaffold frontmatter deterministically from the transcript's frontmatter + `data/metadata.csv` (copy `title`, `tags`, `lang`, `usage_count`, `last_modified`, `usage_window`, `sources[]` byte-identical; set `type: source`, `generated.by: agent:okf-wiki-builder/1.0`, `status: draft`; leave `key_topics: []` for the agent).
+   b. Distill the body per **Extraction Prompt v2** below (Summary + Key Concepts + verbatim Code Snippets; Spanish transcripts → Spanish body, English `key_topics` with bilingual headings).
+   c. Work in batches via parallel `general` subagents (5–10 transcripts each); spot-check each batch with one adversarial review pass (same brief as the pilot review).
+   d. Commit per batch. Re-render `README.qmd` (Wiki progress chunks update automatically) whenever `sources/` changes.
+2. **Aggregation**: read all 151 `sources/` frontmatter + summaries → populate `planning_manifest.json` `source_files[]` (currently empty) and adjust the 44 topics if clustering demands it.
+3. **Topic generation**: write the 44 `dsincubator_wiki/topics/` pages with cross-links (§6); pipeline topics use `type: Attested Computation`.
+4. **Bundle assembly**: `index.md` files (§8), root `log.md` (§9), `references/` (§6.3); conformance check vs §11.
+5. **Verification**: flip `status: draft` → `stable` and add `verified: { by: human:<reviewer>, at: <date> }` only after human review (§5.2).
+6. Housekeeping (always): update `README.qmd` + `quarto render README.qmd --to gfm --quiet` on any repo-state change; re-run `./bin/convert-transcripts --format md` if new transcripts are fetched.
 
 ## OKF LLM WIKI BUNDLE
 
@@ -122,7 +132,7 @@ Goal: Transform 151 transcript `.md` files into a structured OKF v0.2 knowledge 
 All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
 - `agent:okf-wiki-builder/1.0` — for LLM-generated concept pages
 - `process:yt-dlp` — for raw transcript sources
-- `process:convert-transcripts` — for converted transcripts (note: current `bin/convert-transcripts` outputs `bin/convert-transcripts` which should be `process:convert-transcripts`)
+- `process:convert-transcripts` — for converted transcripts (emitted by `bin/convert-transcripts` since the 2026-09-08 spec regen)
 - `human:<reviewer>` — for verified fields after human review
 
 ### Verification Tiers (§5.3)

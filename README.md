@@ -324,15 +324,15 @@ qmd search "docker" -c dsincubator -n 2 | head -n 20
 
 ``` bash
 qmd query "how to handle merge conflicts git" -c dsincubator -n 2
-#> Expanding query... (1ms)
+#> Expanding query... (0ms)
 #> ├─ how to handle merge conflicts git
 #> ├─ lex: guide to dealing
 #> ├─ vec: steps for resolving git merge conflicts
 #> ├─ vec: guide to dealing with git merge problems
 #> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.5s)
-#> Reranking 25 chunks... (2ms)
+#> Embedding 4 queries... (1.4s)
+#> Reranking 25 chunks... (1ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)
 #> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
@@ -364,9 +364,10 @@ The bundle is plain markdown — browse it locally with
 view, backlinks, and
 [Dataview](https://github.com/blacksmithgu/obsidian-dataview) for
 frontmatter queries) or any markdown editor. `qmd` already indexes it
-for the LLM; humans get the same files in Obsidian. See [qmd + Obsidian
-tips](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks)
-(Web Clipper → `raw/assets/`, `qmd context add`, `Marp` decks).
+for the LLM; humans get the same files in Obsidian.
+
+See other [tips and
+tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks).
 
 ------------------------------------------------------------------------
 

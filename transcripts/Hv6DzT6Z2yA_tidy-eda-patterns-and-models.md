@@ -1,0 +1,1288 @@
+---
+type: Video Transcript
+title: "Tidy EDA: Patterns and models"
+description: "okay this is the ds incubator also again  in the series about exploring data with  the thai diverse and today is a special  day it's the last uh meetup of the  "
+resource: "https://www.youtube.com/watch?v=Hv6DzT6Z2yA"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=Hv6DzT6Z2yA"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+okay this is the ds incubator also again
+
+in the series about exploring data with
+
+the thai diverse and today is a special
+
+day it's the last uh meetup of the
+
+series and the last meetup of year 2021
+
+so
+
+next year which is gonna be pretty soon
+
+we're gonna be talking about something
+
+else which we haven't yet decided so
+
+maybe the first week i won't be asking
+
+for
+
+insights on what's the next meetup about
+
+maybe we'll take a break um because i
+
+would love everyone to be um
+
+involved in the poll so maybe the second
+
+week will kick off with
+
+the next series
+
+so
+
+today we're gonna be covering patterns
+
+and models and the objectives are three
+
+first we want to explore the
+
+relationship between two variables
+
+then we are going to be extracting a
+
+pattern between you know that you know
+
+that you know comes from that
+
+relationship and finally we're going to
+
+explore the relationship again
+
+uh once we have extracted the pattern
+
+already and see what remains
+
+so that's the objective those are the
+
+objectives of today
+
+and before we kind of start exploring
+
+some code let's have a quick look at um
+
+you know some general ideas about
+
+patterns and models so patterns prevail
+
+covariation uh so if variation is is
+
+something that adds
+
+uncertainty then
+
+uh patterns and are something that
+
+that reduce that uncertainty
+
+so models are just a tool for extracting
+
+patterns out of data and we're gonna be
+
+using that as a way to see what remains
+
+after we extract
+
+that pattern
+
+yes
+
+are you intending to share your screen
+
+with us because you aren't at the moment
+
+thank you yes
+
+let me share my screen
+
+thank you and uh
+
+maybe jackson can you kick me out at 20
+
+past as usual
+
+happily thank you
+
+because we have to go on with our end of
+
+the year celebrations
+
+and uh where were we
+
+so if um
+
+if you spot a pattern in the data then
+
+some useful questions to ask are the
+
+ones following here which come from the
+
+book
+
+um
+
+are for data science i'm borrowing them
+
+from there
+
+and we're going to be using all of them
+
+except the last one so some questions
+
+that you can ask to help
+
+explore data
+
+once you see a pattern are the following
+
+questions so how would you describe that
+
+relationship
+
+uh
+
+that you know that is implied by the
+
+pattern also
+
+if
+
+you may you know ask yourself if that
+
+pattern could arise just from a
+
+coincidence from a random effect or or
+
+not
+
+and then you may ask how strong is that
+
+relationship
+
+and
+
+what other variables may be uh affecting
+
+that relationship
+
+and finally and one that we are not i
+
+don't think we're gonna be kind of
+
+touching on this today is that uh if the
+
+relationship changes if you look at
+
+subgroups of the data because sometimes
+
+you know one group of your data follows
+
+one trend and another group of data
+
+follows a different trend we are not
+
+talking about that today but it's kind
+
+of useful to have that as a cognitive
+
+tool
+
+to
+
+to improve to refine the questions that
+
+you ask yourself when you explore your
+
+data as usual we're going to be using
+
+the tidy verse and a new package that we
+
+haven't been using so far which is model
+
+r which is not part of the tie divers
+
+but it was developed by the same
+
+team
+
+so these days um there is a ton of tools
+
+for
+
+um
+
+modeling in r and mod r is one that is
+
+pretty old and very basic
+
+so
+
+this meetup is mostly useful i hope for
+
+the concepts that we're going to be only
+
+kind of scratching today
+
+but if you are really interested in
+
+model remodeling this is certainly not
+
+enough you know you need to kind of
+
+start exploring other tools actually
+
+there is another tidy something team in
+
+our studio which is the tidy models
+
+team
+
+so anything by that team might be closer
+
+to what you want if what you want is to
+
+you know do hardcore modeling in r
+
+so model r is just a very simple tool so
+
+let's start by playing a little bit with
+
+code so we're going to attach the tigers
+
+as we usually do
+
+which comes with deep player and ggplot2
+
+among other packages but those two are
+
+the ones that we're going to be using
+
+today plus model r which does not come
+
+with the television by default so we
+
+have to attach it independently
+
+so the first
+
+um thing we're going to do is a little
+
+bit of a warm up we're going to do we're
+
+gonna use a very simple uh data set that
+
+is called faithful and that comes from
+
+the um
+
+data sets package in base r
+
+uh and if i glimpse that i'm gonna i'm
+
+gonna make this a little bigger
+
+hopefully for
+
+more comfort to your eyes uh it is a
+
+very small data set that has only two
+
+columns eruptions and waiting eruptions
+
+is actually the time the duration of an
+
+eruption of a volcano and
+
+weighting is the waiting time between
+
+two eruptions
+
+so those are just numeric variables so
+
+for example we want to explore the
+
+covariation between those two variables
+
+because those two virals are numeric
+
+we now know that we could explore them
+
+with a scatter plot which in ggplot2 and
+
+you you can do with a geometric
+
+representation called points so the geom
+
+point
+
+point is the function that we want so
+
+actually i'm going to use autocomplete
+
+to make sure that i'm not
+
+misspelling the the word point
+
+um
+
+so
+
+as usual we're going to be
+
+using ggplot2
+
+remember we can
+
+omit the first argument called data
+
+it's so common that we already know
+
+that's the first thing that goes there
+
+after g plot 2
+
+after i call the g plot
+
+and also in the call to aes we always do
+
+x and y so x is going to be
+
+eruptions
+
+and uh and our y variable our dependent
+
+variable is going to be
+
+weighty so um
+
+so if we if we plot this little scatter
+
+plot
+
+this is
+
+what we get
+
+so
+
+let's go back a little bit to the top of
+
+this document to think about this plot
+
+in terms of those questions that were
+
+prompted to ask
+
+ourselves
+
+uh as a way to
+
+explore uh to help ourselves to export
+
+the data so one is
+
+how can we describe the relationship
+
+that is impo implied by the pattern so
+
+first of all what is the pattern so the
+
+pattern that we can see here is that you
+
+know as the
+
+length of the duration of the options
+
+increases to the right
+
+we also see that the waiting time
+
+increases so what we see here is
+
+um that longer a waiting times are
+
+related to longer eruptions and that is
+
+apart from this other pattern that um
+
+that you know we can see here as two
+
+groups
+
+but this grouping this clustering
+
+pattern is one that we are not going to
+
+explore in this warm up for now let's
+
+focus on this linear trend that we can
+
+somehow see
+
+in these points going from the um bottom
+
+left of our plot to the top right of our
+
+plot and it's a very strong relationship
+
+so
+
+when we ask ourselves about how strong
+
+the relationship is
+
+then in this particular case it looks
+
+like a pretty strong relationship and
+
+thus if we ask ourselves if the pattern
+
+could be due to just chance very likely
+
+uh i would say no because uh the the
+
+relationship seems pretty pretty strong
+
+that is only qualitative and we could
+
+you know use modeling to understand how
+
+to measure actually you know that that
+
+that strength of that pattern and but
+
+for now all we want to do
+
+is to warm up so we're to extract that
+
+pattern
+
+and see what remains
+
+so
+
+that is the
+
+warm up so the way uh you know what i
+
+wanted to complete this plot with is
+
+with that description of that
+
+a description of the relationship that
+
+we see so in this case what we see here
+
+is that longer
+
+wait times are associated with
+
+longer eruptions which uh it could it
+
+could be
+
+any other relationship there will be no
+
+relationship or maybe you know longer
+
+waiting times could be related to short
+
+eruptions but this is not the case so
+
+this is a useful exercise to try to
+
+describe what relationship we see in
+
+words so now if i complete that plot uh
+
+you know we're going to see this little
+
+title that
+
+describes what we're seeing here
+
+so now it is time to try extract that
+
+pattern and uh because the relationship
+
+that we see here is linear
+
+or it looks like a linear relationship
+
+we're gonna just try with a very simple
+
+linear
+
+model lm
+
+so that's the function from base r that
+
+does linear modeling and here we're
+
+going to write first the y variable so
+
+in this case waiting
+
+so this function takes first a formula
+
+then a bunch of other arguments and
+
+finally data
+
+the only two arguments that we need are
+
+the formula and the data the others are
+
+optional so the data we know is fightful
+
+and
+
+we're gonna be creating a model
+
+to try explain you know waiting times in
+
+relation to eruption duration
+
+so here is our model if i print that to
+
+the console what i see
+
+is just the summary of the model in a
+
+way
+
+but we're going gonna be using a model r
+
+now as you can see here
+
+to uh take the residuals of
+
+um
+
+that model and add them to the data so
+
+we're gonna be using
+
+that package if we just run this couple
+
+of lines all we are doing is adding a
+
+new column you know this data set was
+
+that with only two columns um
+
+weighting and eruptions and now we have
+
+another column that is called receipt
+
+which is the one that we just created so
+
+let me go back to the top
+
+here we saw eruptions and weighting were
+
+the ones that came with the data set and
+
+we have just added receipt we did that
+
+by by calling
+
+this function here
+
+so now we are gonna
+
+inject
+
+that
+
+to
+
+actually
+
+i don't think this this call here is
+
+um achieving anything i don't know what
+
+what's doing here i'm going to remove it
+
+so right now once we have that data set
+
+what we're going to do is we're going to
+
+plot
+
+the relationship but now between
+
+eruptions and no longer we're going to
+
+do it with waiting we're going to do it
+
+with residuals received because what we
+
+want to see is what remains
+
+after we have extracted the pattern that
+
+we saw so
+
+so we're going to plot eruptions versus
+
+residuals with a scatter plot so let's
+
+do just that
+
+so now what we can see is that we still
+
+see those two clusters that were a
+
+pattern that we decided not to analyze
+
+for now the pattern that we did extract
+
+was that linear relationship of
+
+increasing eruption times with waiting
+
+times and that panel is gone you can see
+
+now that there is no longer
+
+a a line going from the top from the
+
+bottom left
+
+bottom left to the top right right so
+
+that is what we have achieved with
+
+the
+
+with the with the model we extracted
+
+that pattern that was so obvious here
+
+so that idea is very powerful and we are
+
+now going to use it again in a different
+
+data set to do something that is um
+
+[Music]
+
+quite a bit more challenging so you may
+
+have remembered from previous meetups if
+
+you were here
+
+a plot that looked like this
+
+uh it comes though the the data that
+
+we're exploring here is the diamonds
+
+data set and there was something quite
+
+odd when we tried to plot
+
+uh the price as a function of the
+
+different qualities of the diamond so
+
+the the variable is called cut that's
+
+the name of the variable in the genomes
+
+data set it encodes for quality of
+
+diamonds and if we just plot you know
+
+quality versus
+
+price we see something pretty odd which
+
+is that you know these fair um diamonds
+
+which are the ones of of worst quality
+
+on average they seem more expensive
+
+than diamonds of better quality so that
+
+is
+
+very unexpected
+
+and at the time we we saw this this
+
+graph first we did not have you know
+
+this tool or we didn't even spend time
+
+trying to think much why that that could
+
+be the case
+
+but the answer to why that odd
+
+relationship appears here is actually
+
+quite simple um
+
+the the issue at the time was hard to
+
+understand because there is not just a
+
+relationship between these two variables
+
+that relationship is complicated by
+
+relationship with other variables so
+
+in this particular case
+
+the relationship between quality and
+
+price is complicated because the weight
+
+and the quality of the diamonds is also
+
+of course related so you would expect um
+
+that uh weight and quality are let me
+
+show you
+
+this plot here so here what we are
+
+plotting is cat which is the quality and
+
+karat which is the weight
+
+so this relationship maybe it's not so
+
+um you know you wouldn't think of this
+
+relationship as so obvious but the way i
+
+think about it so basically what we are
+
+noticing here is that uh there are more
+
+um
+
+basically that the bigger diamonds tend
+
+to be of of worse quality and i'm just
+
+thinking that maybe it's because
+
+otherwise like if the diamond is uh too
+
+big and too great of equality it could
+
+be also like very expensive
+
+maybe it is very hard to come
+
+around um
+
+diamonds that are of very good quality
+
+and big or maybe because people don't
+
+buy things that are so expensive i know
+
+there may be a few reasons why this
+
+relationship exists but the fact is that
+
+this relationship does exist so the size
+
+of the diamond also plays a role
+
+uh
+
+um you know when when thinking in terms
+
+of you know what's the relationship
+
+between the quality and the price you
+
+also need to account for the size right
+
+so this this plot is saying that is
+
+saying that there is a relationship
+
+between the quality and the size of the
+
+diamonds that will complicate any
+
+understanding that you try to get from
+
+analyzing um the the quality with price
+
+for example so this is
+
+one part of the question and then the
+
+other challenge is this other one so the
+
+other relationship the one that is kind
+
+of more obvious is that the size of
+
+course is also related with
+
+with the price so uh and then uh
+
+analyzing the relationship between so in
+
+summary analyzing the relationship
+
+between
+
+quality and price
+
+is complicated because there is a
+
+relationship not only between those two
+
+variables there is another one there
+
+that is
+
+also adding to the pattern so what we
+
+want to do now is basically to to try
+
+extract
+
+the relationship that we have between
+
+price and weight so that we analyze the
+
+price
+
+and the quality once we have somehow
+
+standardized for the weight so we have
+
+to make the price relative to the same
+
+weight right so that's what we're gonna
+
+do with the tool that we have just
+
+learned with the model and because um
+
+you know these relationships look
+
+linear then we're gonna be using a sim a
+
+simple linear regression
+
+so um once we do that once we extract
+
+the pattern between the quality and
+
+price we are going to be uh sorry
+
+between the weight and the
+
+um
+
+this between the weight or size and the
+
+price then we're going to reanalyze the
+
+the relationship that we explored before
+
+so let's create a model uh the model is
+
+going to be in this case we're using the
+
+log of price but i think we do price we
+
+would see the you know it would kind of
+
+work anyway i'm just following log
+
+because i see that in the book so you
+
+know just to stick to the book
+
+but we're gonna be then uh basically the
+
+y variable here is price and the x
+
+variable in this model is is carat right
+
+so the size of the diamond so we have
+
+just created that model as we see did
+
+before you know printing the model to
+
+the console is not very interesting it's
+
+kind of boring
+
+what we're going to do is what we did
+
+before with the
+
+previous model so we add the residuals
+
+and now and we are going to be
+
+turning the residuals you know because
+
+we use log here to um transform
+
+the um variables x and y
+
+then the residuals we're going to do the
+
+exponential of it so kind of to revert
+
+the effect of the transformation and
+
+that way we'll have things in the same
+
+unit
+
+so once we have added the residuals to
+
+our data set we can use them to plot the
+
+quality not now versus the price but
+
+versus the residuals which could be in
+
+this particular case would be the price
+
+after we have removed the effect of the
+
+size right so that is the the beauty of
+
+of that model
+
+so and this is the resulting plot you
+
+know if we plot uh quality now versus
+
+this residual price we see what we would
+
+have expected before which is the idea
+
+that uh
+
+that you know once we make the price
+
+relative to the size
+
+then better diamonds are more expensive
+
+so the price increases with the quality
+
+of a timer so that's uh
+
+that's it and there's a final insight so
+
+jackson i know that you are very keen to
+
+kick me out i think i'm gonna take only
+
+a few seconds to just spell these
+
+insights out once again
+
+so once again patterns are things that
+
+reveal variation
+
+if variation adds uncertainty then
+
+covariation you can think of it as
+
+something that reduces
+
+it
+
+because of the following because if two
+
+variables do covary then you can use one
+
+to better make predictions of the second
+
+one
+
+and in a particular case when the
+
+relationship is casual cause
+
+causal which isn't just a special case
+
+then you can not only predict the second
+
+one you can actually control it right so
+
+if you know that
+
+you know doing
+
+x causes y then you can stop doing x and
+
+then you don't you don't get what right
+
+so you can control it
+
+and finally models are a tool for
+
+extracting patterns out of the data
+
+which is what we have done here to
+
+better
+
+clarify our thinking when we wanted to
+
+think in terms of just two variables so
+
+we remove the effect of a third one
+
+okay that covers the meetup of the day
+
+let's see if we have
+
+questions comments maybe comments for
+
+people who have been doing some modeling
+
+before that's not me i did very limited
+
+and a long time ago so i don't have much
+
+to add so people i'm hearing you
+
+any experience in the group
+
+about molly or any questions
+
+in terms of what we've seen today
+
+or
+
+the entire series because we are
+
+wrapping up right now
+
+you know i think jackson were you
+
+i think at some point you were very into
+
+machine learning right
+
+weren't you
+
+yeah i got into like
+
+it was
+
+um
+
+when i was doing astrophysics stuff we
+
+got into like asian inference and
+
+beijing modeling and stuff like that i'm
+
+just hesitant to talk about it because
+
+it's been so long
+
+[Music]
+
+forgetting the details of it
+
+yeah same for me i did
+
+some analysis during my phd but so long
+
+ago uh monica
+
+yeah same for me i actually did a lot of
+
+modeling in the past
+
+but
+
+it's been a while
+
+and i think
+
+with this
+
+like with your examples it's really cool
+
+because the models are very simple so
+
+you can visualize all these effects
+
+and
+
+i really enjoy this kind of models
+
+because like you
+
+also can see that it makes sense
+
+and with a lot of models that i worked
+
+with they were like risk management
+
+i don't know very abstract some kind of
+
+fourier transforms
+
+that i couldn't really see that my
+
+models make any sense
+
+so yeah i think it's really cool when
+
+you have a relationship that's so simple
+
+that you can actually visualize it or at
+
+least parts of it
+
+yeah i agree
+
+um
+
+okay cool i i also enjoy preparing this
+
+material precisely because i am
+
+interested in
+
+in modeling as a tool for the power that
+
+it comes from understanding the world
+
+with uh with the help of models
+
+but the field has developed so much
+
+lately
+
+so much you know beyond what i've
+
+studied when i studied it that is even
+
+overwhelming so it kind of was good to
+
+go back to the basics okay this is what
+
+i'm trying to do you know here's the
+
+pattern here is what you know the
+
+receivables look like once i remove it
+
+um because yeah i think that you know
+
+these days if i try to learn anything
+
+about
+
+modern if i i have the feeling that i i
+
+should spend at least a week just to
+
+scratch the surface of what's the new
+
+you know training but maybe i'm wrong
+
+maybe i'm wrong there's a lot of useful
+
+things we could do and indeed you know
+
+i i do know that max kuhn the you know
+
+main developer uh the lead of the tiny
+
+models um
+
+team
+
+he's very into simple models i mean i
+
+think i think he always advocates for
+
+okay yeah there is all these cool you
+
+know super sophisticated you know tools
+
+that you can use but then you know if
+
+you can explain
+
+you know your you know your data with
+
+this you know
+
+with an lm you know much better right so
+
+before you go to something more
+
+complicated you know try to use the
+
+tools
+
+that
+
+are kind of easier to kind of wrap your
+
+head around
+
+okay any departing thoughts otherwise
+
+i'll call it a session and i call it
+
+a year and for the ds in greater
+
+okay sounds like
+
+this is it thank you very much for
+
+sticking with us this year
+
+and i hope you the best for the end of
+
+year celebrations see you next time

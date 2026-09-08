@@ -5,13 +5,15 @@ PROGRAM="${0##*/}"
 usage() {
     cat <<EOF
 Usage: $PROGRAM [OPTIONS] [CSV] [OUT_DIR]
-Convert transcripts/*.json3 to readable .txt and .tsv formats.
+Convert transcripts/*.json3 to readable formats.
 
 Options:
-  -h, --help            Show this help message and exit
+  -h, --help            Show this message and exit
   --csv PATH            Metadata CSV (default: data/metadata.csv)
   --out-dir DIR         Output directory (default: transcripts)
-  --format FORMAT       Output format: txt, tsv, or both (default: both)
+  --format FORMAT       Output format: txt, tsv, md, both, or all (default: both)
+                        txt: plain text, tsv: tab-separated, md: OKF markdown,
+                        both: txt+tsv, all: txt+tsv+md
   -n, --count N         Process only the first N videos
 EOF
 }
@@ -35,7 +37,8 @@ while [[ $# -gt 0 ]]; do
         *)
             if [[ "$1" == *.csv ]]; then CSV="$1"
             elif [[ "$1" == transcripts* ]]; then OUT_DIR="$1"
-            elif [[ "$1" == "txt" || "$1" == "tsv" || "$1" == "both" ]]; then FORMAT="$1"
+            elif [[ "$1" == "txt" || "$1" == "tsv" || "$1" == "md" || "$1" == "both" || "$1" == "all" ]]; then
+                FORMAT="$1"
             else
                 echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2
             fi
@@ -45,18 +48,76 @@ while [[ $# -gt 0 ]]; do
 done
 
 python3 - "$CSV" "$OUT_DIR" "$FORMAT" "$COUNT" <<'PYEOF'
-import csv, json, os, sys
+import csv, json, os, sys, re, unicodedata
+from datetime import datetime, timezone
 
 csv_path, out_dir, fmt, count_str = sys.argv[1:5]
 count = int(count_str)
 
-ids = []
+def slugify(title):
+    ascii_title = unicodedata.normalize('NFKD', title).encode('ascii', 'ignore').decode('ascii')
+    slug = re.sub(r'[^a-zA-Z0-9]+', '-', ascii_title).strip('-').lower()
+    slug = re.sub(r'-+', '-', slug)
+    return slug
+
+def yaml_escape(s):
+    s = s.replace('\\', '\\\\').replace('"', '\\"')
+    return f'"{s}"'
+
 with open(csv_path) as f:
+    reader = csv.DictReader(f)
+    ids = [row["id"].strip() for row in reader]
+    f.seek(0)
+    _ = reader
+    titles = {}
     for row in csv.DictReader(f):
-        ids.append(row["id"].strip())
+        titles[row["id"].strip()] = row.get("title", "").strip()
 
 if count > 0:
     ids = ids[:count]
+
+gen_ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+def do_md(base, path, vid):
+    with open(path) as f:
+        data = json.load(f)
+    title = titles.get(vid, "")
+    events = data.get("events", [])
+    body_lines = []
+    for ev in events:
+        segs = ev.get("segs", [])
+        text = "".join(seg.get("utf8", "") for seg in segs).strip()
+        if text:
+            body_lines.append(text)
+    body = "\n\n".join(body_lines)
+    if not body:
+        body = "No transcript content."
+    desc = body[:160].replace("\n", " ").replace("\r", "")
+    slug = slugify(title) if title else vid
+    md_path = out_dir + "/" + vid + "_" + slug + ".md"
+    frontmatter = f"""---
+type: Video Transcript
+title: {yaml_escape(title)}
+description: {yaml_escape(desc)}
+resource: "https://www.youtube.com/watch?v={vid}"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "{gen_ts}"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v={vid}"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+{body}
+"""
+    with open(md_path, "w") as f:
+        f.write(frontmatter)
 
 ok = 0
 for vid in ids:
@@ -68,37 +129,42 @@ for vid in ids:
     if not path or not os.path.isfile(path):
         continue
 
-    with open(path) as f:
-        data = json.load(f)
-
-    events = data.get("events", [])
-    lines = []
-    tsv_rows = []
-
-    for ev in events:
-        t_start = ev.get("tStartMs", 0)
-        segs = ev.get("segs", [])
-        text_parts = []
-        for seg in segs:
-            utf8 = seg.get("utf8", "")
-            t_offset = seg.get("tOffsetMs", 0)
-            text_parts.append(utf8)
-            tsv_rows.append((t_start + t_offset, utf8))
-        text = "".join(text_parts).strip()
-        if text:
-            lines.append(text)
-            tsv_rows.append((t_start, "__EVENT__"))
-
     base = path.replace(".json3", "")
+    generate_txt = fmt in ("txt", "both", "all")
+    generate_tsv = fmt in ("tsv", "both", "all")
+    generate_md = fmt in ("md", "all")
 
-    with open(base + ".txt", "w") as f:
-        f.write("\n".join(lines) + "\n")
+    if generate_txt or generate_tsv:
+        with open(path) as f:
+            data = json.load(f)
+        events = data.get("events", [])
+        lines = []
+        tsv_rows = []
+        for ev in events:
+            t_start = ev.get("tStartMs", 0)
+            segs = ev.get("segs", [])
+            text_parts = []
+            for seg in segs:
+                utf8 = seg.get("utf8", "")
+                t_offset = seg.get("tOffsetMs", 0)
+                text_parts.append(utf8)
+                tsv_rows.append((t_start + t_offset, utf8))
+            text = "".join(text_parts).strip()
+            if text:
+                lines.append(text)
+                tsv_rows.append((t_start, "__EVENT__"))
+        if generate_txt:
+            with open(base + ".txt", "w") as f:
+                f.write("\n".join(lines) + "\n")
+        if generate_tsv:
+            with open(base + ".tsv", "w") as f:
+                for t, text in tsv_rows:
+                    f.write(f"{t}\t{text}\n")
+        ok += 1
 
-    with open(base + ".tsv", "w") as f:
-        for t, text in tsv_rows:
-            f.write(f"{t}\t{text}\n")
-
-    ok += 1
+    if generate_md:
+        do_md(base, path, vid)
+        ok += 1
 
 print(f"[convert-transcripts] converted {ok}/{len(ids)} transcripts ({fmt} format)")
 PYEOF

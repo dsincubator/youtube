@@ -1,0 +1,1730 @@
+---
+type: Video Transcript
+title: "Testing: Introduction"
+description: "today is the first data science equator  about um well not the first about  testing but the first in a series about  testing  we have kind of touched on the top"
+resource: "https://www.youtube.com/watch?v=9JcJFber21w"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=9JcJFber21w"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+today is the first data science equator
+
+about um well not the first about
+
+testing but the first in a series about
+
+testing
+
+we have kind of touched on the topic of
+
+testing before
+
+but lately i think we have kind of more
+
+renewed interest in testing um
+
+and also some more experience and more
+
+and more people
+
+at two degrees are actually testing
+
+their code in an automated way which is
+
+the focus of this series
+
+and i make this distinction because and
+
+you know
+
+anyone who writes code tests their code
+
+in a way
+
+just by looking at it and running it and
+
+on the console and seeing that you get
+
+what you expect but the focus of this
+
+series is the
+
+automation of those tests so that you
+
+can run them very fast
+
+very quickly and any number of times so
+
+um as usual in in a series now we have
+
+an issue
+
+in the data science equator repository
+
+that explains basically what is the
+
+series about
+
+and we are focusing on
+
+just about anyone who writes a program
+
+that is not just a throwaway
+
+program but something that you may you
+
+know want to use over and over again
+
+and i'm particularly focusing on
+
+programs that are worth testing because
+
+they are
+
+bigger than what we can hold in our head
+
+so if the product is tiny if it's just
+
+one or two
+
+lines you very likely are not going to
+
+be bothering writing any
+
+tests whatsoever because you just look
+
+at it you know what's going on
+
+but and if you change something you kind
+
+of predict what's going to be affected
+
+in that code
+
+but when the programs get more complex
+
+it is important to start
+
+automating that process and basically
+
+what you do is you turn
+
+every single click of your mouse into
+
+a line of code or some snippet of code
+
+and the process is painful but it's very
+
+rewarding
+
+in the long run or not even in the long
+
+run in the mid run
+
+because you know when you run those
+
+tests over and over again you save
+
+a ton of time by making them automatic
+
+so
+
+basically if you already know to write
+
+some code
+
+uh in the beginning it's probably not so
+
+natural but you know you get used
+
+transforming those clicks those mouse
+
+clicks into lines of code
+
+and and that's just the art of uh that's
+
+just the process of actually writing
+
+automated tests
+
+so why is this important you know i i
+
+really like
+
+not just this quote but all the content
+
+about testing that appears in the book
+
+mastering shiny by hadley wickham
+
+it includes a section about testing
+
+which is the most up-to-date
+
+information about testing our code that
+
+he wrote
+
+he also wrote a chapter called testing
+
+in the book our packages
+
+which seems like a better fit but now
+
+you know he's kind of working on
+
+on this book about mastering shiny and
+
+there is where the latest information
+
+about tasting
+
+leaves so i'm going to be focusing on
+
+that one chapter that i'm quite familiar
+
+with i've read it a few times
+
+already and i think it's his probably
+
+his best more eloquent effort to
+
+succinctly explain what tests are why
+
+they are important
+
+and different levels of testing that we
+
+are going to be covering today
+
+so today i wanted more mostly kind of
+
+introduce the series
+
+uh at a very high level we are going to
+
+be covering this kind of why
+
+and what but not so much how we actually
+
+do testing
+
+in the next meetup we are going to be
+
+getting into those kinds of details but
+
+also i wanted to save some time at the
+
+end
+
+of today's meetup which by the way i
+
+forgot to nominate uh timekeeper
+
+yacco could you be my timekeeper for
+
+today
+
+sure thank you so please let me know
+
+like 20 past
+
+so we say 10 minutes for a little bit of
+
+a discussion
+
+hopefully the end of of what i want to
+
+cover today will
+
+prompt some ideas and some questions but
+
+also i would like to
+
+kind of ask you what you would like to
+
+get out of
+
+this series because i have some ideas
+
+based on on that
+
+book that i'm going to be following but
+
+uh but maybe
+
+your interest in testing is something
+
+beyond that book
+
+and that's something that i would like
+
+to kind of discuss to see if you know if
+
+you know we can adapt this series to
+
+include your interests
+
+or if your interests are something
+
+specific that we should cover kind of
+
+more in a one-to-one session or in a
+
+different form
+
+uh the ds incubator is kind of very
+
+general about best practices and
+
+aims to an audience that basically
+
+covers just about anyone
+
+in two degrees that writes any code and
+
+even people beyond two degrees
+
+that might be interested in hearing what
+
+are our
+
+struggles and how we go through them
+
+so in terms of um what we are going to
+
+be covering
+
+um we are now every series now has a
+
+syllabus
+
+so that will you know clicking on that
+
+link will take us to a new
+
+repo so now each series has its own
+
+repository
+
+this is something that maybe pollutes
+
+our organization a little bit so that's
+
+something i would like to discuss later
+
+with alex
+
+if maybe it's a better idea to
+
+consolidate all the series into
+
+the ds inquirer repository or if it's
+
+okay to kind of
+
+grow in our our number of
+
+repositories but anyway as i know sorry
+
+so this repository is the focus
+
+of oh is the house of the entire series
+
+so far all we have is a rhythmic file
+
+which
+
+explains what i'm saying right now
+
+and today we're going to be covering
+
+this introduction
+
+and the contents as i said come from
+
+the chapter the introduction to the
+
+chapter testing then there are
+
+subsections that
+
+are going to be covered in different
+
+meetups in the future
+
+at least two more meetups maybe more and
+
+and apart from that introduction to the
+
+testing chapter
+
+there is this subsection called
+
+philosophy that i would like to cover
+
+today if we can
+
+so the objectives of today so in that um
+
+introduction to testing
+
+um we are going to be covering these
+
+three first objectives basically um
+
+i think i already explained a little bit
+
+why um
+
+why it is important to test basically
+
+because we can't
+
+hold a lot of content of code in our
+
+brains
+
+so that we could predict if any change
+
+that we do affects
+
+any other part of the program so as the
+
+programs grow it is harder and harder to
+
+to understand what is going to be the
+
+impact of any change
+
+and thus we need to capture that in in
+
+some
+
+automated form um
+
+so let's introduce the anatomy of the
+
+basic test um
+
+so this if you are already familiar with
+
+if you wrote any tests before you may
+
+already be familiar with this so
+
+basically there is three components
+
+at least first a place where you declare
+
+so this is that sorry by the way
+
+we're going to be talking about testing
+
+specifically our code although this
+
+first
+
+introduction to testing covers testing
+
+at a more general level
+
+so this particular section that i'm
+
+going right now is the only
+
+time where we're going to be talking
+
+specifically about
+
+how we test something and it's just to
+
+give you like a gist of what's coming
+
+and for many of us this is something
+
+that we are already familiar with
+
+so bear with me we are going to come
+
+back to specifically how we write tests
+
+with the package test that in other
+
+meetups but for now this is just an
+
+introduction
+
+the basic anatomy of a test that test so
+
+test that is in our package
+
+that allows you to write tests for your
+
+code
+
+and so the anatomy of a test that test
+
+is like this
+
+you don't need to pay too much attention
+
+to the details but basically test that
+
+has this function that is called
+
+test underscore dot and the first
+
+component is a place where you declare
+
+the intent
+
+of that test uh this you know is
+
+here just a string of tests of text that
+
+in this case for example the intent of
+
+this test
+
+this is just a toy example is um to
+
+you understand if s dot vector if the
+
+function as dot vector
+
+strips the names of a vector
+
+so the first component is where you
+
+declare the intent
+
+a second component is where you generate
+
+some data
+
+sometimes the data comes from outside
+
+your script your test script you're
+
+reusing some data
+
+that you have but if you can you know
+
+your data should be
+
+as small as possible and sometimes just
+
+a toy fake
+
+data set as the one that we are creating
+
+here on the fly the vector x
+
+now contains uh you know the first
+
+element called a
+
+that holds the number one and the second
+
+element called b that holds the number
+
+two
+
+that is all that we need in this
+
+particular test
+
+to to see if the names a and the name b
+
+are stripped by the function as vector
+
+we could be using a more complex data
+
+set but there is no point if we can
+
+do the same with less data and we can
+
+generate the data on the fly
+
+showing it right into your eyeballs then
+
+a lot better
+
+than having to rely on a data set that
+
+more obscurely comes from somewhere else
+
+and then you have to kind of you know
+
+print that object to the console to see
+
+what the object is
+
+so if you can you know as simple as
+
+possible as explicit as possible
+
+is the best so uh recapping
+
+first component is where you declare
+
+your intent second component is
+
+the generation of your data and at least
+
+the third component where you actually
+
+run what's called an expectation an
+
+expectation is where you compare
+
+the output that you get after applying
+
+you know in this case the function as
+
+vector to the
+
+generated data you compare the result
+
+from that to what you expect so in this
+
+case what i
+
+expect or from this test we expect that
+
+the result will be equal
+
+to the vector without the names so the
+
+intent of this test is to
+
+check that this function strips the
+
+names so the result should be
+
+the same vector but without the names so
+
+this function expects
+
+equals equal comes from the desktop
+
+package again
+
+and is the third element of a basic test
+
+so again as a final recap first
+
+you declare the intent second you
+
+generate some data somehow
+
+and third you check your expectations
+
+basically
+
+uh by comparing your results what you
+
+get with from the code
+
+with you know you compare that to
+
+what you actually expect um
+
+the book now we go back to talking a bit
+
+more generally about tests and
+
+in this particular case i'm talking
+
+about uh what you will find
+
+in that book mastering shiny in the
+
+chapter testing
+
+the book covers four levels of testing
+
+but in this
+
+series of meet ups we're going to be
+
+focusing on level one and level
+
+four a little bit because the book is
+
+about
+
+shiny and shiny is another package for
+
+building interactive applications then
+
+the book covers testing at this entire
+
+four levels
+
+the level of the function which is kind
+
+of the lowest level possible the
+
+simplest level possible where you can
+
+test
+
+any feature that you build that's
+
+exactly what you do
+
+what you want it to do what you expect
+
+it to do at the very small what's called
+
+unit level of testing but then there's
+
+other
+
+ways in which you can or what other
+
+aspects of your programs that you can
+
+test
+
+and and it makes sense in a shiny app
+
+for example to test that
+
+reactive components do what you expect
+
+also it makes sense to test that the
+
+behavior of your application on the web
+
+browser will behave as you expect so
+
+that's
+
+the third element javascript and finally
+
+that the visuals
+
+of your application are as you expect
+
+the elements two and three are kind of
+
+quite specific to interactive
+
+applications uh we are not
+
+covering those just now maybe later in
+
+in a different series if we do cover
+
+shiny at some point
+
+uh but the focus here is functions
+
+because that is um
+
+you know to do any other level you first
+
+need to go
+
+to the lower level so functions testing
+
+your code at the most
+
+at the lowest level possible is always a
+
+must
+
+and so by showing you or by discussing
+
+this
+
+in this series we are going to be
+
+catering for the broadest of our
+
+audiences here
+
+and visuals uh it's quite tricky because
+
+you know as you move
+
+down from one to four the the tests
+
+become more real in a way because you
+
+know basically you're
+
+you are kind of trying to reproduce more
+
+accurately the exact experience of a
+
+user
+
+but also they become slower because
+
+those tests need to do more work and
+
+also they become more
+
+more fragile and and they can kind of
+
+throw
+
+a lot of false positives and make your
+
+life as a maintainer really difficult
+
+because like tiny changes that may not
+
+be meaningful for a human
+
+will be detected by a computer and tell
+
+you how well there is a problem here
+
+so like a small example could be i know
+
+maybe
+
+you know in mac or in windows the exact
+
+graph that you produce from a plot might
+
+be a little different because
+
+some color changed or some fonts didn't
+
+exist in one
+
+operation operating system and that's
+
+existing the other
+
+so a test there would fail but maybe
+
+it's not a real problem that you care
+
+about
+
+so that's just an example of how you
+
+know as you move from
+
+level one functions to level four
+
+visuals
+
+um the the the complexity of the
+
+issue becomes higher but because i know
+
+that some people are already testing
+
+visuals
+
+and i'm also kind of learning how to do
+
+that with the latest tools it tests that
+
+i i thought that well we would at least
+
+cover um
+
+the basics of how you can do it so you
+
+can you can try it and also learn from
+
+it and also teach me
+
+what you find by by doing that um
+
+so let's see if possible because of what
+
+i explained because you know as you move
+
+from one to four
+
+the test becomes slower and more fragile
+
+whenever it is possible you should
+
+strive to test your code at the lowest
+
+level
+
+possible right so always try to identify
+
+what is the minimum unit or behavior
+
+that you want
+
+to test that you want to confirm that is
+
+doing what you think it's doing
+
+and and focus on that if possible
+
+sometimes you can sometimes you actually
+
+do want to test something like
+
+reactivity or like visuals
+
+and then there is no other way to you
+
+know move
+
+higher in this in this natural jerky of
+
+testing
+
+and what's interesting is that as you
+
+start testing your
+
+code uh you will realize that
+
+your design changes the way you write
+
+code changes and why
+
+because once you start thinking about
+
+how you're going to be testing some code
+
+that will affect the way you write your
+
+your program so that you can easily test
+
+it
+
+right in some ways code is easier to
+
+test than in
+
+other ways for example if you
+
+add certain parameters to your functions
+
+to the interface of your function so you
+
+can inject
+
+data or some you know like a true or
+
+false or whatever
+
+then then you can test you know what
+
+will happen
+
+in different paths through your program
+
+with and without the parameter if that
+
+parameter does not exist and instead
+
+you are relying on a global variable on
+
+the global environment of the user
+
+to reproduce that environment is a lot
+
+harder right so that's where i'm saying
+
+that the design
+
+of your programs is affected by your
+
+need
+
+to test um in a simpler and easier way
+
+possible
+
+so that is just about what i wanted to
+
+cover
+
+today we still have a couple of minutes
+
+and i will i will basically use those
+
+to touch on this idea of
+
+the testing philosophy and this idea of
+
+when you should write tests
+
+and hopefully this will prompt the
+
+questions that i would like to
+
+hear about in the next uh in the
+
+following 10 minutes
+
+so jago i'm aware i have i'm one minute
+
+before
+
+i ask you to stop me so i'm going to use
+
+that meaning
+
+maybe two minutes to to discuss this so
+
+hadley
+
+in his book in the in the section in the
+
+subsection
+
+uh testing ends with a subsection called
+
+when you should write tests and um
+
+or i think it's called philosophy
+
+actually and basically there is
+
+three times when you should probably
+
+write tests uh
+
+they are not necessarily mutually
+
+exclusive so first
+
+the first that he mentioned is before
+
+you write code
+
+this is not very intuitive that you
+
+would first write a test
+
+and then write a program that does what
+
+the test
+
+is trying to test but it is a super
+
+useful
+
+way to write code and to make sure that
+
+you just write
+
+exact amount of code that you need no
+
+more and no less
+
+and that your program as you write it is
+
+fully
+
+covered by tests so it's a very useful
+
+and very used way of writing code but
+
+it's not always
+
+possible sometimes you don't know
+
+exactly what is the behavior of the
+
+function that you're
+
+writing and then you can't just you know
+
+write the test because you're still
+
+figuring out where you are right
+
+but when you do know what what is the
+
+exact behavior of your function
+
+then tests first or what's called test 3
+
+and development
+
+is a very good option and you know
+
+getting into it
+
+can be very good in terms of how
+
+[Music]
+
+the design of your programs turn out to
+
+be
+
+second is after you write your code so
+
+when you're figuring out your program
+
+you usually create either a mental lease
+
+or maybe you actually take the effort of
+
+writing it down
+
+you you develop a list of worries about
+
+your program so you write something and
+
+you then you think oh shoot
+
+but what would happen if the user
+
+instead of you know plugging in a data
+
+frame they plug
+
+a vector that is not a data frame or
+
+what will happen if instead of
+
+of a number they plug a string
+
+of the number one but in the form of a
+
+literal string so all those worries you
+
+accumulate
+
+sometimes when you are figuring out your
+
+program and at the end once you have a
+
+relatively stable version you go
+
+through that list and test each of your
+
+those worries
+
+and maybe change your code a little bit
+
+to to address
+
+uh those those worries and to make your
+
+test pass so that's the second scenario
+
+and finally when you find it back every
+
+single time you find a bag it is best
+
+practice to capture that bug
+
+in a little reproducible example that
+
+you turn into a simple test case
+
+and that will also help you um
+
+avoid that the back will basically avoid
+
+the bug to come back
+
+it's horrible to uh to to fix the same
+
+mag more than once
+
+so once you have identified the problem
+
+you fixed it you just write a text so if
+
+ever that that comes back you will know
+
+and you will fix it before it is exposed
+
+to the public
+
+so with that i'm going to stop here and
+
+i would love to hear you know questions
+
+or comments about this media but also
+
+about what's your vision
+
+what would you like to cover in this
+
+series
+
+of ups and let's you know probably
+
+discuss if that's possible if that's
+
+beyond
+
+what i envision this meetup to be so
+
+open the floor for
+
+for the next eight minutes
+
+i see i think this is hand rise let me
+
+i'm kind of a little cold out of touch
+
+with this
+
+okay go ahead there you go
+
+um yeah so obviously i'm interested in
+
+that
+
+fantastic visuals and i found
+
+very interesting what you said that it
+
+actually can make
+
+your code like more fragile so i would
+
+definitely be interested
+
+in like seeing that in action
+
+or also maybe talking about when does it
+
+still make sense to test visuals in the
+
+sense of like
+
+comparing actual output and when maybe
+
+it doesn't and what's done enough like
+
+yeah exactly yeah yeah yeah
+
+it's um maybe because you know
+
+i know that you're working with this
+
+like right now maybe i would suggest you
+
+go a little bit ahead
+
+and kind of jump uh to that book the
+
+section
+
+um on testing visuals is just
+
+maybe you know three four paragraphs
+
+that won't take a long time to read
+
+and i will probably answer some of the
+
+questions that you may have in your mind
+
+right now
+
+um apart from that i don't have a lot of
+
+experience myself for hand
+
+i would also encourage you to test for
+
+example you have a mac i believe right
+
+you're using max
+
+yeah so i'm i'm i'm using linux here so
+
+i'm curious to see for example you know
+
+i i wrote um
+
+a snapshot test yesterday and i'm
+
+curious to see
+
+if the test passes in your computer or
+
+because it's a mac and i'm using a linux
+
+it has its different behavior i expect
+
+not but i
+
+do expect a difference when it's run on
+
+a window so it would be great to ask our
+
+windows users to run the same tests and
+
+see if that snapshot
+
+is identified as changed on a windows
+
+because it has a different line ending
+
+you know those are things that we are
+
+figuring out i'm also learning about
+
+that so i'm very open to hearing your
+
+feedback so that i also learn um
+
+to test visuals
+
+yeah any other question that we have
+
+here or comment
+
+yeah go go ahead
+
+i think cj was first actually so uh okay
+
+cj
+
+um yeah okay so the visual testing i
+
+think is quite interesting too i've been
+
+pulling around a little bit with this um
+
+myself
+
+just quickly yeah
+
+my impression um is that
+
+normally um in in r you're testing like
+
+you
+
+export the the graphic as a svg which
+
+that is like a textual representation
+
+which is a lot easier to test for
+
+changes versus
+
+trying to get the same exact binary file
+
+or or raster image is
+
+probably going to be a nightmare across
+
+platforms
+
+it's a little heads up on that
+
+that's the kind of stuff i've been
+
+struggling with recently um
+
+i was gonna say i feel like i'm the one
+
+or
+
+i have been mostly pushing back
+
+tomorrow when you're saying like this
+
+test driven
+
+development um you know writing test
+
+first
+
+but contrary to that i was going to make
+
+a suggestion which
+
+a lot of times when i go to write a
+
+function i write like pseudo code
+
+so i write like okay i want to do this
+
+you know like it doesn't have the actual
+
+work code but like line by line kind of
+
+the steps that i want to do
+
+and i think that's also like really good
+
+point to continue further
+
+at the end of that you say i do this do
+
+this do this and at the end like okay i
+
+want to return a data frame
+
+that has these columns that does this
+
+thing and
+
+meets this criteria and those are that
+
+is
+
+test can easily make you know a test
+
+around those things to have this sort of
+
+like test
+
+driven um
+
+style program which i've pushed back
+
+against a lot that's just a thought
+
+yeah yeah actually i think when i read
+
+what was that called complete2 i think
+
+by
+
+someone who worked in in microsoft for
+
+years um this is a
+
+very classic old book i think you know
+
+probably was developed even before
+
+basically
+
+test driven development was invented
+
+maybe but it did indeed explain
+
+uh you know writing programs based on
+
+pseudo code first and basically write
+
+writing kind of
+
+an outline of what the problem should do
+
+and then fill in that outline
+
+and at the time i practiced that i
+
+really liked it and so i think i
+
+i do think it is a great way to to write
+
+programs
+
+i also think that test tree and
+
+development sometimes
+
+can be very useful and i use it not
+
+always but when
+
+sometimes yeah i love it too
+
+yeah very looking forward to exploring
+
+more
+
+uh about testing visuals and you know
+
+using your experience ej
+
+also curious to see how much of that has
+
+been implemented in the new version of
+
+this that
+
+three which does include a tool it's an
+
+external tool but it's linked
+
+there is a there is a function called
+
+snapshot review
+
+that pops up from a different package a
+
+tool that compares graphs so allows you
+
+to see you know if
+
+one dot change you can see it so i'm
+
+curious to see how that compares with
+
+other tools that you have mentioned in
+
+prs or issues
+
+looking forward to that yakov
+
+yeah just brief question um
+
+about um testing essentially
+
+an entire workflow or more precisely uh
+
+think about the workflow for example
+
+we're definitely
+
+not testing all functions just yet but
+
+we are like oh we are we did have a test
+
+that would basically
+
+look at does the whole workflow produce
+
+at least the piles that we would expect
+
+it to
+
+um is is that something that we are only
+
+doing because we're not testing properly
+
+on the lower level and we don't really
+
+care about that anymore once
+
+it's properly covered or would you still
+
+say that we should
+
+do that and maybe also
+
+somewhat along those lines if we do that
+
+should we not have
+
+a certain set of test data sets that
+
+makes sense
+
+for the whole process and if so was
+
+there
+
+somehow like a reasonable or a
+
+halfway helpful guideline somewhere that
+
+one could look at too
+
+to help come up with that was that just
+
+like
+
+thinking about it very hard for a while
+
+and
+
+at some point it just pops up out of my
+
+brain and
+
+work for that yeah first you know that
+
+gives me the opportunity to thank alex
+
+for
+
+um you know leading the last couple of
+
+meetups but particularly the last one
+
+which kind of sets the scene for this
+
+series i understand that you talk about
+
+different kinds of tests and i want to
+
+kind of disclose that at least the focus
+
+for
+
+the the the series that i envision is
+
+specifically unit testing
+
+um but you know
+
+i'm also open to expand the series if
+
+there is enough interest and enough
+
+people
+
+uh think it's it's useful to cover other
+
+aspects of testing but
+
+but yeah i think answering your question
+
+jacob um you know
+
+anywhere you read about testing usually
+
+it refers to unit testing and it's such
+
+an
+
+integral part of the development process
+
+that it is i mean in the last
+
+i mean testing has been around for a
+
+long time maybe in the last
+
+20 years people have already decided
+
+that it's the way to go it's no question
+
+about that he's like saying well
+
+you know the earth is round something
+
+like that so
+
+the fact that we don't have tests for a
+
+unit test for
+
+a lot of our programs is kind of odd so
+
+unfortunately many of us
+
+have this experience where you know we
+
+jump into a project and it is the way it
+
+is
+
+and and we kind of maybe assume that
+
+that's the way things are
+
+or should be but but it's not uh so the
+
+reason that you know sometimes we test
+
+the outside of the program
+
+um at more like as an integra what i
+
+would call the integration
+
+level test but maybe alex has a
+
+different term for that
+
+and that's kind of just the way we have
+
+you know as as much as we can do to
+
+test something at least um
+
+when we don't have lower level tests and
+
+ideally you know
+
+it would be great to have lower level
+
+tests but also you don't want to go so
+
+low that you are testing implementation
+
+details that will very likely change
+
+so the art of testing is precisely to
+
+know how much
+
+uh how much you need
+
+how much detail you need to test because
+
+you don't want to have too many
+
+false positives right and to be changing
+
+on your program all the time
+
+and because then you kind of lose trust
+
+in your tests because they fail the time
+
+and then you kind of lose energy
+
+so we are running out of time maybe
+
+someone has a last question
+
+or comment and we wrap up for next time
+
+no okay thank you very much maybe i will
+
+be looking forward to
+
+your ideas about what you would like to
+
+cover i did write a few things on the
+
+syllabus but it's kind of
+
+incomplete maybe uh also expecting you
+
+to provide some inputs about what you
+
+would like to hear
+
+iago question right react comment
+
+actually does give me the kind of
+
+information that i need
+
+to see you know what else we can cover
+
+uh but
+
+on slack reach out on slack maybe on the
+
+coding channel or directly to me
+
+to see if there's anything else that you
+
+would like to cover in this series thank
+
+you very much for
+
+for joining and see you next time

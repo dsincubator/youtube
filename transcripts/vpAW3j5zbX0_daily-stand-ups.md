@@ -1,0 +1,1464 @@
+---
+type: Video Transcript
+title: "Daily stand-ups"
+description: "yeah go ahead and hit record here  um hey everyone so  this is sort of a follow-up to  that nice long ramble that i gave on  friday about pad guile stuff  um an"
+resource: "https://www.youtube.com/watch?v=vpAW3j5zbX0"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=vpAW3j5zbX0"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+yeah go ahead and hit record here
+
+um hey everyone so
+
+this is sort of a follow-up to
+
+that nice long ramble that i gave on
+
+friday about pad guile stuff
+
+um and i wanted to talk today
+
+about daily stand-ups um
+
+because they are sort of
+
+the the low-hanging fruit when it comes
+
+to
+
+getting an agile practice going um
+
+they're something that no matter where
+
+you
+
+are in the process it's it is beneficial
+
+for the team to be regularly talking to
+
+each other
+
+and communicating about like what is
+
+happening
+
+what are they working on what are some
+
+of the impediments that they're
+
+discovering
+
+um so let's
+
+start with a quick question
+
+is anybody already doing something that
+
+they think is a stand-up
+
+on any sort of regular basis
+
+[Music]
+
+maro and i are kind of doing
+
+daily if scrum stand ups maybe not daily
+
+but
+
+we try to do them daily unless we forget
+
+more than a couple of times a week
+
+though
+
+definitely more than a couple times a
+
+week that that's good that's
+
+uh that's a lot more than nothing so
+
+um i i would be lying if i said that i
+
+have
+
+made my submission to the daily stand up
+
+every day
+
+so um but it is one of those things
+
+that as you get into the habit of doing
+
+it it is easier to just
+
+do it each day
+
+um so the core
+
+idea of the daily stand-up and i'll
+
+call it a stand-up meeting or a stand-up
+
+slack channel
+
+the exact format is not super
+
+important the content is what is
+
+important
+
+so i may switch between words
+
+um but basically it is
+
+each day at the start of the day
+
+everyone on the team says here's what i
+
+did yesterday
+
+here's what i'm planning to do today and
+
+here are the things that are going to
+
+get into my way
+
+um so it's yesterday today and then any
+
+blockers
+
+that are i am aware of right
+
+um we are all aware that
+
+over the course of a day there will be a
+
+lot more blockers
+
+that pop up and
+
+that is okay
+
+um so
+
+i think it's also useful to talk about
+
+what the
+
+stand stand-up is and what it is not so
+
+overall the the stand-up is a chance for
+
+the
+
+team that is doing work on
+
+something to communicate amongst
+
+themselves
+
+right um so it would be
+
+me saying here is what i am planning to
+
+do today so that
+
+other people who are interacting with
+
+that same thing
+
+know that i am planning to do that today
+
+so they can
+
+you know anything that follows on from
+
+that they know that that's
+
+probably going to be tomorrow for them
+
+um these are supposed to be
+
+quick updates if you're doing it as
+
+a meeting um a team
+
+of seven or so people should be
+
+in and out and done in 15 minutes
+
+if you are doing this sort of as
+
+slack messages it should take about
+
+three minutes to
+
+write your slack message one second
+
+he's gonna go write a slack message
+
+okay sorry um my dinner just got here
+
+so um
+
+delivery is great um dinner
+
+it's four i'm planning ahead
+
+um so the
+
+whole idea of the stand-up
+
+is um this is just very quick
+
+and it is supposed to be something that
+
+sparks further discussion right
+
+if i say uh i am writing an r function
+
+today i am blocked because i don't
+
+understand the
+
+d plier left join function right and i
+
+need to figure out how that works
+
+that can spark a discussion with someone
+
+else on the team who sees that and
+
+they're like
+
+oh i know how that works let me give you
+
+some pointers
+
+right or i am blocked
+
+on making this thing because
+
+uh i am waiting on jackson to
+
+write this other section cool that is a
+
+prompt for jackson and i to have a
+
+discussion of like
+
+is there any way you can take something
+
+that was on your plate today and move it
+
+to tomorrow so that you can get this
+
+blocker for me done
+
+right it is supposed to be a
+
+short status update that then leads to
+
+further one-on-one or maybe three-person
+
+conversations
+
+um and it is all focused on the team
+
+and the work that they are doing so this
+
+is not a place for a project manager to
+
+be like
+
+here is the status of the project as it
+
+stands today
+
+as opposed to where it was yesterday
+
+that is
+
+not this thing right
+
+um so
+
+it might be useful
+
+to take a look at um just
+
+an example of my
+
+stand up today um can everyone see this
+
+cool so here this is like
+
+the stand-up that i gave for um
+
+noemi and taylor like the asset
+
+resolution team
+
+and it's here's what i did yesterday
+
+a couple of things here's what i'm
+
+planning to do today
+
+and here are the things that i know are
+
+going to be an issue as i try to
+
+complete those things
+
+um some things to note that are not here
+
+i am not including meetings in this
+
+i am including um
+
+the this meeting because i had to do
+
+some work to prepare for that
+
+but i am not including meetings that are
+
+just like
+
+i show up i absorb my information i take
+
+part in the meeting and then i move on
+
+those are if i'm not doing anything
+
+specifically to prepare for it
+
+it doesn't belong in the stand up it
+
+belongs in a calendar
+
+um also
+
+a thing to note the thing that is in the
+
+today
+
+section is
+
+a intent it is not a
+
+um it is not like
+
+a binding set in stone commitment
+
+these things that i got done yesterday
+
+two of them were not
+
+on my list for yesterday's uh stand up
+
+and definitely a bunch of the stuff that
+
+was on yesterday's stand up
+
+got carried over to today so
+
+this is expressing intent
+
+and it is expressing here is what has
+
+actually happened
+
+so that um if if
+
+you see something getting pushed back
+
+day after day after day after day
+
+that is another one of those we should
+
+have a conversation about what is
+
+happening with this particular issue
+
+questions so far
+
+um i might have a question which is i
+
+don't know
+
+maybe goes too deep how do you deal with
+
+blockers where you can't really overcome
+
+them
+
+um right so i'm
+
+one where maybe yeah a person can't
+
+reschedule things or where you have kind
+
+of a mental blocker to
+
+like maybe something like that how do
+
+you deal with that
+
+um that is
+
+a common problem um
+
+that that is an unfortunately common
+
+problem and
+
+the i think
+
+that is part of the value in making this
+
+sort of a more
+
+public forum is if someone can't
+
+reschedule
+
+something maybe is there someone else
+
+who could take that on
+
+are um if there is like a mental block
+
+right is this something that someone
+
+else can
+
+like chip in 15 minutes of their time
+
+and like
+
+have a conversation and hopefully like
+
+talk through it with you and get the
+
+ball rolling
+
+um a really common type of blocker
+
+is something that no one in the
+
+organization can do anything about
+
+and it's just like a fact of life
+
+because it is
+
+and we are waiting for some external
+
+person to sign a contract so that we can
+
+do the next thing right i i ran into
+
+that
+
+a lot on previous jobs and
+
+that is okay as a blocker it
+
+because it's like we can't do any work
+
+until that happens
+
+or we can't do any work on this until
+
+that happens
+
+so here is what
+
+we are doing instead and
+
+um that then gives
+
+the signal to a project manager
+
+or whoever is the point of contact to
+
+poke that external person a little more
+
+so it is uh no matter what
+
+locker is happening hopefully there is
+
+someone who can offer something
+
+if you're waiting for something external
+
+or something would you put that down
+
+always on your list
+
+of what you're intend to do because
+
+obviously you might intend to do that
+
+but
+
+if it's unrealistic that this is
+
+happening today then i
+
+think it might also prolong this list to
+
+an unnecessary
+
+yeah um like the way that i
+
+have dealt with that in the past is i
+
+would be like
+
+yesterday i cleared out tasks a and b
+
+today doing cd and e and then blockers
+
+i can't i can't even start on task x
+
+until i get a contract signed
+
+right and a a useful way to deal with
+
+that
+
+would be to like in a reply be like
+
+hey at noemi can you poke
+
+whoever needs to sign that contract to
+
+get them to sign it um
+
+that that is the useful
+
+that is one of the big values of doing
+
+it as a slack
+
+versus um an in-person meeting but the
+
+same
+
+dynamic happens either way of just
+
+like i am blocked on this
+
+you person that i know who can do
+
+something about it will you please do
+
+something about it
+
+um or similarly if it's a mental blocker
+
+like
+
+hey i've got an r programming question
+
+maro jackson pranav can one of you
+
+tell me how the hell this function works
+
+right
+
+um so it is a
+
+it all of this is supposed to lead to
+
+more conversation
+
+um when there are issues right
+
+um ideally everyone hopes that their
+
+stand-up updates are spectacularly
+
+boring
+
+and like yesterday i got all my work
+
+done today here's what i'm doing there
+
+are no blockers life is great
+
+right um that doesn't ever happen
+
+um so a thing that is
+
+also useful to recognize is
+
+who is in the meeting or who is
+
+in your stand-up slack channel right
+
+um it should be the team of people
+
+that you are working with on a thing
+
+pretty closely
+
+right um i know that like the idea of
+
+having
+
+a coordinated project team with some
+
+sort of structure
+
+is um
+
+not existent here but
+
+it is useful that if you can identify
+
+a couple of people who are working on
+
+the same thing right
+
+somewhere between three and
+
+seven definitely no more than a dozen
+
+people
+
+right if you have a dozen people in a
+
+stand-up that's too many
+
+but you you say here are the people that
+
+i'm working with on this thing
+
+right um so for my example
+
+i've got a stand up for um
+
+asset resolution and i am starting
+
+a stand-up channel for the project
+
+management task force
+
+and i will very literally just copy and
+
+paste the same
+
+post to both channels um
+
+because that gives both teams visibility
+
+on
+
+here are the things that i'm doing for
+
+you today here is where
+
+the rest of my time is going
+
+and here here is the stuff that i am
+
+doing not
+
+for you today um
+
+and i generally the
+
+the people who are in the slack channel
+
+are uh the people doing the work
+
+and whatever project manager is
+
+cracking at um and again i know
+
+that those are very nebulous terms for
+
+us
+
+but um i guess
+
+the person who is orchestrating that
+
+work is
+
+a more loose way to
+
+phrase that oh you actually just
+
+uh just quickly i kind of missed what
+
+you just said so so in the context let's
+
+say
+
+i'm part of two different teams with two
+
+different project managers
+
+both of which are are you know saying
+
+that there's
+
+all these tasks that need to be
+
+prioritized and and what would be the
+
+manner
+
+like the communication and saying this
+
+is what i'm doing today and it's for
+
+this task
+
+and i'm not getting to this unless i
+
+finish those things that are
+
+that are on on the the tasks and my
+
+other in my other stand-up
+
+what would be the approach to that
+
+communication yeah
+
+so like here i've just like
+
+each bullet point is one of the the
+
+projects
+
+that i'm working on right and there may
+
+be
+
+a couple of things underneath each one
+
+of them
+
+but it is a the people
+
+who are caring about what i'm doing for
+
+ar can very quickly identify that
+
+and they can see oh he is also doing
+
+other stuff
+
+the people who care about project
+
+management task force stuff can say
+
+here's what he's doing for that he is
+
+also doing other stuff
+
+and if there is a conflict
+
+um stand up channels should be
+
+open they should be visible so that
+
+um you know if i
+
+need to hash out a conversation about
+
+what i am doing on any particular day
+
+with my project managers
+
+like that goes in as a thread
+
+underneath my stand-up report for that
+
+day
+
+and it would be like at sarah
+
+hey noemie wants me to focus on this
+
+today
+
+right yeah yeah so that
+
+again that is a conversation that
+
+happens
+
+after the fact
+
+uh i know we're i'm getting a little
+
+deep into the weeds
+
+like already so i'm just gonna ask one
+
+more question that i've done but i
+
+i do want to start just doing this
+
+already like in
+
+experimenting and thinking you know how
+
+it works and if it doesn't um so would
+
+it be like let's say
+
+the example you're showing on the on the
+
+team's screen right here
+
+yeah let's say you have like you know ar
+
+tech is going to be one group of people
+
+group of three to five people where
+
+they're all keen on understanding you
+
+know what's going on with ar tech
+
+and then pm task force is another group
+
+of ten people who are you know keen on
+
+knowing what you're doing there
+
+would would you and presumably though
+
+each of those things would have
+
+each of those groups would have their
+
+own separate kind of stand-up channel
+
+because they're there's different people
+
+involved people care would you just kind
+
+of copy and paste that same standard
+
+message
+
+i i literally copy and paste it yeah in
+
+both channels and just say like here you
+
+go
+
+okay yep that that is exactly how i do
+
+it
+
+um my last job i had
+
+four different stand-up channels that i
+
+reported to because
+
+that was the the structure we had and i
+
+was a data engineer so i touched a lot
+
+of projects
+
+and yeah no i would literally just
+
+here is what's going on copy paste paste
+
+face paste
+
+and then there would be some discussion
+
+following up to various different
+
+versions of that
+
+the key is to try and
+
+either try and consolidate that
+
+discussion
+
+or make sure everyone can see every
+
+version of it
+
+so a quick reminder that we are uh about
+
+nine minutes to the end
+
+uh just to be mindful of time yeah
+
+i i basically gave in my spiel this is
+
+uh time to get into the weeds so
+
+questions welcome
+
+uh you're using teams it looks like um
+
+uh yeah asset resolution is on teams
+
+but the same thing everybody
+
+account right say again
+
+can we use it even though we just have
+
+like this high level berlin one berlin
+
+two burden three counts i guess not
+
+right i mean if you wanted
+
+to contribute to the stand up for asset
+
+resolution you're more than welcome to
+
+but um that is probably not the
+
+interesting way um
+
+let me scroll back here a little bit
+
+to when we were doing it on
+
+slack uh
+
+how do i stop sharing
+
+i am i guess maybe the follow-up
+
+question
+
+is um teams versus slack
+
+do you use both or how does that work um
+
+i don't think it's a yeah 2d eye stick
+
+with slack it's what you've got right
+
+now
+
+ar is transitioning for
+
+entirely unrelated reasons here is
+
+um from i guess
+
+a week or so ago this is
+
+no amy taylor and me just like throwing
+
+our daily but this is slack again right
+
+yeah this is slack it is and
+
+we have not at ar developed the good
+
+practice yet
+
+of doing it in its own channel giving
+
+yesterday today
+
+blockers that is something i'm trying to
+
+encourage over there but even just
+
+having a step of
+
+here is what i'm aiming for today is
+
+better than nothing right i i think that
+
+is one of the big things
+
+is like any part of this that you take
+
+is still more than we are doing right
+
+now
+
+um the the like everybody reports
+
+at the beginning of their day yesterday
+
+today
+
+uh blockers that is like the gold
+
+standard we should
+
+aim for but if we don't get there then
+
+that is uh something we can continue to
+
+move towards
+
+um a note that
+
+i sort of glossed over earlier it's
+
+important that this be
+
+early in the day um for each
+
+person and i know with like distributed
+
+teams especially
+
+the us people who get on noticeably
+
+later
+
+um like that can be
+
+a thing but generally the way that i
+
+would do this
+
+is uh open up my computer as the coffee
+
+is brewing
+
+check my emails see if anything caught
+
+fire overnight
+
+uh if i need to like immediately deal
+
+with that stuff i do it
+
+and then like once as soon as i have
+
+like some breathing room
+
+or my email inbox is empty and i know
+
+what i'm doing for the day
+
+then i write my stand up update
+
+maybe one quick question from my side
+
+because you said you were in
+
+multiple different standups in your past
+
+job and in general i
+
+was wondering if you um have a view on
+
+whether it should rather be
+
+project-based or so to speak
+
+team-based in the sense of teams of like
+
+people working with somewhat similar
+
+tools
+
+right yeah because i have basically just
+
+done the the team-based version so far
+
+but i could imagine maybe something else
+
+could also be good
+
+um so that i can comment
+
+because i think that's actually a very
+
+very good point um
+
+speaking of the point mao and jackson
+
+are doing this already in
+
+a team-based version like the code base
+
+i think
+
+if there's blockers uh it would be
+
+actually good that it's
+
+a project-based as well so i mean you
+
+could do either both
+
+but it would help you i guess it could
+
+help you a lot actually to post it also
+
+always in the bank's
+
+channel because there might be some
+
+blockers i can remove in like two
+
+seconds
+
+where it might take you a few hours to a
+
+day or whatever
+
+yeah um
+
+i this is a thing that
+
+each organization finds its own happy
+
+place
+
+regarding like how many stand-ups are
+
+people willing to tolerate being in
+
+um but it is
+
+so at my last the four stand-ups i was
+
+in
+
+were three project based stand-ups and
+
+then
+
+one for uh the team of data engineers we
+
+had
+
+right so and that was useful
+
+because if my blocker
+
+was based in a project
+
+i could get an answer about that from
+
+other people who were dealing about that
+
+project
+
+right if my blocker was based on
+
+some technical ability that i was
+
+missing
+
+posting it in the data engineers stand
+
+up was
+
+good because that is where i could get
+
+answers to those
+
+questions um
+
+so it's definitely something like
+
+if you find yourself in a stand-up with
+
+a dozen people in it
+
+it's probably too big of a team
+
+but if you are in
+
+a group of a half dozen
+
+maybe nine people that are
+
+uh of similar technical interest
+
+to you that can be a really productive
+
+stand-up and it can also give you a lot
+
+of visibility
+
+not just within your project but also
+
+what other people are working on
+
+with the same skills you are on
+
+different projects
+
+which is um i think falls into that
+
+whole
+
+not a lot of visibility in what's going
+
+on around us
+
+so we have a couple of more minutes uh
+
+to go um so anyone mentioned
+
+comments or questions um think of those
+
+as
+
+a way to wrap up as well i have a
+
+big one um how do you think about having
+
+a channel
+
+that is just presenting blockers to
+
+directors where we say directors are the
+
+only ones to solve it
+
+is that something that would work is
+
+that
+
+like do you have any views experiences
+
+with that
+
+i mean organization might be special
+
+case but maybe you have experienced in
+
+the past
+
+yeah um the way that i have experienced
+
+that in the past is
+
+normally the people that i would think
+
+of as comparable to directors
+
+in previous organizations were
+
+fairly detached from the actual work
+
+being done
+
+so directly presenting them a blocker
+
+was not
+
+useful in any significant way
+
+um that said here our directors are
+
+pretty involved in the work being done
+
+um so i don't know how that would fly
+
+but um the way that i have had that
+
+dealt with in the past
+
+is uh
+
+i present my stand-up it has a blocker
+
+in it
+
+and i tag my project manager my scrum
+
+master whatever that
+
+middle layer in between people doing
+
+work
+
+and people doing strategic thinking is
+
+and they take that issue
+
+and raise that to the top which then
+
+takes me the person doing the work
+
+and i can focus on other stuff that day
+
+knowing that that project manager scrum
+
+master is dealing with that for me
+
+okay yeah so that just basically means
+
+we need to have this
+
+layer of like scrum masters that have a
+
+a good connection to the directors or
+
+like a
+
+daily check-in possibility something
+
+like that
+
+right and like when you have this as a
+
+daily check-in
+
+like the scrum masters become
+
+immediately aware of the issue
+
+and like can follow up get more details
+
+and then
+
+when they take it to the directors they
+
+can provide all of the necessary context
+
+it's um
+
+it is a thing that is
+
+a useful structure we're clearly not
+
+there yet
+
+um i would say
+
+at this point if i have a blocker that
+
+only a director can solve
+
+i would not directly tag them with my
+
+issue
+
+um i would either
+
+put that in a private channel or
+
+talk to someone else and who
+
+does have a good relationship with the
+
+director and let them float it up
+
+but um i i would not make that
+
+i would not involve directors in the
+
+stand-up process
+
+this is a very team focused thing
+
+and um i would worry that they would
+
+swoop down from above and muddy the
+
+waters with
+
+who knows what they're thinking alex and
+
+everyone i'm i'm very
+
+happy to be having this conversation and
+
+seeing excitement
+
+uh alex the last one before we wrap up
+
+how can we follow up
+
+is that the document is just emailing
+
+you
+
+how would you like this conversation to
+
+follow given that we need to kind of
+
+close now yeah um so i
+
+am available if you want me to help
+
+facilitate stand-ups either
+
+real-time meetings or a slack channel
+
+i'm absolutely willing to do that just
+
+ping me on slack
+
+um there is a link to a google document
+
+in the description for this event um
+
+definitely feel free to make comments
+
+add
+
+questions whatever you want on that just
+
+you all know how to get a hold of me
+
+just hit me up i'm here thank you well
+
+the ds equator is
+
+now becoming every time more strong in
+
+using that document so maybe
+
+if you have thoughts that were not we
+
+didn't have time to share today
+
+please capture them there and i will be
+
+kind of watching with alex
+
+documents and kind of making sure to
+
+find the person
+
+who can't follow up on your question or
+
+comment thank you very much alex then
+
+um you can just say goodbye whenever
+
+you're ready and
+
+send the video to me when you can see
+
+all that data harold

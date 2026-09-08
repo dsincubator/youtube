@@ -1,0 +1,1426 @@
+---
+type: Video Transcript
+title: "ds.rpy: Running Python code from RStudio"
+description: "so welcome again to the ds incubator  this time is with a  one session meetup it's not a series  uh that was motivated by a conversation  with miria about runni"
+resource: "https://www.youtube.com/watch?v=moAei68dxr0"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=moAei68dxr0"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+so welcome again to the ds incubator
+
+this time is with a
+
+one session meetup it's not a series
+
+uh that was motivated by a conversation
+
+with miria about running python code
+
+from our studio
+
+why that might be important for for us
+
+or for anyone like us that you know has
+
+a team of data scientists that work um
+
+you know
+
+with both r and python and well the
+
+reason is because
+
+each language has
+
+kind of preferred tools i prefer ides
+
+graphical user interfaces like
+
+for r for our for example pi m
+
+r studio uh and in in at two degrees
+
+where we work a lot of us actually are
+
+familiar with are unfamiliar with our
+
+studio but occasionally we prefer to
+
+work with python and then
+
+uh the change in the language is itself
+
+a challenge and and uh
+
+on top of that
+
+if we have to change ides the graphical
+
+user user interface that we use to
+
+interact with the language that's
+
+another layer of friction and sometimes
+
+you want to run you know code in two
+
+languages in the same report so how do
+
+you do that
+
+and for for us you know we kind of more
+
+uh are more familiar with our with with
+
+python so we're gonna be talking today
+
+about how to work with python code from
+
+our studio so we're gonna make the
+
+choice of working with our studio and
+
+then seeing you know how we can actually
+
+run um python code
+
+um so it's uh as usual the
+
+the there is a repo dedicated to um
+
+the
+
+usually it's a series but this time it's
+
+just one meetup and here in the repo
+
+usually there is one folder per meetup
+
+so let's do just that the folder is this
+
+one zero one the demo
+
+so we're gonna get if i can get in there
+
+uh
+
+well actually have it here on my
+
+uh directly on you know i i downloaded
+
+the or cloned the repo locally
+
+and it has uh that folder that i
+
+mentioned before zero one and here there
+
+is the materials of the day uh the
+
+readme file which i'm gonna need right
+
+now
+
+uh is a combination of r and um and
+
+python code
+
+and the python code uh is
+
+realistic it's kind of small but
+
+realistic in that it has some
+
+complexities
+
+that um
+
+sometimes you know cause friction for
+
+example you we need for this code we
+
+need some packages some python packages
+
+that
+
+are not super smoothly sometimes to
+
+install so let's walk through uh through
+
+the contents of today and a little by
+
+little so
+
+um here we are in our studio
+
+and i'm gonna very quickly scroll down
+
+to the code that motivated the
+
+the meetup
+
+here is a little bit of python code
+
+here in the example and it doesn't
+
+really matter for the meetup what it
+
+does
+
+what it matters is that it actually runs
+
+and so the output that you see here
+
+proves that this this code has has run
+
+and as you can see you know i'm running
+
+this from our studio so you know we kind
+
+of achieved
+
+the
+
+the mission
+
+and at the top of this i also run
+
+intentionally a little bit of our of our
+
+code so uh
+
+that is to show that in one in our
+
+studio we can use um for example our
+
+markdown documents and to intermingle in
+
+the same report both are on python code
+
+so the rest of the meetup is going to be
+
+talking about my personal experience
+
+learning how to do this
+
+and telling you about what tools i
+
+discovered that kind of
+
+come out of the box or work
+
+automatically to enable this interface
+
+between python and r
+
+and which
+
+points i felt the most friction and
+
+where i
+
+i still have huge gaps in my knowledge
+
+that are
+
+probably the places where i should kind
+
+of invest some time uh because learning
+
+those uh you know more about those gaps
+
+i could reduce the friction
+
+in general
+
+so
+
+to begin with um
+
+our studio
+
+by default uh or our markdown which is a
+
+package in our
+
+in inside r
+
+and
+
+[Music]
+
+that is the one that i'm using to create
+
+this report with python and r and
+
+both of those tools don't just you know
+
+work by default you have to install a
+
+package called reticulate so reticulate
+
+is on our package i'm gonna um this is
+
+the
+
+the address of the
+
+the package so i'm gonna show you what
+
+that looks like
+
+let's scroll here here
+
+if i click here it should go
+
+to a web browser
+
+there we go
+
+so this is what the website of the
+
+package looks like so a lot of the tools
+
+that enable this communication between r
+
+and python
+
+smoothly once you install the package
+
+but if you have a completely fresh
+
+computer
+
+with r you stole rstudio you install our
+
+markdown and you want to knit
+
+a markdown file like the one i was
+
+showing just before you will get an
+
+error it will be a very informative
+
+error it will tell you that you need to
+
+install reticulate so that's simply what
+
+you do is you just install reticulate as
+
+you would normally do with you know
+
+install.packages
+
+the name of the package reticulate and
+
+and you're good to start working with it
+
+and then a very simple code would just
+
+run
+
+in
+
+in our markdown you know the code and
+
+the pros is
+
+differentiated by chunks right so you
+
+can write you know pros like this
+
+or you can write code like this and so
+
+the code for example in this case i'm
+
+running our code in in our markdown it's
+
+running in these chunks that are defined
+
+and by
+
+by this weird kind of little format but
+
+if it says r it's going to be an arc
+
+it's it's going to expect our code but
+
+you can also use the engine python
+
+so once you install the reticulate
+
+package then our magnum will understand
+
+this thing so instead of saying r here
+
+uh what you say is python so if you say
+
+python then you will expect a python
+
+code and it will just work
+
+quote quote just work because
+
+then
+
+there is the probably the biggest source
+
+of friction which is the idea of uh
+
+where python comes from where the
+
+packages come from where all those
+
+things are installed in your system and
+
+how our and
+
+our studio is gonna you know discover
+
+them uh to make that script run
+
+so what i'm showing you and here is the
+
+you know success successful attempt but
+
+i before i got here i struggled for
+
+hours trying to understand what was what
+
+was going on and uh what i did here is
+
+uh
+
+use the code that miriah gave me as a
+
+challenge to you know to see if i could
+
+run it as vanilla as possible
+
+and only in
+
+[Music]
+
+only one little tweak i had i had to do
+
+so let me kind of walk you through
+
+sorry for this is very unstructured
+
+because
+
+um yeah because it's it's not it didn't
+
+have a lot of time to prepare i was
+
+mostly kind of struggling with uh trying
+
+to get this this to run uh so yeah just
+
+it's kind of a story of uh frustrations
+
+and and success
+
+so let's go
+
+um to
+
+um so by first so by needing this
+
+document uh i i show that that code um
+
+works in our markdown but you may also
+
+wonder okay what happens if i want to
+
+run that code um
+
+[Music]
+
+like ask python code directly so the the
+
+apart from talking about how to run in
+
+our markdown i would like to talk about
+
+okay what if you only have python code
+
+you can create a file that is a python
+
+file python script which is basically a
+
+file with extension dot pi and
+
+and p
+
+y and there uh you can just stick the
+
+same code in this case that um i have in
+
+the in the python chunk so let's go back
+
+to the uh armor down
+
+so this is the chunk and the same code
+
+is here
+
+and if i source the script
+
+you will see a couple of things
+
+happening um magically so
+
+let me restart my r session to show
+
+everything and clear this up so when you
+
+um when you
+
+run
+
+python code as you would normally do
+
+with our code which is basically um you
+
+know what you do you stand on a line
+
+press ctrl hit enter
+
+and you send code to the console in r
+
+the code will just run
+
+in
+
+when you the code is python then the
+
+reticulate package which i told you was
+
+the back end of this interface between
+
+python and r will automatically print
+
+this code so this is code that i did not
+
+type
+
+just by you know sending the the python
+
+code to the console
+
+rstudio detected via the package
+
+reticulate that that is python code and
+
+and then it turned the r console
+
+which usually has this single greater
+
+than symbol prompt it turned it into a
+
+python
+
+console so now what's running here is
+
+python code and so i'm going to keep
+
+pressing ctrl and enter to show that you
+
+know i can run each of those
+
+pieces of code
+
+interactively so not only you can work
+
+from inside a studio and run our code in
+
+our magnum documents but also you can do
+
+it
+
+interactively on
+
+on a console on a python console that
+
+will automatically be um like launched
+
+by the reticulate package once you
+
+install it
+
+here i wanted to
+
+make a mention that this specific piece
+
+of code was extremely problematic and
+
+made that the reasons uh maybe not super
+
+important to uh to discuss because this
+
+is a very specific piece of code and so
+
+if you're trying to do this with your
+
+own code maybe you won't need to install
+
+this specific you know
+
+module
+
+or model i think
+
+but in this particular case the
+
+challenge was that
+
+the normal ways to install packages
+
+python packages
+
+of which i'm going to be talking about
+
+in a moment it did not just work um i
+
+had to
+
+i basically had to install this specific
+
+model that apparently comes from the
+
+spacey spacey
+
+package so maybe miria in the section of
+
+comments and questions can extend on on
+
+why
+
+um what might be the case and so i keep
+
+writing this code now i'm going to print
+
+that and
+
+finally so this actually doesn't run
+
+interactively like this um
+
+but if i source it
+
+it does print the output i don't know
+
+why interactive i could not
+
+print
+
+honestly
+
+but
+
+sourcing the script does does the job
+
+okay so we have run the
+
+code interactively we have sourced
+
+actually the the code um as a script
+
+i don't know why it did not work the
+
+print here when i worked interactively
+
+it did work the print when i run it when
+
+i sourced the script and we did it also
+
+in our macd
+
+now let me tell you what things i found
+
+most
+
+challenging
+
+so
+
+mostly the what i found more complicated
+
+was the idea of okay
+
+where uh python is installing my system
+
+which python it's gonna be
+
+used by our studio
+
+and then not only that but also the
+
+packages so in r you install packages
+
+directly from r itself with something
+
+like install
+
+packages uh and and when you install r
+
+you install it
+
+not from r itself you install it um like
+
+differently uh but usually you have only
+
+one uh
+
+version of r so you may have more but
+
+it's kind of rare in python the the
+
+situation is a little different um there
+
+is to begin with like two main
+
+distributions of python like two
+
+versions that are you know that people
+
+still use
+
+um
+
+and even within that python kind of
+
+encourages the idea of working with a
+
+specific environment for specific
+
+projects so you may have you may be
+
+using one brochure one version of python
+
+and in a different project a different
+
+one so
+
+you know you have to somehow
+
+tell in this case our studio which you
+
+know version of python you want to work
+
+with so that was the first the first
+
+challenge
+
+the second challenge is
+
+uh the packages right so in in r and we
+
+we use a lot a main repository called
+
+cran uh in in python there is more than
+
+one place where packages can uh come
+
+from
+
+in our as well but it's very common that
+
+you will only install from from chrono
+
+or crown mirror something is very
+
+similar to cran
+
+um and
+
+and the packages are associated to a
+
+version and you usually don't need to
+
+know very much where they live they just
+
+kind of happen that you know another
+
+version um
+
+is associated to all the packages that
+
+you know of that version in python um
+
+again because it encourages the idea of
+
+environments that are kind of project
+
+specific usually you would uh you have a
+
+project associated to one version of
+
+python and to a collection of packages
+
+that are dedicated to that project and a
+
+different project may have a different
+
+collection of packages so that idea
+
+actually is pretty cool for data science
+
+because it makes your data science
+
+reproducible and it is an idea that r
+
+has been kind of working on very
+
+intensively and is the idea that has
+
+been kind of implemented in the package
+
+rn which creates little environments
+
+that are totally insulated for other
+
+projects or other kind of our
+
+environment so you are you know you know
+
+exactly which packages you use
+
+uh so that idea in python is also um
+
+very well developed but also adds
+
+complexity right so it's great because
+
+when you have everything working you
+
+know you have the ability to reproduce
+
+your scripts
+
+efficiently but
+
+managing all of that is super
+
+complicated so
+
+to i think kind of address that issue
+
+python has um developed um
+
+there is a project in python that is
+
+called anaconda that
+
+itself
+
+is a distribution of the software of
+
+different kinds on the one hand it
+
+contains python itself it also
+
+distributes r
+
+and r studio in you know if you want to
+
+and it also contains a collection of
+
+more than i think 7500 packages python
+
+packages so you may want to install um
+
+that distribution called anaconda which
+
+brings a lot of tools that are very
+
+useful and very common apparently in in
+
+data science with python
+
+for for smaller approaches maybe that's
+
+an overkill and you may not want to
+
+install so much stuff
+
+but uh but it looks like it's a very um
+
+well maintained
+
+project
+
+and and very smoothly so you know i make
+
+my conversation with miria and she
+
+recommended it and she said that her
+
+experience with anaconda was fairly
+
+smooth so that's actually uh when i
+
+tried to install packages from different
+
+sources when i did it with anaconda and
+
+it was when i had this the most success
+
+so for example anaconda which i'm going
+
+to click here to kind of introduce you
+
+to the website
+
+here it is it has instructions to
+
+install it and
+
+and it explains
+
+all that you might want to know about
+
+anaconda so anaconda is um
+
+you know already contains for example
+
+these two packages that the the example
+
+script needed and so they were already
+
+by default there i didn't have to kind
+
+of do much much more than that uh but
+
+then again when it came to running uh
+
+where is that line of code here when it
+
+came to running
+
+this line of code which um still i don't
+
+fully understand uh this
+
+failed so i had to install
+
+um with a tool called conda that comes
+
+with anaconda
+
+i had to install um
+
+this this component here which wasn't
+
+available before
+
+so i'm gonna wrap up here because i
+
+don't have a lot of knowledge all i can
+
+share is my my experience ah sorry there
+
+is this one super important thing that
+
+i wanted to to tell you is
+
+that
+
+before i finish that um so
+
+i i mentioned that um
+
+it's it's very um
+
+one big challenge is to um identify
+
+where python comes from and where all
+
+the packages go so
+
+that is something that you can specify
+
+in many ways with the package reticulate
+
+and one way that kind of overwrites
+
+every other way is to use an environment
+
+variable called reticulate underscore
+
+python so if you tell um if you set in
+
+that environment variable which is the
+
+um the python um
+
+binary that no you will be using then
+
+the entire you know script or the entire
+
+um
+
+yeah like every in this case environment
+
+variable that is set only for this
+
+project but you could do it at the level
+
+of your system so in this case it's it's
+
+clear that that is the one you know
+
+version of python that you want to use
+
+so in this case i chose to create an
+
+environment r environment file in this
+
+project to set the the location
+
+to the python um version that comes with
+
+anaconda so after i installed anaconda i
+
+realized that it was installed here
+
+under my home directory under the the
+
+folder anaconda3 and there is there is
+
+python so with that it's clear you know
+
+our studio will know that um python is
+
+there and it's gonna
+
+it didn't mess up with environment but
+
+um
+
+but reticulate has um
+
+a bunch of
+
+really good tools
+
+for let me show you a health file
+
+install python
+
+python
+
+has a bunch of very good tools to manage
+
+those environments so you can tell
+
+um
+
+in this case uh your your your scripts
+
+uh you could use
+
+um functions to in install specific
+
+version of python and you can use
+
+environment so this this chunk of code
+
+here
+
+here
+
+where it says level reticulate version
+
+so allows you to specify specify
+
+versions of um
+
+of python allows you to create virtual
+
+environments which are the sandboxes
+
+where you can put the you know python
+
+and you can put um the packages
+
+and then you use that environment in
+
+your project so that's very very very
+
+similar to how rm works
+
+but and that's the big but um when i try
+
+to do this which could be kind of the
+
+best practice if you want to use
+
+like all the features of reticulate
+
+i failed
+
+so the simplest way i have i had success
+
+with this um
+
+um
+
+script was
+
+simply setting this environment variable
+
+and letting um
+
+basically my system install the packages
+
+wherever
+
+wherever they want but because an icon
+
+that comes already with the packages i
+
+didn't need to worry about that the only
+
+one package that i had to install was
+
+that
+
+one that i mentioned before
+
+this
+
+model for from spicy apparently so i'm
+
+going to leave it at that i'm going to
+
+go back to the
+
+meeting room and see hopefully miria
+
+has some
+
+experiences that she wants to share as
+
+well with us maybe about your successes
+
+and frictions
+
+actually all i want to do is say thank
+
+you because
+
+i think the problem that i had really
+
+was forcing the reticulate python path
+
+to look at my anaconda distribution so
+
+that was the point where i failed when
+
+trying to use our studio
+
+and this pro this seems to be solved so
+
+thanks very much okay so
+
+say one that one again so you
+
+you did or you did not set the
+
+the path to your anaconda distribution
+
+um i i failed at exactly that step and
+
+that is why i couldn't make it work uh
+
+okay okay okay good now it will all be a
+
+bliss great yeah um i i think that you
+
+know for people like us who have a lot
+
+of experience uh working with code and
+
+when something feels that there is a lot
+
+of friction i think that um
+
+you know of course you know i i feel the
+
+pain and
+
+i put that on my shoulders but i think
+
+that um maybe there is still
+
+um like some
+
+you know some tooling or some
+
+documentation that needs to be uh
+
+enhanced so that
+
+people with experience don't struggle
+
+like me like four hours to to get like
+
+one script running uh anaconda is great
+
+in that it seems to be like the one
+
+place where you know okay you just
+
+install it and then
+
+it just works
+
+but still i feel that our studio is
+
+making a great great um great work in
+
+allowing all of that to come into our
+
+studio but
+
+obviously at least in my experience it's
+
+still not there i mean there is a little
+
+bit more
+
+friction that needs to be polished
+
+before i feel that this is something
+
+that i would kind of recommend to people
+
+and but this is only like you know my
+
+experience with this has been like only
+
+a few hours say three four hours put
+
+into understanding all of this and
+
+usually
+
+that's that's not too much
+
+um
+
+but you know i would have loved to just
+
+get it working in in 10 minutes not
+
+three four hours
+
+um
+
+do you have any idea miriam about this
+
+one
+
+uh spicy model n core web sm why was
+
+that
+
+so i don't fully understand
+
+the conda installation tool so i know
+
+that if i do conda install for example
+
+package abc it installs package abc but
+
+i don't understand what it is
+
+conda forge do you have any idea i'm
+
+just very curious
+
+maybe a quick correction so this should
+
+not be a
+
+package but a language module
+
+that is within the spacey package but i
+
+don't know the kind of watch
+
+specification okay okay i see that
+
+reticulate has a function that allows
+
+you to also install
+
+um reticulate
+
+um
+
+for example if i do conda so there's two
+
+types of environments that um
+
+particularly supports one is conda so
+
+there is a
+
+collection of functions like honda
+
+installed for example
+
+and it has a forged
+
+argument here uh and it's set to true
+
+and but i'm i wasn't successful in
+
+specifying
+
+you know
+
+the this model when i tried to install
+
+it this way it failed um
+
+and then apart from conda there is um i
+
+think there is
+
+um
+
+spiritual
+
+and another set of tools um also
+
+installed
+
+so this is though how you would use
+
+basically reticulate to install python
+
+packages um
+
+from from inside r uh if you're not
+
+doing that like in python there is no at
+
+least not that i know there is no way to
+
+install python packages from python
+
+itself what you could do is you would go
+
+to a terminal and do something like
+
+honda
+
+install or
+
+pip
+
+install
+
+but no you don't do that from from the
+
+python console you do it from
+
+the
+
+from a
+
+normal shell
+
+but reticulate does provide that feature
+
+so that you could do it but i i failed
+
+uh i think virtual m uses peep
+
+and i think that conda um uses conda
+
+and as two places where packages come
+
+from the two main repositories
+
+apparently of python packages so by the
+
+way sorry if all some of these
+
+[Music]
+
+doesn't make a lot of sense or i'm
+
+saying things are wrong i'm super new to
+
+python and youtube using python from our
+
+studio
+
+so be
+
+kind and just learning
+
+anything else amelia that
+
+you would like to comment or
+
+or share
+
+no thank you no
+
+all right then we'll wrap it up here
+
+it's exactly half hour so thanks miria
+
+for motivating this um
+
+meetup and for sharing the the code that
+
+was a very interesting challenge
+
+um i would say that i learned a lot but
+
+not enough to feel that i understand
+
+everything that's happening here so if
+
+you continue to have friction miria um
+
+let me know because i'm interested in
+
+understanding this a bit more i already
+
+invested some time kind of in getting
+
+like you know i feel like i'm like 70
+
+there and you know i could do i would
+
+love to have another push to get to get
+
+all the way to the end so keep in touch
+
+uh and and share your you know your your
+
+successes and frustrations with me thank
+
+you for now see you next time
+
+thank you bye-bye
+
+judge out

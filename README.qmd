@@ -1,0 +1,90 @@
+# dsincubator
+
+Transcript database for the [ds-incubator YouTube playlist](https://youtube.com/playlist?list=PLvgdJdJDL-APbB315sB3Lv_2VP2g0ioFO&si=LOZAcXpa1L7JlVvc): `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF format), linked by `id`.
+
+## Repository Structure
+
+```
+data/metadata.csv            # derived table, 151 videos
+transcripts/<id>_<title>.md  # OKF transcript (YAML frontmatter + body)
+transcripts/manifest.tsv     # id | status | file | lang
+bin/fetch-metadata           # raw dumps + derive CSV
+bin/fetch-transcripts        # fetch captions
+bin/convert-transcripts      # json3 -> txt/tsv/md
+```
+
+## Metadata Overview
+
+```{r}
+library(readr, warn.conflicts = FALSE)
+library(dplyr, warn.conflicts = FALSE)
+
+dsi <- readr::read_csv("data/metadata.csv", show_col_types = FALSE)
+dsi |> glimpse()
+```
+
+## Sample Metadata
+
+```{r}
+dsi |> select(upload_date_iso, title, url) |> head(10)
+```
+
+## Transcript Join
+
+Lists `.md` transcripts from the filesystem, extracts the video `id`, and left-joins with `data/metadata.csv`.
+
+```{r}
+library(fs)
+library(dplyr)
+library(stringr)
+library(readr)
+
+transcript_files <- dir_ls("transcripts", regexp = "\\.md$") |>
+  tibble(path = _) |>
+  mutate(filename = path_file(path))
+
+transcript_ids <- transcript_files |>
+  mutate(id = sapply(filename, function(f) {
+    dsi$id[startsWith(f, paste0(dsi$id, "_"))][1]
+  })) |>
+  select(id, transcript_path = path)
+
+joined <- dsi |>
+  left_join(transcript_ids, by = "id")
+
+joined |>
+  select(id, title, transcript_path) |>
+  head(10)
+```
+
+## Join Summary
+
+```{r}
+cat("Rows in metadata:", nrow(dsi), "\n")
+cat("Matched transcripts:", sum(!is.na(joined$transcript_path)), "\n")
+```
+
+## Sample Transcript
+
+```{r}
+first_path <- joined$transcript_path[1]
+cat("File:", first_path, "\n\n")
+readLines(first_path, n = 30) |> paste(collapse = "\n") |> cat()
+```
+
+## Fetch / Refresh Commands
+
+```sh
+# Transcripts
+./bin/fetch-transcripts --count 3   # test
+./bin/fetch-transcripts               # full
+
+# Metadata
+./bin/fetch-metadata --limit 2      # test
+./bin/fetch-metadata              # append new
+./bin/fetch-metadata --refresh    # rewrite all
+
+# Convert to readable formats (txt, tsv, md)
+./bin/convert-transcripts --format md --count 3
+./bin/convert-transcripts --format md
+```

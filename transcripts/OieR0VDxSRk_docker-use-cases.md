@@ -1,0 +1,2020 @@
+---
+type: Video Transcript
+title: "docker: use cases"
+description: "so today the ds inquirer continues on  the series about using docker images and  i remind you all that this is  very focused on the usage of the images  and we'"
+resource: "https://www.youtube.com/watch?v=OieR0VDxSRk"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=OieR0VDxSRk"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+so today the ds inquirer continues on
+
+the series about using docker images and
+
+i remind you all that this is
+
+very focused on the usage of the images
+
+and we'll cover next the maintenance of
+
+the images how to remove images how to
+
+remove containers how to stop them how
+
+to start them things like that but
+
+their original goal of this
+
+meetup this series is not to become an
+
+author of docker images is more about
+
+using images that other people
+
+create for us
+
+and the reason why that's the case is
+
+because there are already a bunch of
+
+images out there that are pretty useful
+
+for a bunch of use cases and today i
+
+wanted to demonstrate a little bit of
+
+that so basically when i
+
+advertised this
+
+a series that was eventually selected
+
+by you all through voting
+
+i describe a few use cases that motivate
+
+this meetup and i wanted to charge touch
+
+on a couple of those
+
+particularly i'm interested in
+
+showing you know how to get a bash
+
+terminal a terminal a simple terminal on
+
+your computer and that may not be super
+
+exciting if you are running a mac or a
+
+linux system but if you're running
+
+windows
+
+it is important because another topic
+
+that goes i got highly voted was
+
+the basics of the unix terminal so if
+
+you're running windows
+
+a future ds equator about the terminal
+
+it could be very useful if you are able
+
+to spin a docker container running linux
+
+right and giving you access to a batch
+
+terminal so it is very intentional so
+
+this the the use case the first use case
+
+i'm going to show now
+
+is uh precisely targeting that i'm going
+
+to show you how and if you know
+
+eventually we get to a series about the
+
+terminal then how you could use docker
+
+to give you a unix terminal even if
+
+you're running on windows and i can talk
+
+about more about what it means to be a
+
+unix terminal as opposed to a windows
+
+terminal
+
+in that series in particular but for now
+
+all you need to know is how you actually
+
+can access such a thing a unix terminal
+
+so all the the meetup is gonna be
+
+based on a specific image that comes
+
+from the roker project we mentioned that
+
+uh before
+
+the rocker project builds a bunch of
+
+images and
+
+they are
+
+built in layers and we are going to be
+
+using one that is quite complete
+
+maybe not
+
+ideal for all the cases but it's going
+
+to be useful many times so i'm going to
+
+show how to use uh that particular
+
+rocker image for a couple of different
+
+things that cover
+
+a lot of our you know day-to-day um
+
+challenges i would say that could be
+
+solved with docker
+
+so i'm gonna be using the terminal uh
+
+let's see if i can
+
+bring my terminal here
+
+and i'm going to be walking through
+
+this command
+
+i apologize that the materials for today
+
+are going to be a little late uh usually
+
+by the time this the meetup starts i
+
+share them
+
+today i have some issues with docker
+
+compose that's why
+
+i'm not going to be showing docker
+
+compose much now
+
+um
+
+something i need to divide with alex
+
+probably
+
+but i will be um basically explaining
+
+what this command does uh that you can
+
+use for specific i had to tweak it for
+
+specific use cases and later i'm gonna
+
+be sharing
+
+this in in a in a
+
+file on um
+
+on the repo so that um it's kind of more
+
+explained right um
+
+okay so
+
+remember that we covered two ways to do
+
+the same thing with docker one was using
+
+the vanilla command docker and the other
+
+one was using docker compose which was
+
+basically a simpler interface to run a
+
+bunch of commands like the ones that you
+
+see here so for those who are not used
+
+to the terminal you know this um all
+
+this you know text on the on the console
+
+here uh surely looks intimidating but uh
+
+today the goal is to you know revisit
+
+this command that um in a simpler form
+
+we saw before
+
+explain
+
+uh what each of these things are doing
+
+so that you can understand how to tweak
+
+it if you want to
+
+apply this image to a different use case
+
+so what you see right now for example is
+
+going to be um
+
+giving you a bash terminal bash is just
+
+the name of one kind of terminal
+
+that is the one that we could use for
+
+example if we did run a series about uh
+
+using
+
+the the bash terminal right about the
+
+you know just getting more familiar with
+
+the terminal
+
+so
+
+for now all i'm gonna do is run it and
+
+then stop that container
+
+i want to first to show you what this
+
+will produce and then we're going to
+
+break it break it down
+
+so
+
+if you don't have to kind of take notes
+
+or anything because i'm going to be
+
+sharing this command in a readme file
+
+anyway so if you run this command
+
+what you get is
+
+this thing it's a terminal something
+
+that
+
+also has you can see ends in home and
+
+the reason is because this command has
+
+some tricks so that you can access from
+
+inside the docker container all the
+
+files that you have in your home
+
+directory so if i do an ls here which
+
+lists the files that i have in the
+
+current directory um i can see that i
+
+have here access to the exact same files
+
+that i have in my actual computer but
+
+this is not my computer this is you know
+
+a container so but i still can modify
+
+and and create files from this container
+
+so let me
+
+stop this
+
+container and go back to my system so
+
+what i'm going to do is run exit
+
+and that takes me back to where i was
+
+um so let me now
+
+clear the console with ctrl l and do
+
+a an arrow to record the commands that i
+
+showed you before and now let me break
+
+it down a little bit
+
+and i'm gonna give some time to ask
+
+questions so
+
+today i'm gonna be working all the time
+
+with this image that is called rocker
+
+verse
+
+and in particular i'm i'm describing
+
+with this column here i'm describing
+
+which version of r i want to be
+
+installed in that particular image so
+
+rockerverse
+
+can be
+
+used with a bunch of pretty much with
+
+any version of r that is available out
+
+there and we just by saying 4.1.1 i'm
+
+saying that i want that image to have
+
+that particular version of r
+
+the other thing that i'm doing here is
+
+remember i told you that i have from
+
+inside the container access to all the
+
+files in my computer
+
+the trick is done in these commands here
+
+what i'm saying is okay
+
+the my computer knows what is the path
+
+to my home directory so where you know i
+
+have um a lot of configuration files and
+
+all the files that are using my computer
+
+and the way to
+
+access that that path in a way that is
+
+not explicit could be with this variable
+
+called home we touched a little bit on
+
+the meaning of variables last time
+
+pretty much it's just one name that
+
+contains information so it's a key value
+
+pair
+
+in this case the key is home and the
+
+value is whatever is the actual path the
+
+literal path to my home directory
+
+so i don't need to type it and the
+
+reason why i choose to use this variable
+
+as opposed to hard coded it is because i
+
+would like to share this command with
+
+you and i would like you to be able to
+
+run it verbatim and and and so that it
+
+works right see if i i have had a code
+
+in my path there if you run that command
+
+it won't work because it would be
+
+looking for something that says mauro in
+
+the path
+
+so this is what that's the trick of
+
+allowing me to access all the files that
+
+exist in my computer but from inside the
+
+docker container
+
+then i'm giving this other
+
+parameter here called
+
+work deer which i'm i'm saying to this
+
+container that once the container starts
+
+i want it to start from
+
+a particular directory so what i'm doing
+
+is
+
+jumping inside that home directory so
+
+that the experience feels very similar
+
+to what it is when i use my own computer
+
+what would be alternatives where an
+
+alternative would be to be dropped
+
+somewhere else anywhere in the system
+
+usually you start at what's called the
+
+root which is the the highest level or
+
+the lowest level what would that be so
+
+would be the slash the slash directory
+
+in a batch system i'm going to show you
+
+that in a moment and finally what is
+
+most important actually for this command
+
+is that the
+
+the very last
+
+thing that you type here
+
+is what is called an entry point how you
+
+enter
+
+the container so in this case i'm typing
+
+bash which is the name of the program so
+
+by typing the name of the program i'm
+
+telling the container to start
+
+particularly with that
+
+with that
+
+program right
+
+so
+
+let's do that once again so by saying
+
+bash i'm saying use this image give me
+
+access to all my
+
+home there and more all the directors in
+
+my home directory
+
+um and start with bash
+
+so this is what it is as you can see uh
+
+there again now now that you know um
+
+what it means to be in a home directory
+
+and what it means to be somewhere else
+
+let me do a cd dot dot which takes me
+
+back to the root so if i do an ls now
+
+you can see that in the prompt there is
+
+a slash here there is no slash home
+
+because i'm as low as i can go in the
+
+structure of my um of the file system of
+
+this container so if i wanted to go back
+
+to my home directory what i would need
+
+to do is city home
+
+and now it takes me there where if i do
+
+ls to list the files i could see again
+
+the the files are familiar to my own
+
+system
+
+so before i exited the image with
+
+the word exit typing it literally but
+
+you can also do usually a ctrl c
+
+no ctrl d a ctrl d would type exit
+
+and i'm back to where i was before
+
+so now i'm gonna show you how to tweak
+
+this command to instead of running uh
+
+the terminal
+
+to run for example r and which version
+
+of r we are gonna get well we're gonna
+
+get the version
+
+4.1.4.1 because that's the one that is
+
+installed in this system so let me
+
+remove the word bash and let me type
+
+just r that's that's how you execute r
+
+and let's run that
+
+so as you can see it's i'm already
+
+inside the container and it runs it's
+
+running r
+
+4.1.1
+
+so i can now exit here with quit so to
+
+quit r you don't do exit it doesn't work
+
+what you need to do is queue button
+
+paren
+
+so if i wanted to run another version of
+
+r say
+
+three or 4.0
+
+this is how i would tweak
+
+the command
+
+4.0 right and then again i run um
+
+i run that with enter and what's
+
+happening now is that docker notice that
+
+i don't have already in my system
+
+the image roker verse
+
+4.0 so what he's doing is going to a
+
+website called
+
+docker have and it's finding it there
+
+and then it's pulling it from there and
+
+it's you know storing it in my system
+
+the reason why it didn't happen
+
+before is because i had run that command
+
+earlier before i started the meetup so
+
+the image was already in my system so
+
+the way docker works is when you ask it
+
+to do something it's trying it's going
+
+to try to be as lazy as possible
+
+if it detects for example that something
+
+that you are asking for is already
+
+somewhere where
+
+you know it can get it quickly for
+
+example because it's already installed
+
+in my system
+
+it's gonna reduce it from there it's
+
+this idea of cash so
+
+a lot of the things are already stored
+
+somewhere where docker knows about
+
+and if you can't reuse it in a way that
+
+will save you time then it will do it
+
+that way and if it doesn't then it goes
+
+first to in this case the default what's
+
+called repository is a docker hack which
+
+is similar you know in the same way that
+
+um github is a repository for git
+
+repositories
+
+um in this case docker hub is a
+
+repository for docker images and we're
+
+probably going to be covering the
+
+you know how to um get
+
+uh how to find images in docker hub in
+
+another meetup if there is interest but
+
+until but for now all i wanted to show
+
+is uh is this one command
+
+this one image and how you can tweak
+
+that command to
+
+suit different use cases so just to
+
+review while this continues to download
+
+the different use cases that we explore
+
+where how to use that image to get a
+
+bash terminal
+
+for example for
+
+the meetup
+
+that we're going to have eventually
+
+hopefully about the terminal um if you
+
+want to play for example with a unix
+
+terminal before say you you switch from
+
+windows to a mac or to linux for example
+
+if that's something that you're
+
+contemplating you could experience what
+
+it feels like to use a linux terminal
+
+that way
+
+so that was one use case that we showed
+
+another use case that i showed is to how
+
+to how to uh run how to run a r
+
+directly with any version and in which
+
+cases the different versions could be
+
+useful well for example if you are
+
+running a relatively old version of r
+
+and you want to see what the new version
+
+of r feels like
+
+then you can install that newer version
+
+the latest version in a docker container
+
+and not affect your local system or the
+
+other way around say that you do have
+
+the release version of r
+
+and
+
+you want to
+
+say reproduce a problem that someone has
+
+experienced with an older version of r
+
+then you can leave your system as it is
+
+and then
+
+use for example this image to get and
+
+modify you know the column in this case
+
+4.0 a component right the tag was called
+
+the tag component modify it to get the
+
+exact version of r that you need to
+
+reproduce the problem that someone has
+
+reported
+
+so
+
+this is a little bit a wrapper of um how
+
+to
+
+um again how to do
+
+um
+
+you know things that are common in the
+
+day-to-day life of an analyst of a
+
+developer at two degrees
+
+so with this and while this completes
+
+i'm gonna open the floor for
+
+questions uh and i apologize for not
+
+showing dogger compose how you would do
+
+the same with okay compose which is fair
+
+it's fairly simple just do docker a
+
+hyphen compose up and and that will do
+
+uh the trick
+
+uh but uh i'm not doing it now because
+
+i'm not sure if i recorded that in the
+
+meetup but the issue is i'm experiencing
+
+some issues with uh with the
+
+installation of docker compose so
+
+unfortunately for this meetup i cannot
+
+show it
+
+so
+
+go ahead and shoot some questions we
+
+have 10 minutes to
+
+[Music]
+
+for that
+
+so i had a question about the the
+
+command that you're using the doc
+
+command
+
+and
+
+um
+
+yeah i don't does that actually work on
+
+windows with this is that how like
+
+does this home
+
+environment variable work the same way
+
+on windows as it does on linux
+
+that's a great question before using
+
+linux i used
+
+windows that was like maybe i switched a
+
+year ago and i do remember having a
+
+really bad experience trying to copy
+
+paste the code that i got from tutorials
+
+online
+
+and i think it all worked i mean
+
+eventually got everything working but
+
+it's true that sometimes the the exact
+
+way in which the variables are typed
+
+don't work in windows and i had to
+
+surround them by quotes so to be honest
+
+this particular command that i typed
+
+there um i didn't think of
+
+windows compatibility but maybe someone
+
+here in the room maybe alex or other
+
+people
+
+remember if that syntax is valid for for
+
+windows
+
+and one
+
+yeah go ahead and uh cj i think you know
+
+well one quick suggestion was that like
+
+for i know windows users can also
+
+download like a git shell
+
+it comes with
+
+kit i think or it's
+
+i don't know they make like a command
+
+shell that looks like your window like a
+
+normal windows command prop but it
+
+actually like
+
+has all the same commands as linux so
+
+this is one way to
+
+bypass that problem yeah
+
+yeah
+
+that's so cool any so that's a very good
+
+trick so use a specific shell that knows
+
+about the linux type of syntax
+
+again i know that with the the shells
+
+that come like the power shell for
+
+example that comes with window windows
+
+with a particular syntax i think
+
+surrounding this by quotes it should
+
+work but if you are experiencing that
+
+problem i'd be really interested if we
+
+could sit down in a meeting maybe in a
+
+headless or something so i learn
+
+what differences there are
+
+alex or someone else would like to make
+
+a comment about a difference in syntax
+
+for windows
+
+um
+
+just to say that home is not a built-in
+
+environment in windows
+
+um but adding a new global and variable
+
+environment in windows is
+
+fairly straightforward once you know how
+
+to do it um
+
+and you can define your own
+
+home environment to like your user
+
+directory or something perfect perfect
+
+um
+
+i do have some other
+
+thoughts
+
+from the discussion uh
+
+unless someone else wants to jump in
+
+let's give a few seconds anyone would
+
+like to
+
+[Music]
+
+shoot some questions
+
+before you know alex or i or someone
+
+extends with comments and
+
+suggestions
+
+okay go ahead alex
+
+um one being the idea of using
+
+uh
+
+get bash
+
+for
+
+docker commands and that is
+
+um
+
+technically possible but overall get
+
+bash is
+
+limited in what it can do they have
+
+imported the full
+
+uh
+
+suite of unix utilities over to windows
+
+um
+
+so that
+
+can be prone to errors
+
+um if possible and if you're comfortable
+
+with it uh pretty much every version of
+
+windows comes with
+
+uh the option to install the windows
+
+subsystem for linux which uh basically
+
+installs a whole linux machine as part
+
+of your windows installation
+
+and it just sort of transparently
+
+navigates everything for you and that is
+
+a much like it is a pain to set up but
+
+once it's set up it works great
+
+um
+
+and then
+
+the
+
+other big thought that i had is on use
+
+cases for
+
+um something like this like in addition
+
+to what maro has said around
+
+wanting to try a different version of
+
+our or wanting to play with a different
+
+version of linux before you commit to
+
+installing it
+
+um
+
+i find a really common use case for this
+
+is if
+
+there is some piece of software that is
+
+finicky to set up or is going to have
+
+a lot of side effects and be difficult
+
+to uninstall
+
+um so
+
+whenever i'm working with databases i
+
+never install postgres on my local
+
+machine instead i always run it from a
+
+docker container because postgres is
+
+kind of a pain to deal with
+
+there's other pieces of software that
+
+you will come across that are similarly
+
+like
+
+if you can
+
+run it inside a dock or container and
+
+avoid having long lasting effects onto
+
+your system where it's never quite
+
+scrubbed away
+
+docker container is the way to go for
+
+that
+
+um but i guess one of the
+
+biggest use cases i have for it is uh
+
+tomorrow if you can jump back to the
+
+terminal with the command
+
+so
+
+in the volume specification the dash v
+
+home to home
+
+um if you add another colon and then ro
+
+to the end of that
+
+that mounts that directory as read only
+
+um and the value of that means that now
+
+yeah just like that
+
+this is now a
+
+one-way
+
+mounting everything that is on my local
+
+computer my actual physical computer
+
+is available inside the docker container
+
+but i can basically run around with a
+
+sledgehammer inside the docker container
+
+and not worry ab about breaking the
+
+things that are on my actual computer
+
+so it's very nice to have that check
+
+valve of
+
+i can make changes i can do what i need
+
+to
+
+and test it out without worrying about
+
+breaking something that i continue to
+
+have to use every day
+
+okay that uh inspired two
+
+um
+
+extensions of what i showed that i would
+
+like to mention uh if there is time but
+
+i'm more interested in questions because
+
+um
+
+this is pretty much all you need to know
+
+to use images that someone else uh
+
+created for you
+
+so if you're not so much interested in
+
+in like the details about how to manage
+
+you know the images once you have them
+
+in your computer or uh you know if
+
+you're not super super
+
+you know excited about the technical
+
+details then probably the next meetups
+
+are gonna be an overkill for you and
+
+this could be a good stopping point so
+
+it's a good opportunity to ask questions
+
+um
+
+because docker particularly docker
+
+compose can be a bit too magic um
+
+because it just happens you know just
+
+type docker compose up and everything
+
+that exists described in a in a
+
+particular configuration file that i
+
+would like to revisit in a moment it
+
+will will just you know create the
+
+container that you want so pretty much
+
+if you're wondering okay i don't
+
+understand this thing uh it's it's very
+
+likely because we haven't explained a
+
+lot of what this thing
+
+uh each of these things are doing
+
+but it's intentional it's like you know
+
+you are now empowered to just you know
+
+run a command and say hey you know run
+
+this and it should work and and it
+
+should work you know that's the magic of
+
+of docker that uh
+
+um
+
+but yeah saves a lot of installation
+
+time just by writing one single command
+
+you can do an infinite number of things
+
+that are describing a configuration file
+
+that someone else describes so as long
+
+as you have
+
+the the folder that contains that
+
+particular configuration file that
+
+that's what you want
+
+then all you need to know is just to run
+
+that one command docker compose app
+
+um so i i would like to show what the
+
+two things i would like to show now is
+
+um
+
+well the most important one is what that
+
+configuration file looks like so alex
+
+i'm thinking of maybe showing some
+
+because i typed a couple of dollar
+
+compose files but i'm not confident in
+
+my own skills of creating docker compose
+
+files so while i speak for another few
+
+seconds i was wondering if you could
+
+think of a red ball where i could go
+
+and and show what it looks like so that
+
+it becomes a little less magic and
+
+people know where things are coming from
+
+to the um datastore perfect
+
+okay so it's
+
+been a minute since i've looked through
+
+that one but it's got some good stuff in
+
+it
+
+okay let me see
+
+i'm gonna go from here then
+
+because i need access data store
+
+okay
+
+so where am i trying to get
+
+in relationship to
+
+the use cases so in the description of
+
+the things that you could do after this
+
+meet up one thing that i said is
+
+that you can share your entire computer
+
+environment with someone else what did i
+
+mean by that what i mean is that if
+
+someone like alex for example wants to
+
+give me a computer environment you know
+
+a particular
+
+operative system a particular version of
+
+r or whatever
+
+all he needs to do is to create a github
+
+repository
+
+with a specific configuration file that
+
+is called docker hyphen compose.yaml
+
+and then tell me where it is and i just
+
+clone that repository
+
+change directory inside that particular
+
+directory in my computer and then run
+
+docker compose app so docker compose app
+
+is aware of where it is being run from
+
+so what all you need to do to share a
+
+computer environment is to share a url a
+
+link to a github repository that person
+
+clones that repository navigates to the
+
+directory that contains that
+
+configuration file and runs docker
+
+compose app so that that's all that
+
+there is to sharing a very complex
+
+system that would otherwise take hours
+
+if not days to install so in this
+
+repo alex which folder do you think
+
+would be an example for um just to show
+
+you know what that folder would look
+
+like
+
+so if you just scroll down to docker
+
+compose a little more perfect um and the
+
+one at the bottom there looks good
+
+perfect so this is the default docker
+
+compose uh
+
+uh script
+
+and we can see here that this is
+
+actually doing
+
+some fairly complex heavy lifting
+
+so
+
+uh line two
+
+real quick
+
+is services that's just part of the
+
+docker compose specification
+
+and then the next indent in so lines 3
+
+12 and 23
+
+those are defining the different
+
+services that are being spun up as part
+
+of this so we actually are getting
+
+three i think if we scroll down there's
+
+maybe four or five different containers
+
+are actually going to be activated
+
+when you run docker compose up
+
+um
+
+and what that lets you do is if you have
+
+multiple
+
+related pieces of code that need to
+
+interact with each other
+
+this is a very powerful way to just turn
+
+them all on at once
+
+and you can maintain each of them
+
+independently
+
+and
+
+keep them isolated for development and
+
+testing
+
+but then when it comes to actually use
+
+them you can use them all in conjunction
+
+with each other
+
+so just to revisit what it could mean to
+
+share a computer environment basically
+
+you know you go to the ripple you copy
+
+the the url that allows you to clone a
+
+repo and you could clone it as you would
+
+normally do uh
+
+git clone and you paste that url that
+
+you copied and that will you know get
+
+you that content and then once you have
+
+it in your computer you do a cd
+
+uh
+
+to get inside that repo and run docker
+
+compose app which i won't run
+
+unfortunately because as i said you know
+
+my docker compose is
+
+messed up uh but that's all that varies
+
+so
+
+like truly just if you know how to clone
+
+a repository and how to type you know
+
+don't compose up if the person who
+
+developed that um configuration file did
+
+a good job it should just work and of
+
+course you need docker and docker
+
+composed installed in your system so all
+
+you need to do on your end is to install
+
+docker install compose and then you're
+
+good to go
+
+um maybe we have well actually we are
+
+beyond the time but if anyone has a
+
+question please shoot it anyway because
+
+it might be the last time we see you in
+
+this series
+
+and i think that data herald might be
+
+cancelled so if we go over it's not the
+
+end of the world
+
+yeah it seems like that no one's no
+
+one's responded to say that they have
+
+points so i believe it's probably
+
+cancelled
+
+okay good so what's the reasoning behind
+
+putting a docker compose file a in a git
+
+repo
+
+because you can just pass like you could
+
+email the docker compose from someone
+
+also right
+
+so
+
+[Music]
+
+if i can jump in here yes please go go
+
+ahead
+
+so maro can you jump back to the data
+
+store repo
+
+and go into the docker compose
+
+file
+
+so this is where we're getting to the
+
+point of
+
+um
+
+what what are the next logical steps
+
+with docker what are the things that we
+
+haven't covered here
+
+but if we look at lines 13 and 14 here
+
+we've got
+
+um so
+
+as a comparison we have line four
+
+is image microsoft azure cli right
+
+that's very similar to in last week's
+
+docker compose we had image rocker
+
+rstudio it's just saying
+
+go grab this image out of docker hub
+
+throw it up and start running it
+
+but if we look at lines 13 and 14 that
+
+is build context
+
+that is saying we have our own docker
+
+image that we want to build it is not
+
+based it is not something that is
+
+already on docker hub
+
+we want to build this fresh every time
+
+um and so what that lets us do is if we
+
+have a doctor file
+
+uh in our repository
+
+uh that lets us
+
+define
+
+more specifically what the computing
+
+environment is right so
+
+um
+
+for example rocker r studio is a great
+
+image out of the box
+
+but it doesn't have postgresql drivers
+
+if i need to connect to a database right
+
+which has been an issue for us back when
+
+we were running a datastore ourselves
+
+um so
+
+with this we can create our own image
+
+starting from something else
+
+uh from like rock or our studio add in
+
+all of the other software install all
+
+the packages that we need
+
+and then that image is ours right
+
+and so the reason to have the docker
+
+compose
+
+as part of the repository
+
+is
+
+it
+
+if you are adding code into a docker
+
+image
+
+then you can also keep the command to
+
+run everything all together next to the
+
+code as well
+
+and if you make changes to that code and
+
+run it again
+
+then those changes to the code will also
+
+get picked up and included in your next
+
+run
+
+so it's relevant if there are other
+
+files that you also want to include next
+
+to it so that the docker compose can
+
+find these other files
+
+is there any other um
+
+question
+
+or comment
+
+okay what i have as a plan and maybe
+
+while you think your last question or
+
+you have as a plan for the next meetups
+
+of this series so first i want to make
+
+this series short
+
+sorry go ahead i just thought of a
+
+comment for maybe my i think my internet
+
+is also a little bit choppy i think it
+
+jumped in a little bit late yeah um
+
+uh just an another
+
+for maybe like i guess i don't know if
+
+there's people here who still want the
+
+more practical use cases of docker but
+
+alex was saying for for like a um
+
+finicky software or something like that
+
+or maybe use morrow for setting up the
+
+nikki um software but like honestly for
+
+just about any open source project like
+
+if we're if we find interesting like
+
+sustainable technology projects or um
+
+um like uh
+
+wherever pcaf releases like a new
+
+a new model that that you can now that
+
+we want to compare against bacteria or
+
+something like that
+
+very often there will be a docker file
+
+that yeah you can just kind of spin up
+
+and click go that's the easiest way to
+
+get started
+
+i don't know if that was mentioned
+
+already but
+
+thanks yeah you know it's such a high
+
+level abstraction it's kind of cool it's
+
+a single interface to run an infinite
+
+number of things so whatever happens is
+
+an implementation detail if if you will
+
+and that might be described in a readme
+
+file for example next to the docker
+
+compose file uh but kind of most of the
+
+time it's not even your worry if you're
+
+a user if you're a developer of course
+
+and you need to understand all the
+
+details that are written in that file
+
+but you know i have been using docker
+
+for like two three years now and i still
+
+you know don't understand a lot of the
+
+details there and still i can do a lot
+
+of interesting things with docker
+
+so i wanted to say what i think could be
+
+a good um
+
+couple of meetups ahead so that you also
+
+feel free to join or or drop
+
+uh
+
+so far we
+
+we covered like exclusively and very
+
+exclusively the use of um docker images
+
+that someone else built so it's a good
+
+time to
+
+to
+
+to stop if if that's enough for you and
+
+if if you struggle you're feel free
+
+to contact
+
+us particularly
+
+through for example help calling help
+
+desks because docker does take time
+
+sometimes due to configuration issues
+
+and installation issues to get you know
+
+up and running correctly um so that we
+
+can work with that together
+
+what i'm explicitly not covering in this
+
+series is the building being an author
+
+of images because that's a huge topic i
+
+think that it could cover too many
+
+meetups and you know from the last
+
+meetup series i learned that we kind of
+
+lose focus uh and interest and as we get
+
+too deep into into technical details so
+
+i wanted to give you now like an exit
+
+point where okay you know in three
+
+meetups you learn something potentially
+
+useful and then you move on with your
+
+life
+
+if you stick around what i'm going to be
+
+covering in the next
+
+meet us maybe two more maybe is mostly
+
+the managerial aspect of docker so now
+
+we run images and they are there yeah so
+
+we have images that have been
+
+saved in our systems how do we get rid
+
+of them for example if our computers
+
+start to blow up right or you're
+
+starting containers and they're all kind
+
+of running and they're up there
+
+somewhere
+
+so how do you actually stop them how do
+
+you restart them how do you remove them
+
+so that is the management aspect of
+
+things that you know very soon if you do
+
+use your docker you will need to know
+
+but if you
+
+you know just need to run docker you
+
+know once a month or something then
+
+probably with what you've learned until
+
+today you're good to go
+
+and when you see that you know something
+
+is odd you know you can just you know
+
+reach out
+
+so
+
+the rest of the series i i envision it
+
+as being more of the managerial aspect
+
+of it and then wrap up
+
+and then maybe i need to discuss with
+
+alex because you know the building
+
+images is something that is very
+
+interesting to us but not sure if it's
+
+interesting to everyone else so before
+
+we get into that i would like to kind of
+
+have a conversation to see if there is
+
+enough enough interest if not
+
+that would be a very good point to start
+
+another series about the basics of
+
+the terminal because i think that even
+
+if you wanted to to learn to use more
+
+docker more intensively you will need to
+
+be a little more fl
+
+you will need to be uh
+
+fluent in the terminal so uh governing
+
+dogger in full without that knowledge
+
+first would be very difficult so i would
+
+prefer to now stop then start the series
+
+about the terminal and then maybe if
+
+there is interest
+
+you know go back to docker in mark in
+
+more kind of
+
+depth oriented topics
+
+that was a long one sorry for that any
+
+departing comments before we go
+
+all right thanks everyone sorry for
+
+going over um
+
+and if we don't see you and the rest of
+
+this series um have fun with joker and
+
+we'll see you in the next series ciao

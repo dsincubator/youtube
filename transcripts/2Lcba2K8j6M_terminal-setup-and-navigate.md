@@ -1,0 +1,880 @@
+---
+type: Video Transcript
+title: "terminal: Setup and navigate"
+description: "welcome everyone again to the ds  incubator  we are on the series about working with  a terminal and today we start with part  one ready and last time we did a "
+resource: "https://www.youtube.com/watch?v=2Lcba2K8j6M"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=2Lcba2K8j6M"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+welcome everyone again to the ds
+
+incubator
+
+we are on the series about working with
+
+a terminal and today we start with part
+
+one ready and last time we did a little
+
+overview i was trying to understand
+
+actually what um i wanted to cover and i
+
+also did gather some feedback last time
+
+that helped me tweak the syllabus
+
+syllabus a little bit
+
+i realized that
+
+it would be
+
+important to well i think it was cj who
+
+pointed it out important to talk about
+
+editing text files with ugly
+
+programs like vim
+
+not because i encourage you to do it but
+
+sometimes you are dropped in a system
+
+that has no other option and it's such a
+
+weird program it's very powerful and i
+
+love it but
+
+it has a huge learning curve so i think
+
+the basics that everyone needs to know
+
+is you know how to get out of it
+
+how to save a file how to close a file
+
+which is surprisingly difficult
+
+um
+
+and
+
+a couple of other things that i thought
+
+to take the chance is okay this
+
+the focus of this series is to learn how
+
+to do things
+
+uh as a user with a you know like a
+
+like the audience could be mostly
+
+um like an average developer or an
+
+average um analyst
+
+but also
+
+i think that at least the superficial or
+
+the the the basics of um
+
+understanding how
+
+multi-user systems work is useful
+
+because i've heard from some analysts
+
+that sometimes they need to work with a
+
+computer on the cloud because they need
+
+to do huge computations or something and
+
+they are told they're going to be
+
+working with you know like a a server
+
+that is running ubuntu or some other
+
+linux distribution
+
+and then they will freeze because like
+
+oh wow i don't know anything about
+
+ubuntu or whatever so i want to kind of
+
+you know
+
+show that it's not so difficult to show
+
+a little bit how it works not for you to
+
+kind of go ahead and do it you know the
+
+next day but to understand the basics
+
+and then if you need
+
+to
+
+learn more you can do it on your own and
+
+also to talk a little bit about the idea
+
+of dot files which are fines that allow
+
+you to configure basically your system
+
+and how you could probably save them in
+
+a way that even if your system you know
+
+dies you can recover from that fairly
+
+quickly um including your preferences
+
+for how your system should look like
+
+so that's about it uh so we can now get
+
+started with uh what we have for today
+
+um so what i'm gonna do
+
+is
+
+make this screen a little bigger
+
+as usual each um
+
+each meetup kind of maps to a folder um
+
+so today the file in this folder
+
+[Music]
+
+covers what we want to talk about today
+
+but we're going to come back to this
+
+fight next time because i don't think
+
+we're going to have time to cover the
+
+entirety of part one today so to begin
+
+with i want to um well first acknowledge
+
+where these um
+
+these resources come from it comes from
+
+it comes from two resources actually one
+
+is um the section the appendix a from
+
+happy kit with r which has
+
+a very brief but real useful explanation
+
+about what's the shell how you can start
+
+a share in a studio outsider studio
+
+and and
+
+once you're in that book you're very
+
+close to also finding tips for
+
+troubleshooting a bunch of things that
+
+relate to your terminal to git and r and
+
+github so i think it's a good resource
+
+to link here so that you
+
+kind of land in that book that i have
+
+found useful so so many times
+
+it's probably the star of the coding
+
+help desks to be honest
+
+and then uh we also using um
+
+at least inspiration and ideas from the
+
+lesson from the carpentries that is
+
+called the shell or
+
+the shell basics i think
+
+but everything is linked so
+
+you can find all of those resources so
+
+what's the shell um it's very confusing
+
+to be honest because you know we say
+
+different things to mean the same thing
+
+the shell is a program to run other
+
+programs basically it's easy imagine you
+
+have
+
+your um graphical user interface if
+
+you're using windows or mac or whatever
+
+you go and i open programs by clicking
+
+things well the terminal is the same
+
+thing
+
+except that you don't click on things
+
+you just type things on the screen it's
+
+very used because it's everywhere really
+
+and it's very
+
+concise you can express
+
+and do
+
+very powerful things in in a very very
+
+few kicks with very few kickstrokes and
+
+it's very fast too
+
+and then from all the shells that there
+
+are there is one that is very common
+
+it's going to be the star of this series
+
+it's called bash and mac hazbash linux
+
+hasbash
+
+and windows has flash if you install git
+
+so we're going to make sure that we do
+
+that
+
+and i said you know it's confusing when
+
+we talk about the shell because you know
+
+different people may um may have
+
+different words for the same thing uh
+
+maybe it's not strictly like what i'm
+
+gonna say now but some pseudo synonyms
+
+are terminal
+
+shell command line console
+
+they all more or less mean the same they
+
+will mean the same for the purposes of
+
+this meetup
+
+so first you're gonna be probably trying
+
+to figure out how you actually get a
+
+shell
+
+it depends on your on your or your
+
+system here i'm using linux and linux is
+
+not covered um
+
+in this explanation today basically
+
+because linux is so dependent on the
+
+shell that if you're using linux you are
+
+already very likely
+
+comfortable with the concepts that
+
+recording here but if i have to um
+
+open a shell for example what i do is i
+
+press the
+
+what what it could be the windows button
+
+in a
+
+um you know windows and start typing
+
+terminal and here it is and then i go
+
+enter and that's what i get
+
+and let's go back to the
+
+the lesson and you can just do the same
+
+thing within our studio um so there is a
+
+couple of ways in which you can do that
+
+so i'm going to show you uh how i do
+
+that in my local art studio i go here to
+
+tools
+
+and here you see already that there is a
+
+place to say shell
+
+and the shell ovens
+
+and but that is also um something that
+
+you can configure not i mean there is
+
+different flavors of shells and the one
+
+that opens there is something that you
+
+configure and if you're in windows in
+
+particular first you need to install git
+
+and also
+
+there is
+
+a terminal tab in our studio here where
+
+next to the console there is this
+
+terminal thingy and this is what i'm
+
+going to be using today and not in my
+
+local art studio i'm going to be using
+
+an r studio that
+
+environment that i get from
+
+a docker container because i want you to
+
+be able to reproduce it even if you are
+
+not comfortable with docker maybe
+
+someday you want to
+
+reproduce exactly what i did and the
+
+environment is going to be there
+
+so um yeah here in the terminal tab you
+
+also have a shell to start
+
+typing commands and doing what we're
+
+going to be showing today in the lesson
+
+um
+
+and what else
+
+in our studio you can
+
+[Music]
+
+or in general you can check which um
+
+shell you are using to see if it is a
+
+bash shell
+
+after you install git
+
+in windows
+
+it should become the default but it may
+
+not be the case uh it wasn't the case
+
+for one of us uh recently and i helped
+
+develop that issue and so it's kind of
+
+tricky um so maybe this um
+
+i'm gonna kind of show it briefly so how
+
+you might you know go about that and so
+
+as it says here in the goal options um
+
+you know you can see what things you
+
+have configured including goal options
+
+here so tools load options
+
+i think there is a glitch here i'm
+
+showing something that i'm not meant to
+
+show weird so there is a terminal
+
+section here at the close to the end
+
+uh and it says what is uh
+
+new terminals open with and here you
+
+have options so you know most likely you
+
+have
+
+bash in my case you have custom you know
+
+it looks like it's confused through some
+
+other place uh but the shell that i'm
+
+using is called
+
+zsh which is similar to bush
+
+but with some tweaks
+
+um but nothing that you need to worry
+
+about now just with bash refine
+
+and then outsider studio as i show in my
+
+linux system i you know press the open
+
+software button and then i start typing
+
+terminal same thing for mac os
+
+you started terminal just typing
+
+terminal in your programs finder and in
+
+windows again you need to install git
+
+and he provided a link to
+
+where to get
+
+it
+
+and then
+
+you know in windows you also have a
+
+programs launcher and you type git bash
+
+because that's the that's where the
+
+terminal comes from
+
+and so the setup um
+
+so i want to make sure that everyone has
+
+access to a terminal so that you can
+
+follow if you want um
+
+so maybe this first part is not all that
+
+um um exciting but uh something that you
+
+you can probably do
+
+on your own time as well and so
+
+the
+
+the book happy kid with r has
+
+precise instructions to how
+
+you can get a terminal if you don't have
+
+one and but basically if you follow the
+
+advice here if you're on windows for
+
+example install git then you should have
+
+a git bash terminal and then
+
+we need to download the data that comes
+
+with the lesson from the carpentries
+
+which i now realize that i haven't
+
+linked here i'm pretty sure it's linked
+
+somewhere else but i should add a link
+
+here where it says example data so that
+
+you can you can download it yourself and
+
+then place it in the desktop folder
+
+because that's where i'm going to be
+
+[Music]
+
+placing it myself
+
+so if you want to follow exactly what
+
+i'm doing that's the best place you can
+
+place that data
+
+but
+
+because i want you to be able to
+
+reproduce this meetup if you want i
+
+created a
+
+docker environment and so the repository
+
+that hosts the meetup has everything
+
+that you need to
+
+um have to be able to reproduce my
+
+environment so the there is a file
+
+called lockerfire and a file called
+
+dockercompose.yaml
+
+so those are the things that make the
+
+trick but for you know if you are a
+
+docker user or if you were in the ds
+
+inquiry about docker and then once you
+
+have the repo locally all you need to do
+
+is uh docker compose up so you type that
+
+and that will start
+
+an rstudio instance on your web browser
+
+so what i'm going to do next is go to my
+
+web browser and type localhost which is
+
+the address where our studio serves
+
+this
+
+service
+
+and here we're presented with this
+
+challenge so username
+
+our studio it is what it is that's what
+
+you need to type and password is
+
+something that i said very difficult one
+
+two three and we have to put a password
+
+and there is no risk in in sharing the
+
+password for this specific example um
+
+so one two three is good enough so what
+
+you see here looks like there are studio
+
+that you have locally but it's not it's
+
+an rstudio instance uh running on a
+
+docker container and it is running linux
+
+so
+
+and now
+
+you have a bash terminal in the terminal
+
+tab and so if i click there this is you
+
+know what a bash terminal looks like so
+
+this is what we are going to be using
+
+for this series i also noticed that you
+
+know i'm also purposely using our studio
+
+because we have
+
+next to the terminal we have you know
+
+this
+
+windows
+
+interface where i can click on things
+
+and show you a more familiar environment
+
+for what we are doing in the terminal so
+
+for example if i do
+
+um
+
+the first thing that you might want to
+
+do is to locate
+
+where you are
+
+which in this case um
+
+with this with that you know how this
+
+terminal prompt has been so the problem
+
+is this thing blinking here
+
+and and
+
+everything that i'm highlighting here so
+
+this
+
+um has already some information about
+
+where i'm standing i'm standing at tilde
+
+until i short form for
+
+home so whatever this computer has
+
+defined home so we want to know
+
+explicitly what that is uh the very
+
+first command that you need to locate
+
+yourself to navigate your file system is
+
+print
+
+working directory pwt
+
+and i will tell you so for this computer
+
+that i'm running the home directory is
+
+under
+
+home
+
+slash rstudio so that's how this
+
+computer has been set um so everything
+
+inside that directory the user um our
+
+studio has usually the user name matches
+
+the home directory right so at least in
+
+in linux um computers and in max have so
+
+everything that is inside that directory
+
+this user has privileges to do whatever
+
+like you know create files delete files
+
+and things like that
+
+okay so the very first command has been
+
+presented printwd and shows us where we
+
+are we are home and also you can see the
+
+same information here on your right
+
+maybe let me make this a little bigger
+
+so as you can see the the files
+
+navigator of our studio array shows us
+
+we aren't home except that we don't know
+
+exactly where home is so if i click
+
+there what do i get nothing get the same
+
+thing so then very next thing that you
+
+might want to do to locate yourself
+
+navigate your file system is to do list
+
+files ls for list files and that will
+
+show you the contents of that directory
+
+where you're standing right now so it's
+
+desktop and projects here on the right
+
+same thing here that's
+
+you know a way to show
+
+new content here on the left based on
+
+something that you already know
+
+you already know windows and
+
+how to navigate your computer there so i
+
+can click for example on desktop and see
+
+the contents of desktop so if i want to
+
+do here the same thing
+
+i can do ls and now i have to type
+
+desktop right and so one thing i want to
+
+ex to show today is how to make writing
+
+path
+
+uh easy um that's you know typing on the
+
+terminal is one of the first big
+
+barriers and but many of us don't
+
+realize until quite later after using
+
+the terminal how many um
+
+shortcuts and and convenience thing is
+
+there are to help you type you know
+
+paths that we keep typing all the time
+
+so if i type a few keystrokes and then
+
+press the tab
+
+uh i you know the terminal will complete
+
+the path for me so i don't need to type
+
+at all
+
+so ls and pwd those two commands are
+
+extremely useful um so here as you can
+
+see i see the same thing the same
+
+contents of my
+
+desktop um i see the folder here on the
+
+left and on the right
+
+and and you can go farther right so with
+
+the up arrow you recover uh previous
+
+commands uh and i believe i'm not sure
+
+if this is gonna work here but if you
+
+press command r
+
+maybe i need to to start typing
+
+something
+
+let's see control r or
+
+r
+
+well it's not working here to r
+
+l s c

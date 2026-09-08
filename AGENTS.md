@@ -1,25 +1,32 @@
 # AGENTS.md — dsincubator transcript database
 
-Goal: build `data/metadata.csv` + `transcripts/<id>.<lang>.json3` linked by `id`.
+Goal: build `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF v0.2 format) linked by `id`.
+
+When repo state changes (new videos, updated transcripts, schema changes), update `README.qmd` and re-render with `quarto render README.qmd --to gfm --quiet`.
 
 ## INPUTS
 
-1. `data/metadata.csv` — columns `playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url`. `id` is the join key. Maintained by `bin/fetch-metadata` (append new videos by default, `--refresh` rewrites all rows).
+1. `data/metadata.csv` — columns `playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url`. `id` is the join key. Maintained by `bin/fetch-metadata` (append new videos by default, `--refresh` rewrites all rows). The `transcript_path` column is computed on-the-fly in `README.qmd` via `fs::dir_ls()` → `tibble()` → `dplyr::left_join()`.
 2. Watch URL `https://www.youtube.com/watch?v=<id>` derived from `id`.
+3. Transcript files `transcripts/<id>_<sanitized-title>.md` (OKF v0.2) generated from `.json3` captions by `bin/convert-transcripts`.
 
 ## LAYOUT
 
 ```
-data/metadata.csv            # derived table, 151 videos (rebuild collapses the g1PRMaTFYdk duplicate)
+data/metadata.csv            # derived table, 151 videos
 metadata/<id>.json           # raw per-video dump (--dump-single-json incl. comments; caption/format URL listings pruned)
 metadata/manifest.tsv        # id | status | reason | file (ok/private/unavailable/error)
-transcripts/<id>.<lang>.json3   # one auto-generated caption per video, richest timed format
+transcripts/<id>_<title>.md  # OKF v0.2 transcript (YAML frontmatter + markdown body)
 transcripts/manifest.tsv        # id | status | file | lang
 bin/fetch-metadata           # raw dumps + derive CSV
 bin/fetch-transcripts        # fetch captions
+bin/convert-transcripts      # json3 -> txt/tsv/md
+README.qmd                   # Quarto source with live R chunks → rendered to README.md
+README.md                    # Rendered output (git-flavored markdown)
 ```
 
-- `json3` = `events[].tStartMs/dDurationMs` + `segs[].utf8/tOffsetMs` (word-level timing for editing; derive readable `.txt`/`.tsv` later).
+- `json3` = `events[].tStartMs/dDurationMs` + `segs[].utf8/tOffsetMs` (word-level timing for editing).
+- `.md` transcripts follow OKF v0.2: YAML frontmatter (`type`, `title`, `description`, `resource`, `tags`, `generated`, `status`, `sources`) + `# Transcript` body.
 - `lang` = original spoken language (`en` most videos, `es` for 6 Spanish-titled ones: `1lpcCHfozh0`, `EmDubkF8DpQ`, `hs_Pzxny7XE`, `kNV8dDGF7Hw`, `nSJT8NGhSTs`, `xx5WNZgQEdY`).
 - The `g1PRMaTFYdk` duplicate rows are byte-identical, so either survives the collapse.
 - The 3 `private` videos have no CSV rows and are never attempted by `fetch-transcripts`; the transcript gate below applies to the 151 public IDs only.
@@ -38,14 +45,21 @@ bin/fetch-transcripts        # fetch captions
 ## SCRIPT: `bin/convert-transcripts`
 
 ```
-./bin/convert-transcripts                          # all videos
+./bin/convert-transcripts                          # all videos (txt + tsv)
 ./bin/convert-transcripts --count 3                # first 3 (test)
 ./bin/convert-transcripts --format txt             # .txt only
 ./bin/convert-transcripts --format tsv             # .tsv only
-./bin/convert-transcripts --format both            # both formats
+./bin/convert-transcripts --format md              # OKF .md only
+./bin/convert-transcripts --format both            # txt + tsv
+./bin/convert-transcripts --format all             # txt + tsv + md
 ```
 
-Reads `data/metadata.csv` for the video ID list, converts each `transcripts/<id>.*.json3` to `<id>.*.txt` (plain text) and `<id>.*.tsv` (tab-separated `<tStartMs>\t<text>`). Skips videos without a json3 file.
+Reads `data/metadata.csv` for the video ID list and title, converts each `transcripts/<id>.*.json3` to:
+- `<id>_<sanitized-title>.txt` (plain text)
+- `<id>_<sanitized-title>.tsv` (tab-separated `<tStartMs>\t<text>`)
+- `<id>_<sanitized-title>.md` (OKF v0.2: YAML frontmatter + `# Transcript` body)
+
+Titles are ASCII-slugified (`unidecode` → replace non-alphanumerics with `-`, lowercase). The `.md` format includes OKF v0.2 frontmatter (`type`, `title`, `description`, `resource`, `tags`, `generated`, `status`, `sources`). Skips videos without a json3 file.
 
 ## SCRIPT: `bin/fetch-transcripts`
 
@@ -76,15 +90,19 @@ Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<i
 
 - [x] `metadata/`: 151 dumps + `manifest.tsv` (154 rows: 151 `ok`, 3 `private` with reasons).
 - [x] `data/metadata.csv`: 151 rows derived, join integrity holds.
-- [x] `transcripts/`: 151/151 fetched, all `ok`; `.txt`/`.tsv` derived for all 151 via `bin/convert-transcripts`.
-- [x] `bin/convert-transcripts`: written and tested (json3 → .txt/.tsv).
+- [x] `transcripts/`: 151/151 fetched, all `ok`; `.txt`/`.tsv`/`.md` (OKF v0.2) derived for all 151 via `bin/convert-transcripts`.
+- [x] `bin/convert-transcripts`: supports `--format md` and `--format all`; generates OKF v0.2 transcripts with YAML frontmatter.
+- [x] `README.qmd`: created with live R chunks (metadata overview, sample metadata, transcript join via `fs::dir_ls()` → `tibble()` → `dplyr::left_join()`).
+- [x] `README.md`: rendered from `README.qmd` via `quarto render README.qmd --to gfm --quiet`.
 - [x] Open question resolved: `sbp5Q8niTho` comment was deleted from YouTube (fetch succeeded, database stands).
 - [x] `fetch-transcripts` prune fix: `pick_transcript`/`--force` now touch subtitle extensions only (earlier `*.*` glob deleted converted `.txt`/`.tsv` on re-runs).
+- [x] Title sanitization: ASCII-only, lowercase, hyphen-separated words.
 
 ## NEXT
 
-1. Done — verify one-liner with `LC_ALL=C sort` returns empty (plain `sort` gives false mismatches on `-` vs `_` IDs).
-2. Optional: probe other open questions.
+1. When repo state changes (new videos, updated transcripts, schema changes), update `README.qmd` and re-render with `quarto render README.qmd --to gfm --quiet`.
+2. Re-run `./bin/convert-transcripts --format md` if new transcripts are fetched.
+3. Optional: probe other open questions.
 
 ## QUALITY GATES
 

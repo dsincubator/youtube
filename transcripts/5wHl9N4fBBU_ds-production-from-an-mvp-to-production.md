@@ -1,0 +1,1904 @@
+---
+type: Video Transcript
+title: "ds.production: From an MVP to production"
+description: "welcome to the DS incubator today it's a  special video about how to convert a  minimum viable product into production  so this is the idea of you know taking  "
+resource: "https://www.youtube.com/watch?v=5wHl9N4fBBU"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=5wHl9N4fBBU"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+welcome to the DS incubator today it's a
+
+special video about how to convert a
+
+minimum viable product into production
+
+so this is the idea of you know taking
+
+some code that works for you and
+
+converting it into something that works
+
+for everyone everywhere
+
+so let's motivate you know why this is
+
+important so if you wanted to say build
+
+a sky crepe scraper you kind of know
+
+that it's something that you cannot just
+
+do by yourself you need to know what to
+
+do how to do it you know how long it's
+
+going to take and that's not easy it's
+
+very complex so even if you wanted to
+
+try a civil engineering regulations
+
+exist that could stop you from doing it
+
+but software so foreign
+
+it's more it's newer right and few
+
+people have that intuition because they
+
+have been exposed to enough software to
+
+know how complex it can be and there's
+
+no regulation that would stop you if you
+
+want if you want to do it yourself
+
+so the goal of this article is to help a
+
+data science team everyone from the
+
+managers to the software developers to
+
+better understand how software evolves
+
+right from that early stages where it's
+
+still a minimum via product product that
+
+works just for you know a few people in
+
+their computers to something that works
+
+for everyone everywhere in this case I'm
+
+going to be demonstrating the use of our
+
+packages to support that process because
+
+that's language I'm familiar with but
+
+the process is completely agnostic you
+
+know it applies to any language in fact
+
+the the idea that is at the core of this
+
+presentation is the idea of refactoring
+
+which is a disciplined technique for
+
+restructuring an existing body of code
+
+altering its internal structure without
+
+changing is external Behavior so that
+
+comes from the book refactoring which
+
+you know I totally recommend to anyone
+
+who wants to implement changes in a code
+
+base
+
+and it's basically a series of very
+
+small changes that do not change the
+
+behavior of the code
+
+each change in isolation in isolation is
+
+not you know a big deal but an
+
+accumulation of those compound to a
+
+conditionally very significant
+
+restructuring of the code base and since
+
+each step is small the chances that
+
+something will go wrong are low
+
+and another idea is that the because the
+
+the behavior of the code is not changed
+
+in any of those steps the the system is
+
+kept all the time working fully fully
+
+functional also reducing the chances
+
+that you know anything that you break
+
+will stay broken
+
+so uh I'm gonna be demonstrating an
+
+example in r that comes or is based on
+
+an example presented in chapter number
+
+five of the book are packages it's it's
+
+very nicely written it has
+
+um you know expands in the idea of
+
+um that in any analysis there might be
+
+some are package hidden in it so that is
+
+the r code that you could extract from
+
+the analysis because it's something that
+
+you couldn't reuse so beyond you know
+
+the analysis they are doing with that
+
+specific data set there may be some code
+
+they can reuse and you know use it in a
+
+different analysis maybe with a
+
+different data set or even in a
+
+different context
+
+so that chapter of that book focuses
+
+specifically on the act of refactoring
+
+the r code that um you know is part of
+
+the analysis but here we're going to
+
+expand that to include everything that
+
+you need to do before you even start
+
+restructuring the code which includes
+
+building some infrastructure so that you
+
+can support automated automated testing
+
+for example and also the act of actually
+
+writing the tests to support those
+
+refractions because refactoring goes
+
+completely hand and hand on hand with
+
+testing so the the presentation here is
+
+splitting for sequential steps so first
+
+we need to reproduce to ensure that we
+
+can reproduce the analysis script that
+
+we want to improve that we want to
+
+convert into something in production
+
+second we're going to take snapshots
+
+capturing some some key outputs of the
+
+intermediate steps of the analysis and
+
+the final result and that will be our
+
+kind of first Safety Net in case you
+
+know we make a mistake and we will have
+
+something that tells us oh you know this
+
+was a mistake reverted
+
+and then we're gonna with that safety in
+
+place we're gonna start actually making
+
+some changes to the code without
+
+changing the behavior of the code just
+
+changing the structure and that is to
+
+simplify the the complexity of the
+
+system into smaller pieces that can be
+
+understood in isolation and also about
+
+which we can have conversations with our
+
+colleagues for example that could allow
+
+us to detect bags and then we can
+
+discuss those bags and then eventually
+
+fix them in Step number four which is
+
+now that we have tests and then we have
+
+code that is very modular we are now in
+
+a good position to start changing the
+
+behavior one once we know what kinds of
+
+Behavioral changes we want in the system
+
+all right so by the way all these links
+
+that you see here are links to in steps
+
+one to four are links to a live demo of
+
+me doing the things that I'm gonna just
+
+show so now my focus is more kind of
+
+people
+
+um of all uh interests people with
+
+interest in coding but also people
+
+without interesting coding so for those
+
+that are not necessarily interested in
+
+like writing code themselves the code
+
+that you will just see on screen is
+
+probably more than enough you don't need
+
+more details but if you do need more
+
+details because your interest is more
+
+implementing these ideas
+
+then click on those links and you'll see
+
+me doing what I'm saying here those by
+
+the way in total sum up to maybe two
+
+hours and a half of videos so it's
+
+pretty long
+
+okay step number one
+
+of the process is to ensure that we can
+
+reproduce the original code typically an
+
+MVP comes in my case for example I'm a
+
+software engineer my my typical case is
+
+where I get
+
+code from someone else that is kind of a
+
+draft is an idea it works it works in
+
+their computers but it's not ready to be
+
+you know shared with the entire world
+
+right we need to improve it make it
+
+stronger check that there's no bugs and
+
+things like that so typically then I
+
+don't even request git for that so
+
+people who write that code may not use
+
+git
+
+um that the git is a tool that we use to
+
+keep track of different versions of the
+
+code so the way they distribute the the
+
+code is not on GitHub because GitHub
+
+only works if you're using git instead I
+
+typically get it in a folder compressed
+
+as a zip file or something right so I
+
+typically download that from you know
+
+however I got it and uncompress it and
+
+lands in my downloads folder so in this
+
+case the folder where the code is is
+
+called MVP and the file that is this you
+
+know hosts this computational document
+
+is the file written
+
+it's typically written in in a file
+
+there is a casting of this one it's
+
+called rmd in r or another format is
+
+called quarto and if you are working in
+
+Python it could be equivalent to a
+
+Jupiter notebook so this is what the
+
+analysis looks like so this you know let
+
+me for one time explain what the
+
+analysis is doing
+
+um it's extremely small extremely simple
+
+but yet captures
+
+um you know the the bigger General ideas
+
+that pretty much every single data
+
+analysis you know task or refactoring uh
+
+that analysis tax requires
+
+um so and again this comes from from the
+
+book are packages chapter five you can
+
+go and look at it there it's very
+
+slightly adapted from there all right so
+
+what's this um analysis is doing so
+
+basically I'm being asked to improve
+
+this code here is first you know attach
+
+some packages so that we can use
+
+functions that we're written by other
+
+people in our code then here we are
+
+reading the data from a directory that
+
+is nested inside the same folder where
+
+you know the code exists
+
+so uh here in my in this case in my
+
+downloads folder there is a suit folder
+
+called MVP another one called input and
+
+there is the swim CSV file swing SWV is
+
+a data set that hosts information about
+
+people who went for a swim and they
+
+reported where they went for a swim and
+
+what was the temperature of the water so
+
+if we have a look at the data after
+
+reading it the raw data looks like this
+
+there is a column called name
+
+where someone like for example Adam then
+
+reports where they went for a swim and
+
+Adam said to the beach and we and then
+
+answered the question okay what was the
+
+temperature of the water you know he
+
+said it was 95. Beach is where used in
+
+the U.S 95 is a number close to the
+
+boiling temperature in Celsius of water
+
+so pretty sure the island did not swim
+
+in boiling water and because he's from
+
+the U.S most likely he reported
+
+temperature in fahrenheit so 95 you know
+
+we're going to interpret that as being
+
+Fahrenheit degrees but in the same data
+
+set take for example Cora she went for a
+
+beach for a swim and she said that she
+
+swarmed at the seashore she said and she
+
+said that the temperature was 28. so
+
+those 28 most likely are Centigrades
+
+um because she said seashores issue is a
+
+Warriors in the UK so we're gonna do the
+
+following cleaning we're going to first
+
+localize
+
+where we think uh or what type of
+
+English we think these people in the
+
+table what are using by just you know
+
+deciding that you know the words Beach
+
+and Coast are worse than people use in
+
+the U.S
+
+um and then there was Seashore or
+
+Seaside are words that are people used
+
+in the UK So based on you know what type
+
+of English they use then we can have we
+
+can convert the temperature to Celsius
+
+if it is in Fahrenheit and if it's
+
+already in Celsius we'll leave it at
+
+that
+
+so this is what the first
+
+snippet of of the analysis is doing is
+
+converting first allocating
+
+um an English type and to the to the
+
+where column so it's uh if
+
+um you know basically it's emerging the
+
+raw data with this lookup table to look
+
+up where these people live basically and
+
+and then once we know where they live
+
+then we we can apply these sensify
+
+process right so the idea of converting
+
+Fahrenheit to Celsius which is capturing
+
+this in this formula
+
+we're going to apply to the English
+
+Color but only if the the English word
+
+is in a US word else we are going to
+
+just leave it as temperature so this is
+
+what this snippet is doing
+
+um so the clean result would look like
+
+this so
+
+um and the temperature in celsius
+
+reported
+
+um by sorry the temperature in
+
+fahrenheit like this one was converted
+
+to Celsius but here we already know that
+
+the function F to C here
+
+applies you know x minus 32 times 5 or
+
+9. and 509 is applied through this
+
+function but also again here I think
+
+that's about
+
+um and thus if you Google you know how
+
+to convert
+
+um
+
+what was the temperature the other
+
+reported 91. so if you wanna 95 so you
+
+want to convert 95
+
+to Celsius you will get a different
+
+result so this is a bar right but you
+
+you don't jump straight to fixing the
+
+back in this very you know disciplined
+
+process you first characterize the back
+
+then you have a conversation about the
+
+back with your colleagues
+
+and then you fix it eventually but first
+
+we need tests to make sure that you know
+
+the change even in that place is not
+
+causing unintentional changes as well
+
+right so for now we have to refrain
+
+ourselves from implementing the fix
+
+we're going to just describing
+
+um all right so finally you know with
+
+the clean data set all we do here is
+
+just saving that to an output directory
+
+that in this case is again inside that
+
+um you know the same folder that you
+
+know contains the code in this case
+
+contains the the data the output
+
+um and that's a bad thing so let me make
+
+a couple of notes not always but in in
+
+general because we are you know in this
+
+case we want to write some code that is
+
+general and we can share with no
+
+limitation uh particularly no limitation
+
+based on the data being private or
+
+public so if the data is too large for
+
+example then that already limits the
+
+usage of it in our package because the
+
+tool that we use to keep track of the
+
+versions of the code
+
+git and cannot handle very big size
+
+files so the data just could not fit if
+
+it is large in this case it's small but
+
+if it is large it would not fit in a git
+
+commit which is the unit of of storage
+
+for for that tool
+
+um and then as I said before I suggested
+
+before it might be the case that the
+
+data is private where everything else
+
+might be public so if you want to show
+
+it called public publicly but the data
+
+is private then we are stuck we just
+
+cannot right so the best thing we can do
+
+is
+
+um is extract the data outside so this
+
+is the current state of the things with
+
+uh you know downloads
+
+um my downloads folder has this MVP
+
+folder that I got from somewhere and and
+
+here I have my my code the readme rmd a
+
+version of it that you know shows the
+
+outputs the readme MD
+
+which is produced automatically when I
+
+render this read the rmd
+
+and then we have that you know input
+
+folder output folder and then a file
+
+that describes that this is specifically
+
+not just like any project but
+
+particularly one flavor of the project I
+
+call an rstudio project
+
+that's not important for the purposes of
+
+of this talk uh so all right so if we
+
+would like to start changing things for
+
+example moving the code outside that
+
+directory because we just said uh
+
+identify that it contains data and we
+
+want to isolate the code from the data
+
+so we're going to build some
+
+infrastructure I'm going to be building
+
+on our package if you want to know more
+
+about our packages you can go to the
+
+book here our packages second edition
+
+you can use a package called use this
+
+which has a tonus tools that help you
+
+create and manage and build our packages
+
+so the function create package creates
+
+an empty package and then you you know
+
+you can start adding things to it but
+
+the beauty of building our packages or
+
+any package in any language I guess is
+
+that because they are standard
+
+a lot of people build Tools around that
+
+standard structure meaning that for
+
+example we can automatically run
+
+specific checks that verify that the
+
+package complies with the rules of what
+
+a package should look like and and here
+
+this package they have tools has a
+
+function called check just by running
+
+that and we will know if there's any
+
+errors any warnings any node and indeed
+
+if you do that you create an empty
+
+package and call devtools check you
+
+could know that you would learn that
+
+there is one thing we you still need to
+
+do which is to decide which license you
+
+want to distribute that package with for
+
+example in this case I then used another
+
+function
+
+to use an MIT license inside this this
+
+file it defines that it's an MIT license
+
+you could choose another one and you
+
+could even say that it's a private
+
+package and then here I'm also using
+
+another function to use this package to
+
+create a subdirectory called inst exit
+
+data
+
+uh which is a place where I can put
+
+files that will you know install along
+
+with the package whenever someone
+
+installs it so think of a package as it
+
+just and a piece of software and with
+
+any piece of software you go you install
+
+the packet you install the software and
+
+of course you expect in your computer to
+
+have something to happen right your
+
+system could change some files will be
+
+kind of stored somewhere in your system
+
+you may not wear but somewhere files are
+
+stored and that's what happens which
+
+files go there depends on on a bunch of
+
+things so obviously all these files will
+
+go there and what we put in inst you
+
+know will follow so we'll be installing
+
+your system so we we for a technical
+
+reason to fully have access to
+
+um all the tests and all the checks we
+
+need this file to leave here in the inst
+
+directory
+
+is something I'm not going to not dive
+
+deep now
+
+um all right so once we have that
+
+structure we can actually copy the code
+
+into that empty package so here it is
+
+the code notice that there's no more
+
+data here the data is outside so we're
+
+now ready to share this on GitHub it's
+
+super small there's no data so we can
+
+create git meets then move that to
+
+GitHub and share with the world and then
+
+um
+
+the data if even if it was Private the
+
+code is public so it's fine for us to
+
+share in this specific case right
+
+um so now what we need to do is we need
+
+to kind of tweak this this is a snippet
+
+of uh the file that we're working with
+
+except that there is something that have
+
+already changed this line here
+
+um so why okay so if we moved the code
+
+outside of the folder where the data
+
+lives uh this you know the script would
+
+break why because the function here is a
+
+function that creates paths that are
+
+nested in the folder where the function
+
+is being called The Working directory
+
+that calls that function
+
+however
+
+we can do a little hack instead of you
+
+know starting like crazy we're writing a
+
+bunch of lines in the in the script
+
+every line you know that uses that here
+
+function we will write it to a new
+
+address no no stop that what you need to
+
+do or you know why some way to do it
+
+with a minimal disruption it could be to
+
+Simply and temporarily and do a little
+
+hack we're going to overwrite the here
+
+function we no longer use the here
+
+package if you pay attention at the top
+
+there was another line here that said
+
+Library here which is the package here
+
+we no no longer need the here package we
+
+are actually going to write our own here
+
+function and instead of using the
+
+original definition we are going to
+
+Define it differently to point to
+
+where we have the data so I I
+
+particularly chose to store the data and
+
+the downloads and nvp and there you know
+
+these dot means that I can again
+
+um pass any number of strings here and
+
+that will be you know used to construct
+
+the path
+
+so if I pass you know swim CSV to the
+
+object input name
+
+and then pass input name to the function
+
+to the call of here input input name
+
+what we are creating here is a path that
+
+points to downwards maybe you didn't
+
+follow that description but uh
+
+basically with this single line of code
+
+we changed no matter how many times the
+
+function here was used they they would
+
+all point now to a New Direction very
+
+minimal disruption very significant
+
+change
+
+all right and that marks the end of this
+
+the first and pretty long actually step
+
+was this idea of
+
+um you know being able to reproduce
+
+the code from
+
+an archive in this case from from you
+
+know a tool that has sufficient
+
+structures to support the things that
+
+we're going to be building in a moment
+
+for example the tests
+
+so the Second Step you know now that we
+
+can reproduce uh the um the script from
+
+an executable file
+
+now we're gonna move to step two which
+
+is capturing some snapshots of the data
+
+as it's transformed inside the analysis
+
+script
+
+so I'm going to be creating a new test
+
+file
+
+um and it is file in R you can create it
+
+with the function use test from the
+
+useless package so if you give it a name
+
+say capture output it's going to create
+
+a new file
+
+under the directory tests that has that
+
+name I'm going to show you that in a
+
+moment so the inside of that file
+
+is going to be empty and we can start
+
+writing stuff in it and what we write is
+
+very meaningful so in this case I chose
+
+to write two tests that would test that
+
+the objects localized and clean
+
+did not change so that's my goal to
+
+write some tests that make sure that
+
+those objects do not change because very
+
+soon I'm going to be starting to change
+
+the code so I have those tests as
+
+safetynet right for my changes to make
+
+sure that I don't make any mistake so
+
+let me go back very quickly to the
+
+script to show you what those objects
+
+were so here it is localized so
+
+localized will be a safety net for me to
+
+refactor this code
+
+all here you know I could change now
+
+and as long as the result is the exact
+
+same then that localized object that is
+
+capturing my Snapshot test will just
+
+work and if I make any mistake I want to
+
+get an error message
+
+and then the same thing for for this
+
+part so the object clean is going to be
+
+my safety net so if I take a snapshot of
+
+it to be able to refactor everything you
+
+know here and even even everything on
+
+top because the localized object is a
+
+dependency here as well so if something
+
+changes in localized and you know the
+
+object clean is going to change too
+
+all right so that's a little bit
+
+abstract so let me show you
+
+um some um some things a little bit more
+
+concrete
+
+um for those who are more interested
+
+listen to code and more in the
+
+management of all of these just learn
+
+that you know we are very
+
+um in a very structural way starting to
+
+create some tests of what um our
+
+analysis is doing
+
+there is here a little trick so this
+
+function here is a one that I created to
+
+be able to access the objects inside the
+
+environment where our script run so
+
+remember I told you the first step was
+
+to be able to execute from a single
+
+script
+
+the whole analysis now we can get inside
+
+the environment where that script runs
+
+to pick the cherry pick the objects that
+
+we want to test So that obviously
+
+assigns
+
+um that script assigns an object called
+
+localized so we're going to access it
+
+with this e inside this e object it's an
+
+environment exists this localized object
+
+and I am you know accessing that with
+
+with this function here so let me show
+
+you I'll do the same thing with the
+
+clean object so let me show you a little
+
+bit it's pretty simple but um but
+
+simple what it does but uh very hard to
+
+grasp maybe
+
+so the function element that render is
+
+what allows us to given a path in this
+
+case the path to the to the script that
+
+we want to refactor given a path that
+
+function will execute that script
+
+and and we are using an argument called
+
+envir in there with object e so the
+
+object is something that we create so we
+
+create first a new environment instead
+
+of an empty space to store stuff and
+
+then as that mvp is rendered a lot of
+
+objects are being created and then
+
+they're gonna appear automatically in
+
+that e object and then we can access
+
+them because we're going to Output from
+
+this function with an output.e
+
+environment and every object that it
+
+creates we can access without a sign
+
+like clean or localized right so that's
+
+that's a height there
+
+as a trick with quite what I'm doing is
+
+trying to suppress the messages that
+
+come from rendering the the rmd file
+
+which could be annoying when you test
+
+things and all right so as a result of
+
+that when you run the the test with a
+
+function called devtools test
+
+all of this will run I will detect that
+
+there were some snapshot tests and it
+
+will automatically print the output of
+
+the object e-localized
+
+and the output of the object e-clean and
+
+this is our record
+
+store somewhere that
+
+um we have so that's our safety net so
+
+that if we change something in such a
+
+way that the output changes this test
+
+will fail we will know exactly in which
+
+way
+
+so the the new snapshots when we run
+
+them
+
+created this file here under a directory
+
+called
+
+um snaps underscore snaps it added
+
+automatically this file called capture
+
+outputs underscore
+
+nsi.md and the test that we the test
+
+file that we created with the function
+
+use test is this one here you know it
+
+landed in a folder called test then
+
+under it there is a trial called this
+
+that and under that we have either the
+
+folder snaps or and all the files all
+
+this files so the perfect test hyphen
+
+was added automatically when I run use
+
+test function if I want to use this
+
+package all I said is you know call It
+
+capture output and then the extension R
+
+and this hyphen was added automatically
+
+and then this other file is
+
+infrastructure has has been added there
+
+automatically so everyone in the there
+
+is the following if you're gonna be
+
+sharing this on GitHub which is great
+
+and if you are going to do it in a
+
+public repo notice that no these objects
+
+will print and be shared with the world
+
+so if you're using private data these
+
+outputs here are going to be private too
+
+so do not do that right so do not create
+
+those snapshots or even better you can
+
+create them but uh you can you can move
+
+your test to a private directory you
+
+don't have to call it specifically prior
+
+you can call it whatever but the trick
+
+is like separate the test that will
+
+produce uh private snapshots in their
+
+own directory so that then you can test
+
+the whole directory with the function
+
+test here
+
+um so that function will it create all
+
+the private tests inside a specific
+
+directory that you then can add to your
+
+git ignore file so they are not shared
+
+public so you share everything else
+
+except that that has to be generated
+
+locally
+
+if you're not you know one of those tech
+
+people in the team this of course was a
+
+lot of technical detail but you can you
+
+can ignore it so the the summary for for
+
+everyone here is that now we are
+
+entering stage three what do we do so
+
+far well we first ensure that we can
+
+reproduce the script that we are about
+
+to refactor and then step two was to add
+
+some snapshots and to capture some
+
+intermediate results and the end result
+
+of over analysis so that we then can
+
+start changing code without changing
+
+behavior and that's step three that's
+
+what we're about to to start doing
+
+so here is again our script now in a
+
+form that has been already refactored
+
+and notice that for example the name MVP
+
+path is a new name it holds the same
+
+function that before was assigned to the
+
+here function so now there's no longer a
+
+here function because actually it's not
+
+something that you could leave for a
+
+long time it was just an intermediate
+
+refactoring move
+
+so that we could execute the script with
+
+minimal interruptions but now that we
+
+have captured some of the intermediate
+
+results and the final result we are
+
+already in a good place to start for
+
+example doing small steps small
+
+refactorings like renaming a vial that's
+
+a pretty safe refactoring to do actually
+
+it's automatic tools that allow you to
+
+detect the same string everywhere and
+
+change it automatically so it's pretty
+
+safe then a little bigger changes has
+
+been to extract all the code that deal
+
+with creating that localization of the
+
+beach and the the code that dealt with
+
+satisfying the temperature
+
+so that goat moved now to the r
+
+directory so let me show you as an
+
+example how I did that for say certified
+
+temp so now my script you know shrunk to
+
+uh to this and the relevant lines the
+
+ones that we extracted in the package
+
+are just these two all the code now
+
+moved to to the art folder I create
+
+another file
+
+um with the name of the function that I
+
+wanted to extract like this using the
+
+function use R from they use this
+
+package and automatically you know I I
+
+had a file that was empty and I started
+
+populating that file the first thing I
+
+did is to you know cut the the code from
+
+the script from the MVP script and I
+
+pasted it here exactly as I it came from
+
+there including debug right so that's
+
+important that right now we are only
+
+focusing on behavioral changing sorry
+
+behavioral preserving changes so even if
+
+we know that is about we just leave it
+
+alone and this is just refactoring
+
+um and then we also get this little
+
+helper function that is used inside this
+
+bigger function called says if I tab
+
+notice that you know there is nothing on
+
+top of F to C this is what we call an
+
+internal function uh we don't need to
+
+document that function and we don't need
+
+to test it it's going to be tested
+
+indirectly through specified temp
+
+um but because certified temp is part of
+
+the script you know it's exposed in the
+
+script it's not used only
+
+um internally it's using by our users
+
+then we have to document it and and this
+
+is what the recommendation looks like
+
+basically it's a bunch of things that
+
+you put there that then when you do
+
+question mark and the name of the of the
+
+function that you want to read the
+
+documentation for then you get a very
+
+nice HTML version of it with whatever
+
+you wrote there so you have to be nice
+
+to yourself and your users and write you
+
+know meaningful documentation
+
+particularly really nice examples help a
+
+lot
+
+um
+
+so this function use this use are
+
+actually here I made a mistake they
+
+should say use test
+
+um that that is what would create the
+
+test
+
+file Associated to specified temp and it
+
+would again start empty and here I
+
+started writing three tests I'm gonna
+
+you know mention them very briefly to
+
+what they do for example the first test
+
+I chose to write was one that confirms
+
+that if the temperature is already in
+
+Celsius it should be left alone so and
+
+the certified temp what does takes a
+
+table and this table function creates a
+
+table that if you know the the in
+
+language is UK the English is used is in
+
+the UK then you know we assume that the
+
+temperature is in Celsius and it should
+
+stay in Celsius so you know given such a
+
+table given a temperature in English and
+
+the temperature of 32 we expect the
+
+output to be also
+
+32 because Celsius would not need to be
+
+converted to if they stay as they are
+
+and uh so that's the first step the
+
+second test is actually testing that if
+
+there is some column missing so the The
+
+Columns English and the columns temp are
+
+used inside internally by the celtified
+
+temperature
+
+um function so if they are missing we
+
+should get an error so that's what this
+
+test is doing is making sure that error
+
+is somewhat meaningful
+
+and then finally this is the the most
+
+important test
+
+um here you know I Google you know what
+
+would be the conversion of 91 Fahrenheit
+
+to Celsius and it was something like
+
+32.8 and so what we get is not that it's
+
+a different result and so it's wrong
+
+um these tests fails so if you run that
+
+in R you would get you know a very
+
+prominent message saying hey this is
+
+wrong
+
+because you're even aware it is strong
+
+exactly where to go fix it but
+
+um
+
+here we are skipping that that test so
+
+that you know we can still you know we
+
+have the proof that the the the the the
+
+code might have a problem there we need
+
+to discuss and but you know I I'm
+
+skipping this test with fix me and this
+
+message is going to print every time I
+
+run test which is extremely often like
+
+many many times and a day and even many
+
+times an hour
+
+um and every every time I would you know
+
+get it reminded I sometimes I need to
+
+fix so what I would do now is you know
+
+leave that be here as it is leave the
+
+back there leave that test there ready
+
+to be you know modified as soon as the
+
+bug is discussed but first I need to
+
+discuss the bug with my colleagues and
+
+make sure that in this really
+
+um about
+
+so that was step two so wrapping up what
+
+we did was start making some refractions
+
+which by definition are changes that
+
+preserve the behavior of the code even
+
+if the behavior is wrong
+
+and finally we reach the point that you
+
+know where we were very excited to to
+
+get which is the point where we can
+
+actually start improving the software
+
+for example fixing bugs so fixing bugs
+
+is a behavioral change in change so we
+
+need to take it you know after we have
+
+already Incorporated in some some at
+
+least one test the one that proves that
+
+the bar exists
+
+so the first step would be first discuss
+
+the current behavior and once we agree
+
+it's about go fix it and then other
+
+types of improvements that you could do
+
+here is the remove duplication so that
+
+for example if there is the same piece
+
+of code exists in different times in
+
+different places in the code base you
+
+want to make sure that it reaches back
+
+in one place
+
+it's gonna be removed forever right but
+
+if the code is duplicated then you know
+
+they could be that you know you remove
+
+the bug from one place but the value
+
+exists still somewhere else so that's
+
+that's one of the you know key points of
+
+removing duplication
+
+um
+
+but there is more benefits to it
+
+basically allows them and the future
+
+maintenance of the code and then
+
+once you know we are that stay with you
+
+know like no bugs uh some tests we are
+
+in a position to start developing new
+
+behavior and when we develop new
+
+Behavior if we do know exactly what is
+
+that new behavior that we want we can
+
+even use a very cool approach called
+
+test driven development when we first
+
+write the test that will pass once the
+
+code that implements it exists but
+
+because the code you know because you
+
+write the test before the code then that
+
+test would fail and then your next job
+
+is to go and make that that test pass
+
+when you make that test pass you already
+
+kind of reached your Milestone and then
+
+you can start doing refactoring so
+
+that's the idea of this development
+
+there is a whole video actually
+
+dedicated to that in my NDS incubator
+
+replace if you want
+
+so here's an example of an improvement
+
+and I'm showing that
+
+um now I'm you know here there was some
+
+code that was
+
+a game multiplying
+
+um by five over nine and that's gone so
+
+that was the fixed about fixed and then
+
+the test also and you know I removed
+
+that line that said skip so now we are
+
+not skipping this test if this test
+
+passes is because it's correct so
+
+Fahrenheit is converted to something
+
+close to
+
+3.32.8 cells right
+
+hey and that's the end and so now the
+
+the rest of uh of what you have to do is
+
+to just enjoy you know use that Target
+
+to reuse it
+
+um so here is an example how it could be
+
+for you so basically the users of that
+
+code would simply attach the package
+
+with library and the name of the package
+
+in this case production we'll use some
+
+data for example in this case is created
+
+here on the Fly and then just use the
+
+package so these functions exist in the
+
+package so no longer they need to use
+
+for example the player in this case
+
+and they're using travel actually which
+
+is also comes from the buyer
+
+um but you don't they don't need to
+
+um
+
+and uh and yeah so this is the the
+
+result so with that I hope to have
+
+demonstrated
+
+um you know the complexity not to kind
+
+of scare you away just to show the you
+
+know transparently you know what are the
+
+techniques that we use how complex they
+
+are why we do them and and why we need
+
+some time to engineer software in such a
+
+way that um you can build on it like
+
+endlessly right so if you want to build
+
+a Skype scraper you want really strong
+
+foundations and you have strong
+
+foundations uh starting from an MVP you
+
+need to do you know this very careful
+
+prescripted and steps that are very well
+
+documented in books by the way
+
+um and hopefully here summarized and so
+
+that you know you make sure that the
+
+foundations that you on which you want
+
+to start extending your software are
+
+indeed as strong as you need all right
+
+with that I thank you very much

@@ -1,0 +1,1564 @@
+---
+type: Video Transcript
+title: "cloud: Use case -- host shiny apps"
+description: "welcome everyone again to the ds  incubator this is the series about cloud  computing  and today we're going to be talking  about how to use  uh cloud computing"
+resource: "https://www.youtube.com/watch?v=JdFA31-vJUE"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=JdFA31-vJUE"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+welcome everyone again to the ds
+
+incubator this is the series about cloud
+
+computing
+
+and today we're going to be talking
+
+about how to use
+
+uh cloud computing to host shiny apps
+
+i'm also going to show how to create a
+
+shiny app although it's not uh
+
+it's not like the point today it's
+
+mostly okay how you can use a service
+
+like this ocean for example
+
+so you can put your apps there
+
+um with no limit in terms of how many
+
+you host um all right so that's use case
+
+number four we covered three use cases
+
+last time
+
+and and after this there are gonna be at
+
+least one more use case in in the next
+
+meet up
+
+so
+
+the folder that hosts all use cases is
+
+number two including the ones from
+
+previous sessions uh so let's type here
+
+shiny to find that quickly so this is
+
+the little bit of that document that
+
+relates to what we're going to be
+
+talking today
+
+so
+
+um the first thing you need to do to
+
+host a shiny app is of course to have a
+
+shiny app and you can create it however
+
+you like you can create it maybe locally
+
+in your computer and then
+
+somehow move it to the cloud i'm gonna
+
+talk about that um maybe starting the
+
+next meetup i know how to move data um
+
+to the cloud or from the cloud and
+
+things like that but today um i'm gonna
+
+be working directly on the cloud so i'm
+
+going to create a shiny app
+
+directly on the cloud but still i'm not
+
+going to be using um
+
+the droplet itself i'm going to be using
+
+a little container inside that droplet
+
+so i'm going to be using docker again so
+
+if you are a little lost with docker
+
+don't worry everyone is in the beginning
+
+and there is a whole series about docker
+
+um that you know run a few sessions ago
+
+you can find that in the ds incubator
+
+and uh and also i'm going to be talking
+
+about you know kind of breaking down the
+
+calls to docker and myself in this in
+
+this meetup and explaining what each
+
+thing does and then you can read more on
+
+the resources that i'm going to give at
+
+the end
+
+and also now
+
+a good resource to get started with
+
+docker especially for those who use
+
+docker to run different services in r
+
+is this website here the rocker project
+
+which i mentioned many many many times
+
+already
+
+so what i'm gonna be doing first uh is
+
+gonna be you know i need to first make
+
+sure that i have a droplet which is a
+
+computer that is gonna serve another
+
+service to my computer to me here and so
+
+let's do that first so let's go to
+
+digital ocean which is one of the many
+
+providers of cloud computing services
+
+that you can pretty much hire so i have
+
+an account already so i'm going to log
+
+in if you don't have one you can sign up
+
+for free and also you get 100 credit
+
+that you can use over two months to try
+
+it out which is what i'm doing now i
+
+still have 25 days to go
+
+and i haven't used up all the money yet
+
+so it's pretty
+
+you know it can take you pretty far
+
+those hundred dollars
+
+so inside my
+
+dashboard for digitalocean i have this
+
+demo project which is dedicated to the
+
+meetup here
+
+and in there i have a droplet that we
+
+created together in this series i think
+
+it was the first time we we we started
+
+with the series it's already on you know
+
+we talked about this um alex you know
+
+brought that up and it's good to know
+
+that you're gonna turn it off and on i
+
+think you still get charged when it's
+
+off so
+
+um if you are concerned about costs uh
+
+you may want to
+
+re very carefully the documentation but
+
+also there are ways to cap the
+
+um you know your bill to stop to a
+
+number or get notification so there's a
+
+bunch of clear ways to
+
+control the way you spend your money
+
+so this droplet in particular um is not
+
+a big one it's probably as small as it
+
+gets like one gigabyte of memory and 25
+
+gigabytes of disk is running um docker
+
+on an ubuntu computer ubuntu 20.04 so
+
+those are the characteristics and the
+
+the most important information we need
+
+to work with this droplet is this thing
+
+here this address called iv ipv4
+
+because we're going to need that address
+
+to connect to that droplet i'm going to
+
+do that just now i'm going to open the
+
+terminal in my computer this is this is
+
+not the cloud
+
+but i'm going to connect to the cloud
+
+using ssh which is a program that allows
+
+me to use a special key that i have
+
+saved and created and saved in my
+
+computer called ssh
+
+so with that command ssh i can say which
+
+user in this case root the most
+
+privileged user
+
+is going to be working on the container
+
+on the on the droplet
+
+and now i need to say where to find that
+
+droplet so at
+
+and i'm going to paste that address that
+
+i copied from
+
+from the dashboard
+
+of digitalocean so that will connect me
+
+to the droplet from my own uh computer
+
+there's a bunch of information there
+
+let's clear this up with ctrl l
+
+um and yes i'm gonna be calling docker
+
+in a moment so a good thing to do now
+
+would be to do a docker ps to see if i
+
+have anything running with minus a i'm
+
+sure that i'm going to see every
+
+possible container including the ones
+
+that are stopped but i get nothing as
+
+output so there is no container running
+
+that's that's a good place to start i'm
+
+going to go back to the notes and now um
+
+i'm going to copy this
+
+in a moment and paste it and so this is
+
+the call to docker that will create this
+
+little computer that's gonna be running
+
+our studio inside it so with it i'm
+
+gonna create later a shiny app and then
+
+show you how you can actually uh publish
+
+it and host it with uh another container
+
+that is gonna be running rocker dockers
+
+r studio server so the content i'm gonna
+
+be running right now again comes from
+
+the rocker project it is a container
+
+that runs
+
+our studio
+
+and server it's called
+
+and let's break this down a little more
+
+so of course docker run will run a
+
+container minus minus remove will remove
+
+that container once it is stopped so i
+
+don't have to do any further cleanup
+
+minus t is gonna leave the terminal
+
+available to interactive work so as
+
+after this call the container will be
+
+running on the background and the
+
+terminal that i used to call
+
+docker
+
+is going to become available immediately
+
+the minus p8787 is just a way to tell
+
+where two computers can meet so the
+
+computer on the left is described here
+
+is the droplet itself and the computer
+
+on the right is the um
+
+container
+
+these are simply addresses in the
+
+internal network of those computers and
+
+that's the meeting point pretty much
+
+the minus v flag and
+
+we covered it in the series about docker
+
+about working with docker allows you
+
+basically to
+
+uh
+
+to
+
+pass folders files and things like that
+
+between the computer that hosts the
+
+container and the container itself as as
+
+you you probably know by now on the left
+
+hand side you have the droplet so there
+
+is a directory inside the droplet a
+
+folder called
+
+mount mnt it is right after the root of
+
+the system
+
+and the container has the same thing so
+
+anything that i create inside the
+
+container and i put there in that folder
+
+mount is going to appear automatically
+
+on on the droplet itself so from there i
+
+can move it around i can move it to
+
+other locations of the docker of the
+
+droplet or i can
+
+i know like maybe copy it to my own
+
+computer outside the cloud to do
+
+whatever then for convenience i'm going
+
+to name this container our studio
+
+because the purpose for me is going to
+
+be running our studio
+
+i i'm obliged to use a password uh if i
+
+don't give one um i think i get an
+
+automatically generated one but instead
+
+i'm going to explicitly call a you know
+
+pass an environment viral called
+
+password with the numbers one two three
+
+which is going to be my password and and
+
+i'm also going to use uh this this this
+
+um environment variable called root i'm
+
+going to say to true so that inside the
+
+container i have privileges
+
+to
+
+do things like for example um
+
+save files inside this privileged folder
+
+so some actions are at the system level
+
+i need only only administrators can do
+
+it so and a normal user would not be
+
+able to
+
+save stuff in here but the privileged
+
+user root will
+
+okay so that's that's a lot i know
+
+in that brief um description i cover
+
+things that we cover in
+
+an entire series of meetups you know i
+
+cover things that we covered in
+
+uh in the ds
+
+in the terminal series and also in the
+
+docker series so if you need to review
+
+them
+
+you may want to watch those those videos
+
+all right so now let's do that so let's
+
+copy this
+
+and paste that to uh
+
+so in the droplet
+
+so i'm in the droplet running now and
+
+and this is uh the identification unique
+
+identification of the container
+
+i can do now a docker
+
+ps and you can see that there is a
+
+container there let me do this a little
+
+smaller
+
+this rstudio container so the next thing
+
+i need to do is uh to go find that
+
+container
+
+in uh
+
+in my web browser so again i'm going to
+
+need that address
+
+i'm going to paste that address in a
+
+fresh tab of my web browser and then say
+
+8787 which is the address that we told
+
+at the
+
+droplet where to find the container
+
+here is that's the normal login our
+
+studio
+
+our studio is the username and the
+
+password one two three is the one that i
+
+chose
+
+uh i sign in here and i'm gonna be
+
+landing in an rstudio project so so far
+
+nothing really
+
+different
+
+only now i'm gonna be start talking
+
+about the
+
+um shiny idea so i'm gonna create a
+
+project in our studio
+
+conveniently you can create a new
+
+project and you can make it directly a
+
+shiny application so i'm gonna just call
+
+it app and hit create so that will you
+
+know close this session i'll open
+
+another one with this working directory
+
+in sets inside that new app directory
+
+that i created
+
+so here it is and also conveniently
+
+there is a file already which is a
+
+template so if i run that file called
+
+app.r that will open a
+
+shiny app
+
+and
+
+i haven't wrote written any code but i
+
+the goal of today is not to show you how
+
+to write shiny apps there is a whole
+
+series dedicated to that is about how to
+
+actually host them on the cloud so this
+
+example app that comes with the project
+
+itself is good enough so i'm going to
+
+close it and that's all i need i already
+
+have an app so i'm going to go to the
+
+terminal and move it to that mount
+
+directory
+
+remember where uh from there i can then
+
+access it from the droplets so now i'm
+
+here inside the container that is
+
+running on the droplet not on the
+
+droplet itself
+
+the container the content is fully
+
+insulated and the only
+
+channel that i have to pass things to
+
+the droplet is through that folder that
+
+i mounted is in the directory mount so
+
+what i'm going to do is not a cd into
+
+the home directory of this computer and
+
+call it less here you can see that there
+
+is a folder called app the one that we
+
+just created so i'm now gonna use sudo
+
+because this is a privileged action to
+
+move the
+
+app directory to the directory
+
+m and t mount
+
+and and that's about it so that should
+
+move it so if i do an ls now i i don't
+
+find it but if i do analyse on m and t
+
+then i do find it there so that's all i
+
+need to do with this
+
+container so i can close it now
+
+uh that that's all so let's close this
+
+from here too and now let me show you on
+
+the terminal now here we are on the
+
+droplet not on the container so we are
+
+at the host or what used to be the host
+
+of that container so if i do a docker um
+
+a docker ps
+
+uh that container is there but i don't
+
+need it anymore so i could do a docker
+
+stop
+
+r studio which is the name of that
+
+container
+
+let's see ah i mistyped that our
+
+studio
+
+and i should stop it
+
+and the next thing that i need to i want
+
+to show you so now a docker
+
+ps again will not show it it's gone
+
+because i said that
+
+remove flag and now i want to show you
+
+that in the mnt directory i have that
+
+app
+
+right
+
+so let's go to the notes because i want
+
+to show you what's next the next steps
+
+are very simple really
+
+uh basically
+
+the program that we're going to use to
+
+serve the shiny app is called shiny
+
+server and shiny server expects the app
+
+in a very specific location and if you
+
+put it there you are effectively
+
+publishing it so the address where you
+
+have to put it is um is actually
+
+described here i'm going to cover it in
+
+a moment but for now um yeah this is
+
+this is about it so we need to have
+
+inside another directory called slash
+
+srv for server
+
+another directory nested in it called
+
+shiny apps and there you we can put our
+
+app so we can move the app with these
+
+commands if you are not familiar with
+
+the terminal you can watch the series
+
+these ingredients series about it so
+
+basically here we are making a directory
+
+inside the server
+
+folder called shiny apps and then we are
+
+moving
+
+the app that we have already in mount
+
+app we are moving it all the way to
+
+server chevy apps so let's do that with
+
+the terminal
+
+so
+
+i have this
+
+mnt app so i'm gonna move
+
+mnt
+
+up to
+
+server
+
+shiny apps
+
+i already have that directory shiny app
+
+so i'm gonna show you the contents of
+
+srv shiny apps
+
+well actually in context of srv to begin
+
+with there is a couple of other folders
+
+that i had pre
+
+created
+
+and inside that the if i have a look at
+
+shiny apps
+
+you can see that i have the app that i
+
+just moved and another app which is one
+
+that i created before so this example is
+
+a little fast so with this i want to
+
+demonstrate that you are not limited to
+
+just one app with chinese with shiny
+
+server
+
+you can serve as many apps as you want
+
+how does it work okay let me show you
+
+that
+
+so basically we have already covered the
+
+publishing so this step could be
+
+publishing the app basically moving it
+
+to this specific directory inside the
+
+droplet
+
+and now the last bit which is the most
+
+interesting one how to serve that app so
+
+the apps are there but they don't do
+
+anything if there is not a program
+
+running that can serve them
+
+and basically it's going to be running r
+
+in the background and it's going to
+
+interpret that app as a website
+
+so let me copy this code and
+
+right now and before i run it kind of
+
+describe it a little bit similar to what
+
+we did before we're going to do drug
+
+docker we're going to ask docker to run
+
+a specific
+
+container that is coming from the image
+
+rugged shiny we are going to remove that
+
+container when we stop it so we don't
+
+have to do cleanup it's going to be
+
+detached so the terminal is interactive
+
+now the address where the the droplet
+
+meets the container is a different one
+
+it's 3838 that's what it is for for this
+
+image if you need to know more about the
+
+idiosyncrasies of this image here is the
+
+link
+
+we're going to name it shiny
+
+and
+
+we are also going to map a couple of
+
+folders like remember the volume flag
+
+the one that allows us basically to
+
+whatever we put in this server shiny
+
+apps folder you know the two apps that i
+
+have are now going to appear inside the
+
+container
+
+that is running that is
+
+running shiny server is going to appear
+
+in this other folder why this name is
+
+not the same than this one i don't know
+
+but it is what it is that's what's
+
+described in this documentation here
+
+and the same thing for the logs although
+
+we are not going to be talking about the
+
+logs today though this call comes
+
+straight from from this url so i wanted
+
+to reproduce it exactly
+
+okay so let's run that so i'm going to
+
+copy this and if anyone here is
+
+noticing that i'm close to the end i i
+
+noticed as well so i think i'm going to
+
+push to the end
+
+and because i don't have a lot more to
+
+say and then we can open the floor for
+
+questions so that the shiny server
+
+program is already running in the
+
+container i can show you docker ps
+
+i have this shiny
+
+container running and where do i find it
+
+well
+
+by now you may have some intuition about
+
+that so we got we get that
+
+address
+
+that is the address of our droplet and
+
+then we need to add the address where it
+
+meets
+
+the docker container in this case it's
+
+37 sorry 38.38 so here we have an index
+
+of all the apps that we have in that
+
+folder shiny apps and we're gonna click
+
+i'm gonna do control click here and
+
+control click here so i have these two
+
+apps just to demonstrate i can search
+
+more than one and the one that we
+
+created it was called app so the the url
+
+is the one we typed plus the directory
+
+app not surprisingly and and that's a
+
+live app you can use it that way notice
+
+the title here and now the second app
+
+you know
+
+i did the same thing the only thing that
+
+i changed is the title just to
+
+demonstrate that it's a different one
+
+but it looks the same because
+
+i use the same template ready i was a
+
+little lazy there uh and also on a live
+
+app so yes that is how you um create
+
+publish and serve shiny apps using the
+
+cloud and docker in particular so for um
+
+resources uh that contain details about
+
+what we covered i recommend this for
+
+the
+
+url that points to the rugger project
+
+particularly where you can see what
+
+images they have and this explanation
+
+about how to use volumes because we
+
+covered them today and you maybe
+
+you may have not
+
+kind of fully graphed the concept
+
+also the description about how to
+
+serve shiny apps with shiny so this this
+
+is the url what you want to
+
+find details and if you need a more
+
+gentle introduction to vocar then i
+
+recommend these inquiries series about
+
+that
+
+okay that's all i wanted to say let's go
+
+back to your faces and see if we have
+
+any comments or questions
+
+maybe i should mention a conversation we
+
+have in the background with alex
+
+alfaria i know this is your hand go
+
+ahead
+
+yeah i just like this might be a little
+
+bit naive but
+
+are all shiny apps posted on the cloud
+
+so when you make a shiny app
+
+it's automatically like hosted on the
+
+cloud or do you have to do some process
+
+before to make it available on the cloud
+
+yeah yeah sure the
+
+i mean you can create a shiny app
+
+locally in a computer that is offline
+
+fully and
+
+basically a shiny app needs a computer
+
+running on the background called let's
+
+call that a server basically a server is
+
+a computer that serves a service right
+
+so if you have a computer
+
+yourself and you create a shiny app uh
+
+that thing won't work unless unless
+
+there is a computer
+
+serving that shiny app because shiny
+
+shiny apps what it's doing is actually
+
+running
+
+at the background running r and then
+
+doing computations and exposing the
+
+results of those computations on your
+
+web browser as html right so that's
+
+that's the whole thing about shine
+
+so um but you know your computer is a
+
+server itself so your computer know
+
+knows how to do computations so shiny
+
+locally can kind of create a little
+
+server for the app itself and so you
+
+don't need internet you don't need
+
+nothing right so basically what i did
+
+when i show how i created the app and
+
+then i clicked the button run
+
+so in that moment the shiny was being
+
+served by the same computer that created
+
+it which is the same thing that would
+
+happen in your own computer
+
+now
+
+um i i did that creation and that
+
+serving of the app and
+
+in in a way that is not as natural i did
+
+it already on the cloud right and then
+
+the publishing of that app was simply to
+
+move the directory that contains the app
+
+so i created a folder called app
+
+that contained the shiny app basically
+
+which was a file called app.r that's all
+
+that i needed
+
+and one file that just was the rstudio
+
+project so that folder as it is is a
+
+self-contained shiny app and the way i
+
+published it on the cloud was simply by
+
+moving it
+
+to a very specific directory inside the
+
+computer that was going to serve it
+
+which was on the cloud
+
+so for you if you have
+
+if you have
+
+um
+
+a shiny app local in your computer and
+
+you want to put it on the cloud uh you
+
+have to do kind of what i did here
+
+basically somehow i'm going to talk
+
+about that more
+
+in the next meet up so if you have a
+
+folder in your local computer how you
+
+move that to the cloud right
+
+today what i did is i created it already
+
+on the cloud so i i could kind of save a
+
+little bit of moving around and but yes
+
+i mean somehow you need to manage to
+
+move that app to the server that is
+
+going to serve it basically that's
+
+that's how you publish it if
+
+you need other people to access it if
+
+it's only you
+
+uh then you can serve the shiny app in
+
+your computer or you can also
+
+stick it inside our package and
+
+distribute the the
+
+app inside another package that way
+
+because every person that installs a
+
+package also has a computer right
+
+they can serve it themselves so many
+
+shiny apps are served that way so
+
+basically each person sells their own
+
+app but you as an author distribute the
+
+app not through a you know like a remote
+
+cloud computing service but instead
+
+through another package so that that's
+
+an option
+
+too long of an explanation sorry if it
+
+was true
+
+thanks thanks for making it back there i
+
+think it's gonna make more sense next
+
+time when i show how i mean it's very
+
+simple straightforward but it just was
+
+too off topic you know how to copy a
+
+file or a directory like a shiny app
+
+from say your computer to the cloud or
+
+from the cloud to your computer
+
+so the comment i want to not miss is
+
+that you know when i started thinking in
+
+terms of okay how many apps you can you
+
+know it's kind of great in a way that
+
+if you already have a cloud computer
+
+service
+
+you can put as many apps as you want
+
+there and there's no limit right so that
+
+is that is cool because
+
+the alternatives are not free so if you
+
+use for example the simplest way to
+
+serve a shiny app on online would be
+
+something like shinyapps.io and the free
+
+account comes with something like five
+
+five apps or something like that
+
+you can pay a little money it's not a
+
+lot and then you have a lot more apps
+
+that you can serve but see you have to
+
+pay some money so if you already have
+
+cloud services for all the use cases
+
+that i showed you better use it
+
+for serving shiny apps as well but then
+
+you know like very wisely alex pointed
+
+out okay there is a point where uh you
+
+know you need more more resources
+
+because what if your users
+
+uh get very excited about the app and
+
+they use it a lot
+
+and if i have a one given a droplet with
+
+one gigabyte of memory it's gonna
+
+explode it's not gonna do it right okay
+
+so my immediate reaction and also being
+
+very naive about kubernetes is okay
+
+maybe i can i can stick it in a
+
+kubernetes um
+
+framework so that kubernetes will detect
+
+that it needs more resources and scale
+
+up basically automatically giving more
+
+droplets to the user without them
+
+knowing so that you know the the app
+
+never got a run runs out of resources
+
+but then he mentioned that
+
+the danger of that is that you know you
+
+need to
+
+you you could be in a position where you
+
+usually get super excited
+
+kubernetes craze a million droplets and
+
+your bill for because you pay by droplet
+
+your bill goes up crazy and it has
+
+has happened he says that you know like
+
+someone you know got developed this very
+
+popular product and in one week the
+
+video went up to something like 50 000
+
+or so which i don't have right so
+
+for an experiment so yeah be mindful
+
+that um so long story short
+
+uh there is a point where the maybe
+
+serving shiny apps on
+
+a small droplet won't cut it and if
+
+you're thinking how i thought okay maybe
+
+i can serve on kubernetes and be careful
+
+because your your bill could go to the
+
+sky so you have to be sure that you know
+
+how to control or cap if you want the
+
+how much you're gonna spend
+
+and that was another long explanation
+
+monica go ahead
+
+yeah i just had a quick question um
+
+do i understand correctly that what you
+
+showed us now is
+
+more
+
+like a customized way to serve a shiny
+
+app but there is also
+
+a
+
+more default
+
+server this shiny abstract io
+
+absolutely yes that would be like the
+
+gold or like the simplest absolutely
+
+yeah so if all you want is uh you know
+
+to share an app that is public with
+
+the world you know my go-to would be
+
+shiny apps.i oh
+
+that's the simplest and you can connect
+
+you know how i have it is like when i
+
+run an app there is a button in our
+
+studio that says publish and i connect
+
+my account or shiny app so i go to that
+
+so i just click publish and it goes
+
+there so that's the simplest way and
+
+what i showed today is that uh so the
+
+the issue with shiny apps with io is
+
+that you have a limit about you know how
+
+many apps i think is here somewhere here
+
+um so so if you want
+
+to pay nothing you have five
+
+applications that you can serve only
+
+shiny five shiny apps
+
+uh for nine dollars a month you get 25
+
+and unlimited for 40 bucks a month um
+
+i'm probably spending less than 40 40
+
+dollars a month for a bunch of services
+
+i use on the cloud so because i already
+
+have a cloud service then i better not
+
+use it to serve sharia so that was the
+
+goal of today
+
+so yeah certainly it's not the simplest
+
+way but also notice that what i did is
+
+um
+
+so this thing is not private it's public
+
+so it's a good main thing to mention so
+
+this i mean if you go to this address
+
+now you it will work for you i'm gonna
+
+now create a
+
+open a private browser here that should
+
+not know
+
+let's see if i can do it
+
+i know what my session froze but this
+
+thing is valid so if you type this url
+
+if i give it to you now you access this
+
+app so it's published on the world
+
+really
+
+so for the user of your app
+
+nothing of what i showed is relevant the
+
+user just goes to a url and they can use
+
+your app so that's exciting thing that
+
+you know someone like me could be
+
+doing all the heavy lifting and building
+
+all the infrastructure but then shiny
+
+just gives access to r to people that
+
+don't know are just by giving them this
+
+url they can use your app
+
+right and it's only because i want to
+
+get into the trouble of serving it
+
+myself on digitalocean is that i did so
+
+but you don't have to
+
+okay cool
+
+all right alex did my rephrasing of what
+
+you said more or less um
+
+what was it good why don't i want to
+
+give you the opportunity to say hey i
+
+didn't say
+
+that was
+
+spot on
+
+cool
+
+all right thanks everyone that's the end
+
+we went a little over so thank you see
+
+you next time

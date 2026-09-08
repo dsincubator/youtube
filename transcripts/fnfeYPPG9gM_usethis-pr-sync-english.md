@@ -1,0 +1,326 @@
+---
+type: Video Transcript
+title: "`usethis::pr_sync( )` (English)"
+description: "hello today I'm going to talk about the  function BR sync from the use this  package in particular I would like to  use this function to solve the following  si"
+resource: "https://www.youtube.com/watch?v=fnfeYPPG9gM"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=fnfeYPPG9gM"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+hello today I'm going to talk about the
+
+function BR sync from the use this
+
+package in particular I would like to
+
+use this function to solve the following
+
+situation imagine that you are a
+
+contributor and you have submitted a
+
+pull request to a source repository and
+
+then before the pull request is merged
+
+into the source repository a new commit
+
+is added to that repo and then your pull
+
+request is in conflict what do you do
+
+okay let's see what we can do about that
+
+the first thing we are going to do is to
+
+actually use the Eustace package and we
+
+usually do that with the function
+
+library use this then we can use the
+
+function create from github also from
+
+the use of this package which will do a
+
+lot of work for us it will first fork
+
+the source repository into for example
+
+our user account then we will create a
+
+local copy of that frevo in our computer
+
+so I'm doing this from our studio and
+
+I'm showing at the top the command that
+
+I used from the art console and then
+
+below I paste the text that I could type
+
+in a terminal to do a similar action in
+
+get that in plain it as you can see
+
+although you can of course do this in
+
+gear
+
+it is a lot of Tidy so with just one
+
+function call create from github you can
+
+accomplish a lot so let me break down
+
+what create from github takes as
+
+arguments the first and more important
+
+argument is a composition of the name of
+
+the organization in this example an org
+
+slash the name of the repo in this
+
+example ABC I particularly I'm using the
+
+fork equals throw argument but you may
+
+not need that so in showing the
+
+alternative with get I don't want to
+
+spend a lot of time but I want to just
+
+show that
+
+it is quite a bit of work that you need
+
+to know how to do and it is very easy to
+
+have to do something wrong and also you
+
+may want to actually reproduce this
+
+using git and and here is like a
+
+template that you can use to then edit
+
+under your own work on it so before we
+
+continue we could explore what's the
+
+situation like to get a get situation
+
+report get sitrep so in particular I
+
+want to show you the very end bit of
+
+this screen where it shows the github
+
+pull requests redness so here we see
+
+that there is a remote connection called
+
+origin pointing to my user account male
+
+brain slash ABC so that's what the
+
+repository on my fork and then under a
+
+there is another connection called
+
+upstream that is pointing to the source
+
+repository in this example and or slash
+
+ABC so the first thing we would do to
+
+initiate a pull request is to run the
+
+function PR in it with this we get a lot
+
+of work for free use this is doing a lot
+
+of things under the hood and it's also
+
+letting us know that once we finish out
+
+our work we can use the function via
+
+push to create the pull request on
+
+github so in this particular example I'm
+
+going to say add a new line in line
+
+number 3 of the file read me dot MD with
+
+a string and wrap off for demo then I
+
+clearly commit and then I've run the
+
+function PR Koosh which again does a lot
+
+of work for us and including sending us
+
+to a web browser pointing to this
+
+particular address where we can see
+
+something like this where we can compare
+
+or we can observe where the comitia have
+
+just pushed here living in the branch BR
+
+from the repository ABC in the
+
+organization in this case in the owner
+
+mouth report how that commit is proposed
+
+to be merged into the master branch of
+
+the repository with the same name under
+
+there is a
+
+an org so that is the upstream or main
+
+or source repository so we are ready to
+
+go we can press the green button to
+
+create the pull request but now the
+
+situation that I present so let's
+
+suppose that we do create the pull
+
+request and the maintainer adds a
+
+comment before merging this pull request
+
+and I commit let's say that it has
+
+conflict in particular has a conflict on
+
+the readme file that we have just edited
+
+so how do we go about that okay
+
+locally we can run as contributors we
+
+can run the function PR sync and that
+
+will do a bunch of work as well
+
+basically it's gonna bring the changes
+
+from the upstream remote and you know
+
+try to merge them yeah with the repo
+
+stroke that we have locally but in this
+
+particular case that fails it throws an
+
+error saying that the merge there is a
+
+merge conflict please resolve before
+
+continuing and automatically it pops up
+
+this fire reading dot MD where the
+
+conflict lives so we are then you know
+
+able to kind of see the situation and
+
+choose how to solve this product so in
+
+this case I chose to rewrite the line
+
+three with a string every post three for
+
+demonstration and that's all stochastic
+
+basically there was one commit may may
+
+buy me the computer that's why I wrote
+
+the see here then there was another
+
+comment on the same line by the
+
+maintainer that's why they say I'm here
+
+and then these calls this particular
+
+comment is solving the conflict that's
+
+something I do again that's why I wrote
+
+the C so we are ready to go we now push
+
+that comment that solves the conflict
+
+back to our fork we can do that with the
+
+function Pierre Bush so now that poor
+
+request that remember was in conflict no
+
+longer has a conflict and can be merge
+
+there is no more country with a base
+
+branch in particular for example a
+
+maintainer may choose to not only do a
+
+simple marriage battle but to squash
+
+merge which is something that I like to
+
+basically summarize the whole history of
+
+those messy
+
+comments that tried to fix the problem
+
+in just one nice clean comment with that
+
+we as contributors and also the
+
+maintainer are kind of done with this
+
+poor request so we can just run the
+
+function PR finish which will kind of
+
+close all the wiring that was created to
+
+work with this pull request and you know
+
+send us back to the master branch for
+
+our next request for example so we
+
+thought I covered everything I wanted to
+
+talk about today so thank you very much
+
+see you next time

@@ -1,0 +1,328 @@
+---
+type: Video Transcript
+title: "`usethis::pr_synch()` (Español)"
+description: "hola hoy voy a hablar sobre la función  del paquete justice  pr5 esta función nos permite sincronizar  una en un repuesto una solución de  fusión con el reposit"
+resource: "https://www.youtube.com/watch?v=xx5WNZgQEdY"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=xx5WNZgQEdY"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+hola hoy voy a hablar sobre la función
+
+del paquete justice
+
+pr5 esta función nos permite sincronizar
+
+una en un repuesto una solución de
+
+fusión con el repositorio fuente en
+
+particular quiero llegar a demostrar un
+
+caso que bastante común en el cual
+
+estamos trabajando con una solicitud de
+
+fusión y la hemos sometido pero el
+
+repositorio central antes de fusionar
+
+esa solicitud de fusión avances en algún
+
+comité y ese comité entre el conflicto
+
+entonces tenemos que resolver esos
+
+conflictos antes de que esa solicitud de
+
+fusión pueda hacer efectivamente fundida
+
+con lo reconstruido fuente entonces
+
+empecemos el primer paso va a ser como
+
+siempre usar el paquete justice así que
+
+vamos a correr la función library y
+
+usted eso no estaba mostrado en pantalla
+
+pero asumo que lo puede hacer
+
+el próximo paso sería crear un fork de
+
+repositorio central y luego un clan
+
+local eso lo podemos hacer en un solo
+
+paso con la función create from here hub
+
+yo aquí estoy pasándole el primer
+
+argumento que tiene una composición del
+
+nombre de la organización y en este
+
+ejemplo se llama 'la por la barrita y
+
+luego barra y luego el repositorio abc
+
+que es el nombre de este repositorio
+
+para gestha en particular estoy usando
+
+el argumento for god's trump para forzar
+
+un fork eso puede que ustedes no lo
+
+necesiten
+
+para ver en todas las día post cómo
+
+sería un comando equivalente en puro que
+
+en caso que estén usando la terminal y
+
+quienes aman git como una forma de no
+
+solamente que puedan reproducirlo en la
+
+terminal sino también para demostrar
+
+cuando trabajo estas funciones tienen
+
+ahorrarnos
+
+antes de empezar a trabajar voy a hacer
+
+un análisis de la situación de red
+
+significa situation report
+
+vamos a ver cómo estamos conectados
+
+desde nuestro repositorio local a los
+
+repositorios remotos al final quiero
+
+mostrarle este este sector donde dice
+
+que el repositorio perdón que es remoto
+
+con el nickname origin está apuntando a
+
+la cuenta de usuarios mauro le pone al
+
+repositorio a veces que tiene permisos
+
+para empujar y que ha sido bifurcado de
+
+una organización repositorio a veces
+
+y el remoto upstream apunta a la
+
+organización al por y el repositorio a
+
+veces y tenemos privilegios para empujar
+
+en eso es porque yo soy el administrador
+
+de este repositorio para el ejemplo pero
+
+en el caso más común usted no obtendrían
+
+derecho a empujar a una organización que
+
+ustedes no administran
+
+para iniciar una pool recueste vamos a
+
+usar la función pain y con el nombre de
+
+una rama eso hace mucho trabajo para
+
+nosotros y nos deja en condición de
+
+empezar a trabajar por ejemplo podría
+
+agregar en la línea 3 en el archivo
+
+ritmo punto m de una línea que día es
+
+reposo ordenó por para con un atajo para
+
+decir un repositorio para demostración
+
+cuando hayamos hecho ese cambio lo
+
+sabemos
+
+sabemos el archivo y hayamos hecho un
+
+coming estamos en condiciones de correr
+
+la función pere puig que se va a
+
+encargar de mover ese comité
+
+desde nuestro repositorio local a
+
+nuestro foro
+
+en ese estado tendríamos la posibilidad
+
+además esa función no va a abrir una
+
+ventanita en el navegador apuntando a
+
+esta edición que está acá arriba y nos
+
+permite ver la interfase para crear la
+
+solicitud de fusión en particular
+
+podemos observar que es a ese comité que
+
+acabo de hacer está en la rama pr del
+
+repositorio a veces dentro de la cuenta
+
+usuario laborable por esto y que estoy
+
+proponiendo que se funda a la rama
+
+master del repositorio a veces de la
+
+organización al por ahora bien
+
+supongamos que antes de que esta
+
+solicitud de fusión sea aceptada la
+
+organizadora organizador agrega de algún
+
+comité que entra en conflicto con
+
+nuestra propuesta en tal caso esta misma
+
+dirección no mostraría estas este
+
+mensaje que dice está disponible para
+
+hacer fundida sino que mostraría algo
+
+así como lo que dice acá this branch
+
+cascón flix
+
+además microsoft en esta rama tiene
+
+conflictos que deben ser resueltos y
+
+muestra el archivo que está en conflicto
+
+localmente si nosotros corremos la
+
+función pr zinc en esta función va
+
+también a detectar si hay conflictos y
+
+va a abrir el archivo que tenga el
+
+conflicto sea de más de uno nuestro muy
+
+seguro que haría
+
+entonces una forma de resolver este
+
+conflicto sería la siguiente podríamos
+
+por un lado yo había escrito el mensaje
+
+en reposo lo temo y la mantenedora o
+
+mantenedor escribir en la misma línea
+
+línea 3 un mensaje que no es exactamente
+
+igual sino que dice el repositor y el
+
+orden
+
+entonces yo podría resolver este
+
+conflicto escribiendo en repository for
+
+demostration por ejemplo en este caso
+
+elegir resolver el conflicto
+
+no de una u otra forma sino de una nueva
+
+manera
+
+ahora estoy en condiciones más que salve
+
+y si estoy en condiciones
+
+para enviar nuevamente a mi fork
+
+ahora entonces el s de conflicto se ha
+
+resuelto y ya puedo ver este mensaje
+
+tardecito agradable que dice esta rama
+
+ya no tiene conflictos con la rama base
+
+que es en este caso las ramas de
+
+repositorio en organización al por y la
+
+rama más tarde
+
+en ese estado la administradora o
+
+administrador pueden hacer clic en el
+
+botón y ver botón verde y hacer una
+
+fusión de esa solicitud de fusión con el
+
+repositorio fuente o pueden hacer lo que
+
+yo hago comúnmente que es un squash
+
+anders que lo que hace es combinar todos
+
+los comics asociados a esa solicitud de
+
+fusión en un único que deja la historia
+
+un poco más simple
+
+bien habiendo hecho eso ya estamos en
+
+condiciones de terminar esta solicitud
+
+de fusión y lo vamos a hacer con la
+
+función r finish que nos va a dejar
+
+nuevamente en la rama master en buen
+
+estado para empezar una nueva solicitud
+
+de fusión con eso terminó lo quería
+
+mostrarles hoy muchas gracias

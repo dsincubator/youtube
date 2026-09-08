@@ -1,0 +1,320 @@
+---
+type: Video Transcript
+title: "dbt structure"
+description: "[Music]  welcome back to the DS inator this is  the final video about the basic  structure of  DBT the three main files that you need  to have a DVT project are"
+resource: "https://www.youtube.com/watch?v=gGXwszGqZxM"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=gGXwszGqZxM"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+[Music]
+
+welcome back to the DS inator this is
+
+the final video about the basic
+
+structure of
+
+DBT the three main files that you need
+
+to have a DVT project are this or files
+
+and directories profiles yaml defines
+
+the connections between your DBT project
+
+and a
+
+database then DBT project Yama is the
+
+main configuration file where you tell
+
+DBT where the uh files that transform
+
+your data leave and where the
+
+transformed data set should go and
+
+models is the directory where you
+
+typically put the SQL files that Define
+
+uh the SQL Transformations that you want
+
+to your table to undergo and finally
+
+we'll see that when we run a DBT uh
+
+command um the there will be new um
+
+directories and folders as a consequence
+
+of of those commands so let's start
+
+first talking about
+
+the profile yamama file first of all
+
+note that this file typically lives
+
+under your user home directory under the
+
+hidden file hidden directory. DVD so
+
+there is where it typically leaves
+
+because typically it connects to
+
+databases through Secrets right
+
+passwords for example so in this
+
+particular case I'm not using any
+
+password because I'm using a Duc TB
+
+database which is really nice that not
+
+only is uh because not only because it's
+
+powerful but also because it requires
+
+very minimum configuration and it can
+
+run locally so I don't need any password
+
+to connect to any uh to any database um
+
+nicely allows you or me that we are
+
+experimenting with
+
+DBT to try the tool without committing
+
+to you know paying for example for a
+
+subscription to any hostage service
+
+right so let's work you now through uh
+
+what these U different fields mean so
+
+hello world is just the name that I gave
+
+to the profile and the profile has um a
+
+Target called Dev so here under the the
+
+dev Target and we are using um a
+
+connection to a doc DB
+
+database then that hello world name you
+
+will find it again at the end of this
+
+other file the file um called DBT
+
+project yamama uh that F those names by
+
+the way are pretty rigid you can change
+
+them but then you have to also invoke
+
+command
+
+telling which files to look for so if
+
+you just leave the files with these
+
+names then DBT will will discover them
+
+they have to have those names and live
+
+in the default locations so uh profile
+
+field U maps to um the the name of the
+
+profile defined in the profiles yamal
+
+file right so if you change that um you
+
+know string to something that doesn't
+
+really match so let's say bad then when
+
+you D you try to run for examp example
+
+DBT test you should see errors there
+
+right because uh there's no profile
+
+called hello world that right so if you
+
+remove that then it should work um in
+
+this file you will see a header that
+
+mentions the name of the DVD project H
+
+versions so the first version I believe
+
+is something that you can change to show
+
+the evolution of your project but this
+
+one here is one that is more stable it
+
+just refers to the version of DVT that
+
+you are running
+
+and then in this middle section I'm
+
+describing directories where uh first we
+
+have the SQL files that Define the
+
+Transformations for our data and here
+
+second the target directory where the
+
+transform database will will go all
+
+right and that's about it you can have a
+
+lot more in here but this is H the
+
+minimum that you need uh now it's time
+
+to talk about that models f so in that
+
+folder you have typically one or more
+
+SQL files in this case the contents of
+
+uh the file model. SQL is pretty
+
+straightforward it just um you know
+
+creates a string called hello world and
+
+assigns it to a variable called greeting
+
+but in real life you would have a lot
+
+more stuff going on here you would
+
+select uh you know columns and and do
+
+things from U tables that come from your
+
+database transform that and then uh DBT
+
+will uh be in charge of using applying
+
+those Transformations um to the row data
+
+so that you can then create tables and
+
+Views in the transform database okay so
+
+uh now it's time to you know basically
+
+see the same thing on the terminal so
+
+let's do tree you can see that the the
+
+structure is pretty simple actually this
+
+logs directory
+
+there I think it was generated by when I
+
+tried to do um DVD test so what I can
+
+clean that up uh so you know that looks
+
+a little uh
+
+cleaner um so now you see that except
+
+for these MD files which you can ignore
+
+because they are only for teaching
+
+purposes uh you know the the structure
+
+of the DVT project the minimum structure
+
+is extremely small okay just the few
+
+files and folders that we have just
+
+described now that will change of course
+
+once you do a DVT run uh because then
+
+you know the files SQL the SQL files in
+
+your models folder will be used to
+
+transform row data from your database
+
+and uh move those transform data sets
+
+into the targets directory if I do a
+
+tree now you should have here this
+
+target directory which you can see has a
+
+bunch of stuff right and and on top of
+
+that you can do other commands remember
+
+with the DBT uh test to validate the
+
+Integrity of your database it should all
+
+work and then the
+
+docs uh generate which we learn about
+
+that command in the previous video about
+
+the basic usage and now we can do DBT do
+
+serve and if my um Port is available you
+
+should show something here uh there you
+
+go uh which is something that we also
+
+covered in the previous video okay so
+
+that's all I wanted to show um what we
+
+have achieved now is to talk in this
+
+last video of uh serious to talk about
+
+the basic structure of ATIV project
+
+which uh is basically uh two yo files
+
+and one folder with uh SQL files to
+
+transform your data thank you very much
+
+I hope you find it useful

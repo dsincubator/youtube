@@ -1,0 +1,426 @@
+---
+type: Video Transcript
+title: "pins"
+description: "okay today I'm gonna show the beans  package these relates to the same  problem of trying to manage data better  so the beans package is one possible way  I wou"
+resource: "https://www.youtube.com/watch?v=kS_0s0eS1Xw"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=kS_0s0eS1Xw"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+okay today I'm gonna show the beans
+
+package these relates to the same
+
+problem of trying to manage data better
+
+so the beans package is one possible way
+
+I would like to consider
+
+I think it's ruined 2ne1 in our
+
+organization and I think he needs many
+
+of the requirements that we would I
+
+guess desire for a good system manage
+
+and use our data so I leave here this
+
+issue number 38 in the data science in
+
+greater as like a sari that used to
+
+develop this presentation but let's just
+
+jump into the teens package you can find
+
+the website at pings dot our studio
+
+common it's an excellent website with
+
+lots of resources very good vignettes
+
+you know just as an example I learned
+
+this package like you know about two
+
+hours and and kind of just works so I
+
+kind of like that it should be a very
+
+thin layer over the systems that we
+
+already have in place that we could add
+
+to like potentially improve a lot the
+
+way that we managed a so the demo I
+
+would like to show cuz that means just
+
+installed the things I got from crammed
+
+and I may be ready to use it just with
+
+library teens as you would know I also
+
+know it actually tell us package for
+
+convenience to show some functions that
+
+I'm more familiar with and I will show
+
+you explicitly that the person of I'm
+
+using is the one on Prem is released
+
+version you see now kind of a depth
+
+versions and with thousands like that so
+
+I'm just using the version you get and
+
+so that's about it for setup really and
+
+then maybe you know maybe you don't know
+
+you can read data directly from a remote
+
+source imagine you know github or
+
+whatever so in this case we are using
+
+the oil it comes from Facebook but you
+
+can use any resource remotely and really
+
+directly with the function like read CSV
+
+or rate underscore CSV so that's what
+
+what I'm doing here and I'm first saving
+
+this URL in this URL variable and and
+
+you can just read these resource as you
+
+would normally do you can see here on
+
+the right that you know but what's the
+
+problem with that well what happens if
+
+you go offline what how many resource
+
+disappears and you know do you really
+
+want to wait all the time for that data
+
+set to download every time you call it
+
+needed so teens brings one solution to
+
+that problem because by know before by
+
+wrapping basic the URL in the function P
+
+it will create a local version of that
+
+data so it will download once and keep
+
+there only a local computer and only
+
+will download it again if it detects
+
+that the source has changed so you know
+
+you makes your work for faster and it
+
+makes it a little safer because if this
+
+the source is the only so disappears
+
+then you still have cash remotely sorry
+
+locally that team will ultimately be
+
+used so you're good to go again so I'm
+
+reading the exact same data now with the
+
+team rubber around the URL so he knows a
+
+lot of information or the data so I have
+
+made about this is how so within info
+
+and the name of an object you can learn
+
+what information pins so another way you
+
+may want to benefit from pins is by
+
+actually creating like a share or an
+
+object that you know took some time to
+
+compute so you may say I know we start
+
+from that data set that we already have
+
+but then we process it by in this case
+
+you know doing a coupon summary you can
+
+imagine this could be any complex
+
+computation and you want to save that in
+
+a way that you can access it like really
+
+quickly later
+
+so you just call you can including your
+
+pipe the ping and just a name for this
+
+new version of analysis data set so
+
+that's about it and now you can access
+
+the information stored about that
+
+particular object that you store on
+
+Koshchei unconscious with a pin info
+
+again and now it is new name and that
+
+refers to do you know analysis that's
+
+into the process data set so you can see
+
+that P knows how many colors it has how
+
+many rows it has and so on and then they
+
+do you can just get it from there from
+
+the cashier with pin gates and you don't
+
+need to compute the thing again just in
+
+a retreat from the cachet so it's great
+
+for long-running analysis finally all
+
+that finally two more points to go how
+
+you can find data sets well P also in
+
+the pins also knows about those it
+
+stores it stored in packages so for
+
+example if you say being find and you
+
+tell it exquisite that the kind of pin
+
+works with ports you can look for
+
+information in different places
+
+those places are called boards one of
+
+the possible places are the packages on
+
+Fran so you can say you find and you can
+
+give it a string to be matched on on the
+
+name of the resource or the description
+
+of the resource and say ok let's let's
+
+use the poor pages just narrow down your
+
+search and you will you know retrieve
+
+these tables it's just a data frame with
+
+every much of the work flying in any of
+
+the databases that we knows about on the
+
+board carriages and you don't need to
+
+have install any of these packages that
+
+provide those data sense to use them so
+
+for example here I don't have the
+
+package eight flights no fines and yet I
+
+could use data from there by calling the
+
+function King get I give the name of the
+
+resource here servitude once again
+
+confined to show you that the name of
+
+the resource includes like a flora that
+
+is kind of owner rebel
+
+kind of thing so we've been get if you
+
+if you get
+
+a resource with that syntax didn't hear
+
+the name in this case I'm looking for
+
+this one here the H flights package H
+
+fights what it means in the war packages
+
+so I can directly get that dataset from
+
+that board or if I did it before from a
+
+local cache it cache even if I don't
+
+have that package installed which is
+
+great
+
+so again also you know it store some
+
+information now about that resource that
+
+you are favorite beats I happened and
+
+finally most importantly for us is that
+
+we can create a repository on github and
+
+use it as a bore for us to store and
+
+share that or any other object that we
+
+can say so you could then we first you
+
+you what you could do is to create a new
+
+repository
+
+so here is one that I did before it's
+
+calling my user account being demo pins
+
+so let's see if I can little risky to
+
+see if I can create a new repo here say
+
+demo oops they're more things to with a
+
+little with me it's risky say because it
+
+you know that's hopefully it'll work
+
+before it did work so and now I know
+
+what's the name of the repo is totally
+
+empty or didn't have just waiting there
+
+to be used and locally so this is what I
+
+did before but now I want to register
+
+this new repo
+
+please - and he needs know the token to
+
+my github account so I know I have that
+
+token store and I can retrieve with this
+
+function so I don't expose it publicly
+
+here so I registered a board first and
+
+now I can started using
+
+there we go let's use another data set
+
+with that's--it's do we have diamonds
+
+where does it come from
+
+so let's use the Sakai amongst here it
+
+works so I'm going to run this function
+
+out here so let's forget about this and
+
+this so I'm now using the newly created
+
+demo pins to repository to be a board
+
+that means knows about so i repaint and
+
+you data set it should be there so let's
+
+go to keep up to see if it's there
+
+I'm gonna refresh this way sign and
+
+there it is so die only just created a
+
+folder with the data inside it has an
+
+earliest version CSV I don't know very
+
+well the structure of this how it works
+
+but it's there right I didn't do
+
+anything only help it just happened
+
+locally so let's go back to here and
+
+then I I guess I could just use it right
+
+so pin we get pin gets diamonds work it
+
+out I guess that this should work
+
+this is frame there you go yes so that's
+
+how you use it so they being arranged
+
+notice with this resource I can just
+
+call it tell which board to look for and
+
+I get it so that's about it I wanted to
+
+show that means package and I think it's
+
+a good potential way to improve the way
+
+we manage state

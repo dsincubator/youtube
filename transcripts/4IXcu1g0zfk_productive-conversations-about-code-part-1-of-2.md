@@ -1,0 +1,1840 @@
+---
+type: Video Transcript
+title: "Productive conversations about code (part 1 of 2)"
+description: "so today the data science incubator is  about how to maintain  productive conversations about code  anything from  a little piece of code like one line a  chunk"
+resource: "https://www.youtube.com/watch?v=4IXcu1g0zfk"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=4IXcu1g0zfk"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+so today the data science incubator is
+
+about how to maintain
+
+productive conversations about code
+
+anything from
+
+a little piece of code like one line a
+
+chunk of code to
+
+you know through say a file containing a
+
+lot of code or many files
+
+so first i you know i was thinking about
+
+code reviews but then the most
+
+general term the most general phrase is
+
+probably conversations about code which
+
+is a term that i'm borrowing from
+
+some materials by judy bryan because i
+
+think that they do
+
+capture that phrase does capture you
+
+know the small conversations that we
+
+have sometimes even on slack
+
+that that could be way more productive
+
+if we
+
+keep a few things in mind so if you ever
+
+so first of all why do we have
+
+conversations about code or why do we
+
+probably more formally
+
+have code reviews well because we want
+
+to maintain the quality
+
+of the products that we build and the
+
+quality of our science over
+
+our research right so that is
+
+a little quote from from google and i
+
+really encourage those who are
+
+interested in in this idea of
+
+code reviews and how to make them well
+
+uh
+
+to visit the engineering guy that they
+
+have
+
+i i cherry picked a few things that you
+
+know really resonated with me and i'm
+
+going to share them
+
+with you today but you know it's full of
+
+really nice
+
+uh useful wisdom so if you ever
+
+experience you know
+
+trying to help a friend or a family
+
+member through the phone
+
+with some computer program they have
+
+well that's exactly how it feels to try
+
+and maintain
+
+a conversation about code without code
+
+you know based on your narrative or
+
+based on your prose
+
+so it is really really useful for any
+
+conversation to have these
+
+three things any productive conversation
+
+about code should include
+
+code that actually runs
+
+that means that if if you cannot you
+
+know run
+
+your code in a fresh r session most
+
+likely the other person on the other end
+
+won't be able to run that and then the
+
+conversation is going to be blocked
+
+there because what you experience
+
+the other person can overproduce and
+
+that's there is
+
+there is like a super huge gap there in
+
+the communication
+
+the second thing is that the code uh
+
+even when it runs the person that is
+
+receiving the code
+
+they they shouldn't be you know needing
+
+to run it so
+
+it's it is code if you give me code
+
+and it runs that's the first step this
+
+first step check that box
+
+but i don't have to run it which means
+
+that you know you don't only need to
+
+send me the
+
+edit code but also the output right the
+
+other way around so if i
+
+send you code i'm not going to send you
+
+just the code i'm going to send you the
+
+code and the output because i want to
+
+share what i am experiencing so remember
+
+that conversation on the phone with your
+
+family member of your friend
+
+and you know they are hard because of
+
+two things because you don't know
+
+exactly
+
+what what they are doing right so that's
+
+the code and
+
+another thing that you don't know is
+
+what they are experiencing so they're
+
+trying to communicate that it works but
+
+then that's inefficient so
+
+better is to experience it yourself and
+
+that's what you're doing
+
+with um with this uh three items list
+
+the third thing is that even if say that
+
+if i'm receiving code
+
+even if i choose uh so yeah your code
+
+runs and i don't have to run it because
+
+you send me the output as well so i can
+
+you know stare at it and sometimes
+
+very quickly identify what the program
+
+is without without having to run it
+
+but third if i choose to run it then it
+
+should be easy it should be really easy
+
+should it
+
+you shouldn't you know you shouldn't
+
+need to kind of install too much stuff
+
+or anything at all
+
+uh download files or anything at all it
+
+should be you know as smooth
+
+as possible
+
+all of that there are tools to implement
+
+those things uh and and i know it is it
+
+is hard work but those tools will help
+
+and uh also it is hard work but well
+
+let's face it i mean if we are asking
+
+someone else to even if it's you know
+
+someone else to give
+
+us their peer review the critique even
+
+that it's asking a favor right so
+
+they're they're helping us make our work
+
+better so you know it's fair enough to
+
+meet them
+
+in the middle so if i'm asking someone
+
+else a kind favor then you know i should
+
+be a
+
+be the one you know putting most of the
+
+effort and uh
+
+and i'm trying to make the process as
+
+smooth as possible for
+
+for the other person and i will also
+
+gonna
+
+very quickly see how that impacts the
+
+the speed at which i get the solution so
+
+the first block of this um so what we
+
+have just covered is the idea of
+
+of basically why um you know we want
+
+productive code reviews
+
+uh and what it is that
+
+a cover view that is productive has but
+
+now i also would like to
+
+you know talk about you know actually
+
+how you get there you know what do you
+
+need to do
+
+to maintain productive conversations
+
+about code
+
+again remember it's anything from a code
+
+snippet in line or two of code
+
+to a whole file or to many files
+
+and and because that's a complex topic
+
+because you know there is a
+
+an infinite number of situations that
+
+you will face
+
+the best uh that i think i could do is
+
+you know
+
+based on on the guidelines that i've
+
+been kind of reading to prepare for this
+
+talk
+
+is to give you some intentions to
+
+explain okay what you should be aiming
+
+for
+
+and then how you implement that it's
+
+gonna depend a lot on your circumstances
+
+right
+
+but still this is a big kind of language
+
+agnostic some of you know most of
+
+the things i'm going to be covering here
+
+don't even come from anything related to
+
+r they'll come from a lot of this comes
+
+from from the google guy
+
+so these are kind of you think of them
+
+as intentions and that you know if you
+
+intend this
+
+then you just need to find a way to to
+
+implement these ideas
+
+so the first intention should be one of
+
+reproducibility right so you should
+
+intend to
+
+deliver something to maintain a
+
+conversation about code that the other
+
+person can reproduce
+
+remember the conversation that i
+
+mentioned in the beginning you know you
+
+want to be
+
+you know the easiest way to help your
+
+friend or your family member if you if
+
+you can reproduce the problem they are
+
+facing and you experience it yourself
+
+so reproducibility how you actually
+
+create a reproducible
+
+example of your problem well it has four
+
+components the first is that you need to
+
+include the software dependencies
+
+high clouds the first step is that you
+
+know your
+
+conversation about code should include
+
+we have someone here
+
+hi constanza
+
+so we are now just to summarize because
+
+we have two new people
+
+joining the conversation uh so we are
+
+talking about conversations about code
+
+you can think of them as anything from
+
+sharing a code snippet
+
+to sharing a whole file or sharing a
+
+collection of files
+
+and so on the smaller end you know
+
+you can think of you know conversations
+
+that you might have had with colleagues
+
+through slack where you share
+
+like one line or two lines of code and
+
+on the other end you can think of code
+
+reviews like format go reviews with
+
+tests and all that
+
+so all that spectrum is covered by the
+
+talk today in the beginning you know
+
+just to mention i'm going to review that
+
+because it's important i mentioned these
+
+three things
+
+that productive conversations about code
+
+have which is you know code that
+
+actually runs
+
+code that i don't have to run if i'm
+
+receiving the code or you know code that
+
+you don't have to run
+
+if you're receiving the code but you see
+
+the output right so
+
+the code actually runs and you know you
+
+offer the code and the output code that
+
+the other person doesn't have to run
+
+because they see the output there
+
+right and go that is easy to run if they
+
+choose to run it right because they you
+
+know there is some you know
+
+nuance to the problem that hasn't been
+
+um detectable from the code output
+
+itself
+
+so um what we are now talking about is
+
+just you know the kind of intentions
+
+that you
+
+you should have in your head when you
+
+try to have these productive
+
+conversations about code and they are
+
+very high level they are not they are
+
+totally
+
+language agnostic and most of them come
+
+from
+
+the google guide to developing software
+
+so the first
+
+actually comes from the advanced art
+
+book it's the one intention of
+
+reproducibility so you should be aiming
+
+for
+
+creating having a conversation that is
+
+reproducible so anyone that is involved
+
+in the conversation should be able to
+
+reproduce
+
+the problem to get exact same output and
+
+how you do that is with four things
+
+and here's what we left before one
+
+you have to include the dependencies of
+
+you know the problem that you're trying
+
+to solve so in the
+
+case of r you know you generally start
+
+with a bunch of calls to library package
+
+whatever because you know those packages
+
+might be dependencies or should be
+
+dependencies on the
+
+code that you you want to kind of
+
+discuss right
+
+so the second thing is you have to
+
+include the data so if you're if your
+
+analysis
+
+if your problem if your conversation is
+
+about data you don't include data
+
+i mean you're you're not really making
+
+it easy
+
+and how you know you have to figure it
+
+out maybe you need to host the data in a
+
+website that is easy to kind of pull
+
+from there
+
+maybe you need to kind of share the data
+
+in your project and and share the entire
+
+project along
+
+with your code so that's you know the
+
+intention is you know share data then
+
+how you do it depends on your
+
+circumstance
+
+uh the other intention is to to include
+
+code and also clear pros of course the
+
+code is the thing that we're discussing
+
+we're having a conversation about
+
+but also your pros should be uh
+
+should be clear and uh for example if
+
+you are if you are discussing a problem
+
+that you experience you don't only have
+
+to tell me you know what is the problem
+
+but also what is that you're actually
+
+expecting because you might be expecting
+
+something that is
+
+that is not actually what the code that
+
+you're running actually
+
+is isn't meant to do right so i need to
+
+know
+
+what you're thinking i need to know what
+
+the problem that you see and what you
+
+were expecting
+
+um and i'm gonna point you to um
+
+a guide about you know how to write from
+
+the reader's perspective
+
+because that is crucial in in clear
+
+prose um
+
+in writing clear process and finally you
+
+have to include some information about
+
+the versions of the software that you're
+
+running so that's generally referred to
+
+as the session information
+
+information in the case of r for example
+
+you know are you running r
+
+on linux so you run it on windows are
+
+you running which version of
+
+r and which version of each package so
+
+all of that there is functions in r for
+
+example that give you all of that
+
+in a very easy way so another key
+
+component
+
+this from here to the to the end of this
+
+section all comes from the google guide
+
+one intention is one of speed and
+
+and this is quite critical because it's
+
+also related to to the size of what
+
+you're sharing
+
+and how understandable it is so let's
+
+let's talk about that
+
+so first of all your intention should be
+
+to optimize the speed of the team not
+
+your individual speed that means that
+
+you know if i'm taking a shortcut
+
+as someone who writes code and needs
+
+input from someone else if i'm taking a
+
+shortcut because i want to move quickly
+
+to the next thing
+
+and by taking that shortcut i'm making
+
+the life harder for the person who's
+
+actually going to review the code
+
+then that's not going to take us
+
+together us
+
+together as a team to the finish
+
+you know to the goal to the end line
+
+faster actually it's going to make
+
+us move slower right so if you want to
+
+speed the process what you can do is you
+
+know
+
+you are the one who has a lot more
+
+context okay try to make things as
+
+smooth as possible for the person to
+
+review it
+
+so they can reply almost immediately so
+
+and that is also an intention if you are
+
+not unless you are doing focus work so
+
+if you are doing focus work
+
+that means that you have a lot of
+
+context in your head and you cannot
+
+interrupt
+
+focus work because it will take you a
+
+long time to regain that focus
+
+so don't do not interrupt focus work but
+
+as soon as you have
+
+kind of exited that that state of
+
+extreme focus if you are programming
+
+something
+
+then give a reply and if this if the
+
+review is small as we're gonna see in a
+
+moment
+
+it shouldn't take more than say five
+
+minutes if it's taking more than that
+
+there is something to be
+
+revisited maybe the the review the
+
+conversation that we're having is
+
+is too big we are having a too big of a
+
+conversation we need to
+
+downsize it so optimize first
+
+for the speed of the team do not
+
+interrupt your focus work but do reply
+
+as soon as possible
+
+and do not compromise quality the speed
+
+means not that you know the whole
+
+process that i'm going to approve for
+
+example what you know you are doing if
+
+you are discussing the code review
+
+it doesn't mean that i'm gonna prove
+
+what you're doing quickly what i'm
+
+saying is i'm going to
+
+come back to you quickly meaning that
+
+maybe in one day or a couple of days we
+
+could have many iterations
+
+of you know conversation right and
+
+and then you know the process will take
+
+whatever it takes whatever it takes
+
+to reach the point that we're going to
+
+discuss at the end so what you should be
+
+looking for
+
+to say okay this is looking good to me
+
+right okay in terms of the size so size
+
+is very tightly connected to speed and
+
+speed everyone wants to move fast
+
+and the best way to move fast is to make
+
+you know the
+
+the speed of the team as a whole the
+
+priority right so the size
+
+so to make the thing as small as
+
+possible you need to think of it as
+
+one thing right so you should be having
+
+a conversation about this one
+
+thing that the code does if you are
+
+trying to go to converse about more
+
+things
+
+then the reviewer will take will take
+
+longer to come back to you
+
+will take uh it's gonna be much harder
+
+to find their in their agenda of the
+
+week
+
+uh like a slot where they can allocate
+
+say half an hour to actually work on
+
+your thing
+
+so if you do it tiny it's much easier to
+
+even distribute little pieces of code to
+
+different people
+
+and get different reviews and different
+
+perspectives and and you're going to get
+
+there much faster than if you you know
+
+created a you know like a monster review
+
+monster discussion and you try to
+
+converse about that code
+
+so of course you know there is only so
+
+much you can go down there is a point
+
+where you know if you if your
+
+conversation is so small that you know
+
+you have
+
+lost by reducing its size you have lost
+
+the context
+
+then the other person cannot understand
+
+the implications
+
+of the conversation they are having
+
+right so there is a trade-off so you
+
+have to go as much as you can before you
+
+lose
+
+context that it is important for the
+
+person to understand not only
+
+what the code is doing but also what are
+
+the implications for the entire system
+
+right so if you're actually in the case
+
+of a code review
+
+if you're adding a change to a system
+
+you know what how is
+
+the rest of the system going to react i
+
+should be able to understand that you
+
+know more or less
+
+quickly another intention is that on the
+
+focus of the
+
+reader so when i'm writing code i'm not
+
+thinking on me on how many key strokes
+
+i'm saving by by you know writing an
+
+awkward you know variable name or the
+
+function name or
+
+you know a comment that is very tears no
+
+i'm thinking of
+
+i'm putting myself in the perspective of
+
+the reader and i'm thinking
+
+how are they going to uh
+
+interpret what i'm writing right so the
+
+focus the priority and this comes from
+
+the google guide
+
+a priority should be the clarity and the
+
+utility for the reader not
+
+for the person who is writing the code
+
+uh
+
+so again here is a link for uh to
+
+something
+
+for the implementation of a research
+
+about how people go about understanding
+
+prose
+
+the approach is called the reader's
+
+protection approach
+
+and it's developed by a researcher
+
+called george gophen
+
+i i strongly recommend you to read that
+
+it's going to make you a much clearer
+
+communicator in any reality just code i
+
+mean this this person actually is a
+
+lawyer
+
+it will make you a much clearer writer
+
+if you're writing anything basically if
+
+you are a professional
+
+this day and a profession in the
+
+knowledge uh in the trade of knowledge
+
+um writing clearly is is your currency
+
+you are sharing your knowledge
+
+mostly through writing and that will
+
+make you a much clearer communicator
+
+another intent is that of
+
+discoverability um
+
+at least within the organization we
+
+should be able to discover
+
+you know the the nuances of any
+
+conversation quickly
+
+that means that the priority should be
+
+to capture the conversation in code so
+
+if you are asking for a review and
+
+someone tells you okay how about you do
+
+this or that
+
+your reaction should be first actually
+
+trying to express
+
+that change in the code and even before
+
+you actually
+
+reply anything like the reply is not as
+
+useful as the
+
+change itself so just express your uh
+
+your communication capture in code or in
+
+comments right within the code and the
+
+reason is because you know those who
+
+develop software
+
+use tools like git to find changes in
+
+the system
+
+that are captured in the files
+
+themselves
+
+you can have conversations outside the
+
+files you can have conversations for
+
+example in the platform that github
+
+gives you for code reviews
+
+and which looks similar to the track
+
+changes platform
+
+that you know you might have experienced
+
+in in word documents
+
+but that is the touch that is metadata
+
+that is the touch from the files
+
+themselves and therefore
+
+are less discoverable still doable but
+
+harder to find right
+
+so anyone new coming to the team they
+
+will lose a lot of information
+
+if the conversation is not actually
+
+captured in code
+
+and finally what does it take to say yes
+
+this looks good to me or this is a
+
+little bit of a neat peak
+
+okay so what we are seeking here and
+
+also comes back to the
+
+speed of the process is not perfection
+
+what we are looking is for continuous
+
+improvement okay so you give me some
+
+code and that
+
+does improve the system as a whole okay
+
+that looks good to me and it's not
+
+breaking anything
+
+then that you know we approve that i
+
+could also come back to you with a neat
+
+column and something which means that
+
+okay what i'm saying here is a
+
+suggestion it would be nice to have but
+
+i i understand that you may have other
+
+priorities and that won't stop you
+
+or won't stop me from approving your uh
+
+request right you know you're
+
+so you know you're not going to stop the
+
+conversation for this needy nitpick
+
+thing
+
+so continuous improvement so on the flip
+
+point of that is of course if what you
+
+are asking you know might be very cool
+
+but it's decreasing
+
+the health of the system and
+
+then in the long run that will produce
+
+rot of the system and will become
+
+uh a maintenance nightmare or even
+
+unmaintainable so that will kill the
+
+system
+
+so it is not okay to approve something
+
+that you believe
+
+has at least not degraded you know it
+
+has to not degrade the system right
+
+uh so now let's talk about how so so
+
+now you know i have just discussed you
+
+know the intentions that i think are
+
+useful to have in your head so that i
+
+will
+
+guide your decisions when you're faced
+
+with a problem so how do i go about
+
+having this conversation about code so
+
+now i would like to talk about the
+
+systems that enable that
+
+hopefully we'll have some time for demos
+
+if not you know i think i'm going to be
+
+covering tools that we are pretty much
+
+all
+
+familiar with yes
+
+yeah yeah maybe um
+
+i did express myself actually yeah what
+
+you're what you're getting is actually
+
+what i
+
+what i think i i convinced the idea if
+
+i'm i'm asking you to reply to my
+
+comment
+
+with comments on the on the code and no
+
+so mostly it's like
+
+okay you know there is an error here so
+
+you don't need to kind of reply
+
+uh anything just like you know go and
+
+fix the problem you know it's like
+
+that will that will you know make the
+
+iterations less
+
+like fewer iterations so if i'm asking
+
+you to do a change just do the change
+
+basically as opposed to
+
+um you know do okay you know having a
+
+discussion
+
+around the change that you need to do
+
+just go and reflect it in in the in the
+
+change
+
+or if if if the code has something that
+
+is unclear
+
+the code needs to be rewritten right so
+
+they you know more than than pros what
+
+we need is clearer code so if you are
+
+creating
+
+a variable name that makes no sense and
+
+i'm saying hey look
+
+i understand what this variable this
+
+variable holds
+
+uh your reaction should be to change the
+
+name of the variable so that it's now
+
+meaningful
+
+is that is that more or less um getting
+
+clarifying my my message
+
+yeah so you're right so please do not
+
+confuse this with
+
+um using the code base as the platform
+
+for
+
+you know the discussion in terms of okay
+
+how about this how about that no
+
+no that doesn't go in the code that if
+
+you need that then yeah
+
+you have the tools of the code review
+
+tab in in github for example where you
+
+actually that there is where you have
+
+your conversation right but but try to
+
+avoid that as much as possible that's
+
+the intent should be
+
+as much as you can any conversation
+
+should be
+
+you know creating a change in the code
+
+uh
+
+and you know when when that's not
+
+sufficient then only think of of having
+
+like a
+
+verbal verbal code of written prose
+
+communication in
+
+uh outside the code
+
+so let's talk about the systems that
+
+enable these
+
+productive conversations uh i really
+
+like this quote from james clear his
+
+book
+
+recent book called um atomic habits but
+
+he's kind of paraphrasing
+
+a greek poet actually
+
+he said you know you do not rise to the
+
+level of your goals you fall to the
+
+level of your system
+
+so this is why you know if we use some
+
+of the tools that i'm going to present
+
+here
+
+uh it is much easier to kind of reach
+
+our intentions as opposed to just hoping
+
+for them and then you know not having
+
+any system in place that will get us
+
+there so
+
+without systems we are all done kind of
+
+fighting against our willpower
+
+essentially and our memory trying to
+
+memorize things
+
+so one of the things that are very
+
+useful in general are style guides and
+
+actually the the google
+
+article about engineering mentions the
+
+style guide which is actually inspired
+
+or it's just a small adaptation from the
+
+tiger style guide which is the one that
+
+we used
+
+so basically the style guy has the last
+
+word in anything so instead of kind of
+
+going over and over even if i don't like
+
+the style
+
+it is there it's easier to just conform
+
+there has to be like a really good
+
+reason to
+
+to kind of jump outside the guy and then
+
+there is
+
+tools to implement the guy meaning that
+
+you don't have to kind of memorize it
+
+that much you can just
+
+i mean you need to create a product but
+
+then the three tools that you know can
+
+create the style following that guide
+
+at the level of an entire say package
+
+for example or at the level of an entire
+
+file right so the styler package is the
+
+tool that
+
+implements that and a few other tools
+
+kind of interface with it
+
+so you know if you don't if you haven't
+
+heard about those tools check them out
+
+because they can save you a lot of time
+
+and it will make the reader more able to
+
+understand what you are trying to
+
+communicate with code because the style
+
+is uniform so once you remove the style
+
+from the question
+
+what you're left with is with the actual
+
+code that you want to discuss
+
+and not a matter of style that might be
+
+kind of adding noise to the conversation
+
+and then once again i insist with this
+
+because you know
+
+this is not the only um great resource
+
+about writing but this is
+
+one i've read maybe about 10 books
+
+already and this is the one that i like
+
+the most because it's very
+
+based on principles and not on rules
+
+again it kind of tells you the intent
+
+that you have to have
+
+when you're writing something so that if
+
+you sit you know on the
+
+on the from the perspective of the
+
+reader what kinds of information
+
+unconsciously a reader is looking for to
+
+interpret any piece of prose
+
+so that is also i think a great guy to
+
+kind of be aware of is
+
+if in a team we all have more or less
+
+the same style for how we craft our
+
+sentences
+
+and to say put the what's most important
+
+in the sense in the sentence it was in
+
+the so-called stress position
+
+or if we use you know verbs to express
+
+actions as opposed to what's called
+
+nominalization there's a bunch of
+
+resources that you can use
+
+to create consistent and clear writing
+
+in general but particularly within the
+
+team because we can all agree with that
+
+and finally and i think i'm only going
+
+to have time to mention these tools
+
+uh hopefully you are all aware of them
+
+of them but if not
+
+um we can discuss them briefly and
+
+i can record more on that more videos on
+
+that
+
+so this little table shows you the tools
+
+that you have
+
+based on you know how much code you have
+
+you know which tools
+
+um you may want to use to run
+
+the code and produce output and then
+
+where you would probably have the
+
+conversation
+
+so in terms of how about match code if
+
+you're just having a one line or two
+
+line of code
+
+probably anything except the red bricks
+
+is an overkill so just do a little
+
+reprint replace is the name of the
+
+package that
+
+allows you to create code and output
+
+that
+
+meets the the three requirements that i
+
+mentioned
+
+at the top so co generates code that
+
+actually runs
+
+code generates code that you don't have
+
+to run because the output is there
+
+and and it is easy to run if if you want
+
+to run it because it is formatted in a
+
+way that you can
+
+just copy paste it and even the output
+
+from the red bricks
+
+won't break your your you know you're
+
+calling the console because it's
+
+commented out
+
+anyway robrex implements these ideas
+
+how you would share something as small
+
+as you know like two lines of code via
+
+reprix okay vslot is an option but then
+
+there is also github gists
+
+which is beautiful because it produces
+
+also the styling
+
+that you need just if you don't know
+
+about them
+
+it's just a repository made up of just
+
+one file on github
+
+and you can just access them you know go
+
+to github on the plus sign where you
+
+would normally go and create a new
+
+repository
+
+you can also create a new gist and you
+
+know this is what it looks like
+
+um if your conversation is about an
+
+entire file
+
+i strongly recommend the github document
+
+output so basically you would be
+
+writing an ar markdown file right and i
+
+strongly recommend you choose the
+
+output format github document i talked
+
+about this in the recent workshop a lot
+
+and i can record a video about that if
+
+you don't know about it but basically
+
+what you get is the github document
+
+output produces an empty file a markdown
+
+file
+
+that github creates automatically a web
+
+page for
+
+meaning that you can you know share to
+
+your reviewer you can share just a link
+
+you don't need to share any file or
+
+anything just a link
+
+they click there and they already see
+
+your code and your output right
+
+uh ideally you would uh also create a
+
+pull request
+
+with that file and you can do all of
+
+that directly on github and i can record
+
+a video about that
+
+why because when you create a pull
+
+request you you get for free
+
+a platform github that has this kind of
+
+track changes kind of feature where you
+
+can
+
+highlight a specific line of code and
+
+ask questions and write comments and
+
+result conversations so all of that
+
+already is
+
+integrated in github so benefit from it
+
+um what would you do if you have
+
+multiple files well
+
+in that case you could create uh
+
+you know from any repository on github
+
+you can go to our studio cloud
+
+and when you create a new project you
+
+are given the option to create a new
+
+person from a github repo
+
+so if here you paste the address of any
+
+github repo
+
+and immediately uh you create a
+
+an cloud project for that repo meaning
+
+that you could install
+
+in that project all the dependencies
+
+that your analysis has
+
+and then you just share the link to the
+
+project
+
+with your reviewer meaning that your
+
+reviewer they do not need to install
+
+any weird software in their computer so
+
+be kind with other people's systems
+
+don't take liberties on
+
+you know what you you know what you're
+
+asking other people to install or even
+
+worse
+
+install you know forcing others to
+
+install
+
+um software by doing something like
+
+install.packages
+
+on the code right so that is taking too
+
+much liberties on someone else's system
+
+you may break their systems
+
+you know in the middle of a super
+
+important analysis so be careful with
+
+that
+
+so just to summarize when you have
+
+multiple files you know you can see you
+
+can consider rstudio cloud
+
+um as a platform and just share the link
+
+to
+
+you know the the project that has all of
+
+that or just share that into the repo
+
+and then they can
+
+fetch the you know the pull request that
+
+you're submitting and again you know
+
+with multiple files you can also have a
+
+very productive conversation
+
+using the review feature on on github
+
+okay so it's way beyond my time i would
+
+like to see what burning questions we
+
+have and i will try
+
+i try to answer them on the on a video
+
+that will follow this one
+
+okay okay uh thank you klaus for being
+
+here
+
+i'm i'm going to leave here the the
+
+place for questions and i'm going to
+
+expand this video with the demo that i
+
+didn't have time to show
+
+uh because maybe some questions come
+
+from the way i use the tools
+
+um so feel free to leave comments there
+
+thank you very much see you next time

@@ -1,0 +1,446 @@
+---
+type: Video Transcript
+title: "R packages: The whole game"
+description: "today I would like to talk about a  chapter of the book our packages that I  think is very important to help you  contribute to our packages with minimal  frict"
+resource: "https://www.youtube.com/watch?v=C27MVWqWSMs"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=C27MVWqWSMs"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+today I would like to talk about a
+
+chapter of the book our packages that I
+
+think is very important to help you
+
+contribute to our packages with minimal
+
+friction so in the book chapter is
+
+linked here I imagined to go visit that
+
+link you will land in this pocket this
+
+book it is an excellent way to learn an
+
+overview of you know the tools that you
+
+have at your disposal to contribute to
+
+our packages or to build your packages
+
+yourself today I'm going to focus on the
+
+scenario what you want to contribute to
+
+the package to someone else has built so
+
+I will not be mentioning functions like
+
+create package or use kit because if you
+
+are contributing to someone else's
+
+package then you know things that I
+
+wanted to do could be already done for
+
+you so I will start the demonstration
+
+more or less at this point where I'll
+
+show you how to create our files have to
+
+load the code that you created how to
+
+check your code and so on but before we
+
+do that I would like to also point you
+
+to these other resource which is a
+
+workshop called building tidy tools by
+
+Charlotte Wickham and Hadley and they
+
+run this workshop a few days ago in our
+
+studio account of 2020 and one the
+
+beginning book after their tutorial
+
+include an overview of this book chapter
+
+the whole game so I think they have a
+
+few interesting slides I would like to
+
+share with you so first the motivate and
+
+this work
+
+this presentation is well to reflect on
+
+what is on a package and why you would
+
+care it is a set of conventions that
+
+that if you use the right tools they can
+
+it can make your life a lot easier so it
+
+is not good idea to kind of complicate
+
+your
+
+your work by adding more things is quite
+
+the opposite you know if once you
+
+understand these tools you can use them
+
+to your benefit and your life will be so
+
+much so the dev tools is an r package
+
+and it's also kids of packages when you
+
+attach their tools you will get other
+
+pages that come with it for example use
+
+this use this is another patch so what's
+
+nice about developing packages with the
+
+tools is that there is a very nice
+
+workflow when you modify your code then
+
+you load all your code with a simple
+
+keyboard shortcut or by running this
+
+function that you produce an effect
+
+similar to installing packages and
+
+attaching them to your session and then
+
+you Explorer in the console and then you
+
+modify your code and continue iterating
+
+along this loop I'm going to demonstrate
+
+that in a moment but first I'd like to
+
+mention some important set up that you
+
+would benefit from doing it's all
+
+accessible through the function use this
+
+use the dev tools I'm going to show that
+
+in a moment in that by doing so you will
+
+you know ask our to every time you start
+
+a new session to attach the tools and
+
+that won't interfere without your
+
+analysis power and also this variable
+
+set up and let's show a game which is to
+
+kind of start every session from a
+
+completely black slate the goal is that
+
+you know after this session you will be
+
+able to go to the book read that one
+
+chapter is not long and and try try the
+
+things that you've read in that book so
+
+for you to succeed in doing that and to
+
+save you time I created I kind of cloned
+
+the the the repository that was created
+
+by the authors to go along with the book
+
+and that repository now is available in
+
+our data science in greater our studio
+
+cloud workspace and I also
+
+branches in every commit of that repo so
+
+that you can navigate the red ball back
+
+in time to see what the project looked
+
+like a different point in time I'm going
+
+to show you that in a moment too
+
+as an overview these are more or less
+
+the function that you intend to cover in
+
+the next 45 minutes use our to create
+
+our our files local tour that all
+
+objects that you have created
+
+you're going to check the package other
+
+license document your functions and
+
+install the package so if you haven't
+
+done so join the data sizing creator
+
+workspace on our studio cloud you have
+
+to click here or copy that link paste it
+
+into your browser so that you can join
+
+the workspace i have already joined the
+
+workspace so i simply click on the full
+
+factors project which is the name of the
+
+project that the chapter creates the
+
+chapter works with a credit you know
+
+packages called football so first let me
+
+show you that setup that I mentioned
+
+before
+
+use these use the tools if you run that
+
+function what you get is no like this
+
+code that you can paste yeah actually
+
+the precondition is that you also attach
+
+the baggage test that so then you saved
+
+it define and you can close it the next
+
+time a usual standard session with shift
+
+control f10 or by going here session
+
+Krista are the package will be already
+
+attached which means that you can call
+
+the functions directly for example use R
+
+is a function from the use this package
+
+and it's already available there I could
+
+call use are with it takes the first
+
+argument is the name of a file
+
+half pint is the sorry the file shown in
+
+the examples I'm going to use that to
+
+show you how it works so that what does
+
+is create older car with a new file it's
+
+empty now
+
+and
+
+you copy that you will write your
+
+function so the book actually works with
+
+this specific function so I'm going to
+
+copy it there this is the function that
+
+the book demonstrates you don't even
+
+need to save the fire because when you
+
+do go home or the keyboard shortcuts
+
+which is what I use shift control L you
+
+get this prompt to save the file and
+
+that will attach everything you know
+
+this object I just created
+
+so that function should be already
+
+available for you to use let's try it
+
+so if find takes can take a string and
+
+can take also back door and come back
+
+so yes the function is already there
+
+it's not in my global environment
+
+because the function is coming from a
+
+package so the packages have their own
+
+environment going wrong is the users
+
+environment but then there is the
+
+environments of the package so what
+
+other functions I want to demonstrate we
+
+record use our Lord I'll check okay so
+
+once you have build something you want
+
+to run check so you do that on the
+
+console function click or from the build
+
+tab which is the friend of the
+
+developers where you have a bunch of
+
+options and the most common ones are
+
+already here at the top level of the
+
+main so in this case we had two worries
+
+which we need to fix so one warning is
+
+because we don't have any license
+
+license so far so we can run that
+
+function that you see there use MIT
+
+license that would add so it meets the
+
+name of the outdoor for example that
+
+will add license and then we also need
+
+to document the function by how you
+
+would talk in the function okay so you
+
+see if you step on the name of function
+
+and click here the magic would one of
+
+the options is in separate oxygen
+
+skeleton so that will give you a
+
+template that you can bank on
+
+like like a title a description function
+
+and then yeah you would type the
+
+description of each parameter this is
+
+also a fact or maybe an example you know
+
+we already have an example here so we
+
+could reuse it
+
+yeah example with you so okay so once
+
+you're done with your documentation what
+
+you do is you run that function also
+
+from the menu so if you do it on the
+
+concepts fine or you can also do it from
+
+here so which means that you can now
+
+call the question mark function with the
+
+name of the function created and you
+
+should see they have fun as we just do
+
+so now Jake should also pass with no
+
+warnings because we have just fixed or
+
+at least that's what you think
+
+so let's do that to confirm my that
+
+funds okay just to make sure the next
+
+step is to install the package okay fine
+
+see where is your warning Cyrano's the
+
+next step is to install the package here
+
+is for convenience the bottom that does
+
+that
+
+I'm the package now can be used from
+
+anywhere in your computer so you could
+
+open a new session and do library
+
+factors and start using that function
+
+function what's within this package the
+
+source for me to a binary file is now
+
+installed in your system okay that's all
+
+I have for you today I invite you to
+
+join me that's fine separator workspace
+
+and start working thanks me

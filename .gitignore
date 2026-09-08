@@ -6,3 +6,6 @@
 */blog_files
 **/*.html
 raw/
+
+/.quarto/
+**/*.quarto_ipynb

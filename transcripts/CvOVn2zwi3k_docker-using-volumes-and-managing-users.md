@@ -1,0 +1,2104 @@
+---
+type: Video Transcript
+title: "Docker: Using volumes and managing users"
+description: "thank you okay the diaz in cueto  continues on the series about docker and  today is the last in the series the last  chapter in the series uh first i'm gonna  "
+resource: "https://www.youtube.com/watch?v=CvOVn2zwi3k"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=CvOVn2zwi3k"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+thank you okay the diaz in cueto
+
+continues on the series about docker and
+
+today is the last in the series the last
+
+chapter in the series uh first i'm gonna
+
+be very briefly mentioning two topics
+
+that i didn't have time to cover last
+
+time
+
+and then i'm gonna be jumping into the
+
+idea of using volumes which we touched
+
+on
+
+when we covered docker compose i let
+
+alex run that
+
+session a few sessions ago
+
+and uh and also i'm gonna be talking
+
+about managing users and these are you
+
+know
+
+topics of what i'm calling in part two
+
+of the series where uh it's kind of
+
+technical and the first
+
+two or three meetups actually were you
+
+know the minimum you need to know to use
+
+docker but now we are talking more about
+
+how you manage docker
+
+so the two topics that i left behind
+
+last time i didn't have time to cover
+
+is at least the idea of mentioning um
+
+the word
+
+image stack so what is that
+
+and i'm going to show you just now one
+
+example of a stack of images that is
+
+hosted by is developed by the rocker
+
+project and to highlight one particular
+
+image that i find pretty useful
+
+so this is the rocker project and it's
+
+the project that has
+
+motivated a lot of the meetups in this
+
+series
+
+and uh what you see in this table here
+
+uh with the title the versioned stack is
+
+just a collection of images and each of
+
+those going from top being the most
+
+basic to bottom
+
+builds on top of the previous one so
+
+the one that i want to highlight is the
+
+verse image for example and this image
+
+contains everything that the thai
+
+diverse image contains which in turns
+
+in turn contains everything that the art
+
+studio image contains and then
+
+contains everything that the hardware
+
+contains so what is that that it
+
+contains and why i find this particular
+
+image useful i find it useful because it
+
+contains a bunch of things that are
+
+useful in at least in my work it
+
+includes
+
+r and you can specify the tag
+
+component of the of the image to give
+
+you a specific version of art that
+
+you're interested in
+
+also include our studio server which
+
+allows you to run rstudio on the web
+
+browser even if you don't have it
+
+installed in your computer
+
+it also includes devtools which i use a
+
+lot for developing our packages and the
+
+tie divers which i use a lot for
+
+analyzing
+
+data
+
+and finally it includes
+
+some tools for publishing
+
+articles with these tools you can print
+
+for example a pdf and if you like those
+
+tools you can't and setting them up
+
+sometimes is painful
+
+and in particular this stack of images
+
+is is designed specifically for with
+
+this idea of reproducible research that
+
+allows you to basically lock
+
+the software that you have in a
+
+particular state being super specific
+
+about which versions of r you're running
+
+which versions of the packages
+
+of our you're running and which system
+
+libraries so if you are running an
+
+analysis you found you know specific
+
+results and you want to preserve that
+
+you want to make that reproducible then
+
+this is the version uh this is the
+
+the version the stack that you might
+
+want to use so that someone else can
+
+reproduce exactly what you got
+
+and then the other topic i wanted to
+
+mention that i missed last time is
+
+related to this stack and it's this idea
+
+of okay how do you use the tags
+
+in the names of the images
+
+to
+
+for different purposes so let me show
+
+you
+
+uh
+
+here
+
+so um
+
+these
+
+three lines uh as you can see uh they
+
+are using
+
+they're running a container of the um
+
+image rocker verse which is the one that
+
+i just advertised and with these three
+
+lines i want to show off this this
+
+useful feature that i think this
+
+image has which is the idea that
+
+with the tag that you specify after the
+
+column and after the name of the image
+
+you can get for example a very specific
+
+version of r which might be the one that
+
+you want to lock for your analysis but
+
+then also you might want to try for
+
+example the devel
+
+tag which allows you as someone who
+
+develops an analysis or who develops
+
+software to anticipate
+
+if the new version of r so the vel
+
+refers to the upcoming version of r the
+
+one that is in development not yet
+
+released if that version of r will or
+
+will not work with what we are doing
+
+right now
+
+so very quickly that uh those are the
+
+two points
+
+that i couldn't cover last time i'm not
+
+gonna be trying this software because we
+
+want uh we won't have time but uh yeah
+
+that that's the idea so i advertised the
+
+rockerverse image uh i explained you
+
+know why it's called stack because it's
+
+composed of different layers each of one
+
+adding stuff to the previous layer and
+
+the idea that you know you with the tags
+
+you can specify the specific
+
+versions of the software that you want
+
+to use so that wraps that up so the
+
+specific topics of today
+
+are the idea of using volumes and
+
+managing users
+
+again we covered
+
+how to
+
+basically access your host computer from
+
+inside the container this idea of using
+
+volumes
+
+in the meetup that alex run about docker
+
+compose but we're going to go through
+
+that once again for emphasis because
+
+it's a very useful feature of docker
+
+being able to access your computer from
+
+the container so that you you isolate
+
+the so you you run your work in an
+
+ephemeral computer environment but
+
+you access data
+
+or files for example which are you know
+
+one form of data
+
+that are persistent so that if you're
+
+disposing containers to run
+
+your you know data in different contexts
+
+with different software but the data
+
+stays in your computer so the volumes
+
+allow you
+
+that so the first thing we're going to
+
+be talking about is how again how you
+
+know you specify a command that connects
+
+your computer to the um
+
+container then we're going to be talking
+
+about some issues that are uh
+
+you know rare that you would encounter
+
+them but when you do i have been kind of
+
+stuck with this and not understanding
+
+what happened so hopefully this meetup
+
+will leave a record of how to solve
+
+those kinds of more difficult problems
+
+to solve
+
+and so this idea of managing users that
+
+it bites you when you try to change a
+
+file and you realize that you don't have
+
+access to change that file and the
+
+reason is because
+
+maybe the user that you are
+
+you know
+
+representing the with the user that you
+
+are using and does not have enough
+
+permissions to access that particular
+
+file i heard some noise in the
+
+background is anyone here with a
+
+question or comment at this time
+
+oh very cool sorry i'm not seeing your
+
+faces so i'm a little
+
+just too reliant on what i hear
+
+and then finally i'm going to be talking
+
+about this um environment
+
+variable routes which allows you to be
+
+to access administration privileges from
+
+a container that is generally not
+
+privileged so that is a little bit
+
+of
+
+jargon right now but maybe it will
+
+hopefully will make more sense when we
+
+see that happening in a moment so let's
+
+jump to the
+
+document that shows the code that we're
+
+going to be running today
+
+so i'm going to unpack it in a moment so
+
+i'm going to be copying this line the
+
+first item here is then you know the use
+
+of the flag volume or for short minus v
+
+and the way you use it is you specify
+
+the path on the left the path in your
+
+host computer that you want to make
+
+available
+
+on a specific location in the container
+
+that is
+
+that goes to the right of the of the
+
+column in this specification and there's
+
+other ways of specifying this this is
+
+the more compact way of doing it i know
+
+alex likes a more
+
+verbose one that is more clear
+
+but for brevity i think this one at
+
+least should do but if you see things
+
+specified in a different way that's
+
+that's fine just know that there's more
+
+than one way
+
+so again volumes allow you to access
+
+directories in your host computer from
+
+inside a container
+
+and and
+
+what we're going to be doing right now
+
+i'm going to be accessing my home
+
+directory so this is a terminal and
+
+right now i in my home directory if i do
+
+pwd that prints the working directory
+
+and in this case is home mauro so if i
+
+paste the command that i got here from
+
+this document
+
+and we're gonna unpack it in a moment
+
+let's paste this here so
+
+i'm also like as a summary of of the
+
+entire series so we're done doing a
+
+docker run so we're gonna run a
+
+container i'm using the flag minus minus
+
+remove which will make that container go
+
+away once i exit the container it's not
+
+going to stay it's not going to use
+
+memory in my computer or storage
+
+it's going to be an interactive
+
+container i want to use
+
+it i want to interact with this
+
+container
+
+and now is where i specify the minus v
+
+flag or the long form of that again is
+
+minus minus volume the short form is
+
+minus v and what i'm doing with this um
+
+dollar sign paren
+
+we're gonna probably be talking about
+
+that the day we get to talk about the
+
+terminal a bit more but for short now
+
+what i'm saying is okay i'm specifying
+
+my home directory but without hard
+
+coding it and the reason why i do that
+
+is because you know i wrote this
+
+document that i just show you and i
+
+would like this command to work in your
+
+computer as well so if i hard coded my
+
+name there if i said how mauro then it
+
+won't work in your computer assist you
+
+will have to edit it
+
+so instead what i do is i type this
+
+dollar sign paren and everything that is
+
+inside that is going to be evaluated so
+
+when the this command runs my computer
+
+will not read that dollar sign pwd what
+
+we will read is just the output of that
+
+in this case home hour so it's the same
+
+as if i had typed homeowner and the
+
+reason is because um the
+
+you know these commands require full
+
+path so i have to explicitly say
+
+homeowner or find a way to evaluate that
+
+so that's going to the left because
+
+that's the location in my computer and
+
+to the right uh i say
+
+where in the computer i want to put that
+
+and i'm going to show you
+
+um why i i i typed homer studio in the
+
+moment so where do i get that
+
+information from when you get it from
+
+where you got the image so if you go to
+
+the documentation in the rocker project
+
+you will see that the uh image
+
+rocker verse which is the one that i'm
+
+using now and
+
+has as a
+
+user rstudio so that means that under
+
+the directory home there will be a
+
+folder called rstudio that is where all
+
+the
+
+files and directories for that specific
+
+user will be stored in that container
+
+again this might not make sense right
+
+now if you don't have a background in
+
+for example using unix systems
+
+but we will hopefully cover that in in a
+
+future series about using the terminal
+
+and understanding unix a little bit more
+
+so
+
+now going through this more quickly i'm
+
+going to run this docker this
+
+rockerverse image and the entry point to
+
+that image is going to be bash so this
+
+is going to give me just a terminal
+
+this is the terminal
+
+and and let's play with this a little
+
+bit um
+
+first what i need to do is to find out
+
+where i am right now inside the
+
+container so let's do pwd which is the
+
+command that you just showed that i run
+
+in my computer but now i'm running it
+
+inside the container so if i say that i
+
+don't get homogenous what i get is this
+
+slash and that is what's called the root
+
+directory of the image
+
+if i do list
+
+ls i can list all the files and
+
+directories in that
+
+directory so the files and directories
+
+in that root and you can see already the
+
+home
+
+directory there so what i'm going to do
+
+is an ls for home
+
+and now you can see that there is this
+
+our studio folder that i was telling you
+
+about so that is where i
+
+you know made
+
+i gave access to the container to my
+
+home directory so if i change directory
+
+inside that directory with cd
+
+home
+
+rstudio what i should do now i see now
+
+if i do analysis let me clear this up
+
+first with ctrl l if i do analyst there
+
+i should see the same contents that i
+
+see in my own computer's home directory
+
+and that is true so this i'm familiar
+
+with what i see here this is my home
+
+directory actually let me now open
+
+another terminal right next to it i'm
+
+now in my computer and if i show you
+
+analysts in my computer you will see the
+
+same files that you see
+
+here in the container so this is back
+
+into the container
+
+so that is
+
+proof that the the specification of the
+
+volume worked and that whatever i saw
+
+in my
+
+host computer under the home directory
+
+is now available in the container so i
+
+could do with that whatever i could
+
+access files run those files inside the
+
+container and see what happens
+
+let's go back to the to the script here
+
+so with this we cover the idea of using
+
+volumes with a minus minus volume flag
+
+or minus v for short
+
+and now i'm going to be talking about
+
+users
+
+and the implications for getting this
+
+wrong which is something that sometimes
+
+has bitten me and i didn't know much how
+
+to solve it at that time i learned that
+
+uh and i would like to kind of leave a
+
+record here in this in this series so um
+
+first of all uh let's see who i am uh
+
+what's the username uh inside the
+
+container so if i do an id id is a
+
+command that allows you to identify uh
+
+who is running uh this container
+
+i noticed that it says root which is the
+
+most privileged use there imagine the
+
+administration or the iet department of
+
+you know an organization where you work
+
+so that user has full power and can do
+
+just about anything in that system
+
+including deleting everything
+
+and if i went to my own computer here
+
+let me clear this up so if i do an id in
+
+my own host computer you can see that i
+
+am
+
+not the root user i am mauro so i'm a
+
+limited user even to my own computer if
+
+i want to change you know some things if
+
+i wanted to remove everything first i
+
+need to identify myself as a super user
+
+not as mauro wouldn't have privileges to
+
+remove the entire system
+
+and that has consequences
+
+in uh who can access the files that an
+
+admin or a limited user can create
+
+so if you happen to be in a container
+
+like the one that i'm using just now
+
+that container is an and that container
+
+is um used by a privileged user in this
+
+case the root that means that any file
+
+that is created by that user
+
+won't be accessible won't be able to be
+
+modified with a limited user so let's do
+
+an example of that for this example let
+
+me change inside tmp uh lls for this tmp
+
+directory shows that there's a couple of
+
+folders but i want i want to do now is
+
+to create a new file so i'm going to do
+
+a touch a
+
+um
+
+i could actually do
+
+you know i created that file i wonder if
+
+i have nano here no no maybe not
+
+no i could do echo
+
+hi and put that information inside a
+
+so if i do the contents of a are now
+
+this string of text called hi
+
+so who created
+
+this um
+
+file and who has the access to modify it
+
+let's see that so the command ls minus l
+
+in this case let's do h
+
+ls lh yeah let's show you this
+
+this command tells me that the owner of
+
+this file is fruit
+
+and it makes sense because that's the
+
+user that created it
+
+and that means that if i go now to my
+
+computer
+
+this other terminal is my computer uh
+
+let me change to cdtmp the same
+
+directory where i'm playing inside the
+
+container again is accessible of course
+
+in my host computer if i do an ls
+
+here
+
+uh you know that file is there is a
+
+right but if i wanted to modify it if
+
+what what what you can see now is that
+
+you know in my computer i have a couple
+
+of files that have been uh owned by
+
+mauro by myself
+
+and now these the previous files and
+
+this one that was created inside the
+
+container is owned by roots
+
+so that means that if i wanted to edit
+
+it for example the command
+
+nano i could open um
+
+an editor to try edit that file but see
+
+that it says file is unreadable
+
+that file cannot be written it can only
+
+be read because the user who has the
+
+privileges to change it is only the
+
+super user the root user not malware so
+
+there is where i'm saying hey i'm stuck
+
+here you know the container created some
+
+files
+
+i didn't even know maybe who was the the
+
+owner of that file but the fact is that
+
+now i'm back in my host computer i have
+
+the results of you know some computation
+
+that happened inside a container and now
+
+i'm stuck because i can't change a file
+
+that is useful to me so let's exit this
+
+so what is the solution to that problem
+
+okay so i'm going to exit that container
+
+and i know cj i'm aware that we are 20
+
+past so i'm going to show this one
+
+example right now and then stop for uh
+
+for questions and comments
+
+so the solution to that is to run the
+
+same command that we run before but now
+
+to run it as
+
+not the root user but to specify that
+
+you are the specific user
+
+that
+
+has been defined in that image so
+
+because i'm familiar with this image and
+
+because we you know there's potential
+
+for us using it quite a bit um i learned
+
+that you know the user rstudio
+
+is the one who owns that home directory
+
+and is a user that has been defined when
+
+the image was
+
+written by the rocker project so if i
+
+add that flag here
+
+and this you should have documented here
+
+yes so here is the the command
+
+and if i add that now the what's
+
+happening here
+
+local remote t
+
+r studio uh user i forgot to say user
+
+so if i add that now the id is our
+
+studio is no longer the root and if i uh
+
+change directories to temp
+
+d and ls you can see
+
+uh actually say the thoughts that was
+
+not so what i want to do is change that
+
+to home
+
+rstudio
+
+temp so in that directory if i do
+
+analysis that there is that l that a
+
+file that created before let's create a
+
+new file called b
+
+let's do an
+
+echo
+
+hi again and let's put that into a file
+
+b and let's do an ls
+
+lh
+
+now
+
+to show the differences so let's clear
+
+this up with ctrl l and run this again
+
+so as you can see the file a was created
+
+by root i could not modify that file in
+
+my host system
+
+and the file b was created by our studio
+
+so notice that rstudio is also not only
+
+has a name but also has an id the id is
+
+number thousand
+
+so if i go to my host computer and do id
+
+again
+
+in my computer the the nickname for the
+
+user id a thousand is mauro but the name
+
+is the same that means that in my host
+
+computer and in the container the id of
+
+the user that is made adding those files
+
+is exactly the same
+
+that means that if i do an ls now
+
+in my computer it appears as if the file
+
+b has been created by mauro which gives
+
+me full power on how you know i can
+
+modify that file or how can i interact
+
+with that file so if i do a nano b
+
+now i don't have any restriction about
+
+you know editing this file i could um
+
+say bye and exit this file and that
+
+change could just be fine
+
+okay with that i cover probably the most
+
+important aspect
+
+of this method the idea of you know
+
+using the volume and the consequences
+
+that that could bring which is the idea
+
+of if you are unaware of the user you
+
+might be kind of stuck being not able to
+
+change
+
+files that were created or modified
+
+inside a container so i show you that in
+
+you have to learn about that container
+
+see what users were defined and then use
+
+that to your benefit so that you can
+
+actually access the same files that were
+
+modified or created in the container but
+
+later in your host computer and i'm
+
+going to pause here for questionable
+
+comments and only if this time i'm going
+
+to show the
+
+the last bit of this media but it's not
+
+as important as what we have already
+
+seen
+
+so back to your faces here
+
+alex and cj i know who was first
+
+um yeah i'll just throw in here
+
+uh
+
+volumes incredibly incredibly useful i
+
+i'd say probably 95 of the docker
+
+containers that i spin up have at least
+
+one volume mounted
+
+um
+
+the
+
+user's stuff
+
+very rarely is that actually an issue
+
+um it's pretty uncommon that that gets
+
+in the way of me doing work
+
+unless i'm doing something outside of
+
+the normal
+
+process of just like
+
+reading in our script and
+
+trying to execute it
+
+um and a lot of that is like the way
+
+that r handles sourcing the files
+
+and executing them but
+
+overall
+
+knowing how to use a volume mount is the
+
+key thing to take out of this lesson
+
+thanks alex that's the restroom because
+
+um yes it's a pain to deal with
+
+vibrations
+
+uh cj
+
+yeah so i actually have a bunch of
+
+questions
+
+so maybe i'll just fire them all off and
+
+you can choose what you can or want to
+
+respond to um
+
+but maybe i start with also like a
+
+comment and also related to volumes
+
+um yeah in my experience that's almost
+
+always necessary unless you're like just
+
+reading the results inside of the doctor
+
+like almost every doctor image is using
+
+you know you're using these volumes to
+
+like at least dump the results whatever
+
+it did
+
+but i also find that
+
+to me this kind of breaks
+
+the one thing that people kind of look
+
+to docker to fulfill which is to have
+
+this like completely boxed
+
+reproducible thing that works the same
+
+everywhere and once you add in volumes
+
+from a different computer
+
+is exactly when you create this problem
+
+where potentially it's not going to work
+
+exactly the way it worked somewhere else
+
+whether it's because the same files are
+
+not there on that computer that you're
+
+running in the the host computer's
+
+directory or it has a different file
+
+directory we recently had a problem
+
+where like the file directory was um
+
+sensitive to
+
+um capital letters where the the
+
+original one it was built on was not so
+
+yeah i think this is something to be
+
+aware of the volumes also presents up an
+
+issue with in terms of like what it's
+
+what it's what the doctor images sees in
+
+that mounted volume can be different
+
+depending on the host you run it on when
+
+we often use docker with this concept of
+
+wherever we run it it's always going to
+
+be the same and the volumes is like a
+
+place where that can definitely not be
+
+the case so um with the question so one
+
+quick one was is it possible to use um
+
+dot double dot and the tilde in the in
+
+specifying the path when you're mounting
+
+um you were using like the
+
+you know the expanded pwi command but
+
+i i would have tended to just use the
+
+dot or the tilde um i had i was going to
+
+ask about the user 1000 which i was
+
+actually not expecting you to mention
+
+and then you did and then what you said
+
+about it
+
+confused me maybe even more so i don't
+
+know if my question is even relevant
+
+anymore but i yeah the user 1000 is
+
+quite um weird to me i had a question
+
+about um
+
+yeah for instance you had a root there's
+
+a root inside of your doctor and then a
+
+root on your host and then you have a
+
+file that was created by root but root
+
+inside of the docker and i was wondering
+
+how is that related to the root on your
+
+host machine and it does that also
+
+automatically map
+
+and i had some questions about like what
+
+what users are
+
+on by default inside the docker image is
+
+and is that rstudio
+
+user already created by
+
+rocker and that's the only reason they
+
+exist and no other ones work or can you
+
+just put in any username and then it
+
+automatically uses that and then
+
+additionally like the passwords of the
+
+name has always been rather like
+
+interesting to me i think it's rather
+
+strange that you can
+
+um go directly in and you're dropped
+
+into this user account but never typing
+
+in a password and i'm wondering is this
+
+because it's kind of like a studio ssh
+
+thing that's running uh without with a
+
+key so it doesn't need the password or
+
+what's the situation there and do you
+
+ever need passwords
+
+so that was a lot but you're cool cool
+
+yeah i know i'm so happy that you're
+
+mentioning all this the i'm going to
+
+start backwards because they know the
+
+last question i have it fresh and then
+
+we go we go
+
+you know we walk backwards with your
+
+help refreshing uh my memory um in terms
+
+of the password uh for example the
+
+rockerverse image has a password but
+
+only if you are going to log in to our
+
+studio server
+
+and so to access the
+
+basically the super s and you know our
+
+studio server lands you there
+
+already logged in as an rstudio user
+
+you're as a limited user not as pseudo
+
+and the thing that i didn't cover today
+
+is the the environment variable root so
+
+that environment variable uh is the one
+
+that allows you to
+
+for example from inside our studio
+
+server where you land as a limited user
+
+if you set that flag you can do sudo in
+
+the uh terminal inside the rstudio
+
+server meaning that you know if you spin
+
+you know this um
+
+rstudio session and suddenly you realize
+
+oh it would be super cool to install
+
+this particular library that didn't come
+
+with the image and then you can do sudo
+
+and install it yourself and if you if
+
+you didn't do a minus e root equals true
+
+then you will be limited and you won't
+
+be able to
+
+to run pseudo so you will be just
+
+limited to being our studio user so that
+
+was a bit of a tangent but but but yeah
+
+so then from what i've read and maybe
+
+alex can prop you know extend my my very
+
+too recent knowledge here and
+
+it is common practice that the images
+
+could be written
+
+with the root user particularly when
+
+those images are
+
+supposed to be extended because that way
+
+you minimize the times that
+
+an image is going to build on top of
+
+yours
+
+needs to switch users so ideally you
+
+know if the image is the last one and
+
+for consumption you would already set a
+
+limited user in the image so that you
+
+know you you you decrease the surface of
+
+attack of that image but if it's an
+
+image that is meant to be um extended
+
+then
+
+giving a limited user at the end of the
+
+image is you know it's kind of painful
+
+because in the the person who extends
+
+your image has to change it back to root
+
+to be able to install you know more
+
+system libraries and stuff so that's my
+
+understanding alex do you have any other
+
+thoughts about you know why would you
+
+able to run
+
+naturally as a root user inside this
+
+container
+
+so
+
+um
+
+hit upon a very good point there that
+
+basically
+
+so by default
+
+docker containers always run as root um
+
+unless the image is explicitly changed
+
+to use a different user
+
+um in which case that user has to be
+
+explicitly created and
+
+uh
+
+permissions assigned which is part of
+
+what
+
+uh rocker did with the rstudio user they
+
+there is a line in the docker file to
+
+explicitly create the rstudio user
+
+um and the reason is that
+
+most of the commands you're running when
+
+creating a docker image
+
+are commands that should that need to be
+
+run as root um
+
+like any time you're installing software
+
+you gotta do that as root copying files
+
+it's just easier if you do that as root
+
+because then you don't have to worry
+
+about permissions
+
+um so all of those things are why docker
+
+uses root as the default user
+
+um but as morrow said it is often good
+
+as
+
+the
+
+last step
+
+uh to create and switch to a different
+
+user so that the
+
+container isn't actually running with
+
+all of those root permissions
+
+um
+
+another point that uh i forgot to
+
+mention earlier is that docker
+
+containers don't have sudo available uh
+
+usually uh our studio had to explicitly
+
+add that back in
+
+because sudo is a command that got
+
+stripped out
+
+uh because there's the default you're
+
+always running as root
+
+um and it's just one more utility that
+
+would have taken up space uh and
+
+docker images generally get
+
+everything that isn't bolted down taken
+
+out
+
+um
+
+so
+
+that is all part of the this idea of
+
+user management
+
+um
+
+and again in general not a thing most
+
+people need to worry about the
+
+permissions that are available to the
+
+rstudio user in the rstudio doctor image
+
+are enough that people using it in their
+
+day-to-day practice generally don't need
+
+to worry about it it's only when you
+
+start really getting in and modifying
+
+the image
+
+that's when you start running into
+
+issues
+
+so maybe later when we do a workshop on
+
+creating images maybe that will be part
+
+of that but i would say most people
+
+don't need to worry about it right now
+
+thanks alex
+
+then the question about root i i believe
+
+so because if so i believe that you know
+
+the root user maps to the root user in
+
+the container maps to the root user in
+
+your host system because the file for
+
+example i could not modify logged in as
+
+malware in my whole system if i do sudo
+
+and then the action i want to do then i
+
+am able to modify it alice can you
+
+confirm that my understanding is correct
+
+um i am not completely sure on that but
+
+i think you are correct okay
+
+so basically
+
+uh if i do
+
+[Music]
+
+uh so a is owned by root so if i do say
+
+if i wanted to remove that file let's
+
+try um
+
+let's try to remove
+
+a um
+
+yes
+
+did i was i able
+
+who i might be here
+
+yeah well maybe for confusion it looks i
+
+was able to remove that fire i wasn't
+
+expecting that to be the case
+
+but anyway i believe so um
+
+and that actions but basically um yeah
+
+so actions that you can't do as a
+
+limited user in this case you know i was
+
+marrying my system in general i was
+
+expecting to to need to be to do a
+
+pseudo in my system to be able to change
+
+a file that was created or modified by
+
+the root user inside the container
+
+then you asked about the
+
+the users that rocker defined yes indeed
+
+they define you know when they they
+
+wrote the image somewhere in in those
+
+images it has to say you know
+
+they had they are creating adding a new
+
+user called our studio for this for the
+
+version stack and for the um
+
+our base stack the name of the user is
+
+is different it's called docker
+
+and yeah it's i think it's just a
+
+nickname for the user id so yeah the id
+
+the id 1000 i'm starting to believe to
+
+understand that it's kind of a common
+
+practice that's kind of the default and
+
+i know if alex or anyone here knows that
+
+but it looks like it's the default that
+
+you know the the main user would be 1000
+
+and then that makes life easy because it
+
+maps to our studio inside their studio
+
+container and in maps tomorrow in my own
+
+system i map my map to cj in your
+
+systems ej
+
+i'm starting to believe that it
+
+it automatically maps to the same user
+
+that was the user
+
+initiated that
+
+docker image or something
+
+like the same user on the host that
+
+initiated the docker image
+
+but then that's and i guess it does it
+
+by id because like that user name
+
+may not exist in a docker image and the
+
+document by default only has like the
+
+root user
+
+i guess so like the
+
+user id 1000 i guess is something that
+
+yeah allows you to get into into the
+
+image as
+
+as
+
+yourself on the host right um even even
+
+if you haven't like even if that image
+
+hasn't already created that user
+
+beforehand
+
+and honestly i have read that but i
+
+don't remember how to list all the users
+
+that are available in the system um
+
+but what i you know i can show you know
+
+this this id minus u flag so that my id
+
+command is kind of quite helpful in for
+
+this particular kinds of things so you
+
+can you know ask for help there and
+
+learn a bit more about that but uh so
+
+sometimes you know i use the id minus u
+
+and evaluate that so that i mean with
+
+something like this
+
+uh what you can do is when you call
+
+instead of
+
+when you are trying to say you know
+
+which user you want to be inside the
+
+container
+
+sometimes something like this is useful
+
+uh because you know basically it will it
+
+will
+
+use your id in your system and pass it
+
+to the container so that you know
+
+there is that mapping and that was very
+
+inelegant but anyway
+
+um was there any other question that uh
+
+you mentioned cj that we haven't touched
+
+on
+
+um the one thing about the password i
+
+think is kind of interesting because
+
+like when you start the image it's when
+
+you start an image and it drops you like
+
+if you tell it to drop you into a fast
+
+shell then
+
+like it logs you in which i assume works
+
+similar to like the way ssh works and
+
+using keys so you don't need the
+
+password but then like i can imagine
+
+times where you'd be inside the shell
+
+and eventually you might need the
+
+password for something and
+
+i don't know maybe not but like for
+
+instance if you wanted to pseudo
+
+something if sudo even existed there you
+
+would need to know the password of that
+
+user so then i guess this is
+
+you know kind of
+
+weird but i guess in the rocker in the
+
+rocker um instance
+
+they have
+
+pre-defined this and then they've told
+
+you somewhere like this is the user that
+
+we made available and this is the
+
+password that we make available for them
+
+yeah yeah kind of like that so in the
+
+case of uh the the
+
+the rocker and only again so by default
+
+you could be locked in uh as
+
+root without a password and sudo works
+
+with no password surprisingly and in my
+
+system i have to give a password to log
+
+in as super user but not in their studio
+
+container as i'm going to show in a
+
+moment and so in the the password you do
+
+need to log into our studio and weirdly
+
+enough so you need the password to login
+
+as a limited user as opposed to login as
+
+a super user but once you do that and
+
+let's see this in my system hopefully
+
+this is working
+
+uh local host
+
+rstudio and i think they they one two
+
+three
+
+so here
+
+i am in a
+
+container
+
+save
+
+yes
+
+i'm so over time sorry okay let's let's
+
+clean this up uh here in the terminal we
+
+can see that if i do an id i am our
+
+studio as a user user 1000 but i can do
+
+for example if i do an app get
+
+update that should fail because i'm a
+
+limited i mean
+
+permission deny right i get but if i do
+
+sudo in my system i would be expecting
+
+to be prompt for a login but here i
+
+don't need that so if i do sudo and what
+
+i typed before
+
+a sudo app gets could actually
+
+update so without a password and
+
+proving that um that yeah that you don't
+
+need a password and if you need one i
+
+think the instructions of the rocker
+
+project say that it would be the one
+
+that you chose so if if
+
+for some reason you need a password
+
+somewhere it will be the one that you
+
+set here in this case one two three
+
+so this password here this applies to
+
+logging into this rstudio ver server
+
+version but also
+
+potentially probably um is the password
+
+for the user account as well like yeah
+
+i think so yeah
+
+i believe so yeah
+
+somewhere this is not you need to know
+
+what that is and said it correctly
+
+that's like that is whatever you set it
+
+to be correct and there is one case
+
+maybe in the
+
+where they say use rstudio as a password
+
+too i think managing users
+
+so i mean
+
+here our studio will also be used yeah i
+
+think this uh the password to use sudo
+
+as the our studio user will also be our
+
+studio um
+
+if you ever need it
+
+that's the piece of
+
+documentation that you need
+
+so it's either the one that you set or
+
+our studio
+
+okay we are super beyond the time
+
+apologizes to everyone but because it's
+
+the end of the meet up we want to create
+
+another meet up for what we are missing
+
+uh
+
+today
+
+so well thanks everyone for hanging out
+
+in this series i'm gonna
+
+be contacting you to ask for
+
+your vote about the next
+
+meetup series
+
+thank you bye bye bye

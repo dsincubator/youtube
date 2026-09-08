@@ -1,0 +1,850 @@
+---
+type: Video Transcript
+title: "reprex: Package philosophy"
+description: "so okay today the ds incubator continues  on the series about the package replics  and this is the last meetup of the  series where we're going to be talking  a"
+resource: "https://www.youtube.com/watch?v=q17jsQrBPt0"
+tags: ["youtube", "ds-incubator"]
+generated:
+  by: "bin/convert-transcripts"
+  at: "2026-09-08T02:25:20Z"
+status: stable
+sources:
+  - id: youtube-original
+    resource: "https://www.youtube.com/watch?v=q17jsQrBPt0"
+    title: "YouTube auto-generated caption (json3)"
+    author: "process:yt-dlp"
+---
+
+# Transcript
+
+so okay today the ds incubator continues
+
+on the series about the package replics
+
+and this is the last meetup of the
+
+series where we're going to be talking
+
+about the package philosophy and how
+
+that philosophy is implemented in in a
+
+very small set of features of that
+
+package
+
+and then replex does a lot more than
+
+those you know three things i'm gonna be
+
+talking today but uh but that's the core
+
+of
+
+what you know
+
+why rubrics is so useful
+
+and i think that uh you know my
+
+motivation to talk about this idea is
+
+because i develop packages myself and
+
+and a lot of the time i don't start with
+
+an idea that is so clearly formulated as
+
+as it is here you know where you know
+
+the authors you know laid out the three
+
+elements that make uh
+
+up that philosophy and then based on
+
+that philosophy is very easy and i'm
+
+going to show that later to to implement
+
+even at a very basic level to implement
+
+a replex maker once you have very clear
+
+in your mind what you actually want to
+
+achieve and why
+
+so that's the goal
+
+of today to
+
+cover the section of package philosophy
+
+in the
+
+article represents do's and dons from
+
+the rubric's website
+
+so this is what we're going to be
+
+talking today
+
+so my version of this has a little bit
+
+of code and
+
+so it's the same thing you see here
+
+except that adds a few examples
+
+so the first um
+
+there's three things really to the
+
+package philosophy the first thing
+
+uh is that the code must run for
+
+everyone not just for the person who is
+
+creating the replics
+
+and in the words of the article that i'm
+
+following today
+
+is the idea is that this is done in a
+
+separate art process not the one that
+
+author is using to create the replics so
+
+you can call r from inside r but in a
+
+separate
+
+process so that if that process doesn't
+
+have
+
+what
+
+it needs it should totally throw an
+
+error so that the other knows that there
+
+is something in there
+
+that the other person on the other side
+
+of the world won't have
+
+uh
+
+so if you share red bricks that doesn't
+
+contain everything that you that it
+
+needs then the other person will have a
+
+really hard time reproducing your error
+
+rate so that's the very first component
+
+of replex philosophy the the code must
+
+be self-contained and if it is not then
+
+you should just get an error so what i'm
+
+showing here
+
+um actually as jackson said this is
+
+um
+
+[Music]
+
+this is
+
+something that was commended before we
+
+started the recording that the idea that
+
+sometimes you do have some kind of data
+
+that is beyond the scope of the replics
+
+and then what you get is an error so
+
+that's that's what's going on here for
+
+example so in this particular case i'm
+
+you know using
+
+sorry i'm assigning the values one to
+
+four to the object y but i'm doing that
+
+in the global environment in my own
+
+global environment like in r right
+
+but then when i when i actually create
+
+the replics
+
+um that object y is is not available so
+
+what is inside the replica is that is
+
+the thing that everyone else will will
+
+have so if if the object is defined
+
+outside the
+
+scope of the replics so see how the
+
+replica starts here and you know why it
+
+was defined before then when i run mean
+
+y replace won't see it
+
+so what i get is this error so this is a
+
+feature this is this is lovely because
+
+it means that you as an author
+
+immediately know that you're just
+
+missing something uh and if you were
+
+able to actually run that
+
+you would get yourself in trouble
+
+because you would be sharing code that
+
+someone else won't be able to reproduce
+
+you want you are able to reproduce it
+
+because you have access to the global
+
+environment where y has been defined but
+
+the person reading your replica does not
+
+have that global environment so they
+
+don't have hawaii so it is it is a
+
+feature that this error appears as soon
+
+as possible so that's the very the very
+
+first um element
+
+and so again the philosophy is that you
+
+know the code must run for everyone and
+
+the implementation of that is that
+
+you get a network so that that's the
+
+idea uh at even a lower level you know
+
+if you're interested in in the tricks
+
+then uh
+
+this is your thing so the cal they call
+
+our package is the package that allows
+
+you to run code from inside r but in a
+
+separate process and it has it's pretty
+
+simple pretty straightforward and very
+
+powerful so it is in the inside right so
+
+replace calls
+
+call r
+
+um to deliver this feature that you know
+
+to create a totally independent process
+
+that doesn't know about anything that
+
+lives in your global environment so it's
+
+you know it starts from fresh
+
+the second element of this philosophy is
+
+that others
+
+anyone who is not the author of replex
+
+should not have to run the code so they
+
+could choose to run it but they should
+
+not have to run it and and what's the um
+
+implementation of that
+
+in the words of the article they use our
+
+markdown render so if you ever use our
+
+mark zone then you're very close
+
+actually to having a replex maker and
+
+i'm going to demonstrate that in a
+
+moment
+
+so our markdown render allows you to um
+
+to create a file like that where you
+
+know you have code and you have output
+
+so the same output that would go to the
+
+screen
+
+if you run the code on the console in r
+
+then that output on the screen boom
+
+appears in the same document where you
+
+are um you know writing the code and and
+
+that's great because now the person on
+
+the other side of the replex they can
+
+all see not only the code but also the
+
+output so this could be my my example
+
+here i'm using the very simple example
+
+actually that comes uh with the replex
+
+package in the readme file so the very
+
+first
+
+code that you see in the redbricks
+
+readme file is these two lines i'm
+
+highlighting here
+
+and i'm wrapping it here in the function
+
+replace to make it obvious that that
+
+that is how i'm creating that replicas
+
+and i'm using a particular flavor of
+
+replace which is replex underscore r
+
+just because it gives this
+
+output that is very well
+
+customized for for the presentation i'm
+
+doing today this is also like a way to
+
+wrap up the meetup showing some of the
+
+more
+
+advanced features if you will of the
+
+rubric package but you know you can
+
+create a replica as you learned in the
+
+first meetup of the series like with
+
+keyword shortcuts uh with the add-ins or
+
+with the function as i'm doing here
+
+there's a bunch of ways and if you want
+
+to review them um please go check the
+
+the first emitter
+
+so
+
+again so this example shows that you
+
+know if you run this replics the output
+
+that you get contains the code
+
+this line here and this link here but
+
+also contains the output
+
+which means that the person reading your
+
+rubrics they don't have to run it they
+
+already know what output they will get
+
+if they choose so they can run it and
+
+we'll see that in the in the next
+
+item of the package philosophy but they
+
+don't have to that's the point here
+
+and the third and last element of the
+
+philosophy of the package
+
+is
+
+that
+
+if they choose to run it the others
+
+should be able to just copy and paste
+
+that code and it should run
+
+and uh
+
+and that to demonstrate how that
+
+would not be the case uh let's explore
+
+this particular piece of code so say
+
+that i run bricks with the it has this
+
+argument called comment where i could
+
+change the default comment which is uh
+
+you know hash
+
+and uh greater than symbol so that's the
+
+default but now i intentionally changed
+
+it to make it look exactly as the prompt
+
+that you get in r
+
+so when you when i do that i get
+
+something that is
+
+showing the output
+
+and it's something that i could copy and
+
+paste but the problem is i cannot run it
+
+because if i try if i copy this and
+
+paste it r will you know see this
+
+greater than symbol
+
+and will try to do some computation with
+
+it and that will be an error so if i try
+
+to copy paste and run this code this is
+
+what i get what you see here you know i
+
+get all this mess i get uh you know yeah
+
+i was able to paste it
+
+but then i get this error
+
+about the unexpected symbol greater than
+
+so this is
+
+super simply the three
+
+most important
+
+elements of
+
+the package they they come back up with
+
+a very clear philosophy these three
+
+things that you know the code must run
+
+for everyone the others should not have
+
+to run it and if they choose so they
+
+should be able to just copy paste and
+
+run it those three things so now i'm
+
+going to show you how easy it is to
+
+implement something once you have
+
+such a clear idea in your mind
+
+and to see that you can go
+
+to
+
+i mean i'm here navigating the ds replex
+
+repo in the folder number three
+
+philosophy that's where you have the
+
+contents of today's meetup
+
+the file you were seeing just now was
+
+you know the readme uh and now i'm gonna
+
+go to the readme
+
+to the replexmaker file uh you can see
+
+it here on
+
+uh in a pretty uh format um but i'm
+
+going to be using this from
+
+uh inside r because i want to show you
+
+how you know i implemented a very basic
+
+version of replix that has
+
+only these three main
+
+features like any anything else that
+
+replex does
+
+my
+
+replica maker does not do
+
+but the most important three things uh
+
+it does so what is my replica maker it
+
+is simply another markdown file
+
+i like the output of
+
+the github document document flavor of
+
+all the
+
+flavors that you can get from another
+
+macdonald file
+
+so i chose that so this is the basis of
+
+my um replex maker
+
+um let me make this a little smaller
+
+because i will need pretty more space to
+
+show you a few things so the first thing
+
+i do here uh let me run this so we can
+
+read it to the
+
+right and
+
+[Music]
+
+maybe around here should be good so this
+
+is the document that i get so this is a
+
+replex maker that follows the philosophy
+
+of redbricks and it has these three main
+
+features one if the code is not
+
+self-contained then you get an error
+
+okay how did i implement that
+
+i did it with
+
+this argument here that is called error
+
+equals true and that's an argument not
+
+replicas it is an argument to
+
+the options that neither provides so
+
+neither is is a very tight element of
+
+our markdown
+
+and you can use arguments to
+
+this
+
+function option chunk set
+
+to control the behavior of the entire
+
+document so my replex maker
+
+uses error equals true so that when
+
+something goes wrong
+
+you do get an error on the screen what
+
+would happen if if i if say if i comment
+
+out this line or if i say false okay
+
+let's run it again what it found what
+
+happens is that the code just does not
+
+compile so now my replicemaker is not
+
+very useful because it doesn't it
+
+doesn't meet
+
+one of the principles of the you know
+
+the elements of the philosophy of
+
+rubrics i do want to see that error
+
+because myself as an author also needs
+
+some information about what went wrong
+
+so i can fix it
+
+jackson i know that it's 20 past i think
+
+i'm gonna go through this fairly quickly
+
+so you don't have to use brute force to
+
+kick me out
+
+okay so the feature that
+
+you know meets the philosophy of the
+
+package is this one here then i'm going
+
+to you know bring this back to life ever
+
+it was true it was what makes my replex
+
+maker meet that particular um
+
+item in the philosophy
+
+then the collapse so i'm going to bring
+
+it back the collapse equals true is a
+
+nicety for me um if i
+
+see you know this is the output that i
+
+was showing you just before
+
+collapse equals true if i comment it out
+
+and rerun my replex maker the only thing
+
+that changes is that now
+
+everything happens the same way except
+
+that i get you know this division
+
+between pieces of chunk chunks so it's
+
+not all that important really um
+
+actually i could i could remove it from
+
+here to avoid confusion but uh you know
+
+i prefer the other way um it's just i'm
+
+gonna remove it because it's not
+
+it's not
+
+the you know it's not necessary to meet
+
+the goals of replex to meet the
+
+philosophy of rhetoric so i'm gonna
+
+remove it but what it is uh an element
+
+of the philosophy is uh these other two
+
+items right so the it should capture the
+
+output
+
+right so my my replex maker here does
+
+capture the output because that's that's
+
+a feature of our magnet anyway so you
+
+see that for example the output of
+
+writing this code is the error and the
+
+output of running this code now that it
+
+has been defined
+
+is actually numbers one to four right so
+
+and the output of mean y
+
+is 2.5 right so
+
+armagnal already gives me that feature
+
+so it comes with
+
+with you know how our magnum works yeah
+
+and finally uh the third element of
+
+the replex philosophy
+
+is that it allows you to copy paste and
+
+run the code
+
+so to implement that
+
+i used the comment
+
+hash
+
+um
+
+pound and and um greater than so notice
+
+that if i removed the comment
+
+uh then you know i can still run it and
+
+and we are in the same situation that we
+
+were before we can still run it we still
+
+see the output but if i wanted to copy
+
+this
+
+and paste it in the console
+
+here
+
+i would get again an error right so if i
+
+try to run this i get an error because
+
+that greater than doesn't just work so
+
+to implement that third element of the
+
+philosophy i add here the comment i
+
+rerun my rubrics maker and now i have
+
+here something that i can copy
+
+and paste so these lines here right i go
+
+here to the console
+
+let's clear this up with ctrl and l i
+
+paste it and now it runs so
+
+the other the others can see the code
+
+and they can run the code so that's it
+
+i have here a rubric maker so if rupert
+
+doesn't work for you you can you know
+
+now how to re-implement it with the
+
+three core
+
+uh features that reflects directly the
+
+most important elements of the package
+
+philosophy
+
+okay we have uh seven minutes to the
+
+half hour and i have time after that if
+
+people want to hang out a little more um
+
+so go ahead and make your questions
+
+comments um or whatever you want to
+
+share this is the end of the series

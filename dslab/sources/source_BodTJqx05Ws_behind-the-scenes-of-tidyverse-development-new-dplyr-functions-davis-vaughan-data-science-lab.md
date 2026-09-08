@@ -7,11 +7,11 @@ description: 'Distilled source notes for Behind the scenes of tidyverse developm
 resource: https://www.youtube.com/watch?v=BodTJqx05Ws
 tags:
 - ds-lab
-- like
-- kind
-- really
-- about
-- what
+- behind-the-scenes-of-tidyverse-development
+- new-dplyr-functions
+- davis-vaughan
+- data-science-lab
+- behind-the-scenes-of-tidyverse-development
 lang: en
 sources:
 - id: BodTJqx05Ws
@@ -25,11 +25,11 @@ usage_window:
   start: '2026-01-01'
   end: '2026-12-31'
 key_topics:
-- like
-- kind
-- really
-- about
-- what
+- behind-the-scenes-of-tidyverse-development
+- new-dplyr-functions
+- davis-vaughan
+- data-science-lab
+- behind-the-scenes-of-tidyverse-development
 generated:
   by: agent:okf-wiki-builder/1.0
   at: '2026-09-08'
@@ -41,7 +41,7 @@ This distilled source document captures key insights from [Behind the scenes of 
 
 # Key Concepts & Tools Taught
 - **Core Theme**: Behind the scenes of tidyverse development: new dplyr functions | Davis Vaughan | Data Science Lab
-- **Topics Covered**: like, kind, really, about, what
+- **Topics Covered**: behind-the-scenes-of-tidyverse-development, new-dplyr-functions, davis-vaughan, data-science-lab, behind-the-scenes-of-tidyverse-development
 
 # Code Snippets & Formulas
 - Refer to original transcript for code examples and practical demonstrations.

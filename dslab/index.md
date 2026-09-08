@@ -12,9 +12,9 @@ generated:
 status: stable
 ---
 
-# Posit Data Science Lab Wiki
+# Dslab LLM Wiki Bundle
 
-Generated from the YouTube [Playlist](https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT).
+Playlist: https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT
 
 Welcome to the **Dslab** knowledge base bundle, structured according to the Open Knowledge Format (OKF) v0.2.
 Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: text` per event from `tStartMs` (no LLM), language prefers `en-orig`/`es-orig`.
@@ -31,7 +31,6 @@ Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: t
 ```sh
 ./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab --count 3  # quick test
 ./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab          # full
-just wiki  # if just installed
 ```
 
 ## Search

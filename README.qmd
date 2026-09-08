@@ -138,8 +138,4 @@ qmd query "how to handle merge conflicts git" -c dsincubator -n 2
 
 Use `qmd query` for prose/questions, `qmd search`/`rg` for exact symbols (`tar_make`, `expect_snapshot`), then `qmd get` to pull context. See `qmd --help` and `rg --help`.
 
-See other [tips and tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks).
-
----
-
-Thanks https://gist.github.com/karpathy/ for the [post](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) that brought my attention to LLM wikis.
+See other [tips and tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks) (thanks `@karpathy`).

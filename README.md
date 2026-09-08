@@ -331,7 +331,7 @@ qmd query "how to handle merge conflicts git" -c dsincubator -n 2
 #> ├─ vec: guide to dealing with git merge problems
 #> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.6s)
+#> Embedding 4 queries... (1.5s)
 #> Reranking 25 chunks... (1ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)
@@ -360,10 +360,5 @@ Use `qmd query` for prose/questions, `qmd search`/`rg` for exact symbols
 `qmd --help` and `rg --help`.
 
 See other [tips and
-tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks).
-
-------------------------------------------------------------------------
-
-Thanks https://gist.github.com/karpathy/ for the
-[post](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
-that brought my attention to LLM wikis.
+tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks)
+(thanks `@karpathy`).

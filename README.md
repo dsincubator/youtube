@@ -331,7 +331,7 @@ qmd query "how to handle merge conflicts git" -c dsincubator -n 2
 #> ├─ vec: guide to dealing with git merge problems
 #> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.4s)
+#> Embedding 4 queries... (1.5s)
 #> Reranking 25 chunks... (1ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)
@@ -366,7 +366,8 @@ view, backlinks, and
 frontmatter queries) or any markdown editor. `qmd` already indexes it
 for the LLM; humans get the same files in Obsidian.
 
-Dataview example (in Obsidian, `FROM` is vault-relative):
+Dataview example (in Obsidian, `FROM` is vault-relative — on GitHub it
+stays as code, which is expected; in Obsidian it becomes a live table):
 
 ``` dataview
 TABLE title, usage_count, last_modified
@@ -375,6 +376,16 @@ WHERE contains(tags, "targets")
 SORT usage_count DESC
 LIMIT 5
 ```
+
+Rendered in Obsidian:
+
+| title | usage_count | last_modified |
+|----|----|----|
+| targets: Introduction | 2373 | 2021-02-02 |
+| Moving from a sequence of scripts to a pipeline of functions | 617 | 2021-02-09 |
+| targets: tar_cue(): Declare the rules that mark a target as outdated. | 185 | 2021-02-16 |
+| targets: Eexternal files and literate programming | 178 | 2021-03-02 |
+| targets: Introducción | 73 | 2021-02-02 |
 
 See other [tips and
 tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks).

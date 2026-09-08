@@ -1,6 +1,6 @@
 # dsincubator
 
-Transcript database for the [ds-incubator YouTube playlist](https://youtube.com/playlist?list=PLvgdJdJDL-APbB315sB3Lv_2VP2g0ioFO&si=LOZAcXpa1L7JlVvc): `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF format), linked by `id`.
+Transcript database for the [ds-incubator YouTube playlist](https://youtube.com/playlist?list=PLvgdJdJDL-APbB315sB3Lv_2VP2g0ioFO&si=LOZAcXpa1L7JlVvc): `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF v0.2 format), linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle **[`dsincubator_wiki/`](dsincubator_wiki/index.md)** per `planning_manifest.json`.
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -26,18 +26,40 @@ library(jsonlite)
 
 ```
 data/metadata.csv            # derived table, 151 videos
-transcripts/<id>_<title>.md  # OKF transcript (YAML frontmatter + body)
+metadata/<id>.json           # raw per-video dump (yt-dlp)
+transcripts/<id>_<title>.md  # OKF v0.2 transcript (YAML frontmatter + body)
 transcripts/manifest.tsv     # id | status | file | lang
-planning_manifest.json       # wiki plan: 59 topic pages across 13 categories (44 + 8 missing topics added + overview)
-dsincubator_wiki/            # OKF v0.2 wiki bundle (topics/ + sources/ + index.md + log.md + references/)
-dsincubator_wiki/sources/    # 151 distilled sources (one per transcript, OKF v0.2)
-dsincubator_wiki/topics/     # 59 topic pages (each an OKF concept with type field)
+planning_manifest.json       # wiki plan: 59 topic pages across 13 categories
+dsincubator_wiki/            # OKF v0.2 wiki bundle → see Wiki below
+dsincubator_wiki/sources/    # 151 distilled sources (one per transcript)
+dsincubator_wiki/topics/     # 59 topic pages (each an OKF concept with type)
+dsincubator_wiki/index.md    # bundle root (okf_version 0.2 §12)
+dsincubator_wiki/log.md      # bundle history (§9)
 bin/fetch-metadata           # raw dumps + derive CSV
-bin/fetch-transcripts        # fetch captions
-bin/convert-transcripts      # json3 -> txt/tsv/md
+bin/fetch-transcripts        # fetch captions (json3)
+bin/convert-transcripts      # json3 -> txt/tsv/md (OKF v0.2)
 ```
 
-## Overview
+## 1. Fetch
+
+Raw-first pipeline: `yt-dlp` dumps to `metadata/` and `transcripts/`, then CSV derived.
+
+```sh
+# Metadata: test then full (append new by default)
+./bin/fetch-metadata --limit 2        # smoke test (first 2 playlist entries)
+./bin/fetch-metadata                  # fetch missing dumps, derive data/metadata.csv
+./bin/fetch-metadata --refresh        # re-fetch all dumps, drop removed rows
+
+# Transcripts: test then full
+./bin/fetch-transcripts --count 3     # test
+./bin/fetch-transcripts               # 151 videos (one *-orig json3 per video)
+# add --cookies-from-browser chrome whenever output contains "Sign in to confirm you're not a bot"
+# --force re-fetches existing
+```
+
+## 2. Example: What was fetched
+
+### Metadata + transcripts (joined by `id`)
 
 ```{r}
 dsi <- readr::read_csv("data/metadata.csv", show_col_types = FALSE)
@@ -64,25 +86,44 @@ joined |>
   select(id, title, transcript_path)
 ```
 
-## Example transcript
+### Example transcript (5th file, first 30 lines)
 
 ```{r}
 fs::dir_ls("transcripts/", regexp = "[.]md")[[5]] |> readLines(n = 30) |> writeLines()
 ```
 
-## Wiki (OKF LLM bundle)
+## 3. Process
 
-The 151 transcripts feed an OKF v0.2 knowledge bundle (`dsincubator_wiki/`), built per `planning_manifest.json` with 151 distilled `sources/` (one per transcript) aggregated into 59 topic pages. Bundle assembly includes `index.md` (§8), `topics/index.md` (§8), `sources/index.md` (§8), `log.md` (§9), and `references/` (§6.3).
+Convert captions to readable OKF v0.2 and distill into the wiki bundle.
 
-Status 2026-09-08: sources 151/151 complete via Extraction Prompt v2 (frozen frontmatter, quote-to-name, anchored key_topics, bilingual headings for `es`); topics 59/59 complete with `type` fields (§4.1), `sources` credibility signals (§5.1), actor `agent:okf-wiki-builder/1.0` (§7), cross-links (§6), `Attested Computation` for pipelines (§10); `planning_manifest.json` `source_files[]` populated; bundle indexes and `log.md` present.
+```sh
+# Convert json3 → readable formats (txt + tsv + md)
+./bin/convert-transcripts --format md --count 3   # test
+./bin/convert-transcripts --format md              # all 151 → transcripts/<id>_<slug>.md (OKF v0.2)
+./bin/convert-transcripts --format all             # txt + tsv + md
+
+# Wiki build (done 2026-09-08: 151 sources → 59 topics → bundle)
+# 1. sources/ : distill each transcript → dsincubator_wiki/sources/source_<id>_<slug>.md
+#    per Extraction Prompt v2 (frozen frontmatter, quote-to-name, anchored key_topics)
+# 2. aggregation : read all sources → populate planning_manifest.json source_files[]
+# 3. topics/  : 59 pages with cross-links (§6), Attested Computation for pipelines (§10)
+# 4. bundle assembly : index.md (§8), topics/index.md (§8), sources/index.md (§8), log.md (§9), references/ (§6.3)
+```
+
+## 4. Example: What was processed — the wiki
+
+👉 **Start here: [`dsincubator_wiki/index.md`](dsincubator_wiki/index.md)** — bundle root (OKF v0.2, 151 sources → 59 topics). Directory indexes: [`dsincubator_wiki/topics/index.md`](dsincubator_wiki/topics/index.md) (§8) with entry point [`dsincubator_wiki/topics/concepts-overview.md`](dsincubator_wiki/topics/concepts-overview.md), and [`dsincubator_wiki/sources/index.md`](dsincubator_wiki/sources/index.md). History: [`dsincubator_wiki/log.md`](dsincubator_wiki/log.md) (§9). External attesters: [`dsincubator_wiki/references/`](dsincubator_wiki/references/).
+
+Status 2026-09-08: **151/151 sources** and **59/59 topics** complete (type §4.1, sources credibility §5.1, actor `agent:okf-wiki-builder/1.0` §7, cross-links §6, `Attested Computation` for `targets`/`drake` §10); `planning_manifest.json` `source_files[]` populated; bundle indexes and `log.md` present; `status: draft` until human `verified` (§5.2).
 
 ```{r}
 manifest <- jsonlite::read_json("planning_manifest.json")
 
 tibble(
   bundle = manifest$bundle_name,
+  okf_version = manifest$okf_version,
   transcripts = manifest$total_transcripts_processed,
-  topics = manifest$total_planned_topics
+  topics = length(manifest$topics)
 )
 ```
 
@@ -96,8 +137,10 @@ tibble(path = topic_paths) |>
   arrange(dplyr::desc(topics))
 ```
 
+### Distilled sources (live)
+
 ```{r}
-wiki_sources <- dir_ls("dsincubator_wiki/sources", regexp = "\\.md$") |>
+wiki_sources <- dir_ls("dsincubator_wiki/sources", regexp = "source_.*\\.md$") |>
   tibble(source_path = _)
 
 tibble(
@@ -107,22 +150,17 @@ tibble(
 ```
 
 ```{r}
-wiki_sources |> select(source_path)
+wiki_sources |> head(10) |> select(source_path)
 ```
 
-## Commands
+### Example distilled source (first pilot, first 40 lines)
 
-```sh
-# Transcripts
-./bin/fetch-transcripts --count 3   # test
-./bin/fetch-transcripts               # full
+```{r}
+fs::dir_ls("dsincubator_wiki/sources", regexp = "source_.*\\.md$")[[1]] |> readLines(n = 40) |> writeLines()
+```
 
-# Metadata
-./bin/fetch-metadata --limit 2      # test
-./bin/fetch-metadata              # append new
-./bin/fetch-metadata --refresh    # rewrite all
+### Example topic (first 40 lines)
 
-# Convert to readable formats (txt, tsv, md)
-./bin/convert-transcripts --format md --count 3
-./bin/convert-transcripts --format md
+```{r}
+fs::dir_ls("dsincubator_wiki/topics", regexp = "\\.md$", recurse = TRUE)[[2]] |> readLines(n = 40) |> writeLines()
 ```

@@ -138,6 +138,29 @@ if os.path.isdir(trans_src):
                 shutil.copy2(f, dst)
             except:
                 pass
+# transcripts/index.md (§8) — DirectoryIndex for deterministic transcripts
+trans_list = sorted(glob.glob(os.path.join(wiki_trans, "*.md")))
+# filter out index.md itself if already present
+trans_list = [p for p in trans_list if os.path.basename(p) != "index.md"]
+with open(os.path.join(wiki_trans, "index.md"), "w", encoding="utf-8") as _ti:
+    _ti.write(f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: Transcripts Index
+description: Index of deterministic OKF transcripts for {bundle_name} ({len(trans_list)} videos).
+tags:
+- {bundle_tag}
+- transcripts-index
+---
+
+# Transcripts Index ({bundle_name.title()})
+
+Deterministic `mm:ss: text` per `tStartMs` (no LLM), language prefers `en-orig`/`es-orig`.
+
+""")
+    for _p in trans_list:
+        _name = os.path.basename(_p)
+        _ti.write(f"- [{_name}]({_name})\n")
 
 # Topics: build-wiki now writes to wiki/topics directly. Also handle legacy bundle_dir/topics
 legacy_topics = os.path.join(bundle_dir, "topics")
@@ -296,6 +319,32 @@ title: Topics Index
 # Topics Index
 See [Concepts Overview](concepts-overview.md).
 """)
+# Per-category indexes (§8) — ensure each topics/{category}/ has an index.md
+cat_to_topics = {}
+for _t in manifest.get("topics", []):
+    _cat = _t.get("category", "general")
+    cat_to_topics.setdefault(_cat, []).append(_t)
+for _cat, _tlist in cat_to_topics.items():
+    _cat_dir = os.path.join(wiki_topics, _cat)
+    os.makedirs(_cat_dir, exist_ok=True)
+    with open(os.path.join(_cat_dir, "index.md"), "w", encoding="utf-8") as _ci:
+        _ci.write(f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: {_cat.title()} Topics Index
+description: Index of topics in category {_cat} for {bundle_name}.
+tags:
+- {bundle_tag}
+- topics-index
+---
+
+# {_cat.title()} Topics ({bundle_name.title()})
+
+""")
+        for _t in _tlist:
+            _fname = _t.get("topic_filename","")
+            _title = _t.get("topic_title","")
+            _ci.write(f"- [{_title}]({_fname})\n")
 
 # 3. Sources index.md & log.md (§8, §9) — only if wiki_sources exists and has sources
 if show_sources:

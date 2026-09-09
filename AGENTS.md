@@ -370,10 +370,12 @@ qmd query "question" -c dslab -n 3
 
 ### NEXT PLAN — cleanup + qmd (2026-09-09)
 
-- [ ] Remove `graph.png` + `Untitled.canvas` cruft (already deleted locally; ensure not re-added; `AGENTS.md:45` + `Distribution Preferences` forbid `raw/assets/graph.png`)
-- [ ] Commit current pipeline (6 files): `AGENTS.md` STATUS/NEXT/TODO + `bin/*` (fetch/convert/assemble/build) + `.gitignore` (`metadata-raw.tar.gz`)
-- [ ] Push + verify `transcripts/manifest.tsv` is tracked (was untracked after reorganize; `git add transcripts/manifest.tsv`)
-- [ ] `qmd` next: `qmd collection add ./dslab --name dslab && qmd embed -c dslab` + same for `dshangout`; verify `qmd search`/`query` on `data/` dictionaries
+- [x] Remove `graph.png` + `Untitled.canvas` cruft (deleted locally 2026-09-09; added to `.gitignore: graph.png/Untitled.canvas/*.canvas`; `AGENTS.md:45` + Distribution Preferences forbid `raw/assets/graph.png`)
+- [x] Commit current pipeline (6 files): `AGENTS.md` STATUS/NEXT/TODO + `bin/*` (fetch/convert/assemble/build) + `.gitignore` (`metadata-raw.tar.gz`) — done `39a3ddb` + `655d0ce` (metadata clean)
+- [x] Verify `transcripts/manifest.tsv` is tracked (was untracked after reorganize; `git add transcripts/manifest.tsv` + commit `655d0ce` for youtube, `d114775` for dslab)
+- [x] Clean `metadata/` after archiving (user request): `bin/fetch-metadata` now removes `metadata/*.json` after `metadata-raw.tar.gz` (keep `manifest.tsv`); cleaned `youtube` (151→0), `dslab` (23→0), `dshangout` (230→0) — tars at bundle root sibling
+- [ ] `qmd` next: `qmd collection add ./dslab --name dslab && qmd embed -c dslab` + same for `dshangout`; verify `qmd search`/`query` on `data/` dictionaries — **NEXT**
+- [ ] Push: `git push origin main` (youtube 2 commits ahead: `39a3ddb`, `655d0ce`; dslab `d114775` local) + verify CI
 
 ### IDEAS / PLAN
 

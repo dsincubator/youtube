@@ -45,11 +45,11 @@ if [[ -z "$PLAYLIST" ]]; then
     exit 2
 fi
 
-mkdir -p "$OUT_DIR/metadata" "$OUT_DIR/transcripts" "$OUT_DIR/sources" "$OUT_DIR/topics" "$OUT_DIR/manifests" "$OUT_DIR/assets" "$OUT_DIR/data" "$OUT_DIR/wiki"
+mkdir -p "$OUT_DIR/metadata" "$OUT_DIR/transcripts" "$OUT_DIR/topics" "$OUT_DIR/manifests" "$OUT_DIR/assets" "$OUT_DIR/data" "$OUT_DIR/wiki"
 
 CSV_PATH="$OUT_DIR/data/metadata.csv"
 if [[ ! -f "$CSV_PATH" ]]; then
-    echo "playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url" > "$CSV_PATH"
+    echo "playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url,description" > "$CSV_PATH"
 fi
 # Legacy compat: if old CSV at OUT_DIR/metadata.csv exists but new doesn't, migrate
 if [[ ! -s "$CSV_PATH" && -f "$OUT_DIR/metadata.csv" ]]; then
@@ -72,22 +72,10 @@ CMD_CONV=(./bin/convert-transcripts --csv "$CSV_PATH" --out-dir "$OUT_DIR/transc
 [[ "$COUNT" -gt 0 ]] && CMD_CONV+=(--count "$COUNT")
 "${CMD_CONV[@]}"
 
-echo "=== Step 4: Distilling Sources ==="
-CMD_DIST=(./bin/distill-sources --csv "$CSV_PATH" --transcripts-dir "$OUT_DIR/transcripts" --out-dir "$OUT_DIR/sources" --tag "$BUNDLE_TAG")
-[[ "$COUNT" -gt 0 ]] && CMD_DIST+=(--count "$COUNT")
-"${CMD_DIST[@]}"
-
-echo "=== Step 5: Clustering Topics ==="
-./bin/cluster-topics --sources-dir "$OUT_DIR/sources" --out-file "$OUT_DIR/manifests/planning_manifest.json" --bundle-name "$BUNDLE_NAME" --playlist-url "$PLAYLIST"
-
-echo "=== Step 6: Generating Topics ==="
-# Generate into wiki/topics (indexed wiki) — keep legacy OUT_DIR/topics for compat then migrate
-./bin/generate-topics --manifest "$OUT_DIR/manifests/planning_manifest.json" --sources-dir "$OUT_DIR/sources" --out-dir "$OUT_DIR/wiki/topics"
-# Legacy copy for backward compat
-if [[ -d "$OUT_DIR/wiki/topics" && ! -d "$OUT_DIR/topics" ]]; then
-    mkdir -p "$OUT_DIR/topics"
-    cp -a "$OUT_DIR/wiki/topics"/. "$OUT_DIR/topics"/ 2>/dev/null || true
-fi
+# Steps 4-6 (sources/topics) are LLM-dependent and have been removed.
+# Every wiki now has deterministic transcripts/*.md and descriptions/*.md.
+# Topics are kept as-is if already present; new topics require LLM and are out of scope.
+# If you need LLM-generated topics, run bin/distill-sources + bin/cluster-topics + bin/generate-topics manually.
 
 echo "=== Step 6b: Ensuring Raw Archives ==="
 python3 - "$OUT_DIR" <<'PYEOF'

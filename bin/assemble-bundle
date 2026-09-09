@@ -73,60 +73,8 @@ wiki_meta = os.path.join(wiki_dir, "metadata")
 wiki_trans = os.path.join(wiki_dir, "transcripts")
 wiki_topics = os.path.join(wiki_dir, "topics")
 wiki_refs = os.path.join(wiki_dir, "references")
-wiki_sources = os.path.join(wiki_dir, "sources")
 for d in [wiki_meta, wiki_trans, wiki_topics, wiki_refs]:
     os.makedirs(d, exist_ok=True)
-
-# Determine sources location: build-wiki uses bundle_dir/sources (intermediary) or bundle_dir/wiki/sources
-# Also handle legacy bundle_dir/sources
-src_candidates = [os.path.join(bundle_dir, "sources"), os.path.join(bundle_dir, "wiki", "sources")]
-sources_dir = None
-for cand in src_candidates:
-    if os.path.isdir(cand):
-        sources_dir = cand
-        break
-if sources_dir is None:
-    sources_dir = os.path.join(bundle_dir, "sources")
-    os.makedirs(sources_dir, exist_ok=True)
-
-# If sources are in project intermediaries, copy to wiki if bundle_name == dsincubator or has sources
-has_sources = False
-if os.path.isdir(sources_dir):
-    src_files = sorted(glob.glob(os.path.join(sources_dir, "source_*.md")))
-    has_sources = len(src_files) > 0
-    # For dsincubator, ensure wiki/sources has them; for other bundles, skip unless explicitly has sources
-    if has_sources and bundle_name == "dsincubator":
-        os.makedirs(wiki_sources, exist_ok=True)
-        for sf in src_files:
-            dst = os.path.join(wiki_sources, os.path.basename(sf))
-            if not os.path.exists(dst):
-                try:
-                    shutil.copy2(sf, dst)
-                except:
-                    pass
-        # also copy index/log if exists in source_dir
-        for extra in ["index.md", "log.md"]:
-            s = os.path.join(sources_dir, extra)
-            if os.path.isfile(s):
-                try:
-                    shutil.copy2(s, os.path.join(wiki_sources, extra))
-                except:
-                    pass
-        sources_dir = wiki_sources
-    elif has_sources:
-        # For test bundles (dslab count 3) we still want wiki/sources to show pipeline works
-        # But per spec dslab should not have sources — we include if has_sources but keep wiki index pruning optional
-        os.makedirs(wiki_sources, exist_ok=True)
-        for sf in src_files:
-            dst = os.path.join(wiki_sources, os.path.basename(sf))
-            if not os.path.exists(dst):
-                try:
-                    shutil.copy2(sf, dst)
-                except:
-                    pass
-        sources_dir = wiki_sources
-    else:
-        sources_dir = wiki_sources if os.path.isdir(wiki_sources) else sources_dir
 
 # Also ensure transcripts copy to wiki
 trans_src = os.path.join(bundle_dir, "transcripts")
@@ -184,25 +132,19 @@ for t in manifest.get("topics", []):
     cat = t.get("category", "general")
     os.makedirs(os.path.join(wiki_topics, cat), exist_ok=True)
 
-# Count sources for description
-src_count = len(glob.glob(os.path.join(wiki_sources, "source_*.md"))) if os.path.isdir(wiki_sources) else len(glob.glob(os.path.join(sources_dir, "source_*.md"))) if os.path.isdir(sources_dir) else 0
-if src_count == 0 and os.path.isdir(sources_dir):
-    src_count = len(glob.glob(os.path.join(sources_dir, "source_*.md")))
-trans_count = len(glob.glob(os.path.join(wiki_trans, "*.md")))
+# Count transcripts for description
+trans_count = len([p for p in glob.glob(os.path.join(wiki_trans, "*.md")) if os.path.basename(p) != "index.md"])
 
 # 1. Wiki root index.md (§12) — PRUNED: no data/manifests/assets links, opening mirrors README.md
 title_map_root = {"dslab": "Posit Data Science Lab", "dshangout": "Data Science Hangout", "dsincubator": "Posit Data Science Incubator"}
 display_title_root = title_map_root.get(bundle_name, bundle_name.replace("-", " ").title())
 playlist_md_root = f"[Playlist]({playlist_url})" if playlist_url else "Playlist"
-# Determine if we should show sources link: only if has_sources and (bundle_name dsincubator or we have wiki sources)
-show_sources = os.path.isdir(wiki_sources) and len(glob.glob(os.path.join(wiki_sources, "source_*.md"))) > 0
-sources_line = "- [Sources Index](sources/index.md) (§8) + [Sources Log](sources/log.md) (§9)\n" if show_sources else ""
 wiki_index_path = os.path.join(wiki_dir, "index.md")
 root_content = f"""---
 okf_version: '0.2'
 type: Bundle
 title: {display_title_root} Wiki
-description: OKF v0.2 LLM wiki bundle for {bundle_name} — {len(manifest.get("topics", []))} topics from {src_count} sources.
+description: OKF v0.2 LLM wiki bundle for {bundle_name} — {len(manifest.get("topics", []))} topics from {trans_count} transcripts.
 tags:
 - {bundle_tag}
 - wiki-bundle
@@ -222,7 +164,7 @@ See [tools, tips and tricks](https://gist.github.com/karpathy/442a6bf555914893e9
 - **Bundle root:** [`index.md`](index.md) (§12)
 - [Topics Overview](topics/concepts-overview.md) — all concepts (§3.1)
 - [Topics Index](topics/index.md) (§8)
-{sources_line}- [Metadata](metadata/metadata.csv) — derived table ([dictionary](metadata/metadata.md))
+- [Metadata](metadata/metadata.csv) — derived table ([dictionary](metadata/metadata.md))
 - [Descriptions](descriptions/) — per-video full YouTube description
 - [Transcripts](transcripts/) — `transcripts/<id>_<slug>.md` deterministic `mm:ss: text` per `tStartMs`
 - [Bundle History Log](log.md) (§9)
@@ -266,11 +208,8 @@ This file is for the **exported wiki** (`wiki/`). Build repo AGENTS.md lives at 
 - Start at [`index.md`](index.md) (§12)
 - Topics: [`topics/index.md`](topics/index.md) + [`topics/concepts-overview.md`](topics/concepts-overview.md)
 - Transcripts: `transcripts/<id>_<slug>.md` (`mm:ss: text` deterministic)
+- Descriptions: `descriptions/<id>_<slug>.md` (full YouTube description)
 - Metadata: [`metadata/metadata.csv`](metadata/metadata.csv) ([dictionary](metadata/metadata.md))
-
-## Adding summaries via LLM
-- `sources/` is not shipped for `dslab`/`dshangout` (deterministic `bin/*` only). For `dsincubator`, sources are distilled per Extraction Prompt v2.
-- To add `summaries/` via LLM, see build `AGENTS.md` Extraction Prompt v2 and `bin/distill-sources`.
 
 ## Maintenance
 - `log.md` records bundle history (§9)
@@ -339,47 +278,6 @@ tags:
             _fname = _t.get("topic_filename","")
             _title = _t.get("topic_title","")
             _ci.write(f"- [{_title}]({_fname})\n")
-
-# 3. Sources index.md & log.md (§8, §9) — only if wiki_sources exists and has sources
-if show_sources:
-    os.makedirs(wiki_sources, exist_ok=True)
-    sources_list = sorted(glob.glob(os.path.join(wiki_sources, "source_*.md")))
-    sources_index_content = f"""---
-okf_version: '0.2'
-type: DirectoryIndex
-title: Sources Index
----
-# Sources
-
-"""
-    for s_path in sources_list:
-        s_name = os.path.basename(s_path)
-        sources_index_content += f"- [{s_name}]({s_name})\n"
-    with open(os.path.join(wiki_sources, "index.md"), "w", encoding="utf-8") as f:
-        f.write(sources_index_content)
-    sources_log_content = f"""---
-okf_version: '0.2'
-type: Log
-title: Sources Ingest Log
----
-# Sources Ingest Log
-- Initial ingest completed for {len(sources_list)} sources.
-"""
-    with open(os.path.join(wiki_sources, "log.md"), "w", encoding="utf-8") as f:
-        f.write(sources_log_content)
-else:
-    # Ensure minimal sources index if wiki_sources exists but empty (for completeness)
-    if os.path.isdir(wiki_sources):
-        with open(os.path.join(wiki_sources, "index.md"), "w", encoding="utf-8") as f:
-            f.write(f"""---
-okf_version: '0.2'
-type: DirectoryIndex
-title: Sources Index
----
-# Sources
-
-No distilled sources (deterministic `bin/*` only — see AGENTS.md).
-""")
 
 # 4. Wiki log.md (§9) + bundle root log
 log_content = f"""---
@@ -510,7 +408,7 @@ Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` 
         desc = col_desc.get(col, "")
         f.write(f"| `{col}` | {desc} |\n")
     f.write(f"""
-**Join key:** `id` → `transcripts/<id>_<slug>.md` (`resource: https://www.youtube.com/watch?v=<id>`) and `sources/source_<id>_<slug>.md` (if present).
+**Join key:** `id` → `transcripts/<id>_<slug>.md` (`resource: https://www.youtube.com/watch?v=<id>`) and `descriptions/<id>_<slug>.md`.
 
 **Provenance:** `yt-dlp --skip-download --dump-single-json` per video → `metadata/<id>.json` (slimmed: `automatic_captions`/`subtitles`/`formats` pruned) → derived `data/metadata.csv` → `wiki/metadata/metadata.csv`. Manifest `manifests/metadata.tsv` (project-only, not indexed) records terminal states.
 

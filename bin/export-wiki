@@ -63,8 +63,8 @@ if [[ -d "$TO" ]]; then
 fi
 
 # Copy only wiki dirs (indexed) — per LAYOUT spec
-# wiki/ indexed: index.md, README.md, AGENTS.md, log.md, metadata/, transcripts/, topics/, sources/ (if present), references/
-# Explicitly DO NOT copy: data/, manifests/, assets/, planning_manifest.json at project root, raw archives
+# wiki/ indexed: index.md, README.md, AGENTS.md, log.md, metadata/, transcripts/, descriptions/, topics/, references/
+# Explicitly DO NOT copy: data/, manifests/, assets/, planning_manifest.json at project root, raw archives, sources/ (removed, LLM-dependent)
 
 copy_file() {
     local src="$1" dst="$2"
@@ -100,22 +100,6 @@ copy_dir "$SRC/transcripts" "$TO/transcripts"
 copy_dir "$SRC/descriptions" "$TO/descriptions" 2>/dev/null || true
 copy_dir "$SRC/topics" "$TO/topics"
 copy_dir "$SRC/references" "$TO/references"
-# sources only for dsincubator (keep if present, skip silently otherwise)
-if [[ -d "$SRC/sources" ]]; then
-    # check if has content beyond index/log
-    n=$(find "$SRC/sources" -name "source_*.md" | wc -l | tr -d ' ')
-    if [[ "$n" -gt 0 ]]; then
-        copy_dir "$SRC/sources" "$TO/sources"
-    else
-        # still copy index/log if exists but no sources payload — treat as empty, skip
-        if [[ -f "$SRC/sources/index.md" ]]; then
-            mkdir -p "$TO/sources"
-            copy_file "$SRC/sources/index.md" "$TO/sources/index.md"
-            copy_file "$SRC/sources/log.md" "$TO/sources/log.md"
-        fi
-        echo "[$PROGRAM] note: sources/ has no distilled sources, exported minimal"
-    fi
-fi
 
 # Verification: ensure no intermediates leaked
 leaked=0

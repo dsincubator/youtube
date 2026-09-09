@@ -6,7 +6,7 @@ When repo state changes (new videos, updated transcripts, schema changes, wiki p
 
 ## INPUTS
 
-1. `data/metadata.csv` — columns `playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url`. `id` is the join key. Maintained by `bin/fetch-metadata` (append new videos by default, `--refresh` rewrites all rows). The `transcript_path` column is computed on-the-fly in `README.qmd` via `fs::dir_ls()` → `tibble()` → `dplyr::left_join()`.
+1. `data/metadata.csv` — columns `playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url,description`. `id` is the join key. Maintained by `bin/fetch-metadata` (append new videos by default, `--refresh` rewrites all rows). The `transcript_path` column is computed on-the-fly in `README.qmd` via `fs::dir_ls()` → `tibble()` → `dplyr::left_join()`.
 2. Watch URL `https://www.youtube.com/watch?v=<id>` derived from `id`.
 3. Transcript files `transcripts/<id>_<sanitized-title>.md` (OKF v0.2) generated from `.json3` captions by `bin/convert-transcripts`.
 
@@ -14,15 +14,13 @@ When repo state changes (new videos, updated transcripts, schema changes, wiki p
 
 ```
 # Build repo (contains ./bin/*) — run pipeline here, then export wiki
-bin/fetch-metadata           # raw dumps + derive CSV
+bin/fetch-metadata           # raw dumps + derive CSV (14 cols, incl. description)
 bin/fetch-transcripts        # fetch captions
 bin/convert-transcripts      # json3 -> txt/tsv/md
-bin/distill-sources          # transcript .md + CSV → sources/source_<id>_<slug>.md
-bin/cluster-topics           # auto-cluster sources → manifests/planning_manifest.json
-bin/generate-topics          # manifest + sources → topics/{category}/{topic}.md
-bin/assemble-bundle          # generate index.md, indexes, log.md, references/, metadata/
-bin/build-wiki               # orchestrator: runs full pipeline → project-outdir/
+bin/assemble-bundle          # generate wiki/index.md, metadata/, transcripts/, descriptions/, topics/, references/
+bin/build-wiki               # orchestrator: fetch → transcripts → descriptions → assemble → project-outdir/
 bin/export-wiki              # --from project-outdir --to /exported-wiki/ (wiki only)
+# LLM steps (removed): bin/distill-sources, bin/cluster-topics, bin/generate-topics → sources/ (requires LLM, dropped)
 
 project-outdir/              # build output (intermediaries + wiki); compress whole dir for GH release of build-repo
 ├── manifests/               # intermediaries (NOT indexed in wiki)
@@ -47,8 +45,8 @@ project-outdir/              # build output (intermediaries + wiki); compress wh
     │   ├── metadata.md      # column dict for metadata.csv (was data/metadata.md)
     │   └── metadata.csv     # derived table (copy of project-outdir/metadata.csv, indexed)
     ├── transcripts/         # transcripts/<id>_<slug>.md OKF v0.2 (deterministic, indexed)
+    ├── descriptions/        # descriptions/<id>_<slug>.md full YouTube description (deterministic, indexed)
     ├── topics/              # N topic pages + topics/index.md (§8) (indexed)
-    ├── sources/             # N distilled sources (only dsincubator; dslab/dshangout have no sources/ — deterministic bin/* only)
     ├── references/          # external executors/attesters (§6.3) (indexed)
     └── planning_manifest.json is NOT in wiki (stays in project-outdir/manifests/)
 
@@ -133,14 +131,13 @@ Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<i
 ## NEXT (fresh-agent runbook — start here)
 
 0. Read this file top to bottom, then `planning_manifest.json` and [`dsincubator/index.md`](dsincubator/index.md). Do not touch `transcripts/` frontmatter by hand — `bin/convert-transcripts` owns it.
-1. **Bundle is complete as of 2026-09-09**: `sources/` 151/151, `topics/` 59/59, bundle indexes + `log.md` + `data/` 4/4 present (`data/metadata.md`, `data/metadata-raw.md`, `data/transcripts-raw.md`, `data/index.md` §8). For maintenance, see `## GENERALIZED WORKFLOW` for the parameterized pipeline.
+1. **Bundle is complete as of 2026-09-09**: `transcripts/` 151/151 + `descriptions/` 151/151, `topics/` 59/59, bundle indexes + `log.md` + `data/` 4/4 present (`data/metadata.md`, `data/metadata-raw.md`, `data/transcripts-raw.md`, `data/index.md` §8). `sources/` removed (LLM-dependent, dropped). For maintenance, see `## GENERALIZED WORKFLOW` for the parameterized pipeline.
 2. **When a new video/transcript appears** (or existing transcript updated):
     a. Fetch: `./bin/fetch-metadata` → `./bin/fetch-transcripts` → `./bin/convert-transcripts --format md` (creates `transcripts/<id>_<slug>.md` OKF v0.2).
-    b. Distill one source: scaffold frontmatter deterministically from transcript + `data/metadata.csv` (copy `title`, `tags`, `lang`, `usage_count`, `last_modified`, `usage_window`, `sources[]` byte-identical; `type: source`, `generated.by: agent:okf-wiki-builder/1.0`, `status: draft`; fill `key_topics` only) and write body per **Extraction Prompt v2** (Summary + Key Concepts + Code Snippets; `es` → Spanish body, English `key_topics` bilingual headings). Use `transcripts/<id>_*.md` glob for slug. See `bin/distill-sources --help`.
-    c. Aggregation: re-read all `sources/` frontmatter + summaries → update `planning_manifest.json` `source_files[]` for affected topics; add a new topic if clustering demands it (keep `type` per §4.1). See `bin/cluster-topics`.
-    d. Topics: (re)generate affected `dsincubator/topics/` pages with cross-links (§6); pipelines stay `type: Attested Computation`. See `bin/generate-topics`.
-    e. Bundle: touch `dsincubator/log.md` (§9) + `sources/log.md` with date + new `id`; ensure `dsincubator/index.md` (okf_version 0.2 §12) + `topics/index.md` (§8) + `sources/index.md` (§8) + `references/` (§6.3) still valid; conformance check vs §11. See `bin/assemble-bundle`.
-    f. Housekeeping (always): update `README.qmd` (Fetch → Example metadata/transcript → Wiki → Example topics/source) + `quarto render README.qmd --to gfm --quiet`; commit. Re-run `./bin/convert-transcripts --format md` if `transcripts/` changed. For incremental adds, `status: draft` until human `verified` (§5.2); flip to `stable` + `verified: { by: human:<reviewer>, at: <date> }` only after review.
+    b. Descriptions: `./bin/fetch-metadata` already writes `description` per video to `data/metadata.csv`; `./bin/assemble-bundle` generates `descriptions/<id>_<slug>.md` deterministically from CSV (no LLM).
+    c. Topics (LLM, optional): if you use LLM topics, scaffold via `bin/distill-sources`/`bin/cluster-topics`/`bin/generate-topics` (removed from default pipeline).
+    d. Bundle: touch `log.md` (§9) with date + new `id`; ensure `index.md` (okf_version 0.2 §12) + `topics/index.md` (§8) + `transcripts/` + `descriptions/` + `references/` (§6.3) still valid; conformance check vs §11. See `bin/assemble-bundle`.
+    e. Housekeeping (always): update `README.qmd` (Fetch → Example metadata/transcript → Wiki → Example topics) + `quarto render README.qmd --to gfm --quiet`; commit. Re-run `./bin/convert-transcripts --format md` if `transcripts/` changed. For incremental adds, `status: draft` until human `verified` (§5.2); flip to `stable` + `verified: { by: human:<reviewer>, at: <date> }` only after review.
 3. **Verification**: flip `status: draft` → `stable` and add `verified: { by: human:<reviewer>, at: <date> }` only after human review (§5.2).
 
 ## OKF LLM WIKI BUNDLE
@@ -150,9 +147,10 @@ Goal: Transform N transcript `.md` files into a structured OKF v0.2 LLM wiki bun
 ### Key Documents
 - `planning_manifest.json` — Plan defining topic pages across categories per `bundle_name`
 - `topics/` — Aggregated topic/concept pages (each an OKF concept with `type` field)
-- `sources/source_<id>_<slug>.md` — Processed source files (1 per transcript)
-- `sources/index.md` (§8 index) + `sources/log.md` (§9 history)
+- `transcripts/<id>_<slug>.md` — Deterministic OKF transcripts (1 per video, `mm:ss: text`)
+- `descriptions/<id>_<slug>.md` — Full YouTube description per video (deterministic, `type: Concept`)
 - `references/` — External resources for executors/attesters (§6.3)
+- `sources/` — Removed (was LLM summaries, dropped — every wiki now has `transcripts/` + `descriptions/` deterministically)
 
 ### Actor Convention (§7)
 All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
@@ -176,10 +174,10 @@ All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
 - `references/` directory planned for executors/attesters (§6.3)
 
 ### Pipeline Steps
-1. **Source generation**: LLM extracts concepts from each transcript → `sources/source_<id>_<slug>.md` (script scaffolds frontmatter; agent writes body only)
-2. **Aggregation**: Read all source frontmatter + summaries → cluster into topics
-3. **Topic generation**: Create 59 topic pages with cross-links (§6)
-4. **Bundle assembly**: Create `index.md`, `log.md`, `references/`
+1. **Source generation**: (removed — was LLM `sources/`; every wiki now has deterministic `transcripts/` + `descriptions/`)
+2. **Aggregation**: (removed — was clustering `sources/` into topics)
+3. **Topic generation**: Create topic pages with cross-links (§6) (LLM, optional)
+4. **Bundle assembly**: Create `index.md`, `log.md`, `references/` + `transcripts/` + `descriptions/`
 5. **Verification**: Human review adds `verified` fields (§5.2)
 6. **Conformance check**: Validate against §11
 
@@ -190,8 +188,8 @@ All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
 ```sh
 qmd search "docker" -c dsincubator -n 2          # fast BM25
 qmd query "how to handle merge conflicts git" -c dsincubator -n 2  # hybrid
-qmd get qmd://dsincubator/sources/source_pbc6NX1n01Q_targets-introduction.md
-rg -n "key_topics" dsincubator/sources/*.md | head -n 5
+qmd get qmd://dsincubator/transcripts/pbc6NX1n01Q_targets-introduction.md
+rg -n "transcript" dsincubator/transcripts/*.md | head -n 5
 ```
 
 Use `qmd query` for prose/questions, `qmd search`/`rg` for symbols (`tar_make`); then `qmd get` to pull context. See `qmd --help` and `rg --help`.
@@ -374,9 +372,9 @@ qmd query "question" -c dslab -n 3
 * **`manifests/planning_manifest.json` (NOT indexed) replaces `planning_manifest.json` at bundle root**  
   `bin/cluster-topics --out-file manifests/planning_manifest.json` (was `planning_manifest.json`). `bin/generate-topics --manifest manifests/planning_manifest.json`. Not listed in any `index.md`.
 * **`project-outdir/` intermediaries (NOT indexed):** `manifests/` (`metadata.tsv`, `transcripts.tsv`, `planning_manifest.json`), `assets/` (`*.tar.gz`), `data/` (`metadata.csv` build copy)
-* **`wiki/` indexed:** `index.md`, `README.md`, `AGENTS.md` (wiki maintenance, separate from build `AGENTS.md`), `log.md`, `metadata/metadata.csv` + `metadata/metadata.md`, `transcripts/*.md`, `topics/**`, `sources/` (only `dsincubator`; `dslab`/`dshangout` have no `sources/` — deterministic `bin/*` only), `references/`  
-  `sources/` is **NOT** generated by `bin/build-wiki` for `dslab`/`dshangout`; `wiki/README.md` recommends adding `summaries/` via LLM (see `wiki/AGENTS.md`). `planning_manifest.json` is never in `wiki/`.
-* **Export:** `bin/export-wiki --from project-outdir --to /exported-wiki/` copies **only** wiki dirs (`index.md`, `README.md`, `AGENTS.md`, `log.md`, `metadata/`, `transcripts/`, `topics/`, `sources/` if present, `references/`) to `--to` (clean wiki). Build repo is compressed whole (`project-outdir/` including intermediaries) for GH release of build-repo.
+* **`wiki/` indexed:** `index.md`, `README.md`, `AGENTS.md` (wiki maintenance, separate from build `AGENTS.md`), `log.md`, `metadata/metadata.csv` + `metadata/metadata.md`, `transcripts/*.md`, `descriptions/*.md`, `topics/**`, `references/`  
+  `sources/` has been removed (LLM-dependent, dropped); every wiki now has deterministic `transcripts/` + `descriptions/` via `bin/*` (no LLM). `planning_manifest.json` is never in `wiki/`.
+* **Export:** `bin/export-wiki --from project-outdir --to /exported-wiki/` copies **only** wiki dirs (`index.md`, `README.md`, `AGENTS.md`, `log.md`, `metadata/`, `transcripts/`, `descriptions/`, `topics/`, `references/`) to `--to` (clean wiki). Build repo is compressed whole (`project-outdir/` including intermediaries) for GH release of build-repo.
 
 ### TODO — archive (2026-09-09 and earlier — pruned, keep latest only)
 
@@ -386,7 +384,7 @@ qmd query "question" -c dslab -n 3
 
 ### TODO — next (fresh-agent start here)
 
-- [ ] **Add `description` column to `metadata.csv`**: full YouTube description per video (`row_from_dump()` + `header` in `bin/fetch-metadata`; `wiki/metadata/metadata.md` column dict; per-video `descriptions/<id>_<slug>.md` in wiki).
+- [x] **Add `description` column to `metadata.csv`**: full YouTube description per video (`row_from_dump()` + `header` in `bin/fetch-metadata`; `wiki/metadata/metadata.md` column dict; per-video `descriptions/<id>_<slug>.md` in wiki).
   - `bin/fetch-metadata`: add `"description": d.get("description") or ""` to `row_from_dump()` and `"description"` to `header` list.
   - `bin/assemble-bundle`: update `metadata/metadata.md` column table to include `description` (long text, quoted CSV field).
   - `bin/assemble-bundle`: generate `wiki/descriptions/<id>_<slug>.md` per video (§4.1 `type: Concept`, frontmatter with `resource`, `author`, `usage_count`, `last_modified`; body = full description).

@@ -13,6 +13,7 @@ tags:
 Dictionaries describing the derived and raw datasets that underpin this bundle.
 
 - [Metadata CSV Dictionary](metadata.md) — column dictionary for `metadata.csv` (derived table).
+- [Metadata Manifest Dictionary](metadata-manifest.md) — dictionary for `metadata/manifest.tsv` (per-video fetch status).
 - [Metadata Raw Archive Dictionary](metadata-raw.md) — field dictionary for `metadata-raw.tar.gz` (raw `metadata/<id>.json` dumps).
 - [Transcripts Raw Archive Dictionary](transcripts-raw.md) — schema dictionary for `transcripts-raw.tar.gz` (raw `*.json3` captions).
 

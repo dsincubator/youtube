@@ -491,7 +491,7 @@ tags:
 
 - [Metadata CSV Dictionary](metadata.md) — column dictionary for `metadata.csv` (derived table, {csv_rowcount} rows)
 - [metadata.csv](metadata.csv) — derived table (one row per public video)
-- [Descriptions](descriptions/) — per-video full YouTube description (§4.1 Concept)
+- [Descriptions](../descriptions/) — per-video full YouTube description (§4.1 Concept)
 
 Project intermediates (`manifests/`, `assets/`, `data/`) are not indexed; they live in project-outdir/. History in `log.md` (tag `{release_tag}`).
 """)
@@ -566,6 +566,34 @@ sources:
 **Resource:** [Watch on YouTube](https://www.youtube.com/watch?v={_vid})
 """)
 print(f"[assemble-bundle] generated {len(csv_data)} descriptions in wiki/descriptions/")
+# descriptions/index.md (§8) — DirectoryIndex for per-video descriptions
+with open(os.path.join(descriptions_dir, "index.md"), "w", encoding="utf-8") as _idx:
+    _idx.write(f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: Descriptions Index
+description: Per-video full YouTube descriptions for {bundle_name} ({len(csv_data)} videos).
+tags:
+- {bundle_tag}
+- descriptions-index
+---
+
+# Descriptions Index ({bundle_name.title()})
+
+Per-video full YouTube description, one Concept per video (indexed in `descriptions/<id>_<slug>.md`).
+
+""")
+    for _row in sorted(csv_data, key=lambda r: r.get("playlist_index", r.get("id",""))):
+        _vid2 = _row.get("id","").strip()
+        _title2 = _row.get("title","").strip()
+        if not _vid2:
+            continue
+        import re as _re2, unicodedata as _unic2
+        _ascii2 = _unic2.normalize('NFKD', _title2).encode('ascii', 'ignore').decode('ascii')
+        _slug2 = _re2.sub(r'[^a-zA-Z0-9]+', '-', _ascii2).strip('-').lower()
+        _slug2 = _re2.sub(r'-+', '-', _slug2)
+        _fname = f"{_vid2}_{_slug2}.md"
+        _idx.write(f"- [{_title2}]({_fname}) — `{_vid2}`\n")
 
 # 7. Ensure project manifests/assets indexes (NOT indexed in wiki) — keep at project-outdir root
 manifests_dir = os.path.join(bundle_dir, "manifests")

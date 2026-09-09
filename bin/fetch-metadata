@@ -390,6 +390,13 @@ if json_files:
             tar.add(f, arcname=os.path.basename(f))
     os.replace(tmp_tar, tar_path)
     print(f"[fetch-metadata] archived {len(json_files)} dumps -> {tar_path}")
+    # Clean source json files after archiving (keep manifest.tsv readable; workflow: download raw -> tar sibling -> keep CSV)
+    for f in json_files:
+        try:
+            os.remove(f)
+        except OSError:
+            pass
+    print(f"[fetch-metadata] cleaned {len(json_files)} dumps from {meta_dir}/ (kept manifest.tsv, tar sibling)")
 else:
     print(f"[fetch-metadata] no dumps to archive in {meta_dir}/")
 EOF

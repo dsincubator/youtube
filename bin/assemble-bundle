@@ -153,7 +153,7 @@ tags:
 - transcripts-index
 ---
 
-# Transcripts Index ({bundle_name.title()})
+# Transcripts
 
 Deterministic `mm:ss: text` per `tStartMs` (no LLM), language prefers `en-orig`/`es-orig`.
 
@@ -190,9 +190,10 @@ if src_count == 0 and os.path.isdir(sources_dir):
     src_count = len(glob.glob(os.path.join(sources_dir, "source_*.md")))
 trans_count = len(glob.glob(os.path.join(wiki_trans, "*.md")))
 
-# 1. Wiki root index.md (§12) — PRUNED: no data/manifests/assets links
-# Only indexed wiki content: transcripts/, topics/, sources/ (dsincubator only), metadata/, references/, log.md
-playlist_line = f"Playlist: {playlist_url}" if playlist_url else f"Bundle: {bundle_name} ({bundle_tag})"
+# 1. Wiki root index.md (§12) — PRUNED: no data/manifests/assets links, opening mirrors README.md
+title_map_root = {"dslab": "Posit Data Science Lab", "dshangout": "Data Science Hangout", "dsincubator": "Posit Data Science Incubator"}
+display_title_root = title_map_root.get(bundle_name, bundle_name.replace("-", " ").title())
+playlist_md_root = f"[Playlist]({playlist_url})" if playlist_url else "Playlist"
 # Determine if we should show sources link: only if has_sources and (bundle_name dsincubator or we have wiki sources)
 show_sources = os.path.isdir(wiki_sources) and len(glob.glob(os.path.join(wiki_sources, "source_*.md"))) > 0
 sources_line = "- [Sources Index](sources/index.md) (§8) + [Sources Log](sources/log.md) (§9)\n" if show_sources else ""
@@ -200,7 +201,7 @@ wiki_index_path = os.path.join(wiki_dir, "index.md")
 root_content = f"""---
 okf_version: '0.2'
 type: Bundle
-title: {bundle_name.title()} LLM Wiki Bundle
+title: {display_title_root} Wiki
 description: OKF v0.2 LLM wiki bundle for {bundle_name} — {len(manifest.get("topics", []))} topics from {src_count} sources.
 tags:
 - {bundle_tag}
@@ -211,12 +212,13 @@ generated:
 status: stable
 ---
 
-# {bundle_name.title()} LLM Wiki Bundle
+# {display_title_root} Wiki
 
-{playlist_line}
+Knowledge base of the {display_title_root} {playlist_md_root}, structured as an [LLM wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) in the [Open Knowledge Format (OKF)](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing) v0.2.
 
-Welcome to the **{bundle_name.title()}** knowledge base bundle, structured according to the Open Knowledge Format (OKF) v0.2.
-Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: text` per event from `tStartMs` (no LLM), language prefers `en-orig`/`es-orig`.
+Both humans and AI-agents should start at [index.md](index.md).
+
+See [tools, tips and tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#optional-cli-tools) to read, query and graph your wiki.
 
 ## Contents — START HERE
 - **Bundle root:** [`index.md`](index.md) (§12)
@@ -227,12 +229,6 @@ Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: t
 - [Transcripts](transcripts/) — `transcripts/<id>_<slug>.md` deterministic `mm:ss: text` per `tStartMs`
 - [Bundle History Log](log.md) (§9)
 - [References](references/index.md) (§6.3)
-
-## Search
-```sh
-qmd search "topic" -c {bundle_name} -n 3
-qmd query "question" -c {bundle_name} -n 3
-```
 """
 with open(wiki_index_path, "w", encoding="utf-8") as f:
     f.write(root_content)
@@ -298,7 +294,7 @@ tags:
 - topics-index
 ---
 
-# Topics Overview ({bundle_name.title()})
+# Topics Overview
 
 """
 for t in manifest.get("topics", []):
@@ -316,7 +312,7 @@ okf_version: '0.2'
 type: DirectoryIndex
 title: Topics Index
 ---
-# Topics Index
+# Topics
 See [Concepts Overview](concepts-overview.md).
 """)
 # Per-category indexes (§8) — ensure each topics/{category}/ has an index.md
@@ -338,7 +334,7 @@ tags:
 - topics-index
 ---
 
-# {_cat.title()} Topics ({bundle_name.title()})
+# {_cat.title()}
 
 """)
         for _t in _tlist:
@@ -355,7 +351,7 @@ okf_version: '0.2'
 type: DirectoryIndex
 title: Sources Index
 ---
-# Sources Index ({bundle_name.title()})
+# Sources
 
 """
     for s_path in sources_list:
@@ -382,7 +378,7 @@ okf_version: '0.2'
 type: DirectoryIndex
 title: Sources Index
 ---
-# Sources Index ({bundle_name.title()})
+# Sources
 
 No distilled sources (deterministic `bin/*` only — see AGENTS.md).
 """)
@@ -536,11 +532,11 @@ tags:
 - metadata-index
 ---
 
-# Metadata Index ({bundle_name.title()})
+# Metadata
 
 - [Metadata CSV Dictionary](metadata.md) — column dictionary for `metadata.csv` (derived table, {csv_rowcount} rows)
 - [metadata.csv](metadata.csv) — derived table (one row per public video)
-- [Descriptions](../descriptions/) — per-video full YouTube description (§4.1 Concept)
+- [Descriptions](../descriptions/) — per-video full YouTube description
 
 Project intermediates (`manifests/`, `assets/`, `data/`) are not indexed; they live in project-outdir/. History in `log.md` (tag `{release_tag}`).
 """)
@@ -627,7 +623,7 @@ tags:
 - descriptions-index
 ---
 
-# Descriptions Index ({bundle_name.title()})
+# Descriptions
 
 Per-video full YouTube description, one Concept per video (indexed in `descriptions/<id>_<slug>.md`).
 
@@ -685,7 +681,7 @@ tags:
 - manifests-index
 ---
 
-# Manifests Index ({bundle_name.title()})
+# Manifests
 
 Fetch manifests kept readable after raw clean (not in `assets/*.tar.gz`). Not indexed in wiki.
 
@@ -718,7 +714,7 @@ tags:
 - assets-index
 ---
 
-# Assets Index ({bundle_name.title()})
+# Assets
 
 Release assets (tarballs) at project-outdir root in `assets/` (siblings of `manifests/`/`data/`/`wiki/`). Attached as GitHub Release assets (tag `{release_tag}`). Not indexed in wiki.
 

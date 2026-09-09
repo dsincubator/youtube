@@ -386,16 +386,12 @@ qmd query "question" -c dslab -n 3
 
 ### TODO — next (fresh-agent start here)
 
-- [x] **Remove `sources/` from `dslab`/`dshangout`**: deterministic `bin/*` only; `dsincubator` keeps `sources/` (already has LLM summaries). Update `index.md` Contents to not list `sources/` for those bundles.
-- [ ] **Add `data/` directory to bundles** (fresh-agent runbook — deterministic, no LLM) — **PRUNED: see NEW BUILD / EXPORT LAYOUT above** (old `data/` + `manifests/`/`assets` no longer indexed; now `metadata/metadata.csv` + `metadata/metadata.md` indexed, `manifests/planning_manifest.json` not indexed)
-  - Old subtasks pruned (now: `bin/assemble-bundle` writes `wiki/metadata/` + `project-outdir/manifests/planning_manifest.json`; `bin/fetch-metadata` still creates `metadata-raw.tar.gz`; `.gitignore` already covers `**/*.tar.gz`)
-- [x] **New build / export layout** (this plan):
-  - [x] `bin/fetch-metadata`: keep `metadata-raw.tar.gz` at bundle root sibling; `metadata.csv` is build intermediate (`data/metadata.csv` or `bundle/metadata.csv`) — wiki copy is `wiki/metadata/metadata.csv`
-  - [x] `bin/assemble-bundle`: **prune** `data/`/`manifests/`/`assets` from wiki `index.md`; generate `wiki/metadata/metadata.md` (§4.1) + `wiki/metadata/metadata.csv` (copy) + `wiki/metadata/index.md` sibling; `manifests/planning_manifest.json` (not indexed) via `bin/cluster-topics --out-file manifests/planning_manifest.json`; wiki `index.md` Contents links only `transcripts/` + `topics/` + `sources/` (dsincubator only) + `metadata/` + `references/` + `log.md`
-  - [x] `bin/build-wiki`: ensure `project-outdir/` structure (intermediaries + `wiki/`); `data/metadata.csv` build copy stays in `project-outdir/data/` (not wiki)
-  - [x] `bin/export-wiki`: new `bin/export-wiki --from project-outdir --to /exported-wiki/` — copies **only** wiki dirs (`index.md`, `README.md`, `AGENTS.md`, `log.md`, `metadata/`, `transcripts/`, `topics/`, `sources/` if present, `references/`) to `--to`; verify no `data/`/`manifests/`/`assets` leaked
-  - [x] `.gitignore:11` already ignores `**/transcripts-raw.tar.gz` + `**/metadata-raw.tar.gz`; keep
-  - [x] Test on both bundles: `~/git/dsincubator/dslab` (23/23 via dslab_build --count 3 pilot) + `~/git/dsincubator/dshangout` (217/230 md, 13 `vtt`-only) — verify wiki `metadata/*.md` indexed, `manifests/planning_manifest.json` not indexed, `index.md` has no `data/`/`manifests/`/`assets` links, `export-wiki` clean (`/tmp/dslab` 19 files, no leaks)
+- [ ] **Add `description` column to `metadata.csv`**: full YouTube description per video (`row_from_dump()` + `header` in `bin/fetch-metadata`; `wiki/metadata/metadata.md` column dict; per-video `descriptions/<id>_<slug>.md` in wiki).
+  - `bin/fetch-metadata`: add `"description": d.get("description") or ""` to `row_from_dump()` and `"description"` to `header` list.
+  - `bin/assemble-bundle`: update `metadata/metadata.md` column table to include `description` (long text, quoted CSV field).
+  - `bin/assemble-bundle`: generate `wiki/descriptions/<id>_<slug>.md` per video (§4.1 `type: Concept`, frontmatter with `resource`, `author`, `usage_count`, `last_modified`; body = full description).
+  - `wiki/index.md` Contents lists `descriptions/`.
+  - Export leak-check: `descriptions/` is wiki content, not an intermediary.
 - [ ] **qmd integration**: `qmd collection add ./dslab --name dslab && qmd embed -c dslab` — NEXT (after export layout lands)
 
 ### IDEAS / PLAN

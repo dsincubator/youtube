@@ -341,8 +341,8 @@ if ok > 0:
     raw_files = []
     for pat in raw_patterns:
         raw_files.extend(_glob.glob(os.path.join(out_dir, pat)))
-    # Keep manifest.tsv readable; don't archive the tarball itself if inside out_dir (legacy)
-    raw_files = [f for f in raw_files if os.path.basename(f) != "manifest.tsv" and not f.endswith("transcripts-raw.tar.gz")]
+    # Keep manifest.tsv readable; don't archive AppleDouble or tarball itself
+    raw_files = [f for f in raw_files if os.path.basename(f) != "manifest.tsv" and not os.path.basename(f).startswith("._") and not f.endswith("transcripts-raw.tar.gz")]
     if raw_files:
         tmp_tar = tar_path + ".tmp"
         with _tarfile.open(tmp_tar, "w:gz") as tar:

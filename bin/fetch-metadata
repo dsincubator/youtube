@@ -374,4 +374,24 @@ for v in dropped:
     print(f"[fetch-metadata] dropped {v}")
 EOF
 
+# -- Archive metadata dumps as sibling metadata-raw.tar.gz (only <id>.json, not manifest.tsv)
+python3 - "$META_DIR" <<'EOF' || true
+import os, sys, glob, tarfile
+meta_dir = sys.argv[1]
+bundle_root = os.path.dirname(os.path.normpath(meta_dir)) or "."
+tar_path = os.path.join(bundle_root, "metadata-raw.tar.gz")
+pattern = os.path.join(meta_dir, "*.json")
+json_files = sorted([f for f in glob.glob(pattern) if not os.path.basename(f).startswith("._")])
+# Exclude manifest.tsv already (not json); json_files are only dumps
+if json_files:
+    tmp_tar = tar_path + ".tmp"
+    with tarfile.open(tmp_tar, "w:gz") as tar:
+        for f in json_files:
+            tar.add(f, arcname=os.path.basename(f))
+    os.replace(tmp_tar, tar_path)
+    print(f"[fetch-metadata] archived {len(json_files)} dumps -> {tar_path}")
+else:
+    print(f"[fetch-metadata] no dumps to archive in {meta_dir}/")
+EOF
+
 echo "[fetch-metadata] done: ${CSV}"

@@ -200,7 +200,7 @@ title: Bundle History Log
 ---
 # Bundle History Log
 - 2026-09-08: Initial assembly of {bundle_name} wiki bundle.
-- 2026-09-08: Release tag `{bundle_name}-v0.0.1` — `transcripts-raw.tar.gz` at bundle root (sibling of `transcripts/`, keep `.md` readable; distribution preference — see AGENTS.md).
+- 2026-09-08: Release tag `{bundle_name}-v0.0.1` — `transcripts-raw.tar.gz` + `metadata-raw.tar.gz` at bundle root (siblings of `transcripts/`/`metadata/`, keep `.md` readable; distribution preference — see AGENTS.md).
 """)
 
 # 5. References index.md (§6.3)
@@ -212,6 +212,304 @@ title: References & External Executors
 ---
 # References
 External executors and attestation anchors for {bundle_name}.
+""")
+
+# 6. Data dictionaries (§4.1) + data/index.md (§8)
+# Deterministic generation: headers from AGENTS.md:9 + static column/field descriptions.
+# Each dictionary is a Concept (§4.1) with credibility signals and agent actor.
+import csv as _csv
+from datetime import datetime, timezone
+
+data_dir = os.path.join(bundle_dir, "data")
+os.makedirs(data_dir, exist_ok=True)
+gen_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+# Fallback to static date if dynamic not desired: keep ISO for OKF
+if not gen_at:
+    gen_at = "2026-09-08T00:00:00Z"
+# Try to read metadata.csv header/row count for credibility signals
+csv_candidates = [
+    os.path.join(bundle_dir, "metadata.csv"),
+    os.path.join(bundle_dir, "data", "metadata.csv"),
+    os.path.join("data", "metadata.csv"),
+]
+csv_path_found = None
+csv_header = None
+csv_rowcount = 0
+for _p in csv_candidates:
+    if os.path.isfile(_p):
+        csv_path_found = _p
+        try:
+            with open(_p, encoding="utf-8") as _f:
+                _r = _csv.DictReader(_f)
+                csv_header = _r.fieldnames
+                csv_rowcount = sum(1 for _ in _r)
+        except Exception:
+            pass
+        break
+if not csv_header:
+    csv_header = ["playlist_index","title","id","view_count","like_count","comment_count","upload_date","upload_date_iso","duration","duration_string","channel","uploader","url"]
+# Static column descriptions (AGENTS.md:9)
+col_desc = {
+    "playlist_index": "Playlist position (1-indexed integer from `yt-dlp --flat-playlist --print playlist_index`).",
+    "title": "Video title as returned by YouTube (`title`).",
+    "id": "YouTube video ID (11-char string; join key to `transcripts/<id>_<slug>.md` and `metadata/<id>.json`).",
+    "view_count": "View count at fetch time (`view_count`; integer, may be empty if unavailable).",
+    "like_count": "Like count (`like_count`; may be empty if disabled/hidden).",
+    "comment_count": "Comment count (`comment_count`; includes available comments).",
+    "upload_date": "Upload date as `YYYYMMDD` (`upload_date`).",
+    "upload_date_iso": "Upload date normalized to ISO-8601 `YYYY-MM-DD` derived from `upload_date`.",
+    "duration": "Duration in seconds (`duration`; integer).",
+    "duration_string": "Human-readable duration `H:MM:SS` or `M:SS` derived from `duration`.",
+    "channel": "YouTube channel display name (`channel`).",
+    "uploader": "Uploader identifier (`uploader`).",
+    "url": "Canonical watch URL `https://www.youtube.com/watch?v=<id>` derived from `id`.",
+}
+# Count metadata json files for credibility
+meta_dir = os.path.join(bundle_dir, "metadata")
+meta_count = len(glob.glob(os.path.join(meta_dir, "*.json"))) if os.path.isdir(meta_dir) else csv_rowcount
+# Sample one metadata json for raw dictionary annotation
+sample_meta = None
+if os.path.isdir(meta_dir):
+    _samples = sorted(glob.glob(os.path.join(meta_dir, "*.json")))
+    if _samples:
+        try:
+            with open(_samples[0], encoding="utf-8") as _jf:
+                import json as _json
+                sample_meta = _json.load(_jf)
+        except Exception:
+            sample_meta = None
+# Transcripts count
+trans_dir = os.path.join(bundle_dir, "transcripts")
+trans_md_count = len(glob.glob(os.path.join(trans_dir, "*.md"))) if os.path.isdir(trans_dir) else 0
+# Common generated block
+def _gen_block():
+    return f"generated:\n  by: \"agent:okf-wiki-builder/1.0\"\n  at: \"{gen_at}\""
+# log tag
+release_tag = f"{bundle_name}-v0.0.1"
+# 6a. data/metadata.md
+metadata_md_path = os.path.join(data_dir, "metadata.md")
+with open(metadata_md_path, "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: Concept
+title: Metadata CSV Dictionary
+description: Column dictionary for metadata.csv — derived table of YouTube playlist metadata (one row per public video).
+tags:
+- {bundle_tag}
+- data-dictionary
+- metadata
+{_gen_block()}
+status: stable
+sources:
+- id: {bundle_name}-metadata-csv
+  title: "{bundle_name} metadata.csv"
+  resource: "metadata.csv"
+  author: "Posit PBC"
+  usage_count: {csv_rowcount if csv_rowcount else meta_count}
+  last_modified: "2026-09-08"
+---
+
+# Metadata CSV Dictionary (`metadata.csv`)
+
+Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` (see `metadata-raw.tar.gz`). One row per public video; private/unavailable videos have no row (see `metadata/manifest.tsv`).
+
+**Location:** `metadata.csv` at bundle root (build intermediate; not shipped as release asset — see dictionaries `data/metadata-raw.md` for the shipped raw archive). For the canonical `dsincubator` bundle this lives at `data/metadata.csv`; per-bundle bundles expose it at `{bundle_name}/metadata.csv`.
+
+**Release:** Raw dumps are published as `metadata-raw.tar.gz` at bundle root (sibling of `metadata/`, not inside it) and attached as GitHub Release asset under tag `{release_tag}` (see `log.md`). See `data/metadata-raw.md`.
+
+**Columns** (`{",".join(csv_header)}` per `AGENTS.md:9`):
+
+| Column | Description |
+|--------|-------------|
+""")
+    for col in csv_header:
+        desc = col_desc.get(col, "")
+        f.write(f"| `{col}` | {desc} |\n")
+    f.write(f"""
+**Join key:** `id` → `transcripts/<id>_<slug>.md` (`resource: https://www.youtube.com/watch?v=<id>`) and `sources/source_<id>_<slug>.md`.
+
+**Provenance:** `yt-dlp --skip-download --dump-single-json` per video → `metadata/<id>.json` (slimmed: `automatic_captions`/`subtitles`/`formats` pruned) → derived `metadata.csv`. Manifest `metadata/manifest.tsv` records terminal states (`ok`/`private`/`unavailable`/`error`).
+
+**Workflow:** download raw → `metadata-raw.tar.gz` sibling → derive `metadata.csv` → use for `fetch-transcripts`/`convert`/`distill`.
+
+""")
+
+# 6b. data/metadata-raw.md
+field_desc = {
+    "id": "YouTube video ID (join key; filename `<id>.json`).",
+    "title": "Video title.",
+    "description": "Full video description (YouTube `description`; may be long, markdown-unescaped).",
+    "channel": "Channel display name.",
+    "uploader": "Uploader handle/ID.",
+    "view_count": "View count at dump time.",
+    "like_count": "Like count (may be null if hidden).",
+    "comment_count": "Comment count at dump time.",
+    "upload_date": "Upload date `YYYYMMDD`.",
+    "chapters": "Auto-detected chapters (`chapters[]: {start_time, title, end_time}`; may be empty).",
+    "comments": "Top comments array when `--write-comments` enabled (may be truncated by YouTube; `comments[]`).",
+    "duration": "Duration seconds.",
+    "duration_string": "Human-readable duration (derived, but stored in CSV not raw).",
+    "tags": "YouTube tags array (`tags[]`).",
+    "categories": "YouTube categories.",
+    "timestamp": "Publish timestamp (Unix epoch).",
+    "availability": "Availability string (`public`/`private`/`unavailable`).",
+}
+pruned_note = "`automatic_captions`, `subtitles`, `formats`, `requested_formats`, `requested_downloads` are pruned by `slim_dump()` in `bin/fetch-metadata` (≈97% bytes, expiring URLs) — not in the archive."
+kept_fields = ["id","title","description","channel","uploader","view_count","like_count","comment_count","upload_date","chapters","comments"]
+with open(os.path.join(data_dir, "metadata-raw.md"), "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: Concept
+title: Metadata Raw Archive Dictionary
+description: Field dictionary for metadata-raw.tar.gz — raw per-video dumps metadata/<id>.json (yt-dlp --dump-single-json, slimmed).
+tags:
+- {bundle_tag}
+- data-dictionary
+- metadata-raw
+{_gen_block()}
+status: stable
+sources:
+- id: {bundle_name}-metadata-raw
+  title: "{bundle_name} metadata-raw.tar.gz"
+  resource: "metadata-raw.tar.gz"
+  author: "Posit PBC"
+  usage_count: {meta_count}
+  last_modified: "2026-09-08"
+---
+
+# Metadata Raw Archive Dictionary (`metadata-raw.tar.gz`)
+
+Raw per-video dumps `metadata/<id>.json` produced by `yt-dlp --skip-download --dump-single-json` (with `--write-comments` where enabled). Each file is the richest record per video; post-processing (CSV, wiki) is separate from fetching.
+
+**Location:** `metadata-raw.tar.gz` at **bundle root** (sibling of `metadata/`, not inside it). Contains only `<id>.json` files (excludes `metadata/manifest.tsv`). {pruned_note} Remainder is kept as-is (≈ `id,title,description,channel,uploader,view_count,like_count,comment_count,upload_date,chapters,comments` plus lightweight fields like `duration, tags, timestamp, availability, thumbnails, etc.`).
+
+**Release:** Attached as GitHub Release asset together with the final repo version (manual after review, not in `bin/build-wiki`). Version tag recorded in `log.md` as `{release_tag}` and in git as `{release_tag}`. See `log.md`.
+
+**Archive creation:** `bin/fetch-metadata` auto-creates `metadata-raw.tar.gz` after CSV derive (re-created on every `--refresh` or new fetches): `tar -czf metadata-raw.tar.gz metadata/*.json`.
+
+**Core fields** (sample from `{os.path.basename(sorted(glob.glob(os.path.join(meta_dir, "*.json")))[0]) if os.path.isdir(meta_dir) and glob.glob(os.path.join(meta_dir, "*.json")) else "<id>.json"}`):
+
+| Field | Description |
+|-------|-------------|
+""")
+    for fld in kept_fields:
+        f.write(f"| `{fld}` | {field_desc.get(fld, '')} |\n")
+    f.write(f"""
+Additional preserved fields (selected): `duration`, `tags`, `categories`, `timestamp`, `availability`, `channel_id`, `uploader_id`, `webpage_url`, `thumbnails`, `heatmap`, `chapters`, `comments`.
+
+Pruned (reproducible/expired): `automatic_captions`, `subtitles`, `formats`, `requested_formats`, `requested_downloads`.
+
+**Manifest:** `metadata/manifest.tsv` (`id | status | reason | file`) records terminal states `ok`/`private`/`unavailable`/`error` — not archived, lives in `metadata/`.
+
+""")
+
+# 6c. data/transcripts-raw.md
+# Try to sample a json3 for stats (skip Apple resource forks "._" )
+trans_sample_info = ""
+try:
+    import tarfile as _tarfile, json as _json2, io as _io
+    tar_path = os.path.join(bundle_dir, "transcripts-raw.tar.gz")
+    if os.path.isfile(tar_path):
+        with _tarfile.open(tar_path, "r:gz") as _tf:
+            for _m in _tf.getmembers():
+                _base = os.path.basename(_m.name)
+                if _base.startswith("._") or "/._" in _m.name:
+                    continue
+                if _m.name.endswith(".json3"):
+                    _f = _tf.extractfile(_m)
+                    if _f:
+                        try:
+                            _j = _json2.load(_io.TextIOWrapper(_f, encoding="utf-8"))
+                        except Exception:
+                            continue
+                        evs = _j.get("events", [])
+                        trans_sample_info = f"Sample `{_base}`: {len(evs)} events"
+                    break
+except Exception:
+    pass
+if not trans_sample_info:
+    # fallback to any json3 in transcripts/
+    _jpaths = sorted(glob.glob(os.path.join(trans_dir, "*.json3")))
+    if _jpaths:
+        try:
+            import json as _json3
+            with open(_jpaths[0], encoding="utf-8") as _jf:
+                _j = _json3.load(_jf)
+                trans_sample_info = f"Sample `{os.path.basename(_jpaths[0])}`: {len(_j.get('events', []))} events"
+        except Exception:
+            trans_sample_info = "Sample `*.json3`: events[].tStartMs/dDurationMs + segs[].utf8/tOffsetMs"
+
+with open(os.path.join(data_dir, "transcripts-raw.md"), "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: Concept
+title: Transcripts Raw Archive Dictionary
+description: Schema dictionary for transcripts-raw.tar.gz — raw caption files (json3/srv3/vtt) before deterministic OKF markdown conversion.
+tags:
+- {bundle_tag}
+- data-dictionary
+- transcripts-raw
+{_gen_block()}
+status: stable
+sources:
+- id: {bundle_name}-transcripts-raw
+  title: "{bundle_name} transcripts-raw.tar.gz"
+  resource: "transcripts-raw.tar.gz"
+  author: "process:yt-dlp"
+  usage_count: {trans_md_count if trans_md_count else csv_rowcount}
+  last_modified: "2026-09-08"
+---
+
+# Transcripts Raw Archive Dictionary (`transcripts-raw.tar.gz`)
+
+Raw captions downloaded by `bin/fetch-transcripts` via `yt-dlp --skip-download --write-auto-subs --sub-langs "en-orig,es-orig,en.*,es.*" --sub-format "json3/srv3/vtt/best"` (fallback `--sub-langs ".*-orig"` once). One file per public video, preference `en-orig` > `es-orig` > `*-orig` > `en` > `es`; duplicates/translations pruned.
+
+**Location:** `transcripts-raw.tar.gz` at **bundle root** (sibling of `transcripts/`, not inside it). Contains raw `*.json3`/`*.vtt`/`*.srv3` etc. (kept `transcripts/*.md` + `manifest.tsv` readable in `transcripts/`). Archive is cleaned from `transcripts/` after conversion by `bin/convert-transcripts`: workflow `download raw → generate transcripts-raw.tar.gz sibling → generate transcripts/<id>_<slug>.md` (`mm:ss: text` per `tStartMs`, deterministic, no LLM) → remove non-`.md` from `transcripts/`.
+
+**Release:** Attached as GitHub Release asset together with the final repo version (manual after review). Version tag recorded in `log.md` as `{release_tag}` and in git as `{release_tag}`. See `log.md`.
+
+**Archive creation:** `bin/convert-transcripts` auto-creates `transcripts-raw.tar.gz` after every run (raw `*.json3`/`*.srv3`/`*.vtt`/`*.srt`/`*.tsv`/`*.txt` inside `transcripts/` → tar sibling → clean raw files, keep `.md`).
+
+**Schema — `*.json3` (`{trans_sample_info}`) per `AGENTS.md:39`:**
+
+| Path | Type | Description |
+|------|------|-------------|
+| `events[]` | array | Caption events (one per cue). |
+| `events[].tStartMs` | integer | Event start time in milliseconds. |
+| `events[].dDurationMs` | integer | Event duration in milliseconds. |
+| `events[].segs[]` | array | Word-level segments inside the event. |
+| `events[].segs[].utf8` | string | Caption text fragment (may be word or phrase; join to form `text`). |
+| `events[].segs[].tOffsetMs` | integer | Offset of this segment relative to `tStartMs`. |
+| `events[].segs[].acAsrConf` | integer (0-1) | ASR confidence (present when available). |
+
+Deterministic transcript conversion (`bin/convert-transcripts --format md`): each `events[]` → one line `mm:ss: text` (or `h:mm:ss: text` when ≥1h) derived from `tStartMs`; plain body `text` is `\"\".join(segs[].utf8)`. Frontmatter is re-derived per spec (description from first substantive sentence, tags via `TAG_RULES`, `lang` from track `en-orig`/`es-orig`, `usage_count`/`last_modified`/`usage_window` from `metadata.csv`).
+
+**Multi-format note:** Some videos have only `vtt`/`srv3` fallback (e.g., 13 `vtt`-only in `dshangout` — still archived; `.md` derived where `json3` available, else `vtt` may require manual conversion). See `transcripts/manifest.tsv` (`id | status | file | lang`) for per-video track chosen.
+
+""")
+
+# 6d. data/index.md (§8)
+with open(os.path.join(data_dir, "index.md"), "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: Data Index
+description: Index of data dictionaries for {bundle_name}.
+tags:
+- {bundle_tag}
+- data-index
+---
+
+# Data Index ({bundle_name.title()})
+
+Dictionaries describing the derived and raw datasets that underpin this bundle.
+
+- [Metadata CSV Dictionary](metadata.md) — column dictionary for `metadata.csv` (derived table).
+- [Metadata Raw Archive Dictionary](metadata-raw.md) — field dictionary for `metadata-raw.tar.gz` (raw `metadata/<id>.json` dumps).
+- [Transcripts Raw Archive Dictionary](transcripts-raw.md) — schema dictionary for `transcripts-raw.tar.gz` (raw `*.json3` captions).
+
+History lives in bundle root `log.md` (no separate `data/log.md`; see `AGENTS.md:338`); release tags like `{release_tag}` are recorded there and in git. Raw archives are siblings at bundle root, not inside `data/` or `transcripts/`/`metadata/`, per distribution preferences.
+
 """)
 
 print(f"[assemble-bundle] successfully assembled bundle structure in {bundle_dir}/")

@@ -78,6 +78,48 @@ echo "=== Step 5: Clustering Topics ==="
 echo "=== Step 6: Generating Topics ==="
 ./bin/generate-topics --manifest "$OUT_DIR/planning_manifest.json" --sources-dir "$OUT_DIR/sources" --out-dir "$OUT_DIR/topics"
 
+echo "=== Step 6b: Ensuring Raw Archives ==="
+python3 - "$OUT_DIR" <<'PYEOF'
+import os, sys, glob, tarfile
+bundle_dir = sys.argv[1]
+# metadata-raw.tar.gz sibling of metadata/
+meta_dir = os.path.join(bundle_dir, "metadata")
+tar_meta = os.path.join(bundle_dir, "metadata-raw.tar.gz")
+if not os.path.isfile(tar_meta):
+    jfiles = sorted(glob.glob(os.path.join(meta_dir, "*.json")))
+    if jfiles:
+        tmp = tar_meta + ".tmp"
+        with tarfile.open(tmp, "w:gz") as tar:
+            for f in jfiles:
+                tar.add(f, arcname=os.path.basename(f))
+        os.replace(tmp, tar_meta)
+        print(f"[build-wiki] ensured {tar_meta} ({len(jfiles)} files)")
+    else:
+        print(f"[build-wiki] skip metadata-raw: no json in {meta_dir}/")
+else:
+    print(f"[build-wiki] exists {tar_meta}")
+# transcripts-raw.tar.gz sibling of transcripts/
+trans_dir = os.path.join(bundle_dir, "transcripts")
+tar_trans = os.path.join(bundle_dir, "transcripts-raw.tar.gz")
+if not os.path.isfile(tar_trans):
+    raw_pats = ["*.json3","*.srv3","*.srv2","*.srv1","*.vtt","*.srt","*.ttml","*.sbv","*.tsv","*.txt"]
+    raw_files = []
+    for pat in raw_pats:
+        raw_files.extend(glob.glob(os.path.join(trans_dir, pat)))
+    raw_files = [f for f in raw_files if os.path.basename(f) != "manifest.tsv" and not os.path.basename(f).startswith("._")]
+    if raw_files:
+        tmp = tar_trans + ".tmp"
+        with tarfile.open(tmp, "w:gz") as tar:
+            for f in sorted(raw_files):
+                tar.add(f, arcname=os.path.basename(f))
+        os.replace(tmp, tar_trans)
+        print(f"[build-wiki] ensured {tar_trans} ({len(raw_files)} raw files)")
+    else:
+        print(f"[build-wiki] no raw transcripts to archive (kept .md only, tar sibling already clean)")
+else:
+    print(f"[build-wiki] exists {tar_trans}")
+PYEOF
+
 echo "=== Step 7: Assembling Bundle ==="
 ./bin/assemble-bundle --bundle-dir "$OUT_DIR" --manifest "$OUT_DIR/planning_manifest.json" --bundle-name "$BUNDLE_NAME" --bundle-tag "$BUNDLE_TAG" --playlist-url "$PLAYLIST"
 

@@ -89,12 +89,13 @@ Flags: `--refresh`, `--playlist URL`, `--csv PATH`, `--meta-dir DIR`, `--limit N
 
 Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<id>.json` (skips existing dumps unless `--refresh`; corrupt dumps re-fetched), then `data/metadata.csv` derived from the store (atomic replace; refresh aborts when >2 and >10% of videos fail). Terminal states (`private`/`unavailable` with reason) are recorded in `metadata/manifest.tsv` and skipped on later runs — `--refresh` re-probes them. Per-video logs to `/tmp/fetch-metadata-<id>.log`.
 
-## STATUS (2026-09-08)
+## STATUS (2026-09-09)
 
 - [x] `metadata/`: 151 dumps + `manifest.tsv` (154 rows: 151 `ok`, 3 `private` with reasons).
 - [x] `data/metadata.csv`: 151 rows derived, join integrity holds.
-- [x] `transcripts/`: 151/151 fetched, all `ok`; `.txt`/`.tsv`/`.md` (OKF v0.2) derived for all 151 via `bin/convert-transcripts`.
-- [x] `bin/convert-transcripts`: supports `--format md` and `--format all`; generates OKF v0.2 transcripts with YAML frontmatter.
+- [x] `transcripts/`: 151/151 fetched, all `ok`; `.md` (OKF v0.2) derived for all 151 via `bin/convert-transcripts` (deterministic `mm:ss: text`, `transcripts-raw.tar.gz` sibling archived + cleaned).
+- [x] `bin/convert-transcripts`: supports `--format md` and `--format all`; generates OKF v0.2 transcripts with YAML frontmatter; auto-creates `transcripts-raw.tar.gz` sibling.
+- [x] `bin/fetch-metadata`: auto-creates `metadata-raw.tar.gz` sibling after CSV derive (only `<id>.json`, excludes `manifest.tsv`).
 - [x] `README.qmd`: live R chunks (Structure, Fetch → Example metadata/transcript, Wiki → Example topics/source); libs at top, `knitr::opts_chunk$set()` header, no `head()`/`Join Summary`; restructured to workflow order (fewer/shorter headings).
 - [x] `README.md`: rendered from `README.qmd` via `quarto render README.qmd --to gfm --quiet`.
 - [x] Open question resolved: `sbp5Q8niTho` comment was deleted from YouTube (fetch succeeded, database stands).
@@ -107,11 +108,12 @@ Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<i
 - [x] `topics/` (2026-09-08): **59/59** `dsincubator/topics/` pages with `type` (§4.1), `sources` credibility (§5.1), actor `agent:okf-wiki-builder/1.0` (§7), cross-links (§6), `Attested Computation` for pipelines (§10); YAML quoting fixed for 3 topics.
 - [x] Bundle assembly: `dsincubator/index.md` (okf_version 0.2 §12), `topics/index.md` (§8), `sources/index.md` (§8), `sources/log.md` (§9), `log.md` (§9), `references/` (§6.3); conformance check passed.
 - [x] `README.qmd`: Wiki section points to bundle entry point; `README.md` re-rendered (workflow order, fewer headings, 1-row tables dropped).
+- [x] `data/` directory (2026-09-09): **151/151** ok via `bin/assemble-bundle` — `data/metadata.md` + `data/metadata-raw.md` + `data/transcripts-raw.md` + `data/index.md` (§8) as `type: Concept` (§4.1) with `sources[]` credibility + `agent:okf-wiki-builder/1.0` (§7), cross-links to `transcripts-raw.tar.gz`/`metadata-raw.tar.gz` release assets (`log.md` tag `dsincubator-v0.0.1`); verified on `~/git/dsincubator/dslab` (23/23, `LDHGENv1NP4: 3288 events`) + `~/git/dsincubator/dshangout` (217/230 md, 13 `vtt`-only, `HtKgIrOnJc8: 2992 events`) — deterministic `mm:ss: text`, archives at bundle root, `README.md` per `dslab` style.
 
 ## NEXT (fresh-agent runbook — start here)
 
 0. Read this file top to bottom, then `planning_manifest.json` and [`dsincubator/index.md`](dsincubator/index.md). Do not touch `transcripts/` frontmatter by hand — `bin/convert-transcripts` owns it.
-1. **Bundle is complete as of 2026-09-08**: `sources/` 151/151, `topics/` 59/59, bundle indexes + `log.md` present. For maintenance, see `## GENERALIZED WORKFLOW` for the parameterized pipeline.
+1. **Bundle is complete as of 2026-09-09**: `sources/` 151/151, `topics/` 59/59, bundle indexes + `log.md` + `data/` 4/4 present (`data/metadata.md`, `data/metadata-raw.md`, `data/transcripts-raw.md`, `data/index.md` §8). For maintenance, see `## GENERALIZED WORKFLOW` for the parameterized pipeline.
 2. **When a new video/transcript appears** (or existing transcript updated):
     a. Fetch: `./bin/fetch-metadata` → `./bin/fetch-transcripts` → `./bin/convert-transcripts --format md` (creates `transcripts/<id>_<slug>.md` OKF v0.2).
     b. Distill one source: scaffold frontmatter deterministically from transcript + `data/metadata.csv` (copy `title`, `tags`, `lang`, `usage_count`, `last_modified`, `usage_window`, `sources[]` byte-identical; `type: source`, `generated.by: agent:okf-wiki-builder/1.0`, `status: draft`; fill `key_topics` only) and write body per **Extraction Prompt v2** (Summary + Key Concepts + Code Snippets; `es` → Spanish body, English `key_topics` bilingual headings). Use `transcripts/<id>_*.md` glob for slug. See `bin/distill-sources --help`.
@@ -328,8 +330,15 @@ qmd query "question" -c dslab -n 3
 ### Distribution Preferences
 
 - **Transcripts**: `transcripts/<id>_<slug>.md` bodies are deterministic `mm:ss: text` per `tStartMs` (no LLM) — keep `.md` + `manifest.tsv` readable in `transcripts/`. Raw captions (`*.json3`, `*.vtt`, `*.srt`, `*.srv3`, `*.tsv`, `*.txt`) archived as `transcripts-raw.tar.gz` at **bundle root** (sibling of `transcripts/`), not inside it. `bin/convert-transcripts` auto-creates this archive and cleans raw files from `transcripts/` after every run (workflow: download raw → generate `transcripts-raw.tar.gz` sibling → generate `.md` under `transcripts/` → remove non-`.md` from `transcripts/`).
+- **Metadata**: `metadata/` raw dumps (`metadata/<id>.json` per video + `metadata/manifest.tsv`) archived as `metadata-raw.tar.gz` at **bundle root** (sibling of `metadata/`), not inside it. `bin/fetch-metadata` auto-creates this archive after CSV derive; `metadata.csv` (derived table, bundle root `data/metadata.csv` for `dsincubator` 151, per-bundle `bundle/metadata.csv`) is build intermediate used by `fetch-transcripts`/`convert`/`distill` but not shipped; only dictionaries are published.
 - **README**: bundles emit `README.md` at bundle root per `dslab/README.md` wording — `# <Title> Wiki`, `Knowledge base of ... [Playlist](url) ... [LLM wiki](karpathy) in [OKF](gcp) v0.2`, `Both humans and AI-agents should start at [index.md](index.md)`, `See [tools, tips and tricks](karpathy#optional-cli-tools) ...` (no image; `raw/assets/graph.png` deleted).
-- **Releases**: `transcripts-raw.tar.gz` attached as GH release asset together with final repo version. Version tag recorded in bundle `log.md` (e.g., `dslab-v0.0.1`, `dshangout-v0.0.1`) and in git as `bundle-v0.0.1`. Release creation is manual after review (not in `bin/build-wiki`).
+- **Data directory**: bundles emit `data/` as `type: Concept` dictionaries (§4.1) + indexes:
+  - `data/metadata.md` — column dictionary for `metadata.csv` (`playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url` per `AGENTS.md:9`) — auto-generated from header + static descriptions.
+  - `data/metadata-raw.md` — field dictionary for `metadata-raw.tar.gz` (`<id>.json` skimmed `automatic_captions/subtitles/formats` pruned, rest kept: `id,title,description,channel,uploader,view_count,like_count,comment_count,upload_date,chapters,comments`) — auto-generated by sampling one dump + static annotations; explains `metadata-raw.tar.gz` is attached as GH release asset.
+  - `data/transcripts-raw.md` — schema dictionary for `transcripts-raw.tar.gz` (`events[].tStartMs/dDurationMs` + `segs[].utf8/tOffsetMs/acAsrConf` per `AGENTS.md:39`) — auto-generated from one `json3` sample + static annotations; explains `transcripts-raw.tar.gz` is attached as GH release asset.
+  - `data/index.md` (§8) — directory index listing the three dictionaries.
+  - `data/` has no separate `log.md`; history lives in bundle root `log.md` (`AGENTS.md:182`) which records release tags.
+- **Releases**: `transcripts-raw.tar.gz` + `metadata-raw.tar.gz` attached as GH release assets together with final repo version. Version tag recorded in bundle `log.md` (e.g., `dslab-v0.0.1`, `dshangout-v0.0.1`) and in git as `bundle-v0.0.1`. Release creation is manual after review (not in `bin/build-wiki`). `.gitignore:11` ignores `**/transcripts-raw.tar.gz` and `**/metadata-raw.tar.gz`.
 
 ### TODO List
 
@@ -346,8 +355,25 @@ qmd query "question" -c dslab -n 3
 - [x] **Update `README.qmd`/`README.md`**: add dslab section or make generic
 - [x] **Test with `--count 3`**: `./bin/build-wiki --count 3 --playlist "PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab`
 - [x] **Verify dslab bundle conformance**: every concept has `type`, `sources` arrays populated, actor convention followed, `log.md` present
-- [ ] **Full run (all 27 videos)**: `./bin/build-wiki --playlist "PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab`
-- [ ] **qmd integration**: `qmd collection add ./dslab --name dslab && qmd embed -c dslab`
+- [x] **Full run (all 23 videos)**: `./bin/build-wiki --playlist "PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab` (2026-09-09: 23/23, `LDHGENv1NP4: 3288 events`; playlist currently 23, down from 27)
+- [ ] **qmd integration**: `qmd collection add ./dslab --name dslab && qmd embed -c dslab` — **NEXT**
+- [x] **Add `data/` directory to bundles** (fresh-agent runbook — deterministic, no LLM):
+  - [x] `bin/fetch-metadata`: after CSV derive, create `metadata-raw.tar.gz` at bundle root from `metadata/` (`<id>.json` only, excludes `manifest.tsv`; `automatic_captions/subtitles/formats` already pruned per `slim_dump()`) — sibling of `metadata/`, not inside it.
+  - [x] `bin/assemble-bundle`: generate `data/` as `type: Concept` dictionaries + `data/index.md` (§8):
+    - `data/metadata.md` — column dictionary for `metadata.csv` (`AGENTS.md:9` header + static descriptions)
+    - `data/metadata-raw.md` — field dictionary for `metadata-raw.tar.gz` (sample one `<id>.json`, static annotations for `chapters/comments`)
+    - `data/transcripts-raw.md` — schema dictionary for `transcripts-raw.tar.gz` (`AGENTS.md:39` + sample `json3`)
+    - Each `*.md` explains its `.tar.gz` is attached as GH release asset per `AGENTS.md:182` `log.md` tag.
+  - [x] `bin/build-wiki`: ensure `metadata-raw.tar.gz` + `transcripts-raw.tar.gz` exist before `assemble-bundle`; `data/` is part of bundle assembly.
+  - [x] `.gitignore:11` already ignores `**/transcripts-raw.tar.gz`; add `**/metadata-raw.tar.gz`.
+  - [x] Test on both bundles: `~/git/dsincubator/dslab` (23/23) + `~/git/dsincubator/dshangout` (217/230 md, 13 `vtt`-only) — verify `data/*.md` have `type: Concept`, `sources[]` credibility, `generated.by: agent:okf-wiki-builder/1.0`, cross-link to `transcripts-raw.tar.gz`/`metadata-raw.tar.gz` release notes.
+
+### NEXT PLAN — cleanup + qmd (2026-09-09)
+
+- [ ] Remove `graph.png` + `Untitled.canvas` cruft (already deleted locally; ensure not re-added; `AGENTS.md:45` + `Distribution Preferences` forbid `raw/assets/graph.png`)
+- [ ] Commit current pipeline (6 files): `AGENTS.md` STATUS/NEXT/TODO + `bin/*` (fetch/convert/assemble/build) + `.gitignore` (`metadata-raw.tar.gz`)
+- [ ] Push + verify `transcripts/manifest.tsv` is tracked (was untracked after reorganize; `git add transcripts/manifest.tsv`)
+- [ ] `qmd` next: `qmd collection add ./dslab --name dslab && qmd embed -c dslab` + same for `dshangout`; verify `qmd search`/`query` on `data/` dictionaries
 
 ### IDEAS / PLAN
 

@@ -111,9 +111,21 @@ qmd query "question" -c {bundle_name} -n 3
 """
 with open(root_index_path, "w", encoding="utf-8") as f:
     f.write(root_content)
-# README.md — brief sentence + links (§12)
+# README.md — wording/format of dslab/README.md (no image)
+# Knowledge base ... [Playlist](url), structured as [LLM wiki] in [OKF] v0.2. Both humans and AI-agents should start at [index.md].
+title_map = {"dslab": "Posit Data Science Lab", "dshangout": "Data Science Hangout", "dsincubator": "Posit Data Science Incubator"}
+display_title = title_map.get(bundle_name, bundle_name.replace("-", " ").title())
+playlist_md = f"[Playlist]({playlist_url})" if playlist_url else "Playlist"
+readme_content = f"""# {display_title} Wiki
+
+Knowledge base of the {display_title} {playlist_md}, structured as an [LLM wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) in the [Open Knowledge Format (OKF)](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing) v0.2.
+
+Both humans and AI-agents should start at [index.md](index.md).
+
+See [tools, tips and tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#optional-cli-tools) to read, query and graph your wiki.
+"""
 with open(os.path.join(bundle_dir, "README.md"), "w", encoding="utf-8") as f:
-    f.write(f"# {bundle_name.title()} bundle\n\nOKF v0.2 wiki for `{bundle_name}` — start at [`index.md`](index.md) (§12). {playlist_line}.\n\n- Topics: [`topics/concepts-overview.md`](topics/concepts-overview.md)\n- Sources: [`sources/index.md`](sources/index.md)\n- Log: [`log.md`](log.md)\n")
+    f.write(readme_content)
 
 # 2. Topics concepts-overview.md (§3.1)
 topics_overview_path = os.path.join(topics_dir, "concepts-overview.md")
@@ -178,7 +190,7 @@ title: Sources Ingest Log
 with open(os.path.join(sources_dir, "log.md"), "w", encoding="utf-8") as f:
     f.write(sources_log_content)
 
-# 4. Root log.md (§9)
+# 4. Root log.md (§9) — includes version tag for GH release asset
 root_log_path = os.path.join(bundle_dir, "log.md")
 with open(root_log_path, "w", encoding="utf-8") as f:
     f.write(f"""---
@@ -188,6 +200,7 @@ title: Bundle History Log
 ---
 # Bundle History Log
 - 2026-09-08: Initial assembly of {bundle_name} wiki bundle.
+- 2026-09-08: Release tag `{bundle_name}-v0.0.1` — `transcripts-raw.tar.gz` at bundle root (sibling of `transcripts/`, keep `.md` readable; distribution preference — see AGENTS.md).
 """)
 
 # 5. References index.md (§6.3)

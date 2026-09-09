@@ -6,6 +6,8 @@
 */blog_files
 **/*.html
 raw/
+transcripts-raw.tar.gz
+**/transcripts-raw.tar.gz
 
 /.quarto/
 **/*.quarto_ipynb

@@ -325,6 +325,12 @@ qmd query "question" -c dslab -n 3
 - **No `ds-incubator` references** in new bundles
 - Frontmatter `tags` = `[bundle_tag, <extracted_topics>]`
 
+### Distribution Preferences
+
+- **Transcripts**: `transcripts/<id>_<slug>.md` bodies are deterministic `mm:ss: text` per `tStartMs` (no LLM) — keep `.md` + `manifest.tsv` readable in `transcripts/`. Raw captions (`*.json3`, `*.vtt`, `*.srt`, `*.srv3`, `*.tsv`, `*.txt`) archived as `transcripts-raw.tar.gz` at **bundle root** (sibling of `transcripts/`), not inside it. `bin/convert-transcripts` auto-creates this archive and cleans raw files from `transcripts/` after every run (workflow: download raw → generate `transcripts-raw.tar.gz` sibling → generate `.md` under `transcripts/` → remove non-`.md` from `transcripts/`).
+- **README**: bundles emit `README.md` at bundle root per `dslab/README.md` wording — `# <Title> Wiki`, `Knowledge base of ... [Playlist](url) ... [LLM wiki](karpathy) in [OKF](gcp) v0.2`, `Both humans and AI-agents should start at [index.md](index.md)`, `See [tools, tips and tricks](karpathy#optional-cli-tools) ...` (no image; `raw/assets/graph.png` deleted).
+- **Releases**: `transcripts-raw.tar.gz` attached as GH release asset together with final repo version. Version tag recorded in bundle `log.md` (e.g., `dslab-v0.0.1`, `dshangout-v0.0.1`) and in git as `bundle-v0.0.1`. Release creation is manual after review (not in `bin/build-wiki`).
+
 ### TODO List
 
 - [x] **Add `requirements.txt`** with numpy, scipy, scikit-learn, hdbscan, PyYAML

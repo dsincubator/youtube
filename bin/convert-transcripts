@@ -330,5 +330,33 @@ for vid in ids:
         do_md(base, path, vid)
         ok += 1
 
+# -- Archive raw captions as sibling transcripts-raw.tar.gz (keep .md readable)
+# Bundle root = parent of out_dir, e.g. out_dir=dslab/transcripts -> dslab/
+if ok > 0:
+    import glob as _glob, tarfile as _tarfile
+    bundle_root = os.path.dirname(os.path.normpath(out_dir)) or "."
+    tar_path = os.path.join(bundle_root, "transcripts-raw.tar.gz")
+    # Collect raw files inside out_dir (keep .md and manifest.tsv)
+    raw_patterns = ["*.json3", "*.srv3", "*.srv2", "*.srv1", "*.vtt", "*.srt", "*.ttml", "*.sbv", "*.tsv", "*.txt"]
+    raw_files = []
+    for pat in raw_patterns:
+        raw_files.extend(_glob.glob(os.path.join(out_dir, pat)))
+    # Keep manifest.tsv readable; don't archive the tarball itself if inside out_dir (legacy)
+    raw_files = [f for f in raw_files if os.path.basename(f) != "manifest.tsv" and not f.endswith("transcripts-raw.tar.gz")]
+    if raw_files:
+        tmp_tar = tar_path + ".tmp"
+        with _tarfile.open(tmp_tar, "w:gz") as tar:
+            for f in sorted(raw_files):
+                tar.add(f, arcname=os.path.basename(f))
+        os.replace(tmp_tar, tar_path)
+        print(f"[convert-transcripts] archived {len(raw_files)} raw files -> {tar_path}")
+        # Remove raw files from transcripts/ (keep .md + manifest.tsv + transcripts-raw.tar.gz sibling)
+        for f in raw_files:
+            try:
+                os.remove(f)
+            except OSError:
+                pass
+        print(f"[convert-transcripts] cleaned {len(raw_files)} raw files from {out_dir}/ (kept .md)")
+
 print(f"[convert-transcripts] converted {ok}/{len(ids)} transcripts ({fmt} format)")
 PYEOF

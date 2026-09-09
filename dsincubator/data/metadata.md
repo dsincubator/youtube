@@ -9,7 +9,7 @@ tags:
 - metadata
 generated:
   by: "agent:okf-wiki-builder/1.0"
-  at: "2026-09-09T02:18:21Z"
+  at: "2026-09-09T02:20:21Z"
 status: stable
 sources:
 - id: dsincubator-metadata-csv
@@ -20,11 +20,11 @@ sources:
   last_modified: "2026-09-08"
 ---
 
-# Metadata CSV Dictionary (`metadata.csv`)
+# Metadata CSV Dictionary ([metadata.csv](metadata.csv))
 
 Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` (see `metadata-raw.tar.gz`). One row per public video; private/unavailable videos have no row (see `metadata/manifest.tsv`).
 
-**Location:** `metadata.csv` at bundle root (build intermediate; not shipped as release asset — see dictionaries `data/metadata-raw.md` for the shipped raw archive). For the canonical `dsincubator` bundle this lives at `data/metadata.csv`; per-bundle bundles expose it at `dsincubator/metadata.csv`.
+**Location:** [metadata.csv](metadata.csv) at bundle root (build intermediate; not shipped as release asset — see dictionaries `data/metadata-raw.md` for the shipped raw archive). For the canonical `dsincubator` bundle this lives at `data/metadata.csv`; per-bundle bundles expose it at `dsincubator/metadata.csv`.
 
 **Release:** Raw dumps are published as `metadata-raw.tar.gz` at bundle root (sibling of `metadata/`, not inside it) and attached as GitHub Release asset under tag `dsincubator-v0.0.1` (see `log.md`). See `data/metadata-raw.md`.
 

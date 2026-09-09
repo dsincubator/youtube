@@ -94,8 +94,10 @@ Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: t
 - [Topics Overview](topics/concepts-overview.md) — all concepts (§3.1)
 - [Topics Index](topics/index.md) (§8)
 - [Sources Index](sources/index.md) (§8) + [Sources Log](sources/log.md) (§9)
-- [Data Index](data/index.md) (§8) — dictionaries for [`metadata.csv`](metadata.csv), [`metadata/manifest.tsv`](metadata/manifest.tsv) ([dict](data/metadata-manifest.md)), [`metadata-raw.tar.gz`](metadata-raw.tar.gz) ([dict](data/metadata-raw.md)), [`transcripts-raw.tar.gz`](transcripts-raw.tar.gz) ([dict](data/transcripts-raw.md))
-- [Transcripts](transcripts/manifest.tsv) — `transcripts/<id>_<slug>.md` deterministic `mm:ss: text` per `tStartMs` + `manifest.tsv` (§8)
+- [Data Index](data/index.md) (§8) — dictionaries for [`metadata.csv`](metadata.csv), [`manifests/metadata.tsv`](manifests/metadata.tsv) ([dict](data/metadata-manifest.md)), [`manifests/transcripts.tsv`](manifests/transcripts.tsv), [`assets/metadata-raw.tar.gz`](assets/metadata-raw.tar.gz) ([dict](data/metadata-raw.md)), [`assets/transcripts-raw.tar.gz`](assets/transcripts-raw.tar.gz) ([dict](data/transcripts-raw.md)) + [Manifests](manifests/index.md) (§8)
+- [Manifests Index](manifests/index.md) (§8) — `manifests/metadata.tsv` + `transcripts.tsv` (fetch manifests, kept readable)
+- [Assets Index](assets/index.md) (§8) — `assets/*.tar.gz` release assets
+- [Transcripts](transcripts/manifest.tsv) — `transcripts/<id>_<slug>.md` deterministic `mm:ss: text` per `tStartMs` + `manifests/transcripts.tsv` (§8) (legacy `transcripts/manifest.tsv` for compat)
 - [Bundle History Log](log.md) (§9)
 - [References](references/index.md) (§6.3)
 
@@ -313,11 +315,11 @@ sources:
 
 # Metadata CSV Dictionary ([metadata.csv](metadata.csv))
 
-Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` (see `metadata-raw.tar.gz`). One row per public video; private/unavailable videos have no row (see `metadata/manifest.tsv`).
+Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` (see `assets/metadata-raw.tar.gz`). One row per public video; private/unavailable videos have no row (see `manifests/metadata.tsv`).
 
 **Location:** [metadata.csv](metadata.csv) at bundle root (build intermediate; not shipped as release asset — see dictionaries `data/metadata-raw.md` for the shipped raw archive). For the canonical `dsincubator` bundle this lives at `data/metadata.csv`; per-bundle bundles expose it at `{bundle_name}/metadata.csv`.
 
-**Release:** Raw dumps are published as `metadata-raw.tar.gz` at bundle root (sibling of `metadata/`, not inside it) and attached as GitHub Release asset under tag `{release_tag}` (see `log.md`). See `data/metadata-raw.md`.
+**Release:** Raw dumps are published as `assets/metadata-raw.tar.gz` at bundle root in `assets/` (sibling of `manifests/`/`data/`) and attached as GitHub Release asset under tag `{release_tag}` (see `log.md`). See `data/metadata-raw.md`.
 
 **Columns** (`{",".join(csv_header)}` per `AGENTS.md:9`):
 
@@ -330,9 +332,9 @@ Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` 
     f.write(f"""
 **Join key:** `id` → `transcripts/<id>_<slug>.md` (`resource: https://www.youtube.com/watch?v=<id>`) and `sources/source_<id>_<slug>.md`.
 
-**Provenance:** `yt-dlp --skip-download --dump-single-json` per video → `metadata/<id>.json` (slimmed: `automatic_captions`/`subtitles`/`formats` pruned) → derived `metadata.csv`. Manifest `metadata/manifest.tsv` records terminal states (`ok`/`private`/`unavailable`/`error`).
+**Provenance:** `yt-dlp --skip-download --dump-single-json` per video → `metadata/<id>.json` (slimmed: `automatic_captions`/`subtitles`/`formats` pruned) → derived `metadata.csv`. Manifest `manifests/metadata.tsv` records terminal states (`ok`/`private`/`unavailable`/`error`).
 
-**Workflow:** download raw → `metadata-raw.tar.gz` sibling → derive `metadata.csv` → use for `fetch-transcripts`/`convert`/`distill`.
+**Workflow:** download raw → `assets/metadata-raw.tar.gz` sibling → derive `metadata.csv` → use for `fetch-transcripts`/`convert`/`distill`.
 
 """)
 
@@ -379,15 +381,15 @@ sources:
   last_modified: "2026-09-08"
 ---
 
-# Metadata Raw Archive Dictionary (`metadata-raw.tar.gz`)
+# Metadata Raw Archive Dictionary (`assets/metadata-raw.tar.gz`)
 
 Raw per-video dumps `metadata/<id>.json` produced by `yt-dlp --skip-download --dump-single-json` (with `--write-comments` where enabled). Each file is the richest record per video; post-processing (CSV, wiki) is separate from fetching.
 
-**Location:** `metadata-raw.tar.gz` at **bundle root** (sibling of `metadata/`, not inside it). Contains only `<id>.json` files (excludes `metadata/manifest.tsv`). {pruned_note} Remainder is kept as-is (≈ `id,title,description,channel,uploader,view_count,like_count,comment_count,upload_date,chapters,comments` plus lightweight fields like `duration, tags, timestamp, availability, thumbnails, etc.`).
+**Location:** `assets/metadata-raw.tar.gz` at **bundle root** in `assets/` (sibling of `manifests/`/`data/`). Contains only `<id>.json` files (excludes `manifests/metadata.tsv`). {pruned_note} Remainder is kept as-is (≈ `id,title,description,channel,uploader,view_count,like_count,comment_count,upload_date,chapters,comments` plus lightweight fields like `duration, tags, timestamp, availability, thumbnails, etc.`).
 
 **Release:** Attached as GitHub Release asset together with the final repo version (manual after review, not in `bin/build-wiki`). Version tag recorded in `log.md` as `{release_tag}` and in git as `{release_tag}`. See `log.md`.
 
-**Archive creation:** `bin/fetch-metadata` auto-creates `metadata-raw.tar.gz` after CSV derive (re-created on every `--refresh` or new fetches): `tar -czf metadata-raw.tar.gz metadata/*.json`.
+**Archive creation:** `bin/fetch-metadata` auto-creates `assets/metadata-raw.tar.gz` after CSV derive (re-created on every `--refresh` or new fetches): `tar -czf assets/metadata-raw.tar.gz metadata/*.json` (now `assets/`).
 
 **Core fields** (sample from `{os.path.basename(sorted(glob.glob(os.path.join(meta_dir, "*.json")))[0]) if os.path.isdir(meta_dir) and glob.glob(os.path.join(meta_dir, "*.json")) else "<id>.json"}`):
 
@@ -401,13 +403,15 @@ Additional preserved fields (selected): `duration`, `tags`, `categories`, `times
 
 Pruned (reproducible/expired): `automatic_captions`, `subtitles`, `formats`, `requested_formats`, `requested_downloads`.
 
-**Manifest:** `metadata/manifest.tsv` (`id | status | reason | file`) records terminal states `ok`/`private`/`unavailable`/`error` — not archived, lives in `metadata/`.
+**Manifest:** `manifests/metadata.tsv` (`id | status | reason | file`) records terminal states `ok`/`private`/`unavailable`/`error` — not archived, lives in `manifests/` (indexed via [data/manifests.md](../data/manifests.md)).
 
 """)
 
 # 6c. data/metadata-manifest.md — index manifest.tsv in wiki
-# Manifest lives at metadata/manifest.tsv (kept readable after json clean)
-manifest_path = os.path.join(meta_dir, "manifest.tsv")
+# Manifest lives at manifests/metadata.tsv (new, kept readable after json clean) — check new then old
+new_manifest_path = os.path.join(bundle_dir, "manifests", "metadata.tsv")
+old_manifest_path = os.path.join(meta_dir, "manifest.tsv")
+manifest_path = new_manifest_path if os.path.isfile(new_manifest_path) else old_manifest_path
 manifest_count = 0
 if os.path.isfile(manifest_path):
     try:
@@ -438,15 +442,15 @@ sources:
   last_modified: "2026-09-08"
 ---
 
-# Metadata Manifest Dictionary ([metadata/manifest.tsv](../metadata/manifest.tsv))
+# Metadata Manifest Dictionary ([manifests/metadata.tsv](../manifests/metadata.tsv))
 
-Manifest produced by `bin/fetch-metadata` alongside raw dumps `metadata/<id>.json` (now archived as `metadata-raw.tar.gz`). One row per playlist entry; `status` records terminal state.
+Manifest produced by `bin/fetch-metadata` alongside raw dumps `metadata/<id>.json` (now archived as `assets/metadata-raw.tar.gz`). One row per playlist entry; `status` records terminal state.
 
-**Location:** [metadata/manifest.tsv](../metadata/manifest.tsv) (kept readable after `metadata/*.json` clean; not in `metadata-raw.tar.gz`). Also see [metadata.csv](metadata.csv) derived table and [metadata-raw.tar.gz](../metadata-raw.tar.gz) archive.
+**Location:** [manifests/metadata.tsv](../manifests/metadata.tsv) (kept readable after `metadata/*.json` clean; not in `assets/metadata-raw.tar.gz`). Also see [metadata.csv](metadata.csv) derived table and [assets/metadata-raw.tar.gz](../assets/metadata-raw.tar.gz) archive.
 
-**Release:** Manifest is small provenance log, kept in repo (not a release asset). History lives in bundle root `log.md` (tag `{release_tag}`).
+**Release:** Manifest is small provenance log, kept in repo (not a release asset, indexed via [manifests/index.md](../manifests/index.md) and [data/manifests.md](manifests.md)). History lives in bundle root `log.md` (tag `{release_tag}`).
 
-**Columns** (`id | status | reason | file` per `metadata/manifest.tsv` header):
+**Columns** (`id | status | reason | file` per `manifests/metadata.tsv` header):
 
 | Column | Description |
 |--------|-------------|
@@ -455,20 +459,22 @@ Manifest produced by `bin/fetch-metadata` alongside raw dumps `metadata/<id>.jso
 | `reason` | Human-readable reason for non-`ok` (e.g., `Private video`, `Video unavailable`); empty for `ok`. |
 | `file` | Path to raw dump `metadata/<id>.json` when `status=ok`; empty otherwise. |
 
-**Status values:** `ok` → row in `metadata.csv` + dump in `metadata-raw.tar.gz`; `private`/`unavailable` → no CSV row, no dump, skipped on later runs (`--refresh` re-probes); `error` → transient, retried next run.
+**Status values:** `ok` → row in `metadata.csv` + dump in `assets/metadata-raw.tar.gz`; `private`/`unavailable` → no CSV row, no dump, skipped on later runs (`--refresh` re-probes); `error` → transient, retried next run.
 
-**Provenance:** `yt-dlp --flat-playlist` index → `yt-dlp --dump-single-json` per `id` → `metadata/<id>.json` (slimmed) → `metadata.csv` + `metadata/manifest.tsv` → `metadata-raw.tar.gz` sibling → clean `metadata/*.json`.
+**Provenance:** `yt-dlp --flat-playlist` index → `yt-dlp --dump-single-json` per `id` → `metadata/<id>.json` (slimmed) → `metadata.csv` + `manifests/metadata.tsv` → `assets/metadata-raw.tar.gz` sibling → clean `metadata/*.json`.
 
-**Workflow:** keep `metadata/manifest.tsv` readable for audit; `metadata-raw.tar.gz` holds dumps for GH release asset.
+**Workflow:** keep `manifests/metadata.tsv` readable for audit (indexed via [manifests/index.md](../manifests/index.md)); `assets/metadata-raw.tar.gz` holds dumps for GH release asset.
 
 """)
 
 # 6d. data/transcripts-raw.md
-# Try to sample a json3 for stats (skip Apple resource forks "._" )
+# Try to sample a json3 for stats (skip Apple resource forks "._" ) — new assets/ then old root
 trans_sample_info = ""
 try:
     import tarfile as _tarfile, json as _json2, io as _io
-    tar_path = os.path.join(bundle_dir, "transcripts-raw.tar.gz")
+    new_tar = os.path.join(bundle_dir, "assets", "transcripts-raw.tar.gz")
+    old_tar = os.path.join(bundle_dir, "transcripts-raw.tar.gz")
+    tar_path = new_tar if os.path.isfile(new_tar) else old_tar
     if os.path.isfile(tar_path):
         with _tarfile.open(tar_path, "r:gz") as _tf:
             for _m in _tf.getmembers():
@@ -520,15 +526,15 @@ sources:
   last_modified: "2026-09-08"
 ---
 
-# Transcripts Raw Archive Dictionary (`transcripts-raw.tar.gz`)
+# Transcripts Raw Archive Dictionary (`assets/transcripts-raw.tar.gz`)
 
 Raw captions downloaded by `bin/fetch-transcripts` via `yt-dlp --skip-download --write-auto-subs --sub-langs "en-orig,es-orig,en.*,es.*" --sub-format "json3/srv3/vtt/best"` (fallback `--sub-langs ".*-orig"` once). One file per public video, preference `en-orig` > `es-orig` > `*-orig` > `en` > `es`; duplicates/translations pruned.
 
-**Location:** `transcripts-raw.tar.gz` at **bundle root** (sibling of `transcripts/`, not inside it). Contains raw `*.json3`/`*.vtt`/`*.srv3` etc. (kept `transcripts/*.md` + `manifest.tsv` readable in `transcripts/`). Archive is cleaned from `transcripts/` after conversion by `bin/convert-transcripts`: workflow `download raw → generate transcripts-raw.tar.gz sibling → generate transcripts/<id>_<slug>.md` (`mm:ss: text` per `tStartMs`, deterministic, no LLM) → remove non-`.md` from `transcripts/`.
+**Location:** `assets/transcripts-raw.tar.gz` at **bundle root** in `assets/` (sibling of `manifests/`/`data/`). Contains raw `*.json3`/`*.vtt`/`*.srv3` etc. (kept `transcripts/*.md` + `manifests/transcripts.tsv` readable in `manifests/`). Archive is cleaned from `transcripts/` after conversion by `bin/convert-transcripts`: workflow `download raw → generate assets/transcripts-raw.tar.gz sibling → generate transcripts/<id>_<slug>.md` (`mm:ss: text` per `tStartMs`, deterministic, no LLM) → remove non-`.md` from `transcripts/`.
 
 **Release:** Attached as GitHub Release asset together with the final repo version (manual after review). Version tag recorded in `log.md` as `{release_tag}` and in git as `{release_tag}`. See `log.md`.
 
-**Archive creation:** `bin/convert-transcripts` auto-creates `transcripts-raw.tar.gz` after every run (raw `*.json3`/`*.srv3`/`*.vtt`/`*.srt`/`*.tsv`/`*.txt` inside `transcripts/` → tar sibling → clean raw files, keep `.md`).
+**Archive creation:** `bin/convert-transcripts` auto-creates `assets/transcripts-raw.tar.gz` after every run (raw `*.json3`/`*.srv3`/`*.vtt`/`*.srt`/`*.tsv`/`*.txt` inside `transcripts/` → tar sibling → clean raw files, keep `.md`).
 
 **Schema — `*.json3` (`{trans_sample_info}`) per `AGENTS.md:39`:**
 
@@ -544,11 +550,61 @@ Raw captions downloaded by `bin/fetch-transcripts` via `yt-dlp --skip-download -
 
 Deterministic transcript conversion (`bin/convert-transcripts --format md`): each `events[]` → one line `mm:ss: text` (or `h:mm:ss: text` when ≥1h) derived from `tStartMs`; plain body `text` is `\"\".join(segs[].utf8)`. Frontmatter is re-derived per spec (description from first substantive sentence, tags via `TAG_RULES`, `lang` from track `en-orig`/`es-orig`, `usage_count`/`last_modified`/`usage_window` from `metadata.csv`).
 
-**Multi-format note:** Some videos have only `vtt`/`srv3` fallback (e.g., 13 `vtt`-only in `dshangout` — still archived; `.md` derived where `json3` available, else `vtt` may require manual conversion). See `transcripts/manifest.tsv` (`id | status | file | lang`) for per-video track chosen.
+**Multi-format note:** Some videos have only `vtt`/`srv3` fallback (e.g., 13 `vtt`-only in `dshangout` — still archived; `.md` derived where `json3` available, else `vtt` may require manual conversion). See `manifests/transcripts.tsv` (`id | status | file | lang`) for per-video track chosen (also `transcripts/manifest.tsv` for compat).
 
 """)
 
-# 6e. data/index.md (§8)
+# 6e. data/manifests.md — dictionary for manifests/ directory (both manifests)
+with open(os.path.join(data_dir, "manifests.md"), "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: Concept
+title: Manifests Dictionary
+description: Dictionary for manifests/ — per-video fetch manifests (metadata + transcripts) kept readable after raw clean.
+tags:
+- {bundle_tag}
+- data-dictionary
+- manifests
+{_gen_block()}
+status: stable
+sources:
+- id: {bundle_name}-manifests
+  title: "{bundle_name} manifests/"
+  resource: "manifests/"
+  author: "process:fetch-metadata"
+  usage_count: {(manifest_count if manifest_count else meta_count) + (trans_md_count if trans_md_count else 0)}
+  last_modified: "2026-09-08"
+---
+
+# Manifests Dictionary ([manifests/](../manifests/))
+
+Directory `manifests/` holds per-video fetch manifests kept readable after raw dumps/captions are archived as `assets/*.tar.gz` and cleaned.
+
+**Location:** [manifests/](../manifests/) at bundle root (sibling of `data/`/`assets/`). Contains:
+
+| File | Description |
+|------|-------------|
+| [metadata.tsv](../manifests/metadata.tsv) | `metadata` fetch manifest: `id | status | reason | file` (see [data/metadata-manifest.md](metadata-manifest.md)). |
+| [transcripts.tsv](../manifests/transcripts.tsv) | `transcripts` fetch manifest: `id | status | file | lang` (see transcripts manifest below). |
+
+Also see [data/metadata-manifest.md](metadata-manifest.md) for `metadata` manifest schema and raw archives [metadata-raw.tar.gz](../assets/metadata-raw.tar.gz) / [transcripts-raw.tar.gz](../assets/transcripts-raw.tar.gz) in [assets/](../assets/).
+
+**Transcripts manifest columns** (`id | status | file | lang`):
+
+| Column | Description |
+|--------|-------------|
+| `id` | YouTube video ID (join key). |
+| `status` | `ok` / `missing` / `error` (per `bin/fetch-transcripts`). |
+| `file` | Path to kept caption `transcripts/<id>.<lang>.json3` (or empty). |
+| `lang` | Caption track `en-orig` / `es-orig` / `en` / `es` / `*-orig`. |
+
+**Workflow:** `bin/fetch-metadata` → `manifests/metadata.tsv` + `assets/metadata-raw.tar.gz` → `bin/fetch-transcripts` → `manifests/transcripts.tsv` + `assets/transcripts-raw.tar.gz` → `bin/convert-transcripts` → `transcripts/*.md`.
+
+**Release:** Manifests are small provenance logs, kept in repo (not release assets). History in `log.md` (tag `{release_tag}`).
+
+""")
+
+# 6f. data/index.md (§8)
 with open(os.path.join(data_dir, "index.md"), "w", encoding="utf-8") as f:
     f.write(f"""---
 okf_version: '0.2'
@@ -565,11 +621,103 @@ tags:
 Dictionaries describing the derived and raw datasets that underpin this bundle.
 
 - [Metadata CSV Dictionary](metadata.md) — column dictionary for `metadata.csv` (derived table).
-- [Metadata Manifest Dictionary](metadata-manifest.md) — dictionary for `metadata/manifest.tsv` (per-video fetch status).
-- [Metadata Raw Archive Dictionary](metadata-raw.md) — field dictionary for `metadata-raw.tar.gz` (raw `metadata/<id>.json` dumps).
-- [Transcripts Raw Archive Dictionary](transcripts-raw.md) — schema dictionary for `transcripts-raw.tar.gz` (raw `*.json3` captions).
+- [Manifests Dictionary](manifests.md) — directory dictionary for `manifests/` (both fetch manifests).
+- [Metadata Manifest Dictionary](metadata-manifest.md) — dictionary for `manifests/metadata.tsv` (per-video fetch status).
+- [Metadata Raw Archive Dictionary](metadata-raw.md) — field dictionary for `assets/metadata-raw.tar.gz` (raw `metadata/<id>.json` dumps).
+- [Transcripts Raw Archive Dictionary](transcripts-raw.md) — schema dictionary for `assets/transcripts-raw.tar.gz` (raw `*.json3` captions).
 
-History lives in bundle root `log.md` (no separate `data/log.md`; see `AGENTS.md:338`); release tags like `{release_tag}` are recorded there and in git. Raw archives are siblings at bundle root, not inside `data/` or `transcripts/`/`metadata/`, per distribution preferences.
+History lives in bundle root `log.md` (no separate `data/log.md`; see `AGENTS.md:338`); release tags like `{release_tag}` are recorded there and in git. Raw archives are siblings at bundle root in `assets/`, manifests in `manifests/`, per distribution preferences.
+
+""")
+
+# 7. Manifests directory (§8) + index
+manifests_dir = os.path.join(bundle_dir, "manifests")
+os.makedirs(manifests_dir, exist_ok=True)
+# Migrate old manifests if present
+for old_rel, new_name in [("metadata/manifest.tsv", "metadata.tsv"), ("transcripts/manifest.tsv", "transcripts.tsv"), ("manifests/metadata.tsv", "metadata.tsv"), ("manifests/transcripts.tsv", "transcripts.tsv")]:
+    old_path = os.path.join(bundle_dir, old_rel)
+    new_path = os.path.join(manifests_dir, new_name)
+    if os.path.isfile(old_path) and not os.path.isfile(new_path):
+        try:
+            import shutil
+            shutil.copy2(old_path, new_path)
+            print(f"[assemble-bundle] migrated {old_rel} -> manifests/{new_name}")
+        except Exception:
+            pass
+# Ensure manifests exist (create empty with header if missing but CSV exists)
+for _name, _header in [("metadata.tsv", "id\\tstatus\\treason\\tfile\\n"), ("transcripts.tsv", "id\\tstatus\\tfile\\tlang\\n")]:
+    _p = os.path.join(manifests_dir, _name)
+    if not os.path.isfile(_p):
+        # try to copy from old location if exists
+        _old = os.path.join(bundle_dir, "metadata" if "metadata" in _name else "transcripts", "manifest.tsv")
+        if os.path.isfile(_old):
+            try:
+                import shutil
+                shutil.copy2(_old, _p)
+                continue
+            except:
+                pass
+        # fallback: create header
+        try:
+            with open(_p, "w", encoding="utf-8") as _f:
+                _f.write(_header)
+        except:
+            pass
+with open(os.path.join(manifests_dir, "index.md"), "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: Manifests Index
+description: Index of fetch manifests for {bundle_name}.
+tags:
+- {bundle_tag}
+- manifests-index
+---
+
+# Manifests Index ({bundle_name.title()})
+
+Fetch manifests kept readable after raw clean (not in `assets/*.tar.gz`).
+
+- [metadata.tsv](metadata.tsv) — `metadata` fetch manifest (`id | status | reason | file`) — see [data/manifests.md](../data/manifests.md) and [data/metadata-manifest.md](../data/metadata-manifest.md)
+- [transcripts.tsv](transcripts.tsv) — `transcripts` fetch manifest (`id | status | file | lang`)
+
+Source: `bin/fetch-metadata` → `manifests/metadata.tsv` + `assets/metadata-raw.tar.gz`; `bin/fetch-transcripts` → `manifests/transcripts.tsv` + `assets/transcripts-raw.tar.gz`.
+
+""")
+
+# 8. Assets directory (§8) + index + migrate tars
+assets_dir = os.path.join(bundle_dir, "assets")
+os.makedirs(assets_dir, exist_ok=True)
+for _old_tar, _new_tar in [("metadata-raw.tar.gz", "metadata-raw.tar.gz"), ("transcripts-raw.tar.gz", "transcripts-raw.tar.gz")]:
+    _old = os.path.join(bundle_dir, _old_tar)
+    _new = os.path.join(assets_dir, _new_tar)
+    if os.path.isfile(_old) and not os.path.isfile(_new):
+        try:
+            import shutil
+            shutil.move(_old, _new)
+            print(f"[assemble-bundle] migrated {_old_tar} -> assets/{_new_tar}")
+        except Exception:
+            pass
+# Ensure assets index
+with open(os.path.join(assets_dir, "index.md"), "w", encoding="utf-8") as f:
+    f.write(f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: Assets Index
+description: Index of release assets for {bundle_name}.
+tags:
+- {bundle_tag}
+- assets-index
+---
+
+# Assets Index ({bundle_name.title()})
+
+Release assets (tarballs) at bundle root in `assets/` (siblings of `manifests/`/`data/`). Attached as GitHub Release assets (tag `{release_tag}`).
+
+- [metadata-raw.tar.gz](metadata-raw.tar.gz) — raw `metadata/<id>.json` dumps (slimmed) — see [data/metadata-raw.md](../data/metadata-raw.md)
+- [transcripts-raw.tar.gz](transcripts-raw.tar.gz) — raw `*.json3`/`*.vtt` captions — see [data/transcripts-raw.md](../data/transcripts-raw.md)
+
+Created by `bin/fetch-metadata` (`assets/metadata-raw.tar.gz`) and `bin/convert-transcripts` (`assets/transcripts-raw.tar.gz`), cleaned from `metadata/`/`transcripts/` (keep `manifests/` readable).
 
 """)
 

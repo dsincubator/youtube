@@ -9,7 +9,7 @@ tags:
 - metadata
 generated:
   by: "agent:okf-wiki-builder/1.0"
-  at: "2026-09-09T02:23:48Z"
+  at: "2026-09-09T02:33:45Z"
 status: stable
 sources:
 - id: dsincubator-metadata-csv
@@ -22,11 +22,11 @@ sources:
 
 # Metadata CSV Dictionary ([metadata.csv](metadata.csv))
 
-Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` (see `metadata-raw.tar.gz`). One row per public video; private/unavailable videos have no row (see `metadata/manifest.tsv`).
+Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` (see `assets/metadata-raw.tar.gz`). One row per public video; private/unavailable videos have no row (see `manifests/metadata.tsv`).
 
 **Location:** [metadata.csv](metadata.csv) at bundle root (build intermediate; not shipped as release asset — see dictionaries `data/metadata-raw.md` for the shipped raw archive). For the canonical `dsincubator` bundle this lives at `data/metadata.csv`; per-bundle bundles expose it at `dsincubator/metadata.csv`.
 
-**Release:** Raw dumps are published as `metadata-raw.tar.gz` at bundle root (sibling of `metadata/`, not inside it) and attached as GitHub Release asset under tag `dsincubator-v0.0.1` (see `log.md`). See `data/metadata-raw.md`.
+**Release:** Raw dumps are published as `assets/metadata-raw.tar.gz` at bundle root in `assets/` (sibling of `manifests/`/`data/`) and attached as GitHub Release asset under tag `dsincubator-v0.0.1` (see `log.md`). See `data/metadata-raw.md`.
 
 **Columns** (`playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url` per `AGENTS.md:9`):
 
@@ -48,7 +48,7 @@ Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` 
 
 **Join key:** `id` → `transcripts/<id>_<slug>.md` (`resource: https://www.youtube.com/watch?v=<id>`) and `sources/source_<id>_<slug>.md`.
 
-**Provenance:** `yt-dlp --skip-download --dump-single-json` per video → `metadata/<id>.json` (slimmed: `automatic_captions`/`subtitles`/`formats` pruned) → derived `metadata.csv`. Manifest `metadata/manifest.tsv` records terminal states (`ok`/`private`/`unavailable`/`error`).
+**Provenance:** `yt-dlp --skip-download --dump-single-json` per video → `metadata/<id>.json` (slimmed: `automatic_captions`/`subtitles`/`formats` pruned) → derived `metadata.csv`. Manifest `manifests/metadata.tsv` records terminal states (`ok`/`private`/`unavailable`/`error`).
 
-**Workflow:** download raw → `metadata-raw.tar.gz` sibling → derive `metadata.csv` → use for `fetch-transcripts`/`convert`/`distill`.
+**Workflow:** download raw → `assets/metadata-raw.tar.gz` sibling → derive `metadata.csv` → use for `fetch-transcripts`/`convert`/`distill`.
 

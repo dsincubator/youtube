@@ -45,7 +45,7 @@ if [[ -z "$PLAYLIST" ]]; then
     exit 2
 fi
 
-mkdir -p "$OUT_DIR/metadata" "$OUT_DIR/transcripts" "$OUT_DIR/sources" "$OUT_DIR/topics"
+mkdir -p "$OUT_DIR/metadata" "$OUT_DIR/transcripts" "$OUT_DIR/sources" "$OUT_DIR/topics" "$OUT_DIR/manifests" "$OUT_DIR/assets"
 
 CSV_PATH="$OUT_DIR/metadata.csv"
 if [[ ! -f "$CSV_PATH" ]]; then
@@ -80,13 +80,36 @@ echo "=== Step 6: Generating Topics ==="
 
 echo "=== Step 6b: Ensuring Raw Archives ==="
 python3 - "$OUT_DIR" <<'PYEOF'
-import os, sys, glob, tarfile
+import os, sys, glob, tarfile, shutil
 bundle_dir = sys.argv[1]
-# metadata-raw.tar.gz sibling of metadata/
+# Migrate old tars to assets/ if needed
+for old_rel, new_rel in [("metadata-raw.tar.gz", "assets/metadata-raw.tar.gz"), ("transcripts-raw.tar.gz", "assets/transcripts-raw.tar.gz")]:
+    old_p = os.path.join(bundle_dir, old_rel)
+    new_p = os.path.join(bundle_dir, new_rel)
+    if os.path.isfile(old_p) and not os.path.isfile(new_p):
+        os.makedirs(os.path.dirname(new_p), exist_ok=True)
+        try:
+            shutil.move(old_p, new_p)
+            print(f"[build-wiki] migrated {old_rel} -> {new_rel}")
+        except:
+            pass
+# Migrate old manifests to manifests/ if needed
+for old_rel, new_rel in [("metadata/manifest.tsv", "manifests/metadata.tsv"), ("transcripts/manifest.tsv", "manifests/transcripts.tsv")]:
+    old_p = os.path.join(bundle_dir, old_rel)
+    new_p = os.path.join(bundle_dir, new_rel)
+    if os.path.isfile(old_p) and not os.path.isfile(new_p):
+        os.makedirs(os.path.dirname(new_p), exist_ok=True)
+        try:
+            shutil.copy2(old_p, new_p)
+            print(f"[build-wiki] migrated {old_rel} -> {new_rel}")
+        except:
+            pass
+# metadata-raw.tar.gz in assets/
 meta_dir = os.path.join(bundle_dir, "metadata")
-tar_meta = os.path.join(bundle_dir, "metadata-raw.tar.gz")
+tar_meta = os.path.join(bundle_dir, "assets", "metadata-raw.tar.gz")
+os.makedirs(os.path.dirname(tar_meta), exist_ok=True)
 if not os.path.isfile(tar_meta):
-    jfiles = sorted(glob.glob(os.path.join(meta_dir, "*.json")))
+    jfiles = sorted([f for f in glob.glob(os.path.join(meta_dir, "*.json")) if not os.path.basename(f).startswith("._")])
     if jfiles:
         tmp = tar_meta + ".tmp"
         with tarfile.open(tmp, "w:gz") as tar:
@@ -94,19 +117,25 @@ if not os.path.isfile(tar_meta):
                 tar.add(f, arcname=os.path.basename(f))
         os.replace(tmp, tar_meta)
         print(f"[build-wiki] ensured {tar_meta} ({len(jfiles)} files)")
+        for f in jfiles:
+            try:
+                os.remove(f)
+            except:
+                pass
     else:
         print(f"[build-wiki] skip metadata-raw: no json in {meta_dir}/")
 else:
     print(f"[build-wiki] exists {tar_meta}")
-# transcripts-raw.tar.gz sibling of transcripts/
+# transcripts-raw.tar.gz in assets/
 trans_dir = os.path.join(bundle_dir, "transcripts")
-tar_trans = os.path.join(bundle_dir, "transcripts-raw.tar.gz")
+tar_trans = os.path.join(bundle_dir, "assets", "transcripts-raw.tar.gz")
+os.makedirs(os.path.dirname(tar_trans), exist_ok=True)
 if not os.path.isfile(tar_trans):
     raw_pats = ["*.json3","*.srv3","*.srv2","*.srv1","*.vtt","*.srt","*.ttml","*.sbv","*.tsv","*.txt"]
     raw_files = []
     for pat in raw_pats:
         raw_files.extend(glob.glob(os.path.join(trans_dir, pat)))
-    raw_files = [f for f in raw_files if os.path.basename(f) != "manifest.tsv" and not os.path.basename(f).startswith("._")]
+    raw_files = [f for f in raw_files if os.path.basename(f) not in ("manifest.tsv","transcripts.tsv") and not os.path.basename(f).startswith("._")]
     if raw_files:
         tmp = tar_trans + ".tmp"
         with tarfile.open(tmp, "w:gz") as tar:
@@ -114,6 +143,11 @@ if not os.path.isfile(tar_trans):
                 tar.add(f, arcname=os.path.basename(f))
         os.replace(tmp, tar_trans)
         print(f"[build-wiki] ensured {tar_trans} ({len(raw_files)} raw files)")
+        for f in raw_files:
+            try:
+                os.remove(f)
+            except:
+                pass
     else:
         print(f"[build-wiki] no raw transcripts to archive (kept .md only, tar sibling already clean)")
 else:

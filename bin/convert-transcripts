@@ -330,12 +330,21 @@ for vid in ids:
         do_md(base, path, vid)
         ok += 1
 
-# -- Archive raw captions as sibling transcripts-raw.tar.gz (keep .md readable)
+# -- Archive raw captions as sibling assets/transcripts-raw.tar.gz (keep .md readable)
 # Bundle root = parent of out_dir, e.g. out_dir=dslab/transcripts -> dslab/
 if ok > 0:
-    import glob as _glob, tarfile as _tarfile
+    import glob as _glob, tarfile as _tarfile, os as _os2
     bundle_root = os.path.dirname(os.path.normpath(out_dir)) or "."
-    tar_path = os.path.join(bundle_root, "transcripts-raw.tar.gz")
+    tar_path = os.path.join(bundle_root, "assets", "transcripts-raw.tar.gz")
+    _os2.makedirs(os.path.dirname(tar_path), exist_ok=True)
+    # Migrate old tar if present
+    old_tar = os.path.join(bundle_root, "transcripts-raw.tar.gz")
+    if _os2.path.isfile(old_tar) and not _os2.path.isfile(tar_path):
+        try:
+            _os2.rename(old_tar, tar_path)
+            print(f"[convert-transcripts] migrated {old_tar} -> {tar_path}")
+        except OSError:
+            pass
     # Collect raw files inside out_dir (keep .md and manifest.tsv)
     raw_patterns = ["*.json3", "*.srv3", "*.srv2", "*.srv1", "*.vtt", "*.srt", "*.ttml", "*.sbv", "*.tsv", "*.txt"]
     raw_files = []

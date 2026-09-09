@@ -9,7 +9,7 @@ tags:
 - metadata-raw
 generated:
   by: "agent:okf-wiki-builder/1.0"
-  at: "2026-09-09T02:23:48Z"
+  at: "2026-09-09T02:33:45Z"
 status: stable
 sources:
 - id: dsincubator-metadata-raw
@@ -20,15 +20,15 @@ sources:
   last_modified: "2026-09-08"
 ---
 
-# Metadata Raw Archive Dictionary (`metadata-raw.tar.gz`)
+# Metadata Raw Archive Dictionary (`assets/metadata-raw.tar.gz`)
 
 Raw per-video dumps `metadata/<id>.json` produced by `yt-dlp --skip-download --dump-single-json` (with `--write-comments` where enabled). Each file is the richest record per video; post-processing (CSV, wiki) is separate from fetching.
 
-**Location:** `metadata-raw.tar.gz` at **bundle root** (sibling of `metadata/`, not inside it). Contains only `<id>.json` files (excludes `metadata/manifest.tsv`). `automatic_captions`, `subtitles`, `formats`, `requested_formats`, `requested_downloads` are pruned by `slim_dump()` in `bin/fetch-metadata` (≈97% bytes, expiring URLs) — not in the archive. Remainder is kept as-is (≈ `id,title,description,channel,uploader,view_count,like_count,comment_count,upload_date,chapters,comments` plus lightweight fields like `duration, tags, timestamp, availability, thumbnails, etc.`).
+**Location:** `assets/metadata-raw.tar.gz` at **bundle root** in `assets/` (sibling of `manifests/`/`data/`). Contains only `<id>.json` files (excludes `manifests/metadata.tsv`). `automatic_captions`, `subtitles`, `formats`, `requested_formats`, `requested_downloads` are pruned by `slim_dump()` in `bin/fetch-metadata` (≈97% bytes, expiring URLs) — not in the archive. Remainder is kept as-is (≈ `id,title,description,channel,uploader,view_count,like_count,comment_count,upload_date,chapters,comments` plus lightweight fields like `duration, tags, timestamp, availability, thumbnails, etc.`).
 
 **Release:** Attached as GitHub Release asset together with the final repo version (manual after review, not in `bin/build-wiki`). Version tag recorded in `log.md` as `dsincubator-v0.0.1` and in git as `dsincubator-v0.0.1`. See `log.md`.
 
-**Archive creation:** `bin/fetch-metadata` auto-creates `metadata-raw.tar.gz` after CSV derive (re-created on every `--refresh` or new fetches): `tar -czf metadata-raw.tar.gz metadata/*.json`.
+**Archive creation:** `bin/fetch-metadata` auto-creates `assets/metadata-raw.tar.gz` after CSV derive (re-created on every `--refresh` or new fetches): `tar -czf assets/metadata-raw.tar.gz metadata/*.json` (now `assets/`).
 
 **Core fields** (sample from `<id>.json`):
 
@@ -50,5 +50,5 @@ Additional preserved fields (selected): `duration`, `tags`, `categories`, `times
 
 Pruned (reproducible/expired): `automatic_captions`, `subtitles`, `formats`, `requested_formats`, `requested_downloads`.
 
-**Manifest:** `metadata/manifest.tsv` (`id | status | reason | file`) records terminal states `ok`/`private`/`unavailable`/`error` — not archived, lives in `metadata/`.
+**Manifest:** `manifests/metadata.tsv` (`id | status | reason | file`) records terminal states `ok`/`private`/`unavailable`/`error` — not archived, lives in `manifests/` (indexed via [data/manifests.md](../data/manifests.md)).
 

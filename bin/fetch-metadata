@@ -202,7 +202,16 @@ import csv, json, os, sys
 csv_path, meta_dir, index_path, fetched_path, refresh, limit, status_path = (
     sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5] == "1",
     int(sys.argv[6]), sys.argv[7])
-man_path = os.path.join(meta_dir, "manifest.tsv")
+# New layout: manifests/metadata.tsv at bundle root (sibling of metadata/), assets/ for tars
+# Keep backward compat: check new then old
+bundle_root = os.path.dirname(os.path.normpath(meta_dir)) or "."
+new_man_path = os.path.join(bundle_root, "manifests", "metadata.tsv")
+old_man_path = os.path.join(meta_dir, "manifest.tsv")
+man_path = new_man_path if (os.path.isfile(new_man_path) or not os.path.isfile(old_man_path)) else old_man_path
+# Ensure manifests dir exists for new path
+os.makedirs(os.path.dirname(new_man_path), exist_ok=True)
+# Prefer new path for writing (migrate)
+man_path = new_man_path
 header = ["playlist_index", "title", "id", "view_count", "like_count",
           "comment_count", "upload_date", "upload_date_iso", "duration",
           "duration_string", "channel", "uploader", "url"]
@@ -374,12 +383,22 @@ for v in dropped:
     print(f"[fetch-metadata] dropped {v}")
 EOF
 
-# -- Archive metadata dumps as sibling metadata-raw.tar.gz (only <id>.json, not manifest.tsv)
+# -- Archive metadata dumps as sibling assets/metadata-raw.tar.gz (only <id>.json, not manifest.tsv)
 python3 - "$META_DIR" <<'EOF' || true
 import os, sys, glob, tarfile
 meta_dir = sys.argv[1]
 bundle_root = os.path.dirname(os.path.normpath(meta_dir)) or "."
-tar_path = os.path.join(bundle_root, "metadata-raw.tar.gz")
+# New layout: assets/metadata-raw.tar.gz
+tar_path = os.path.join(bundle_root, "assets", "metadata-raw.tar.gz")
+os.makedirs(os.path.dirname(tar_path), exist_ok=True)
+# Migrate old tar if present
+old_tar = os.path.join(bundle_root, "metadata-raw.tar.gz")
+if os.path.isfile(old_tar) and not os.path.isfile(tar_path):
+    try:
+        os.rename(old_tar, tar_path)
+        print(f"[fetch-metadata] migrated {old_tar} -> {tar_path}")
+    except OSError:
+        pass
 pattern = os.path.join(meta_dir, "*.json")
 json_files = sorted([f for f in glob.glob(pattern) if not os.path.basename(f).startswith("._")])
 # Exclude manifest.tsv already (not json); json_files are only dumps

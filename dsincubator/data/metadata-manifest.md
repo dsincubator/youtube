@@ -9,7 +9,7 @@ tags:
 - metadata-manifest
 generated:
   by: "agent:okf-wiki-builder/1.0"
-  at: "2026-09-09T02:23:48Z"
+  at: "2026-09-09T02:33:45Z"
 status: stable
 sources:
 - id: dsincubator-metadata-manifest
@@ -20,15 +20,15 @@ sources:
   last_modified: "2026-09-08"
 ---
 
-# Metadata Manifest Dictionary ([metadata/manifest.tsv](../metadata/manifest.tsv))
+# Metadata Manifest Dictionary ([manifests/metadata.tsv](../manifests/metadata.tsv))
 
-Manifest produced by `bin/fetch-metadata` alongside raw dumps `metadata/<id>.json` (now archived as `metadata-raw.tar.gz`). One row per playlist entry; `status` records terminal state.
+Manifest produced by `bin/fetch-metadata` alongside raw dumps `metadata/<id>.json` (now archived as `assets/metadata-raw.tar.gz`). One row per playlist entry; `status` records terminal state.
 
-**Location:** [metadata/manifest.tsv](../metadata/manifest.tsv) (kept readable after `metadata/*.json` clean; not in `metadata-raw.tar.gz`). Also see [metadata.csv](metadata.csv) derived table and [metadata-raw.tar.gz](../metadata-raw.tar.gz) archive.
+**Location:** [manifests/metadata.tsv](../manifests/metadata.tsv) (kept readable after `metadata/*.json` clean; not in `assets/metadata-raw.tar.gz`). Also see [metadata.csv](metadata.csv) derived table and [assets/metadata-raw.tar.gz](../assets/metadata-raw.tar.gz) archive.
 
-**Release:** Manifest is small provenance log, kept in repo (not a release asset). History lives in bundle root `log.md` (tag `dsincubator-v0.0.1`).
+**Release:** Manifest is small provenance log, kept in repo (not a release asset, indexed via [manifests/index.md](../manifests/index.md) and [data/manifests.md](manifests.md)). History lives in bundle root `log.md` (tag `dsincubator-v0.0.1`).
 
-**Columns** (`id | status | reason | file` per `metadata/manifest.tsv` header):
+**Columns** (`id | status | reason | file` per `manifests/metadata.tsv` header):
 
 | Column | Description |
 |--------|-------------|
@@ -37,9 +37,9 @@ Manifest produced by `bin/fetch-metadata` alongside raw dumps `metadata/<id>.jso
 | `reason` | Human-readable reason for non-`ok` (e.g., `Private video`, `Video unavailable`); empty for `ok`. |
 | `file` | Path to raw dump `metadata/<id>.json` when `status=ok`; empty otherwise. |
 
-**Status values:** `ok` → row in `metadata.csv` + dump in `metadata-raw.tar.gz`; `private`/`unavailable` → no CSV row, no dump, skipped on later runs (`--refresh` re-probes); `error` → transient, retried next run.
+**Status values:** `ok` → row in `metadata.csv` + dump in `assets/metadata-raw.tar.gz`; `private`/`unavailable` → no CSV row, no dump, skipped on later runs (`--refresh` re-probes); `error` → transient, retried next run.
 
-**Provenance:** `yt-dlp --flat-playlist` index → `yt-dlp --dump-single-json` per `id` → `metadata/<id>.json` (slimmed) → `metadata.csv` + `metadata/manifest.tsv` → `metadata-raw.tar.gz` sibling → clean `metadata/*.json`.
+**Provenance:** `yt-dlp --flat-playlist` index → `yt-dlp --dump-single-json` per `id` → `metadata/<id>.json` (slimmed) → `metadata.csv` + `manifests/metadata.tsv` → `assets/metadata-raw.tar.gz` sibling → clean `metadata/*.json`.
 
-**Workflow:** keep `metadata/manifest.tsv` readable for audit; `metadata-raw.tar.gz` holds dumps for GH release asset.
+**Workflow:** keep `manifests/metadata.tsv` readable for audit (indexed via [manifests/index.md](../manifests/index.md)); `assets/metadata-raw.tar.gz` holds dumps for GH release asset.
 

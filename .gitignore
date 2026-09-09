@@ -1,8 +1,10 @@
 # runtime-only — never committed (see AGENTS.md)
 .omo/
-dslab_build/
-dslab/
-dshangout/
+# build outputs at repo root (not output/ which is kept for release)
+# anchored to repo root so output/dslab/ is NOT ignored
+/dslab_build/
+/dslab/
+/dshangout/
 **/.omo/
 .Rhistory
 .Rproj.user

@@ -97,6 +97,7 @@ elif [[ -f "$SRC/../AGENTS.md" ]]; then
 fi
 copy_dir "$SRC/metadata" "$TO/metadata"
 copy_dir "$SRC/transcripts" "$TO/transcripts"
+copy_dir "$SRC/descriptions" "$TO/descriptions" 2>/dev/null || true
 copy_dir "$SRC/topics" "$TO/topics"
 copy_dir "$SRC/references" "$TO/references"
 # sources only for dsincubator (keep if present, skip silently otherwise)

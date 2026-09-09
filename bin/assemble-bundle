@@ -200,6 +200,7 @@ Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: t
 - [Topics Overview](topics/concepts-overview.md) — all concepts (§3.1)
 - [Topics Index](topics/index.md) (§8)
 {sources_line}- [Metadata](metadata/metadata.csv) — derived table ([dictionary](metadata/metadata.md))
+- [Descriptions](descriptions/) — per-video full YouTube description
 - [Transcripts](transcripts/) — `transcripts/<id>_<slug>.md` deterministic `mm:ss: text` per `tStartMs`
 - [Bundle History Log](log.md) (§9)
 - [References](references/index.md) (§6.3)
@@ -392,7 +393,7 @@ for _p in csv_candidates:
             pass
         break
 if not csv_header:
-    csv_header = ["playlist_index","title","id","view_count","like_count","comment_count","upload_date","upload_date_iso","duration","duration_string","channel","uploader","url"]
+    csv_header = ["playlist_index","title","id","view_count","like_count","comment_count","upload_date","upload_date_iso","duration","duration_string","channel","uploader","url","description"]
 
 col_desc = {
     "playlist_index": "Playlist position (1-indexed integer from `yt-dlp --flat-playlist --print playlist_index`).",
@@ -408,6 +409,7 @@ col_desc = {
     "channel": "YouTube channel display name (`channel`).",
     "uploader": "Uploader identifier (`uploader`).",
     "url": "Canonical watch URL `https://www.youtube.com/watch?v=<id>` derived from `id`.",
+    "description": "Full YouTube video description (`description`), long text quoted CSV field. See per-video `descriptions/<id>_<slug>.md`.",
 }
 
 meta_dir = os.path.join(bundle_dir, "metadata")
@@ -489,9 +491,81 @@ tags:
 
 - [Metadata CSV Dictionary](metadata.md) — column dictionary for `metadata.csv` (derived table, {csv_rowcount} rows)
 - [metadata.csv](metadata.csv) — derived table (one row per public video)
+- [Descriptions](descriptions/) — per-video full YouTube description (§4.1 Concept)
 
 Project intermediates (`manifests/`, `assets/`, `data/`) are not indexed; they live in project-outdir/. History in `log.md` (tag `{release_tag}`).
 """)
+
+# 6g. wiki/descriptions/<id>_<slug>.md — per-video full YouTube description (§4.1 Concept)
+descriptions_dir = os.path.join(wiki_dir, "descriptions")
+os.makedirs(descriptions_dir, exist_ok=True)
+# Read metadata.csv to get descriptions per video
+csv_data = []
+if csv_path_found and os.path.isfile(csv_path_found):
+    with open(csv_path_found, encoding="utf-8") as _cf:
+        _reader = _csv.DictReader(_cf)
+        for _row in _reader:
+            csv_data.append(_row)
+# Fallback: try to read from raw archive if metadata.csv missing/incomplete
+if not csv_data:
+    # try metadata/<id>.json archived
+    if os.path.isdir(meta_dir):
+        for _jf in sorted(glob.glob(os.path.join(meta_dir, "*.json"))):
+            try:
+                with open(_jf, encoding="utf-8") as _jf:
+                    _d = json.load(_jf)
+                csv_data.append({"id": _d.get("id",""), "title": _d.get("title",""), "description": _d.get("description","")})
+            except:
+                pass
+# Also read metadata.csv from wiki if present (for dslab_build workflow)
+if not csv_data and os.path.isfile(os.path.join(wiki_meta, "metadata.csv")):
+    with open(os.path.join(wiki_meta, "metadata.csv"), encoding="utf-8") as _cf:
+        _reader = _csv.DictReader(_cf)
+        for _row in _reader:
+            csv_data.append(_row)
+for _row in csv_data:
+    _vid = _row.get("id", "").strip()
+    if not _vid:
+        continue
+    _title = _row.get("title", "").strip()
+    _desc = _row.get("description", "").strip()
+    _slug = _title.lower().replace(" ", "-")[:40] if _title else _vid
+    # sanitize slug: ascii-only, lowercase, hyphen
+    import re as _re, unicodedata as _unic
+    _ascii = _unic.normalize('NFKD', _title).encode('ascii', 'ignore').decode('ascii')
+    _slug = _re.sub(r'[^a-zA-Z0-9]+', '-', _ascii).strip('-').lower()
+    _slug = _re.sub(r'-+', '-', _slug)
+    _desc_fm = _desc[:200] + "..." if len(_desc) > 200 else _desc
+    _gen_block_val = _gen_block()
+    _desc_path = os.path.join(descriptions_dir, f"{_vid}_{_slug}.md")
+    with open(_desc_path, "w", encoding="utf-8") as _df:
+        _df.write(f"""---
+okf_version: '0.2'
+type: Concept
+title: {_title}
+description: Full YouTube description for {_title}.
+tags:
+- {bundle_tag}
+- description
+- metadata
+{_gen_block_val}
+status: stable
+sources:
+- id: youtube-original
+  resource: "https://www.youtube.com/watch?v={_vid}"
+  title: "{_title}"
+  author: "process:yt-dlp"
+  usage_count: {_row.get("view_count", "0")}
+  last_modified: "{_row.get("upload_date_iso", "")}
+---
+
+# {_title}
+
+{_desc if _desc else "No description available."}
+
+**Resource:** [Watch on YouTube](https://www.youtube.com/watch?v={_vid})
+""")
+print(f"[assemble-bundle] generated {len(csv_data)} descriptions in wiki/descriptions/")
 
 # 7. Ensure project manifests/assets indexes (NOT indexed in wiki) — keep at project-outdir root
 manifests_dir = os.path.join(bundle_dir, "manifests")

@@ -1,5 +1,8 @@
 # runtime-only — never committed (see AGENTS.md)
 .omo/
+dslab_build/
+dslab/
+dshangout/
 **/.omo/
 .Rhistory
 .Rproj.user

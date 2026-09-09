@@ -45,11 +45,16 @@ if [[ -z "$PLAYLIST" ]]; then
     exit 2
 fi
 
-mkdir -p "$OUT_DIR/metadata" "$OUT_DIR/transcripts" "$OUT_DIR/sources" "$OUT_DIR/topics" "$OUT_DIR/manifests" "$OUT_DIR/assets"
+mkdir -p "$OUT_DIR/metadata" "$OUT_DIR/transcripts" "$OUT_DIR/sources" "$OUT_DIR/topics" "$OUT_DIR/manifests" "$OUT_DIR/assets" "$OUT_DIR/data" "$OUT_DIR/wiki"
 
-CSV_PATH="$OUT_DIR/metadata.csv"
+CSV_PATH="$OUT_DIR/data/metadata.csv"
 if [[ ! -f "$CSV_PATH" ]]; then
     echo "playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url" > "$CSV_PATH"
+fi
+# Legacy compat: if old CSV at OUT_DIR/metadata.csv exists but new doesn't, migrate
+if [[ ! -s "$CSV_PATH" && -f "$OUT_DIR/metadata.csv" ]]; then
+    cp "$OUT_DIR/metadata.csv" "$CSV_PATH"
+    echo "[build-wiki] migrated $OUT_DIR/metadata.csv -> $CSV_PATH"
 fi
 
 echo "=== Step 1: Fetching Metadata ==="
@@ -73,10 +78,16 @@ CMD_DIST=(./bin/distill-sources --csv "$CSV_PATH" --transcripts-dir "$OUT_DIR/tr
 "${CMD_DIST[@]}"
 
 echo "=== Step 5: Clustering Topics ==="
-./bin/cluster-topics --sources-dir "$OUT_DIR/sources" --out-file "$OUT_DIR/planning_manifest.json" --bundle-name "$BUNDLE_NAME" --playlist-url "$PLAYLIST"
+./bin/cluster-topics --sources-dir "$OUT_DIR/sources" --out-file "$OUT_DIR/manifests/planning_manifest.json" --bundle-name "$BUNDLE_NAME" --playlist-url "$PLAYLIST"
 
 echo "=== Step 6: Generating Topics ==="
-./bin/generate-topics --manifest "$OUT_DIR/planning_manifest.json" --sources-dir "$OUT_DIR/sources" --out-dir "$OUT_DIR/topics"
+# Generate into wiki/topics (indexed wiki) — keep legacy OUT_DIR/topics for compat then migrate
+./bin/generate-topics --manifest "$OUT_DIR/manifests/planning_manifest.json" --sources-dir "$OUT_DIR/sources" --out-dir "$OUT_DIR/wiki/topics"
+# Legacy copy for backward compat
+if [[ -d "$OUT_DIR/wiki/topics" && ! -d "$OUT_DIR/topics" ]]; then
+    mkdir -p "$OUT_DIR/topics"
+    cp -a "$OUT_DIR/wiki/topics"/. "$OUT_DIR/topics"/ 2>/dev/null || true
+fi
 
 echo "=== Step 6b: Ensuring Raw Archives ==="
 python3 - "$OUT_DIR" <<'PYEOF'
@@ -155,6 +166,6 @@ else:
 PYEOF
 
 echo "=== Step 7: Assembling Bundle ==="
-./bin/assemble-bundle --bundle-dir "$OUT_DIR" --manifest "$OUT_DIR/planning_manifest.json" --bundle-name "$BUNDLE_NAME" --bundle-tag "$BUNDLE_TAG" --playlist-url "$PLAYLIST"
+./bin/assemble-bundle --bundle-dir "$OUT_DIR" --manifest "$OUT_DIR/manifests/planning_manifest.json" --bundle-name "$BUNDLE_NAME" --bundle-tag "$BUNDLE_TAG" --playlist-url "$PLAYLIST"
 
-echo "=== Build Complete! Wiki bundle ready at $OUT_DIR/index.md ==="
+echo "=== Build Complete! Project dir at $OUT_DIR/ (wiki at $OUT_DIR/wiki/index.md) ==="

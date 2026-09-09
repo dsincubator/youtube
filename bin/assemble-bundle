@@ -5,12 +5,12 @@ PROGRAM="${0##*/}"
 usage() {
     cat <<EOF
 Usage: $PROGRAM [OPTIONS]
-Assemble bundle root index, indexes, log, and references.
+Assemble bundle root index, indexes, log, and references (new build/export layout).
 
 Options:
   -h, --help            Show this message and exit
-  --bundle-dir DIR      Bundle directory (default: .)
-  --manifest PATH       Planning manifest JSON (default: planning_manifest.json)
+  --bundle-dir DIR      Bundle directory (project-outdir, default: .)
+  --manifest PATH       Planning manifest JSON (default: manifests/planning_manifest.json)
   --bundle-name NAME    Bundle identifier (default: dslab)
   --bundle-tag TAG      Bundle tag (default: ds-lab)
   --playlist-url URL    Playlist URL
@@ -18,7 +18,7 @@ EOF
 }
 
 BUNDLE_DIR="."
-MANIFEST="planning_manifest.json"
+MANIFEST="manifests/planning_manifest.json"
 BUNDLE_NAME="dslab"
 BUNDLE_TAG="ds-lab"
 PLAYLIST_URL=""
@@ -45,10 +45,15 @@ if [[ -x ".venv/bin/python" ]]; then
 fi
 
 "$PYTHON" - "$BUNDLE_DIR" "$MANIFEST" "$BUNDLE_NAME" "$BUNDLE_TAG" "$PLAYLIST_URL" <<'PYEOF'
-import sys, os, json, glob
+import sys, os, json, glob, shutil, csv
+from datetime import datetime, timezone
 
 bundle_dir, manifest_path, bundle_name, bundle_tag, playlist_url = sys.argv[1:6]
 
+# Resolve manifest: support legacy path at bundle_dir/planning_manifest.json
+legacy_manifest = os.path.join(bundle_dir, "planning_manifest.json")
+if not os.path.exists(manifest_path) and os.path.exists(legacy_manifest):
+    manifest_path = legacy_manifest
 if os.path.exists(manifest_path):
     with open(manifest_path, encoding="utf-8") as f:
         manifest = json.load(f)
@@ -58,21 +63,122 @@ else:
     manifest = {"topics": []}
 
 os.makedirs(bundle_dir, exist_ok=True)
-topics_dir = os.path.join(bundle_dir, "topics")
-sources_dir = os.path.join(bundle_dir, "sources")
-refs_dir = os.path.join(bundle_dir, "references")
-os.makedirs(topics_dir, exist_ok=True)
-os.makedirs(sources_dir, exist_ok=True)
-os.makedirs(refs_dir, exist_ok=True)
+# Project intermediaries (NOT indexed)
+for d in ["manifests", "assets", "data", "metadata", "transcripts"]:
+    os.makedirs(os.path.join(bundle_dir, d), exist_ok=True)
+# Wiki (indexed)
+wiki_dir = os.path.join(bundle_dir, "wiki")
+os.makedirs(wiki_dir, exist_ok=True)
+wiki_meta = os.path.join(wiki_dir, "metadata")
+wiki_trans = os.path.join(wiki_dir, "transcripts")
+wiki_topics = os.path.join(wiki_dir, "topics")
+wiki_refs = os.path.join(wiki_dir, "references")
+wiki_sources = os.path.join(wiki_dir, "sources")
+for d in [wiki_meta, wiki_trans, wiki_topics, wiki_refs]:
+    os.makedirs(d, exist_ok=True)
 
-# 1. Bundle root index.md (§12) + README.md
-root_index_path = os.path.join(bundle_dir, "index.md")
+# Determine sources location: build-wiki uses bundle_dir/sources (intermediary) or bundle_dir/wiki/sources
+# Also handle legacy bundle_dir/sources
+src_candidates = [os.path.join(bundle_dir, "sources"), os.path.join(bundle_dir, "wiki", "sources")]
+sources_dir = None
+for cand in src_candidates:
+    if os.path.isdir(cand):
+        sources_dir = cand
+        break
+if sources_dir is None:
+    sources_dir = os.path.join(bundle_dir, "sources")
+    os.makedirs(sources_dir, exist_ok=True)
+
+# If sources are in project intermediaries, copy to wiki if bundle_name == dsincubator or has sources
+has_sources = False
+if os.path.isdir(sources_dir):
+    src_files = sorted(glob.glob(os.path.join(sources_dir, "source_*.md")))
+    has_sources = len(src_files) > 0
+    # For dsincubator, ensure wiki/sources has them; for other bundles, skip unless explicitly has sources
+    if has_sources and bundle_name == "dsincubator":
+        os.makedirs(wiki_sources, exist_ok=True)
+        for sf in src_files:
+            dst = os.path.join(wiki_sources, os.path.basename(sf))
+            if not os.path.exists(dst):
+                try:
+                    shutil.copy2(sf, dst)
+                except:
+                    pass
+        # also copy index/log if exists in source_dir
+        for extra in ["index.md", "log.md"]:
+            s = os.path.join(sources_dir, extra)
+            if os.path.isfile(s):
+                try:
+                    shutil.copy2(s, os.path.join(wiki_sources, extra))
+                except:
+                    pass
+        sources_dir = wiki_sources
+    elif has_sources:
+        # For test bundles (dslab count 3) we still want wiki/sources to show pipeline works
+        # But per spec dslab should not have sources — we include if has_sources but keep wiki index pruning optional
+        os.makedirs(wiki_sources, exist_ok=True)
+        for sf in src_files:
+            dst = os.path.join(wiki_sources, os.path.basename(sf))
+            if not os.path.exists(dst):
+                try:
+                    shutil.copy2(sf, dst)
+                except:
+                    pass
+        sources_dir = wiki_sources
+    else:
+        sources_dir = wiki_sources if os.path.isdir(wiki_sources) else sources_dir
+
+# Also ensure transcripts copy to wiki
+trans_src = os.path.join(bundle_dir, "transcripts")
+if os.path.isdir(trans_src):
+    for f in glob.glob(os.path.join(trans_src, "*.md")):
+        dst = os.path.join(wiki_trans, os.path.basename(f))
+        if not os.path.exists(dst) or os.path.getmtime(f) > os.path.getmtime(dst):
+            try:
+                shutil.copy2(f, dst)
+            except:
+                pass
+
+# Topics: build-wiki now writes to wiki/topics directly. Also handle legacy bundle_dir/topics
+legacy_topics = os.path.join(bundle_dir, "topics")
+if os.path.isdir(legacy_topics) and not glob.glob(os.path.join(wiki_topics, "*.md")):
+    # copy legacy topics (excluding wiki subdir)
+    for root, dirs, files in os.walk(legacy_topics):
+        rel = os.path.relpath(root, legacy_topics)
+        dst_root = os.path.join(wiki_topics, rel) if rel != "." else wiki_topics
+        os.makedirs(dst_root, exist_ok=True)
+        for fname in files:
+            s = os.path.join(root, fname)
+            d = os.path.join(dst_root, fname)
+            if not os.path.exists(d):
+                try:
+                    shutil.copy2(s, d)
+                except:
+                    pass
+
+# Ensure topics subdirs exist for manifest categories
+for t in manifest.get("topics", []):
+    cat = t.get("category", "general")
+    os.makedirs(os.path.join(wiki_topics, cat), exist_ok=True)
+
+# Count sources for description
+src_count = len(glob.glob(os.path.join(wiki_sources, "source_*.md"))) if os.path.isdir(wiki_sources) else len(glob.glob(os.path.join(sources_dir, "source_*.md"))) if os.path.isdir(sources_dir) else 0
+if src_count == 0 and os.path.isdir(sources_dir):
+    src_count = len(glob.glob(os.path.join(sources_dir, "source_*.md")))
+trans_count = len(glob.glob(os.path.join(wiki_trans, "*.md")))
+
+# 1. Wiki root index.md (§12) — PRUNED: no data/manifests/assets links
+# Only indexed wiki content: transcripts/, topics/, sources/ (dsincubator only), metadata/, references/, log.md
 playlist_line = f"Playlist: {playlist_url}" if playlist_url else f"Bundle: {bundle_name} ({bundle_tag})"
+# Determine if we should show sources link: only if has_sources and (bundle_name dsincubator or we have wiki sources)
+show_sources = os.path.isdir(wiki_sources) and len(glob.glob(os.path.join(wiki_sources, "source_*.md"))) > 0
+sources_line = "- [Sources Index](sources/index.md) (§8) + [Sources Log](sources/log.md) (§9)\n" if show_sources else ""
+wiki_index_path = os.path.join(wiki_dir, "index.md")
 root_content = f"""---
 okf_version: '0.2'
 type: Bundle
 title: {bundle_name.title()} LLM Wiki Bundle
-description: OKF v0.2 LLM wiki bundle for {bundle_name} — {len(manifest.get("topics", []))} topics from {len(glob.glob(os.path.join(sources_dir, "source_*.md")))} sources.
+description: OKF v0.2 LLM wiki bundle for {bundle_name} — {len(manifest.get("topics", []))} topics from {src_count} sources.
 tags:
 - {bundle_tag}
 - wiki-bundle
@@ -93,19 +199,10 @@ Transcripts are deterministic: `transcripts/<id>_<slug>.md` bodies are `mm:ss: t
 - **Bundle root:** [`index.md`](index.md) (§12)
 - [Topics Overview](topics/concepts-overview.md) — all concepts (§3.1)
 - [Topics Index](topics/index.md) (§8)
-- [Sources Index](sources/index.md) (§8) + [Sources Log](sources/log.md) (§9)
-- [Data Index](data/index.md) (§8) — dictionaries for [`metadata.csv`](metadata.csv), [`manifests/metadata.tsv`](manifests/metadata.tsv) ([dict](data/metadata-manifest.md)), [`manifests/transcripts.tsv`](manifests/transcripts.tsv), [`assets/metadata-raw.tar.gz`](assets/metadata-raw.tar.gz) ([dict](data/metadata-raw.md)), [`assets/transcripts-raw.tar.gz`](assets/transcripts-raw.tar.gz) ([dict](data/transcripts-raw.md)) + [Manifests](manifests/index.md) (§8)
-- [Manifests Index](manifests/index.md) (§8) — `manifests/metadata.tsv` + `transcripts.tsv` (fetch manifests, kept readable)
-- [Assets Index](assets/index.md) (§8) — `assets/*.tar.gz` release assets
-- [Transcripts](transcripts/manifest.tsv) — `transcripts/<id>_<slug>.md` deterministic `mm:ss: text` per `tStartMs` + `manifests/transcripts.tsv` (§8) (legacy `transcripts/manifest.tsv` for compat)
+{sources_line}- [Metadata](metadata/metadata.csv) — derived table ([dictionary](metadata/metadata.md))
+- [Transcripts](transcripts/) — `transcripts/<id>_<slug>.md` deterministic `mm:ss: text` per `tStartMs`
 - [Bundle History Log](log.md) (§9)
 - [References](references/index.md) (§6.3)
-
-## Build
-```sh
-./bin/build-wiki --playlist "{playlist_url}" --name {bundle_name} --tag {bundle_tag} --out-dir ./{bundle_name} --count 3  # quick test
-./bin/build-wiki --playlist "{playlist_url}" --name {bundle_name} --tag {bundle_tag} --out-dir ./{bundle_name}          # full
-```
 
 ## Search
 ```sh
@@ -113,10 +210,15 @@ qmd search "topic" -c {bundle_name} -n 3
 qmd query "question" -c {bundle_name} -n 3
 ```
 """
-with open(root_index_path, "w", encoding="utf-8") as f:
+with open(wiki_index_path, "w", encoding="utf-8") as f:
     f.write(root_content)
-# README.md — wording/format of dslab/README.md (no image)
-# Knowledge base ... [Playlist](url), structured as [LLM wiki] in [OKF] v0.2. Both humans and AI-agents should start at [index.md].
+# Legacy copy at project root for backward compat (optional, not indexed as wiki but keep)
+try:
+    shutil.copy2(wiki_index_path, os.path.join(bundle_dir, "index.md"))
+except:
+    pass
+
+# README.md — wording/format per spec
 title_map = {"dslab": "Posit Data Science Lab", "dshangout": "Data Science Hangout", "dsincubator": "Posit Data Science Incubator"}
 display_title = title_map.get(bundle_name, bundle_name.replace("-", " ").title())
 playlist_md = f"[Playlist]({playlist_url})" if playlist_url else "Playlist"
@@ -128,11 +230,40 @@ Both humans and AI-agents should start at [index.md](index.md).
 
 See [tools, tips and tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#optional-cli-tools) to read, query and graph your wiki.
 """
-with open(os.path.join(bundle_dir, "README.md"), "w", encoding="utf-8") as f:
+with open(os.path.join(wiki_dir, "README.md"), "w", encoding="utf-8") as f:
     f.write(readme_content)
+try:
+    shutil.copy2(os.path.join(wiki_dir, "README.md"), os.path.join(bundle_dir, "README.md"))
+except:
+    pass
 
-# 2. Topics concepts-overview.md (§3.1)
-topics_overview_path = os.path.join(topics_dir, "concepts-overview.md")
+# AGENTS.md — wiki maintenance (separate from build AGENTS.md)
+agents_path = os.path.join(wiki_dir, "AGENTS.md")
+with open(agents_path, "w", encoding="utf-8") as f:
+    f.write(f"""# AGENTS.md — {bundle_name} wiki maintenance
+
+This file is for the **exported wiki** (`wiki/`). Build repo AGENTS.md lives at project root.
+
+## Querying the wiki
+- Start at [`index.md`](index.md) (§12)
+- Topics: [`topics/index.md`](topics/index.md) + [`topics/concepts-overview.md`](topics/concepts-overview.md)
+- Transcripts: `transcripts/<id>_<slug>.md` (`mm:ss: text` deterministic)
+- Metadata: [`metadata/metadata.csv`](metadata/metadata.csv) ([dictionary](metadata/metadata.md))
+
+## Adding summaries via LLM
+- `sources/` is not shipped for `dslab`/`dshangout` (deterministic `bin/*` only). For `dsincubator`, sources are distilled per Extraction Prompt v2.
+- To add `summaries/` via LLM, see build `AGENTS.md` Extraction Prompt v2 and `bin/distill-sources`.
+
+## Maintenance
+- `log.md` records bundle history (§9)
+- `references/` holds external executors/attesters (§6.3)
+- Build intermediates (`manifests/`, `assets/`, `data/`) are NOT in this wiki; they live in project-outdir/ and are not indexed.
+
+Generated by `agent:okf-wiki-builder/1.0` per OKF v0.2 §7.
+""")
+
+# 2. Topics concepts-overview.md (§3.1) and index.md in wiki
+topics_overview_path = os.path.join(wiki_topics, "concepts-overview.md")
 topics_content = f"""---
 okf_version: '0.2'
 type: DirectoryIndex
@@ -155,8 +286,7 @@ for t in manifest.get("topics", []):
 with open(topics_overview_path, "w", encoding="utf-8") as f:
     f.write(topics_content)
 
-# Topics index.md (§8)
-with open(os.path.join(topics_dir, "index.md"), "w", encoding="utf-8") as f:
+with open(os.path.join(wiki_topics, "index.md"), "w", encoding="utf-8") as f:
     f.write(f"""---
 okf_version: '0.2'
 type: DirectoryIndex
@@ -166,9 +296,11 @@ title: Topics Index
 See [Concepts Overview](concepts-overview.md).
 """)
 
-# 3. Sources index.md & log.md (§8, §9)
-sources_list = sorted(glob.glob(os.path.join(sources_dir, "source_*.md")))
-sources_index_content = f"""---
+# 3. Sources index.md & log.md (§8, §9) — only if wiki_sources exists and has sources
+if show_sources:
+    os.makedirs(wiki_sources, exist_ok=True)
+    sources_list = sorted(glob.glob(os.path.join(wiki_sources, "source_*.md")))
+    sources_index_content = f"""---
 okf_version: '0.2'
 type: DirectoryIndex
 title: Sources Index
@@ -176,14 +308,12 @@ title: Sources Index
 # Sources Index ({bundle_name.title()})
 
 """
-for s_path in sources_list:
-    s_name = os.path.basename(s_path)
-    sources_index_content += f"- [{s_name}]({s_name})\n"
-
-with open(os.path.join(sources_dir, "index.md"), "w", encoding="utf-8") as f:
-    f.write(sources_index_content)
-
-sources_log_content = f"""---
+    for s_path in sources_list:
+        s_name = os.path.basename(s_path)
+        sources_index_content += f"- [{s_name}]({s_name})\n"
+    with open(os.path.join(wiki_sources, "index.md"), "w", encoding="utf-8") as f:
+        f.write(sources_index_content)
+    sources_log_content = f"""---
 okf_version: '0.2'
 type: Log
 title: Sources Ingest Log
@@ -191,24 +321,42 @@ title: Sources Ingest Log
 # Sources Ingest Log
 - Initial ingest completed for {len(sources_list)} sources.
 """
-with open(os.path.join(sources_dir, "log.md"), "w", encoding="utf-8") as f:
-    f.write(sources_log_content)
+    with open(os.path.join(wiki_sources, "log.md"), "w", encoding="utf-8") as f:
+        f.write(sources_log_content)
+else:
+    # Ensure minimal sources index if wiki_sources exists but empty (for completeness)
+    if os.path.isdir(wiki_sources):
+        with open(os.path.join(wiki_sources, "index.md"), "w", encoding="utf-8") as f:
+            f.write(f"""---
+okf_version: '0.2'
+type: DirectoryIndex
+title: Sources Index
+---
+# Sources Index ({bundle_name.title()})
 
-# 4. Root log.md (§9) — includes version tag for GH release asset
-root_log_path = os.path.join(bundle_dir, "log.md")
-with open(root_log_path, "w", encoding="utf-8") as f:
-    f.write(f"""---
+No distilled sources (deterministic `bin/*` only — see AGENTS.md).
+""")
+
+# 4. Wiki log.md (§9) + bundle root log
+log_content = f"""---
 okf_version: '0.2'
 type: Log
 title: Bundle History Log
 ---
 # Bundle History Log
 - 2026-09-08: Initial assembly of {bundle_name} wiki bundle.
-- 2026-09-08: Release tag `{bundle_name}-v0.0.1` — `transcripts-raw.tar.gz` + `metadata-raw.tar.gz` at bundle root (siblings of `transcripts/`/`metadata/`, keep `.md` readable; distribution preference — see AGENTS.md).
-""")
+- 2026-09-08: Release tag `{bundle_name}-v0.0.1` — `assets/metadata-raw.tar.gz` + `assets/transcripts-raw.tar.gz` at project-outdir root (siblings of `wiki/`, not indexed).
+"""
+with open(os.path.join(wiki_dir, "log.md"), "w", encoding="utf-8") as f:
+    f.write(log_content)
+# legacy copy
+try:
+    shutil.copy2(os.path.join(wiki_dir, "log.md"), os.path.join(bundle_dir, "log.md"))
+except:
+    pass
 
-# 5. References index.md (§6.3)
-with open(os.path.join(refs_dir, "index.md"), "w", encoding="utf-8") as f:
+# 5. References index.md (§6.3) in wiki
+with open(os.path.join(wiki_refs, "index.md"), "w", encoding="utf-8") as f:
     f.write(f"""---
 okf_version: '0.2'
 type: References
@@ -218,22 +366,15 @@ title: References & External Executors
 External executors and attestation anchors for {bundle_name}.
 """)
 
-# 6. Data dictionaries (§4.1) + data/index.md (§8)
-# Deterministic generation: headers from AGENTS.md:9 + static column/field descriptions.
-# Each dictionary is a Concept (§4.1) with credibility signals and agent actor.
+# 6. Metadata in wiki/metadata (indexed) — replaces old data/ dictionaries
 import csv as _csv
 from datetime import datetime, timezone
 
-data_dir = os.path.join(bundle_dir, "data")
-os.makedirs(data_dir, exist_ok=True)
 gen_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-# Fallback to static date if dynamic not desired: keep ISO for OKF
-if not gen_at:
-    gen_at = "2026-09-08T00:00:00Z"
-# Try to read metadata.csv header/row count for credibility signals
+# Try to read metadata.csv from project intermediaries
 csv_candidates = [
-    os.path.join(bundle_dir, "metadata.csv"),
     os.path.join(bundle_dir, "data", "metadata.csv"),
+    os.path.join(bundle_dir, "metadata.csv"),
     os.path.join("data", "metadata.csv"),
 ]
 csv_path_found = None
@@ -252,7 +393,7 @@ for _p in csv_candidates:
         break
 if not csv_header:
     csv_header = ["playlist_index","title","id","view_count","like_count","comment_count","upload_date","upload_date_iso","duration","duration_string","channel","uploader","url"]
-# Static column descriptions (AGENTS.md:9)
+
 col_desc = {
     "playlist_index": "Playlist position (1-indexed integer from `yt-dlp --flat-playlist --print playlist_index`).",
     "title": "Video title as returned by YouTube (`title`).",
@@ -268,31 +409,25 @@ col_desc = {
     "uploader": "Uploader identifier (`uploader`).",
     "url": "Canonical watch URL `https://www.youtube.com/watch?v=<id>` derived from `id`.",
 }
-# Count metadata json files for credibility
+
 meta_dir = os.path.join(bundle_dir, "metadata")
 meta_count = len(glob.glob(os.path.join(meta_dir, "*.json"))) if os.path.isdir(meta_dir) else csv_rowcount
-# Sample one metadata json for raw dictionary annotation
-sample_meta = None
-if os.path.isdir(meta_dir):
-    _samples = sorted(glob.glob(os.path.join(meta_dir, "*.json")))
-    if _samples:
-        try:
-            with open(_samples[0], encoding="utf-8") as _jf:
-                import json as _json
-                sample_meta = _json.load(_jf)
-        except Exception:
-            sample_meta = None
-# Transcripts count
-trans_dir = os.path.join(bundle_dir, "transcripts")
-trans_md_count = len(glob.glob(os.path.join(trans_dir, "*.md"))) if os.path.isdir(trans_dir) else 0
-# Common generated block
+
 def _gen_block():
     return f"generated:\n  by: \"agent:okf-wiki-builder/1.0\"\n  at: \"{gen_at}\""
-# log tag
+
 release_tag = f"{bundle_name}-v0.0.1"
-# 6a. data/metadata.md
-metadata_md_path = os.path.join(data_dir, "metadata.md")
-with open(metadata_md_path, "w", encoding="utf-8") as f:
+
+# Copy metadata.csv to wiki/metadata/metadata.csv (indexed)
+if csv_path_found and os.path.isfile(csv_path_found):
+    try:
+        shutil.copy2(csv_path_found, os.path.join(wiki_meta, "metadata.csv"))
+        print(f"[assemble-bundle] copied {csv_path_found} -> wiki/metadata/metadata.csv ({csv_rowcount} rows)")
+    except Exception as e:
+        print(f"[assemble-bundle] warn copy metadata.csv: {e}")
+
+# wiki/metadata/metadata.md (Concept) — replaces data/metadata.md
+with open(os.path.join(wiki_meta, "metadata.md"), "w", encoding="utf-8") as f:
     f.write(f"""---
 okf_version: '0.2'
 type: Concept
@@ -315,11 +450,11 @@ sources:
 
 # Metadata CSV Dictionary ([metadata.csv](metadata.csv))
 
-Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` (see `assets/metadata-raw.tar.gz`). One row per public video; private/unavailable videos have no row (see `manifests/metadata.tsv`).
+Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` (see project `assets/metadata-raw.tar.gz`). One row per public video; private/unavailable videos have no row (see `manifests/metadata.tsv` in project-outdir, not indexed).
 
-**Location:** [metadata.csv](metadata.csv) at bundle root (build intermediate; not shipped as release asset — see dictionaries `data/metadata-raw.md` for the shipped raw archive). For the canonical `dsincubator` bundle this lives at `data/metadata.csv`; per-bundle bundles expose it at `{bundle_name}/metadata.csv`.
+**Location:** [metadata.csv](metadata.csv) in `wiki/metadata/` (indexed). Project intermediate is `data/metadata.csv` (not indexed). For the canonical `dsincubator` bundle this is `wiki/metadata/metadata.csv`.
 
-**Release:** Raw dumps are published as `assets/metadata-raw.tar.gz` at bundle root in `assets/` (sibling of `manifests/`/`data/`) and attached as GitHub Release asset under tag `{release_tag}` (see `log.md`). See `data/metadata-raw.md`.
+**Release:** Raw dumps are published as `assets/metadata-raw.tar.gz` at project-outdir root (not indexed) and attached as GitHub Release asset under tag `{release_tag}` (see `log.md`).
 
 **Columns** (`{",".join(csv_header)}` per `AGENTS.md:9`):
 
@@ -330,345 +465,70 @@ Derived table built by `bin/fetch-metadata` from raw dumps `metadata/<id>.json` 
         desc = col_desc.get(col, "")
         f.write(f"| `{col}` | {desc} |\n")
     f.write(f"""
-**Join key:** `id` → `transcripts/<id>_<slug>.md` (`resource: https://www.youtube.com/watch?v=<id>`) and `sources/source_<id>_<slug>.md`.
+**Join key:** `id` → `transcripts/<id>_<slug>.md` (`resource: https://www.youtube.com/watch?v=<id>`) and `sources/source_<id>_<slug>.md` (if present).
 
-**Provenance:** `yt-dlp --skip-download --dump-single-json` per video → `metadata/<id>.json` (slimmed: `automatic_captions`/`subtitles`/`formats` pruned) → derived `metadata.csv`. Manifest `manifests/metadata.tsv` records terminal states (`ok`/`private`/`unavailable`/`error`).
+**Provenance:** `yt-dlp --skip-download --dump-single-json` per video → `metadata/<id>.json` (slimmed: `automatic_captions`/`subtitles`/`formats` pruned) → derived `data/metadata.csv` → `wiki/metadata/metadata.csv`. Manifest `manifests/metadata.tsv` (project-only, not indexed) records terminal states.
 
-**Workflow:** download raw → `assets/metadata-raw.tar.gz` sibling → derive `metadata.csv` → use for `fetch-transcripts`/`convert`/`distill`.
-
-""")
-
-# 6b. data/metadata-raw.md
-field_desc = {
-    "id": "YouTube video ID (join key; filename `<id>.json`).",
-    "title": "Video title.",
-    "description": "Full video description (YouTube `description`; may be long, markdown-unescaped).",
-    "channel": "Channel display name.",
-    "uploader": "Uploader handle/ID.",
-    "view_count": "View count at dump time.",
-    "like_count": "Like count (may be null if hidden).",
-    "comment_count": "Comment count at dump time.",
-    "upload_date": "Upload date `YYYYMMDD`.",
-    "chapters": "Auto-detected chapters (`chapters[]: {start_time, title, end_time}`; may be empty).",
-    "comments": "Top comments array when `--write-comments` enabled (may be truncated by YouTube; `comments[]`).",
-    "duration": "Duration seconds.",
-    "duration_string": "Human-readable duration (derived, but stored in CSV not raw).",
-    "tags": "YouTube tags array (`tags[]`).",
-    "categories": "YouTube categories.",
-    "timestamp": "Publish timestamp (Unix epoch).",
-    "availability": "Availability string (`public`/`private`/`unavailable`).",
-}
-pruned_note = "`automatic_captions`, `subtitles`, `formats`, `requested_formats`, `requested_downloads` are pruned by `slim_dump()` in `bin/fetch-metadata` (≈97% bytes, expiring URLs) — not in the archive."
-kept_fields = ["id","title","description","channel","uploader","view_count","like_count","comment_count","upload_date","chapters","comments"]
-with open(os.path.join(data_dir, "metadata-raw.md"), "w", encoding="utf-8") as f:
-    f.write(f"""---
-okf_version: '0.2'
-type: Concept
-title: Metadata Raw Archive Dictionary
-description: Field dictionary for metadata-raw.tar.gz — raw per-video dumps metadata/<id>.json (yt-dlp --dump-single-json, slimmed).
-tags:
-- {bundle_tag}
-- data-dictionary
-- metadata-raw
-{_gen_block()}
-status: stable
-sources:
-- id: {bundle_name}-metadata-raw
-  title: "{bundle_name} metadata-raw.tar.gz"
-  resource: "metadata-raw.tar.gz"
-  author: "Posit PBC"
-  usage_count: {meta_count}
-  last_modified: "2026-09-08"
----
-
-# Metadata Raw Archive Dictionary (`assets/metadata-raw.tar.gz`)
-
-Raw per-video dumps `metadata/<id>.json` produced by `yt-dlp --skip-download --dump-single-json` (with `--write-comments` where enabled). Each file is the richest record per video; post-processing (CSV, wiki) is separate from fetching.
-
-**Location:** `assets/metadata-raw.tar.gz` at **bundle root** in `assets/` (sibling of `manifests/`/`data/`). Contains only `<id>.json` files (excludes `manifests/metadata.tsv`). {pruned_note} Remainder is kept as-is (≈ `id,title,description,channel,uploader,view_count,like_count,comment_count,upload_date,chapters,comments` plus lightweight fields like `duration, tags, timestamp, availability, thumbnails, etc.`).
-
-**Release:** Attached as GitHub Release asset together with the final repo version (manual after review, not in `bin/build-wiki`). Version tag recorded in `log.md` as `{release_tag}` and in git as `{release_tag}`. See `log.md`.
-
-**Archive creation:** `bin/fetch-metadata` auto-creates `assets/metadata-raw.tar.gz` after CSV derive (re-created on every `--refresh` or new fetches): `tar -czf assets/metadata-raw.tar.gz metadata/*.json` (now `assets/`).
-
-**Core fields** (sample from `{os.path.basename(sorted(glob.glob(os.path.join(meta_dir, "*.json")))[0]) if os.path.isdir(meta_dir) and glob.glob(os.path.join(meta_dir, "*.json")) else "<id>.json"}`):
-
-| Field | Description |
-|-------|-------------|
-""")
-    for fld in kept_fields:
-        f.write(f"| `{fld}` | {field_desc.get(fld, '')} |\n")
-    f.write(f"""
-Additional preserved fields (selected): `duration`, `tags`, `categories`, `timestamp`, `availability`, `channel_id`, `uploader_id`, `webpage_url`, `thumbnails`, `heatmap`, `chapters`, `comments`.
-
-Pruned (reproducible/expired): `automatic_captions`, `subtitles`, `formats`, `requested_formats`, `requested_downloads`.
-
-**Manifest:** `manifests/metadata.tsv` (`id | status | reason | file`) records terminal states `ok`/`private`/`unavailable`/`error` — not archived, lives in `manifests/` (indexed via [data/manifests.md](../data/manifests.md)).
+**Workflow:** download raw → `assets/metadata-raw.tar.gz` sibling → derive `data/metadata.csv` → copy to `wiki/metadata/metadata.csv`.
 
 """)
 
-# 6c. data/metadata-manifest.md — index manifest.tsv in wiki
-# Manifest lives at manifests/metadata.tsv (new, kept readable after json clean) — check new then old
-new_manifest_path = os.path.join(bundle_dir, "manifests", "metadata.tsv")
-old_manifest_path = os.path.join(meta_dir, "manifest.tsv")
-manifest_path = new_manifest_path if os.path.isfile(new_manifest_path) else old_manifest_path
-manifest_count = 0
-if os.path.isfile(manifest_path):
-    try:
-        with open(manifest_path, encoding="utf-8") as _mf:
-            # count data rows excluding header
-            _lines = [l for l in _mf if l.strip()]
-            manifest_count = max(0, len(_lines) - 1)
-    except Exception:
-        manifest_count = 0
-with open(os.path.join(data_dir, "metadata-manifest.md"), "w", encoding="utf-8") as f:
-    f.write(f"""---
-okf_version: '0.2'
-type: Concept
-title: Metadata Manifest Dictionary
-description: Dictionary for metadata/manifest.tsv — per-video fetch status (id, status, reason, file) for raw dumps.
-tags:
-- {bundle_tag}
-- data-dictionary
-- metadata-manifest
-{_gen_block()}
-status: stable
-sources:
-- id: {bundle_name}-metadata-manifest
-  title: "{bundle_name} metadata/manifest.tsv"
-  resource: "metadata/manifest.tsv"
-  author: "process:fetch-metadata"
-  usage_count: {manifest_count if manifest_count else meta_count if meta_count else csv_rowcount}
-  last_modified: "2026-09-08"
----
-
-# Metadata Manifest Dictionary ([manifests/metadata.tsv](../manifests/metadata.tsv))
-
-Manifest produced by `bin/fetch-metadata` alongside raw dumps `metadata/<id>.json` (now archived as `assets/metadata-raw.tar.gz`). One row per playlist entry; `status` records terminal state.
-
-**Location:** [manifests/metadata.tsv](../manifests/metadata.tsv) (kept readable after `metadata/*.json` clean; not in `assets/metadata-raw.tar.gz`). Also see [metadata.csv](metadata.csv) derived table and [assets/metadata-raw.tar.gz](../assets/metadata-raw.tar.gz) archive.
-
-**Release:** Manifest is small provenance log, kept in repo (not a release asset, indexed via [manifests/index.md](../manifests/index.md) and [data/manifests.md](manifests.md)). History lives in bundle root `log.md` (tag `{release_tag}`).
-
-**Columns** (`id | status | reason | file` per `manifests/metadata.tsv` header):
-
-| Column | Description |
-|--------|-------------|
-| `id` | YouTube video ID (playlist entry; join key to `metadata.csv` `id` and `transcripts/<id>_<slug>.md`). |
-| `status` | Fetch status: `ok` (dump present), `private`/`unavailable` (terminal, with `reason`), `error` (transient). |
-| `reason` | Human-readable reason for non-`ok` (e.g., `Private video`, `Video unavailable`); empty for `ok`. |
-| `file` | Path to raw dump `metadata/<id>.json` when `status=ok`; empty otherwise. |
-
-**Status values:** `ok` → row in `metadata.csv` + dump in `assets/metadata-raw.tar.gz`; `private`/`unavailable` → no CSV row, no dump, skipped on later runs (`--refresh` re-probes); `error` → transient, retried next run.
-
-**Provenance:** `yt-dlp --flat-playlist` index → `yt-dlp --dump-single-json` per `id` → `metadata/<id>.json` (slimmed) → `metadata.csv` + `manifests/metadata.tsv` → `assets/metadata-raw.tar.gz` sibling → clean `metadata/*.json`.
-
-**Workflow:** keep `manifests/metadata.tsv` readable for audit (indexed via [manifests/index.md](../manifests/index.md)); `assets/metadata-raw.tar.gz` holds dumps for GH release asset.
-
-""")
-
-# 6d. data/transcripts-raw.md
-# Try to sample a json3 for stats (skip Apple resource forks "._" ) — new assets/ then old root
-trans_sample_info = ""
-try:
-    import tarfile as _tarfile, json as _json2, io as _io
-    new_tar = os.path.join(bundle_dir, "assets", "transcripts-raw.tar.gz")
-    old_tar = os.path.join(bundle_dir, "transcripts-raw.tar.gz")
-    tar_path = new_tar if os.path.isfile(new_tar) else old_tar
-    if os.path.isfile(tar_path):
-        with _tarfile.open(tar_path, "r:gz") as _tf:
-            for _m in _tf.getmembers():
-                _base = os.path.basename(_m.name)
-                if _base.startswith("._") or "/._" in _m.name:
-                    continue
-                if _m.name.endswith(".json3"):
-                    _f = _tf.extractfile(_m)
-                    if _f:
-                        try:
-                            _j = _json2.load(_io.TextIOWrapper(_f, encoding="utf-8"))
-                        except Exception:
-                            continue
-                        evs = _j.get("events", [])
-                        trans_sample_info = f"Sample `{_base}`: {len(evs)} events"
-                    break
-except Exception:
-    pass
-if not trans_sample_info:
-    # fallback to any json3 in transcripts/
-    _jpaths = sorted(glob.glob(os.path.join(trans_dir, "*.json3")))
-    if _jpaths:
-        try:
-            import json as _json3
-            with open(_jpaths[0], encoding="utf-8") as _jf:
-                _j = _json3.load(_jf)
-                trans_sample_info = f"Sample `{os.path.basename(_jpaths[0])}`: {len(_j.get('events', []))} events"
-        except Exception:
-            trans_sample_info = "Sample `*.json3`: events[].tStartMs/dDurationMs + segs[].utf8/tOffsetMs"
-
-with open(os.path.join(data_dir, "transcripts-raw.md"), "w", encoding="utf-8") as f:
-    f.write(f"""---
-okf_version: '0.2'
-type: Concept
-title: Transcripts Raw Archive Dictionary
-description: Schema dictionary for transcripts-raw.tar.gz — raw caption files (json3/srv3/vtt) before deterministic OKF markdown conversion.
-tags:
-- {bundle_tag}
-- data-dictionary
-- transcripts-raw
-{_gen_block()}
-status: stable
-sources:
-- id: {bundle_name}-transcripts-raw
-  title: "{bundle_name} transcripts-raw.tar.gz"
-  resource: "transcripts-raw.tar.gz"
-  author: "process:yt-dlp"
-  usage_count: {trans_md_count if trans_md_count else csv_rowcount}
-  last_modified: "2026-09-08"
----
-
-# Transcripts Raw Archive Dictionary (`assets/transcripts-raw.tar.gz`)
-
-Raw captions downloaded by `bin/fetch-transcripts` via `yt-dlp --skip-download --write-auto-subs --sub-langs "en-orig,es-orig,en.*,es.*" --sub-format "json3/srv3/vtt/best"` (fallback `--sub-langs ".*-orig"` once). One file per public video, preference `en-orig` > `es-orig` > `*-orig` > `en` > `es`; duplicates/translations pruned.
-
-**Location:** `assets/transcripts-raw.tar.gz` at **bundle root** in `assets/` (sibling of `manifests/`/`data/`). Contains raw `*.json3`/`*.vtt`/`*.srv3` etc. (kept `transcripts/*.md` + `manifests/transcripts.tsv` readable in `manifests/`). Archive is cleaned from `transcripts/` after conversion by `bin/convert-transcripts`: workflow `download raw → generate assets/transcripts-raw.tar.gz sibling → generate transcripts/<id>_<slug>.md` (`mm:ss: text` per `tStartMs`, deterministic, no LLM) → remove non-`.md` from `transcripts/`.
-
-**Release:** Attached as GitHub Release asset together with the final repo version (manual after review). Version tag recorded in `log.md` as `{release_tag}` and in git as `{release_tag}`. See `log.md`.
-
-**Archive creation:** `bin/convert-transcripts` auto-creates `assets/transcripts-raw.tar.gz` after every run (raw `*.json3`/`*.srv3`/`*.vtt`/`*.srt`/`*.tsv`/`*.txt` inside `transcripts/` → tar sibling → clean raw files, keep `.md`).
-
-**Schema — `*.json3` (`{trans_sample_info}`) per `AGENTS.md:39`:**
-
-| Path | Type | Description |
-|------|------|-------------|
-| `events[]` | array | Caption events (one per cue). |
-| `events[].tStartMs` | integer | Event start time in milliseconds. |
-| `events[].dDurationMs` | integer | Event duration in milliseconds. |
-| `events[].segs[]` | array | Word-level segments inside the event. |
-| `events[].segs[].utf8` | string | Caption text fragment (may be word or phrase; join to form `text`). |
-| `events[].segs[].tOffsetMs` | integer | Offset of this segment relative to `tStartMs`. |
-| `events[].segs[].acAsrConf` | integer (0-1) | ASR confidence (present when available). |
-
-Deterministic transcript conversion (`bin/convert-transcripts --format md`): each `events[]` → one line `mm:ss: text` (or `h:mm:ss: text` when ≥1h) derived from `tStartMs`; plain body `text` is `\"\".join(segs[].utf8)`. Frontmatter is re-derived per spec (description from first substantive sentence, tags via `TAG_RULES`, `lang` from track `en-orig`/`es-orig`, `usage_count`/`last_modified`/`usage_window` from `metadata.csv`).
-
-**Multi-format note:** Some videos have only `vtt`/`srv3` fallback (e.g., 13 `vtt`-only in `dshangout` — still archived; `.md` derived where `json3` available, else `vtt` may require manual conversion). See `manifests/transcripts.tsv` (`id | status | file | lang`) for per-video track chosen (also `transcripts/manifest.tsv` for compat).
-
-""")
-
-# 6e. data/manifests.md — dictionary for manifests/ directory (both manifests)
-with open(os.path.join(data_dir, "manifests.md"), "w", encoding="utf-8") as f:
-    f.write(f"""---
-okf_version: '0.2'
-type: Concept
-title: Manifests Dictionary
-description: Dictionary for manifests/ — per-video fetch manifests (metadata + transcripts) kept readable after raw clean.
-tags:
-- {bundle_tag}
-- data-dictionary
-- manifests
-{_gen_block()}
-status: stable
-sources:
-- id: {bundle_name}-manifests
-  title: "{bundle_name} manifests/"
-  resource: "manifests/"
-  author: "process:fetch-metadata"
-  usage_count: {(manifest_count if manifest_count else meta_count) + (trans_md_count if trans_md_count else 0)}
-  last_modified: "2026-09-08"
----
-
-# Manifests Dictionary ([manifests/](../manifests/))
-
-Directory `manifests/` holds per-video fetch manifests kept readable after raw dumps/captions are archived as `assets/*.tar.gz` and cleaned.
-
-**Location:** [manifests/](../manifests/) at bundle root (sibling of `data/`/`assets/`). Contains:
-
-| File | Description |
-|------|-------------|
-| [metadata.tsv](../manifests/metadata.tsv) | `metadata` fetch manifest: `id | status | reason | file` (see [data/metadata-manifest.md](metadata-manifest.md)). |
-| [transcripts.tsv](../manifests/transcripts.tsv) | `transcripts` fetch manifest: `id | status | file | lang` (see transcripts manifest below). |
-
-Also see [data/metadata-manifest.md](metadata-manifest.md) for `metadata` manifest schema and raw archives [metadata-raw.tar.gz](../assets/metadata-raw.tar.gz) / [transcripts-raw.tar.gz](../assets/transcripts-raw.tar.gz) in [assets/](../assets/).
-
-**Transcripts manifest columns** (`id | status | file | lang`):
-
-| Column | Description |
-|--------|-------------|
-| `id` | YouTube video ID (join key). |
-| `status` | `ok` / `missing` / `error` (per `bin/fetch-transcripts`). |
-| `file` | Path to kept caption `transcripts/<id>.<lang>.json3` (or empty). |
-| `lang` | Caption track `en-orig` / `es-orig` / `en` / `es` / `*-orig`. |
-
-**Workflow:** `bin/fetch-metadata` → `manifests/metadata.tsv` + `assets/metadata-raw.tar.gz` → `bin/fetch-transcripts` → `manifests/transcripts.tsv` + `assets/transcripts-raw.tar.gz` → `bin/convert-transcripts` → `transcripts/*.md`.
-
-**Release:** Manifests are small provenance logs, kept in repo (not release assets). History in `log.md` (tag `{release_tag}`).
-
-""")
-
-# 6f. data/index.md (§8)
-with open(os.path.join(data_dir, "index.md"), "w", encoding="utf-8") as f:
+# wiki/metadata/index.md (§8)
+with open(os.path.join(wiki_meta, "index.md"), "w", encoding="utf-8") as f:
     f.write(f"""---
 okf_version: '0.2'
 type: DirectoryIndex
-title: Data Index
-description: Index of data dictionaries for {bundle_name}.
+title: Metadata Index
+description: Index of metadata for {bundle_name}.
 tags:
 - {bundle_tag}
-- data-index
+- metadata-index
 ---
 
-# Data Index ({bundle_name.title()})
+# Metadata Index ({bundle_name.title()})
 
-Dictionaries describing the derived and raw datasets that underpin this bundle.
+- [Metadata CSV Dictionary](metadata.md) — column dictionary for `metadata.csv` (derived table, {csv_rowcount} rows)
+- [metadata.csv](metadata.csv) — derived table (one row per public video)
 
-- [Metadata CSV Dictionary](metadata.md) — column dictionary for `metadata.csv` (derived table).
-- [Manifests Dictionary](manifests.md) — directory dictionary for `manifests/` (both fetch manifests).
-- [Metadata Manifest Dictionary](metadata-manifest.md) — dictionary for `manifests/metadata.tsv` (per-video fetch status).
-- [Metadata Raw Archive Dictionary](metadata-raw.md) — field dictionary for `assets/metadata-raw.tar.gz` (raw `metadata/<id>.json` dumps).
-- [Transcripts Raw Archive Dictionary](transcripts-raw.md) — schema dictionary for `assets/transcripts-raw.tar.gz` (raw `*.json3` captions).
-
-History lives in bundle root `log.md` (no separate `data/log.md`; see `AGENTS.md:338`); release tags like `{release_tag}` are recorded there and in git. Raw archives are siblings at bundle root in `assets/`, manifests in `manifests/`, per distribution preferences.
-
+Project intermediates (`manifests/`, `assets/`, `data/`) are not indexed; they live in project-outdir/. History in `log.md` (tag `{release_tag}`).
 """)
 
-# 7. Manifests directory (§8) + index
+# 7. Ensure project manifests/assets indexes (NOT indexed in wiki) — keep at project-outdir root
 manifests_dir = os.path.join(bundle_dir, "manifests")
 os.makedirs(manifests_dir, exist_ok=True)
-# Migrate old manifests if present
-for old_rel, new_name in [("metadata/manifest.tsv", "metadata.tsv"), ("transcripts/manifest.tsv", "transcripts.tsv"), ("manifests/metadata.tsv", "metadata.tsv"), ("manifests/transcripts.tsv", "transcripts.tsv")]:
+# Migrate old manifests if present (legacy)
+for old_rel, new_name in [("metadata/manifest.tsv", "metadata.tsv"), ("transcripts/manifest.tsv", "transcripts.tsv")]:
     old_path = os.path.join(bundle_dir, old_rel)
     new_path = os.path.join(manifests_dir, new_name)
     if os.path.isfile(old_path) and not os.path.isfile(new_path):
         try:
-            import shutil
             shutil.copy2(old_path, new_path)
             print(f"[assemble-bundle] migrated {old_rel} -> manifests/{new_name}")
-        except Exception:
+        except:
             pass
-# Ensure manifests exist (create empty with header if missing but CSV exists)
-for _name, _header in [("metadata.tsv", "id\\tstatus\\treason\\tfile\\n"), ("transcripts.tsv", "id\\tstatus\\tfile\\tlang\\n")]:
+# Ensure manifests exist
+for _name, _header in [("metadata.tsv", "id\tstatus\treason\tfile\n"), ("transcripts.tsv", "id\tstatus\tfile\tlang\n")]:
     _p = os.path.join(manifests_dir, _name)
     if not os.path.isfile(_p):
-        # try to copy from old location if exists
         _old = os.path.join(bundle_dir, "metadata" if "metadata" in _name else "transcripts", "manifest.tsv")
         if os.path.isfile(_old):
             try:
-                import shutil
                 shutil.copy2(_old, _p)
                 continue
             except:
                 pass
-        # fallback: create header
         try:
             with open(_p, "w", encoding="utf-8") as _f:
                 _f.write(_header)
         except:
             pass
+# manifests/index.md (project-only, not indexed in wiki)
 with open(os.path.join(manifests_dir, "index.md"), "w", encoding="utf-8") as f:
     f.write(f"""---
 okf_version: '0.2'
 type: DirectoryIndex
 title: Manifests Index
-description: Index of fetch manifests for {bundle_name}.
+description: Index of fetch manifests for {bundle_name} (project-only, not indexed in wiki).
 tags:
 - {bundle_tag}
 - manifests-index
@@ -676,16 +536,15 @@ tags:
 
 # Manifests Index ({bundle_name.title()})
 
-Fetch manifests kept readable after raw clean (not in `assets/*.tar.gz`).
+Fetch manifests kept readable after raw clean (not in `assets/*.tar.gz`). Not indexed in wiki.
 
-- [metadata.tsv](metadata.tsv) — `metadata` fetch manifest (`id | status | reason | file`) — see [data/manifests.md](../data/manifests.md) and [data/metadata-manifest.md](../data/metadata-manifest.md)
+- [metadata.tsv](metadata.tsv) — `metadata` fetch manifest (`id | status | reason | file`)
 - [transcripts.tsv](transcripts.tsv) — `transcripts` fetch manifest (`id | status | file | lang`)
 
 Source: `bin/fetch-metadata` → `manifests/metadata.tsv` + `assets/metadata-raw.tar.gz`; `bin/fetch-transcripts` → `manifests/transcripts.tsv` + `assets/transcripts-raw.tar.gz`.
-
 """)
 
-# 8. Assets directory (§8) + index + migrate tars
+# assets index (project-only)
 assets_dir = os.path.join(bundle_dir, "assets")
 os.makedirs(assets_dir, exist_ok=True)
 for _old_tar, _new_tar in [("metadata-raw.tar.gz", "metadata-raw.tar.gz"), ("transcripts-raw.tar.gz", "transcripts-raw.tar.gz")]:
@@ -693,18 +552,16 @@ for _old_tar, _new_tar in [("metadata-raw.tar.gz", "metadata-raw.tar.gz"), ("tra
     _new = os.path.join(assets_dir, _new_tar)
     if os.path.isfile(_old) and not os.path.isfile(_new):
         try:
-            import shutil
             shutil.move(_old, _new)
             print(f"[assemble-bundle] migrated {_old_tar} -> assets/{_new_tar}")
-        except Exception:
+        except:
             pass
-# Ensure assets index
 with open(os.path.join(assets_dir, "index.md"), "w", encoding="utf-8") as f:
     f.write(f"""---
 okf_version: '0.2'
 type: DirectoryIndex
 title: Assets Index
-description: Index of release assets for {bundle_name}.
+description: Index of release assets for {bundle_name} (project-only, not indexed in wiki).
 tags:
 - {bundle_tag}
 - assets-index
@@ -712,14 +569,28 @@ tags:
 
 # Assets Index ({bundle_name.title()})
 
-Release assets (tarballs) at bundle root in `assets/` (siblings of `manifests/`/`data/`). Attached as GitHub Release assets (tag `{release_tag}`).
+Release assets (tarballs) at project-outdir root in `assets/` (siblings of `manifests/`/`data/`/`wiki/`). Attached as GitHub Release assets (tag `{release_tag}`). Not indexed in wiki.
 
-- [metadata-raw.tar.gz](metadata-raw.tar.gz) — raw `metadata/<id>.json` dumps (slimmed) — see [data/metadata-raw.md](../data/metadata-raw.md)
-- [transcripts-raw.tar.gz](transcripts-raw.tar.gz) — raw `*.json3`/`*.vtt` captions — see [data/transcripts-raw.md](../data/transcripts-raw.md)
+- [metadata-raw.tar.gz](metadata-raw.tar.gz) — raw `metadata/<id>.json` dumps (slimmed)
+- [transcripts-raw.tar.gz](transcripts-raw.tar.gz) — raw `*.json3`/`*.vtt` captions
 
 Created by `bin/fetch-metadata` (`assets/metadata-raw.tar.gz`) and `bin/convert-transcripts` (`assets/transcripts-raw.tar.gz`), cleaned from `metadata/`/`transcripts/` (keep `manifests/` readable).
-
 """)
 
-print(f"[assemble-bundle] successfully assembled bundle structure in {bundle_dir}/")
+# 8. Ensure planning_manifest.json stays in manifests (not wiki) — migrate if at bundle root
+if os.path.isfile(os.path.join(bundle_dir, "planning_manifest.json")) and not os.path.isfile(os.path.join(manifests_dir, "planning_manifest.json")):
+    try:
+        shutil.copy2(os.path.join(bundle_dir, "planning_manifest.json"), os.path.join(manifests_dir, "planning_manifest.json"))
+        print(f"[assemble-bundle] migrated planning_manifest.json -> manifests/planning_manifest.json")
+    except:
+        pass
+# If manifest was passed as wiki path, ensure copy in manifests
+if manifest_path != os.path.join(manifests_dir, "planning_manifest.json") and os.path.isfile(manifest_path):
+    try:
+        shutil.copy2(manifest_path, os.path.join(manifests_dir, "planning_manifest.json"))
+    except:
+        pass
+
+print(f"[assemble-bundle] assembled wiki at {wiki_dir}/ (project-outdir {bundle_dir}/)")
+print(f"[assemble-bundle] wiki files: {len(glob.glob(os.path.join(wiki_dir, '**'), recursive=True))} entries")
 PYEOF

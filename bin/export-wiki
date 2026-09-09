@@ -1,0 +1,157 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PROGRAM="${0##*/}"
+usage() {
+    cat <<EOF
+Usage: $PROGRAM [OPTIONS]
+Export wiki-only bundle from project-outdir.
+
+Options:
+  -h, --help            Show this message and exit
+  --from DIR            Project output dir (default: .)
+  --to DIR              Exported wiki dir (required)
+EOF
+}
+
+FROM="."
+TO=""
+
+need_arg() {
+    [[ $# -ge 2 ]] || { echo "[$PROGRAM] $1 needs a value" >&2; exit 2; }
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help) usage; exit 0 ;;
+        --from) need_arg "$@"; FROM="$2"; shift 2 ;;
+        --to) need_arg "$@"; TO="$2"; shift 2 ;;
+        *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
+    esac
+done
+
+if [[ -z "$TO" ]]; then
+    echo "[$PROGRAM] error: --to DIR is required" >&2
+    usage >&2
+    exit 2
+fi
+
+# Determine wiki source: project-outdir/wiki if exists, else project-outdir itself (legacy)
+SRC=""
+if [[ -d "$FROM/wiki" ]]; then
+    SRC="$FROM/wiki"
+elif [[ -f "$FROM/index.md" ]]; then
+    SRC="$FROM"
+else
+    echo "[$PROGRAM] error: no wiki found at $FROM/wiki nor $FROM/index.md" >&2
+    exit 1
+fi
+
+echo "[$PROGRAM] exporting wiki from $SRC -> $TO"
+
+mkdir -p "$TO"
+
+# Clean destination if exists (but keep TO dir)
+# Remove prior contents to ensure no stale intermediates leak
+if [[ -d "$TO" ]]; then
+    # safety: refuse to delete root or home
+    if [[ "$TO" == "/" || "$TO" == "$HOME" ]]; then
+        echo "[$PROGRAM] refusing to clean $TO" >&2; exit 1
+    fi
+    # remove contents but not TO itself
+    find "$TO" -mindepth 1 -maxdepth 1 -exec rm -rf {} + 2>/dev/null || true
+fi
+
+# Copy only wiki dirs (indexed) — per LAYOUT spec
+# wiki/ indexed: index.md, README.md, AGENTS.md, log.md, metadata/, transcripts/, topics/, sources/ (if present), references/
+# Explicitly DO NOT copy: data/, manifests/, assets/, planning_manifest.json at project root, raw archives
+
+copy_file() {
+    local src="$1" dst="$2"
+    if [[ -f "$src" ]]; then
+        mkdir -p "$(dirname "$dst")"
+        cp -a "$src" "$dst"
+        echo "[$PROGRAM] copied $(basename "$src")"
+    fi
+}
+
+copy_dir() {
+    local src="$1" dst="$2"
+    if [[ -d "$src" ]]; then
+        mkdir -p "$dst"
+        # copy contents, not the dir itself wrapper
+        cp -a "$src"/. "$dst"/
+        echo "[$PROGRAM] copied $(basename "$src")/ ($(find "$src" -type f | wc -l | tr -d ' ') files)"
+    fi
+}
+
+copy_file "$SRC/index.md" "$TO/index.md"
+copy_file "$SRC/README.md" "$TO/README.md"
+copy_file "$SRC/log.md" "$TO/log.md"
+# AGENTS.md: wiki maintenance separate from build AGENTS.md
+if [[ -f "$SRC/AGENTS.md" ]]; then
+    copy_file "$SRC/AGENTS.md" "$TO/AGENTS.md"
+elif [[ -f "$SRC/../AGENTS.md" ]]; then
+    # fallback: no wiki AGENTS, but don't copy build AGENTS blindly
+    :
+fi
+copy_dir "$SRC/metadata" "$TO/metadata"
+copy_dir "$SRC/transcripts" "$TO/transcripts"
+copy_dir "$SRC/topics" "$TO/topics"
+copy_dir "$SRC/references" "$TO/references"
+# sources only for dsincubator (keep if present, skip silently otherwise)
+if [[ -d "$SRC/sources" ]]; then
+    # check if has content beyond index/log
+    n=$(find "$SRC/sources" -name "source_*.md" | wc -l | tr -d ' ')
+    if [[ "$n" -gt 0 ]]; then
+        copy_dir "$SRC/sources" "$TO/sources"
+    else
+        # still copy index/log if exists but no sources payload — treat as empty, skip
+        if [[ -f "$SRC/sources/index.md" ]]; then
+            mkdir -p "$TO/sources"
+            copy_file "$SRC/sources/index.md" "$TO/sources/index.md"
+            copy_file "$SRC/sources/log.md" "$TO/sources/log.md"
+        fi
+        echo "[$PROGRAM] note: sources/ has no distilled sources, exported minimal"
+    fi
+fi
+
+# Verification: ensure no intermediates leaked
+leaked=0
+for leak in "data" "manifests" "assets" "planning_manifest.json" "metadata.csv" "metadata" "transcripts-raw.tar.gz" "metadata-raw.tar.gz"; do
+    if [[ -e "$TO/$leak" ]]; then
+        # allow metadata/ (wiki metadata) but not data/
+        if [[ "$leak" == "metadata" && -d "$TO/metadata" ]]; then
+            continue
+        fi
+        echo "[$PROGRAM] leak detected: $TO/$leak should not be in exported wiki" >&2
+        leaked=1
+    fi
+done
+if [[ -e "$TO/data" ]]; then echo "[$PROGRAM] leak: data/ found" >&2; leaked=1; fi
+if [[ -e "$TO/manifests" ]]; then echo "[$PROGRAM] leak: manifests/ found" >&2; leaked=1; fi
+if [[ -e "$TO/assets" ]]; then echo "[$PROGRAM] leak: assets/ found" >&2; leaked=1; fi
+
+if [[ $leaked -ne 0 ]]; then
+    echo "[$PROGRAM] export failed: intermediates leaked into wiki" >&2
+    exit 1
+fi
+
+# Verify wiki has index.md
+if [[ ! -f "$TO/index.md" ]]; then
+    echo "[$PROGRAM] error: exported wiki missing index.md" >&2
+    exit 1
+fi
+
+echo "[$PROGRAM] done: wiki exported to $TO ($(find "$TO" -type f | wc -l | tr -d ' ') files)"
+# List top-level
+ls -1 "$TO" 2>/dev/null | sed 's/^/  /'
+if [[ -f "$TO/metadata/metadata.csv" ]]; then
+    echo "[$PROGRAM] metadata rows: $(($(wc -l < "$TO/metadata/metadata.csv") - 1))"
+fi
+if [[ -d "$TO/transcripts" ]]; then
+    echo "[$PROGRAM] transcripts: $(ls -1 "$TO/transcripts"/*.md 2>/dev/null | wc -l | tr -d ' ') .md"
+fi
+if [[ -d "$TO/topics" ]]; then
+    echo "[$PROGRAM] topics: $(find "$TO/topics" -name "*.md" | wc -l | tr -d ' ') .md"
+fi

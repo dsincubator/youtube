@@ -1,27 +1,7 @@
-# runtime-only — never committed (see AGENTS.md)
 .omo/
-# build outputs at repo root (not output/ which is kept for release)
-# anchored to repo root so output/dslab/ is NOT ignored
-/dslab_build/
-/dslab/
-/dshangout/
-**/.omo/
 .Rhistory
 .Rproj.user
-*/blog_files
 **/*.html
-raw/
-transcripts-raw.tar.gz
-**/transcripts-raw.tar.gz
-metadata-raw.tar.gz
-**/metadata-raw.tar.gz
-assets/*.tar.gz
-**/assets/*.tar.gz
-graph.png
-Untitled.canvas
-*.canvas
-
-/.quarto/
-**/*.quarto_ipynb
-dsincubator_wiki/.obsidian
 .obsidian
+transcripts/transcripts-raw.tar.gz
+assets/metadata-raw.tar.gz

@@ -10,11 +10,11 @@ Convert transcripts/*.json3 to readable formats.
 Options:
   -h, --help            Show this message and exit
   --csv PATH            Metadata CSV (default: data/metadata.csv)
-  --out-dir DIR         Output directory (default: transcripts)
+  --from DIR            Transcripts directory (default: transcripts)
   --format FORMAT       Output format: txt, tsv, md, both, or all (default: both)
-                        txt: plain text, tsv: tab-separated, md: OKF markdown,
-                        both: txt+tsv, all: txt+tsv+md
-  --tag TAG             Bundle tag for frontmatter tags (default: ds-incubator)
+                         txt: plain text, tsv: tab-separated, md: OKF markdown,
+                         both: txt+tsv, all: txt+tsv+md
+  --wiki-tag TAG        Wiki tag for frontmatter tags (default: empty)
   -n, --count N         Process only the first N videos
 EOF
 }
@@ -22,7 +22,7 @@ EOF
 CSV="data/metadata.csv"
 OUT_DIR="transcripts"
 FORMAT="both"
-TAG="ds-incubator"
+TAG=""
 COUNT=0
 
 need_arg() {
@@ -33,9 +33,9 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         -h|--help) usage; exit 0 ;;
         --csv) need_arg "$@"; CSV="$2"; shift 2 ;;
-        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        --from) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
         --format) need_arg "$@"; FORMAT="$2"; shift 2 ;;
-        --tag) need_arg "$@"; TAG="$2"; shift 2 ;;
+        --wiki-tag) need_arg "$@"; TAG="$2"; shift 2 ;;
         -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
         *)
             if [[ "$1" == *.csv ]]; then CSV="$1"
@@ -128,72 +128,6 @@ TAG_RULES = [
     ("workflow", "workflow"), ("issue", "github-issues"),
 ]
 
-FILLER_OPENERS = (
-    "okay so", "okay", "okay then", "oh okay", "oh great",
-    "so today", "so ", "uh ", "um ",
-    "[music]", "thank", "thanks", "bye", "welcome",
-    "hello", "hi ", "good morning", "good afternoon",
-    "let me", "can you", "is everyone", "all right",
-    "recording", "i'll start", "sorry",
-)
-
-def summarize(title, body_text):
-    flat = re.sub(r"\s+", " ", body_text.replace("[Music]", "")).strip()
-    # Sentence split is only trustworthy in the opening half: closing
-    # chatter ("keep safe...", "see you next...") otherwise wins when
-    # the body has almost no sentence punctuation (auto-captions).
-    head = flat[:len(flat) // 2]
-    sents = re.split(r"(?<=[.!?])\s+", head)
-    if len(sents) >= 3:
-        for s in sents:
-            low = s.strip().lower()
-            words = low.split()
-            if len(words) < 8 or len(s) > 400:
-                continue
-            if low.startswith(FILLER_OPENERS):
-                continue
-            if len(set(words)) < 5:
-                continue
-            cut = s.strip()
-            if len(cut) > 220:
-                cut = cut[:217].rsplit(" ", 1)[0] + "..."
-            return cut[0].upper() + cut[1:]
-    # Fallback for auto-captions without sentence punctuation: slide a
-    # 28-word window over the opening lines and keep the window richest
-    # in title/tag vocabulary (opening logistics lines score ~0).
-    stop = {"how", "what", "with", "from", "into", "your", "our",
-            "about", "using", "part", "this", "that", "have", "will"}
-    title_words = {w for w in re.findall(r"[a-z]+", title.lower())
-                   if len(w) > 3 and w not in stop}
-    tag_words = {kw for kw, _ in TAG_RULES if len(kw) > 3} | title_words
-    words = []
-    for line in body_text.replace("[Music]", "").splitlines():
-        low = line.strip().lower()
-        if not low or low.startswith(FILLER_OPENERS) or len(low.split()) < 4:
-            continue
-        words.extend(line.strip().split())
-        if len(words) >= 150:
-            break
-    if len(words) >= 8:
-        size = min(28, len(words))
-        filler_tok = {"um", "uh", "okay", "so", "well", "right",
-                      "welcome", "thanks", "thank", "everyone", "joining",
-                      "joined", "recording", "hello", "hi", "bye", "oh",
-                      "yeah", "yes", "actually", "anyway", "please"}
-        best, best_score = 0, -1
-        for i in range(0, len(words) - size + 1, 4):
-            win = [w.strip(".,!?;:\"'()").lower() for w in words[i:i + size]]
-            score = sum(1 for w in win if w in tag_words)
-            if win[0] in filler_tok or win[1] in filler_tok:
-                score -= 3
-            if score > best_score:
-                best, best_score = i, score
-        cut = " ".join(words[best:best + size])
-        if best + size < len(words):
-            cut += "..."
-        return cut[0].upper() + cut[1:]
-    return f"Transcript of '{title}'."
-
 def topical_tags(title, body_text, limit=4):
     title_low = title.lower()
     body_low = body_text[:20000].lower()
@@ -246,40 +180,29 @@ def do_md(base, path, vid):
     m = re.search(r"\.([a-z]{2})(?:-orig)?\.json3$", os.path.basename(path))
     if m:
         lang = m.group(1)
-    desc = summarize(title, plain_body)
-    tags = [tag] + topical_tags(title, plain_body)
+    # ml03: deterministic, no heuristic (LLM post-processing optional)
+    # ml04: tag may be empty (derived from --from via build-wiki); skip empty
+    # ml05 minimal: only required (type) + useful+raw (title, resource, lang, tags) + generated
+    base_tags = ([tag] if tag else []) + topical_tags(title, plain_body)
     slug = slugify(title) if title else vid
     md_path = out_dir + "/" + vid + "_" + slug + ".md"
+    # cross-link filename deterministic from id+slug (ml02 handles empty title -> vid fallback)
+    desc_filename = f"{vid}_{slug}.md"
     fm_lines = [
         "---",
-        "type: Video Transcript",
+        "type: transcript",
         f"title: {yaml_escape(title)}",
-        f"description: {yaml_escape(desc)}",
         f"resource: \"https://www.youtube.com/watch?v={vid}\"",
-        "tags: [" + ", ".join(f'"{t}"' for t in tags) + "]",
+        "tags: [" + ", ".join(f'"{t}"' for t in base_tags) + "]",
         f"lang: {lang}",
         "generated:",
         "  by: \"process:convert-transcripts\"",
         f"  at: \"{gen_ts}\"",
-        "status: stable",
-        "sources:",
-        "  - id: youtube-original",
-        f"    resource: \"https://www.youtube.com/watch?v={vid}\"",
-        "    title: \"YouTube auto-generated caption (json3)\"",
-        "    author: \"process:yt-dlp\"",
     ]
-    views = meta.get("views", "")
-    uploaded = meta.get("uploaded", "")
-    last_mod = ""
-    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", uploaded or ""):
-        last_mod = f"{uploaded}T00:00:00Z"
-        fm_lines.append(f"    last_modified: \"{last_mod}\"")
-    if (views or "").isdigit():
-        fm_lines.append(f"    usage_count: {int(views)}")
     fm = "\n".join(fm_lines)
-    if last_mod:
-        fm += f"\nusage_window: {{ from: \"{last_mod}\", to: \"{gen_ts}\" }}"
-    frontmatter = fm + "\n---\n\n# Transcript\n\n" + body + "\n"
+    # ml02: explicit cross-link to sibling description (same id_slug, different dir) — resilient to empty description
+    body_footer = f"\n\n---\n\nSee also: [description](../descriptions/{desc_filename}) · [YouTube](https://www.youtube.com/watch?v={vid})"
+    frontmatter = fm + "\n---\n\n# Transcript\n\n" + body + body_footer + "\n"
     with open(md_path, "w") as f:
         f.write(frontmatter)
 

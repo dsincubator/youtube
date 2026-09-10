@@ -10,9 +10,9 @@ Orchestrate the full OKF LLM wiki build pipeline.
 Options:
   -h, --help            Show this message and exit
   --playlist URL        YouTube playlist URL (required)
-  --name NAME           Bundle identifier (default: dslab)
-  --tag TAG             Bundle tag (default: ds-lab)
-  --out-dir DIR         Output bundle directory (default: dslab)
+  --wiki-name NAME      Wiki identifier (default: dslab)
+  --wiki-tag TAG        Wiki tag (default: ds-lab)
+  --to DIR              Output wiki directory (default: dslab)
   -n, --count N         Limit processing to the first N videos
 EOF
 }
@@ -31,9 +31,9 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         -h|--help) usage; exit 0 ;;
         --playlist) need_arg "$@"; PLAYLIST="$2"; shift 2 ;;
-        --name) need_arg "$@"; BUNDLE_NAME="$2"; shift 2 ;;
-        --tag) need_arg "$@"; BUNDLE_TAG="$2"; shift 2 ;;
-        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        --wiki-name) need_arg "$@"; BUNDLE_NAME="$2"; shift 2 ;;
+        --wiki-tag) need_arg "$@"; BUNDLE_TAG="$2"; shift 2 ;;
+        --to) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
         -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
         *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
     esac
@@ -63,12 +63,12 @@ CMD_META=(./bin/fetch-metadata --playlist "$PLAYLIST" --csv "$CSV_PATH" --meta-d
 "${CMD_META[@]}"
 
 echo "=== Step 2: Fetching Transcripts ==="
-CMD_TRANS=(./bin/fetch-transcripts --csv "$CSV_PATH" --out-dir "$OUT_DIR/transcripts")
+CMD_TRANS=(./bin/fetch-transcripts --csv "$CSV_PATH" --to "$OUT_DIR/transcripts")
 [[ "$COUNT" -gt 0 ]] && CMD_TRANS+=(--count "$COUNT")
 "${CMD_TRANS[@]}"
 
 echo "=== Step 3: Converting Transcripts to OKF Markdown ==="
-CMD_CONV=(./bin/convert-transcripts --csv "$CSV_PATH" --out-dir "$OUT_DIR/transcripts" --format md --tag "$BUNDLE_TAG")
+CMD_CONV=(./bin/convert-transcripts --csv "$CSV_PATH" --from "$OUT_DIR/transcripts" --format md --wiki-tag "$BUNDLE_TAG")
 [[ "$COUNT" -gt 0 ]] && CMD_CONV+=(--count "$COUNT")
 "${CMD_CONV[@]}"
 
@@ -153,7 +153,13 @@ else:
     print(f"[build-wiki] exists {tar_trans}")
 PYEOF
 
-echo "=== Step 7: Assembling Bundle ==="
-./bin/assemble-bundle --bundle-dir "$OUT_DIR" --manifest "$OUT_DIR/manifests/planning_manifest.json" --bundle-name "$BUNDLE_NAME" --bundle-tag "$BUNDLE_TAG" --playlist-url "$PLAYLIST"
+echo "=== Step 7: Assembling Wiki (deterministic wiki: transcripts + descriptions) ==="
+# canonical binary is assemble-wiki; assemble-bundle is a backward-compat shim
+if [[ -x ./bin/assemble-wiki ]]; then
+    ASSEMBLE_BIN="./bin/assemble-wiki"
+else
+    ASSEMBLE_BIN="./bin/assemble-bundle"
+fi
+"$ASSEMBLE_BIN" --from "$OUT_DIR" --manifest "$OUT_DIR/manifests/planning_manifest.json" --wiki-name "$BUNDLE_NAME" --wiki-tag "$BUNDLE_TAG" --playlist-url "$PLAYLIST"
 
 echo "=== Build Complete! Project dir at $OUT_DIR/ (wiki at $OUT_DIR/wiki/index.md) ==="

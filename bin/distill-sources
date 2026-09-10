@@ -10,9 +10,9 @@ Distill transcript .md files into distilled sources.
 Options:
   -h, --help            Show this message and exit
   --csv PATH            Metadata CSV (default: data/metadata.csv)
-  --transcripts-dir DIR Transcripts directory (default: transcripts)
-  --out-dir DIR         Output sources directory (default: sources)
-  --tag TAG             Bundle tag for frontmatter tags (default: ds-incubator)
+  --from DIR            Transcripts directory (default: transcripts)
+  --to DIR              Output sources directory (default: sources)
+  --wiki-tag TAG        Wiki tag for frontmatter tags (default: ds-incubator)
   -n, --count N         Process only the first N videos
 EOF
 }
@@ -31,9 +31,9 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         -h|--help) usage; exit 0 ;;
         --csv) need_arg "$@"; CSV="$2"; shift 2 ;;
-        --transcripts-dir) need_arg "$@"; TRANSCRIPTS_DIR="$2"; shift 2 ;;
-        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
-        --tag) need_arg "$@"; BUNDLE_TAG="$2"; shift 2 ;;
+        --from) need_arg "$@"; TRANSCRIPTS_DIR="$2"; shift 2 ;;
+        --to) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        --wiki-tag) need_arg "$@"; BUNDLE_TAG="$2"; shift 2 ;;
         -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
         *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
     esac

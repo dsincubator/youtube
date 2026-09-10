@@ -16,7 +16,7 @@ Options:
                         Pass --cookies-from-browser to yt-dlp (e.g. chrome, firefox)
   -n, --count N         Process only the first N videos (for testing)
   --csv PATH            Path to the metadata CSV (default: data/metadata.csv)
-  --out-dir DIR         Output directory (default: transcripts)
+  --to DIR              Output directory (default: transcripts)
   --sub-format FORMAT   Subtitle format preference (default: json3/srv3/vtt/best)
   --sleep SECONDS       Seconds to wait between videos (default: 1)
   --retries N           Total attempts per video (default: 3)
@@ -43,7 +43,7 @@ while [[ $# -gt 0 ]]; do
         --cookies-from-browser) need_arg "$@"; COOKIES="--cookies-from-browser $2"; shift 2 ;;
         -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
         --csv) need_arg "$@"; CSV="$2"; shift 2 ;;
-        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        --to) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
         --sub-format) need_arg "$@"; SUB_FORMAT="$2"; shift 2 ;;
         --sleep) need_arg "$@"; SLEEP="$2"; shift 2 ;;
         --retries) need_arg "$@"; RETRIES="$2"; shift 2 ;;

@@ -5,8 +5,10 @@
 Transcript database for the [ds-incubator YouTube
 playlist](https://youtube.com/playlist?list=PLvgdJdJDL-APbB315sB3Lv_2VP2g0ioFO&si=LOZAcXpa1L7JlVvc):
 `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF v0.2 format),
-linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
+linked by `id` — then transformed into an OKF v0.2 LLM wiki
 **[`dsincubator/`](dsincubator/index.md)** per `planning_manifest.json`.
+Flags: `--from`/`--to` for directories, `--csv`/`--manifest` for files,
+`--wiki-name`/`--wiki-tag` for identity.
 
 ## Structure
 
@@ -15,18 +17,18 @@ linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
     transcripts/<id>_<title>.md  # OKF v0.2 transcript (YAML frontmatter + body)
     transcripts/manifest.tsv     # id | status | file | lang
     planning_manifest.json       # wiki plan: 59 topic pages across 13 categories
-    dsincubator/            # OKF v0.2 wiki bundle → see Wiki below
+    dsincubator/            # OKF v0.2 wiki → see Wiki below  (wiki/ subdir is canonical: dsincubator/wiki/index.md)
     dsincubator/sources/    # 151 distilled sources (one per transcript)
     dsincubator/topics/     # 59 topic pages (each an OKF concept with type)
-    dsincubator/index.md    # bundle root (okf_version 0.2 §12)
-    dsincubator/log.md      # bundle history (§9)
+    dsincubator/index.md    # wiki root (okf_version 0.2 §12)  — also at dsincubator/wiki/index.md
+    dsincubator/log.md      # wiki history (§9)
     bin/fetch-metadata           # raw dumps + derive CSV
     bin/fetch-transcripts        # fetch captions (json3)
     bin/convert-transcripts      # json3 -> txt/tsv/md (OKF v0.2)
     bin/distill-sources          # transcript .md + CSV → sources/source_<id>_<slug>.md
     bin/cluster-topics           # auto-cluster sources → planning_manifest.json
     bin/generate-topics          # manifest + sources → topics/{category}/{topic}.md
-    bin/assemble-bundle          # generate index.md, indexes, log.md, references/
+    bin/assemble-wiki            # generate index.md, indexes, log.md, references/  # alias: assemble-bundle shim
     bin/build-wiki               # orchestrator: runs full pipeline
     requirements.txt             # Python deps for clustering (numpy, scipy, sklearn, hdbscan)
 
@@ -36,7 +38,7 @@ linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
 
 ``` sh
 # Build a wiki for any public playlist in one command
-./bin/build-wiki --playlist "https://youtube.com/playlist?list=..." --name dslab --tag ds-lab --out-dir ./dslab --count 3
+./bin/build-wiki --playlist "https://youtube.com/playlist?list=..." --wiki-name dslab --wiki-tag ds-lab --to ./dslab --count 3
 ```
 
 ### Individual steps
@@ -59,16 +61,16 @@ linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
 ./bin/convert-transcripts --format all             # txt + tsv + md
 
 # Distill sources (extract key_topics + restructure body)
-./bin/distill-sources --csv data/metadata.csv --transcripts-dir transcripts --out-dir dsincubator/sources --tag ds-incubator
+./bin/distill-sources --csv data/metadata.csv --from transcripts --to dsincubator/sources --wiki-tag ds-incubator
 
 # Auto-cluster sources into topics
-./bin/cluster-topics --sources-dir dsincubator/sources --out-file planning_manifest.json --bundle-name dsincubator
+./bin/cluster-topics --from dsincubator/sources --to planning_manifest.json --wiki-name dsincubator
 
 # Generate topic pages
-./bin/generate-topics --manifest planning_manifest.json --sources-dir dsincubator/sources --out-dir dsincubator/topics
+./bin/generate-topics --manifest planning_manifest.json --from dsincubator/sources --to dsincubator/topics
 
-# Assemble bundle (index.md, indexes, log.md, references/)
-./bin/assemble-bundle --bundle-dir dsincubator --manifest planning_manifest.json --bundle-name dsincubator --bundle-tag ds-incubator
+# Assemble wiki (index.md, indexes, log.md, references/)
+./bin/assemble-wiki --from dsincubator --manifest planning_manifest.json --wiki-name dsincubator --wiki-tag ds-incubator
 ```
 
 > **Note on `sources/` summaries:** `bin/distill-sources` as shipped is
@@ -84,7 +86,7 @@ linked by `id` — then transformed into an OKF v0.2 LLM wiki bundle
 Run directly via `bin/build-wiki` (no task runner):
 
 ``` sh
-./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL..." --name dslab --tag ds-lab --out-dir ./dslab --count 3
+./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL..." --wiki-name dslab --wiki-tag ds-lab --to ./dslab --count 3
 ```
 
 ### Example metadata
@@ -205,20 +207,22 @@ entry
 [`dsincubator/references/`](dsincubator/references/).
 
 Build pipeline: 1. `./bin/build-wiki` — one-command orchestrator (fetch
-→ transcripts → convert → distill → cluster → topics → bundle) 2. Or
+→ transcripts → convert → distill → cluster → topics → wiki) 2. Or
 step-by-step: `bin/distill-sources` → `bin/cluster-topics` →
-`bin/generate-topics` → `bin/assemble-bundle`
+`bin/generate-topics` → `bin/assemble-wiki` (alias `assemble-bundle`
+still works)
 
-### Generalized bundle — `dslab` example
+### Generalized wiki — `dslab` example
 
-Any public playlist can produce a bundle. Tested with **dslab**
+Any public playlist can produce a wiki. Tested with **dslab**
 (`PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT`, 27 videos) →
-[`dslab/index.md`](dslab/index.md) (§12) +
-[`dslab/README.md`](dslab/README.md).
+[`dslab/wiki/index.md`](dslab/wiki/index.md) (§12) +
+[`dslab/README.md`](dslab/README.md). Flags: `--from`/`--to` (dirs),
+`--csv`/`--manifest` (files), `--wiki-name`/`--wiki-tag` (identity).
 
 ``` sh
-./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab --count 3  # quick test
-./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --name dslab --tag ds-lab --out-dir ./dslab          # full (27)
+./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --wiki-name dslab --wiki-tag ds-lab --to ./dslab --count 3  # quick test
+./bin/build-wiki --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" --wiki-name dslab --wiki-tag ds-lab --to ./dslab          # full (27)
 ```
 
 Outputs: `dslab/metadata.csv`, `dslab/transcripts/<id>_<slug>.md` (body
@@ -370,7 +374,7 @@ qmd search "docker" -c dsincubator -n 2 | head -n 20
 #> qmd://dsincubator/sources/source_RO-OdWXfpBc_docker-managing-containers.md:3 #66fb87
 #> Title: Docker: managing containers
 #> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
-#> Score:  73%
+#> Score:  82%
 #> 
 #> @@ -2,4 @@ (1 before, 79 after)
 #> type: source
@@ -382,7 +386,7 @@ qmd search "docker" -c dsincubator -n 2 | head -n 20
 #> qmd://dsincubator/sources/source_3_0gUMqKikw_docker-managing-images.md:3 #163c4e
 #> Title: Docker: Managing images
 #> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.
-#> Score:  73%
+#> Score:  82%
 #> 
 #> @@ -2,4 @@ (1 before, 58 after)
 #> type: source
@@ -391,15 +395,16 @@ qmd search "docker" -c dsincubator -n 2 | head -n 20
 
 ``` bash
 qmd query "how to handle merge conflicts git" -c dsincubator -n 2
+#> Tip: 7 documents need embeddings. Run 'qmd embed' to index them.
 #> Expanding query... (0ms)
 #> ├─ how to handle merge conflicts git
 #> ├─ lex: guide to resolving
-#> ├─ vec: guide to resolving git merge conflicts
-#> ├─ vec: steps for managing git merge conflicts
-#> └─ hyde: The process of handle merge conflicts git involves several steps. Fir...
+#> ├─ vec: steps for resolving git merge conflicts
+#> ├─ vec: guide to resolving merge conflicts in git
+#> └─ hyde: When you need to handle merge conflicts git, the most effective metho...
 #> Searching 5 queries...
-#> Embedding 4 queries... (1.3s)
-#> Reranking 27 chunks... (1ms)
+#> Embedding 4 queries... (1.4s)
+#> Reranking 26 chunks... (1ms)
 #> qmd://dsincubator/sources/source_g1PRMaTFYdk_usethis-pr-sync-live-ds-incubator-meetup.md:9 #af78f9
 #> Title: `usethis::pr_sync()` (live ds-incubator meetup)
 #> Context: OKF v0.2 LLM wiki bundle distilled from 151 ds-incubator YouTube transcripts into 59 topic pages across 13 categories (cloud, communication, data, docker, git, pipelines, r-packages, shiny, testing, tidyverse) + 151 sources. Covers R workflows: targets pipelines, testthat/TDD, git/GitHub, Docker, tidy EDA, reprex. Each source carries YouTube provenance (author process:yt-dlp, usage_count, last_modified); topics cross-link per §6. Entry: topics/concepts-overview.md; indexes: topics/index.md, sources/index.md.

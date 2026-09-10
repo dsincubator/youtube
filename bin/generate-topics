@@ -10,8 +10,8 @@ Generate OKF concept topic pages from planning manifest and sources.
 Options:
   -h, --help            Show this message and exit
   --manifest PATH       Planning manifest JSON (default: planning_manifest.json)
-  --sources-dir DIR     Sources directory (default: sources)
-  --out-dir DIR         Output topics directory (default: topics)
+  --from DIR            Sources directory (default: sources)
+  --to DIR              Output topics directory (default: topics)
 EOF
 }
 
@@ -27,8 +27,8 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         -h|--help) usage; exit 0 ;;
         --manifest) need_arg "$@"; MANIFEST="$2"; shift 2 ;;
-        --sources-dir) need_arg "$@"; SOURCES_DIR="$2"; shift 2 ;;
-        --out-dir) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
+        --from) need_arg "$@"; SOURCES_DIR="$2"; shift 2 ;;
+        --to) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
         *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
     esac
 done

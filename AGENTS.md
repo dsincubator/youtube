@@ -1,403 +1,224 @@
-# AGENTS.md — transcript database + LLM wiki
+# YouTube playlist → OKF wiki
 
-Goal: build `data/metadata.csv` + `transcripts/<id>_<title>.md` (OKF v0.2 format) linked by `id`, then transform N transcripts into an OKF v0.2 LLM wiki bundle per `planning_manifest.json`. **Wiki entry point: [`{bundle_name}/index.md`]({bundle_name}/index.md)** (§8/§12). The pipeline is parameterized — any public YouTube playlist can produce a bundle via `bin/build-wiki`.
+**Goal of this repo**: Build an OKF v0.2 LLM wiki from any public YouTube playlist: metadata + captions → deterministic transcripts + descriptions → assembled wiki.
 
-When repo state changes (new videos, updated transcripts, schema changes, wiki plan/bundle changes), update `README.qmd` and re-render with `quarto render README.qmd --to gfm --quiet`.
+**Wiki entry point:** `{out-dir}/wiki/index.md` (or exported wiki's `index.md`).
+Do not edit `transcripts/` frontmatter by hand — `bin/convert-transcripts` owns it. When repo state changes, update `README.qmd` and run `quarto render README.qmd --to gfm --quiet`.
+## Conventions for AI agents
 
-## INPUTS
+- **Determinism:** The deterministic first pass (above) must stay deterministic — no LLM. See contract below.
+- **Naming:** User-facing term is **wiki** (not bundle). `wiki` = assembled OKF bundle at `{out-dir}/wiki/`. Code uses `wiki` canonical; `bin/assemble-bundle` remains as shim → `bin/assemble-wiki` (flag aliases removed; use `--wiki-name`/`--wiki-tag`/`--from`/`--to`).
+- **Flag consistency:** Same concept = same flag name everywhere, no aliases:
+  - Directory in/out: `--from` / `--to` (e.g. `assemble-wiki --from ./dslab`, `export-wiki --from ./dslab --to ./dslab-wiki`, `build-wiki --to ./dslab`).
+  - File inputs: `--csv`, `--manifest`, `--meta-dir` stay descriptive (no generic alias — disambiguates `file vs dir` and tools with 2 inputs/outputs like `fetch-metadata`).
+  - Wiki identity: `--wiki-name` / `--wiki-tag` (no `--bundle-*`/`--name`/`--tag` aliases).
 
-1. `data/metadata.csv` — columns `playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url,description`. `id` is the join key. Maintained by `bin/fetch-metadata` (append new videos by default, `--refresh` rewrites all rows). The `transcript_path` column is computed on-the-fly in `README.qmd` via `fs::dir_ls()` → `tibble()` → `dplyr::left_join()`.
-2. Watch URL `https://www.youtube.com/watch?v=<id>` derived from `id`.
-3. Transcript files `transcripts/<id>_<sanitized-title>.md` (OKF v0.2) generated from `.json3` captions by `bin/convert-transcripts`.
+---
 
-## LAYOUT
+## Workflow
 
-```
-# Build repo (contains ./bin/*) — run pipeline here, then export wiki
-bin/fetch-metadata           # raw dumps + derive CSV (14 cols, incl. description)
-bin/fetch-transcripts        # fetch captions
-bin/convert-transcripts      # json3 -> txt/tsv/md
-bin/assemble-bundle          # generate wiki/index.md, metadata/, transcripts/, descriptions/, topics/, references/
-bin/build-wiki               # orchestrator: fetch → transcripts → descriptions → assemble → project-outdir/
-bin/export-wiki              # --from project-outdir --to /exported-wiki/ (wiki only)
-# LLM steps (removed): bin/distill-sources, bin/cluster-topics, bin/generate-topics → sources/ (requires LLM, dropped)
-
-project-outdir/              # build output (intermediaries + wiki); compress whole dir for GH release of build-repo
-├── manifests/               # intermediaries (NOT indexed in wiki)
-│   ├── planning_manifest.json  # wiki plan (moved from bundle root, not indexed)
-│   ├── metadata.tsv         # metadata fetch manifest (from metadata/manifest.tsv)
-│   └── transcripts.tsv      # transcripts fetch manifest (from transcripts/manifest.tsv)
-├── assets/                  # intermediaries (NOT indexed) — *.tar.gz release assets
-│   ├── metadata-raw.tar.gz
-│   └── transcripts-raw.tar.gz
-├── data/                    # intermediaries (NOT indexed) — build-only CSV etc.
-│   └── metadata.csv         # derived table, N videos (build intermediate; wiki copy is metadata/metadata.csv)
-├── metadata/                # raw per-video dump (intermediary, pruned, kept for re-derive)
-│   └── manifest.tsv         # legacy compat copy (canonical is manifests/metadata.tsv)
-├── transcripts/             # raw captions + transcripts/<id>_<slug>.md (intermediary; wiki copy is wiki/transcripts/)
-│   └── manifest.tsv         # legacy compat copy
-└── wiki/                    # OKF v0.2 LLM wiki bundle — EXPORTED via bin/export-wiki (indexed)
-    ├── index.md             # bundle root (okf_version 0.2 §12) — START HERE (§8/§12)
-    ├── README.md            # recommends adding summaries/ via LLM (see wiki/AGENTS.md)
-    ├── AGENTS.md            # wiki maintenance / querying (separate from build AGENTS.md)
-    ├── log.md               # bundle history (§9)
-    ├── metadata/            # wiki metadata (indexed)
-    │   ├── metadata.md      # column dict for metadata.csv (was data/metadata.md)
-    │   └── metadata.csv     # derived table (copy of project-outdir/metadata.csv, indexed)
-    ├── transcripts/         # transcripts/<id>_<slug>.md OKF v0.2 (deterministic, indexed)
-    ├── descriptions/        # descriptions/<id>_<slug>.md full YouTube description (deterministic, indexed)
-    ├── topics/              # N topic pages + topics/index.md (§8) (indexed)
-    ├── references/          # external executors/attesters (§6.3) (indexed)
-    └── planning_manifest.json is NOT in wiki (stays in project-outdir/manifests/)
-
-README.qmd                   # Quarto source → rendered to README.md (build repo)
-README.md                    # Rendered output (build repo, not wiki)
-```
-
-- `json3` = `events[].tStartMs/dDurationMs` + `segs[].utf8/tOffsetMs` (word-level timing for editing).
-- `.md` transcripts follow OKF v0.2: YAML frontmatter (`type`, `title`, `description`, `resource`, `tags`, `lang`, `generated`, `status`, `sources` + `usage_window`) + `# Transcript` body with deterministic timestamps (`00:08: text` per event derived from `tStartMs`, no LLM). Frontmatter is regenerated from spec by `bin/convert-transcripts` — never trust it, re-derive it (description = first substantive sentence, not caption filler; `tags` = topical keyword scan + bundle tag (`ds-incubator` default, `--tag` override); `generated.by` = `process:convert-transcripts` per §7; `lang` from caption track; `usage_count`/`last_modified`/`usage_window` from CSV).
-- `lang` = original spoken language (`en` most videos, `es` for 6 Spanish-titled ones: `1lpcCHfozh0`, `EmDubkF8DpQ`, `hs_Pzxny7XE`, `kNV8dDGF7Hw`, `nSJT8NGhSTs`, `xx5WNZgQEdY`).
-- The `g1PRMaTFYdk` duplicate rows are byte-identical, so either survives the collapse.
-- The 3 `private` videos have no CSV rows and are never attempted by `fetch-transcripts`; the transcript gate below applies to the 151 public IDs only.
-- `--count N` / `--limit N` take the first N IDs in sorted order. Add `--cookies-from-browser chrome` whenever output contains "Sign in to confirm you're not a bot".
-- Never commit `raw/`, `.omo/`, `.Rhistory`, `.Rproj.user`, `*/blog_files`, `**/*.html`.
-
-## SCRIPT: `bin/convert-transcripts`
-
-```
-./bin/convert-transcripts                          # all videos (txt + tsv)
-./bin/convert-transcripts --count 3                # first 3 (test)
-./bin/convert-transcripts --format txt             # .txt only
-./bin/convert-transcripts --format tsv             # .tsv only
-./bin/convert-transcripts --format md              # OKF .md only (body 00:08: text, deterministic)
-./bin/convert-transcripts --format both            # txt + tsv
-./bin/convert-transcripts --format all             # txt + tsv + md
-./bin/convert-transcripts --format md --tag ds-lab --count 3  # tag override
-```
-
-Reads `data/metadata.csv` for the video ID list and title, converts each `transcripts/<id>.*.json3` to:
-- `<id>_<sanitized-title>.txt` (plain text)
-- `<id>_<sanitized-title>.tsv` (tab-separated `<tStartMs>\t<text>`)
-- `<id>_<sanitized-title>.md` (OKF v0.2: YAML frontmatter + `# Transcript` body with deterministic timestamps `00:08: text` per event derived from `tStartMs`, no LLM)
-
-Titles are ASCII-slugified (`unidecode` → replace non-alphanumerics with `-`, lowercase). The `.md` format includes spec-derived OKF v0.2 frontmatter: `title`/`resource` from CSV, `description` = first substantive sentence (filler-aware; caption fallback joins first content lines), `tags` = scored topical keyword scan (`TAG_RULES`, word-boundary for ≤3-char keys) + bundle tag (`ds-incubator` default, `--tag` override), `lang` from caption track (`en`/`es` via `.*-orig` priority `en-orig`/`es-orig`), `generated.by` = `process:convert-transcripts` (§7), `sources` + `usage_count` (`view_count`) / `last_modified` (`upload_date_iso`) / `usage_window`. Skips videos without a json3 file.
-
-## SCRIPT: `bin/fetch-transcripts`
-
-```
-./bin/fetch-transcripts                  # 151 videos
-./bin/fetch-transcripts --count 3        # first 3 (test)
-./bin/fetch-transcripts --force          # re-fetch existing
-./bin/fetch-transcripts --cookies-from-browser chrome
-```
-
-Flags: `--count N`, `--force`, `--cookies-from-browser BROWSER`, `--csv PATH`, `--out-dir DIR`, `--sub-format FORMAT`, `--sleep SECONDS`, `--retries N`, `--help`.
-
-Per video: `yt-dlp --skip-download --write-auto-subs --sub-langs "en-orig,es-orig,en.*,es.*" --sub-format "json3/srv3/vtt/best" -o "transcripts/<id>.%(ext)s" -- "https://www.youtube.com/watch?v=<id>"` — 3 attempts (1 s sleep), falls back once to `--sub-langs ".*-orig"` when no `en`/`es` track exists, logs to `/tmp/fetch-transcripts-<id>.log`, records `id status file lang` in `manifest.tsv`. One file per video is kept (preferring `en-orig` > `es-orig` > `*-orig` > `en` > `es`; duplicates/translations pruned). `--` protects ids starting with `-`/`_`.
-
-## SCRIPT: `bin/fetch-metadata`
-
-```
-./bin/fetch-metadata --limit 2        # smoke test (first 2 playlist entries)
-./bin/fetch-metadata                  # fetch missing dumps, derive CSV
-./bin/fetch-metadata --refresh        # re-fetch all dumps, drop removed rows
-```
-
-Flags: `--refresh`, `--playlist URL`, `--csv PATH`, `--meta-dir DIR`, `--limit N`, `--cookies-from-browser BROWSER`, `--sleep SECONDS`, `--retries N`, `--help`.
-
-Raw-first: `yt-dlp --skip-download --dump-single-json` per video to `metadata/<id>.json` (skips existing dumps unless `--refresh`; corrupt dumps re-fetched), then `data/metadata.csv` derived from the store (atomic replace; refresh aborts when >2 and >10% of videos fail). Terminal states (`private`/`unavailable` with reason) are recorded in `metadata/manifest.tsv` and skipped on later runs — `--refresh` re-probes them. Per-video logs to `/tmp/fetch-metadata-<id>.log`.
-
-## STATUS (2026-09-09)
-
-- [x] `metadata/`: 151 dumps + `manifest.tsv` (154 rows: 151 `ok`, 3 `private` with reasons).
-- [x] `data/metadata.csv`: 151 rows derived, join integrity holds.
-- [x] `transcripts/`: 151/151 fetched, all `ok`; `.md` (OKF v0.2) derived for all 151 via `bin/convert-transcripts` (deterministic `mm:ss: text`, `transcripts-raw.tar.gz` sibling archived + cleaned).
-- [x] `bin/convert-transcripts`: supports `--format md` and `--format all`; generates OKF v0.2 transcripts with YAML frontmatter; auto-creates `transcripts-raw.tar.gz` sibling.
-- [x] `bin/fetch-metadata`: auto-creates `metadata-raw.tar.gz` sibling after CSV derive (only `<id>.json`, excludes `manifest.tsv`).
-- [x] `README.qmd`: live R chunks (Structure, Fetch → Example metadata/transcript, Wiki → Example topics/source); libs at top, `knitr::opts_chunk$set()` header, no `head()`/`Join Summary`; restructured to workflow order (fewer/shorter headings).
-- [x] `README.md`: rendered from `README.qmd` via `quarto render README.qmd --to gfm --quiet`.
-- [x] Open question resolved: `sbp5Q8niTho` comment was deleted from YouTube (fetch succeeded, database stands).
-- [x] `fetch-transcripts` prune fix: `pick_transcript`/`--force` now touch subtitle extensions only (earlier `*.*` glob deleted converted `.txt`/`.tsv` on re-runs).
-- [x] Title sanitization: ASCII-only, lowercase, hyphen-separated words.
-- [x] Frontmatter regen from spec (2026-09-08): `bin/convert-transcripts` re-derived all 151 `.md` frontmatters — actor fix (`process:convert-transcripts`), substantive descriptions, topical tags, `lang`, credibility signals (`usage_count`/`last_modified`/`usage_window`). Old frontmatter treated as untrusted.
-- [x] Wiki pilot (2026-09-08): 3 distilled `dsincubator/sources/` done (`-9QCNwmpTOE` TDD, `pbc6NX1n01Q` targets, `1lpcCHfozh0` Spanish) + adversarial review (1 FAIL fixed: invented `tar_load`, rewritten `tags`, false `None mentioned`) → Extraction Prompt v2 below.
-- [x] `sources/` (2026-09-08): **151/151** `dsincubator/sources/source_<id>_<slug>.md` distilled per Extraction Prompt v2 (frozen frontmatter, quote-to-name, anchored `key_topics`, bilingual headings for `es`) via parallel subagents + spot-checks.
-- [x] `planning_manifest.json` aggregation: `source_files[]` populated for all 59 topics (0 unassigned); clustering verified.
-- [x] `topics/` (2026-09-08): **59/59** `dsincubator/topics/` pages with `type` (§4.1), `sources` credibility (§5.1), actor `agent:okf-wiki-builder/1.0` (§7), cross-links (§6), `Attested Computation` for pipelines (§10); YAML quoting fixed for 3 topics.
-- [x] Bundle assembly: `dsincubator/index.md` (okf_version 0.2 §12), `topics/index.md` (§8), `sources/index.md` (§8), `sources/log.md` (§9), `log.md` (§9), `references/` (§6.3); conformance check passed.
-- [x] `README.qmd`: Wiki section points to bundle entry point; `README.md` re-rendered (workflow order, fewer headings, 1-row tables dropped).
-- [x] `data/` directory (2026-09-09): **151/151** ok via `bin/assemble-bundle` — `data/metadata.md` + `data/metadata-raw.md` + `data/transcripts-raw.md` + `data/index.md` (§8) as `type: Concept` (§4.1) with `sources[]` credibility + `agent:okf-wiki-builder/1.0` (§7), cross-links to `transcripts-raw.tar.gz`/`metadata-raw.tar.gz` release assets (`log.md` tag `dsincubator-v0.0.1`); verified on `~/git/dsincubator/dslab` (23/23, `LDHGENv1NP4: 3288 events`) + `~/git/dsincubator/dshangout` (217/230 md, 13 `vtt`-only, `HtKgIrOnJc8: 2992 events`) — deterministic `mm:ss: text`, archives at bundle root, `README.md` per `dslab` style.
-
-## NEXT (fresh-agent runbook — start here)
-
-0. Read this file top to bottom, then `planning_manifest.json` and [`dsincubator/index.md`](dsincubator/index.md). Do not touch `transcripts/` frontmatter by hand — `bin/convert-transcripts` owns it.
-1. **Bundle is complete as of 2026-09-09**: `transcripts/` 151/151 + `descriptions/` 151/151, `topics/` 59/59, bundle indexes + `log.md` + `data/` 4/4 present (`data/metadata.md`, `data/metadata-raw.md`, `data/transcripts-raw.md`, `data/index.md` §8). `sources/` removed (LLM-dependent, dropped). For maintenance, see `## GENERALIZED WORKFLOW` for the parameterized pipeline.
-2. **When a new video/transcript appears** (or existing transcript updated):
-    a. Fetch: `./bin/fetch-metadata` → `./bin/fetch-transcripts` → `./bin/convert-transcripts --format md` (creates `transcripts/<id>_<slug>.md` OKF v0.2).
-    b. Descriptions: `./bin/fetch-metadata` already writes `description` per video to `data/metadata.csv`; `./bin/assemble-bundle` generates `descriptions/<id>_<slug>.md` deterministically from CSV (no LLM).
-    c. Topics (LLM, optional): if you use LLM topics, scaffold via `bin/distill-sources`/`bin/cluster-topics`/`bin/generate-topics` (removed from default pipeline).
-    d. Bundle: touch `log.md` (§9) with date + new `id`; ensure `index.md` (okf_version 0.2 §12) + `topics/index.md` (§8) + `transcripts/` + `descriptions/` + `references/` (§6.3) still valid; conformance check vs §11. See `bin/assemble-bundle`.
-    e. Housekeeping (always): update `README.qmd` (Fetch → Example metadata/transcript → Wiki → Example topics) + `quarto render README.qmd --to gfm --quiet`; commit. Re-run `./bin/convert-transcripts --format md` if `transcripts/` changed. For incremental adds, `status: draft` until human `verified` (§5.2); flip to `stable` + `verified: { by: human:<reviewer>, at: <date> }` only after review.
-3. **Verification**: flip `status: draft` → `stable` and add `verified: { by: human:<reviewer>, at: <date> }` only after human review (§5.2).
-
-## OKF LLM WIKI BUNDLE
-
-Goal: Transform N transcript `.md` files into a structured OKF v0.2 LLM wiki bundle per `planning_manifest.json`. **Wiki entry point: [`{bundle_name}/index.md`]({bundle_name}/index.md)** (§8/§12).
-
-### Key Documents
-- `planning_manifest.json` — Plan defining topic pages across categories per `bundle_name`
-- `topics/` — Aggregated topic/concept pages (each an OKF concept with `type` field)
-- `transcripts/<id>_<slug>.md` — Deterministic OKF transcripts (1 per video, `mm:ss: text`)
-- `descriptions/<id>_<slug>.md` — Full YouTube description per video (deterministic, `type: Concept`)
-- `references/` — External resources for executors/attesters (§6.3)
-- `sources/` — Removed (was LLM summaries, dropped — every wiki now has `transcripts/` + `descriptions/` deterministically)
-
-### Actor Convention (§7)
-All `generated.by` fields use `<producer>/<version>` or `process:<id>`:
-- `agent:okf-wiki-builder/1.0` — for LLM-generated concept pages
-- `process:yt-dlp` — for raw transcript sources
-- `process:convert-transcripts` — for converted transcripts (emitted by `bin/convert-transcripts` since the 2026-09-08 spec regen)
-- `human:<reviewer>` — for verified fields after human review
-
-### Verification Tiers (§5.3)
-- **Unverified**: No `verified` field; consumable but advisory
-- **Machine-confirmed**: `verified: { by: process:nightly-verify, at: <date> }`
-- **Human-reviewed**: `verified: { by: human:<reviewer>, at: <date> }` — **TODO**: add to all topic pages once ready for review
-
-### OKF Corrections Applied (from agent review)
-- `topics/index.md` renamed to `topics/concepts-overview.md` to avoid reserved filename conflict (§3.1)
-- All topic concepts have `type` field assigned (§4.1)
-- `sources` arrays to be populated with credibility signals (`author`, `usage_count`, `last_modified`) per §5.1
-- Spanish transcripts tagged with `lang: es` in frontmatter
-- `type: Attested Computation` assigned to targets/drake pipeline transcripts (§10)
-- `log.md` planned at bundle root (§9)
-- `references/` directory planned for executors/attesters (§6.3)
-
-### Pipeline Steps
-1. **Source generation**: (removed — was LLM `sources/`; every wiki now has deterministic `transcripts/` + `descriptions/`)
-2. **Aggregation**: (removed — was clustering `sources/` into topics)
-3. **Topic generation**: Create topic pages with cross-links (§6) (LLM, optional)
-4. **Bundle assembly**: Create `index.md`, `log.md`, `references/` + `transcripts/` + `descriptions/`
-5. **Verification**: Human review adds `verified` fields (§5.2)
-6. **Conformance check**: Validate against §11
-
-### Searching the wiki: qmd + rg (complements LLM)
-
-[`qmd`](https://github.com/tobi/qmd) complements brute-force LLM (`cat`/`rg`) — local hybrid search (BM25 + vector + LLM rerank). Install: `npm install -g @tobilu/qmd` / `npx @tobilu/qmd` — <https://github.com/tobi/qmd>. Collection `dsincubator` is indexed; after changes: `qmd update && qmd embed -c dsincubator`.
+### 1. One-command (preferred)
 
 ```sh
-qmd search "docker" -c dsincubator -n 2          # fast BM25
-qmd query "how to handle merge conflicts git" -c dsincubator -n 2  # hybrid
-qmd get qmd://dsincubator/transcripts/pbc6NX1n01Q_targets-introduction.md
-rg -n "transcript" dsincubator/transcripts/*.md | head -n 5
+./bin/build-wiki \
+  --playlist "https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT" \
+  --wiki-name dslab \
+  --wiki-tag dslab \
+  --to ./dslab \
+  --count 3
+
+./bin/export-wiki --from ./dslab --to ./dslab-wiki
 ```
 
-Use `qmd query` for prose/questions, `qmd search`/`rg` for symbols (`tar_make`); then `qmd get` to pull context. See `qmd --help` and `rg --help`.
+### 2. Step-by-step (for debugging)
 
-See other [tips and tricks](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#tips-and-tricks).
+```sh
+OUT=./dslab
+PLAYLIST="https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT"
 
-### Extraction Prompt (v2 — hardened by 3-file pilot + adversarial review)
-Distillation agents MUST follow these rules (pilot caught: invented `tar_load`, rewritten `tags`, unanchored `reproducibility`, false `None mentioned`, target/function conflation):
-1. **Quote-to-name**: every package/function name must trace to an exact caption fragment (keep mangled quote + normalized form, e.g. `tar_read` ← `car read`, `covr` ← `cover package`). Cannot quote it → do not write it.
-2. **Frozen frontmatter**: copy `tags`, `lang`, `usage_count`, `last_modified` byte-identical from the transcript. Only fill `key_topics`. Never invent tags.
-3. **Anchored key_topics**: every slug must appear verbatim (case-insensitive) in a body heading or bolded concept. Non-English bodies use bilingual headings (`Velocidad del equipo / team velocity`). No generic fillers (`r`).
-4. **No false `None mentioned`**: before claiming it, search for call patterns (`tar_*`, `expect*`, `use_*`, `Sys.sleep`, file paths). Spoken-but-mangled code → snippet with quote + normalized form.
-5. **Disambiguate + don't over-normalize**: targets ≠ functions (`summary` target vs `sum()`); keep caption quote alongside any normalization; vague guard (`stop if not character`) stays vague.
+# Step 1: Playlist dumps → metadata.csv
+./bin/fetch-metadata --playlist "$PLAYLIST" --csv "$OUT/data/metadata.csv" --meta-dir "$OUT/metadata" --limit 3
 
-### Missing Topics Added (from agent review)
-- `topics/data/databricks-rstudio.md`, `topics/data/production-workflow.md`, `topics/data/r2dii-packages.md`, `topics/data/chromebook-data-science.md`, `topics/data/python-r-interop.md`, `topics/data/code-quality.md`, `topics/data/github-issues-workflow.md`, `topics/data/access-permissions.md`
+# Step 2: Captions per video ID
+./bin/fetch-transcripts --csv "$OUT/data/metadata.csv" --to "$OUT/transcripts" --count 3
 
-## QUALITY GATES
+# Step 3: Captions → OKF v0.2 transcripts/*.md (deterministic, no LLM; uses *.json3 tStartMs)
+./bin/convert-transcripts --csv "$OUT/data/metadata.csv" --from "$OUT/transcripts" --format md --wiki-tag ds-lab --count 3
 
-- [x] Every `id` in CSV (public videos; private ones have no rows) has `transcripts/<id>.<lang>.json3` (`status ok`).
-- [x] No unexplained `missing`/`error` rows.
-- [x] `manifest.tsv file` resolves to a real file; `lang` matches spoken language.
-- [x] Join integrity: each manifest `id` appears exactly once in CSV.
-- [x] OKF bundle conformance: every concept has `type` field (§4.1).
-- [x] OKF bundle conformance: `sources` arrays populated with credibility signals (§5.1) — `author`/`usage_count`/`last_modified` per §5.1, `usage_window` sibling.
-- [x] OKF bundle conformance: actor convention followed in all `generated.by` fields (§7) — `agent:okf-wiki-builder/1.0`, `process:convert-transcripts`, `process:yt-dlp`.
-- [ ] OKF bundle conformance: `verified` fields added after human review (§5.2) — TODO, all `status: draft` until human `verified`.
-- [x] No reserved filenames used for concept documents (§3.1) — `topics/concepts-overview.md` not `topics/index.md`; indexes are `index.md` per §8.
-- [x] `log.md` present at bundle root (§9).
-- [ ] Bundle-specific conformance verified per `## GENERALIZED WORKFLOW` quality gates (silhouette > 0.3, 100% coverage, separation ratio).
+# Step 4: Assemble wiki tree (transcripts, descriptions, indexes) — deterministic only (no topics)
+./bin/assemble-wiki --from "$OUT" --wiki-name dslab --wiki-tag ds-lab --playlist-url "$PLAYLIST"
 
-## GENERALIZED WORKFLOW — Build wiki for ANY public playlist
-
-Goal: parametrize the entire pipeline so `bin/build-wiki` produces a complete OKF v0.2 LLM wiki bundle for any public YouTube playlist. Output directory is an argument with a sensible default (working directory). Tested with `dslab` playlist (`PL9HYL-VRX0oSeWeMEGQt0id7adYQXebhT`) at `./dslab/`.
-
-### Parameters
-
-| Param | Flag | Default | Description |
-|-------|------|---------|-------------|
-| `playlist_url` | `--playlist` | ds-incubator playlist | YouTube playlist URL |
-| `bundle_name` | `--name` | slugified playlist title | Bundle identifier (`dslab`) |
-| `bundle_tag` | `--tag` | same as `bundle_name` | Tag used in source frontmatter (`ds-lab`) |
-| `out_dir` | `--out-dir` | `./{bundle_name}` | Output directory |
-| `count` | `--count` | 0 (all) | Limit for testing |
-
-### Architecture
-
-**Fetch/transcript layer (already generalized):**
-- `bin/fetch-metadata` — `--playlist`, `--csv`, `--meta-dir`
-- `bin/fetch-transcripts` — `--csv`, `--out-dir`
-- `bin/convert-transcripts` — `--csv`, `--out-dir`, `--format md`
-
-**Wiki layer (new scripts to create):**
-- `bin/distill-sources` — transcript `.md` + `metadata.csv` → `sources/source_<id>_<slug>.md`
-- `bin/cluster-topics` — all `sources/` → `planning_manifest.json` (auto-clustering + eval)
-- `bin/generate-topics` — manifest + sources → `topics/{category}/{topic}.md`
-- `bin/assemble-bundle` → `index.md`, `topics/index.md`, `sources/index.md`, `log.md`, `references/`
-- `bin/build-wiki` — orchestrator (runs full pipeline with `--count N` support)
-
-`bin/build-wiki` is the standalone orchestrator (no task runner).
-
-### Script Specs
-
-#### `bin/distill-sources`
-```
-./bin/distill-sources --csv <csv> --transcripts-dir <dir> --out-dir <sources/> --tag <tag> [--count N]
-```
-- Reads `transcripts/<id>_<slug>.md` (OKF v0.2) + `metadata.csv`
-- Scaffolds frontmatter deterministically: `type: source`, `title`, `tags: [<bundle_tag>, ...]`, `lang`, `usage_count`, `last_modified`, `usage_window`, `sources[]`, `generated.by: agent:okf-wiki-builder/1.0`, `status: draft`
-- LLM fills **only** `key_topics` (Extraction Prompt v2: quote-to-name, anchored, bilingual headings for `es`)
-- Restructures body into: Summary, Key Concepts & Tools Taught, Code Snippets & Formulas
-- Writes `sources/source_<id>_<slug>.md`
-
-#### `bin/cluster-topics`
-```
-./bin/cluster-topics --sources-dir <dir> --out-file <manifest.json> --bundle-name <name> --playlist-url <url>
-```
-- Loads all `sources/` frontmatter + summaries
-- **Embedding**: TF-IDF vectorizer (not `sentence-transformers` — too heavy) on title + key_topics + summary text → dense vectors
-- **Clustering**: HDBSCAN (auto-discovers K) if N ≥ 5; simple tag-overlap clustering if N < 5
-- **Evaluation** (automated, no human):
-  - Silhouette score > 0.3 (coherence)
-  - Coverage: 100% sources assigned
-  - Separation: inter-cluster > intra-cluster × 1.5
-  - LLM-as-judge via agent framework: "Do all sources in this cluster share a coherent theme?" (per cluster)
-  - Topic title quality: non-generic, descriptive (LLM judge)
-- **Retry**: If any metric fails → adjust `min_cluster_size`/`min_samples` → re-cluster → re-eval (max 3 attempts)
-- Writes `planning_manifest.json` with `bundle_name`, `okf_version`, `playlist_url`, `topics[]` (topic_filename, topic_title, type, description, source_files[])
-
-#### `bin/generate-topics`
-```
-./bin/generate-topics --manifest <json> --sources-dir <dir> --out-dir <topics/>
-```
-- Reads `planning_manifest.json` + all `sources/` frontmatter + summaries
-- For each topic: generates OKF concept page with `type` (§4.1)
-- `sources[]` with credibility signals (§5.1): `author`, `usage_count`, `last_modified`
-- Cross-links (§6): `see also:` to related topics
-- `Attested Computation` for pipeline topics (§10): `runtime`, `computation_type`
-- Actor: `agent:okf-wiki-builder/1.0`
-- Writes `topics/{category}/{topic}.md`
-
-#### `bin/assemble-bundle`
-```
-./bin/assemble-bundle --bundle-dir <dir> --manifest <json> --bundle-name <name> --bundle-tag <tag> --playlist-url <url>
-```
-- Generates `index.md` (bundle root, OKF v0.2 §12) matching README.md format:
-  - Title from playlist (e.g., `# <Title> Wiki`)
-  - `Knowledge base of ... [Playlist](url) ... [LLM wiki](karpathy) in [OKF](gcp) v0.2`
-  - `Both humans and AI-agents should start at [index.md](index.md)`
-  - `See [tools, tips and tricks](karpathy#optional-cli-tools) ...`
-  - **Contents — START HERE** section with links (no Build section — tools in separate repo)
-- `topics/index.md` (directory index §8) + `topics/concepts-overview.md` (concept listing §3.1)
-- `sources/index.md` (directory index §8) + `sources/log.md` (history §9)
-- `log.md` (bundle root history §9)
-- `references/index.md` (§6.3)
-- `README.md` — brief sentence + links (rendered from template)
-
-#### `bin/build-wiki` (orchestrator)
-```
-./bin/build-wiki --playlist <url> --name <name> --tag <tag> --out-dir <dir> [--count N]
-```
-- Runs: fetch-metadata → fetch-transcripts → convert-transcripts → distill-sources → cluster-topics → generate-topics → assemble-bundle
-- `--count N` limits all steps to first N videos (full pipeline test)
-
-### Requirements
-
-**`requirements.txt`** — Python deps for clustering:
-```
-numpy>=1.24
-scipy>=1.11
-scikit-learn>=1.4
-hdbscan>=0.8
-PyYAML>=6.0
-```
-Install: `pip3 install -r requirements.txt`
-
-No task runner — use `bin/build-wiki` directly.
-
-### Search Integration (suggested, not enforced)
-
-README.md includes a pointer to `qmd`:
-```markdown
-## Search the wiki
-
-[`qmd`](https://github.com/tobi/qmd) provides local hybrid search (BM25 + vector + LLM rerank) over the bundle.
-```bash
-qmd collection add ./dslab --name dslab
-qmd embed -c dslab
-qmd search "topic" -c dslab -n 3
-qmd query "question" -c dslab -n 3
-```
+# Step 5: Export clean wiki
+./bin/export-wiki --from "$OUT" --to ./dslab-wiki
 ```
 
-### Bundle Tag Convention
+> **Determinism contract:** The first pass (`bin/build-wiki` → fetch → transcripts → `convert-transcripts` → `assemble-wiki`) MUST remain fully deterministic and offline after the `yt-dlp` fetches (no LLM, no external APIs). This guarantees a reproducible, citable wiki (transcripts + descriptions) with zero model variance. Agents MUST NOT squeeze LLM summarization, embeddings, or topic clustering into this pass. LLM work (better `description`, `key_topics`, `topics/`) is strictly optional post-processing (see Optional LLM tools) and requires explicit user opt-in + re-index.
 
-- **Bundle name**: slugified playlist title (e.g., `dslab`)
-- **Bundle tag**: same as bundle name (e.g., `ds-lab`), used in `tags: ["ds-lab", ...]`
-- **No `ds-incubator` references** in new bundles
-- Frontmatter `tags` = `[bundle_tag, <extracted_topics>]`
+---
 
-### Distribution Preferences
+## Tools (`bin/`)
 
-- **Transcripts**: `transcripts/<id>_<slug>.md` bodies are deterministic `mm:ss: text` per `tStartMs` (no LLM) — keep `.md` + `manifest.tsv` readable in `transcripts/`. Raw captions (`*.json3`, `*.vtt`, `*.srt`, `*.srv3`, `*.tsv`, `*.txt`) archived as `transcripts-raw.tar.gz` at **bundle root** (sibling of `transcripts/`), not inside it. `bin/convert-transcripts` auto-creates this archive and cleans raw files from `transcripts/` after every run (workflow: download raw → generate `transcripts-raw.tar.gz` sibling → generate `.md` under `transcripts/` → remove non-`.md` from `transcripts/`).
-- **Metadata**: `metadata/` raw dumps (`metadata/<id>.json` per video + `metadata/manifest.tsv`) archived as `metadata-raw.tar.gz` at **bundle root** (sibling of `metadata/`), not inside it. `bin/fetch-metadata` auto-creates this archive after CSV derive and cleans `metadata/*.json` from `metadata/` (keep `manifest.tsv` readable; workflow: download raw → `metadata-raw.tar.gz` sibling → derive `metadata.csv` → remove `*.json` from `metadata/`); `metadata.csv` (derived table, bundle root `data/metadata.csv` for `dsincubator` 151, per-bundle `bundle/metadata.csv`) is build intermediate used by `fetch-transcripts`/`convert`/`distill` but not shipped; only dictionaries are published.
-- **README**: bundles emit `README.md` at bundle root per `dslab/README.md` wording — `# <Title> Wiki`, `Knowledge base of ... [Playlist](url) ... [LLM wiki](karpathy) in [OKF](gcp) v0.2`, `Both humans and AI-agents should start at [index.md](index.md)`, `See [tools, tips and tricks](karpathy#optional-cli-tools) ...` (no image; `raw/assets/graph.png` deleted).
-- **Data directory**: bundles emit `data/` as `type: Concept` dictionaries (§4.1) + indexes:
-  - `data/metadata.md` — column dictionary for `metadata.csv` (`playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url` per `AGENTS.md:9`) — auto-generated from header + static descriptions.
-  - `data/metadata-raw.md` — field dictionary for `metadata-raw.tar.gz` (`<id>.json` skimmed `automatic_captions/subtitles/formats` pruned, rest kept: `id,title,description,channel,uploader,view_count,like_count,comment_count,upload_date,chapters,comments`) — auto-generated by sampling one dump + static annotations; explains `metadata-raw.tar.gz` is attached as GH release asset.
-  - `data/transcripts-raw.md` — schema dictionary for `transcripts-raw.tar.gz` (`events[].tStartMs/dDurationMs` + `segs[].utf8/tOffsetMs/acAsrConf` per `AGENTS.md:39`) — auto-generated from one `json3` sample + static annotations; explains `transcripts-raw.tar.gz` is attached as GH release asset.
-  - `data/index.md` (§8) — directory index listing the three dictionaries.
-  - `data/` has no separate `log.md`; history lives in bundle root `log.md` (`AGENTS.md:182`) which records release tags.
-- **Releases**: `transcripts-raw.tar.gz` + `metadata-raw.tar.gz` attached as GH release assets together with final repo version. Version tag recorded in bundle `log.md` (e.g., `dslab-v0.0.1`, `dshangout-v0.0.1`) and in git as `bundle-v0.0.1`. Release creation is manual after review (not in `bin/build-wiki`). `.gitignore:11` ignores `**/transcripts-raw.tar.gz` and `**/metadata-raw.tar.gz`.
+Run from repo root. All scripts support `-h` / `--help`. Canonical names use **wiki**; `bundle` aliases are kept for backward compat and are noted as `# alias …`.
 
-### NEW BUILD / EXPORT LAYOUT (prunes old `data/` + `manifests/`/`assets` from wiki index)
+### `bin/build-wiki` (orchestrator)
+Runs fetch → transcripts → convert → assemble (does not run optional LLM tools or export).
 
-**Rule: nothing in the wiki `index.md` mentions a build-intermediary.** Build intermediaries stay in `project-outdir/` (or bundle root `manifests/`/`assets/`/`data/` before export) and are **NOT** indexed. Only wiki content is indexed and exported.
+```sh
+./bin/build-wiki --playlist URL --wiki-name NAME --wiki-tag TAG --to DIR [--count N]
+```
 
-* **`metadata/metadata.csv` + `metadata/metadata.md` (indexed) replaces `data/metadata.md` + `./metadata.csv`**  
-  `bin/assemble-bundle` now writes `wiki/metadata/metadata.md` (was `data/metadata.md`) as `type: Concept` (§4.1) + copies `project-outdir/metadata.csv` (or `data/metadata.csv`/`bundle/metadata.csv` build intermediate) → `wiki/metadata/metadata.csv` (indexed). Old `data/` is intermediary-only (NOT indexed); link in wiki is `[metadata.csv](metadata/metadata.csv)` (was `[metadata.csv](metadata.csv)`).
-* **`manifests/planning_manifest.json` (NOT indexed) replaces `planning_manifest.json` at bundle root**  
-  `bin/cluster-topics --out-file manifests/planning_manifest.json` (was `planning_manifest.json`). `bin/generate-topics --manifest manifests/planning_manifest.json`. Not listed in any `index.md`.
-* **`project-outdir/` intermediaries (NOT indexed):** `manifests/` (`metadata.tsv`, `transcripts.tsv`, `planning_manifest.json`), `assets/` (`*.tar.gz`), `data/` (`metadata.csv` build copy)
-* **`wiki/` indexed:** `index.md`, `README.md`, `AGENTS.md` (wiki maintenance, separate from build `AGENTS.md`), `log.md`, `metadata/metadata.csv` + `metadata/metadata.md`, `transcripts/*.md`, `descriptions/*.md`, `topics/**`, `references/`  
-  `sources/` has been removed (LLM-dependent, dropped); every wiki now has deterministic `transcripts/` + `descriptions/` via `bin/*` (no LLM). `planning_manifest.json` is never in `wiki/`.
-* **Export:** `bin/export-wiki --from project-outdir --to /exported-wiki/` copies **only** wiki dirs (`index.md`, `README.md`, `AGENTS.md`, `log.md`, `metadata/`, `transcripts/`, `descriptions/`, `topics/`, `references/`) to `--to` (clean wiki). Build repo is compressed whole (`project-outdir/` including intermediaries) for GH release of build-repo.
+| Flag         | Default  | Meaning                        |
+| ------------ | -------- | ------------------------------ |
+| `--playlist` | required | YouTube playlist URL           |
+| `--wiki-name`| `dslab`  | Wiki identifier                |
+| `--wiki-tag` | `ds-lab` | Frontmatter tag on transcripts |
+| `--to`       | `dslab`  | Project output directory       |
+| `--count N`  | all      | First N videos (`-n` short)    |
 
-### TODO — archive (2026-09-09 and earlier — pruned, keep latest only)
+### `bin/fetch-metadata`
+Raw-first: `yt-dlp --dump-single-json` per video → `metadata/<id>.json`, derived `data/metadata.csv`. Default fetches missing dumps only; `--refresh` re-fetches all. Skips private/unavailable videos (logged in `metadata/manifest.tsv`). Archives dumps to `metadata-raw.tar.gz`.
 
-- [x] `requirements.txt` + Python deps + `bin/*` pipeline (`distill`/`cluster`/`generate`/`assemble`/`build-wiki`) + `AGENTS.md` generalizations + `README.qmd`
-- [x] `dslab` verified 23/23 (`LDHGENv1NP4: 3288 events`), `dshangout` 217/230 md, 13 `vtt`-only
-- [x] `data/` dictionaries 2026-09-09 (`metadata.md`/`metadata-raw.md`/`transcripts-raw.md` + `index.md` §8) + `metadata-raw.tar.gz` sibling + `transcripts-raw.tar.gz` sibling + `graph.png` cruft cleaned + `transcripts/manifest.tsv` re-tracked + `metadata/*.json` cleaned after tar
+CSV columns: `playlist_index,title,id,view_count,like_count,comment_count,upload_date,upload_date_iso,duration,duration_string,channel,uploader,url,description`.
 
-### TODO — next (fresh-agent start here)
+```sh
+./bin/fetch-metadata --playlist URL --csv PATH --meta-dir DIR [--refresh] [--limit N]
+```
 
-- [x] **Add `description` column to `metadata.csv`**: full YouTube description per video (`row_from_dump()` + `header` in `bin/fetch-metadata`; `wiki/metadata/metadata.md` column dict; per-video `descriptions/<id>_<slug>.md` in wiki).
-  - `bin/fetch-metadata`: add `"description": d.get("description") or ""` to `row_from_dump()` and `"description"` to `header` list.
-  - `bin/assemble-bundle`: update `metadata/metadata.md` column table to include `description` (long text, quoted CSV field).
-  - `bin/assemble-bundle`: generate `wiki/descriptions/<id>_<slug>.md` per video (§4.1 `type: Concept`, frontmatter with `resource`, `author`, `usage_count`, `last_modified`; body = full description).
-  - `wiki/index.md` Contents lists `descriptions/`.
-  - Export leak-check: `descriptions/` is wiki content, not an intermediary.
-- [ ] **qmd integration**: `qmd collection add ./dslab --name dslab && qmd embed -c dslab` — NEXT (after export layout lands)
+| Flag | Default | Meaning |
+|------|---------|---------|
+| `--playlist` | default playlist | Playlist URL |
+| `--csv` | `data/metadata.csv` | Derived CSV table |
+| `--meta-dir` | `metadata` | Raw JSON directory |
+| `--refresh` | off | Re-fetch all dumps |
+| `--limit N` | all | First N entries |
+| `--skip-comments` | off | Skip yt-dlp comments |
+| `--cookies-from-browser` | none | e.g. `chrome`, `firefox` |
+| `--sleep` / `--retries` | 1 / 2 | Seconds sleep / attempts per video |
 
-### IDEAS / PLAN
+### `bin/fetch-transcripts`
+Reads IDs from CSV and writes caption files (`json3` preferred) plus `transcripts/manifest.tsv`. Keeps best track: `en-orig` > `es-orig` > `*-orig` > `en` > `es`.
 
-All future plans, local model optimization strategies, evaluation frameworks, generalized pipeline tasks, new bundle targets, and advanced architecture ideas (from `awesome-llm-wiki`) are fully detailed in **`ideas/`**:
-- [`ideas/local-llm-workflow-optimization.md`](ideas/local-llm-workflow-optimization.md) — Local-first pipeline optimization & model routing
-- [`ideas/eval-plan.md`](ideas/eval-plan.md) — Comprehensive evaluation plan (T1–T5 tasks × models, judge calibration, CI gates)
-- [`ideas/generalized-wiki-pipeline.md`](ideas/generalized-wiki-pipeline.md) — Generalized pipeline scripts & dslab execution plan
-- [`ideas/new-bundles.md`](ideas/new-bundles.md) — Expansion to ds-handout, ds-lab, and rOpenSci
-- [`ideas/awesome-llm-wiki-ideas.md`](ideas/awesome-llm-wiki-ideas.md) — Advanced blueprints (Dream Cycles, two-pass distillation, MCP, Pydantic, graphwiki)
-- [`ideas/wiki-maintenance-workflows.md`](ideas/wiki-maintenance-workflows.md) — Day-2 maintenance, incremental ingest, verification (§5.2), gap analysis
+```sh
+./bin/fetch-transcripts --csv PATH --to DIR [--force] [--count N] [--cookies-from-browser chrome]
+```
+
+| Flag | Default | Meaning |
+|------|---------|---------|
+| `--csv` | `data/metadata.csv` | Input metadata CSV |
+| `--to` | `transcripts` | Output directory |
+| `--force` | off | Re-fetch existing captions |
+| `--count N` | all | First N unique IDs (`-n` short) |
+| `--sub-format` | `json3/srv3/vtt/best` | Subtitle format |
+| `--cookies-from-browser` | none | e.g. `chrome` |
+| `--sleep` / `--retries` | 1 / 3 | Seconds sleep / attempts per video |
+
+### `bin/convert-transcripts`
+Converts `transcripts/<id>.*.json3` into OKF v0.2 `.md` (`00:08: text` per event derived from `tStartMs`, deterministic, no LLM). Deterministically (re-)generates frontmatter each run from `*.json3` + CSV `title` — minimal set only: `type: transcript` (required), `title`/`resource` (raw), `tags` (`--tag` if non-empty + topical keywords), `lang` (from `*.json3` filename), `generated.by/at: process:convert-transcripts`. No `description` heuristic (removed per ml03; LLM summarization is optional post-processing). Adds `See also: [description](../descriptions/<id>_<slug>.md)` cross-link (ml02, resilient to empty title/description). Archives raw captions to `transcripts-raw.tar.gz`.
+
+```sh
+./bin/convert-transcripts --csv PATH --from DIR --format md [--wiki-tag TAG] [--count N]
+```
+
+| Flag        | Default             | Meaning                                        |
+| ----------- | ------------------- | ---------------------------------------------- |
+| `--csv`     | `data/metadata.csv` | Input CSV                                      |
+| `--from`    | `transcripts`       | Directory containing captions and output `.md` |
+| `--format`  | `both`              | `txt`, `tsv`, `md`, `both`, `all`              |
+| `--wiki-tag`| *(empty)*           | Tag for frontmatter; if empty no wiki tag is added |
+| `--count N` | all                 | First N videos (`-n` short)                    |
+
+### `bin/assemble-wiki` (canonical; `bin/assemble-bundle` is a shim)
+Builds `{wiki-dir}/wiki/`: copies transcripts, writes `descriptions/<id>_<slug>.md` (`type: description` — directory-name default, see note) from CSV `description`, writes `index.md`, `log.md`, `metadata/metadata.csv` + `metadata.md`, `references/`, and directory indexes. Deterministic only; `topics/` is not built here (see Optional LLM tools).
+
+> **Note on `type`:** OKF v0.2 §4.1 requires `type` but does not register a closed taxonomy — any string is conformant, consumers MUST tolerate unknown types. Our types now default to the directory name for symmetry and provenance: `transcript` (`wiki/transcripts/<id>_<slug>.md` via `bin/convert-transcripts`), `description` (`wiki/descriptions/<id>_<slug>.md` via `bin/assemble-wiki`), `metadata`/`Bundle`/`DirectoryIndex`/`Log`/`References` for indexes. Previous `Video Transcript`/`Concept` were equally valid but asymmetric; directory-name types make the source explicit. Frontmatter fields we use in the deterministic pass (ml05): `type` (required), `title`/`resource` (raw), `tags` (`wiki-tag` + topical keywords from `TAG_RULES`), `lang`, `generated.by/at` — plus `See also` cross-links (ml02).
+
+> **Minimal deterministic frontmatter:** In the first pass keep only what's required or raw+useful: `type`, `title`/`resource` (raw), `tags`/`lang` (raw/derived), `generated`. Heavy provenance (`usage_count`, `last_modified`, `usage_window`, `status`, extra `sources[]` details) is omitted here — add it in LLM post-processing if needed.
+
+```sh
+./bin/assemble-wiki --from DIR --wiki-name NAME --wiki-tag TAG --playlist-url URL [--manifest MANIFEST]
+```
+
+| Flag           | Default                            | Meaning                |
+| -------------- | ---------------------------------- | ---------------------- |
+| `--from` | `.`                       | Project directory (wiki root) |
+| `--manifest`   | `manifests/planning_manifest.json` | Topic plan (optional, only for post-processing re-index) |
+| `--wiki-name`| `dslab`                            | Wiki identifier      |
+| `--wiki-tag` | `ds-lab`                           | Tag in generated pages |
+| `--playlist-url`| manifest / empty                  | Playlist URL           |
+
+### `bin/export-wiki`
+Copies indexed wiki files from `--from` (or `--from/wiki`) to `--to`. Excludes intermediaries (`data/`, `manifests/`, `assets/`, tarballs, `planning_manifest.json`).
+
+```sh
+./bin/export-wiki --from DIR --to DIR
+```
+
+| Flag     | Meaning           |
+| -------- | ----------------- |
+| `--from` | Project wiki dir  |
+| `--to`   | Exported wiki dir |
+
+---
+## Directory Layout
+
+Expected output of a new build (`--to`):
+
+```
+bin/                        # Build tools (run from repo root, --help for each)
+├── build-wiki              # Orchestrator: fetch → transcripts → convert → assemble
+├── fetch-metadata          # Playlist → metadata/<id>.json + data/metadata.csv
+├── fetch-transcripts       # data/metadata.csv → transcripts/<id>.*.json3
+├── convert-transcripts     # transcripts/*.json3 → transcripts/<id>_<slug>.md
+├── assemble-wiki           # → wiki/ (deterministic)  # shim: assemble-bundle
+└── export-wiki             # wiki/ → clean export (no intermediaries)
+
+{out-dir}/                  # Wiki root (what bin/* creates)  # legacy term: bundle root
+├── data/metadata.csv       # Intermediary (NOT in wiki)
+├── metadata/               # Intermediary (raw JSON dumps)
+├── transcripts/            # Intermediary (raw captions + <id>_<slug>.md)
+├── manifests/              # Intermediary (metadata.tsv, transcripts.tsv, planning_manifest.json)
+├── assets/                 # Intermediary (metadata-raw.tar.gz, transcripts-raw.tar.gz)
+└── wiki/                   # OKF wiki (what export-wiki copies)
+    ├── index.md            # Entry point
+    ├── README.md, AGENTS.md, log.md
+    ├── metadata/metadata.csv + metadata.md
+    ├── transcripts/<id>_<slug>.md
+    ├── descriptions/<id>_<slug>.md
+    ├── topics/             # Only after optional post-processing (distill→cluster→generate→re-index)
+    └── references/
+```
+
+---
+
+## Conventions
+
+- **Join key:** `id` connects CSV ↔ `transcripts/<id>_<slug>.md` ↔ `descriptions/<id>_<slug>.md` ↔ `https://www.youtube.com/watch?v=<id>`.
+- **json3 format:** `events[].tStartMs/dDurationMs` + `segs[].utf8/tOffsetMs`.
+- **Bot detection:** Pass `--cookies-from-browser chrome` to fetch scripts if YouTube prompts for sign-in.
+
+----
+
+### Optional LLM tools (topic generation)
+
+Default wikis are transcripts + descriptions only (deterministic). Topics are optional post-processing — ask the user if they want to do this *after* a minimal wiki is built, then re-index.
+
+1. `bin/distill-sources`: Transcript `.md` → `sources/source_<id>_<slug>.md`.
+   ```sh
+   ./bin/distill-sources --csv PATH --from DIR --to sources/ --wiki-tag TAG [--count N]
+   ```
+2. `bin/cluster-topics`: TF-IDF clustering of `sources/` → `manifests/planning_manifest.json` (requires `scikit-learn`).
+   ```sh
+   ./bin/cluster-topics --from DIR --to manifests/planning_manifest.json --wiki-name NAME --playlist-url URL
+   ```
+3. `bin/generate-topics`: Manifest + sources → `topics/{category}/{topic}.md`.
+   ```sh
+   ./bin/generate-topics --manifest manifests/planning_manifest.json --from DIR --to topics/
+   ```
+4. Re-index wiki to surface topics: re-run `bin/assemble-wiki` (acts as re-indexer):
+   ```sh
+   ./bin/assemble-wiki --from ./dslab --wiki-name dslab --wiki-tag ds-lab --playlist-url "$PLAYLIST"
+   # regenerates wiki/index.md, wiki/topics/index.md and per-category indexes from the manifest
+   ```
+
+Non-interactive: `bin/build-wiki` stops at the deterministic wiki and never prompts. Pass an explicit flag or run the 4 steps above when you want topics.
+

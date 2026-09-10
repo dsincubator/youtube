@@ -9,9 +9,9 @@ Cluster distilled sources into planning_manifest.json.
 
 Options:
   -h, --help            Show this message and exit
-  --sources-dir DIR     Sources directory (default: sources)
-  --out-file PATH       Output planning manifest JSON (default: planning_manifest.json)
-  --bundle-name NAME    Bundle name (default: dsincubator)
+  --from DIR            Sources directory (default: sources)
+  --to PATH             Output planning manifest JSON (default: planning_manifest.json)
+  --wiki-name NAME      Wiki name (default: dsincubator)
   --playlist-url URL    Playlist URL (default: https://www.youtube.com/@dsincubator)
 EOF
 }
@@ -28,9 +28,9 @@ need_arg() {
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -h|--help) usage; exit 0 ;;
-        --sources-dir) need_arg "$@"; SOURCES_DIR="$2"; shift 2 ;;
-        --out-file) need_arg "$@"; OUT_FILE="$2"; shift 2 ;;
-        --bundle-name) need_arg "$@"; BUNDLE_NAME="$2"; shift 2 ;;
+        --from) need_arg "$@"; SOURCES_DIR="$2"; shift 2 ;;
+        --to) need_arg "$@"; OUT_FILE="$2"; shift 2 ;;
+        --wiki-name) need_arg "$@"; BUNDLE_NAME="$2"; shift 2 ;;
         --playlist-url) need_arg "$@"; PLAYLIST_URL="$2"; shift 2 ;;
         *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
     esac

@@ -5,11 +5,11 @@ PROGRAM="${0##*/}"
 usage() {
     cat <<EOF
 Usage: $PROGRAM [OPTIONS]
-Export wiki-only bundle from project-outdir.
+Export wiki-only copy from project wiki dir.
 
 Options:
   -h, --help            Show this message and exit
-  --from DIR            Project output dir (default: .)
+  --from DIR            Project wiki dir (default: .)
   --to DIR              Exported wiki dir (required)
 EOF
 }

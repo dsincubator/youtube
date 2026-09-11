@@ -1,8 +1,9 @@
-# YouTube playlist → OKF wiki
+# YouTube playlist → transcripts & knowledge-base support
 
-**Goal of this repo**: Build an OKF v0.2 LLM wiki from any public YouTube playlist: metadata + captions → deterministic transcripts + descriptions → assembled wiki.
+**Goal of this repo**: Pull YouTube transcripts and related data (metadata + captions) from any public playlist to provide clean, deterministic source material for later knowledge-base creation.
 
-**Wiki entry point:** `{out-dir}/wiki/index.md` (or exported wiki's `index.md`).
+Primary output is citable transcripts + metadata (`data/metadata.csv`, `metadata/<id>.json`, `transcripts/<id>.*.json3` → `transcripts/<id>_<slug>.md`). The OKF v0.2 wiki assembly (`{out-dir}/wiki/index.md` via `bin/assemble-wiki` / `bin/export-wiki`) is a downstream example consumer of that data, not the core goal.
+
 Do not edit `transcripts/` frontmatter by hand — `bin/convert-transcripts` owns it. When repo state changes, update `README.qmd` and run `quarto render README.qmd --to gfm --quiet`.
 ## Conventions for AI agents
 

@@ -14,6 +14,7 @@ Options:
   --wiki-tag TAG        Wiki tag (default: ds-lab)
   --to DIR              Output wiki directory (default: dslab)
   -n, --count N         Limit processing to the first N videos
+  --playlist-title TITLE Playlist display title (default: extracted from playlist)
 EOF
 }
 
@@ -22,6 +23,7 @@ BUNDLE_NAME="dslab"
 BUNDLE_TAG="ds-lab"
 OUT_DIR="dslab"
 COUNT=0
+PLAYLIST_TITLE=""
 
 need_arg() {
     [[ $# -ge 2 ]] || { echo "[$PROGRAM] $1 needs a value" >&2; exit 2; }
@@ -35,6 +37,7 @@ while [[ $# -gt 0 ]]; do
         --wiki-tag) need_arg "$@"; BUNDLE_TAG="$2"; shift 2 ;;
         --to) need_arg "$@"; OUT_DIR="$2"; shift 2 ;;
         -n|--count) need_arg "$@"; COUNT="$2"; shift 2 ;;
+        --playlist-title) need_arg "$@"; PLAYLIST_TITLE="$2"; shift 2 ;;
         *) echo "[$PROGRAM] unknown option: $1" >&2; usage >&2; exit 2 ;;
     esac
 done
@@ -45,7 +48,7 @@ if [[ -z "$PLAYLIST" ]]; then
     exit 2
 fi
 
-mkdir -p "$OUT_DIR/metadata" "$OUT_DIR/transcripts" "$OUT_DIR/topics" "$OUT_DIR/manifests" "$OUT_DIR/assets" "$OUT_DIR/data" "$OUT_DIR/wiki"
+mkdir -p "$OUT_DIR/metadata" "$OUT_DIR/transcripts" "$OUT_DIR/manifests" "$OUT_DIR/assets" "$OUT_DIR/data" "$OUT_DIR/wiki"
 
 CSV_PATH="$OUT_DIR/data/metadata.csv"
 if [[ ! -f "$CSV_PATH" ]]; then
@@ -154,12 +157,24 @@ else:
 PYEOF
 
 echo "=== Step 7: Assembling Wiki (deterministic wiki: transcripts + descriptions) ==="
+# Resolve playlist title if not provided: try yt-dlp, fallback to OUT_DIR basename
+if [[ -z "$PLAYLIST_TITLE" ]]; then
+    PLAYLIST_TITLE=$(yt-dlp --flat-playlist --print "%(playlist_title)s" --playlist-end 1 -- "$PLAYLIST" 2>/dev/null | head -n1 || true)
+    if [[ -z "$PLAYLIST_TITLE" || "$PLAYLIST_TITLE" == "NA" ]]; then
+        PLAYLIST_TITLE=$(basename "$OUT_DIR")
+        PLAYLIST_TITLE=${PLAYLIST_TITLE//-/ }
+        PLAYLIST_TITLE=${PLAYLIST_TITLE//_/ }
+        # title-case fallback via python
+        PLAYLIST_TITLE=$(python3 -c "import sys; print(' '.join(w.capitalize() for w in sys.argv[1].split()))" "$PLAYLIST_TITLE")
+    fi
+    echo "[build-wiki] playlist title: $PLAYLIST_TITLE"
+fi
 # canonical binary is assemble-wiki; assemble-bundle is a backward-compat shim
 if [[ -x ./bin/assemble-wiki ]]; then
     ASSEMBLE_BIN="./bin/assemble-wiki"
 else
     ASSEMBLE_BIN="./bin/assemble-bundle"
 fi
-"$ASSEMBLE_BIN" --from "$OUT_DIR" --manifest "$OUT_DIR/manifests/planning_manifest.json" --wiki-name "$BUNDLE_NAME" --wiki-tag "$BUNDLE_TAG" --playlist-url "$PLAYLIST"
+"$ASSEMBLE_BIN" --from "$OUT_DIR" --manifest "$OUT_DIR/manifests/planning_manifest.json" --wiki-name "$BUNDLE_NAME" --wiki-tag "$BUNDLE_TAG" --playlist-url "$PLAYLIST" --playlist-title "$PLAYLIST_TITLE"
 
 echo "=== Build Complete! Project dir at $OUT_DIR/ (wiki at $OUT_DIR/wiki/index.md) ==="

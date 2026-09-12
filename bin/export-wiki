@@ -62,9 +62,8 @@ if [[ -d "$TO" ]]; then
     find "$TO" -mindepth 1 -maxdepth 1 -exec rm -rf {} + 2>/dev/null || true
 fi
 
-# Copy only wiki dirs (indexed) — per LAYOUT spec
-# wiki/ indexed: index.md, README.md, AGENTS.md, log.md, metadata/, transcripts/, descriptions/, topics/, references/
-# Explicitly DO NOT copy: data/, manifests/, assets/, planning_manifest.json at project root, raw archives, sources/ (removed, LLM-dependent)
+# Copy only wiki dirs (indexed) — per LAYOUT spec (minimal deterministic: index.md, log.md, metadata/, transcripts/, descriptions/)
+# Explicitly DO NOT copy: data/, manifests/, assets/, planning_manifest.json at project root, raw archives, sources/
 
 copy_file() {
     local src="$1" dst="$2"
@@ -86,20 +85,13 @@ copy_dir() {
 }
 
 copy_file "$SRC/index.md" "$TO/index.md"
-copy_file "$SRC/README.md" "$TO/README.md"
 copy_file "$SRC/log.md" "$TO/log.md"
-# AGENTS.md: wiki maintenance separate from build AGENTS.md
-if [[ -f "$SRC/AGENTS.md" ]]; then
-    copy_file "$SRC/AGENTS.md" "$TO/AGENTS.md"
-elif [[ -f "$SRC/../AGENTS.md" ]]; then
-    # fallback: no wiki AGENTS, but don't copy build AGENTS blindly
-    :
-fi
 copy_dir "$SRC/metadata" "$TO/metadata"
 copy_dir "$SRC/transcripts" "$TO/transcripts"
 copy_dir "$SRC/descriptions" "$TO/descriptions" 2>/dev/null || true
-copy_dir "$SRC/topics" "$TO/topics"
-copy_dir "$SRC/references" "$TO/references"
+# Optional LLM outputs (only if present) — not part of deterministic minimal pass
+copy_dir "$SRC/topics" "$TO/topics" 2>/dev/null || true
+copy_dir "$SRC/references" "$TO/references" 2>/dev/null || true
 
 # Verification: ensure no intermediates leaked
 leaked=0

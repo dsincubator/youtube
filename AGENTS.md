@@ -5,6 +5,7 @@
 Primary output is citable transcripts + metadata (`data/metadata.csv`, `metadata/<id>.json`, `transcripts/<id>.*.json3` → `transcripts/<id>_<slug>.md`). The OKF v0.2 wiki assembly (`{out-dir}/wiki/index.md` via `bin/assemble-wiki` / `bin/export-wiki`) is a downstream example consumer of that data, not the core goal.
 
 Do not edit `transcripts/` frontmatter by hand — `bin/convert-transcripts` owns it. When repo state changes, update `README.qmd` and run `quarto render README.qmd --to gfm --quiet`.
+
 ## Conventions for AI agents
 
 - **Determinism:** The deterministic first pass (above) must stay deterministic — no LLM. See contract below.
@@ -13,6 +14,29 @@ Do not edit `transcripts/` frontmatter by hand — `bin/convert-transcripts` own
   - Directory in/out: `--from` / `--to` (e.g. `assemble-wiki --from ./dslab`, `export-wiki --from ./dslab --to ./dslab-wiki`, `build-wiki --to ./dslab`).
   - File inputs: `--csv`, `--manifest`, `--meta-dir` stay descriptive (no generic alias — disambiguates `file vs dir` and tools with 2 inputs/outputs like `fetch-metadata`).
   - Wiki identity: `--wiki-name` / `--wiki-tag` (no `--bundle-*`/`--name`/`--tag` aliases).
+
+---
+
+## OKF v0.2 spec (§3, §4, §5, §8, §9, §11, §12)
+
+Reference: https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
+
+A **bundle** is a directory tree of markdown files. `index.md` and `log.md` are reserved filenames (§3.1). `index.md` MAY appear in any directory for progressive disclosure (§8). The spec is intentionally minimal — producers MAY include anything; consumers MUST tolerate unknown types and missing optional fields.
+
+**Frontmatter (§4.1):** Every concept `.md` has `type` (required) + optional `title`, `description`, `resource`, `tags`. No other fields are required or recommended in the deterministic pass. The `generated`, `verified`, `status`, `sources`, `lang` families are optional (§5) and belong to LLM post-processing. Only the bundle-root `index.md` MAY carry `okf_version` (§12) — all other `index.md` files must have NO frontmatter.
+
+**Conformance (§11):** A bundle is conformant when every non-reserved `.md` has parseable YAML frontmatter with non-empty `type`, and reserved filenames follow §8/§9 when present. Missing optional frontmatter, unknown `type` values, broken cross-links, and missing `index.md` files are all tolerated — never rejected.
+
+**Structure (§3):**
+```
+path/to/bundle/
+  index.md                    # Optional. Bundle-root may carry okf_version (§12)
+  log.md                      # Optional. §9 chronological history
+  <concept>.md                # Required frontmatter: type (REQUIRED)
+  <subdirectory>/             # Subdirectories organize concepts into groups
+    index.md                  # Optional, NO frontmatter (§8)
+    <concept>.md
+```
 
 ---
 
@@ -26,7 +50,8 @@ Do not edit `transcripts/` frontmatter by hand — `bin/convert-transcripts` own
   --wiki-name dslab \
   --wiki-tag dslab \
   --to ./dslab \
-  --count 3
+  --count 3 \
+  --playlist-title "Posit Data Science Lab"
 
 ./bin/export-wiki --from ./dslab --to ./dslab-wiki
 ```
@@ -47,13 +72,15 @@ PLAYLIST="https://www.youtube.com/playlist?list=PL9HYL-VRX0oSeWeMEGQt0id7adYQXeb
 ./bin/convert-transcripts --csv "$OUT/data/metadata.csv" --from "$OUT/transcripts" --format md --wiki-tag ds-lab --count 3
 
 # Step 4: Assemble wiki tree (transcripts, descriptions, indexes) — deterministic only (no topics)
-./bin/assemble-wiki --from "$OUT" --wiki-name dslab --wiki-tag ds-lab --playlist-url "$PLAYLIST"
+./bin/assemble-wiki --from "$OUT" --wiki-name dslab --wiki-tag ds-lab --playlist-url "$PLAYLIST" --playlist-title "Playlist Title"
 
 # Step 5: Export clean wiki
 ./bin/export-wiki --from "$OUT" --to ./dslab-wiki
 ```
 
 > **Determinism contract:** The first pass (`bin/build-wiki` → fetch → transcripts → `convert-transcripts` → `assemble-wiki`) MUST remain fully deterministic and offline after the `yt-dlp` fetches (no LLM, no external APIs). This guarantees a reproducible, citable wiki (transcripts + descriptions) with zero model variance. Agents MUST NOT squeeze LLM summarization, embeddings, or topic clustering into this pass. LLM work (better `description`, `key_topics`, `topics/`) is strictly optional post-processing (see Optional LLM tools) and requires explicit user opt-in + re-index.
+
+> **OKF v0.2 §4.1 minimal frontmatter (deterministic pass):** Only `type` (required), `title`, `description`, `resource`, `tags` are used. No `generated`, `verified`, `status`, `sources`, `lang` — those are optional (§5) and belong to LLM post-processing. Only the bundle-root `index.md` carries `okf_version` (§12). Subdirectory `index.md` files have NO frontmatter (§8).
 
 ---
 
@@ -65,7 +92,7 @@ Run from repo root. All scripts support `-h` / `--help`. Canonical names use **w
 Runs fetch → transcripts → convert → assemble (does not run optional LLM tools or export).
 
 ```sh
-./bin/build-wiki --playlist URL --wiki-name NAME --wiki-tag TAG --to DIR [--count N]
+./bin/build-wiki --playlist URL --wiki-name NAME --wiki-tag TAG --to DIR [--count N] --playlist-title TITLE
 ```
 
 | Flag         | Default  | Meaning                        |
@@ -75,6 +102,7 @@ Runs fetch → transcripts → convert → assemble (does not run optional LLM t
 | `--wiki-tag` | `ds-lab` | Frontmatter tag on transcripts |
 | `--to`       | `dslab`  | Project output directory       |
 | `--count N`  | all      | First N videos (`-n` short)    |
+| `--playlist-title` | extracted from playlist | Playlist display name |
 
 ### `bin/fetch-metadata`
 Raw-first: `yt-dlp --dump-single-json` per video → `metadata/<id>.json`, derived `data/metadata.csv`. Default fetches missing dumps only; `--refresh` re-fetches all. Skips private/unavailable videos (logged in `metadata/manifest.tsv`). Archives dumps to `metadata-raw.tar.gz`.
@@ -114,7 +142,7 @@ Reads IDs from CSV and writes caption files (`json3` preferred) plus `transcript
 | `--sleep` / `--retries` | 1 / 3 | Seconds sleep / attempts per video |
 
 ### `bin/convert-transcripts`
-Converts `transcripts/<id>.*.json3` into OKF v0.2 `.md` (`00:08: text` per event derived from `tStartMs`, deterministic, no LLM). Deterministically (re-)generates frontmatter each run from `*.json3` + CSV `title` — minimal set only: `type: transcript` (required), `title`/`resource` (raw), `tags` (`--tag` if non-empty + topical keywords), `lang` (from `*.json3` filename), `generated.by/at: process:convert-transcripts`. No `description` heuristic (removed per ml03; LLM summarization is optional post-processing). Adds `See also: [description](../descriptions/<id>_<slug>.md)` cross-link (ml02, resilient to empty title/description). Archives raw captions to `transcripts-raw.tar.gz`.
+Converts `transcripts/<id>.*.json3` into OKF v0.2 `.md` (`00:08: text` per event derived from `tStartMs`, deterministic, no LLM). Deterministically (re-)generates frontmatter each run from `*.json3` + CSV `title` — minimal set only (§4.1): `type: transcript` (required), `title`/`resource` (raw), `tags` (`--tag` if non-empty + topical keywords). No `description` heuristic (removed per ml03; LLM summarization is optional post-processing). Adds `See also: [description](../descriptions/<id>_<slug>.md)` cross-link (ml02, resilient to empty title/description). Archives raw captions to `transcripts-raw.tar.gz`.
 
 ```sh
 ./bin/convert-transcripts --csv PATH --from DIR --format md [--wiki-tag TAG] [--count N]
@@ -129,14 +157,12 @@ Converts `transcripts/<id>.*.json3` into OKF v0.2 `.md` (`00:08: text` per event
 | `--count N` | all                 | First N videos (`-n` short)                    |
 
 ### `bin/assemble-wiki` (canonical; `bin/assemble-bundle` is a shim)
-Builds `{wiki-dir}/wiki/`: copies transcripts, writes `descriptions/<id>_<slug>.md` (`type: description` — directory-name default, see note) from CSV `description`, writes `index.md`, `log.md`, `metadata/metadata.csv` + `metadata.md`, `references/`, and directory indexes. Deterministic only; `topics/` is not built here (see Optional LLM tools).
+Builds `{wiki-dir}/wiki/`: copies transcripts, writes `descriptions/<id>_<slug>.md` (`type: description` — only if CSV description non-empty) from CSV `description`, writes `index.md`, `log.md`, `metadata/metadata.csv` + `metadata.md`, and directory indexes for `transcripts/`, `descriptions/`, `metadata/`. Deterministic only; `topics/` and `references/` are not built here (see Optional LLM tools).
 
-> **Note on `type`:** OKF v0.2 §4.1 requires `type` but does not register a closed taxonomy — any string is conformant, consumers MUST tolerate unknown types. Our types now default to the directory name for symmetry and provenance: `transcript` (`wiki/transcripts/<id>_<slug>.md` via `bin/convert-transcripts`), `description` (`wiki/descriptions/<id>_<slug>.md` via `bin/assemble-wiki`), `metadata`/`Bundle`/`DirectoryIndex`/`Log`/`References` for indexes. Previous `Video Transcript`/`Concept` were equally valid but asymmetric; directory-name types make the source explicit. Frontmatter fields we use in the deterministic pass (ml05): `type` (required), `title`/`resource` (raw), `tags` (`wiki-tag` + topical keywords from `TAG_RULES`), `lang`, `generated.by/at` — plus `See also` cross-links (ml02).
-
-> **Minimal deterministic frontmatter:** In the first pass keep only what's required or raw+useful: `type`, `title`/`resource` (raw), `tags`/`lang` (raw/derived), `generated`. Heavy provenance (`usage_count`, `last_modified`, `usage_window`, `status`, extra `sources[]` details) is omitted here — add it in LLM post-processing if needed.
+> **Note on `type`:** OKF v0.2 §4.1 requires `type` but does not register a closed taxonomy — any string is conformant, consumers MUST tolerate unknown types. Our types default to the directory name for symmetry and provenance: `transcript` (`wiki/transcripts/<id>_<slug>.md` via `bin/convert-transcripts`), `description` (`wiki/descriptions/<id>_<slug>.md` via `bin/assemble-wiki`), `metadata`/`Bundle`/`DirectoryIndex`/`Log` for indexes. Previous `Video Transcript`/`Concept` were equally valid but asymmetric; directory-name types make the source explicit. **Minimal deterministic frontmatter (§4.1):** Only recommended fields — `type` (required), `title`/`description`/`resource`/`tags`. No `generated`, `verified`, `status`, `sources`, `lang` — those are optional (§5) and belong to LLM post-processing. Only the bundle-root `index.md` carries `okf_version` (§12).
 
 ```sh
-./bin/assemble-wiki --from DIR --wiki-name NAME --wiki-tag TAG --playlist-url URL [--manifest MANIFEST]
+./bin/assemble-wiki --from DIR --wiki-name NAME --wiki-tag TAG --playlist-url URL --playlist-title TITLE
 ```
 
 | Flag           | Default                            | Meaning                |
@@ -146,6 +172,7 @@ Builds `{wiki-dir}/wiki/`: copies transcripts, writes `descriptions/<id>_<slug>.
 | `--wiki-name`| `dslab`                            | Wiki identifier      |
 | `--wiki-tag` | `ds-lab`                           | Tag in generated pages |
 | `--playlist-url`| manifest / empty                  | Playlist URL           |
+| `--playlist-title`| extracted from playlist or `--to` dir  | Playlist display name |
 
 ### `bin/export-wiki`
 Copies indexed wiki files from `--from` (or `--from/wiki`) to `--to`. Excludes intermediaries (`data/`, `manifests/`, `assets/`, tarballs, `planning_manifest.json`).
@@ -180,13 +207,18 @@ bin/                        # Build tools (run from repo root, --help for each)
 ├── manifests/              # Intermediary (metadata.tsv, transcripts.tsv, planning_manifest.json)
 ├── assets/                 # Intermediary (metadata-raw.tar.gz, transcripts-raw.tar.gz)
 └── wiki/                   # OKF wiki (what export-wiki copies)
-    ├── index.md            # Entry point
-    ├── README.md, AGENTS.md, log.md
-    ├── metadata/metadata.csv + metadata.md
-    ├── transcripts/<id>_<slug>.md
-    ├── descriptions/<id>_<slug>.md
-    ├── topics/             # Only after optional post-processing (distill→cluster→generate→re-index)
-    └── references/
+    ├── index.md            # Bundle root (carries okf_version, §12)
+    ├── log.md              # §9 chronological history
+    ├── transcripts/
+    │   ├── index.md        # §8 progressive disclosure (no frontmatter)
+    │   └── <id>_<slug>.md  # type: transcript
+    ├── descriptions/
+    │   ├── index.md        # §8 progressive disclosure (no frontmatter)
+    │   └── <id>_<slug>.md  # type: description (ONLY if CSV description non-empty)
+    └── metadata/
+        ├── index.md        # §8 progressive disclosure (no frontmatter)
+        ├── metadata.csv
+        └── metadata.md     # type: metadata
 ```
 
 ---
@@ -216,10 +248,10 @@ Default wikis are transcripts + descriptions only (deterministic). Topics are op
    ./bin/generate-topics --manifest manifests/planning_manifest.json --from DIR --to topics/
    ```
 4. Re-index wiki to surface topics: re-run `bin/assemble-wiki` (acts as re-indexer):
-   ```sh
-   ./bin/assemble-wiki --from ./dslab --wiki-name dslab --wiki-tag ds-lab --playlist-url "$PLAYLIST"
-   # regenerates wiki/index.md, wiki/topics/index.md and per-category indexes from the manifest
-   ```
+    ```sh
+    ./bin/assemble-wiki --from ./dslab --wiki-name dslab --wiki-tag ds-lab --playlist-url "$PLAYLIST" --playlist-title "Playlist Title"
+    # regenerates wiki/index.md, wiki/topics/index.md and per-category indexes from the manifest
+    ```
 
 Non-interactive: `bin/build-wiki` stops at the deterministic wiki and never prompts. Pass an explicit flag or run the 4 steps above when you want topics.
 

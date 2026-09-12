@@ -52,7 +52,6 @@ done
 
 python3 - "$CSV" "$OUT_DIR" "$FORMAT" "$COUNT" "$TAG" <<'PYEOF'
 import csv, json, os, sys, re, unicodedata
-from datetime import datetime, timezone
 
 csv_path, out_dir, fmt, count_str, tag = sys.argv[1:6]
 count = int(count_str)
@@ -80,8 +79,6 @@ with open(csv_path) as f:
 
 if count > 0:
     ids = ids[:count]
-
-gen_ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 # Keyword rules for topical tags, in priority order. Scanned against the
 # video title + transcript body (lowercased). First matches win, capped.
@@ -176,13 +173,9 @@ def do_md(base, path, vid):
     if not body:
         body = "No transcript content."
         plain_body = body
-    lang = "en"
-    m = re.search(r"\.([a-z]{2})(?:-orig)?\.json3$", os.path.basename(path))
-    if m:
-        lang = m.group(1)
     # ml03: deterministic, no heuristic (LLM post-processing optional)
     # ml04: tag may be empty (derived from --from via build-wiki); skip empty
-    # ml05 minimal: only required (type) + useful+raw (title, resource, lang, tags) + generated
+    # minimal frontmatter (§4.1): type (required) + title/resource/tags (recommended)
     base_tags = ([tag] if tag else []) + topical_tags(title, plain_body)
     slug = slugify(title) if title else vid
     md_path = out_dir + "/" + vid + "_" + slug + ".md"
@@ -194,10 +187,6 @@ def do_md(base, path, vid):
         f"title: {yaml_escape(title)}",
         f"resource: \"https://www.youtube.com/watch?v={vid}\"",
         "tags: [" + ", ".join(f'"{t}"' for t in base_tags) + "]",
-        f"lang: {lang}",
-        "generated:",
-        "  by: \"process:convert-transcripts\"",
-        f"  at: \"{gen_ts}\"",
     ]
     fm = "\n".join(fm_lines)
     # ml02: explicit cross-link to sibling description (same id_slug, different dir) — resilient to empty description
